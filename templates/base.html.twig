@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html class="h-full bg-white">
+<head>
+	<meta charset="UTF-8">
+	{% block stylesheets %}
+		<link href="{{ asset('dist/styles.css') }}" rel="stylesheet"/>
+	{% endblock %}
+
+	{% block javascripts %}
+	{% endblock %}
+</head>
+<body class="h-full">
+{% block body %}
+	{% block aside %}
+	{% endblock %}
+	{% block main %}
+	{% endblock %}
+{% endblock %}
+</body>
+</html>
