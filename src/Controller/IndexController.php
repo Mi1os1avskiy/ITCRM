@@ -15,4 +15,8 @@ class IndexController extends AbstractController
     {
         return $this->render('ololo/index.html.twig', []);
     }
+    public function home(): Response
+    {
+        return $this->render('home.html.twig', []);
+    }
 }
