@@ -10,3 +10,27 @@ app_ololo:
 app_home:
   path: /home
   controller: App\Controller\IndexController::home
+
+app_dashboard:
+  path: /dashboard
+  controller: App\Controller\IndexController::dashboard
+
+app_team:
+  path: /team
+  controller: App\Controller\IndexController::team
+
+app_projects:
+  path: /projects
+  controller: App\Controller\IndexController::projects
+
+app_calendar:
+  path: /calendar
+  controller: App\Controller\IndexController::calendar
+
+app_documents:
+  path: /documents
+  controller: App\Controller\IndexController::documents
+
+app_reports:
+  path: /reports
+  controller: App\Controller\IndexController::reports
