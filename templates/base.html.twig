@@ -2,8 +2,10 @@
 <html class="h-full bg-white">
 <head>
 	<meta charset="UTF-8">
+	<title>{{ title }}</title>
 	{% block stylesheets %}
 		<link href="{{ asset('dist/styles.css') }}" rel="stylesheet"/>
+		<link href="{{ asset('assets/css/style.css') }}" rel="stylesheet"/>
 	{% endblock %}
 
 	{% block javascripts %}
