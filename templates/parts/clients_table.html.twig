@@ -1,0 +1,263 @@
+<!-- Activity list (smallest breakpoint only) -->
+{#                    <div class="shadow sm:hidden">#}
+{#                        <ul role="list" class="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden">#}
+{#                            <li>#}
+{#                                <a href="#" class="block bg-white px-4 py-4 hover:bg-gray-50">#}
+{#                                    <span class="flex items-center space-x-4">#}
+{#                                      <span class="flex flex-1 space-x-2 truncate">#}
+{#                                        <span class="flex flex-col truncate text-sm text-gray-500">#}
+{#                                          <span class="truncate">#c203202</span>#}
+{#                                          <span><span class="font-medium text-gray-900">$20,000</span> USD</span>#}
+{#                                          <time datetime="2020-07-11">July 11, 2020</time>#}
+{#                                        </span>#}
+{#                                      </span>#}
+{#                                        <!-- Heroicon name: mini/chevron-right -->#}
+{#                                      <svg class="h-5 w-5 flex-shrink-0 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">#}
+{#                                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />#}
+{#                                      </svg>#}
+{#                                    </span>#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <!-- More transactions... -->#}
+{#                        </ul>#}
+
+{#                        <nav class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3" aria-label="Pagination">#}
+{#                            <div class="flex flex-1 justify-between">#}
+{#                                <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-500">Previous</a>#}
+{#                                <a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-500">Next</a>#}
+{#                            </div>#}
+{#                        </nav>#}
+{#                    </div>#}
+<!-- Activity table (small breakpoint and up) -->
+<div class="hidden sm:block">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mt-2 flex flex-col">
+            <div class="min-w-full overflow-hidden overflow-x-auto align-middle shadow sm:rounded-lg">
+
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead>
+                    <tr class="bg-gray-50 text-gray-500">
+                        <th class="px-6 py-3 text-left text-sm font-light" scope="col">ID</th>
+                        <th class="px-6 py-3 text-left text-sm font-light" scope="col">EMAIL</th>
+                        <th class="px-6 py-3 text-left text-sm font-light" scope="col">NAME</th>
+                        <th class="px-6 py-3 text-left text-sm font-light" scope="col">STATUS</th>
+                        <th class="px-6 py-3 text-left text-sm font-light" scope="col">CREDIT</th>
+                        <th class="px-6 py-3 text-left text-sm font-light" scope="col">SERVICES</th>
+                        <th class="px-6 py-3 text-left text-sm font-light" scope="col">STATUS</th>
+                        <th class="px-6 py-3 text-left text-sm font-light" scope="col">CREATED</th>
+                    </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 bg-white">
+
+                        <tr>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                <a href="" class="group inline-flex space-x-2 truncate text-sm">
+                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#111</p>
+                                </a>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
+                                test@test.test
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                <a href="" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
+                                    <p class="font-extralight">Lex Stark</p>
+                                </a>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-orange-500">
+                                    <p class="font-extralight">VIP</p>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                <p class="font-extralight">$350</p>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                <p class="font-extralight">3</p>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 capitalize">Active</span>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                <p class="font-extralight">30-11-2022</p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                <a href="" class="group inline-flex space-x-2 truncate text-sm">
+                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#222</p>
+                                </a>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
+                                miloslavskiy@tut.by
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                <a href="" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
+                                    <p class="font-extralight">Aleksandr Miloslavskiy</p>
+                                </a>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-orange-500">
+                                <p class="font-extralight"></p>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                <p class="font-extralight">$1200</p>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                <p class="font-extralight">1</p>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 capitalize">Pending</span>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                <p class="font-extralight">01-12-2022</p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                <a href="" class="group inline-flex space-x-2 truncate text-sm">
+                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#333</p>
+                                </a>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
+                                dawkins@mail.com
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                <a href="" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
+                                    <p class="font-extralight">Richard Dawkins</p>
+                                </a>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-orange-500">
+                                <p class="font-extralight"></p>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                <p class="font-extralight">$2222</p>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                <p class="font-extralight">4</p>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">Inactive</span>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                <p class="font-extralight">01-12-2022</p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                <a href="" class="group inline-flex space-x-2 truncate text-sm">
+                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#444</p>
+                                </a>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
+                                tyson@gmail.com
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                <a href="" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
+                                    <p class="font-extralight">Neil deGrass Tyson</p>
+                                </a>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-orange-500">
+                                <p class="font-extralight"></p>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                <p class="font-extralight">$99.99</p>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                <p class="font-extralight">2</p>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">Closed</span>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                <p class="font-extralight">01-12-2022</p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                <a href="" class="group inline-flex space-x-2 truncate text-sm">
+                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#555</p>
+                                </a>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
+                                sapolsky@stanford.com
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                <a href="" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
+                                    <p class="font-extralight">Robert Sapolsky</p>
+                                </a>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-orange-500">
+                                <p class="font-extralight">VIP</p>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                <p class="font-extralight">$1234</p>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                <p class="font-extralight">1</p>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 capitalize">Pending</span>
+                            </td>
+                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                <p class="font-extralight">01-12-2022</p>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <!-- Pagination -->
+                <div class="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-3 sm:px-6">
+                    <div class="flex flex-1 justify-between sm:hidden">
+                        <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
+                        <a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+                    </div>
+                    <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+                        <div>
+                            <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                                <a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+                                    <span class="sr-only">Previous</span>
+                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                                <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
+                                <a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
+                                <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
+                                <a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
+                                <span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
+                                <a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
+                                <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
+                                <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
+                                <a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+                                    <span class="sr-only">Next</span>
+                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </nav>
+                        </div>
+                        <div class="flex items-center">
+                            <p class="text-sm text-gray-500">
+                                Showing
+                                <span class="font-medium">1</span>
+                                to
+                                <span class="font-medium">10</span>
+                                of
+                                <span class="font-medium">10</span>
+                                results
+                            </p>
+                            <div class="flex lg:ml-6">
+                                <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.48922 1.17094C9.1102 -0.390313 6.8898 -0.390314 6.51078 1.17094C6.26594 2.17949 5.11045 2.65811 4.22416 2.11809C2.85218 1.28212 1.28212 2.85218 2.11809 4.22416C2.65811 5.11045 2.17949 6.26593 1.17094 6.51078C-0.390314 6.8898 -0.390313 9.1102 1.17094 9.48922C2.17949 9.73407 2.65811 10.8896 2.11809 11.7758C1.28212 13.1478 2.85218 14.7179 4.22417 13.8819C5.11045 13.3419 6.26594 13.8205 6.51078 14.8291C6.8898 16.3903 9.1102 16.3903 9.48922 14.8291C9.73407 13.8205 10.8896 13.3419 11.7758 13.8819C13.1478 14.7179 14.7179 13.1478 13.8819 11.7758C13.3419 10.8896 13.8205 9.73407 14.8291 9.48922C16.3903 9.1102 16.3903 6.8898 14.8291 6.51078C13.8205 6.26593 13.3419 5.11045 13.8819 4.22416C14.7179 2.85218 13.1478 1.28212 11.7758 2.11809C10.8896 2.65811 9.73407 2.17949 9.48922 1.17094ZM8 11C9.65685 11 11 9.65685 11 8C11 6.34315 9.65685 5 8 5C6.34315 5 5 6.34315 5 8C5 9.65685 6.34315 11 8 11Z" fill="#6B7280"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
