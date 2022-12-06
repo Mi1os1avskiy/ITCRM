@@ -49,17 +49,23 @@
                     </thead>
                     <tbody class="divide-y divide-gray-200 bg-white">
 
+                        {% set id1 = '111' %}
+                        {% set id2 = '222' %}
+                        {% set id3 = '333' %}
+                        {% set id4 = '444' %}
+                        {% set id5 = '555' %}
+
                         <tr>
                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                <a href="" class="group inline-flex space-x-2 truncate text-sm">
-                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#111</p>
+                                <a href="/clients/{{ id1 }}" class="group inline-flex space-x-2 truncate text-sm">
+                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#{{ id1 }}</p>
                                 </a>
                             </td>
                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
                                 test@test.test
                             </td>
                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
-                                <a href="" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
+                                <a href="/clients/{{ id1 }}" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
                                     <p class="font-extralight">Lex Stark</p>
                                 </a>
                             </td>
@@ -82,15 +88,15 @@
 
                         <tr>
                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                <a href="" class="group inline-flex space-x-2 truncate text-sm">
-                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#222</p>
+                                <a href="/clients/{{ id2 }}" class="group inline-flex space-x-2 truncate text-sm">
+                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#{{ id2 }}</p>
                                 </a>
                             </td>
                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
                                 miloslavskiy@tut.by
                             </td>
                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
-                                <a href="" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
+                                <a href="/clients/{{ id2 }}" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
                                     <p class="font-extralight">Aleksandr Miloslavskiy</p>
                                 </a>
                             </td>
@@ -113,15 +119,15 @@
 
                         <tr>
                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                <a href="" class="group inline-flex space-x-2 truncate text-sm">
-                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#333</p>
+                                <a href="/clients/{{ id3 }}" class="group inline-flex space-x-2 truncate text-sm">
+                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#{{ id3 }}</p>
                                 </a>
                             </td>
                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
                                 dawkins@mail.com
                             </td>
                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
-                                <a href="" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
+                                <a href="/clients/{{ id3 }}" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
                                     <p class="font-extralight">Richard Dawkins</p>
                                 </a>
                             </td>
@@ -144,15 +150,15 @@
 
                         <tr>
                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                <a href="" class="group inline-flex space-x-2 truncate text-sm">
-                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#444</p>
+                                <a href="/clients/{{ id4 }}" class="group inline-flex space-x-2 truncate text-sm">
+                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#{{ id4 }}</p>
                                 </a>
                             </td>
                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
                                 tyson@gmail.com
                             </td>
                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
-                                <a href="" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
+                                <a href="/clients/{{ id4 }}" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
                                     <p class="font-extralight">Neil deGrass Tyson</p>
                                 </a>
                             </td>
@@ -175,15 +181,15 @@
 
                         <tr>
                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                <a href="" class="group inline-flex space-x-2 truncate text-sm">
-                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#555</p>
+                                <a href="/clients/{{ id5 }}" class="group inline-flex space-x-2 truncate text-sm">
+                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#{{ id5 }}</p>
                                 </a>
                             </td>
                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
                                 sapolsky@stanford.com
                             </td>
                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
-                                <a href="" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
+                                <a href="/clients/{{ id5 }}" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
                                     <p class="font-extralight">Robert Sapolsky</p>
                                 </a>
                             </td>

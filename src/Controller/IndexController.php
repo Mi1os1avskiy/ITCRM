@@ -15,16 +15,22 @@ class IndexController extends AbstractController
         ]);
     }
 
-    public function ololo(): Response
-    {
-        return $this->render('ololo/index.html.twig', []);
-    }
-
     #[Route('/clients', name: 'clients')]
     public function clients(): Response
     {
         return $this->render('clients.html.twig', [
             'title' => 'Clients',
+        ]);
+    }
+
+    #[Route('/clients/{id}', name: 'user_profile')]
+    public function user($id): Response
+    {
+        $links = ['overview', 'profile', 'services', 'invoices', 'tickets', 'credits', 'emails', 'notes', 'log'];
+
+        return $this->render('user.html.twig', [
+            'id' => $id,
+            'links' => $links,
         ]);
     }
 }

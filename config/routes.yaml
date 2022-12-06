@@ -1,8 +1,3 @@
 app_index:
   path: /
   controller: App\Controller\IndexController::index
-
-
-app_ololo:
-  path: /ololo
-  controller: App\Controller\IndexController::ololo

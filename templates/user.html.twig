@@ -1,0 +1,168 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User profile{% endblock %}
+
+{% block body %}
+
+    <div class="flex flex-1 flex-col md:pl-64">
+        <main class="flex-1">
+
+            {% block header %}
+
+                <div class="bg-gray-50 mx-auto px-4 sm:px-6 lg:px-8">
+                    <nav class="pt-4 flex items-center text-sm text-gray-500">
+                        <a href="{{ path ('clients') }}">Clients</a>
+                        <span class="ml-2">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#9CA3AF"/>
+                            </svg>
+                        </span>
+                        <span class="ml-2"> User #{{ id }}</span>
+                    </nav>
+                    <div class="flex h-12 mt-2 justify-between">
+                        <div class="flex items-center font-semibold text-lg">
+                            <span>User # {{ id }}</span>
+                            <span class="inline-flex items-center ml-4 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 capitalize">Active</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="relative inline-block text-left">
+                                <div>
+                                    <button id="qactions" type="button" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" aria-expanded="true" aria-haspopup="true">
+                                        Quick actions
+                                        <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!--
+                                  Dropdown menu, show/hide based on menu state.
+
+                                  Entering: "transition ease-out duration-100"
+                                    From: "transform opacity-0 scale-95"
+                                    To: "transform opacity-100 scale-100"
+                                  Leaving: "transition ease-in duration-75"
+                                    From: "transform opacity-100 scale-100"
+                                    To: "transform opacity-0 scale-95"
+                                -->
+                                <div class="hidden absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="qactions" tabindex="-1">
+                                    <div class="py-1" role="none">
+                                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
+                                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+                                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="hidden sm:block">
+                                <button type="button" class="inline-flex items-center ml-4 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7 8C8.65685 8 10 6.65685 10 5C10 3.34315 8.65685 2 7 2C5.34315 2 4 3.34315 4 5C4 6.65685 5.34315 8 7 8Z" fill="#6B7280"/>
+                                        <path d="M14.5 9C15.8807 9 17 7.88071 17 6.5C17 5.11929 15.8807 4 14.5 4C13.1193 4 12 5.11929 12 6.5C12 7.88071 13.1193 9 14.5 9Z" fill="#6B7280"/>
+                                        <path d="M1.61528 16.428C1.21798 16.1736 0.987847 15.721 1.04605 15.2529C1.41416 12.292 3.93944 10 6.9999 10C10.0604 10 12.5856 12.2914 12.9537 15.2522C13.012 15.7203 12.7818 16.1729 12.3845 16.4273C10.8302 17.4225 8.98243 18 6.9999 18C5.01737 18 3.16959 17.4231 1.61528 16.428Z" fill="#6B7280"/>
+                                        <path d="M14.5001 16C14.4647 16 14.4295 15.9998 14.3943 15.9993C14.4631 15.7025 14.4822 15.3885 14.4423 15.0671C14.2668 13.6562 13.7001 12.367 12.854 11.3116C13.3646 11.1105 13.9208 11 14.5028 11C16.4426 11 18.0956 12.2273 18.7279 13.9478C18.8638 14.3176 18.7045 14.7241 18.3671 14.9275C17.2379 15.6083 15.9147 16 14.5001 16Z" fill="#6B7280"/>
+                                    </svg>
+                                    <span class="ml-2">Login as client</span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            {% endblock %}
+
+            {% block navigation %}
+
+                <nav class="bg-gray-50 border-b-2 mx-auto px-4 sm:px-6 lg:px-8">
+                    <div>
+                        <div class="flex h-12 justify-between">
+                            <div id="links" class="hidden sm:flex sm:space-x-8">
+                                <a id="{{ links.0 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 active:border-indigo-600 active:text-indigo-600">{{links.0|capitalize}}</a>
+                                <a id="{{ links.1 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.1|capitalize}}</a>
+                                <a id="{{ links.2 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.2|capitalize}}</a>
+                                <a id="{{ links.3 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.3|capitalize}}</a>
+                                <a id="{{ links.4 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.4|capitalize}}</a>
+                                <a id="{{ links.5 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.5|capitalize}}</a>
+                                <a id="{{ links.6 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.6|capitalize}}</a>
+                                <a id="{{ links.7 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.7|capitalize}}</a>
+                                <a id="{{ links.8 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-300 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.8|capitalize}}</a>
+                            </div>
+
+                            <div class="-mr-2 flex items-center sm:hidden">
+                                <!-- Mobile menu button -->
+                                <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                                    <span class="sr-only">Open main menu</span>
+                                    <!--
+                                      Icon when menu is closed.
+
+                                      Heroicon name: outline/bars-3
+
+                                      Menu open: "hidden", Menu closed: "block"
+                                    -->
+                                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                                    </svg>
+                                    <!--
+                                      Icon when menu is open.
+
+                                      Heroicon name: outline/x-mark
+
+                                      Menu open: "block", Menu closed: "hidden"
+                                    -->
+                                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile menu, show/hide based on menu state. -->
+                    <div class="sm:hidden" id="mobile-menu">
+                        <div class="space-y-1 pt-2 pb-3">
+                            <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
+                            <a href="#" class="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700">Dashboard</a>
+                            <a href="#" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Team</a>
+                            <a href="#" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Projects</a>
+                            <a href="#" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Calendar</a>
+                        </div>
+                    </div>
+                </nav>
+
+            {% endblock %}
+
+            {% block main %}
+
+                {% include 'user_profile/profile.html.twig' %}
+
+                <div id="{{ links.0 }}"></div>
+                <div id="{{ links.2 }}"></div>
+                <div id="{{ links.3 }}"></div>
+                <div id="{{ links.4 }}"></div>
+                <div id="{{ links.5 }}"></div>
+                <div id="{{ links.6 }}"></div>
+                <div id="{{ links.7 }}"></div>
+                <div id="{{ links.8 }}"></div>
+
+            {% endblock %}
+
+        </main>
+    </div>
+
+    <script>
+        let links = ['{{ links.0 }}', '{{ links.1 }}', '{{ links.2 }}', '{{ links.3 }}', '{{ links.4 }}', '{{ links.5 }}', '{{ links.6 }}', '{{ links.7 }}', '{{ links.8 }}'];
+
+        document.getElementById('qactions').addEventListener("click", () => document.querySelector('[role="menu"]').classList.toggle('hidden'));
+
+        links.forEach(function(link) {
+           document.getElementById(link + '_link').addEventListener('click', function () {
+               document.getElementById(link).classList.remove('hidden');
+               links.forEach(function (i) {
+                  if (i !== link) {
+                      document.getElementById(i).classList.add('hidden');
+                  }
+               });
+           });
+        });
+    </script>
+
+{% endblock %}
