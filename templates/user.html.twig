@@ -5,7 +5,7 @@
 {% block body %}
 
     <div class="flex flex-1 flex-col md:pl-64">
-        <main class="flex-1">
+        <main class="flex-1 mb-24">
 
             {% block header %}
 
@@ -21,7 +21,7 @@
                     </nav>
                     <div class="flex h-12 mt-2 justify-between">
                         <div class="flex items-center font-semibold text-lg">
-                            <span>User # {{ id }}</span>
+                            <span>User #{{ id }}</span>
                             <span class="inline-flex items-center ml-4 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 capitalize">Active</span>
                         </div>
                         <div class="flex items-center">
@@ -73,46 +73,53 @@
             {% block navigation %}
 
                 <nav class="bg-gray-50 border-b-2 mx-auto px-4 sm:px-6 lg:px-8">
-                    <div>
-                        <div class="flex h-12 justify-between">
-                            <div id="links" class="hidden sm:flex sm:space-x-8">
-                                <a id="{{ links.0 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 active:border-indigo-600 active:text-indigo-600">{{links.0|capitalize}}</a>
-                                <a id="{{ links.1 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.1|capitalize}}</a>
-                                <a id="{{ links.2 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.2|capitalize}}</a>
-                                <a id="{{ links.3 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.3|capitalize}}</a>
-                                <a id="{{ links.4 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.4|capitalize}}</a>
-                                <a id="{{ links.5 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.5|capitalize}}</a>
-                                <a id="{{ links.6 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.6|capitalize}}</a>
-                                <a id="{{ links.7 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.7|capitalize}}</a>
-                                <a id="{{ links.8 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-300 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.8|capitalize}}</a>
-                            </div>
+                    <div class="flex h-12 justify-between">
+                        <div id="links" class="hidden sm:flex sm:space-x-8">
+                            <a id="{{ links.0 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.0|capitalize}}</a>
+                            <a id="{{ links.1 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.1|capitalize}}</a>
+                            <a id="{{ links.2 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.2|capitalize}}</a>
+                            <a id="{{ links.3 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.3|capitalize}}</a>
+                            <a id="{{ links.4 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">
+                                <span>{{ links.4|capitalize }}</span>
+                                <span class="inline-flex items-center ml-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">1</span>
+                            </a>
+                            <a id="{{ links.5 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">
+                                <span>{{ links.5|capitalize }}</span>
+                                <span class="inline-flex items-center ml-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">$99.5</span>
+                            </a>
+                            <a id="{{ links.6 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.6|capitalize}}</a>
+                            <a id="{{ links.7 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">
+                                <span>{{ links.7|capitalize }}</span>
+                                <span class="inline-flex items-center ml-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">3</span>
+                            </a>
+                            <a id="{{ links.8 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-300 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.8|capitalize}}</a>
+                        </div>
 
-                            <div class="-mr-2 flex items-center sm:hidden">
-                                <!-- Mobile menu button -->
-                                <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
-                                    <span class="sr-only">Open main menu</span>
-                                    <!--
-                                      Icon when menu is closed.
+                        <div class="-mr-2 flex items-center sm:hidden">
+                            <!-- Mobile menu button -->
+                            <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                                <span class="sr-only">Open main menu</span>
+                                <!--
+                                  Icon when menu is closed.
 
-                                      Heroicon name: outline/bars-3
+                                  Heroicon name: outline/bars-3
 
-                                      Menu open: "hidden", Menu closed: "block"
-                                    -->
-                                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                                    </svg>
-                                    <!--
-                                      Icon when menu is open.
+                                  Menu open: "hidden", Menu closed: "block"
+                                -->
+                                <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                                </svg>
+                                <!--
+                                  Icon when menu is open.
 
-                                      Heroicon name: outline/x-mark
+                                  Heroicon name: outline/x-mark
 
-                                      Menu open: "block", Menu closed: "hidden"
-                                    -->
-                                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                            </div>
+                                  Menu open: "block", Menu closed: "hidden"
+                                -->
+                                <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
 
@@ -132,9 +139,10 @@
 
             {% block main %}
 
+                {% include 'user_profile/overview.html.twig' %}
+
                 {% include 'user_profile/profile.html.twig' %}
 
-                <div id="{{ links.0 }}"></div>
                 <div id="{{ links.2 }}"></div>
                 <div id="{{ links.3 }}"></div>
                 <div id="{{ links.4 }}"></div>
@@ -151,18 +159,40 @@
     <script>
         let links = ['{{ links.0 }}', '{{ links.1 }}', '{{ links.2 }}', '{{ links.3 }}', '{{ links.4 }}', '{{ links.5 }}', '{{ links.6 }}', '{{ links.7 }}', '{{ links.8 }}'];
 
+        links.forEach(function(link) {
+            document.getElementById(link + '_link').addEventListener('click', function () {
+                document.getElementById(link).classList.remove('hidden');
+                links.forEach(function (i) {
+                    if (i !== link) {
+                        document.getElementById(i).classList.add('hidden');
+                    }
+                });
+            });
+        });
+
         document.getElementById('qactions').addEventListener("click", () => document.querySelector('[role="menu"]').classList.toggle('hidden'));
 
-        links.forEach(function(link) {
-           document.getElementById(link + '_link').addEventListener('click', function () {
-               document.getElementById(link).classList.remove('hidden');
-               links.forEach(function (i) {
-                  if (i !== link) {
-                      document.getElementById(i).classList.add('hidden');
-                  }
-               });
-           });
+        document.getElementById('email_btn').addEventListener("click", () => document.querySelector('[role="listbox"]').classList.toggle('hidden'));
+
+        document.getElementById('2fa').addEventListener("click", () => document.getElementById('2fa_modal').classList.remove('hidden'));
+        document.querySelector('[data-pos="2fa_cancel"]').addEventListener("click", () => document.getElementById('2fa_modal').classList.add('hidden'));
+        document.querySelector('[data-pos="2fa_disable"]').addEventListener("click", function () {
+            document.getElementById('2fa_modal').classList.add('hidden');
+            document.getElementById('2fa_notification').classList.remove('hidden');
+            setTimeout(() => { document.getElementById('2fa_notification').classList.add('hidden'); }, 3000);
         });
+        document.getElementById('2fa_notification_close').addEventListener("click", () => document.getElementById('2fa_notification').classList.add('hidden'));
+
+        document.getElementById('password').addEventListener("click", () => document.getElementById('password_modal').classList.remove('hidden'));
+        document.querySelector('[data-pos="password_cancel"]').addEventListener("click", () => document.getElementById('password_modal').classList.add('hidden'));
+
+        document.querySelector('[data-pos="password_change"]').addEventListener("click", function () {
+            document.getElementById('password_modal').classList.add('hidden');
+            document.getElementById('password_notification').classList.remove('hidden');
+            setTimeout(() => { document.getElementById('password_notification').classList.add('hidden'); }, 3000);
+        });
+        document.getElementById('password_notification_close').addEventListener("click", () => document.getElementById('password_notification').classList.add('hidden'));
+
     </script>
 
 {% endblock %}
