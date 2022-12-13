@@ -109,13 +109,6 @@
                                 <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                                 </svg>
-                                <!--
-                                  Icon when menu is open.
-
-                                  Heroicon name: outline/x-mark
-
-                                  Menu open: "block", Menu closed: "hidden"
-                                -->
                                 <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
@@ -143,13 +136,16 @@
 
                 {% include 'user_profile/profile.html.twig' %}
 
-                <div id="{{ links.2 }}"></div>
-                <div id="{{ links.3 }}"></div>
+                {% include'user_profile/services.html.twig' %}
+
+                {% include 'user_profile/invoices.html.twig' %}
+
                 <div id="{{ links.4 }}"></div>
                 <div id="{{ links.5 }}"></div>
                 <div id="{{ links.6 }}"></div>
                 <div id="{{ links.7 }}"></div>
                 <div id="{{ links.8 }}"></div>
+
 
             {% endblock %}
 
@@ -157,42 +153,51 @@
     </div>
 
     <script>
-        let links = ['{{ links.0 }}', '{{ links.1 }}', '{{ links.2 }}', '{{ links.3 }}', '{{ links.4 }}', '{{ links.5 }}', '{{ links.6 }}', '{{ links.7 }}', '{{ links.8 }}'];
 
-        links.forEach(function(link) {
-            document.getElementById(link + '_link').addEventListener('click', function () {
-                document.getElementById(link).classList.remove('hidden');
-                links.forEach(function (i) {
-                    if (i !== link) {
-                        document.getElementById(i).classList.add('hidden');
-                    }
+        document.body.onload = function () {
+
+            document.getElementById('test_btn').addEventListener("click", () => document.getElementById('test_block').classList.remove('translate-x-full'));
+
+            let links = ['{{ links.0 }}', '{{ links.1 }}', '{{ links.2 }}', '{{ links.3 }}', '{{ links.4 }}', '{{ links.5 }}', '{{ links.6 }}', '{{ links.7 }}', '{{ links.8 }}'];
+
+            links.forEach(function(link) {
+                document.getElementById(link + '_link').addEventListener('click', function () {
+                    document.getElementById(link).classList.remove('hidden');
+                    links.forEach(function (i) {
+                        if (i !== link) {
+                            document.getElementById(i).classList.add('hidden');
+                        }
+                    });
                 });
             });
-        });
 
-        document.getElementById('qactions').addEventListener("click", () => document.querySelector('[role="menu"]').classList.toggle('hidden'));
+            document.getElementById('qactions').addEventListener("click", () => document.querySelector('[role="menu"]').classList.toggle('hidden'));
 
-        document.getElementById('email_btn').addEventListener("click", () => document.querySelector('[role="listbox"]').classList.toggle('hidden'));
+            document.getElementById('email_btn').addEventListener("click", () => document.querySelector('[role="listbox"]').classList.toggle('hidden'));
 
-        document.getElementById('2fa').addEventListener("click", () => document.getElementById('2fa_modal').classList.remove('hidden'));
-        document.querySelector('[data-pos="2fa_cancel"]').addEventListener("click", () => document.getElementById('2fa_modal').classList.add('hidden'));
-        document.querySelector('[data-pos="2fa_disable"]').addEventListener("click", function () {
-            document.getElementById('2fa_modal').classList.add('hidden');
-            document.getElementById('2fa_notification').classList.remove('hidden');
-            setTimeout(() => { document.getElementById('2fa_notification').classList.add('hidden'); }, 3000);
-        });
-        document.getElementById('2fa_notification_close').addEventListener("click", () => document.getElementById('2fa_notification').classList.add('hidden'));
+            document.getElementById('2fa').addEventListener("click", () => document.getElementById('2fa_modal').classList.remove('hidden'));
+            document.querySelector('[data-pos="2fa_cancel"]').addEventListener("click", () => document.getElementById('2fa_modal').classList.add('hidden'));
+            document.querySelector('[data-pos="2fa_disable"]').addEventListener("click", function () {
+                document.getElementById('2fa_modal').classList.add('hidden');
+                document.getElementById('2fa_notification').classList.remove('hidden');
+                setTimeout(() => { document.getElementById('2fa_notification').classList.add('hidden'); }, 3000);
+            });
+            document.getElementById('2fa_notification_close').addEventListener("click", () => document.getElementById('2fa_notification').classList.add('hidden'));
 
-        document.getElementById('password').addEventListener("click", () => document.getElementById('password_modal').classList.remove('hidden'));
-        document.querySelector('[data-pos="password_cancel"]').addEventListener("click", () => document.getElementById('password_modal').classList.add('hidden'));
+            document.getElementById('password').addEventListener("click", () => document.getElementById('password_modal').classList.remove('hidden'));
+            document.querySelector('[data-pos="password_cancel"]').addEventListener("click", () => document.getElementById('password_modal').classList.add('hidden'));
 
-        document.querySelector('[data-pos="password_change"]').addEventListener("click", function () {
-            document.getElementById('password_modal').classList.add('hidden');
-            document.getElementById('password_notification').classList.remove('hidden');
-            setTimeout(() => { document.getElementById('password_notification').classList.add('hidden'); }, 3000);
-        });
-        document.getElementById('password_notification_close').addEventListener("click", () => document.getElementById('password_notification').classList.add('hidden'));
+            document.querySelector('[data-pos="password_change"]').addEventListener("click", function () {
+                document.getElementById('password_modal').classList.add('hidden');
+                document.getElementById('password_notification').classList.remove('hidden');
+                setTimeout(() => { document.getElementById('password_notification').classList.add('hidden'); }, 3000);
+            });
+            document.getElementById('password_notification_close').addEventListener("click", () => document.getElementById('password_notification').classList.add('hidden'));
 
+            document.getElementById('close_filters').addEventListener("click", () => document.getElementById('invoices_filters').classList.add('hidden'));
+
+            document.getElementById('invoices_filterbtn').addEventListener("click", () => document.getElementById('invoices_filters').classList.remove('hidden'));
+        }
     </script>
 
 {% endblock %}
