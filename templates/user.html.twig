@@ -72,7 +72,7 @@
 
             {% block navigation %}
 
-                <nav class="bg-gray-50 border-b-2 mx-auto px-4 sm:px-6 lg:px-8">
+                <nav class="bg-gray-50 border-b-2 mx-auto pb-1 px-4 sm:px-6 lg:px-8">
                     <div class="flex h-12 justify-between">
                         <div id="links" class="hidden sm:flex sm:space-x-8">
                             <a id="{{ links.0 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.0|capitalize}}</a>
@@ -140,12 +140,15 @@
 
                 {% include 'user_profile/invoices.html.twig' %}
 
-                <div id="{{ links.4 }}"></div>
+                {% include 'user_profile/tickets.html.twig' %}
+
                 <div id="{{ links.5 }}"></div>
                 <div id="{{ links.6 }}"></div>
                 <div id="{{ links.7 }}"></div>
                 <div id="{{ links.8 }}"></div>
 
+                <button id="test_btn" type="button" class="hidden bg-yellow-500 text-myColor duration-500 hover:bg-yellow-600 font-bold ml-8 py-2 px-8 border-2 border-gray-300 rounded-md">TEST</button>
+                <div id="test_block" class="hidden animate-fade w-1/2 mt-8 h-16 bg-green-500 "></div>
 
             {% endblock %}
 
@@ -194,9 +197,13 @@
             });
             document.getElementById('password_notification_close').addEventListener("click", () => document.getElementById('password_notification').classList.add('hidden'));
 
+            document.getElementById('invoices_filterbtn').addEventListener("click", () => document.getElementById('invoices_filters').classList.remove('hidden'));
+
             document.getElementById('close_filters').addEventListener("click", () => document.getElementById('invoices_filters').classList.add('hidden'));
 
-            document.getElementById('invoices_filterbtn').addEventListener("click", () => document.getElementById('invoices_filters').classList.remove('hidden'));
+            document.getElementById('tickets_filterbtn').addEventListener("click", () => document.getElementById('tickets_filters').classList.remove('hidden'));
+
+            document.getElementById('close_filters_tickets').addEventListener("click", () => document.getElementById('tickets_filters').classList.add('hidden'));
         }
     </script>
 
