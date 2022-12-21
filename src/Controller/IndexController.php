@@ -15,7 +15,10 @@ class IndexController extends AbstractController
         ]);
     }
 
-    #[Route('/clients', name: 'clients')]
+    /**
+     * @Route("/clients", name="clients")
+     */
+//    #[Route('/clients', name: 'clients')]
     public function clients(): Response
     {
         return $this->render('clients.html.twig', [
@@ -23,7 +26,10 @@ class IndexController extends AbstractController
         ]);
     }
 
-    #[Route('/clients/new_user', name: 'new_user')]
+    /**
+     * @Route("/clients/new_user", name="new_user")
+     */
+//    #[Route('/clients/new_user', name: 'new_user')]
     public function newUser(): Response
     {
         return $this->render('new_user.html.twig', [
@@ -31,7 +37,10 @@ class IndexController extends AbstractController
         ]);
     }
 
-    #[Route('/clients/{id}', name: 'user_profile')]
+    /**
+     * @Route("/clients/{id}", name="user_profile")
+     */
+ //   #[Route('/clients/{id}', name: 'user_profile')]
     public function user($id): Response
     {
         $links = ['overview', 'profile', 'services', 'invoices', 'tickets', 'credits', 'emails', 'notes', 'log'];
