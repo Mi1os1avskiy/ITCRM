@@ -23,6 +23,14 @@ class IndexController extends AbstractController
         ]);
     }
 
+    #[Route('/clients/new_user', name: 'new_user')]
+    public function newUser(): Response
+    {
+        return $this->render('new_user.html.twig', [
+            'title' => 'New client',
+        ]);
+    }
+
     #[Route('/clients/{id}', name: 'user_profile')]
     public function user($id): Response
     {
