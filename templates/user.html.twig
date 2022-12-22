@@ -17,16 +17,16 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#9CA3AF"/>
                             </svg>
                         </span>
-                        <span class="ml-3"> User #{{ id }}</span>
+                        <span class="ml-3"> User #</span>
                     </nav>
                     <div class="flex h-12 mt-2 justify-between">
                         <div class="flex items-center font-semibold text-lg">
-                            <span>User #{{ id }}</span>
+                            <span>User #</span>
                             <span class="inline-flex items-center ml-4 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 capitalize">Active</span>
                         </div>
                         <div class="flex items-center">
                             <div class="relative inline-block text-left">
-                                <button id="qactions" type="button" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" aria-expanded="true" aria-haspopup="true">
+                                <button id="qactions_btn" type="button" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" aria-expanded="true" aria-haspopup="true">
                                     Quick actions
                                     <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                         <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
@@ -42,7 +42,7 @@
                                     From: "transform opacity-100 scale-100"
                                     To: "transform opacity-0 scale-95"
                                 -->
-                                <div class="hidden absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="qactions" tabindex="-1">
+                                <div id="qactions_menu" class="hidden absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="qactions" tabindex="-1">
                                     <div class="py-1" role="none">
                                         <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
                                         <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
@@ -72,24 +72,24 @@
                 <nav class="bg-gray-50 border-b-2 mx-auto pb-1 px-4 sm:px-6 lg:px-8">
                     <div class="flex h-12 justify-between">
                         <div id="links" class="hidden sm:flex sm:space-x-8">
-                            <a id="{{ links.0 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600 active:border-indigo-600 active:text-indigo-600"">{{links.0|capitalize}}</a>
-                            <a id="{{ links.1 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.1|capitalize}}</a>
-                            <a id="{{ links.2 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.2|capitalize}}</a>
-                            <a id="{{ links.3 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.3|capitalize}}</a>
-                            <a id="{{ links.4 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">
-                                <span>{{ links.4|capitalize }}</span>
+                            <a href="{{ path('overview') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600 active:border-indigo-600 active:text-indigo-600">Overview</a>
+                            <a href="{{ path('profile') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">Profile</a>
+                            <a href="{{ path('services') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">Services</a>
+                            <a href="{{ path('invoices') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">Invoices</a>
+                            <a href="{{ path('tickets') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">
+                                <span>Tickets</span>
                                 <span class="inline-flex items-center ml-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">1</span>
                             </a>
-                            <a id="{{ links.5 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">
-                                <span>{{ links.5|capitalize }}</span>
+                            <a href="{{ path('credits') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">
+                                <span>Credits</span>
                                 <span class="inline-flex items-center ml-2 px-2.5 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">$99.5</span>
                             </a>
-                            <a id="{{ links.6 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.6|capitalize}}</a>
-                            <a id="{{ links.7 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">
-                                <span>{{ links.7|capitalize }}</span>
+                            <a href="{{ path('emails') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">Emails</a>
+                            <a href="{{ path('notes') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">
+                                <span>Notes</span>
                                 <span class="inline-flex items-center ml-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">3</span>
                             </a>
-                            <a id="{{ links.8 }}_link" href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-300 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">{{links.8|capitalize}}</a>
+                            <a href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-300 hover:border-gray-300 hover:text-gray-700 focus:border-indigo-600 focus:text-indigo-600">Log</a>
                         </div>
 
                         <div class="-mr-2 flex items-center sm:hidden">
@@ -129,32 +129,20 @@
 
             {% block main %}
 
-                {% include 'user_profile/overview.html.twig' %}
-
-                {% include 'user_profile/profile.html.twig' %}
-
-                {% include'user_profile/services.html.twig' %}
-
-                {% include 'user_profile/invoices.html.twig' %}
-
-                {% include 'user_profile/tickets.html.twig' %}
-
-                {% include'user_profile/credits.html.twig' %}
-
-                {% include'user_profile/emails.html.twig' %}
-
-                {% include'user_profile/notes.html.twig' %}
-
-                <div id="{{ links.8 }}"></div>
-
                 <button id="test_btn" type="button" class="hidden bg-yellow-500 text-myColor duration-500 hover:bg-yellow-600 font-bold ml-8 py-2 px-8 border-2 border-gray-300 rounded-md">TEST</button>
-                <div id="test_block" class="hidden animate-fade w-1/2 mt-8 h-16 bg-green-500 "></div>
+                <div id="test_block" class="hidden animate-fade w-1/2 mt-8 h-16 bg-green-500"></div>
 
             {% endblock %}
 
         </main>
     </div>
 
-    <script src="{{ asset('src/script.js') }}"></script>
+    <script>
+
+        // document.getElementById('test_btn').addEventListener("click", () => document.getElementById('test_block').classList.remove('translate-x-full'));
+
+        document.getElementById('qactions_btn').addEventListener("click", () => document.getElementById('qactions_menu').classList.toggle('hidden'));
+
+    </script>
 
 {% endblock %}

@@ -57,7 +57,7 @@
 
                         <tr>
                             <td class="whitespace-nowrap px-6 py-4">
-                                <a href="/clients/{{ id1 }}" class="group inline-flex space-x-2 truncate text-sm">
+                                <a href="{{ path('overview', { 'id': id1 }) }}" class="group inline-flex space-x-2 truncate text-sm">
                                     <p class="truncate text-gray-500 group-hover:text-gray-900">#{{ id1 }}</p>
                                 </a>
                             </td>
@@ -65,7 +65,7 @@
                                 test@test.test
                             </td>
                             <td class="whitespace-nowrap px-6 py-4">
-                                <a href="/clients/{{ id1 }}" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
+                                <a href="{{ path('overview') }}" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
                                     <p class="font-extralight">Lex Stark</p>
                                 </a>
                             </td>
