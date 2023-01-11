@@ -1,41 +1,41 @@
 <!DOCTYPE html>
-<html class="h-full bg-white">
-<head>
-	<meta charset="UTF-8">
-	<title>{% block title %}{% endblock %}</title>
+<html class="h-full bg-white" lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>{% block title %}{% endblock %}</title>
 
-	<link rel="icon" href="{{ asset('src/favicon.ico') }}">
+		<link rel="icon" href="{{ asset('src/favicon.ico') }}">
 
-	{% block stylesheets %}
-		<link href="{{ asset('dist/styles.css') }}" rel="stylesheet"/>
+		{% block stylesheets %}
+			<link href="{{ asset('dist/styles.css') }}" rel="stylesheet"/>
+		{% endblock %}
+
+		{% block javascripts %}
+
+		{% endblock %}
+
+	</head>
+
+	{% block aside %}
+
+		{% include "/parts/aside.html.twig" %}
+
 	{% endblock %}
 
-	{% block javascripts %}
+	{#<body class="h-full flex flex-col">#}
+
+	<body class="h-full">
+	{% block body %}
+
+		{% block main %}{% endblock %}
 
 	{% endblock %}
 
-</head>
+	{% block footer %}
 
-{% block aside %}
+		{% include "/parts/footer.html.twig" %}
 
-	{% include "/parts/aside.html.twig" %}
+	{% endblock %}
 
-{% endblock %}
-
-{#<body class="h-full flex flex-col">#}
-
-<body class="h-full">
-{% block body %}
-
-	{% block main %}{% endblock %}
-
-{% endblock %}
-
-{% block footer %}
-
-	{% include "/parts/footer.html.twig" %}
-
-{% endblock %}
-
-</body>
+	</body>
 </html>
