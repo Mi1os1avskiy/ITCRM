@@ -22,8 +22,17 @@ class IndexController extends AbstractController
 //    #[Route('/clients', name: 'clients')]
     public function clients(): Response
     {
-        return $this->render('clients.html.twig', [
+        $users = [
+            ['id' => 111, 'email' => 'test@test.test', 'name' => 'Lex Stark', 'vip' => 1, 'credit' => 350, 'services' => 3, 'status' => 1, 'created' => '30-11-2022'],
+            ['id' => 222, 'email' => 'miloslavskiy@tut.by', 'name' => 'Aleksandr Miloslavskiy', 'vip' => 0, 'credit' => 1200, 'services' => 1, 'status' => 2, 'created' => '01-12-2022'],
+            ['id' => 333, 'email' => 'dawkins@mail.com', 'name' => 'Richard Dawkins', 'vip' => 0, 'credit' => 2222, 'services' => 4, 'status' => 3, 'created' => '01-12-2022'],
+            ['id' => 444, 'email' => 'tyson@gmail.com', 'name' => 'Neil deGrass Tyson', 'vip' => 0, 'credit' => 99.99, 'services' => 2, 'status' => 4, 'created' => '01-12-2022'],
+            ['id' => 555, 'email' => 'sapolsky@stanford.com', 'name' => 'Robert Sapolsky', 'vip' => 1, 'credit' => 1234, 'services' => 1, 'status' => 2, 'created' => '01-12-2022'],
+        ];
+
+        return $this->render('clients/clients.html.twig', [
             'title' => 'Clients',
+            'users' => $users,
         ]);
     }
 
@@ -33,40 +42,31 @@ class IndexController extends AbstractController
 //    #[Route('/clients/new_user', name: 'new_user')]
     public function newUser(): Response
     {
-        return $this->render('new_user.html.twig', [
+        return $this->render('clients/create.html.twig', [
             'title' => 'New client',
         ]);
     }
 
 //    /**
-//     * @Route("/clients/{id}", name="user_profile")
+//     * @Route("/clients/{id}", name="profile")
 //     */
-// //   #[Route('/clients/{id}', name: 'user_profile')]
+// //   #[Route('/clients/{id}', name: 'profile')]
 //    public function user($id): Response
 //    {
 //        $links = ['overview', 'profile', 'services', 'invoices', 'tickets', 'credits', 'emails', 'notes', 'log'];
 //
-//        return $this->render('user.html.twig', [
+//        return $this->render('profile.base.html.twig', [
 //            'id' => $id,
 //            'links' => $links,
 //        ]);
 //    }
-
-    public function usersInformation(Request $request, $users)
-    {
-        $users = ['Lex Stark', 'Aleksandr Miloslavskiy', 'Richard Dawkins', 'Neil deGrass Tyson', 'Robert Sapolsky'];
-
-        return $this->render($this->getDetailView(), [
-           'users' => $users,
-        ]);
-    }
 
     /**
      * @Route("/clients/overview", name="overview")
      */
     public function overview(): Response
     {
-        return $this->render('user_profile/overview.html.twig', [
+        return $this->render('clients/profile/overview.html.twig', [
             'title' => 'Overview',
         ]);
     }
@@ -76,7 +76,7 @@ class IndexController extends AbstractController
      */
     public function profile(): Response
     {
-        return $this->render('user_profile/profile.html.twig', [
+        return $this->render('clients/profile/profile.html.twig', [
             'title' => 'Profile',
         ]);
     }
@@ -86,7 +86,7 @@ class IndexController extends AbstractController
      */
     public function services(): Response
     {
-        return $this->render('user_profile/services.html.twig', [
+        return $this->render('clients/profile/services.html.twig', [
             'title' => 'Services',
         ]);
     }
@@ -96,7 +96,7 @@ class IndexController extends AbstractController
      */
     public function invoices(): Response
     {
-        return $this->render('user_profile/invoices.html.twig', [
+        return $this->render('clients/profile/invoices.html.twig', [
             'title' => 'Invoices',
         ]);
     }
@@ -106,7 +106,7 @@ class IndexController extends AbstractController
      */
     public function tickets(): Response
     {
-        return $this->render('user_profile/tickets.html.twig', [
+        return $this->render('clients/profile/tickets.html.twig', [
             'title' => 'Tickets',
         ]);
     }
@@ -116,7 +116,7 @@ class IndexController extends AbstractController
      */
     public function credits(): Response
     {
-        return $this->render('user_profile/credits.html.twig', [
+        return $this->render('clients/profile/credits.html.twig', [
             'title' => 'Credits',
         ]);
     }
@@ -126,7 +126,7 @@ class IndexController extends AbstractController
      */
     public function emails(): Response
     {
-        return $this->render('user_profile/emails.html.twig', [
+        return $this->render('clients/profile/emails.html.twig', [
             'title' => 'Emails',
         ]);
     }
@@ -136,7 +136,7 @@ class IndexController extends AbstractController
      */
     public function notes(): Response
     {
-        return $this->render('user_profile/notes.html.twig', [
+        return $this->render('clients/profile/notes.html.twig', [
             'title' => 'Notes',
         ]);
     }

@@ -1,4 +1,4 @@
-{% extends 'user.html.twig' %}
+{% extends 'clients/profile.base.html.twig' %}
 
 {% block title %} {{ title }} {% endblock %}
 
@@ -8,7 +8,7 @@
         <dl class="mx-6 sm:divide-y sm:divide-gray-200">
             <div class="py-4 mx-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
                 <dt class="text-sm font-medium text-gray-500">ID</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">#</dd>
+                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">#222</dd>
             </div>
             <div class="py-4 mx-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
                 <dt class="text-sm font-medium text-gray-500">Name</dt>
@@ -46,8 +46,8 @@
                 <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                     <span>2022-09-06 15:29:32 • 37.214.25.177 (BY)</span>
                     <span>
-                    <button type="button" class="inline-flex items-center ml-4 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                        <span>History</span>
+                    <button type="button" class="inline-flex items-center ml-4 rounded-md border border-gray-300 bg-white px-4 py-2 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        <span class="text-xs font-medium text-gray-700">History</span>
                     </button>
                 </span>
                 </dd>
@@ -59,7 +59,8 @@
             <div class="py-4 mx-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
                 <dt class="text-sm font-medium text-gray-500">2FA enabled</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 capitalize">Enabled</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Enabled</span>
+                    {# <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Disabled</span> #}
                 </dd>
             </div>
         </dl>
