@@ -30,7 +30,6 @@
     display: none;
 }
 
-
 [aria-expanded="true"] + * {
     display: block;
 }
