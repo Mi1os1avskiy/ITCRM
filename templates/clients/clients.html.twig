@@ -55,7 +55,7 @@
                                     From: "opacity-100"
                                     To: "opacity-0"
                                 -->
-                                <ul class=" absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
+                                <ul class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
                                     <!--
                                       Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
 
@@ -63,7 +63,7 @@
                                     -->
                                     <li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" id="listbox-option-0" role="option" @click="onOlolo">
                                         <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
-                                        <span class="font-normal block truncate">Wade Cooper</span>
+                                        <span class="font-normal block truncate">Group 1</span>
 
                                         <!--
                                           Checkmark, only display for selected option.
@@ -72,6 +72,14 @@
                                         -->
                                         <span class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
                                           <!-- Heroicon name: mini/check -->
+                                          <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                          </svg>
+                                        </span>
+                                    </li>
+                                    <li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" id="listbox-option-0" role="option" @click="onOlolo">
+                                        <span class="font-normal block truncate">Group 2</span>
+                                        <span class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
                                           <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                             <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
                                           </svg>
@@ -90,7 +98,7 @@
                                     </span>
                                 </button>
 
-                                <ul class="hidden absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
+                                <ul class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
                                     <li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" id="listbox-option-0" role="option">
                                         <span class="font-normal block truncate">Active</span>
                                         <span class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
@@ -200,7 +208,7 @@
 
                                         <tr>
                                             <td class="whitespace-nowrap px-6 py-4">
-                                                <a href="{{ path('overview', { 'user': user.id }) }}" class="group inline-flex space-x-2 truncate text-sm">
+                                                <a href="{{ path('overview', { test: user.id }) }}" class="group inline-flex space-x-2 truncate text-sm">
                                                     <p class="truncate text-gray-500 group-hover:text-gray-900">#{{ user.id }}</p>
                                                 </a>
                                             </td>
@@ -286,8 +294,8 @@
                                             </p>
                                             <div class="flex lg:ml-6">
                                                 <select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
-                                                    {% for i in 1..4 %}
-                                                        <option>{{ i * 25 }}</option>
+                                                    {% for i in range(low=25, high=100, step=25) %}
+                                                        <option>{{ i }}</option>
                                                     {% endfor %}
                                                 </select>
                                             </div>

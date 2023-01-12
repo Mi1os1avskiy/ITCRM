@@ -87,7 +87,7 @@
                                 <input name="search" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Search" type="search">
                             </div>
                         </div>
-                        <button id="tickets_filterbtn" type="button" class="inline-flex items-center ml-2 rounded-md border border-gray-300 px-4 py-2 text-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <button id="tickets_filter_btn" type="button" class="inline-flex items-center ml-2 rounded-md border border-gray-300 px-4 py-2 text-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M2.62803 1.60102C5.02718 1.2056 7.48986 1 10 1C12.5101 1 14.9728 1.2056 17.372 1.60102C17.7342 1.66072 18 1.97389 18 2.34103V4.62868C18 5.22542 17.7629 5.79771 17.341 6.21967L12.659 10.9017C12.2371 11.3236 12 11.8959 12 12.4926V15.5291C12 16.2126 11.6893 16.859 11.1556 17.286L9.21852 18.8357C8.99339 19.0158 8.68496 19.0509 8.42511 18.926C8.16526 18.8011 8 18.5383 8 18.25V12.4926C8 11.8959 7.76295 11.3236 7.34099 10.9017L2.65901 6.21967C2.23705 5.79771 2 5.22542 2 4.62868V2.34103C2 1.97389 2.26578 1.66072 2.62803 1.60102Z" fill="#6B7280"/>
                             </svg>
@@ -376,7 +376,7 @@
                                         <div class="flex items-start justify-between">
                                             <h2 class="text-lg font-medium text-gray-900">Filters</h2>
                                             <div class="ml-3 flex h-7 items-center">
-                                                <button id="close_filters_tickets" type="button" class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                <button id="tickets_filters_close" type="button" class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                                     <span class="sr-only">Close panel</span>
                                                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -654,8 +654,8 @@
 
         <script>
 
-            document.getElementById('tickets_filterbtn').addEventListener("click", () => document.getElementById('tickets_filters').classList.remove('hidden'));
-            document.getElementById('close_filters_tickets').addEventListener("click", () => document.getElementById('tickets_filters').classList.add('hidden'));
+            document.getElementById('tickets_filter_btn').addEventListener("click", () => document.getElementById('tickets_filters').classList.remove('hidden'));
+            document.getElementById('tickets_filters_close').addEventListener("click", () => document.getElementById('tickets_filters').classList.add('hidden'));
             document.getElementById('tickets_filters_cancel').addEventListener("click", () => document.getElementById('tickets_filters').classList.add('hidden'));
 
         </script>

@@ -5,6 +5,7 @@ use http\Env\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Model\Users;
 
 
 class IndexController extends AbstractController
@@ -22,17 +23,9 @@ class IndexController extends AbstractController
 //    #[Route('/clients', name: 'clients')]
     public function clients(): Response
     {
-        $users = [
-            ['id' => 111, 'email' => 'test@test.test', 'name' => 'Lex Stark', 'vip' => 1, 'credit' => 350, 'services' => 3, 'status' => 1, 'created' => '30-11-2022'],
-            ['id' => 222, 'email' => 'miloslavskiy@tut.by', 'name' => 'Aleksandr Miloslavskiy', 'vip' => 0, 'credit' => 1200, 'services' => 1, 'status' => 2, 'created' => '01-12-2022'],
-            ['id' => 333, 'email' => 'dawkins@mail.com', 'name' => 'Richard Dawkins', 'vip' => 0, 'credit' => 2222, 'services' => 4, 'status' => 3, 'created' => '01-12-2022'],
-            ['id' => 444, 'email' => 'tyson@gmail.com', 'name' => 'Neil deGrass Tyson', 'vip' => 0, 'credit' => 99.99, 'services' => 2, 'status' => 4, 'created' => '01-12-2022'],
-            ['id' => 555, 'email' => 'sapolsky@stanford.com', 'name' => 'Robert Sapolsky', 'vip' => 1, 'credit' => 1234, 'services' => 1, 'status' => 2, 'created' => '01-12-2022'],
-        ];
-
         return $this->render('clients/clients.html.twig', [
             'title' => 'Clients',
-            'users' => $users,
+            'users' => Users::CreateTable(),
         ]);
     }
 
