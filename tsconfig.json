@@ -1,0 +1,21 @@
+{
+	"compilerOptions" : {
+		"strict" : true,
+		"sourceMap" : true,
+		"noImplicitReturns" : true,
+		"module" : "commonjs",
+		"moduleResolution" : "node",
+		"target" : "es6",
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"skipLibCheck": true
+	},
+	"files": ["frontend/index.ts"],
+	"include" : [
+		"frontend/**/*.ts"
+	],
+	"exclude" : [
+		"src/**/*",
+//		"node_modules"
+	]
+}

@@ -10,9 +10,6 @@
 			<link href="{{ asset('dist/styles.css') }}" rel="stylesheet"/>
 		{% endblock %}
 
-		{% block javascripts %}
-
-		{% endblock %}
 
 	</head>
 
@@ -27,8 +24,9 @@
 	<body class="h-full">
 	{% block body %}
 
-		{% block main %}{% endblock %}
-
+        <main id="app">
+		    {% block main %}{% endblock %}
+        </main>
 	{% endblock %}
 
 	{% block footer %}
@@ -37,5 +35,9 @@
 
 	{% endblock %}
 
+		{% block javascripts %}
+		<script src="{{ asset('dist/js/vendors.js') }}"></script>
+		<script src="{{ asset('dist/js/main.js') }}"></script>
+		{% endblock %}
 	</body>
 </html>

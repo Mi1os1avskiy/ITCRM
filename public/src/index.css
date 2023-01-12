@@ -23,3 +23,14 @@
     @apply transition-all duration-500
 }
 */
+
+
+
+[aria-expanded="false"] + * {
+    display: none;
+}
+
+
+[aria-expanded="true"] + * {
+    display: block;
+}
