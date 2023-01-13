@@ -7,6 +7,7 @@ const app = new Vue({
 		AriaExpandedMixin,
 	],
 	components: {
+		'misc-module': () => import(/* webpackChunkName: "misc" */ "./misc/module"),
 		'clients-module': () => import(/* webpackChunkName: "clients" */ "./clients/module"),
 	}
 });
