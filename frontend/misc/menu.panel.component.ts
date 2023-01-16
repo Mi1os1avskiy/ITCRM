@@ -1,7 +1,14 @@
-export default {
+export const MenuPanelComponent = {
+	data() {
+		return {
+			isOpened: true
+		}
+	},
 	methods: {
-		onOlolo(){
-			console.log('11111');
+		toggleMenu(){
+			const self = (<any>this);
+			self.isOpened = !self.isOpened;
+			console.log('toggle');
 		}
 	}
 }

@@ -1,43 +1,37 @@
 <!DOCTYPE html>
 <html class="h-full bg-white" lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>{% block title %}{% endblock %}</title>
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
 
-		<link rel="icon" href="{{ asset('src/favicon.ico') }}">
+	<link rel="icon" href="{{ asset('src/favicon.ico') }}">
 
-		{% block stylesheets %}
-			<link href="{{ asset('dist/styles.css') }}" rel="stylesheet"/>
+	{% block stylesheets %}
+		<link href="{{ asset('dist/styles.css') }}" rel="stylesheet"/>
+	{% endblock %}
+</head>
+
+<body class="h-full">
+{% block body %}
+
+	<main id="app">
+		{% block aside %}
+			{% include "/parts/aside.html.twig" %}
 		{% endblock %}
 
+		{% block main %}{% endblock %}
+	</main>
+{% endblock %}
 
-	</head>
+{% block footer %}
 
-	{% block aside %}
+	{% include "/parts/footer.html.twig" %}
 
-		{% include "/parts/aside.html.twig" %}
+{% endblock %}
 
-	{% endblock %}
-
-	{#<body class="h-full flex flex-col">#}
-
-	<body class="h-full">
-	{% block body %}
-
-        <main id="app">
-		    {% block main %}{% endblock %}
-        </main>
-	{% endblock %}
-
-	{% block footer %}
-
-		{% include "/parts/footer.html.twig" %}
-
-	{% endblock %}
-
-		{% block javascripts %}
-		<script src="{{ asset('dist/js/vendors.js') }}"></script>
-		<script src="{{ asset('dist/js/main.js') }}"></script>
-		{% endblock %}
-	</body>
+{% block javascripts %}
+	<script src="{{ asset('dist/js/vendors.js') }}" content='no-cache'></script>
+	<script src="{{ asset('dist/js/main.js') }}" content='no-cache'></script>
+{% endblock %}
+</body>
 </html>

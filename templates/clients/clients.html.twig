@@ -4,312 +4,312 @@
 
 {% block main %}
 
-<clients-module inline-template>
-    <div class="flex flex-1 flex-col md:pl-64">
-        <main class="flex-1">
+	<clients-module inline-template>
+		<div class="flex flex-1 flex-col md:pl-64">
+			<main class="flex-1">
 
-            {% block header %}
+				{% block header %}
 
-                <div class="bg-gray-100 mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex h-16 justify-between">
-                        <div class="flex items-center font-semibold text-lg">
-                            {{ title }}
-                        </div>
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0">
-                                <a href="{{ path('new_user') }}" class="relative inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                    <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                                    </svg>
-                                    <span>Add new</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+					<div class="bg-gray-100 mx-auto px-4 sm:px-6 lg:px-8">
+						<div class="flex h-16 justify-between">
+							<div class="flex items-center font-semibold text-lg">
+								{{ title }}
+							</div>
+							<div class="flex items-center">
+								<div class="flex-shrink-0">
+									<a href="{{ path('new_user') }}" class="relative inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+										<svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+											<path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"/>
+										</svg>
+										<span>Add new</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
 
-            {% endblock %}
+				{% endblock %}
 
-            {% block filters %}
-            <clients-list-filters inline-template>
-                <div class="mt-4 mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex h-16 justify-between">
-                        <div class="flex items-center">
-                            <div class="relative">
-                                <button type="button" class="relative w-48 cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="listbox-label">
-                                    <span class="block truncate pointer-events-none">All groups</span>
-                                    <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" >
-                                            <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
+				{% block filters %}
+					<clients-list-filters inline-template>
+						<div class="mt-4 mx-auto px-4 sm:px-6 lg:px-8">
+							<div class="flex h-16 justify-between">
+								<div class="flex items-center">
+									<div class="relative">
+										<button type="button" class="relative w-48 cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="listbox-label">
+											<span class="block truncate pointer-events-none">All groups</span>
+											<span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd"/>
                                         </svg>
                                     </span>
-                                </button>
+										</button>
 
-                                <!--
-                                  Select popover, show/hide based on select state.
+										<!--
+										  Select popover, show/hide based on select state.
 
-                                  Entering: ""
-                                    From: ""
-                                    To: ""
-                                  Leaving: "transition ease-in duration-100"
-                                    From: "opacity-100"
-                                    To: "opacity-0"
-                                -->
-                                <ul class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
-                                    <!--
-                                      Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
+										  Entering: ""
+											From: ""
+											To: ""
+										  Leaving: "transition ease-in duration-100"
+											From: "opacity-100"
+											To: "opacity-0"
+										-->
+										<ul class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
+											<!--
+											  Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation.
 
-                                      Highlighted: "text-white bg-indigo-600", Not Highlighted: "text-gray-900"
-                                    -->
-                                    <li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" id="listbox-option-0" role="option" @click="onOlolo">
-                                        <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
-                                        <span class="font-normal block truncate">Group 1</span>
+											  Highlighted: "text-white bg-indigo-600", Not Highlighted: "text-gray-900"
+											-->
+											<li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" id="listbox-option-0" role="option" @click="onOlolo">
+												<!-- Selected: "font-semibold", Not Selected: "font-normal" -->
+												<span class="font-normal block truncate">Group 1</span>
 
-                                        <!--
-                                          Checkmark, only display for selected option.
+												<!--
+												  Checkmark, only display for selected option.
 
-                                          Highlighted: "text-white", Not Highlighted: "text-indigo-600"
-                                        -->
-                                        <span class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
+												  Highlighted: "text-white", Not Highlighted: "text-indigo-600"
+												-->
+												<span class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
                                           <!-- Heroicon name: mini/check -->
                                           <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/>
                                           </svg>
                                         </span>
-                                    </li>
-                                    <li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" id="listbox-option-0" role="option" @click="onOlolo">
-                                        <span class="font-normal block truncate">Group 2</span>
-                                        <span class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
+											</li>
+											<li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" id="listbox-option-0" role="option" @click="onOlolo">
+												<span class="font-normal block truncate">Group 2</span>
+												<span class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
                                           <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/>
                                           </svg>
                                         </span>
-                                    </li>
-                                </ul>
-                            </div>
+											</li>
+										</ul>
+									</div>
 
-                            <div class="relative">
-                                <button type="button" class="relative ml-2 w-48 cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="listbox-label">
-                                    <span class="block truncate">All statuses</span>
-                                    <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+									<div class="relative">
+										<button type="button" class="relative ml-2 w-48 cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="listbox-label">
+											<span class="block truncate">All statuses</span>
+											<span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                                         <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
+                                            <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd"/>
                                         </svg>
                                     </span>
-                                </button>
+										</button>
 
-                                <ul class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
-                                    <li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" id="listbox-option-0" role="option">
-                                        <span class="font-normal block truncate">Active</span>
-                                        <span class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
+										<ul class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
+											<li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" id="listbox-option-0" role="option">
+												<span class="font-normal block truncate">Active</span>
+												<span class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
                                           <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/>
                                           </svg>
                                         </span>
-                                    </li>
-                                    <li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" id="listbox-option-0" role="option">
-                                        <span class="font-normal block truncate">Pending</span>
-                                        <span class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
+											</li>
+											<li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" id="listbox-option-0" role="option">
+												<span class="font-normal block truncate">Pending</span>
+												<span class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
                                           <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/>
                                           </svg>
                                         </span>
-                                    </li>
-                                    <li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" id="listbox-option-0" role="option">
-                                        <span class="font-normal block truncate">Inactive</span>
-                                        <span class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
+											</li>
+											<li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" id="listbox-option-0" role="option">
+												<span class="font-normal block truncate">Inactive</span>
+												<span class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
                                           <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/>
                                           </svg>
                                         </span>
-                                    </li>
-                                    <li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" id="listbox-option-0" role="option">
-                                        <span class="font-normal block truncate">Closed</span>
-                                        <span class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
+											</li>
+											<li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" id="listbox-option-0" role="option">
+												<span class="font-normal block truncate">Closed</span>
+												<span class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
                                           <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/>
                                           </svg>
                                         </span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+											</li>
+										</ul>
+									</div>
+								</div>
 
-                        <div class="flex items-center w-48 max-w-lg lg:max-w-xs">
-                            <label for="clients_search" class="sr-only">Search</label>
-                            <div class="relative">
-                                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                                <input id="clients_search" name="clients_search" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Search" type="search">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </clients-list-filters>
-            {% endblock %}
+								<div class="flex items-center w-48 max-w-lg lg:max-w-xs">
+									<label for="clients_search" class="sr-only">Search</label>
+									<div class="relative">
+										<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+											<svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+												<path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"/>
+											</svg>
+										</div>
+										<input id="clients_search" name="clients_search" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Search" type="search">
+									</div>
+								</div>
+							</div>
+						</div>
+					</clients-list-filters>
+				{% endblock %}
 
-            {% block table %}
+				{% block table %}
 
-                <!-- Activity list (smallest breakpoint only) -->
-                {#                    <div class="shadow sm:hidden">#}
-                {#                        <ul role="list" class="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden">#}
-                {#                            <li>#}
-                {#                                <a href="#" class="block bg-white px-4 py-4 hover:bg-gray-50">#}
-                {#                                    <span class="flex items-center space-x-4">#}
-                {#                                      <span class="flex flex-1 space-x-2 truncate">#}
-                {#                                        <span class="flex flex-col truncate text-sm text-gray-500">#}
-                {#                                          <span class="truncate">#c203202</span>#}
-                {#                                          <span><span class="font-medium text-gray-900">$20,000</span> USD</span>#}
-                {#                                          <time datetime="2020-07-11">July 11, 2020</time>#}
-                {#                                        </span>#}
-                {#                                      </span>#}
-                {#                                        <!-- Heroicon name: mini/chevron-right -->#}
-                {#                                      <svg class="h-5 w-5 flex-shrink-0 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">#}
-                {#                                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />#}
-                {#                                      </svg>#}
-                {#                                    </span>#}
-                {#                                </a>#}
-                {#                            </li>#}
-                {#                            <!-- More transactions... -->#}
-                {#                        </ul>#}
+					<!-- Activity list (smallest breakpoint only) -->
+					{#                    <div class="shadow sm:hidden"> #}
+					{#                        <ul role="list" class="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden"> #}
+					{#                            <li> #}
+					{#                                <a href="#" class="block bg-white px-4 py-4 hover:bg-gray-50"> #}
+					{#                                    <span class="flex items-center space-x-4"> #}
+					{#                                      <span class="flex flex-1 space-x-2 truncate"> #}
+					{#                                        <span class="flex flex-col truncate text-sm text-gray-500"> #}
+					{#                                          <span class="truncate">#c203202</span> #}
+					{#                                          <span><span class="font-medium text-gray-900">$20,000</span> USD</span> #}
+					{#                                          <time datetime="2020-07-11">July 11, 2020</time> #}
+					{#                                        </span> #}
+					{#                                      </span> #}
+					{#                                        <!-- Heroicon name: mini/chevron-right --> #}
+					{#                                      <svg class="h-5 w-5 flex-shrink-0 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"> #}
+					{#                                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" /> #}
+					{#                                      </svg> #}
+					{#                                    </span> #}
+					{#                                </a> #}
+					{#                            </li> #}
+					{#                            <!-- More transactions... --> #}
+					{#                        </ul> #}
 
-                {#                        <nav class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3" aria-label="Pagination">#}
-                {#                            <div class="flex flex-1 justify-between">#}
-                {#                                <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-500">Previous</a>#}
-                {#                                <a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-500">Next</a>#}
-                {#                            </div>#}
-                {#                        </nav>#}
-                {#                    </div>#}
-                <!-- Activity table (small breakpoint and up) -->
-                <div class="hidden sm:block">
-                    <div class="mx-auto px-4 sm:px-6 lg:px-8">
-                        <div class="mt-2 flex flex-col">
-                            <div class="min-w-full overflow-hidden overflow-x-auto align-middle shadow sm:rounded-lg">
+					{#                        <nav class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3" aria-label="Pagination"> #}
+					{#                            <div class="flex flex-1 justify-between"> #}
+					{#                                <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-500">Previous</a> #}
+					{#                                <a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-500">Next</a> #}
+					{#                            </div> #}
+					{#                        </nav> #}
+					{#                    </div> #}
+					<!-- Activity table (small breakpoint and up) -->
+					<div class="hidden sm:block">
+						<div class="mx-auto px-4 sm:px-6 lg:px-8">
+							<div class="mt-2 flex flex-col">
+								<div class="min-w-full overflow-hidden overflow-x-auto align-middle shadow sm:rounded-lg">
 
-                                <table class="min-w-full divide-y divide-gray-200">
-                                    <thead>
-                                        <tr class="bg-gray-50 text-gray-500 border border-t">
-                                            <th class="px-6 py-3 text-left text-sm font-light" scope="col">ID</th>
-                                            <th class="px-6 py-3 text-left text-sm font-light" scope="col">EMAIL</th>
-                                            <th class="px-6 py-3 text-left text-sm font-light" scope="col">NAME</th>
-                                            <th class="px-6 py-3 text-left text-sm font-light" scope="col">STATUS</th>
-                                            <th class="px-6 py-3 text-right text-sm font-light" scope="col">CREDIT</th>
-                                            <th class="px-6 py-3 text-right text-sm font-light" scope="col">SERVICES</th>
-                                            <th class="px-6 py-3 text-left text-sm font-light" scope="col">STATUS</th>
-                                            <th class="px-6 py-3 text-left text-sm font-light" scope="col">CREATED</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-gray-200 bg-white">
+									<table class="min-w-full divide-y divide-gray-200">
+										<thead>
+										<tr class="bg-gray-50 text-gray-500 border border-t">
+											<th class="px-6 py-3 text-left text-sm font-light" scope="col">ID</th>
+											<th class="px-6 py-3 text-left text-sm font-light" scope="col">EMAIL</th>
+											<th class="px-6 py-3 text-left text-sm font-light" scope="col">NAME</th>
+											<th class="px-6 py-3 text-left text-sm font-light" scope="col">STATUS</th>
+											<th class="px-6 py-3 text-right text-sm font-light" scope="col">CREDIT</th>
+											<th class="px-6 py-3 text-right text-sm font-light" scope="col">SERVICES</th>
+											<th class="px-6 py-3 text-left text-sm font-light" scope="col">STATUS</th>
+											<th class="px-6 py-3 text-left text-sm font-light" scope="col">CREATED</th>
+										</tr>
+										</thead>
+										<tbody class="divide-y divide-gray-200 bg-white">
 
-                                    {% for user in users %}
+										{% for user in users %}
 
-                                        <tr>
-                                            <td class="whitespace-nowrap px-6 py-4">
-                                                <a href="{{ path('overview', { test: user.id }) }}" class="group inline-flex space-x-2 truncate text-sm">
-                                                    <p class="truncate text-gray-500 group-hover:text-gray-900">#{{ user.id }}</p>
-                                                </a>
-                                            </td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
-                                                {{ user.email }}
-                                            </td>
-                                            <td class="whitespace-nowrap px-6 py-4">
-                                                <a href="{{ path('overview') }}" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
-                                                    <p class="font-extralight">{{ user.name }}</p>
-                                                </a>
-                                            </td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-orange-500">
-                                                {% if user.vip %}
-                                                    <p class="font-extralight">VIP</p>
-                                                {% endif %}
-                                            </td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 text-right">
-                                                <p class="font-extralight">${{ user.credit }}</p>
-                                            </td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 text-right">
-                                                <p class="font-extralight">{{ user.services }}</p>
-                                            </td>
-                                            <td class="whitespace-nowrap px-6 py-4">
-                                                {% if user.status == 1 %}
-                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 capitalize">Active</span>
-                                                {% elseif user.status == 2 %}
-                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 capitalize">Pending</span>
-                                                {% elseif user.status == 3 %}
-                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">Inactive</span>
-                                                {% elseif user.status == 4 %}
-                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">Closed</span>
-                                                {% endif %}
-                                            </td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                                <p class="font-extralight">{{ user.created }}</p>
-                                            </td>
-                                        </tr>
+											<tr>
+												<td class="whitespace-nowrap px-6 py-4">
+													<a href="{{ path('overview', { test: user.id }) }}" class="group inline-flex space-x-2 truncate text-sm">
+														<p class="truncate text-gray-500 group-hover:text-gray-900">#{{ user.id }}</p>
+													</a>
+												</td>
+												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
+													{{ user.email }}
+												</td>
+												<td class="whitespace-nowrap px-6 py-4">
+													<a href="{{ path('overview') }}" class="group inline-flex space-x-2 truncate text-sm hover:text-gray-900">
+														<p class="font-extralight">{{ user.name }}</p>
+													</a>
+												</td>
+												<td class="whitespace-nowrap px-6 py-4 text-sm text-orange-500">
+													{% if user.vip %}
+														<p class="font-extralight">VIP</p>
+													{% endif %}
+												</td>
+												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 text-right">
+													<p class="font-extralight">${{ user.credit }}</p>
+												</td>
+												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600 text-right">
+													<p class="font-extralight">{{ user.services }}</p>
+												</td>
+												<td class="whitespace-nowrap px-6 py-4">
+													{% if user.status == 1 %}
+														<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 capitalize">Active</span>
+													{% elseif user.status == 2 %}
+														<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 capitalize">Pending</span>
+													{% elseif user.status == 3 %}
+														<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">Inactive</span>
+													{% elseif user.status == 4 %}
+														<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">Closed</span>
+													{% endif %}
+												</td>
+												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+													<p class="font-extralight">{{ user.created }}</p>
+												</td>
+											</tr>
 
-                                    {% endfor %}
+										{% endfor %}
 
-                                    </tbody>
-                                </table>
-                                <!-- Pagination -->
-                                <div class="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-4 sm:px-6">
-                                    <div class="flex flex-1 justify-between sm:hidden">
-                                        <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
-                                        <a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
-                                    </div>
-                                    <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-                                        <div>
-                                            <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                                                <a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-                                                    <span class="sr-only">Previous</span>
-                                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                        <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </a>
-                                                <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
-                                                <a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
-                                                <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
-                                                <a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
-                                                <span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
-                                                <a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
-                                                <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
-                                                <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
-                                                <a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-                                                    <span class="sr-only">Next</span>
-                                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </a>
-                                            </nav>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <p class="text-sm text-gray-500">
-                                                Showing
-                                                <span class="font-medium">1</span>
-                                                to
-                                                <span class="font-medium">{{ users|length }}</span>
-                                                of
-                                                <span class="font-medium">{{ users|length }}</span>
-                                                results
-                                            </p>
-                                            <div class="flex lg:ml-6">
-                                                <select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
-                                                    {% for i in range(low=25, high=100, step=25) %}
-                                                        <option>{{ i }}</option>
-                                                    {% endfor %}
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+										</tbody>
+									</table>
+									<!-- Pagination -->
+									<div class="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-4 sm:px-6">
+										<div class="flex flex-1 justify-between sm:hidden">
+											<a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
+											<a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+										</div>
+										<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+											<div>
+												<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+													<a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+														<span class="sr-only">Previous</span>
+														<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+															<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd"/>
+														</svg>
+													</a>
+													<!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
+													<a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
+													<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
+													<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
+													<span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
+													<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
+													<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
+													<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
+													<a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+														<span class="sr-only">Next</span>
+														<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+															<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/>
+														</svg>
+													</a>
+												</nav>
+											</div>
+											<div class="flex items-center">
+												<p class="text-sm text-gray-500">
+													Showing
+													<span class="font-medium">1</span>
+													to
+													<span class="font-medium">{{ users|length }}</span>
+													of
+													<span class="font-medium">{{ users|length }}</span>
+													results
+												</p>
+												<div class="flex lg:ml-6">
+													<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
+														{% for i in range(low=25, high=100, step=25) %}
+															<option>{{ i }}</option>
+														{% endfor %}
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-            {% endblock %}
+				{% endblock %}
 
-        </main>
-    </div>
-</clients-module>
+			</main>
+		</div>
+	</clients-module>
 {% endblock %}
