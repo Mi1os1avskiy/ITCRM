@@ -25,11 +25,14 @@
 */
 
 
-
 [aria-expanded="false"] + * {
-    display: none;
+	display: none;
 }
 
 [aria-expanded="true"] + * {
-    display: block;
+	display: block;
+}
+
+.aside-menu [aria-expanded="true"] .arrow {
+	transform: rotate(90deg);
 }
