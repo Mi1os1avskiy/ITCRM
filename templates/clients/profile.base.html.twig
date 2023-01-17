@@ -2,9 +2,9 @@
 
 {% block title %}User profile{% endblock %}
 
-{% block body %}
+{% block main %}
 
-    <div class="flex flex-1 flex-col md:pl-64">
+    <div class="flex flex-1 flex-col">
         <main class="flex-1 mb-24">
 
             {% block header %}
@@ -87,7 +87,7 @@
 
             {% endblock %}
 
-            {% block main %}
+            {% block info %}
 
                 <button id="test_btn" type="button" class="hidden bg-yellow-500 text-myColor duration-500 hover:bg-yellow-600 font-bold ml-8 py-2 px-8 border-2 border-gray-300 rounded-md">TEST</button>
                 <div id="test_block" class="hidden animate-fade w-1/2 mt-8 h-16 bg-green-500"></div>
