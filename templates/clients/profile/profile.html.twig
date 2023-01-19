@@ -250,14 +250,14 @@
                 <div class="space-y-6 sm:space-y-5">
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                         <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Password</label>
-                        <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <button id="password" type="button" class="rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Change</button>
+                        <div class="mt-2 sm:mt-1 sm:col-span-2 sm:mt-0">
+                            <button type="button" class="rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Change</button>
                         </div>
                     </div>
                     <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
                         <label for="last-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">2 Factor Authentification</label>
-                        <div class="mt-1 sm:col-span-2 sm:mt-0">
-                            <button id="2fa" type="button" class="rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Disable 2FA</button>
+                        <div class="mt-2 sm:mt-1 sm:col-span-2 sm:mt-0">
+                            <button type="button" class="rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Disable 2FA</button>
                         </div>
                     </div>
                 </div>
@@ -265,7 +265,7 @@
         </div>
     </form>
 
-    <div id="password_modal" class="hidden relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="hidden relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <!--
           Background backdrop, show/hide based on modal state.
 
@@ -291,7 +291,7 @@
                     To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 -->
                 <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Change password</h3>
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Change password</h3>
                     <div class="mt-2">
                         <p class="text-sm text-gray-500">New password</p>
                         <div class="mt-1 flex rounded-md shadow-sm">
@@ -312,7 +312,7 @@
         </div>
     </div>
 
-    <div id="2fa_modal" class="hidden relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="hidden relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
 
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
@@ -320,7 +320,7 @@
             <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                 <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                     <div class="mt-3 sm:mt-5">
-                        <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Disable 2FA</h3>
+                        <h3 class="text-lg font-medium leading-6 text-gray-900">Disable 2FA</h3>
                         <div class="mt-2">
                             <p class="text-sm text-gray-500">The two-factor authentication function is enabled by the user. Disabling this feature is irreversible.</p>
                         </div>
@@ -334,7 +334,7 @@
         </div>
     </div>
 
-    <div id="2fa_notification" aria-live="assertive" class="hidden pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
+    <div aria-live="assertive" class="hidden pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
         <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
             <!--
               Notification panel, dynamically insert this into the live region when it needs to be displayed
@@ -359,7 +359,7 @@
                             <p class="mt-1 text-sm text-green-700">2FA Successfully disabled</p>
                         </div>
                         <div class="ml-4 flex flex-shrink-0">
-                            <button id="2fa_notification_close" type="button" class="inline-flex rounded-md hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-offset-2">
+                            <button type="button" class="inline-flex rounded-md hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-offset-2">
                                 <span class="sr-only">Close</span>
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M4.55806 4.55806C4.80214 4.31398 5.19786 4.31398 5.44194 4.55806L10 9.11612L14.5581 4.55806C14.8021 4.31398 15.1979 4.31398 15.4419 4.55806C15.686 4.80214 15.686 5.19786 15.4419 5.44194L10.8839 10L15.4419 14.5581C15.686 14.8021 15.686 15.1979 15.4419 15.4419C15.1979 15.686 14.8021 15.686 14.5581 15.4419L10 10.8839L5.44194 15.4419C5.19786 15.686 4.80214 15.686 4.55806 15.4419C4.31398 15.1979 4.31398 14.8021 4.55806 14.5581L9.11612 10L4.55806 5.44194C4.31398 5.19786 4.31398 4.80214 4.55806 4.55806Z" fill="#10B981"/>
@@ -372,7 +372,7 @@
         </div>
     </div>
 
-    <div id="password_notification" aria-live="assertive" class="hidden pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
+    <div aria-live="assertive" class="hidden pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
         <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
             <!--
               Notification panel, dynamically insert this into the live region when it needs to be displayed
@@ -397,7 +397,7 @@
                             <p class="mt-1 text-sm text-green-700">New password saved</p>
                         </div>
                         <div class="ml-4 flex flex-shrink-0">
-                            <button id="password_notification_close" type="button" class="inline-flex rounded-md hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-offset-2">
+                            <button type="button" class="inline-flex rounded-md hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-offset-2">
                                 <span class="sr-only">Close</span>
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M4.55806 4.55806C4.80214 4.31398 5.19786 4.31398 5.44194 4.55806L10 9.11612L14.5581 4.55806C14.8021 4.31398 15.1979 4.31398 15.4419 4.55806C15.686 4.80214 15.686 5.19786 15.4419 5.44194L10.8839 10L15.4419 14.5581C15.686 14.8021 15.686 15.1979 15.4419 15.4419C15.1979 15.686 14.8021 15.686 14.5581 15.4419L10 10.8839L5.44194 15.4419C5.19786 15.686 4.80214 15.686 4.55806 15.4419C4.31398 15.1979 4.31398 14.8021 4.55806 14.5581L9.11612 10L4.55806 5.44194C4.31398 5.19786 4.31398 4.80214 4.55806 4.55806Z" fill="#10B981"/>
@@ -409,29 +409,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-
-        document.getElementById('2fa').addEventListener('click', () => document.getElementById('2fa_modal').classList.remove('hidden'));
-        document.querySelector('[data-pos="2fa_cancel"]').addEventListener("click", () => document.getElementById('2fa_modal').classList.add('hidden'));
-        document.querySelector('[data-pos="2fa_disable"]').addEventListener("click", function () {
-            document.getElementById('2fa_modal').classList.add('hidden');
-            document.getElementById('2fa_notification').classList.remove('hidden');
-            setTimeout(() => { document.getElementById('2fa_notification').classList.add('hidden'); }, 3000);
-        });
-        document.getElementById('2fa_notification_close').addEventListener("click", () => document.getElementById('2fa_notification').classList.add('hidden'));
-
-        document.getElementById('password').addEventListener("click", () => document.getElementById('password_modal').classList.remove('hidden'));
-        document.querySelector('[data-pos="password_cancel"]').addEventListener("click", () => document.getElementById('password_modal').classList.add('hidden'));
-
-        document.querySelector('[data-pos="password_change"]').addEventListener("click", function () {
-            document.getElementById('password_modal').classList.add('hidden');
-            document.getElementById('password_notification').classList.remove('hidden');
-            setTimeout(() => { document.getElementById('password_notification').classList.add('hidden'); }, 3000);
-        });
-        document.getElementById('password_notification_close').addEventListener("click", () => document.getElementById('password_notification').classList.add('hidden'));
-
-    </script>
-
 
 {% endblock %}

@@ -1,25 +1,111 @@
 {% extends 'base.html.twig' %}
 
-{% block aside %}
-
-{% endblock %}
-
-{% block body %}
+{% block main %}
 
 	<div class="relative overflow-hidden bg-gray-50">
 		<div class="relative pt-6 pb-16 sm:pb-24">
 			<main class="mx-auto mt-16 max-w-7xl px-4 sm:mt-24">
 				<div class="text-center">
 					<h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-						<span class="block xl:inline">WORKFLOW</span>
+						<span class="block xl:inline">{{ product }}</span>
 					</h1>
-					<p class="mx-auto mt-3 max-w-md text-base text-gray-500 sm:text-lg md:mt-5 md:max-w-3xl md:text-xl">To see what has already been done, click on the button below</p>
-					<div class="mx-auto mt-5 max-w-md sm:flex sm:justify-center md:mt-8">
-						<div class="rounded-md shadow">
-							<a href="{{ path('clients') }}" class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg">Get started</a>
-						</div>
-					</div>
+					<p class="mx-auto my-4 max-w-md text-base text-gray-500 sm:text-lg md:max-w-3xl md:text-xl">The structure of the site at this stage:</p>
+					<hr>
 				</div>
+				<ul class="mt-8 mx-4">
+					<li class="flex items-center text-xl">
+						<div class="mr-2 w-2 h-2 rounded-full bg-gray-700"></div>
+						Clients
+						<svg class="mx-2 mt-1 text-gray-500" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6 6L14 10L6 14V6Z"/>
+						</svg>
+						Lists
+					</li>
+					<ul class="ml-16">
+						<li class="flex items-center mt-4 text-lg">
+							<div class="mr-2 w-2 h-2 rounded-full bg-gray-500"></div>
+							Lists
+							<svg class="mx-2 mt-1 text-gray-500" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6 6L14 10L6 14V6Z"/>
+							</svg>
+							Add new user
+						</li>
+						<li class="flex items-center mt-4 text-lg">
+							<div class="mr-2 w-2 h-2 rounded-full bg-gray-500"></div>
+							Lists
+							<svg class="mx-2 mt-1 text-gray-500" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6 6L14 10L6 14V6Z"/>
+							</svg>
+							User profile
+						</li>
+						<ul class="ml-16">
+							<li class="flex items-center mt-4">
+								<div class="mr-2 w-2 h-2 rounded-full bg-gray-400"></div>
+								User profile
+								<svg class="mx-2 mt-1 text-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path d="M6 6L14 10L6 14V6Z"/>
+								</svg>
+								Overview
+							</li>
+							<li class="flex items-center mt-4">
+								<div class="mr-2 w-2 h-2 rounded-full bg-gray-400"></div>
+								User profile
+								<svg class="mx-2 mt-1 text-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path d="M6 6L14 10L6 14V6Z"/>
+								</svg>
+								Profile
+							</li>
+							<li class="flex items-center mt-4">
+								<div class="mr-2 w-2 h-2 rounded-full bg-gray-400"></div>
+								User profile
+								<svg class="mx-2 mt-1 text-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path d="M6 6L14 10L6 14V6Z"/>
+								</svg>
+								Services
+							</li>
+							<li class="flex items-center mt-4">
+								<div class="mr-2 w-2 h-2 rounded-full bg-gray-400"></div>
+								User profile
+								<svg class="mx-2 mt-1 text-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path d="M6 6L14 10L6 14V6Z"/>
+								</svg>
+								Invoices
+							</li>
+							<li class="flex items-center mt-4">
+								<div class="mr-2 w-2 h-2 rounded-full bg-gray-400"></div>
+								User profile
+								<svg class="mx-2 mt-1 text-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path d="M6 6L14 10L6 14V6Z"/>
+								</svg>
+								Tickets
+							</li>
+							<li class="flex items-center mt-4">
+								<div class="mr-2 w-2 h-2 rounded-full bg-gray-400"></div>
+								User profile
+								<svg class="mx-2 mt-1 text-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path d="M6 6L14 10L6 14V6Z"/>
+								</svg>
+								Credits
+							</li>
+							<li class="flex items-center mt-4">
+								<div class="mr-2 w-2 h-2 rounded-full bg-gray-400"></div>
+								User profile
+								<svg class="mx-2 mt-1 text-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path d="M6 6L14 10L6 14V6Z"/>
+								</svg>
+								Emails
+							</li>
+							<li class="flex items-center mt-4">
+								<div class="mr-2 w-2 h-2 rounded-full bg-gray-400"></div>
+								User profile
+								<svg class="mx-2 mt-1 text-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path d="M6 6L14 10L6 14V6Z"/>
+								</svg>
+								Notes
+							</li>
+						</ul>
+					</ul>
+				</ul>
 			</main>
 		</div>
 	</div>

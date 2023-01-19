@@ -36,3 +36,9 @@
 .aside-menu [aria-expanded="true"] .arrow {
 	transform: rotate(90deg);
 }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+	.aside-menu:not(:hover) [aria-expanded="true"] + * {
+		display: none;
+	}
+}
