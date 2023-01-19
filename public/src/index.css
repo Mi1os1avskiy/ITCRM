@@ -33,6 +33,11 @@
 	display: block;
 }
 
+[v-cloak] {
+	display: none !important;
+}
+
+
 .aside-menu [aria-expanded="true"] .arrow {
 	transform: rotate(90deg);
 }

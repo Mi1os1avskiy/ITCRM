@@ -15,9 +15,7 @@
 				</span>
 			</div>
 
-			{# aria-expanded-autohide #}
-
-			<div class="flex flex-1 flex-col overflow-y-auto pt-1 h-auto absolute bottom-0 top-16 md:top-0 md:relative bg-gray-800 z-10 duration-100" :class="!!isOpened ? 'visible': 'hidden md:flex'">
+			<div v-cloak class="flex flex-1 flex-col overflow-y-auto pt-1 h-auto absolute bottom-0 top-16 md:top-0 md:relative bg-gray-800 z-10 duration-200" :class="!!isOpened ? 'opacity-100 translate-x-0': 'opacity-0 -translate-x-full md:opacity-100 md:flex md:transform-none'">
 				<nav class="flex flex-col h-full mt-6 aside-menu">
 					<div class="flex-auto px-3 mb-6">
 						<button aria-expanded="false" type="button" class="overflow-x-auto w-full mb-1 text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
