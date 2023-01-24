@@ -1,10 +1,16 @@
-{% extends 'clients/profile.base.html.twig' %}
+{% extends 'clients/clients.html.twig' %}
 
 {% set currentTab = 'tickets' %}
 
 {% block title %} {{ title }} {% endblock %}
 
 {% block content %}
+
+    {% block header %}
+
+        {% include 'clients/header.profile.html.twig' %}
+
+    {% endblock %}
 
     <!-- Activity list (smallest breakpoint only) -->
     {#

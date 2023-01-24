@@ -1,10 +1,16 @@
-{% extends 'clients/profile.base.html.twig' %}
+{% extends 'clients/clients.html.twig' %}
 
 {% set currentTab = 'profile' %}
 
 {% block title %} {{ title }} {% endblock %}
 
 {% block content %}
+
+    {% block header %}
+
+        {% include 'clients/header.profile.html.twig' %}
+
+    {% endblock %}
 
     <form class="space-y-8 divide-y divide-gray-200 mx-auto px-4 sm:px-6 lg:px-8">
         <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">

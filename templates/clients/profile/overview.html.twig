@@ -1,10 +1,16 @@
-{% extends 'clients/profile.base.html.twig' %}
+{% extends 'clients/clients.html.twig' %}
 
 {% block title %} {{ title }} {% endblock %}
 
 {% set currentTab = 'overview' %}
 
 {% block content %}
+
+    {% block header %}
+
+        {% include 'clients/header.profile.html.twig' %}
+
+    {% endblock %}
 
     <div class="overflow-hidden pt-4">
         <dl class="mx-6 divide-y sm:divide-gray-200">
@@ -62,7 +68,7 @@
                 <dt class="text-sm font-medium text-gray-500">2FA enabled</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Enabled</span>
-                    {# <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Disabled</span> #}
+                    <span class="hidden inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Disabled</span>
                 </dd>
             </div>
         </dl>

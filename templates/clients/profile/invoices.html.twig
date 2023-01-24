@@ -1,4 +1,4 @@
-{% extends 'clients/profile.base.html.twig' %}
+{% extends 'clients/clients.html.twig' %}
 
 {% set currentTab = 'invoices' %}
 
@@ -6,334 +6,304 @@
 
 {% block content %}
 
-    <!-- Activity list (smallest breakpoint only) -->
-    {#
-    <div class="shadow sm:hidden">
-        <ul role="list" class="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden">
-            <li>
-                <a href="#" class="block bg-white px-4 py-4 hover:bg-gray-50">
-                    <span class="flex items-center space-x-4">
-                      <span class="flex flex-1 space-x-2 truncate">
-                        <span class="flex flex-col truncate text-sm text-gray-500">
-                          <span class="truncate">#c203202</span>
-                          <span><span class="font-medium text-gray-900">$20,000</span> USD</span>
-                          <time datetime="2020-07-11">July 11, 2020</time>
-                        </span>
-                      </span>
-                        <!-- Heroicon name: mini/chevron-right -->
-                      <svg class="h-5 w-5 flex-shrink-0 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                </a>
-            </li>
-            <!-- More transactions... -->
-        </ul>
+    {% block header %}
 
-        <nav class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3" aria-label="Pagination">
-            <div class="flex flex-1 justify-between">
-                <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-500">Previous</a>
-                <a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-500">Next</a>
+        {% include 'clients/header.profile.html.twig' %}
+
+    {% endblock %}
+
+    {% block control %}
+
+        <div class="mx-auto mt-4 px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between flex-shrink-0">
+                <div class="relative">
+                    <button type="button" class="relative inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM10.75 6.75C10.75 6.33579 10.4142 6 10 6C9.58579 6 9.25 6.33579 9.25 6.75V9.25H6.75C6.33579 9.25 6 9.58579 6 10C6 10.4142 6.33579 10.75 6.75 10.75H9.25V13.25C9.25 13.6642 9.58579 14 10 14C10.4142 14 10.75 13.6642 10.75 13.25V10.75H13.25C13.6642 10.75 14 10.4142 14 10C14 9.58579 13.6642 9.25 13.25 9.25H10.75V6.75Z" fill="white"/>
+                        </svg>
+                        <span class="ml-2">Add invoice</span>
+                    </button>
+                </div>
+
+                <div class="flex items-center">
+                    <div class="w-48 max-w-lg lg:max-w-xs">
+                        <label for="search" class="sr-only">Search</label>
+                        <div class="relative">
+                            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <input name="search" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Search" type="search">
+                        </div>
+                    </div>
+                    <button type="button" class="inline-flex items-center ml-2 rounded-md border border-gray-300 px-4 py-2 text-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.62803 1.60102C5.02718 1.2056 7.48986 1 10 1C12.5101 1 14.9728 1.2056 17.372 1.60102C17.7342 1.66072 18 1.97389 18 2.34103V4.62868C18 5.22542 17.7629 5.79771 17.341 6.21967L12.659 10.9017C12.2371 11.3236 12 11.8959 12 12.4926V15.5291C12 16.2126 11.6893 16.859 11.1556 17.286L9.21852 18.8357C8.99339 19.0158 8.68496 19.0509 8.42511 18.926C8.16526 18.8011 8 18.5383 8 18.25V12.4926C8 11.8959 7.76295 11.3236 7.34099 10.9017L2.65901 6.21967C2.23705 5.79771 2 5.22542 2 4.62868V2.34103C2 1.97389 2.26578 1.66072 2.62803 1.60102Z" fill="#6B7280"/>
+                        </svg>
+                        <span class="ml-2">Filters</span>
+                    </button>
+                </div>
             </div>
-        </nav>
-    </div>
-    #}
+        </div>
 
-    <div class="mt-4">
+    {% endblock %}
 
-        {% block control %}
+    {% block table %}
 
+        <div class="hidden sm:block">
             <div class="mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex h-16 items-center justify-between flex-shrink-0">
-                    <div class="relative">
-                        <button type="button" class="relative inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM10.75 6.75C10.75 6.33579 10.4142 6 10 6C9.58579 6 9.25 6.33579 9.25 6.75V9.25H6.75C6.33579 9.25 6 9.58579 6 10C6 10.4142 6.33579 10.75 6.75 10.75H9.25V13.25C9.25 13.6642 9.58579 14 10 14C10.4142 14 10.75 13.6642 10.75 13.25V10.75H13.25C13.6642 10.75 14 10.4142 14 10C14 9.58579 13.6642 9.25 13.25 9.25H10.75V6.75Z" fill="white"/>
-                            </svg>
-                            <span class="ml-2">Add invoice</span>
-                        </button>
-                    </div>
+                <div class="mt-2 flex flex-col">
+                    <div class="min-w-full overflow-hidden overflow-x-auto align-middle shadow sm:rounded-lg">
 
-                    <div class="flex items-center">
-                        <div class="w-48 max-w-lg lg:max-w-xs">
-                            <label for="search" class="sr-only">Search</label>
-                            <div class="relative">
-                                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                                <input name="search" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Search" type="search">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead>
+                                <tr class="flex bg-gray-50 text-gray-900 text-sm border border-t">
+                                    <th class="flex-none w-32 px-6 py-3 text-left font-medium" scope="col">ID</th>
+                                    <th class="grow w-40 px-6 py-3 text-left font-medium" scope="col">Status</th>
+                                    <th class="flex-none w-40 px-6 py-3 text-left font-medium" scope="col">Created</th>
+                                    <th class="flex-none w-40 px-6 py-3 text-left font-medium" scope="col">Pay to</th>
+                                    <th class="flex-none w-40 px-6 py-3 text-right font-medium" scope="col">Paid</th>
+                                    <th class="flex-none w-40 px-6 py-3 text-right font-medium" scope="col">Amount</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="divide-y divide-gray-200 bg-white">
+
+                                <tr class="flex">
+                                    <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
+                                        <a href="" class="group inline-flex space-x-2 truncate text-sm">
+                                            <p class="truncate text-gray-500 group-hover:text-gray-900">#111</p>
+                                        </a>
+                                    </td>
+                                    <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 capitalize">Pending</span>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">10-12-2022</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">12/10/2021</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <p class="font-extralight">-</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <p class="font-extralight">$130.99</p>
+                                    </td>
+                                </tr>
+
+                                <tr class="flex">
+                                    <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
+                                        <a href="" class="group inline-flex space-x-2 truncate text-sm">
+                                            <p class="truncate text-gray-500 group-hover:text-gray-900">#222</p>
+                                        </a>
+                                    </td>
+                                    <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 capitalize">Paid</span>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">10-12-2022</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">12/10/2021</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <span class="py-0.5 px-1 rounded-full bg-gray-100">%</span>
+                                        <span class="ml-1 font-extralight">$69.99</span>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <p class="font-extralight">$99.99</p>
+                                    </td>
+                                </tr>
+
+                                <tr class="flex">
+                                    <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
+                                        <a href="" class="group inline-flex space-x-2 truncate text-sm">
+                                            <p class="truncate text-gray-500 group-hover:text-gray-900">#333</p>
+                                        </a>
+                                    </td>
+                                    <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">Overdue</span>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">10-12-2022</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">12/10/2021</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <p class="font-extralight"></p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <p class="font-extralight">$199.00</p>
+                                    </td>
+                                </tr>
+
+                                <tr class="flex">
+                                    <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
+                                        <a href="" class="group inline-flex space-x-2 truncate text-sm">
+                                            <p class="truncate text-gray-500 group-hover:text-gray-900">#444</p>
+                                        </a>
+                                    </td>
+                                    <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">Cancelled</span>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">10-12-2022</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">12/10/2021</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <span class="py-0.5 px-1 rounded-full bg-gray-100">%</span>
+                                        <span class="ml-1 font-extralight">$89.99</span>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <p class="font-extralight">$250.00</p>
+                                    </td>
+                                </tr>
+
+                                <tr class="flex">
+                                    <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
+                                        <a href="" class="group inline-flex space-x-2 truncate text-sm">
+                                            <p class="truncate text-gray-500 group-hover:text-gray-900">#555</p>
+                                        </a>
+                                    </td>
+                                    <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 capitalize">Paid</span>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">10-12-2022</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">12/10/2021</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <p class="font-extralight">$69.99</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <p class="font-extralight">$99.99</p>
+                                    </td>
+                                </tr>
+
+                                <tr class="flex">
+                                    <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
+                                        <a href="" class="group inline-flex space-x-2 truncate text-sm">
+                                            <p class="truncate text-gray-500 group-hover:text-gray-900">#666</p>
+                                        </a>
+                                    </td>
+                                    <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">Cancelled</span>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">10-12-2022</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">12/10/2021</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <p class="font-extralight"></p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <p class="font-extralight">$250.00</p>
+                                    </td>
+                                </tr>
+
+                                <tr class="flex">
+                                    <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
+                                        <a href="" class="group inline-flex space-x-2 truncate text-sm">
+                                            <p class="truncate text-gray-500 group-hover:text-gray-900">#777</p>
+                                        </a>
+                                    </td>
+                                    <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 capitalize">Pending</span>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">10-12-2022</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">12/10/2021</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <p class="font-extralight">-</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <p class="font-extralight">$130.99</p>
+                                    </td>
+                                </tr>
+
+                                <tr class="flex">
+                                    <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
+                                        <a href="" class="group inline-flex space-x-2 truncate text-sm">
+                                            <p class="truncate text-gray-500 group-hover:text-gray-900">#888</p>
+                                        </a>
+                                    </td>
+                                    <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">Overdue</span>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">10-12-2022</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
+                                        <p class="font-extralight">12/10/2021</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <p class="font-extralight">$2020.00</p>
+                                    </td>
+                                    <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
+                                        <p class="font-extralight">$199.00</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Pagination -->
+                        <div class="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-4 sm:px-6">
+                            <div class="flex flex-1 justify-between sm:hidden">
+                                <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
+                                <a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
                             </div>
-                        </div>
-                        <button type="button" class="inline-flex items-center ml-2 rounded-md border border-gray-300 px-4 py-2 text-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.62803 1.60102C5.02718 1.2056 7.48986 1 10 1C12.5101 1 14.9728 1.2056 17.372 1.60102C17.7342 1.66072 18 1.97389 18 2.34103V4.62868C18 5.22542 17.7629 5.79771 17.341 6.21967L12.659 10.9017C12.2371 11.3236 12 11.8959 12 12.4926V15.5291C12 16.2126 11.6893 16.859 11.1556 17.286L9.21852 18.8357C8.99339 19.0158 8.68496 19.0509 8.42511 18.926C8.16526 18.8011 8 18.5383 8 18.25V12.4926C8 11.8959 7.76295 11.3236 7.34099 10.9017L2.65901 6.21967C2.23705 5.79771 2 5.22542 2 4.62868V2.34103C2 1.97389 2.26578 1.66072 2.62803 1.60102Z" fill="#6B7280"/>
-                            </svg>
-                            <span class="ml-2">Filters</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-        {% endblock %}
-
-        {% block table %}
-
-            <div class="hidden sm:block">
-                <div class="mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="mt-2 flex flex-col">
-                        <div class="min-w-full overflow-hidden overflow-x-auto align-middle shadow sm:rounded-lg">
-
-                            <table class="min-w-full divide-y divide-gray-200">
-                                <thead>
-                                    <tr class="flex bg-gray-50 text-gray-900 text-sm border border-t">
-                                        <th class="flex-none w-32 px-6 py-3 text-left font-medium" scope="col">ID</th>
-                                        <th class="grow w-40 px-6 py-3 text-left font-medium" scope="col">Status</th>
-                                        <th class="flex-none w-40 px-6 py-3 text-left font-medium" scope="col">Created</th>
-                                        <th class="flex-none w-40 px-6 py-3 text-left font-medium" scope="col">Pay to</th>
-                                        <th class="flex-none w-40 px-6 py-3 text-right font-medium" scope="col">Paid</th>
-                                        <th class="flex-none w-40 px-6 py-3 text-right font-medium" scope="col">Amount</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody class="divide-y divide-gray-200 bg-white">
-
-                                    <tr class="flex">
-                                        <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
-                                            <a href="" class="group inline-flex space-x-2 truncate text-sm">
-                                                <p class="truncate text-gray-500 group-hover:text-gray-900">#111</p>
-                                            </a>
-                                        </td>
-                                        <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 capitalize">Pending</span>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">10-12-2022</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">12/10/2021</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <p class="font-extralight">-</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <p class="font-extralight">$130.99</p>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="flex">
-                                        <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
-                                            <a href="" class="group inline-flex space-x-2 truncate text-sm">
-                                                <p class="truncate text-gray-500 group-hover:text-gray-900">#222</p>
-                                            </a>
-                                        </td>
-                                        <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 capitalize">Paid</span>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">10-12-2022</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">12/10/2021</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <span class="py-0.5 px-1 rounded-full bg-gray-100">%</span>
-                                            <span class="ml-1 font-extralight">$69.99</span>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <p class="font-extralight">$99.99</p>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="flex">
-                                        <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
-                                            <a href="" class="group inline-flex space-x-2 truncate text-sm">
-                                                <p class="truncate text-gray-500 group-hover:text-gray-900">#333</p>
-                                            </a>
-                                        </td>
-                                        <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">Overdue</span>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">10-12-2022</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">12/10/2021</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <p class="font-extralight"></p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <p class="font-extralight">$199.00</p>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="flex">
-                                        <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
-                                            <a href="" class="group inline-flex space-x-2 truncate text-sm">
-                                                <p class="truncate text-gray-500 group-hover:text-gray-900">#444</p>
-                                            </a>
-                                        </td>
-                                        <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">Cancelled</span>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">10-12-2022</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">12/10/2021</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <span class="py-0.5 px-1 rounded-full bg-gray-100">%</span>
-                                            <span class="ml-1 font-extralight">$89.99</span>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <p class="font-extralight">$250.00</p>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="flex">
-                                        <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
-                                            <a href="" class="group inline-flex space-x-2 truncate text-sm">
-                                                <p class="truncate text-gray-500 group-hover:text-gray-900">#555</p>
-                                            </a>
-                                        </td>
-                                        <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 capitalize">Paid</span>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">10-12-2022</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">12/10/2021</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <p class="font-extralight">$69.99</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <p class="font-extralight">$99.99</p>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="flex">
-                                        <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
-                                            <a href="" class="group inline-flex space-x-2 truncate text-sm">
-                                                <p class="truncate text-gray-500 group-hover:text-gray-900">#666</p>
-                                            </a>
-                                        </td>
-                                        <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">Cancelled</span>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">10-12-2022</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">12/10/2021</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <p class="font-extralight"></p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <p class="font-extralight">$250.00</p>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="flex">
-                                        <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
-                                            <a href="" class="group inline-flex space-x-2 truncate text-sm">
-                                                <p class="truncate text-gray-500 group-hover:text-gray-900">#777</p>
-                                            </a>
-                                        </td>
-                                        <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 capitalize">Pending</span>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">10-12-2022</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">12/10/2021</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <p class="font-extralight">-</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <p class="font-extralight">$130.99</p>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="flex">
-                                        <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left">
-                                            <a href="" class="group inline-flex space-x-2 truncate text-sm">
-                                                <p class="truncate text-gray-500 group-hover:text-gray-900">#888</p>
-                                            </a>
-                                        </td>
-                                        <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">Overdue</span>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">10-12-2022</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-                                            <p class="font-extralight">12/10/2021</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <p class="font-extralight">$2020.00</p>
-                                        </td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">
-                                            <p class="font-extralight">$199.00</p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <!-- Pagination -->
-                            <div class="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-4 sm:px-6">
-                                <div class="flex flex-1 justify-between sm:hidden">
-                                    <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
-                                    <a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+                            <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+                                <div>
+                                    <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                                        <a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+                                            <span class="sr-only">Previous</span>
+                                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+                                            </svg>
+                                        </a>
+                                        <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
+                                        <a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
+                                        <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
+                                        <a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
+                                        <span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
+                                        <a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
+                                        <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
+                                        <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
+                                        <a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+                                            <span class="sr-only">Next</span>
+                                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                                            </svg>
+                                        </a>
+                                    </nav>
                                 </div>
-                                <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-                                    <div>
-                                        <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                                            <a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-                                                <span class="sr-only">Previous</span>
-                                                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                    <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
-                                                </svg>
-                                            </a>
-                                            <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
-                                            <a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
-                                            <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
-                                            <a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
-                                            <span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
-                                            <a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
-                                            <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
-                                            <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
-                                            <a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-                                                <span class="sr-only">Next</span>
-                                                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-                                                </svg>
-                                            </a>
-                                        </nav>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <p class="text-sm text-gray-500">
-                                            Showing
-                                            <span class="font-medium">1</span>
-                                            to
-                                            <span class="font-medium">10</span>
-                                            of
-                                            <span class="font-medium">10</span>
-                                            results
-                                        </p>
-                                        <div class="flex lg:ml-6">
-                                            <select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
-                                                {% for i in 1..4 %}
-                                                    <option>{{ i * 25 }}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
+                                <div class="flex items-center">
+                                    <p class="text-sm text-gray-500">
+                                        Showing
+                                        <span class="font-medium">1</span>
+                                        to
+                                        <span class="font-medium">10</span>
+                                        of
+                                        <span class="font-medium">10</span>
+                                        results
+                                    </p>
+                                    <div class="flex lg:ml-6">
+                                        <select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
+                                            {% for i in 1..4 %}
+                                                <option>{{ i * 25 }}</option>
+                                            {% endfor %}
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -341,10 +311,9 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-        {% endblock %}
-
-    </div>
+    {% endblock %}
 
     {% block filters %}
 

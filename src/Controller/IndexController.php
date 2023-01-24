@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Model\Parameters;
 use http\Env\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,6 +27,13 @@ class IndexController extends AbstractController
         return $this->render('clients/clients.html.twig', [
             'title' => 'Clients',
             'users' => Users::CreateTable(),
+        ]);
+    }
+
+    public function profileMenu(): Response
+    {
+        return $this->render('clients/header.profile.html.twig', [
+            'parameters' => Parameters::UserProfileMenu(),
         ]);
     }
 

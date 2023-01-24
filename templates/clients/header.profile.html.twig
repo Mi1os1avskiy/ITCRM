@@ -1,0 +1,98 @@
+<div class="bg-gray-50 mx-auto px-4 sm:px-6 lg:px-8">
+	<nav class="pt-4 flex items-center text-sm text-gray-500">
+		<a href="{{ path('clients') }}">Clients</a>
+		<span class="ml-3">
+            <svg width="20" height="20" viewBox="0 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#9CA3AF"/>
+            </svg>
+        </span>
+		<span class="ml-3"> User #</span>
+	</nav>
+	<div class="flex items-center h-12 mt-2 space-x-4">
+		<span class="font-semibold text-lg">User #</span>
+		<span class="px-3 pt-0.5 pb-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Active</span>
+	</div>
+</div>
+
+{% set nav = {'overview': 0, 'profile': 0, 'services': 0, 'invoices': 0, 'tickets': 1, 'credits': '$99.5', 'emails': 0, 'notes': 3, 'log': 0} %}
+
+<nav class="bg-gray-50 border-b-2 mx-auto pb-1 px-4 sm:px-6 lg:px-8">
+	<div class="flex h-12 justify-between">
+		<div class="hidden sm:flex sm:space-x-8">
+
+			{% for tab, val in nav %}
+
+				{% if currentTab == tab %}
+
+					<div class="inline-flex items-center border-b-2 text-sm border-indigo-600 text-indigo-600 cursor-default">
+						<span>{{ tab|capitalize }}</span>
+						{% if val %}
+							<span class="inline-flex items-center ml-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-600"> {{ val }} </span>
+						{% endif %}
+					</div>
+
+				{% else %}
+
+					<a href="/clients/{{ tab }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700">
+						<span>{{ tab|capitalize }}</span>
+						{% if val %}
+							<span class="inline-flex items-center ml-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"> {{ val }} </span>
+						{% endif %}
+					</a>
+
+				{% endif %}
+
+			{% endfor %}
+
+			{#
+			<a href="{{ path('clients') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'overview' %}border-indigo-600 text-indigo-600{% endif %}">Overview{{ nav.0|capitalize }}</a>
+			<a href="{{ path('profile') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'profile' %}border-indigo-600 text-indigo-600{% endif %}">Profile</a>
+			<a href="{{ path('services') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'services' %}border-indigo-600 text-indigo-600{% endif %}">Services</a>
+			<a href="{{ path('invoices') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'invoices' %}border-indigo-600 text-indigo-600{% endif %}">Invoices</a>
+			<a href="{{ path('tickets') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'tickets' %}border-indigo-600 text-indigo-600{% endif %}">
+				<span>Tickets</span>
+				<span class="inline-flex items-center ml-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 {% if currentTab == 'tickets' %}bg-indigo-100 text-indigo-600{% endif %}">1</span>
+			</a>
+			<a href="{{ path('credits') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'credits' %}border-indigo-600 text-indigo-600{% endif %}">
+				<span>Credits</span>
+				<span class="inline-flex items-center ml-2 px-2.5 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800 {% if currentTab == 'credits' %}bg-indigo-100 text-indigo-600{% endif %}">$99.5</span>
+			</a>
+			<a href="{{ path('emails') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'emails' %}border-indigo-600 text-indigo-600{% endif %}">Emails</a>
+			<a href="{{ path('notes') }}" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'notes' %}border-indigo-600 hover:border-indigo-600 text-indigo-600 hover:text-indigo-600 hover:cursor-default{% endif %}">
+				<span>Notes</span>
+				<span class="inline-flex items-center ml-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 {% if currentTab == 'notes' %}bg-indigo-100 text-indigo-600{% endif %}">3</span>
+			</a>
+			<a href="#" class="inline-flex items-center border-b-2 border-transparent text-sm text-gray-300 hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'log' %}border-indigo-600 text-indigo-600{% endif %}">Log</a>
+			#}
+
+		</div>
+
+		<div class="-mr-2 flex items-center sm:hidden">
+			<!-- Mobile menu button -->
+			<button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+				<span class="sr-only">Open main menu</span>
+				<svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+				</svg>
+				<svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+				</svg>
+			</button>
+		</div>
+	</div>
+
+	<div class="sm:hidden" id="mobile-menu">
+		<div class="space-y-1 pt-2 pb-3">
+			<!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
+			<a href="{{ path('overview') }}" class="block border-l-4 border-indigo-500 py-2 pl-3 pr-4 text-base font-medium text-indigo-700">Overview</a>
+			<a href="{{ path('profile') }}" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Profile</a>
+			<a href="{{ path('services') }}" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Services</a>
+			<a href="{{ path('invoices') }}" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Invoices</a>
+			<a href="{{ path('tickets') }}" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Tickets</a>
+			<a href="{{ path('credits') }}" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Credits</a>
+			<a href="{{ path('emails') }}" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Emails</a>
+			<a href="{{ path('notes') }}" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Notes</a>
+			<a href="#" class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">Logs</a>
+		</div>
+	</div>
+</nav>
