@@ -1,33 +1,33 @@
 export const ClientsCreateComponent = {
 	data() {
 		return {
-			data: {}
+			personalData: {}
 		}
 	},
 	validators: {
-		'data.firstname': [
+		'personalData.firstname': [
 			{
-				handler: (val: any) => {
-					return false;
+				handler: (val: string) => {
+					return !!val;
 				},
 				message() {
-					return 'qweqwe';
+					return 'Не должно быть пустым';
 				}
 			},
 			{
-				handler: (val: any) => {
-					return false;
+				handler: (val: string) => {
+					return !!val ? (val.length > 0 && val.length <= 10) : true;
 				},
 				message() {
-					return 'EQWEQW';
+					return 'Длина от 0 до 10';
 				}
 			},
 			{
-				handler: (val: any) => {
-					return false;
+				handler: (val: string) => {
+					return !!val ? (new RegExp(/^[a-zA-Z \-']+$/)).test(val) : true;
 				},
 				message() {
-					return '123123';
+					return 'Недопустимые символы';
 				}
 			}
 		]

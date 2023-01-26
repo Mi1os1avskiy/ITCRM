@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<clients-create inline-template>
+<clients-create inline-template v-cloak>
 
 	<div class="flex flex-1 flex-col">
 		<main class="flex-1">
@@ -37,18 +37,18 @@
 								<label for="new_first_name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">First name *</label>
 								<div class="w-full max-w-lg mt-1 sm:col-span-2 sm:mt-0">
 									<div class="relative">
-										<input v-model="data.firstname" type="text" name="new_last_name" id="new_first_name" autocomplete="given-name"
+										<input v-model="personalData.firstname" type="text" name="new_last_name" id="new_first_name" autocomplete="given-name"
 												class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:text-gray-400"
-												:class="{'border-red-300 text-red-900 placeholder-red-300': $form['data.firstname'] && $form['data.firstname'].$dirty && !$form['data.firstname'].$valid}"
+												:class="{'border-red-300 text-red-900 placeholder-red-300': $form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid}"
 												placeholder="John">
-										<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['data.firstname'] && $form['data.firstname'].$dirty && !$form['data.firstname'].$valid">
+										<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid">
 											<svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 												<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
 											</svg>
 										</div>
 									</div>
-									<div v-if="$form['data.firstname'] && $form['data.firstname'].$dirty && !$form['data.firstname'].$valid">
-										<p class="text-sm text-red-600" id="email-error" v-for="item in $form['data.firstname'].$errors">${item}</p>
+									<div v-if="$form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid">
+										<p class="text-sm text-red-600" id="email-error" v-for="item in $form['personalData.firstname'].$errors">${item}</p>
 									</div>
 								</div>
 							</div>
