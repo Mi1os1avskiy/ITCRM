@@ -1,0 +1,23 @@
+<modal inline-template identity="{% block modal_name %}{% endblock %}" v-cloak>
+	<transition
+			@after-enter="onDisplayed"
+			enter-class="opacity-0"
+			enter-to-class="opacity-100"
+			enter-active-class="ease-out duration-300"
+			leave-class="opacity-100"
+			leave-to-class="opacity-0"
+			leave-active-class="ease-in duration-200"
+			:duration="duration"
+	>
+		<div v-if="!!display" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+			<div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+			<div class="fixed inset-0 z-10 overflow-y-auto">
+				<div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+					<div class="relative transform overflow-hidden rounded-lg bg-white my-auto px-4 py-6 space-y-6 text-left shadow-xl transition-all sm:w-full sm:max-w-lg sm:px-6">
+						{% block modal_content %}{% endblock %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</transition>
+</modal>
