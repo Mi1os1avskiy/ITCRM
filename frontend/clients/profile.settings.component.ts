@@ -1,6 +1,5 @@
 const ProfileSettings2faModalIdentity = 'profile-settings-2fa-modal';
 const ProfileSettingsPasswordModalIdentity = 'profile-settings-password-modal';
-const Profile2faPopup = 'profile-2fa-popup';
 
 export const ProfileSettingsComponent = {
     data() {
@@ -24,13 +23,7 @@ export const ProfileSettingsComponent = {
                 })
                 .catch(() => {
                 });
-        },
-        popup2fa() {
-            console.log(123456)
-            const self = <any>this;
-            self.$modals(Profile2faPopup).show()
-                .catch(() => {});
-        },
+        }
     }
 }
 

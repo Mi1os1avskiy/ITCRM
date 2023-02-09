@@ -1,49 +1,33 @@
 <modal inline-template identity="{% block popup_name %}{% endblock %}" v-cloak>
 	<transition
 			@after-enter="onDisplayed"
-			enter-class="opacity-0"
-			enter-to-class="opacity-100"
-			enter-active-class="ease-out duration-300"
+			enter-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
+			enter-to-class="translate-y-0 opacity-100 sm:translate-x-0"
+			enter-active-class="transform ease-out duration-300 transition"
 			leave-class="opacity-100"
 			leave-to-class="opacity-0"
-			leave-active-class="ease-in duration-200"
+			leave-active-class="transition ease-in duration-200"
 			:duration="duration"
 	>
-		<div v-if="!!display" aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
-			<div class="flex w-full flex-col items-center space-y-4 sm:items-end">
-				<!--
-				  Notification panel, dynamically insert this into the live region when it needs to be displayed
-
-				  Entering: "transform ease-out duration-300 transition"
-					From: "translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
-					To: "translate-y-0 opacity-100 sm:translate-x-0"
-				  Leaving: "transition ease-in duration-100"
-					From: "opacity-100"
-					To: "opacity-0"
-				-->
-				<div class="pointer-events-auto w-full max-w-sm overflow-hidden bg-green-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-					<div class="flex items-start p-4">
-						<div class="flex-shrink-0 mt-1">
-							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM13.8566 8.19113C14.1002 7.85614 14.0261 7.38708 13.6911 7.14345C13.3561 6.89982 12.8871 6.97388 12.6434 7.30887L9.15969 12.099L7.28033 10.2197C6.98744 9.92678 6.51256 9.92678 6.21967 10.2197C5.92678 10.5126 5.92678 10.9874 6.21967 11.2803L8.71967 13.7803C8.87477 13.9354 9.08999 14.0149 9.30867 13.9977C9.52734 13.9805 9.72754 13.8685 9.85655 13.6911L13.8566 8.19113Z" fill="#34D399"/>
+		<div v-if="!!display" aria-live="assertive" class="pointer-events-none fixed inset-0 flex p-5">
+			<div class="flex w-full flex-col items-center sm:items-end">
+				<div class="pointer-events-auto w-full max-w-sm overflow-hidden bg-green-50 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+					<div class="flex items-start p-4 space-x-4">
+						<svg class="mt-0.5" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM13.8566 8.19113C14.1002 7.85614 14.0261 7.38708 13.6911 7.14345C13.3561 6.89982 12.8871 6.97388 12.6434 7.30887L9.15969 12.099L7.28033 10.2197C6.98744 9.92678 6.51256 9.92678 6.21967 10.2197C5.92678 10.5126 5.92678 10.9874 6.21967 11.2803L8.71967 13.7803C8.87477 13.9354 9.08999 14.0149 9.30867 13.9977C9.52734 13.9805 9.72754 13.8685 9.85655 13.6911L13.8566 8.19113Z" fill="#34D399"/>
+						</svg>
+						<div class="flex-1 text-sm cursor-default">
+							<p class="font-medium text-green-800">{% block popup_header %}{% endblock %}</p>
+							<p class="mt-2 text-green-700">{% block popup_content %}{% endblock %}</p>
+						</div>
+						<button @click="close(false)" type="button" class="rounded-md p-0.5 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-700">
+							<svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M4.55806 4.55806C4.80214 4.31398 5.19786 4.31398 5.44194 4.55806L10 9.11612L14.5581 4.55806C14.8021 4.31398 15.1979 4.31398 15.4419 4.55806C15.686 4.80214 15.686 5.19786 15.4419 5.44194L10.8839 10L15.4419 14.5581C15.686 14.8021 15.686 15.1979 15.4419 15.4419C15.1979 15.686 14.8021 15.686 14.5581 15.4419L10 10.8839L5.44194 15.4419C5.19786 15.686 4.80214 15.686 4.55806 15.4419C4.31398 15.1979 4.31398 14.8021 4.55806 14.5581L9.11612 10L4.55806 5.44194C4.31398 5.19786 4.31398 4.80214 4.55806 4.55806Z" fill="#10B981"/>
 							</svg>
-						</div>
-						<div class="ml-3 w-0 flex-1 pt-0.5">
-							<p class="text-sm font-medium text-green-800">{% block popup_header %}{% endblock %}</p>
-							<p class="mt-1 text-sm text-green-700">{% block popup_content %}{% endblock %}</p>
-						</div>
-						<div class="ml-4 flex flex-shrink-0">
-							<button @click="close(false)" type="button" class="inline-flex rounded-md hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-offset-2">
-								<span class="sr-only">Close</span>
-								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M4.55806 4.55806C4.80214 4.31398 5.19786 4.31398 5.44194 4.55806L10 9.11612L14.5581 4.55806C14.8021 4.31398 15.1979 4.31398 15.4419 4.55806C15.686 4.80214 15.686 5.19786 15.4419 5.44194L10.8839 10L15.4419 14.5581C15.686 14.8021 15.686 15.1979 15.4419 15.4419C15.1979 15.686 14.8021 15.686 14.5581 15.4419L10 10.8839L5.44194 15.4419C5.19786 15.686 4.80214 15.686 4.55806 15.4419C4.31398 15.1979 4.31398 14.8021 4.55806 14.5581L9.11612 10L4.55806 5.44194C4.31398 5.19786 4.31398 4.80214 4.55806 4.55806Z" fill="#10B981"/>
-								</svg>
-							</button>
-						</div>
+						</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</transition>
 </modal>
-

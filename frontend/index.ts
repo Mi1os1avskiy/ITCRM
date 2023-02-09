@@ -19,5 +19,3 @@ const app = new Vue({
 		'clients-module': () => import(/* webpackChunkName: "clients" */ "./clients/module"),
 	}
 });
-
-
