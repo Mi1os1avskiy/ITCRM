@@ -1,4 +1,4 @@
-const Profile2faPopup = 'profile-2fa-popup';
+
 
 export const ProfilePopupComponent = {
     data() {
@@ -7,12 +7,7 @@ export const ProfilePopupComponent = {
         }
     },
     methods: {
-        popup2fa() {
-            console.log(123456)
-            const self = <any>this;
-            self.$modals(Profile2faPopup).show()
-                .catch(() => {});
-        }
+
     }
 }
 

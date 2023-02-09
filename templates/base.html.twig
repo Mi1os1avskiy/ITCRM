@@ -22,6 +22,9 @@
 		<div class="lg:pl-64 md:pl-16">
 			{% block main %}{% endblock %}
 		</div>
+
+		{% from "./misc/notifications/notifications.stack.html.twig" import stack as notifications %}
+		{{ notifications('global', 'toast', 'top right reverse') }}
 	</main>
 
 {% endblock %}
