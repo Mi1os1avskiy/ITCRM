@@ -52,7 +52,7 @@ const NotificationItemComponent = {
 			const self = <any>this;
 			self.isAnimated = true;
 			setTimeout(() => self.isAnimated = false, ANIMATION_DURATION);
-			// if (!!self.item.delay) setTimeout(self.close, self.item.delay);
+			if (!!self.item.delay) setTimeout(self.close, self.item.delay);
 
 		},
 		watch: {
