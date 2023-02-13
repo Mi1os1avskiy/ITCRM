@@ -2,7 +2,6 @@ import {NotificationLevels, Notification} from "../misc/notifications/notificati
 
 const ProfileSettings2faModalIdentity = 'profile-settings-2fa-modal';
 const ProfileSettingsPasswordModalIdentity = 'profile-settings-password-modal';
-const Profile2faPopup = 'profile-2fa-popup';
 
 export const ProfileSettingsComponent = {
 	data() {
@@ -16,7 +15,7 @@ export const ProfileSettingsComponent = {
 			self.$modals(ProfileSettings2faModalIdentity).show()
 				.then((data: any) => {
 					self.$notifications('global').notify(
-						new Notification(NotificationLevels.ERROR, "OLOLO", "OLOLO")
+						new Notification(NotificationLevels.SUCCESS, "2FA", "2FA Successfully disabled")
 					);
 				})
 				.catch(() => {
@@ -27,7 +26,7 @@ export const ProfileSettingsComponent = {
 			self.$modals(ProfileSettingsPasswordModalIdentity).show()
 				.then((data: any) => {
 					self.$notifications('global').notify(
-						new Notification(NotificationLevels.ERROR, "OLOLO", "OLOLO")
+						new Notification(NotificationLevels.SUCCESS, "Password", "New password saved")
 					);
 				})
 				.catch(() => {
@@ -36,7 +35,7 @@ export const ProfileSettingsComponent = {
 		save() {
 			const self = <any>this;
 			self.$notifications('global').notify(
-				new Notification(NotificationLevels.ERROR, "OLOLO", "OLOLO")
+				new Notification(NotificationLevels.ERROR, "Saving", "Successfully")
 			);
 		}
 	}
