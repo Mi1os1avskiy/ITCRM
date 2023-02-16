@@ -141,4 +141,24 @@ class IndexController extends AbstractController
             'title' => 'Notes',
         ]);
     }
+
+    /**
+     * @Route("/support/tickets", name="support_tickets")
+     */
+    public function supportTickets(): Response
+    {
+        return $this->render('support/support.tickets.html.twig', [
+            'title' => 'Тикеты',
+        ]);
+    }
+
+    /**
+     * @Route("/support/tickets/new_ticket", name="new_ticket")
+     */
+    public function newTicket(): Response
+    {
+        return $this->render('support/support.new.ticket.html.twig', [
+            'title' => 'Новый тикет',
+        ]);
+    }
 }
