@@ -42,6 +42,26 @@
 	transform: rotate(90deg);
 }
 
+.ticket-answers [aria-expanded="true"] .arrow {
+	transform: rotate(180deg);
+}
+
+.ticket-answers > button[aria-expanded="true"] {
+	background: #F9FAFB;
+}
+
+.ticket-answers > button[aria-expanded="true"] > div > svg {
+	color: #374151;
+}
+
+.ticket-answers > button[aria-expanded="true"] > div > span {
+	color: #1F2937;
+}
+
+.ticket-answers > button[aria-expanded="true"] > svg {
+	color: #374151;
+}
+
 @media (min-width: 768px) and (max-width: 1023px) {
 	.aside-menu:not(:hover) [aria-expanded="true"] + * {
 		display: none;
