@@ -2,6 +2,8 @@ import {NotificationLevels, Notification} from "../misc/notifications/notificati
 
 const ProfileSettings2faModalIdentity = 'profile-settings-2fa-modal';
 const ProfileSettingsPasswordModalIdentity = 'profile-settings-password-modal';
+const OverviewLogs = 'overview-logs-modal';
+const InvoicesFilters = 'invoices-filters';
 
 export const ProfileSettingsComponent = {
 	data() {
@@ -15,7 +17,7 @@ export const ProfileSettingsComponent = {
 			self.$modals(ProfileSettings2faModalIdentity).show()
 				.then((data: any) => {
 					self.$notifications('global').notify(
-						new Notification(NotificationLevels.SUCCESS, "2FA", "2FA Successfully disabled")
+						new Notification(NotificationLevels.SUCCESS, "2FA", "Успешно отключена")
 					);
 				})
 				.catch(() => {
@@ -26,17 +28,27 @@ export const ProfileSettingsComponent = {
 			self.$modals(ProfileSettingsPasswordModalIdentity).show()
 				.then((data: any) => {
 					self.$notifications('global').notify(
-						new Notification(NotificationLevels.SUCCESS, "Password", "New password saved")
+						new Notification(NotificationLevels.SUCCESS, "Пароль", "Новый пароль сохранён")
 					);
 				})
 				.catch(() => {
 				});
 		},
-		save() {
+		overviewLogs() {
 			const self = <any>this;
-			self.$notifications('global').notify(
-				new Notification(NotificationLevels.ERROR, "Saving", "Successfully")
-			);
+			self.$modals(OverviewLogs).show()
+				.then((data: any) => {
+				})
+				.catch(() => {
+				});
+		},
+		invoicesFilters() {
+			const self = <any>this;
+			self.$modals(InvoicesFilters).show()
+				.then((data: any) => {
+				})
+				.catch(() => {
+				});
 		}
 	}
 }

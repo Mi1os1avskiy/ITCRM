@@ -25,7 +25,7 @@ class IndexController extends AbstractController
     public function clients(): Response
     {
         return $this->render('clients/clients.html.twig', [
-            'title' => 'Clients',
+            'title' => 'Клиенты',
             'users' => Users::CreateTable(),
         ]);
     }
@@ -44,7 +44,7 @@ class IndexController extends AbstractController
     public function newUser(): Response
     {
         return $this->render('clients/create.html.twig', [
-            'title' => 'New client',
+            'title' => 'Новый клиент',
         ]);
     }
 
