@@ -6,6 +6,6 @@ export default {
 	components: {
 		'clients-list-filters': ClientsListFilters,
 		'clients-create': ClientsCreateComponent,
-		'profile-settings': ProfileSettingsComponent
+		'profile-settings': ProfileSettingsComponent,
 	}
 };

@@ -21,9 +21,9 @@
 	{'eng': 'invoices', 'rus': 'Инвойсы', 'val': 0},
 	{'eng': 'tickets', 'rus': 'Тикеты', 'val': 1},
 	{'eng': 'credits', 'rus': 'Кредиты', 'val': 99.5},
-	{'eng': 'emails', 'rus': 'Транзакции', 'val': 0},
-	{'eng': 'notes', 'rus': 'Письма', 'val': 3},
-	{'eng': 'log', 'rus': 'Заметки', 'val': 0}
+	{'eng': 'transactions', 'rus': 'Транзакции', 'val': 0},
+	{'eng': 'emails', 'rus': 'Письма', 'val': 3},
+	{'eng': 'notes', 'rus': 'Заметки', 'val': 0}
 ] %}
 
 <nav class="bg-gray-50 border-b-2 mx-auto pb-1 px-4 sm:px-6 lg:px-8">
@@ -42,3 +42,36 @@
 
 	</div>
 </nav>
+
+{% if currentTab != 'notes' %}
+
+	<div class="max-w-7xl mt-6 px-4 sm:px-6 lg:px-8">
+		<div class="grid grid-cols-3 gap-x-2">
+			<div class="flex items-center bg-yellow-50 rounded-lg py-5 px-6 space-x-4 ">
+				<p class="text-sm text-gray-700 line-clamp-3">Ipsum lacus id gravida venenatis velit cursus aliquet eros. Massa at habitant potenti senectus id pretium faucibus. Odio libero placerat lectus lectus eget tortor scelerisque tincidunt. Sed ultricies consequat interdum vel mauris nunc. Orci fermentum consequat semper tortor. Enim adipiscing donec lobortis elit libero vivamus. Leo magna donec gravida dictum platea. Aliquam vehicula augue cursus pharetra nunc praesent ornare.</p>
+				<a href="{{ path('notes') }}">
+					<svg class="shrink-0 text-gray-500 hover:text-gray-900" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M7.62639 14.7071C7.23587 14.3166 7.23587 13.6834 7.62639 13.2929L10.9193 10L7.62639 6.70711C7.23587 6.31658 7.23586 5.68342 7.62639 5.29289C8.01691 4.90237 8.65008 4.90237 9.0406 5.29289L13.0406 9.29289C13.4311 9.68342 13.4311 10.3166 13.0406 10.7071L9.0406 14.7071C8.65008 15.0976 8.01691 15.0976 7.62639 14.7071Z" fill="currentColor"/>
+					</svg>
+				</a>
+			</div>
+			<div class="flex items-center bg-yellow-50 rounded-lg py-5 px-6 space-x-4">
+				<div class="text-sm text-gray-700 line-clamp-3">Nisl ut enim cursus nisi. Pulvinar id diam hac ipsum pharetra diam vulputate.</div>
+				<a href="{{ path('notes') }}">
+					<svg class="shrink-0 text-gray-500 hover:text-gray-900" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M7.62639 14.7071C7.23587 14.3166 7.23587 13.6834 7.62639 13.2929L10.9193 10L7.62639 6.70711C7.23587 6.31658 7.23586 5.68342 7.62639 5.29289C8.01691 4.90237 8.65008 4.90237 9.0406 5.29289L13.0406 9.29289C13.4311 9.68342 13.4311 10.3166 13.0406 10.7071L9.0406 14.7071C8.65008 15.0976 8.01691 15.0976 7.62639 14.7071Z" fill="currentColor"/>
+					</svg>
+				</a>
+			</div>
+			<div class="flex items-center bg-yellow-50 rounded-lg py-5 px-6 space-x-4">
+				<div class="text-sm text-gray-700 line-clamp-3">Ipsum lacus id gravida venenatis velit cursus aliquet eros.</div>
+				<a href="{{ path('notes') }}">
+					<svg class="shrink-0 text-gray-500 hover:text-gray-900" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M7.62639 14.7071C7.23587 14.3166 7.23587 13.6834 7.62639 13.2929L10.9193 10L7.62639 6.70711C7.23587 6.31658 7.23586 5.68342 7.62639 5.29289C8.01691 4.90237 8.65008 4.90237 9.0406 5.29289L13.0406 9.29289C13.4311 9.68342 13.4311 10.3166 13.0406 10.7071L9.0406 14.7071C8.65008 15.0976 8.01691 15.0976 7.62639 14.7071Z" fill="currentColor"/>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</div>
+
+{% endif %}

@@ -18,10 +18,10 @@ class IndexController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/clients", name="clients")
-     */
-//    #[Route('/clients', name: 'clients')]
+//    /**
+//     * @Route("/clients", name="clients")
+//     */
+    #[Route('/clients', name: 'clients')]
     public function clients(): Response
     {
         return $this->render('clients/clients.html.twig', [
@@ -37,10 +37,10 @@ class IndexController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/clients/new_user", name="new_user")
-     */
-//    #[Route('/clients/new_user', name: 'new_user')]
+//    /**
+//     * @Route("/clients/new_user", name="new_user")
+//     */
+    #[Route('/clients/new_user', name: 'new_user')]
     public function newUser(): Response
     {
         return $this->render('clients/create.html.twig', [
@@ -123,6 +123,16 @@ class IndexController extends AbstractController
     }
 
     /**
+     * @Route("/clients/transactions", name="transactions")
+     */
+    public function transactions(): Response
+    {
+        return $this->render('clients/profile/transactions.html.twig', [
+            'title' => 'Transactions',
+        ]);
+    }
+
+    /**
      * @Route("/clients/emails", name="emails")
      */
     public function emails(): Response
@@ -142,9 +152,7 @@ class IndexController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/support/tickets", name="support_tickets")
-     */
+    #[Route('/support/tickets', name: 'support_tickets')]
     public function supportTickets(): Response
     {
         return $this->render('support/support.tickets.html.twig', [
@@ -152,9 +160,7 @@ class IndexController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/support/tickets/new_ticket", name="new_ticket")
-     */
+    #[Route('/support/tickets/new_ticket', name: 'new_ticket')]
     public function newTicket(): Response
     {
         return $this->render('support/support.new.ticket.html.twig', [

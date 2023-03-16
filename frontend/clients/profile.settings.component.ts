@@ -4,6 +4,10 @@ const ProfileSettings2faModalIdentity = 'profile-settings-2fa-modal';
 const ProfileSettingsPasswordModalIdentity = 'profile-settings-password-modal';
 const OverviewLogs = 'overview-logs-modal';
 const InvoicesFilters = 'invoices-filters';
+const CreditsAdd = 'credits-add';
+const CreditsDelete = 'credits-delete';
+const NotesAdd = 'clients-notes-add';
+const NotesEdit = 'clients-notes-edit';
 
 export const ProfileSettingsComponent = {
 	data() {
@@ -45,6 +49,38 @@ export const ProfileSettingsComponent = {
 		invoicesFilters() {
 			const self = <any>this;
 			self.$modals(InvoicesFilters).show()
+				.then((data: any) => {
+				})
+				.catch(() => {
+				});
+		},
+		creditsDelete() {
+			const self = <any>this;
+			self.$modals(CreditsDelete).show()
+				.then((data: any) => {
+				})
+				.catch(() => {
+				});
+		},
+		creditsAdd() {
+			const self = <any>this;
+			self.$modals(CreditsAdd).show()
+				.then((data: any) => {
+				})
+				.catch(() => {
+				});
+		},
+		notesAdd() {
+			const self = <any>this;
+			self.$modals(NotesAdd).show()
+				.then((data: any) => {
+				})
+				.catch(() => {
+				});
+		},
+		notesEdit() {
+			const self = <any>this;
+			self.$modals(NotesEdit).show()
 				.then((data: any) => {
 				})
 				.catch(() => {
