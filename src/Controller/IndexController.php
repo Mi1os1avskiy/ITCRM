@@ -21,7 +21,6 @@ class IndexController extends AbstractController
     /**
      * @Route("/clients", name="clients")
      */
-//    #[Route('/clients', name: 'clients')]
     public function clients(): Response
     {
         return $this->render('clients/clients.html.twig', [
@@ -50,7 +49,7 @@ class IndexController extends AbstractController
 //    /**
 //     * @Route("/clients/{id}", name="profile")
 //     */
-// //   #[Route('/clients/{id}', name: 'profile')]
+//    #[Route('/clients/{id}', name: 'profile')]
 //    public function user($id): Response
 //    {
 //        $links = ['overview', 'profile', 'services', 'invoices', 'tickets', 'credits', 'emails', 'notes', 'log'];
