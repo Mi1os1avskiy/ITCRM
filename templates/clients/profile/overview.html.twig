@@ -11,61 +11,62 @@
     {% endblock %}
 
     <profile-settings inline-template>
+
         <dl class="mx-8 pt-4 divide-y divide-gray-200">
-        <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-            <dt class="text-sm font-medium text-gray-500">ID</dt>
-            <dd class="max-sm:mt-2 text-sm sm:col-span-2">#222</dd>
-        </div>
-        <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-            <dt class="text-sm font-medium text-gray-500">Имя</dt>
-            <dd class="max-sm:mt-2 text-sm sm:col-span-2">Valeriy Burdaleyba</dd>
-        </div>
-        <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-            <dt class="text-sm font-medium text-gray-500">Email</dt>
-            <dd class="max-sm:mt-2 text-sm sm:col-span-2">valeron@mail.com</dd>
-        </div>
-        <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-            <dt class="text-sm font-medium text-gray-500">Язык использования</dt>
-            <dd class="max-sm:mt-2 text-sm sm:col-span-2">Ru</dd>
-        </div>
-        <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-            <dt class="text-sm font-medium text-gray-500">Номер телефона</dt>
-            <dd class="max-sm:mt-2 text-sm sm:col-span-2">-</dd>
-        </div>
-        <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-            <dt class="text-sm font-medium text-gray-500">Адрес</dt>
-            <dd class="max-sm:mt-2 text-sm sm:col-span-2">
-                <p>Australian Capital Territory,</p>
-                <p>Road STIRLING,</p>
-                <p>24 Monteagle Road STIRLING ACT</p>
-                <p>2611</p>
-            </dd>
-        </div>
-        <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-            <dt class="text-sm font-medium text-gray-500">Название компании</dt>
-            <dd class="max-sm:mt-2 text-sm sm:col-span-2">A+ Electronics</dd>
-        </div>
-        <div class="sm:flex items-center py-5 sm:grid sm:grid-cols-3 gap-4">
-            <dt class="text-sm font-medium text-gray-500">Последний логин</dt>
-            <dd class="max-sm:mt-2 text-sm sm:col-span-2">
-                <span>{{ "now"|date("d/m/Y H:i:s") }} • <span class="text-indigo-700">37.214.25.177</span> (BY)</span>
-                <button @click="overviewLogs()" type="button" class="inline-flex items-center ml-4 rounded-md border border-gray-300 px-4 py-2 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                    <span class="text-xs font-medium text-gray-700">История</span>
-                </button>
-            </dd>
-        </div>
-        <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-            <dt class="text-sm font-medium text-gray-500">IP регистрации</dt>
-            <dd class="max-sm:mt-2 text-sm sm:col-span-2"><span class="text-indigo-700">37.214.25.177</span> (BY)</dd>
-        </div>
-        <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-            <dt class="text-sm font-medium text-gray-500">2FA</dt>
-            <dd class="max-sm:mt-2 text-sm sm:col-span-2">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Включена</span>
-                <span class="hidden inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Выключена</span>
-            </dd>
-        </div>
-    </dl>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">ID</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">#222</dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Имя</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">Valeriy Burdaleyba</dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Email</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">valeron@mail.com</dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Язык использования</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">Ru</dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Номер телефона</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">-</dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Адрес</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">
+                    <p>Australian Capital Territory,</p>
+                    <p>Road STIRLING,</p>
+                    <p>24 Monteagle Road STIRLING ACT</p>
+                    <p>2611</p>
+                </dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Название компании</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">A+ Electronics</dd>
+            </div>
+            <div class="sm:flex items-center py-5 sm:grid sm:grid-cols-3 gap-4">
+                <dt class="text-sm font-medium text-gray-500">Последний логин</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">
+                    <span>{{ "now"|date("d/m/Y H:i:s") }} • <span class="text-indigo-700">37.214.25.177</span> (BY)</span>
+                    <button @click="overviewLogs()" type="button" class="inline-flex items-center ml-4 rounded-md border border-gray-300 px-4 py-2 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        <span class="text-xs font-medium text-gray-700">История</span>
+                    </button>
+                </dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">IP регистрации</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2"><span class="text-indigo-700">37.214.25.177</span> (BY)</dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">2FA</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Включена</span>
+                    <span class="hidden inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Выключена</span>
+                </dd>
+            </div>
+        </dl>
     </profile-settings>
 
     {% block modals %}

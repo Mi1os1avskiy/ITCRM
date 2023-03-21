@@ -190,6 +190,17 @@
 
 					{% block table %}
 
+						{% set tickets = [
+							{'id': '098249', 'theme': 'Amet sagittis quis fames cursus vel risus.', 'status': 'Open', 'priority': 3, 'dept': 'Служба поддержки', 'client': 'valeron-burdaleyba@mail.com', 'answered': '2h 3m'},
+							{'id': '1234231', 'theme': 'At sed consectetur tempus neque nascetur auctor.', 'status': 'In progress', 'priority': 2, 'dept': 'Служба поддержки', 'client': 'Alex Finn', 'answered': '2h 3m'},
+							{'id': '345345', 'theme': 'Malesuada quisque felis vitae risus consequat.', 'status': 'Answered', 'priority': 1, 'dept': 'Служба поддержки', 'client': 'Wade Warren', 'answered': '2h 3m'},
+							{'id': '324543', 'theme': 'Lacus etiam adipiscing ac morbi.', 'status': 'Customer reply', 'priority': 3, 'dept': 'Служба поддержки', 'client': 'Essther Howard', 'answered': '2h 3m'},
+							{'id': '8476534', 'theme': 'Sit elit nulla vestibulum mi nunc.', 'status': 'Waiting for manager', 'priority': 3, 'dept': 'Служба поддержки', 'client': 'Jenny Wilson', 'answered': '2h 3m'},
+							{'id': '908345', 'theme': 'Dictum feugiat in senectus est platea.', 'status': 'On hold', 'priority': 1, 'dept': 'Служба поддержки', 'client': 'Marvin McKinney', 'answered': '2h 3m'},
+							{'id': '094357', 'theme': 'Massa massa senectus velit metus euismod vitae imperdiet sem.', 'status': 'Closed', 'priority': 3, 'dept': 'Служба поддержки', 'client': 'Darlene Robertson', 'answered': '2h 3m'},
+							{'id': '763458', 'theme': 'Malesuada quisque felis vitae risus consequat.', 'status': 'Important!', 'priority': 2, 'dept': 'Служба поддержки', 'client': 'Jerome Bell', 'answered': '2h 3m'}
+						] %}
+
 						<div class="hidden sm:block">
 							<div class="mx-auto px-4 sm:px-6 lg:px-8">
 								<div class="mt-2 flex flex-col">
@@ -208,197 +219,54 @@
 											</tr>
 											</thead>
 											<tbody class="divide-y divide-gray-200 bg-white">
-											<tr>
-												<td class="whitespace-nowrap pl-6 py-4">
-													<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
-													<a href="#" class="font-medium hover:text-indigo-700">
-														<p class="truncate w-96 hover:w-full">#098249 - Amet sagittis quis fames cursus vel risus.</p>
-													</a>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4">
-													<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Open</span>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4">
-													<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm">
-													<p>Служба поддержки</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-													<p class="truncate w-36 hover:w-full">valeron-burdaleyba@mail.com</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">2h 3m</td>
-											</tr>
-											<tr>
-												<td class="whitespace-nowrap pl-6 py-4">
-													<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
-													<a href="#" class="font-medium hover:text-indigo-700">
-														<p class="truncate w-96 hover:w-full">#1234231 - At sed consectetur tempus neque nascetur auctor.</p>
-													</a>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4">
-													<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-200 text-orange-800">In progress</span>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 space-y-0.5">
-													<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
-													<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm">
-													<p>Служба поддержки</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-													<p class="truncate w-36 hover:w-full">Alex Finn</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">2h 3m</td>
-											</tr>
-											<tr>
-												<td class="whitespace-nowrap pl-6 py-4">
-													<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
-													<a href="#" class="font-medium hover:text-indigo-700">
-														<p class="truncate w-96 hover:w-full">#345345 - Malesuada quisque felis vitae risus consequat.</p>
-													</a>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4">
-													<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Answered</span>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 space-y-0.5">
-													<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
-													<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
-													<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm">
-													<p>Служба поддержки</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-													<p class="truncate w-36 hover:w-full">Wade Warren</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">2h 3m</td>
-											</tr>
-											<tr>
-												<td class="whitespace-nowrap pl-6 py-4">
-													<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
-													<a href="#" class="font-medium hover:text-indigo-700">
-														<p class="truncate w-96 hover:w-full">#324543 - Lacus etiam adipiscing ac morbi.</p>
-													</a>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4">
-													<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Customer reply</span>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4">
-													<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm">
-													<p>Служба поддержки</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-													<p class="truncate w-36 hover:w-full">Esther Howard</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">2h 3m</td>
-											</tr>
-											<tr>
-												<td class="whitespace-nowrap pl-6 py-4">
-													<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
-													<a href="#" class="font-medium hover:text-indigo-700">
-														<p class="truncate w-96 hover:w-full">#8723474 - Sit elit nulla vestibulum mi nunc.</p>
-													</a>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4">
-													<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">Waiting for manager</span>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4">
-													<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm">
-													<p>Служба поддержки</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-													<p class="truncate w-36 hover:w-full">Jenny Wilson</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">2h 3m</td>
-											</tr>
-											<tr>
-												<td class="whitespace-nowrap pl-6 py-4">
-													<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
-													<a href="#" class="font-medium hover:text-indigo-700">
-														<p class="truncate w-96 hover:w-full">#908345 - Dictum feugiat in senectus est platea.</p>
-													</a>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4">
-													<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">On hold</span>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4">
-													<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm">
-													<p>Служба поддержки</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-													<p class="truncate w-36 hover:w-full">Marvin McKinney</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">2h 3m</td>
-											</tr>
-											<tr>
-												<td class="whitespace-nowrap pl-6 py-4">
-													<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
-													<a href="#" class="font-medium hover:text-indigo-700">
-														<p class="truncate w-96 hover:w-full">#908345 - Dictum feugiat in senectus est platea.</p>
-													</a>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4">
-													<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Closed</span>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4">
-													<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm">
-													<p>Служба поддержки</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-													<p class="truncate w-36 hover:w-full">Darlene Robertson</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">2h 3m</td>
-											</tr>
-											<tr>
-												<td class="whitespace-nowrap pl-6 py-4">
-													<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
-													<a href="#" class="font-medium hover:text-indigo-700">
-														<p class="truncate w-96 hover:w-full">#763458 - Malesuada habitasse est sit ultricies at.</p>
-													</a>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4">
-													<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Important!</span>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4">
-													<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm">
-													<p>Служба поддержки</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-													<p class="truncate w-36 hover:w-full">Jerome Bell</p>
-												</td>
-												<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">2h 3m</td>
-											</tr>
+
+											{% for ticket in tickets %}
+
+												<tr>
+													<td class="whitespace-nowrap pl-6 py-4">
+														<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
+													</td>
+													<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
+														<a href="#" class="font-medium hover:text-indigo-700">
+															<p class="truncate w-96 hover:w-full">#{{ ticket.id }} - {{ ticket.theme }}</p>
+														</a>
+													</td>
+													<td class="whitespace-nowrap px-6 py-4">
+														<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+														{% if ticket.status in ['Open', 'Important!'] %}bg-red-100 text-red-800
+														{% elseif ticket.status == 'In progress' %}bg-orange-200 text-orange-800
+														{% elseif ticket.status in ['Answered', 'Customer reply', 'Waiting for manager'] %}bg-yellow-100 text-yellow-800
+														{% elseif ticket.status == 'On hold' %}bg-blue-100 text-blue-800
+														{% elseif ticket.status == 'Closed' %}bg-green-100 text-green-800
+														{% endif %}
+														">{{ ticket.status }}</span>
+													</td>
+													<td class="whitespace-nowrap px-6 py-4">
+														{% if ticket.priority == 3 %}
+															<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
+														{% elseif ticket.priority == 2 %}
+															<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
+															<div class="mt-0.5 h-0.5 w-2.5 rounded bg-orange-400"></div>
+														{% elseif ticket.priority == 1 %}
+															<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
+															<div class="mt-0.5 h-0.5 w-2.5 rounded bg-red-400"></div>
+															<div class="mt-0.5 h-0.5 w-2.5 rounded bg-red-400"></div>
+														{% endif %}
+													</td>
+													<td class="whitespace-nowrap px-6 py-4 text-sm">
+														<p>{{ ticket.dept }}</p>
+													</td>
+													<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+														<p class="truncate w-36 hover:w-full">{{ ticket.client }}</p>
+													</td>
+													<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{{ ticket.answered }}</td>
+												</tr>
+
+											{% endfor %}
+
 											</tbody>
 										</table>
 
-										<!-- Pagination -->
 										<div class="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-4 sm:px-6">
 											<div class="flex flex-1 justify-between sm:hidden">
 												<a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
@@ -413,7 +281,6 @@
 																<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
 															</svg>
 														</a>
-														<!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
 														<a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
 														<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
 														<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>

@@ -59,6 +59,14 @@
 
             {% block table %}
 
+                {% set credits = [
+                    {'date': '17/02/2023', 'time': '17:30:02', 'country': 'MSK', 'method': 'Баланс', 'id': '', 'user': '', 'appointment': 'Инвойс 4833749', 'amount_stat': 'low', 'amount': '9.99', 'description': 'Оплата инвойса с входящей транзакции'},
+                    {'date': '17/02/2023', 'time': '17:30:02', 'country': 'MSK', 'method': 'Баланс', 'id': '', 'user': '', 'appointment': 'Инвойс 4833749', 'amount_stat': 'high', 'amount': '19.99', 'description': 'Оплата инвойса с баланса клиента'},
+                    {'date': '17/02/2023', 'time': '17:30:02', 'country': 'MSK', 'method': 'Баланс', 'id': '', 'user': '', 'appointment': 'Баланс', 'amount_stat': 'low', 'amount': '200.00', 'description': 'Credit to the balance from the transaction (balance)'},
+                    {'date': '17/02/2023', 'time': '17:30:02', 'country': 'MSK', 'method': 'Custom', 'id': '23202', 'user': 'Admin', 'appointment': 'Инвойс 4833749', 'amount_stat': 'normal', 'amount': '50.00', 'description': 'Оплата инвойса с входящей транзакции'},
+                    {'date': '17/02/2023', 'time': '17:30:02', 'country': 'MSK', 'method': 'Баланс', 'id': '', 'user': '', 'appointment': 'Инвойс 4833749', 'amount_stat': 'low', 'amount': '999.99', 'description': 'Оплата инвойса с входящей транзакции'}
+                ] %}
+
                 <div class="hidden sm:block">
                     <div class="mx-auto px-4 sm:px-6 lg:px-8">
                         <div class="mt-2 flex flex-col">
@@ -76,65 +84,32 @@
                                     </thead>
 
                                     <tbody class="divide-y divide-gray-200">
+
+                                    {% for credit in credits %}
+
                                         <tr>
                                             <td class="px-6 py-4 text-sm font-medium whitespace-nowrap">
-                                                <a href="#" class="hover:text-indigo-700">17/02/2023, 13:17 (MSK)</a>
+                                                <a href="#" class="hover:text-indigo-700">{{ credit.date }}, {{ credit.time}} ({{ credit.country }})</a>
                                             </td>
-                                            <td class="px-6 py-4 text-sm text-gray-500">Баланс</td>
+                                            <td class="px-6 py-4 text-sm text-gray-500">{{ credit.method }}{% if credit.id %} #{{ credit.id }} by <a href="#" class="text-gray-900 hover:text-indigo-700">{{ credit.user }}</a>{% endif %}</td>
                                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                                <a href="#" class="hover:text-indigo-700">Инвойс 4833749</a>
+                                                <a href="#" class="hover:text-indigo-700">{{ credit.appointment }}</a>
                                             </td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">$9.99</td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">Оплата инвойса с входящей транзакции</td>
+                                            {% if credit.amount_stat == 'low' %}
+                                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">${{ credit.amount }}</td>
+                                            {% elseif credit.amount_stat == 'normal' %}
+                                                <td class="whitespace-nowrap px-6 py-4 text-sm text-green-500">${{ credit.amount }}</td>
+                                            {% elseif credit.amount_stat == 'high' %}
+                                                <td class="whitespace-nowrap px-6 py-4 text-sm text-red-500">${{ credit.amount }}</td>
+                                            {% endif %}
+                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{{ credit.description }}</td>
                                         </tr>
-                                        <tr>
-                                            <td class="px-6 py-4 text-sm font-medium whitespace-nowrap">
-                                                <a href="#" class="hover:text-indigo-700">17/02/2023, 13:17 (MSK)</a>
-                                            </td>
-                                            <td class="px-6 py-4 text-sm text-gray-500">Баланс</td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                                <a href="#" class="hover:text-indigo-700">Инвойс 4833749</a>
-                                            </td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-red-500">$9.99</td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">Оплата инвойса с баланса клиента</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-6 py-4 text-sm font-medium whitespace-nowrap">
-                                                <a href="#" class="hover:text-indigo-700">17/02/2023, 13:17 (MSK)</a>
-                                            </td>
-                                            <td class="px-6 py-4 text-sm text-gray-500">Баланс</td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                                <a href="#" class="hover:text-indigo-700">Баланс</a>
-                                            </td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">$200.00</td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">Credit to the balance from the transaction (balance)</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-6 py-4 text-sm font-medium whitespace-nowrap">
-                                                <a href="#" class="hover:text-indigo-700">17/02/2023, 13:17 (MSK)</a>
-                                            </td>
-                                            <td class="px-6 py-4 text-sm text-gray-500">Custom #23202 by <a href="#" class="text-gray-900 hover:text-indigo-700">Admin</a></td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                                <a href="#" class="hover:text-indigo-700">Инвойс 4833749</a>
-                                            </td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-green-500">$9.99</td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">Оплата инвойса с входящей транзакции</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-6 py-4 text-sm font-medium whitespace-nowrap">
-                                                <a href="#" class="hover:text-indigo-700">17/02/2023, 13:17 (MSK)</a>
-                                            </td>
-                                            <td class="px-6 py-4 text-sm text-gray-500">Баланс</td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                                <a href="#" class="hover:text-indigo-700">Инвойс 4833749</a>
-                                            </td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">$9.99</td>
-                                            <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">Оплата инвойса с входящей транзакции</td>
-                                        </tr>
+
+                                    {% endfor %}
+
                                     </tbody>
                                 </table>
 
-                                <!-- Pagination -->
                                 <div class="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-4 sm:px-6">
                                     <div class="flex flex-1 justify-between sm:hidden">
                                         <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
@@ -149,7 +124,6 @@
                                                         <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
                                                     </svg>
                                                 </a>
-                                                <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
                                                 <a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
                                                 <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
                                                 <a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
