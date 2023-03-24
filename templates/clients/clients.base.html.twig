@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block main %}
+
+	<clients-module inline-template>
+		<div class="flex flex-1 flex-col">
+			<main class="flex-1 mb-24">
+
+			{% block content %}{% endblock %}
+
+			</main>
+		</div>
+	</clients-module>
+
+{% endblock %}
+
+

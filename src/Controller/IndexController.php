@@ -54,7 +54,7 @@ class IndexController extends AbstractController
 //    {
 //        $links = ['overview', 'profile', 'services', 'invoices', 'tickets', 'credits', 'emails', 'notes', 'log'];
 //
-//        return $this->render('profile.base.html.twig', [
+//        return $this->render('clients.base.html.twig', [
 //            'id' => $id,
 //            'links' => $links,
 //        ]);
@@ -167,6 +167,36 @@ class IndexController extends AbstractController
     {
         return $this->render('support/support.new.ticket.html.twig', [
             'title' => 'Новый тикет',
+        ]);
+    }
+
+    /**
+     * @Route("/billing/billing.invoices.html.twig", name="billing_invoices")
+     */
+    public function billingInvoices(): Response
+    {
+        return $this->render('billing/billing.invoices.html.twig', [
+            'title' => 'Инвойсы',
+        ]);
+    }
+
+    /**
+     * @Route("/billing/billing.new.invoice.html.twig", name="billing_new_invoice")
+     */
+    public function billingNewInvoice(): Response
+    {
+        return $this->render('billing/billing.new.invoice.html.twig', [
+            'title' => 'Новый инвойс',
+        ]);
+    }
+
+    /**
+     * @Route("/billing/billing.edit.invoice.html.twig", name="billing_edit_invoice")
+     */
+    public function billingEditInvoice(): Response
+    {
+        return $this->render('billing/billing.edit.invoice.html.twig', [
+            'title' => 'Редактировать инвойс',
         ]);
     }
 }

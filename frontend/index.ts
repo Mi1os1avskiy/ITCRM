@@ -20,5 +20,6 @@ const app = new Vue({
 		'menu-panel': MenuPanelComponent,
 		'clients-module': () => import(/* webpackChunkName: "clients" */ "./clients/module"),
 		'support-module': () => import(/* webpackChunkName: "support" */ "./support/module"),
+		'billing-module': () => import(/* webpackChunkName: "support" */ "./billing/module"),
 	}
 });
