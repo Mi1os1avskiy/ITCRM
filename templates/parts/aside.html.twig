@@ -124,7 +124,7 @@
 							</svg>
 						</button>
 						<div class="space-y-1 mb-6 overflow-x-hidden">
-							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="{{ path('billing_transactions') }}" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Транзакции</span>
 							</a>
 							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
@@ -136,7 +136,7 @@
 							<a href="{{ path('billing_invoices') }}" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Инвойсы</span>
 							</a>
-							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="{{ path('billing_new_invoice') }}" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M10 3C10.5523 3 11 3.44772 11 4V9H16C16.5523 9 17 9.44772 17 10C17 10.5523 16.5523 11 16 11H11V16C11 16.5523 10.5523 17 10 17C9.44772 17 9 16.5523 9 16V11H4C3.44772 11 3 10.5523 3 10C3 9.44771 3.44772 9 4 9L9 9V4C9 3.44772 9.44772 3 10 3Z" fill="#9CA3AF"/>
 								</svg>
@@ -262,15 +262,15 @@
 					</div>
 
 					<div class="flex-initial bg-gray-700 px-3 py-2">
-						<button aria-expanded="false" class="overflow-x-auto w-full group text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
+						<button aria-expanded="false" class="overflow-x-auto w-full group text-gray-300 hover:text-gray-200 hover:bg-gray-600 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
 							<div class="flex items-center space-x-2">
-								<svg class="text-gray-400 group-hover:text-white" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<svg class="text-gray-300 group-hover:text-gray-200" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M21.6 12C21.6 17.302 17.3019 21.6 12 21.6C6.69806 21.6 2.39999 17.302 2.39999 12C2.39999 6.69809 6.69806 2.40002 12 2.40002C17.3019 2.40002 21.6 6.69809 21.6 12ZM15 9.00002C15 10.6569 13.6568 12 12 12C10.3431 12 8.99999 10.6569 8.99999 9.00002C8.99999 7.34317 10.3431 6.00002 12 6.00002C13.6568 6.00002 15 7.34317 15 9.00002ZM12 14.4C9.64959 14.4 7.56224 15.5263 6.24814 17.2685C7.6741 18.8244 9.72312 19.8 12 19.8C14.2769 19.8 16.3259 18.8245 17.7518 17.2685C16.4377 15.5263 14.3504 14.4 12 14.4Z" fill="currentColor"/>
 								</svg>
 								<span>Аккаунт</span>
 							</div>
 							<div class="flex items-center">
-								<svg class="text-gray-400 group-hover:text-white" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<svg class="text-gray-300 group-hover:text-gray-200" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M10 3C10.2652 3 10.5196 3.10536 10.7071 3.29289L13.7071 6.29289C14.0976 6.68342 14.0976 7.31658 13.7071 7.70711C13.3166 8.09763 12.6834 8.09763 12.2929 7.70711L10 5.41421L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711C5.90237 7.31658 5.90237 6.68342 6.29289 6.29289L9.29289 3.29289C9.48043 3.10536 9.73478 3 10 3ZM6.29289 12.2929C6.68342 11.9024 7.31658 11.9024 7.70711 12.2929L10 14.5858L12.2929 12.2929C12.6834 11.9024 13.3166 11.9024 13.7071 12.2929C14.0976 12.6834 14.0976 13.3166 13.7071 13.7071L10.7071 16.7071C10.3166 17.0976 9.68342 17.0976 9.29289 16.7071L6.29289 13.7071C5.90237 13.3166 5.90237 12.6834 6.29289 12.2929Z" fill="currentColor"/>
 								</svg>
 							</div>

@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Model\Users;
+use App\Controller\Billing\Invoices;
 
 
 class IndexController extends AbstractController
@@ -197,6 +198,19 @@ class IndexController extends AbstractController
     {
         return $this->render('billing/billing.edit.invoice.html.twig', [
             'title' => 'Редактировать инвойс',
+            'services' => Invoices::allServices(),
+            'data' => Invoices::invoiceData(),
+            'saved' => Invoices::lastSaved()
+        ]);
+    }
+
+    /**
+     * @Route("/billing/billing.transactions.html.twig", name="billing_transactions")
+     */
+    public function billingTransactions(): Response
+    {
+        return $this->render('billing/billing.transactions.html.twig', [
+            'title' => 'Транзакции',
         ]);
     }
 }
