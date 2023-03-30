@@ -1,0 +1,16 @@
+{% extends'/misc/modals/base.modal.html.twig' %}
+
+{% block modal_name %}billing-invoice-notation-add{% endblock %}
+
+{% block modal_content %}
+
+	<div class="relative transform overflow-hidden rounded-lg bg-white my-auto p-6 space-y-6 text-left shadow-xl transition-all sm:w-full sm:max-w-3xl">
+		<h3 class="text-lg font-medium text-gray-900">Добавить примечание</h3>
+		<textarea class="resize-none w-full rounded-md border border-gray-300 focus:outline-none" rows="5"></textarea>
+		<div class="sm:flex sm:space-x-3 sm:text-sm font-medium">
+			<button @click="close(false)" type="button" class="w-full rounded-md border border-gray-300 px-4 py-[9px] text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Отменить</button>
+			<button @click="close(true)" type="button" class="max-sm:mt-3 w-full rounded-md border border-transparent bg-indigo-600 px-4 py-[9px] text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Добавить</button>
+		</div>
+	</div>
+
+{% endblock %}

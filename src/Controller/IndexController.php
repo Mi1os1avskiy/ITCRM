@@ -1,6 +1,9 @@
 <?php
 namespace App\Controller;
 
+use App\Controller\Billing\InvoiceEdit;
+use App\Controller\Billing\InvoiceStatuses;
+use App\Controller\Billing\InvoiceView;
 use App\Model\Parameters;
 use http\Env\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -198,9 +201,22 @@ class IndexController extends AbstractController
     {
         return $this->render('billing/billing.edit.invoice.html.twig', [
             'title' => 'Редактировать инвойс',
-            'services' => Invoices::allServices(),
-            'data' => Invoices::invoiceData(),
-            'saved' => Invoices::lastSaved()
+            'services' => InvoiceEdit::allServices(),
+            'data' => InvoiceEdit::invoiceData(),
+            'saved' => InvoiceEdit::lastSaved()
+        ]);
+    }
+
+    /**
+     * @Route("/billing/billing.view.invoice.html.twig", name="billing_view_invoice")
+     */
+    public function billingViewInvoice(): Response
+    {
+        return $this->render('billing/billing.view.invoice.html.twig', [
+            'title' => 'Инвойс',
+            'data' => InvoiceView::invoiceData(),
+            'invoices' => InvoiceView::createInvoices(),
+            'statuses' => InvoiceStatuses::invoiceStatuses(),
         ]);
     }
 
