@@ -148,7 +148,7 @@
 
 										<tr class="flex text-sm {% if invoice.status == 'Draft' %}bg-gray-50{% endif %}">
 											<td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left font-medium {% if invoice.status == 'Draft' %}text-gray-500{% endif %}">
-												<a href="{{ path('billing_edit_invoice') }}" class="hover:text-indigo-700">{{ invoice.num }}</a>
+												<a {% if invoice.status == 'Draft' %}href="{{ path('billing_edit_draft') }}"{% else %}href="{{ path('billing_view_invoice') }}"{% endif %} class="hover:text-indigo-700">{{ invoice.num }}</a>
 											</td>
 											<td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
 												<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
@@ -160,7 +160,7 @@
 												">{{ invoice.status }}</span>
 											</td>
 											<td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-												<a href="{{ path('billing_view_invoice') }}" class="hover:text-indigo-700">{{ invoice.client }}</a>
+												<a {% if invoice.status == 'Draft' %}href="{{ path('billing_edit_draft') }}"{% else %}href="{{ path('billing_view_invoice') }}"{% endif %} class="hover:text-indigo-700">{{ invoice.client }}</a>
 											</td>
 											<td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">{{ invoice.payment }}</td>
 											<td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">{{ invoice.excerpt }}</td>

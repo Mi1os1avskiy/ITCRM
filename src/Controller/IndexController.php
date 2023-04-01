@@ -1,16 +1,11 @@
 <?php
 namespace App\Controller;
 
-use App\Controller\Billing\InvoiceEdit;
-use App\Controller\Billing\InvoiceStatuses;
-use App\Controller\Billing\InvoiceView;
-use App\Model\Parameters;
-use http\Env\Request;
-use Symfony\Component\HttpFoundation\Response;
+use App\Controller\Billing\InvoiceController;
+use App\Controller\Clients\Users;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Model\Users;
-use App\Controller\Billing\Invoices;
 
 
 class IndexController extends AbstractController
@@ -30,13 +25,6 @@ class IndexController extends AbstractController
         return $this->render('clients/clients.html.twig', [
             'title' => 'Клиенты',
             'users' => Users::CreateTable(),
-        ]);
-    }
-
-    public function profileMenu(): Response
-    {
-        return $this->render('clients/header.profile.html.twig', [
-            'parameters' => Parameters::UserProfileMenu(),
         ]);
     }
 
@@ -195,15 +183,15 @@ class IndexController extends AbstractController
     }
 
     /**
-     * @Route("/billing/billing.edit.invoice.html.twig", name="billing_edit_invoice")
+     * @Route("/billing/billing.edit.draft.invoice.html.twig", name="billing_edit_draft")
      */
-    public function billingEditInvoice(): Response
+    public function billingEditDraft(): Response
     {
-        return $this->render('billing/billing.edit.invoice.html.twig', [
+        return $this->render('billing/billing.edit.draft.invoice.html.twig', [
             'title' => 'Редактировать инвойс',
-            'services' => InvoiceEdit::allServices(),
-            'data' => InvoiceEdit::invoiceData(),
-            'saved' => InvoiceEdit::lastSaved()
+            'services' => InvoiceController::allServices(),
+            'data' => InvoiceController::invoiceUserData(),
+            'saved' => InvoiceController::lastSaved()
         ]);
     }
 
@@ -214,9 +202,9 @@ class IndexController extends AbstractController
     {
         return $this->render('billing/billing.view.invoice.html.twig', [
             'title' => 'Инвойс',
-            'data' => InvoiceView::invoiceData(),
-            'invoices' => InvoiceView::createInvoices(),
-            'statuses' => InvoiceStatuses::invoiceStatuses(),
+            'data' => InvoiceController::invoiceData(),
+            'invoices' => InvoiceController::createInvoices(),
+            'statuses' => InvoiceController::invoiceStatuses(),
         ]);
     }
 
