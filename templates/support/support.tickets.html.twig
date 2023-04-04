@@ -190,17 +190,6 @@
 
 					{% block table %}
 
-						{% set tickets = [
-							{'id': '098249', 'theme': 'Amet sagittis quis fames cursus vel risus.', 'status': 'Open', 'priority': 3, 'dept': 'Служба поддержки', 'client': 'valeron-burdaleyba@mail.com', 'answered': '2h 3m'},
-							{'id': '1234231', 'theme': 'At sed consectetur tempus neque nascetur auctor.', 'status': 'In progress', 'priority': 2, 'dept': 'Служба поддержки', 'client': 'Alex Finn', 'answered': '2h 3m'},
-							{'id': '345345', 'theme': 'Malesuada quisque felis vitae risus consequat.', 'status': 'Answered', 'priority': 1, 'dept': 'Служба поддержки', 'client': 'Wade Warren', 'answered': '2h 3m'},
-							{'id': '324543', 'theme': 'Lacus etiam adipiscing ac morbi.', 'status': 'Customer reply', 'priority': 3, 'dept': 'Служба поддержки', 'client': 'Essther Howard', 'answered': '2h 3m'},
-							{'id': '8476534', 'theme': 'Sit elit nulla vestibulum mi nunc.', 'status': 'Waiting for manager', 'priority': 3, 'dept': 'Служба поддержки', 'client': 'Jenny Wilson', 'answered': '2h 3m'},
-							{'id': '908345', 'theme': 'Dictum feugiat in senectus est platea.', 'status': 'On hold', 'priority': 1, 'dept': 'Служба поддержки', 'client': 'Marvin McKinney', 'answered': '2h 3m'},
-							{'id': '094357', 'theme': 'Massa massa senectus velit metus euismod vitae imperdiet sem.', 'status': 'Closed', 'priority': 3, 'dept': 'Служба поддержки', 'client': 'Darlene Robertson', 'answered': '2h 3m'},
-							{'id': '763458', 'theme': 'Malesuada quisque felis vitae risus consequat.', 'status': 'Important!', 'priority': 2, 'dept': 'Служба поддержки', 'client': 'Jerome Bell', 'answered': '2h 3m'}
-						] %}
-
 						<div class="hidden sm:block">
 							<div class="mx-auto px-4 sm:px-6 lg:px-8">
 								<div class="mt-2 flex flex-col">
@@ -227,19 +216,16 @@
 														<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
 													</td>
 													<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
-														<a href="#" class="font-medium hover:text-indigo-700">
+														<a href="{{ path('support_ticket_answer') }}" class="font-medium hover:text-indigo-700">
 															<p class="truncate w-96 hover:w-full">#{{ ticket.id }} - {{ ticket.theme }}</p>
 														</a>
 													</td>
 													<td class="whitespace-nowrap px-6 py-4">
-														<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-														{% if ticket.status in ['Open', 'Important!'] %}bg-red-100 text-red-800
-														{% elseif ticket.status == 'In progress' %}bg-orange-200 text-orange-800
-														{% elseif ticket.status in ['Answered', 'Customer reply', 'Waiting for manager'] %}bg-yellow-100 text-yellow-800
-														{% elseif ticket.status == 'On hold' %}bg-blue-100 text-blue-800
-														{% elseif ticket.status == 'Closed' %}bg-green-100 text-green-800
-														{% endif %}
-														">{{ ticket.status }}</span>
+														{% for status in statuses %}
+															{% if ticket.status == status.title %}
+																<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ status.css }}">{{ ticket.status }}</span>
+															{% endif %}
+														{% endfor %}
 													</td>
 													<td class="whitespace-nowrap px-6 py-4">
 														{% if ticket.priority == 3 %}
@@ -259,7 +245,7 @@
 													<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
 														<p class="truncate w-36 hover:w-full">{{ ticket.client }}</p>
 													</td>
-													<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{{ ticket.answered }}</td>
+													<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{{ time }}</td>
 												</tr>
 
 											{% endfor %}

@@ -1,0 +1,18 @@
+{% extends 'support/support.base.html.twig' %}
+
+{% set currentTab = 'answer' %}
+
+{% block content %}
+
+	{% block header %}
+		{% include 'support/support.header.view.ticket.html.twig' %}
+	{% endblock %}
+
+
+
+	{% block modals %}
+		{% include 'clients/profile/modals/clients.credits.delete.html.twig' %}
+		{% include 'clients/profile/modals/clients.credits.add.html.twig' %}
+	{% endblock %}
+
+{% endblock %}

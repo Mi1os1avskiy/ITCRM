@@ -87,10 +87,29 @@
 							<textarea class="w-full py-[9px] px-[13px] resize-none rounded-md border border-gray-300 text-sm placeholder-gray-400" placeholder="Описание"></textarea>
 						</div>
 
-						<div class="py-5 pl-4 pr-6">
-							<div class="flex items-center py-[9px] px-[13px] border border-gray-300 rounded-md text-sm">
-								<span class="mr-3 cursor-default">$</span>
-								<input class="ml-3 w-16 placeholder-gray-400 focus:outline-none" placeholder="0.00">
+						<div class="items-start">
+							<div class="flex items-center py-5 pl-4 pr-6 space-x-3">
+								<div class="flex py-[9px] px-[13px] border border-gray-300 rounded-md text-sm">
+									<span class="mr-3 cursor-default">$</span>
+									<input class="ml-3 w-16 placeholder-gray-400 focus:outline-none" placeholder="0.00">
+								</div>
+								<div class="relative inline-block text-left">
+									<button type="button" class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" aria-expanded="false" aria-haspopup="true" aria-expanded-autohide>
+										<svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 6C8.89543 6 8 5.10457 8 4C8 2.89543 8.89543 2 10 2C11.1046 2 12 2.89543 12 4C12 5.10457 11.1046 6 10 6Z" fill="#9CA3AF"/>
+											<path d="M10 12C8.89543 12 8 11.1046 8 10C8 8.89543 8.89543 8 10 8C11.1046 8 12 8.89543 12 10C12 11.1046 11.1046 12 10 12Z" fill="#9CA3AF"/>
+											<path d="M10 18C8.89543 18 8 17.1046 8 16C8 14.8954 8.89543 14 10 14C11.1046 14 12 14.8954 12 16C12 17.1046 11.1046 18 10 18Z" fill="#9CA3AF"/>
+										</svg>
+									</button>
+									<ul class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y rounded-md bg-white text-sm text-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+										<li>
+											<button type="button" class="w-full px-4 py-3 text-left hover:bg-gray-50">Дублировать</button>
+										</li>
+										<li>
+											<button type="button" class="w-full px-4 py-3 text-left hover:bg-gray-50">Удалить</button>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>

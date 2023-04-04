@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\Billing\InvoiceController;
 use App\Controller\Clients\Users;
+use App\Controller\Support\TicketsController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -149,6 +150,70 @@ class IndexController extends AbstractController
     {
         return $this->render('support/support.tickets.html.twig', [
             'title' => 'Тикеты',
+            'tickets' => TicketsController::ticketsTable(),
+            'statuses' => TicketsController::ticketStatuses(),
+            'time' => TicketsController::timeDiff(),
+        ]);
+    }
+
+    /**
+     * @Route("/support/ticket/answer", name="support_ticket_answer")
+     */
+    public function supportTicketAnswer(): Response
+    {
+        return $this->render('support/overview/answer.html.twig', [
+            'title' => 'Тикет #',
+            'data' => TicketsController::ticketData(),
+            'tabs' => TicketsController::ticketNavigation(),
+            'messages' => TicketsController::ticketMessages(),
+        ]);
+    }
+
+    /**
+     * @Route("/support/ticket/notes", name="support_ticket_notes")
+     */
+    public function supportTicketNotes(): Response
+    {
+        return $this->render('support/overview/notes.html.twig', [
+            'title' => 'Тикет #',
+            'data' => TicketsController::ticketData(),
+            'tabs' => TicketsController::ticketNavigation(),
+        ]);
+    }
+
+    /**
+     * @Route("/support/ticket/options", name="support_ticket_options")
+     */
+    public function supportTicketOptions(): Response
+    {
+        return $this->render('support/overview/options.html.twig', [
+            'title' => 'Тикет #',
+            'data' => TicketsController::ticketData(),
+            'tabs' => TicketsController::ticketNavigation(),
+        ]);
+    }
+
+    /**
+     * @Route("/support/ticket/log", name="support_ticket_log")
+     */
+    public function supportTicketLog(): Response
+    {
+        return $this->render('support/overview/log.html.twig', [
+            'title' => 'Тикет #',
+            'data' => TicketsController::ticketData(),
+            'tabs' => TicketsController::ticketNavigation(),
+        ]);
+    }
+
+    /**
+     * @Route("/support/ticket/others", name="support_ticket_others")
+     */
+    public function supportTicketOthers(): Response
+    {
+        return $this->render('support/overview/others.html.twig', [
+            'title' => 'Тикет #',
+            'data' => TicketsController::ticketData(),
+            'tabs' => TicketsController::ticketNavigation(),
         ]);
     }
 

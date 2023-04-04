@@ -1,0 +1,170 @@
+<div class="mx-auto px-4 sm:px-6 lg:px-8 bg-gray-50">
+	<nav class="pt-4 flex items-center text-sm text-gray-500 font-medium">
+		<a href="{{ path('support_tickets') }}">Тикеты</a>
+		<span class="ml-3">
+	        <svg width="20" height="20" viewBox="0 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+	            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#9CA3AF"/>
+	        </svg>
+	    </span>
+		<span class="ml-3">Тикет #{{ data.ticket_id }}</span>
+	</nav>
+
+	<div class="flex items-center justify-between h-12 mt-2 space-x-4">
+		<div class="space-y-1">
+			<p class="font-semibold text-lg">{{ data.ticket_title }}</p>
+			<p class="text-gray-500 text-sm">#{{ data.ticket_id }}</p>
+		</div>
+		<div class="flex space-x-3">
+			<div class="relative flex flex-shrink-0">
+				<button type="button" class="flex items-center relative rounded-md border border-gray-300 pl-3 pr-10 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500" aria-haspopup="listbox" aria-expanded="false" aria-expanded-autohide aria-labelledby="listbox-label">
+					<div class="h-0.5 w-2.5 mr-3 rounded bg-green-400"></div>
+					<div class="pointer-events-none text-sm">Низкий приоритет</div>
+					<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M10 3C10.2652 3 10.5196 3.10536 10.7071 3.29289L13.7071 6.29289C14.0976 6.68342 14.0976 7.31658 13.7071 7.70711C13.3166 8.09763 12.6834 8.09763 12.2929 7.70711L10 5.41421L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711C5.90237 7.31658 5.90237 6.68342 6.29289 6.29289L9.29289 3.29289C9.48043 3.10536 9.73478 3 10 3ZM6.29289 12.2929C6.68342 11.9024 7.31658 11.9024 7.70711 12.2929L10 14.5858L12.2929 12.2929C12.6834 11.9024 13.3166 11.9024 13.7071 12.2929C14.0976 12.6834 14.0976 13.3166 13.7071 13.7071L10.7071 16.7071C10.3166 17.0976 9.68342 17.0976 9.29289 16.7071L6.29289 13.7071C5.90237 13.3166 5.90237 12.6834 6.29289 12.2929Z" fill="#9CA3AF"/>
+						</svg>
+					</div>
+				</button>
+				<ul class="absolute z-10 mt-12 max-h-60 w-max rounded-md bg-white py-1 divide-y text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label">
+					<li class="text-gray-900 relative cursor-default select-none py-3 pl-4 pr-24">
+						<div class="flex items-center">
+							<div class="space-y-0.5">
+								<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
+								<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
+								<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
+							</div>
+							<span class="font-normal ml-3 block">Высокий приоритет</span>
+						</div>
+					</li>
+					<li class="text-gray-900 relative cursor-default select-none py-3 pl-4 pr-24">
+						<div class="flex items-center">
+							<div class="space-y-0.5">
+								<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
+								<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
+							</div>
+							<span class="font-normal ml-3 block">Средний приоритет</span>
+						</div>
+					</li>
+					<li class="text-gray-900 relative cursor-default select-none py-3 pl-4 pr-24">
+						<div class="flex items-center">
+							<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
+							<span class="font-normal ml-3 block">Низкий приоритет</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="relative flex flex-shrink-0">
+				<button type="button" class="relative flex rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500" aria-haspopup="listbox" aria-expanded="false" aria-expanded-autohide aria-labelledby="listbox-label">
+					<svg class="mr-3" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M7 8C8.65685 8 10 6.65685 10 5C10 3.34315 8.65685 2 7 2C5.34315 2 4 3.34315 4 5C4 6.65685 5.34315 8 7 8Z" fill="#9CA3AF"/>
+						<path d="M14.5 9C15.8807 9 17 7.88071 17 6.5C17 5.11929 15.8807 4 14.5 4C13.1193 4 12 5.11929 12 6.5C12 7.88071 13.1193 9 14.5 9Z" fill="#9CA3AF"/>
+						<path d="M1.61528 16.428C1.21798 16.1736 0.987847 15.721 1.04605 15.2529C1.41416 12.292 3.93944 10 6.9999 10C10.0604 10 12.5856 12.2914 12.9537 15.2522C13.012 15.7203 12.7818 16.1729 12.3845 16.4273C10.8302 17.4225 8.98243 18 6.9999 18C5.01737 18 3.16959 17.4231 1.61528 16.428Z" fill="#9CA3AF"/>
+						<path d="M14.5001 16C14.4647 16 14.4295 15.9998 14.3943 15.9993C14.4631 15.7025 14.4822 15.3885 14.4423 15.0671C14.2668 13.6562 13.7001 12.367 12.854 11.3116C13.3646 11.1105 13.9208 11 14.5028 11C16.4426 11 18.0956 12.2273 18.7279 13.9478C18.8638 14.3176 18.7045 14.7241 18.3671 14.9275C17.2379 15.6083 15.9147 16 14.5001 16Z" fill="#9CA3AF"/>
+					</svg>
+					<div class="pointer-events-none text-sm">Служба поддержки</div>
+					<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+						<svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+							<path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
+						</svg>
+					</div>
+				</button>
+				<ul class="absolute z-10 mt-12 max-h-60 w-max rounded-md bg-white py-1 divide-y text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
+					<li class="text-gray-900 relative cursor-default select-none py-3 pl-4 pr-24"role="option">
+						<div class="flex items-center">
+							<span class="font-normal ml-3 block">Команда поддержки</span>
+						</div>
+					</li>
+					<li class="text-gray-900 relative cursor-default select-none py-3 pl-4 pr-24" role="option">
+						<div class="flex items-center">
+							<span class="font-normal ml-3 block">Ещё какая-то команда</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="flex">
+				<button type="button" class="inline-flex items-center rounded-l-md border-r border-red-700 bg-red-500 px-[17px] py-[9px] shadow-sm hover:bg-red-600">
+					<span class="text-sm font-medium text-white">Open</span>
+				</button>
+				<div class="relative -ml-px">
+					<button type="button" class="rounded-r-md border-l border-red-700 bg-red-500 p-[9px] shadow-sm hover:bg-red-600">
+						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M5.23017 7.20938C5.52875 6.92228 6.00353 6.93159 6.29063 7.23017L10 11.1679L13.7094 7.23017C13.9965 6.93159 14.4713 6.92228 14.7698 7.20938C15.0684 7.49647 15.0777 7.97125 14.7906 8.26983L10.5406 12.7698C10.3992 12.9169 10.204 13 10 13C9.79599 13 9.60078 12.9169 9.45938 12.7698L5.20938 8.26983C4.92228 7.97125 4.93159 7.49647 5.23017 7.20938Z" fill="white"/>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="2xl:flex mt-6 2xl:space-x-6 max-2xl:space-y-4">
+		<div class="flex flex-shrink-0 items-center max-2xl:w-fit py-2 px-4 space-x-4 border border-gray-300 rounded-lg text-sm font-medium">
+			<svg class="flex-shrink-0 ml-2" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect width="48" height="48" rx="24" fill="#F3F4F6"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 18C19.5 15.5147 21.5147 13.5 24 13.5C26.4852 13.5 28.5 15.5147 28.5 18C28.5 20.4853 26.4852 22.5 24 22.5C21.5147 22.5 19.5 20.4853 19.5 18Z" fill="#374151"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M15.7512 32.1053C15.8286 27.6156 19.4919 24 24 24C28.5081 24 32.1716 27.6157 32.2487 32.1056C32.2538 32.4034 32.0823 32.676 31.8116 32.8002C29.4327 33.8918 26.7865 34.5 24.0003 34.5C21.2138 34.5 18.5674 33.8917 16.1883 32.7999C15.9176 32.6757 15.7461 32.4031 15.7512 32.1053Z" fill="#374151"/>
+			</svg>
+			<div class="text-sm">
+				<p class="text-gray-900">{{ data.ticket_email }}</p>
+				<p class="text-gray-500">{{ data.ticket_username }}</p>
+			</div>
+			<button type="button">
+				<svg class="arrow duration-100 pointer-events-none text-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M5.23017 7.20938C5.52875 6.92228 6.00353 6.93159 6.29063 7.23017L10 11.1679L13.7094 7.23017C13.9965 6.93159 14.4713 6.92228 14.7698 7.20938C15.0684 7.49647 15.0777 7.97125 14.7906 8.26983L10.5406 12.7698C10.3992 12.9169 10.204 13 10 13C9.79599 13 9.60078 12.9169 9.45938 12.7698L5.20938 8.26983C4.92228 7.97125 4.93159 7.49647 5.23017 7.20938Z" fill="currentColor"/>
+				</svg>
+			</button>
+			<button type="button" class="max-md:ml-auto py-[9px] px-[13px] border border-gray-300 rounded-md shadow-sm text-gray-700 hover:bg-gray-50">Изменить</button>
+		</div>
+		<div class="flex w-fit items-center py-2 px-6 space-x-2 border border-gray-300 rounded-lg text-sm font-medium">
+			<svg class="flex-shrink-0" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect width="48" height="48" rx="24" fill="#F3F4F6"/>
+				<path d="M24.3779 13.6022C24.1444 13.4659 23.8556 13.4659 23.6221 13.6022L15 18.6317L24 23.8817L33 18.6317L24.3779 13.6022Z" fill="#374151"/>
+				<path d="M33.75 19.9308L24.75 25.1808V34.1808L33.3779 29.1478C33.6083 29.0134 33.75 28.7668 33.75 28.5V19.9308Z" fill="#374151"/>
+				<path d="M23.25 34.1808V25.1808L14.25 19.9308V28.5C14.25 28.7668 14.3917 29.0134 14.6221 29.1478L23.25 34.1808Z" fill="#374151"/>
+			</svg>
+			<div class="py-3 pr-4">
+				<div class="flex space-x-4 font-medium">
+					<p class="w-64 text-gray-900 truncate" title="{{ data.ticket_service }}">{{ data.ticket_service }}</p>
+					<span class="px-2.5 py-0.5 rounded-full text-xs bg-green-100 text-green-800">{{ data.ticket_status }}</span>
+				</div>
+				<div class="space-x-0.5 font-medium">
+					<span class="text-indigo-700">#{{ data.ticket_serviceID }}</span>
+					<span class="text-gray-500">• {{ data.ticket_service_date }}</span>
+				</div>
+			</div>
+			<div class="py-3 pr-4">
+				<p class="text-gray-500">IP</p>
+				<p class="truncate w-32 hover:w-full">{{ data.ticket_ip }}</p>
+			</div>
+			<div class="py-3 pr-4">
+				<p class="text-gray-500">Цена</p>
+				<p>${{ data.ticket_fee|number_format('2', '.', '') }}/месяц</p>
+			</div>
+			<div class="py-3 pr-4">
+				<p class="text-gray-500">Оплата</p>
+				<p>{{ data.ticket_paydate }}</p>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+<div class="border-b-2 bg-gray-50">
+	<nav class="mx-auto px-4 sm:px-6 lg:px-8 pb-1">
+		<div class="inline-block sm:flex sm:h-12 sm:space-x-8">
+
+			{% for nav in tabs %}
+
+				<a href="/support/ticket/{{ nav.eng }}" class="block sm:inline-flex max-sm:mb-3 items-center border-b-2 border-transparent text-sm text-gray-500 hover:border-gray-300 hover:text-gray-700 {% if currentTab == nav.eng %} border-indigo-600 text-indigo-600 pointer-events-none {% endif %}">
+					<span>{{ nav.rus|capitalize }}</span>
+					{% if nav.val %}
+						<span class="inline-flex items-center ml-2 px-2.5 py-0.5 rounded-md text-xs font-medium {% if currentTab == nav.eng %} bg-indigo-100 text-indigo-600 {% else %} bg-gray-100 text-gray-800 {% endif %}">{% if nav.eng == 'credits' %}${% endif %}{{ nav.val }}</span>
+					{% endif %}
+				</a>
+
+			{% endfor %}
+
+		</div>
+	</nav>
+</div>
