@@ -9,7 +9,8 @@
     "tailwind:watch": "npx tailwindcss -i ./public/src/index.css -o ./public/dist/styles.css --watch",
     "build:js": "webpack",
     "build:js:watch": "webpack --watch",
-    "dev": "webpack && npx tailwindcss -i ./public/src/index.css -o ./public/dist/styles.css --watch"
+    "dev": "webpack && npx tailwindcss -i ./public/src/index.css -o ./public/dist/styles.css --watch",
+    "build": "webpack && npx tailwindcss -i ./public/src/index.css -o ./public/dist/styles.css"
   },
   "author": "",
   "license": "ISC",
