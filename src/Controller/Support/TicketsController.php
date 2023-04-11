@@ -36,6 +36,7 @@ class TicketsController
             new TicketsController('763458', 'Malesuada quisque felis vitae risus consequat.', 'Important!', 2, 'Служба поддержки', 'Jerome Bell', '2h 3m')
         ];
     }
+    
 
     public static function ticketStatuses() {
         $statuses = [
