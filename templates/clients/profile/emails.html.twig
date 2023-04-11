@@ -1,8 +1,6 @@
-{% extends 'clients/clients.html.twig' %}
+{% extends 'clients/clients.base.html.twig' %}
 
 {% set currentTab = 'emails' %}
-
-{% block title %} {{ title }} {% endblock %}
 
 {% block content %}
 
@@ -38,6 +36,17 @@
 
 		{% block table %}
 
+			{% set emails = [
+				{'dept': 'Служба поддержки', 'title': 'Tincidunt diam ullamcorper eleifend nullam purus.', 'date': '17/02/2023', 'time': '13:17', 'city': 'MSK'},
+				{'dept': 'Служба поддержки', 'title': 'Ultrices nisl eget posuere vitae amet ultricies sagittis.', 'date': '17/02/2023', 'time': '13:17', 'city': 'MSK'},
+				{'dept': 'Служба поддержки', 'title': 'Ultrices nisl eget posuere vitae amet ultricies sagittis.', 'date': '17/02/2023', 'time': '13:17', 'city': 'MSK'},
+				{'dept': 'Служба поддержки', 'title': 'Sit odio quam turpis aliquam adipiscing elit adipiscing sit.', 'date': '17/02/2023', 'time': '13:17', 'city': 'MSK'},
+				{'dept': 'Служба поддержки', 'title': 'Ante molestie id vivamus vel a adipiscing quam arcu.', 'date': '17/02/2023', 'time': '13:17', 'city': 'MSK'},
+				{'dept': 'Служба поддержки', 'title': 'Feugiat enim tincidunt habitant integer nulla senectus.', 'date': '17/02/2023', 'time': '13:17', 'city': 'MSK'},
+				{'dept': 'Служба поддержки', 'title': 'Laoreet vitae amet tellus fusce morbi dictumst dignissim.', 'date': '17/02/2023', 'time': '13:17', 'city': 'MSK'},
+				{'dept': 'Служба поддержки', 'title': 'Facilisis tortor egestas aliquam elementum.', 'date': '17/02/2023', 'time': '13:17', 'city': 'MSK'}
+			] %}
+
 			<div class="hidden sm:block">
 				<div class="mx-auto px-4 sm:px-6 lg:px-8">
 					<div class="mt-2 flex flex-col">
@@ -53,50 +62,22 @@
 								</thead>
 
 								<tbody class="divide-y divide-gray-200">
-								<tr class="text-sm text-gray-500">
-									<td class="px-6 py-4">Служба поддержки</td>
-									<td class="px-6 py-4 text-gray-900 font-medium">Tincidunt diam ullamcorper eleifend nullam purus.</td>
-									<td class="px-6 py-4">17/02/2023, 13:17 (MSK)</td>
-								</tr>
-								<tr class="text-sm text-gray-500">
-									<td class="px-6 py-4">Служба поддержки</td>
-									<td class="px-6 py-4 text-gray-900 font-medium">Ultrices nisl eget posuere vitae amet ultricies sagittis.</td>
-									<td class="px-6 py-4">17/02/2023, 13:17 (MSK)</td>
-								</tr>
-								<tr class="text-sm text-gray-500">
-									<td class="px-6 py-4">Служба поддержки</td>
-									<td class="px-6 py-4 text-gray-900 font-medium">Lobortis maecenas ultrices placerat et vitae.</td>
-									<td class="px-6 py-4">17/02/2023, 13:17 (MSK)</td>
-								</tr>
-								<tr class="text-sm text-gray-500">
-									<td class="px-6 py-4">Служба поддержки</td>
-									<td class="px-6 py-4 text-gray-900 font-medium">Sit odio quam turpis aliquam adipiscing elit adipiscing sit.</td>
-									<td class="px-6 py-4">17/02/2023, 13:17 (MSK)</td>
-								</tr>
-								<tr class="text-sm text-gray-500">
-									<td class="px-6 py-4">Служба поддержки</td>
-									<td class="px-6 py-4 text-gray-900 font-medium">Ante molestie id vivamus vel a adipiscing quam arcu.</td>
-									<td class="px-6 py-4">17/02/2023, 13:17 (MSK)</td>
-								</tr>
-								<tr class="text-sm text-gray-500">
-									<td class="px-6 py-4">Служба поддержки</td>
-									<td class="px-6 py-4 text-gray-900 font-medium">Feugiat enim tincidunt habitant integer nulla senectus.</td>
-									<td class="px-6 py-4">17/02/2023, 13:17 (MSK)</td>
-								</tr>
-								<tr class="text-sm text-gray-500">
-									<td class="px-6 py-4">Служба поддержки</td>
-									<td class="px-6 py-4 text-gray-900 font-medium">Laoreet vitae amet tellus fusce morbi dictumst dignissim.</td>
-									<td class="px-6 py-4">17/02/2023, 13:17 (MSK)</td>
-								</tr>
-								<tr class="text-sm text-gray-500">
-									<td class="px-6 py-4">Служба поддержки</td>
-									<td class="px-6 py-4 text-gray-900 font-medium">Facilisis tortor egestas aliquam elementum.</td>
-									<td class="px-6 py-4">17/02/2023, 13:17 (MSK)</td>
-								</tr>
+
+								{% for email in emails %}
+
+									<tr class="text-sm text-gray-500">
+										<td class="px-6 py-4">{{ email.dept }}</td>
+										<td class="px-6 py-4 text-gray-900 font-medium">
+											<a href="#" class="hover:text-indigo-700">{{ email.title }}</a>
+										</td>
+										<td class="px-6 py-4">{{ email.date }}, {{ email.time}} ({{ email.city }})</td>
+									</tr>
+
+								{% endfor %}
+
 								</tbody>
 							</table>
 
-							<!-- Pagination -->
 							<div class="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-4 sm:px-6">
 								<div class="flex flex-1 justify-between sm:hidden">
 									<a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
@@ -111,7 +92,6 @@
 													<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
 												</svg>
 											</a>
-											<!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
 											<a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
 											<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
 											<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>

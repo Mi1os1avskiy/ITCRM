@@ -1,0 +1,23 @@
+{% extends 'support/support.base.html.twig' %}
+
+{% set currentTab = 'log' %}
+
+{% block content %}
+
+	{% block header %}
+		{% include 'support/support.header.view.ticket.html.twig' %}
+	{% endblock %}
+
+	<support-settings inline-template>
+
+		<div class="mt-4">
+
+		</div>
+
+	</support-settings>
+
+	{% block modals %}
+
+	{% endblock %}
+
+{% endblock %}

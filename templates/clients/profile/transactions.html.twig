@@ -1,8 +1,6 @@
-{% extends 'clients/clients.html.twig' %}
+{% extends 'clients/clients.base.html.twig' %}
 
 {% set currentTab = 'transactions' %}
-
-{% block title %} {{ title }} {% endblock %}
 
 {% block content %}
 
@@ -40,6 +38,19 @@
 
         {% block table %}
 
+            {% set transactions = [
+                {'date': '17/02/2023', 'id': '2550-250', 'status': 'Оплачена', 'paymethod': 'Инвойс 4833749', 'description': 'Оплата инвойса с входящей транзакции', 'amount': '230.00'},
+                {'date': '17/02/2023', 'id': '2550-250', 'status': 'Заморожена', 'paymethod': 'Инвойс 4833749', 'description': 'Оплата инвойса с входящей транзакции', 'amount': '230.00'},
+                {'date': '17/02/2023', 'id': '', 'status': 'Мошенническая', 'paymethod': 'Custom', 'description': 'Оплата инвойса с входящей транзакции', 'amount': '1230.00'},
+                {'date': '17/02/2023', 'id': 'TC09862324260957', 'status': 'Возвращена', 'paymethod': 'Инвойс 4833749', 'description': 'Пополнение баланса', 'amount': '100.00'},
+                {'date': '17/02/2023', 'id': 'ea3418d6-22fc-40e9-ae62-d8d759da8a1a', 'status': 'Игнорируется', 'paymethod': 'Custom', 'description': 'Оплата инвойса с входящей транзакции', 'amount': '130.00'},
+                {'date': '17/02/2023', 'id': '2550-250', 'status': 'Не оплачена', 'paymethod': 'Инвойс 4833749', 'description': 'Инвойс #5691', 'amount': '130.00'},
+                {'date': '17/02/2023', 'id': '2550-250', 'status': 'В ожидании', 'paymethod': 'Инвойс 4833749', 'description': 'Инвойс #5691', 'amount': '100.00'},
+                {'date': '17/02/2023', 'id': 'TC09862324260957', 'status': 'Оплачена → Возвращена', 'paymethod': 'Инвойс 4833749', 'description': 'Пополнение баланса', 'amount': '1230.00'},
+                {'date': '17/02/2023', 'id': '', 'status': 'Оплачена → Мошенническая', 'paymethod': 'Custom', 'description': 'Оплата инвойса с входящей транзакции', 'amount': '230.99'},
+                {'date': '17/02/2023', 'id': 'ea3418d6-22fc-40e9-ae62-d8d759da8a1a', 'status': 'Оплачена → Отменена', 'paymethod': 'Инвойс 4833749', 'description': 'Оплата инвойса с входящей транзакции', 'amount': '123.45'},
+            ] %}
+
             <div class="hidden sm:block">
                 <div class="mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="mt-2 flex flex-col">
@@ -58,114 +69,32 @@
                                 </thead>
 
                                 <tbody class="divide-y divide-gray-200">
-                                <tr class="text-sm text-gray-500">
-                                    <td class="px-6 py-4">17/02/2023</td>
-                                    <td class="px-6 py-4">2550-250</td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Оплачена</span>
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-4">Инвойс 4833749</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Оплата инвойса с входящей транзакции</td>
-                                    <td class="px-6 py-4 text-right">$230.00</td>
-                                </tr>
-                                <tr class="text-sm text-gray-500">
-                                    <td class="px-6 py-4">17/02/2023</td>
-                                    <td class="px-6 py-4">2550-250</td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Заморожена</span>
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-4">Инвойс 4833749</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Оплата инвойса с входящей транзакции</td>
-                                    <td class="px-6 py-4 text-right">$230.00</td>
-                                </tr>
-                                <tr class="text-sm text-gray-500">
-                                    <td class="px-6 py-4">17/02/2023</td>
-                                    <td class="px-6 py-4"></td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Мошенническая</span>
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-4">Инвойс 4833749</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Оплата инвойса с входящей транзакции</td>
-                                    <td class="px-6 py-4 text-right">$1230.00</td>
-                                </tr>
-                                <tr class="text-sm text-gray-500">
-                                    <td class="px-6 py-4">17/02/2023</td>
-                                    <td class="px-6 py-4">TC09862324260957</td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-200 text-orange-800">Возвращена</span>
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-4">Custom</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Пополнение баланса</td>
-                                    <td class="px-6 py-4 text-right">$100.00</td>
-                                </tr>
-                                <tr class="text-sm text-gray-500">
-                                    <td class="px-6 py-4">17/02/2023</td>
-                                    <td class="px-6 py-4">
-                                        <p class="truncate w-40 hover:w-full">ea3418d6-22fc-40e9-ae62-d8d759da8a1a</p>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Игнорируется</span>
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-4">Инвойс 4833749</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Оплата инвойса с входящей транзакции</td>
-                                    <td class="px-6 py-4 text-right">$130.00</td>
-                                </tr>
-                                <tr class="text-sm text-gray-500">
-                                    <td class="px-6 py-4">17/02/2023</td>
-                                    <td class="px-6 py-4">2550-250</td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Не оплачена</span>
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-4">Инвойс 4833749</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Инвйос #5691</td>
-                                    <td class="px-6 py-4 text-right">$130.00</td>
-                                </tr>
-                                <tr class="text-sm text-gray-500">
-                                    <td class="px-6 py-4">17/02/2023</td>
-                                    <td class="px-6 py-4">2550-250</td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">В ожидании</span>
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-4">Инвойс 4833749</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Инвйос #5691</td>
-                                    <td class="px-6 py-4 text-right">$130.00</td>
-                                </tr>
-                                <tr class="text-sm text-gray-500">
-                                    <td class="px-6 py-4">17/02/2023</td>
-                                    <td class="px-6 py-4">TC09862324260957</td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-200 text-orange-800 truncate">Оплачена → Возвращена</span>
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-4">Custom</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Пополнение баланса</td>
-                                    <td class="px-6 py-4 text-right">$100.00</td>
-                                </tr>
-                                <tr class="text-sm text-gray-500">
-                                    <td class="px-6 py-4">17/02/2023</td>
-                                    <td class="px-6 py-4"></td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 truncate">Оплачена → Мошенническая</span>
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-4">Инвойс 4833749</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Оплата инвойса с входящей транзакции</td>
-                                    <td class="px-6 py-4 text-right">$1230.00</td>
-                                </tr>
-                                <tr class="text-sm text-gray-500">
-                                    <td class="px-6 py-4">17/02/2023</td>
-                                    <td class="px-6 py-4">
-                                        <p class="truncate w-40 hover:w-full">ea3418d6-22fc-40e9-ae62-d8d759da8a1a</p>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 truncate">Оплачена → Отменена</span>
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-4">Инвойс 4833749</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Оплата инвойса с входящей транзакции</td>
-                                    <td class="px-6 py-4 text-right">$130.00</td>
-                                </tr>
+
+                                {% for item in transactions %}
+
+                                    <tr class="text-sm text-gray-500">
+                                        <td class="px-6 py-4">{{ item.date }}</td>
+                                        <td class="px-6 py-4"><p class="truncate w-40" title="{{ item.id }}">{{ item.id }}</p></td>
+                                        <td class="px-6 py-4">
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                                                {% if item.status == 'Оплачена' %}bg-green-100 text-green-800
+                                                {% elseif item.status in ['Заморожена', 'В ожидании'] %}bg-blue-100 text-blue-800
+                                                {% elseif item.status in ['Мошенническая', 'Не оплачена', 'Оплачена → Мошенническая'] %}bg-red-100 text-red-800
+                                                {% elseif item.status in ['Возвращена', 'Оплачена → Возвращена'] %}bg-orange-200 text-orange-800
+                                                {% elseif item.status in ['Игнорируется', 'Оплачена → Отменена'] %}bg-gray-100 text-gray-800
+                                                {% endif %}
+                                            ">{{ item.status }}</span>
+                                        </td>
+                                        <td class="whitespace-nowrap px-6 py-4">{{ item.paymethod }}</td>
+                                        <td class="whitespace-nowrap px-6 py-4">{{ item.description }}</td>
+                                        <td class="px-6 py-4 text-right">${{ item.amount }}</td>
+                                    </tr>
+
+                                {% endfor %}
+
                                 </tbody>
                             </table>
 
-                            <!-- Pagination -->
                             <div class="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-4 sm:px-6">
                                 <div class="flex flex-1 justify-between sm:hidden">
                                     <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
@@ -180,7 +109,6 @@
                                                     <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
                                                 </svg>
                                             </a>
-                                            <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
                                             <a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
                                             <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
                                             <a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>

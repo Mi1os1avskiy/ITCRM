@@ -1,0 +1,171 @@
+{% extends 'billing/billing.base.html.twig' %}
+
+{% block content %}
+
+	{% block header %}
+
+		<div class="bg-gray-50 mx-auto py-4 px-4 sm:px-6 lg:px-8 space-y-3">
+			<nav class="flex items-center space-x-3 text-sm text-gray-500 font-medium">
+				<a href="{{ path('billing_invoices') }}">Инвойсы</a>
+				<svg width="20" height="20" viewBox="0 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#9CA3AF"/>
+				</svg>
+				<span>Инвойс #{{ data.invoice_id }}</span>
+			</nav>
+			<div class="flex items-center justify-between space-x-4">
+				<div class="flex items-center space-x-4">
+					<span class="font-semibold text-lg">{{ title }} #{{ data.invoice_id }}</span>
+					<span class="inline-flex items-center h-6 px-3 py-0.5 rounded-xl text-sm font-medium bg-purple-100 text-purple-800">{{ data.invoice_status }}</span>
+				</div>
+				<div class="flex space-x-3">
+					<a href="#" class="inline-flex items-center rounded-md border border-transparent bg-indigo-100 px-[17px] py-[9px] text-sm font-medium text-indigo-700 shadow-sm hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+						<span>Сохранить черновик</span>
+					</a>
+					<a href="#" class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-[17px] py-[9px] text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+						<span>Сохранить и опубликовать</span>
+					</a>
+				</div>
+			</div>
+		</div>
+
+	{% endblock %}
+
+	<billing-settings inline-template>
+		<div class="flex">
+			<form class="flex-1 max-w-7xl py-6 px-4 sm:px-6 lg:px-8 space-y-6">
+
+				<div class="relative flex w-96 min-w-fit py-[9px] px-[13px] space-x-2 rounded-md border border-gray-300 text-sm">
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10ZM12.5 7.5C12.5 8.88071 11.3807 10 10 10C8.61929 10 7.5 8.88071 7.5 7.5C7.5 6.11929 8.61929 5 10 5C11.3807 5 12.5 6.11929 12.5 7.5ZM10 12C8.04133 12 6.30187 12.9385 5.20679 14.3904C6.39509 15.687 8.1026 16.5 10 16.5C11.8974 16.5 13.6049 15.687 14.7932 14.3904C13.6981 12.9385 11.9587 12 10 12Z" fill="#6B7280"/>
+					</svg>
+					<input class="flex-1 text-sm placeholder-gray-400 focus:outline-none" value="{{ data.invoice_user }}">
+					<button type="button" aria-expanded="false" aria-haspopup="true" aria-expanded-autohide>
+						<svg class="h-5 w-5 text-gray-500 hover:text-gray-900 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+							<path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
+						</svg>
+					</button>
+					<ul class="absolute right-0 top-10 z-10 mt-2 w-56 origin-top-right divide-y rounded-md bg-white text-sm text-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+						<li>
+							<button type="button" class="w-full px-4 py-3 text-left hover:bg-gray-50">{{ data.invoice_user }}</button>
+						</li>
+					</ul>
+				</div>
+
+				<textarea class="w-full py-[9px] px-[13px] resize-none rounded-md border border-gray-300 text-sm placeholder-gray-400" placeholder="Описание">{{ data.invoice_title }}</textarea>
+
+				<div class="rounded-md border border-gray-300">
+					<div class="flex pt-6 pb-5 pl-6 border-b bg-gray-50 rounded-t-md">
+						<div class="flex w-72 py-[9px] px-[13px] space-x-2 bg-white rounded-md border border-gray-300 text-sm">
+							<input class="flex-1 focus:outline-none placeholder-gray-400" placeholder="Дата оплаты" value="{{ data.invoice_date }} {{ data.invoice_time }}">
+							<button type="button">
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M5.25 12C5.25 11.5858 5.58579 11.25 6 11.25H6.01C6.42421 11.25 6.76 11.5858 6.76 12V12.01C6.76 12.4242 6.42421 12.76 6.01 12.76H6C5.58579 12.76 5.25 12.4242 5.25 12.01V12Z" fill="#6B7280"/>
+									<path d="M6 13.25C5.58579 13.25 5.25 13.5858 5.25 14V14.01C5.25 14.4242 5.58579 14.76 6 14.76H6.01C6.42421 14.76 6.76 14.4242 6.76 14.01V14C6.76 13.5858 6.42421 13.25 6.01 13.25H6Z" fill="#6B7280"/>
+									<path d="M7.25 12C7.25 11.5858 7.58579 11.25 8 11.25H8.01C8.42421 11.25 8.76 11.5858 8.76 12V12.01C8.76 12.4242 8.42421 12.76 8.01 12.76H8C7.58579 12.76 7.25 12.4242 7.25 12.01V12Z" fill="#6B7280"/>
+									<path d="M8 13.25C7.58579 13.25 7.25 13.5858 7.25 14V14.01C7.25 14.4242 7.58579 14.76 8 14.76H8.01C8.42421 14.76 8.76 14.4242 8.76 14.01V14C8.76 13.5858 8.42421 13.25 8.01 13.25H8Z" fill="#6B7280"/>
+									<path d="M9.25 10C9.25 9.58579 9.58579 9.25 10 9.25H10.01C10.4242 9.25 10.76 9.58579 10.76 10V10.01C10.76 10.4242 10.4242 10.76 10.01 10.76H10C9.58579 10.76 9.25 10.4242 9.25 10.01V10Z" fill="#6B7280"/>
+									<path d="M10 11.25C9.58579 11.25 9.25 11.5858 9.25 12V12.01C9.25 12.4242 9.58579 12.76 10 12.76H10.01C10.4242 12.76 10.76 12.4242 10.76 12.01V12C10.76 11.5858 10.4242 11.25 10.01 11.25H10Z" fill="#6B7280"/>
+									<path d="M9.25 14C9.25 13.5858 9.58579 13.25 10 13.25H10.01C10.4242 13.25 10.76 13.5858 10.76 14V14.01C10.76 14.4242 10.4242 14.76 10.01 14.76H10C9.58579 14.76 9.25 14.4242 9.25 14.01V14Z" fill="#6B7280"/>
+									<path d="M12 9.25C11.5858 9.25 11.25 9.58579 11.25 10V10.01C11.25 10.4242 11.5858 10.76 12 10.76H12.01C12.4242 10.76 12.76 10.4242 12.76 10.01V10C12.76 9.58579 12.4242 9.25 12.01 9.25H12Z" fill="#6B7280"/>
+									<path d="M11.25 12C11.25 11.5858 11.5858 11.25 12 11.25H12.01C12.4242 11.25 12.76 11.5858 12.76 12V12.01C12.76 12.4242 12.4242 12.76 12.01 12.76H12C11.5858 12.76 11.25 12.4242 11.25 12.01V12Z" fill="#6B7280"/>
+									<path d="M12 13.25C11.5858 13.25 11.25 13.5858 11.25 14V14.01C11.25 14.4242 11.5858 14.76 12 14.76H12.01C12.4242 14.76 12.76 14.4242 12.76 14.01V14C12.76 13.5858 12.4242 13.25 12.01 13.25H12Z" fill="#6B7280"/>
+									<path d="M13.25 10C13.25 9.58579 13.5858 9.25 14 9.25H14.01C14.4242 9.25 14.76 9.58579 14.76 10V10.01C14.76 10.4242 14.4242 10.76 14.01 10.76H14C13.5858 10.76 13.25 10.4242 13.25 10.01V10Z" fill="#6B7280"/>
+									<path d="M14 11.25C13.5858 11.25 13.25 11.5858 13.25 12V12.01C13.25 12.4242 13.5858 12.76 14 12.76H14.01C14.4242 12.76 14.76 12.4242 14.76 12.01V12C14.76 11.5858 14.4242 11.25 14.01 11.25H14Z" fill="#6B7280"/>
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M5.75 2C6.16421 2 6.5 2.33579 6.5 2.75V4H13.5V2.75C13.5 2.33579 13.8358 2 14.25 2C14.6642 2 15 2.33579 15 2.75V4H15.25C16.7688 4 18 5.23122 18 6.75V15.25C18 16.7688 16.7688 18 15.25 18H4.75C3.23122 18 2 16.7688 2 15.25V6.75C2 5.23122 3.23122 4 4.75 4H5V2.75C5 2.33579 5.33579 2 5.75 2ZM4.75 7.5C4.05964 7.5 3.5 8.05964 3.5 8.75V15.25C3.5 15.9404 4.05964 16.5 4.75 16.5H15.25C15.9404 16.5 16.5 15.9404 16.5 15.25V8.75C16.5 8.05964 15.9404 7.5 15.25 7.5H4.75Z" fill="#6B7280"/>
+								</svg>
+							</button>
+						</div>
+					</div>
+
+					{% for service in services %}
+
+						<div class="flex border-b border-gray-300">
+							<div class="flex-1 py-5 pl-6 pr-4 space-y-3">
+								<div class="flex w-full py-[9px] px-[13px] space-x-2 rounded-md border border-gray-300 text-sm">
+									<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M4.46363 3.16188C4.79054 2.45358 5.49945 2 6.27955 2H13.7202C14.5003 2 15.2092 2.45358 15.5361 3.16188L16.69 5.66188C16.7567 5.80652 16.8047 5.9534 16.8352 6.1003C16.5675 6.03476 16.2878 6 15.9999 6H3.99989C3.712 6 3.43223 6.03476 3.16455 6.10031C3.19509 5.9534 3.24303 5.80653 3.30979 5.66188L4.46363 3.16188Z" fill="#6B7280"/>
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M2 9.5C2 8.39543 2.89543 7.5 4 7.5H16C17.1046 7.5 18 8.39543 18 9.5C18 10.6046 17.1046 11.5 16 11.5H4C2.89543 11.5 2 10.6046 2 9.5ZM15.2402 9.5C15.2402 9.08579 15.576 8.75 15.9902 8.75H16.0002C16.4144 8.75 16.7502 9.08579 16.7502 9.5V9.51C16.7502 9.92421 16.4144 10.26 16.0002 10.26H15.9902C15.576 10.26 15.2402 9.92421 15.2402 9.51V9.5ZM12.9902 8.75C12.576 8.75 12.2402 9.08579 12.2402 9.5V9.51C12.2402 9.92421 12.576 10.26 12.9902 10.26H13.0002C13.4144 10.26 13.7502 9.92421 13.7502 9.51V9.5C13.7502 9.08579 13.4144 8.75 13.0002 8.75H12.9902Z" fill="#6B7280"/>
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M2 15C2 13.8954 2.89543 13 4 13H16C17.1046 13 18 13.8954 18 15C18 16.1046 17.1046 17 16 17H4C2.89543 17 2 16.1046 2 15ZM15.2402 15C15.2402 14.5858 15.576 14.25 15.9902 14.25H16.0002C16.4144 14.25 16.7502 14.5858 16.7502 15V15.01C16.7502 15.4242 16.4144 15.76 16.0002 15.76H15.9902C15.576 15.76 15.2402 15.4242 15.2402 15.01V15ZM12.9902 14.25C12.576 14.25 12.2402 14.5858 12.2402 15V15.01C12.2402 15.4242 12.576 15.76 12.9902 15.76H13.0002C13.4144 15.76 13.7502 15.4242 13.7502 15.01V15C13.7502 14.5858 13.4144 14.25 13.0002 14.25H12.9902Z" fill="#6B7280"/>
+									</svg>
+									<input class="flex-1 text-sm placeholder-gray-400 focus:outline-none" placeholder="Услуга" value="{{ service.title }}">
+									<button type="button">
+										<svg class="h-5 w-5 text-gray-500 hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+											<path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
+										</svg>
+									</button>
+								</div>
+								<textarea class="w-full py-[9px] px-[13px] resize-none rounded-md border border-gray-300 text-sm placeholder-gray-400" placeholder="Описание">{{ service.description }}</textarea>
+							</div>
+
+							<div class="items-start">
+								<div class="flex items-center py-5 pl-4 pr-6 space-x-3">
+									<div class="flex py-[9px] px-[13px] border border-gray-300 rounded-md text-sm">
+										<span class="mr-3 cursor-default">$</span>
+										<input class="ml-3 w-16 placeholder-gray-400 focus:outline-none" placeholder="0.00" value="{{ service.amount }}">
+									</div>
+									<div class="relative inline-block text-left">
+										<button type="button" class="flex items-center rounded-full text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" aria-expanded="false" aria-haspopup="true" aria-expanded-autohide>
+											<svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M10 6C8.89543 6 8 5.10457 8 4C8 2.89543 8.89543 2 10 2C11.1046 2 12 2.89543 12 4C12 5.10457 11.1046 6 10 6Z" fill="#9CA3AF"/>
+												<path d="M10 12C8.89543 12 8 11.1046 8 10C8 8.89543 8.89543 8 10 8C11.1046 8 12 8.89543 12 10C12 11.1046 11.1046 12 10 12Z" fill="#9CA3AF"/>
+												<path d="M10 18C8.89543 18 8 17.1046 8 16C8 14.8954 8.89543 14 10 14C11.1046 14 12 14.8954 12 16C12 17.1046 11.1046 18 10 18Z" fill="#9CA3AF"/>
+											</svg>
+										</button>
+										<ul class="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y rounded-md bg-white text-sm text-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+											<li>
+												<button type="button" class="w-full px-4 py-3 text-left hover:bg-gray-50">Дублировать</button>
+											</li>
+											<li>
+												<button type="button" class="w-full px-4 py-3 text-left hover:bg-gray-50">Удалить</button>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					{% endfor %}
+
+					<div class="px-6 pt-5 bg-gray-50 rounded-b-md">
+						<button type="button" class="flex py-[9px] px-[17px] space-x-2 bg-white rounded-md border border-gray-300 text-sm text-gray-700 font-medium hover:bg-gray-50">
+							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM10.75 6.75C10.75 6.33579 10.4142 6 10 6C9.58579 6 9.25 6.33579 9.25 6.75V9.25H6.75C6.33579 9.25 6 9.58579 6 10C6 10.4142 6.33579 10.75 6.75 10.75H9.25V13.25C9.25 13.6642 9.58579 14 10 14C10.4142 14 10.75 13.6642 10.75 13.25V10.75H13.25C13.6642 10.75 14 10.4142 14 10C14 9.58579 13.6642 9.25 13.25 9.25H10.75V6.75Z" fill="#6B7280"/>
+							</svg>
+							<span>Добавить пункт</span>
+						</button>
+						<div class="pt-4 pb-6 pr-6 space-y-1 text-sm text-right">
+							<p>Скидка: ${{ data.invoice_discount|number_format(2, '.', ' ') }}</p>
+							{% set res = 0 %}
+							{% for service in services %}
+								{% set res = res + service.amount %}
+							{% endfor %}
+							<p class="font-semibold">Итого к оплате: ${{ res|number_format(2, '.', ' ') }}</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="flex space-x-3 justify-between">
+					<button type="button" class="flex py-[9px] px-[17px] space-x-2 rounded-md border border-gray-300 text-sm text-gray-700 font-medium hover:bg-gray-50">
+						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M8.75 1C7.23122 1 6 2.23122 6 3.75V4.1927C5.20472 4.26972 4.41602 4.36947 3.63458 4.49129C3.22531 4.5551 2.94525 4.9386 3.00906 5.34787C3.07286 5.75714 3.45637 6.0372 3.86564 5.97339L4.01355 5.95062L4.85504 16.4693C4.96938 17.8985 6.16254 19 7.59629 19H12.4035C13.8372 19 15.0304 17.8985 15.1447 16.4693L15.9862 5.95055L16.1346 5.97339C16.5438 6.0372 16.9274 5.75714 16.9912 5.34787C17.055 4.9386 16.7749 4.5551 16.3656 4.49129C15.5841 4.36946 14.7954 4.2697 14 4.19268V3.75C14 2.23122 12.7688 1 11.25 1H8.75ZM10.0001 4C10.8395 4 11.673 4.02523 12.5 4.07499V3.75C12.5 3.05964 11.9404 2.5 11.25 2.5H8.75C8.05964 2.5 7.5 3.05964 7.5 3.75V4.075C8.32707 4.02524 9.16068 4 10.0001 4ZM8.57948 7.72002C8.56292 7.30614 8.21398 6.98404 7.8001 7.0006C7.38622 7.01716 7.06412 7.36609 7.08068 7.77998L7.38069 15.28C7.39725 15.6939 7.74619 16.016 8.16007 15.9994C8.57395 15.9828 8.89605 15.6339 8.87949 15.22L8.57948 7.72002ZM12.9195 7.77998C12.936 7.36609 12.614 7.01715 12.2001 7.0006C11.7862 6.98404 11.4372 7.30614 11.4207 7.72002L11.1207 15.22C11.1041 15.6339 11.4262 15.9828 11.8401 15.9994C12.254 16.016 12.6029 15.6939 12.6195 15.28L12.9195 7.77998Z" fill="#6B7280"/>
+						</svg>
+						<span>Удалить</span>
+					</button>
+					<div class="flex items-center space-x-3">
+						<div class="text-xs text-gray-500">
+							<p>Последнее сохранение:</p>
+							<p>{{ saved.date }} {{ saved.time }} {{ saved.loc }}</p>
+						</div>
+						<a href="#" class="inline-flex items-center rounded-md border border-transparent bg-indigo-100 px-[17px] py-[9px] text-sm font-medium text-indigo-700 shadow-sm hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+							<span>Сохранить черновик</span>
+						</a>
+						<a href="#" class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-[17px] py-[9px] text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+							<span>Сохранить и опубликовать</span>
+						</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</billing-settings>
+
+{% endblock %}

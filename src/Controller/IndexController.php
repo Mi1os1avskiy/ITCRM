@@ -1,12 +1,12 @@
 <?php
 namespace App\Controller;
 
-use App\Model\Parameters;
-use http\Env\Request;
-use Symfony\Component\HttpFoundation\Response;
+use App\Controller\Billing\InvoiceController;
+use App\Controller\Clients\Users;
+use App\Controller\Support\TicketsController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Model\Users;
 
 
 class IndexController extends AbstractController
@@ -21,19 +21,11 @@ class IndexController extends AbstractController
     /**
      * @Route("/clients", name="clients")
      */
-//    #[Route('/clients', name: 'clients')]
     public function clients(): Response
     {
         return $this->render('clients/clients.html.twig', [
             'title' => 'Клиенты',
             'users' => Users::CreateTable(),
-        ]);
-    }
-
-    public function profileMenu(): Response
-    {
-        return $this->render('clients/header.profile.html.twig', [
-            'parameters' => Parameters::UserProfileMenu(),
         ]);
     }
 
@@ -50,12 +42,12 @@ class IndexController extends AbstractController
 //    /**
 //     * @Route("/clients/{id}", name="profile")
 //     */
-// //   #[Route('/clients/{id}', name: 'profile')]
+//    #[Route('/clients/{id}', name: 'profile')]
 //    public function user($id): Response
 //    {
 //        $links = ['overview', 'profile', 'services', 'invoices', 'tickets', 'credits', 'emails', 'notes', 'log'];
 //
-//        return $this->render('profile.base.html.twig', [
+//        return $this->render('clients.base.html.twig', [
 //            'id' => $id,
 //            'links' => $links,
 //        ]);
@@ -158,6 +150,70 @@ class IndexController extends AbstractController
     {
         return $this->render('support/support.tickets.html.twig', [
             'title' => 'Тикеты',
+            'tickets' => TicketsController::ticketsTable(),
+            'statuses' => TicketsController::ticketStatuses(),
+            'time' => TicketsController::timeDiff(),
+        ]);
+    }
+
+    /**
+     * @Route("/support/ticket/answer", name="support_ticket_answer")
+     */
+    public function supportTicketAnswer(): Response
+    {
+        return $this->render('support/overview/answer.html.twig', [
+            'title' => 'Тикет #',
+            'data' => TicketsController::ticketData(),
+            'tabs' => TicketsController::ticketNavigation(),
+            'messages' => TicketsController::ticketMessages(),
+        ]);
+    }
+
+    /**
+     * @Route("/support/ticket/notes", name="support_ticket_notes")
+     */
+    public function supportTicketNotes(): Response
+    {
+        return $this->render('support/overview/notes.html.twig', [
+            'title' => 'Тикет #',
+            'data' => TicketsController::ticketData(),
+            'tabs' => TicketsController::ticketNavigation(),
+        ]);
+    }
+
+    /**
+     * @Route("/support/ticket/options", name="support_ticket_options")
+     */
+    public function supportTicketOptions(): Response
+    {
+        return $this->render('support/overview/options.html.twig', [
+            'title' => 'Тикет #',
+            'data' => TicketsController::ticketData(),
+            'tabs' => TicketsController::ticketNavigation(),
+        ]);
+    }
+
+    /**
+     * @Route("/support/ticket/log", name="support_ticket_log")
+     */
+    public function supportTicketLog(): Response
+    {
+        return $this->render('support/overview/log.html.twig', [
+            'title' => 'Тикет #',
+            'data' => TicketsController::ticketData(),
+            'tabs' => TicketsController::ticketNavigation(),
+        ]);
+    }
+
+    /**
+     * @Route("/support/ticket/others", name="support_ticket_others")
+     */
+    public function supportTicketOthers(): Response
+    {
+        return $this->render('support/overview/others.html.twig', [
+            'title' => 'Тикет #',
+            'data' => TicketsController::ticketData(),
+            'tabs' => TicketsController::ticketNavigation(),
         ]);
     }
 
@@ -168,6 +224,62 @@ class IndexController extends AbstractController
     {
         return $this->render('support/support.new.ticket.html.twig', [
             'title' => 'Новый тикет',
+        ]);
+    }
+
+    /**
+     * @Route("/billing/billing.invoices.html.twig", name="billing_invoices")
+     */
+    public function billingInvoices(): Response
+    {
+        return $this->render('billing/billing.invoices.html.twig', [
+            'title' => 'Инвойсы',
+        ]);
+    }
+
+    /**
+     * @Route("/billing/billing.new.invoice.html.twig", name="billing_new_invoice")
+     */
+    public function billingNewInvoice(): Response
+    {
+        return $this->render('billing/billing.new.invoice.html.twig', [
+            'title' => 'Новый инвойс',
+        ]);
+    }
+
+    /**
+     * @Route("/billing/billing.edit.draft.invoice.html.twig", name="billing_edit_draft")
+     */
+    public function billingEditDraft(): Response
+    {
+        return $this->render('billing/billing.edit.draft.invoice.html.twig', [
+            'title' => 'Редактировать инвойс',
+            'services' => InvoiceController::allServices(),
+            'data' => InvoiceController::invoiceUserData(),
+            'saved' => InvoiceController::lastSaved()
+        ]);
+    }
+
+    /**
+     * @Route("/billing/billing.view.invoice.html.twig", name="billing_view_invoice")
+     */
+    public function billingViewInvoice(): Response
+    {
+        return $this->render('billing/billing.view.invoice.html.twig', [
+            'title' => 'Инвойс',
+            'data' => InvoiceController::invoiceData(),
+            'invoices' => InvoiceController::createInvoices(),
+            'statuses' => InvoiceController::invoiceStatuses(),
+        ]);
+    }
+
+    /**
+     * @Route("/billing/billing.transactions.html.twig", name="billing_transactions")
+     */
+    public function billingTransactions(): Response
+    {
+        return $this->render('billing/billing.transactions.html.twig', [
+            'title' => 'Транзакции',
         ]);
     }
 }
