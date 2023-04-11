@@ -10,8 +10,52 @@
 
 	<support-settings inline-template>
 
-		<div class="mt-4">
+		<div class="my-6 px-4 sm:px-6 lg:px-8">
+			<form class="space-y-5 divide-y divide-gray-200 text-sm">
+				<div class="max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
+					<p class="text-sm font-medium text-gray-700 self-center">Тема тикета</p>
+					<div class="sm:col-span-2">
+						<input type="text" class="block w-full max-w-lg py-[9px] px-[13px] text-sm text-gray-900 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" value="{{ data.ticket_title }}">
+					</div>
+				</div>
 
+				<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
+					<p class="text-sm font-medium text-gray-700 self-center">Назначен</p>
+					<div class="relative sm:col-span-2">
+						<button type="button" class="relative w-full max-w-lg cursor-default rounded-md border border-gray-300 bg-white py-[9px] pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-expanded="false" aria-expanded-autohide>
+	                        <div class="pointer-events-none flex items-center">
+	                            <svg class="shrink-0" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10ZM12.5 7.5C12.5 8.88071 11.3807 10 10 10C8.61929 10 7.5 8.88071 7.5 7.5C7.5 6.11929 8.61929 5 10 5C11.3807 5 12.5 6.11929 12.5 7.5ZM10 12C8.04133 12 6.30187 12.9385 5.20679 14.3904C6.39509 15.687 8.1026 16.5 10 16.5C11.8974 16.5 13.6049 15.687 14.7932 14.3904C13.6981 12.9385 11.9587 12 10 12Z" fill="#6B7280"/>
+								</svg>
+	                            <span class="ml-3 truncate text-gray-400 text-sm">Не назначен</span>
+	                        </div>
+							<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+								<svg class="h-5 w-5 shrink-0 text-gray-500 hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+									<path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
+								</svg>
+	                        </div>
+						</button>
+
+						<ul class="absolute z-10 left-64 mt-1 max-h-60 w-64 overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+							<li>
+								<button type="button" class="w-full py-3 px-4 text-gray-400 text-left hover:bg-gray-50">Не назначен</button>
+							</li>
+							<li>
+								<button type="button" class="w-full py-3 px-4 text-gray-700 text-left hover:bg-gray-50">Пункт 2</button>
+							</li>
+							<li>
+								<button type="button" class="w-full py-3 px-4 text-gray-700 text-left hover:bg-gray-50">Пункт 3</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="pt-5 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
+					<div class="col-start-2">
+						<button type="submit" class="rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Сохранить изменения</button>
+					</div>
+				</div>
+			</form>
 		</div>
 
 	</support-settings>

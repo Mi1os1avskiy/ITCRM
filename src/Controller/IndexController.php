@@ -178,6 +178,7 @@ class IndexController extends AbstractController
             'title' => 'Тикет #',
             'data' => TicketsController::ticketData(),
             'tabs' => TicketsController::ticketNavigation(),
+            'messages' => TicketsController::ticketMessages(),
         ]);
     }
 
@@ -202,6 +203,7 @@ class IndexController extends AbstractController
             'title' => 'Тикет #',
             'data' => TicketsController::ticketData(),
             'tabs' => TicketsController::ticketNavigation(),
+            'logs' => TicketsController::ticketLogs(),
         ]);
     }
 
@@ -214,6 +216,8 @@ class IndexController extends AbstractController
             'title' => 'Тикет #',
             'data' => TicketsController::ticketData(),
             'tabs' => TicketsController::ticketNavigation(),
+            'tickets' => TicketsController::ticketsTable(),
+            'statuses' => TicketsController::ticketStatuses(),
         ]);
     }
 

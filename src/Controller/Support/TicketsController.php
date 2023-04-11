@@ -120,11 +120,33 @@ class TicketsController
 
     public static function ticketMessages() {
         $messages = [
-            ['type' => 'user_message', 'name' => 'Valeriy Burdaleyba', 'date' => '17/02/2023', 'time' => '15:04', 'loc' => 'MSK', 'text' => 'Sagittis diam suspendisse nunc, facilisis.', 'filename' => 'Attached file.doc'],
-            ['type' => 'admin_note', 'name' => 'Adminname', 'date' => '17/02/2023', 'time' => '15:04', 'loc' => 'MSK', 'text' => 'Vitae in duis ut sem ullamcorper eros nullam varius. Sagittis diam suspendisse nunc, facilisis.'],
-            ['type' => 'admin_message', 'name' => 'Adminname', 'date' => '17/02/2023', 'time' => '15:04', 'loc' => 'MSK', 'text' => 'Diam, aliquet rhoncus consectetur nibh dui elementum ut vivamus. Turpis neque nunc odio in ut consectetur gravida. Vitae in duis ut sem ullamcorper eros nullam varius. Sagittis diam suspendisse nunc, facilisis. https://website.com'],
+            ['important' => 0, 'type' => 'user_message', 'name' => 'Valeriy Burdaleyba', 'date' => '17/02/2023', 'time' => '15:04', 'loc' => 'MSK', 'content' => ['Sagittis diam suspendisse nunc, facilisis.'], 'filename' => 'Attached file.doc'],
+            ['important' => 0, 'type' => 'admin_note', 'name' => 'Adminname', 'date' => '17/02/2023', 'time' => '15:04', 'loc' => 'MSK', 'content' => ['Vitae in duis ut sem ullamcorper eros nullam varius. Sagittis diam suspendisse nunc, facilisis.'], 'filename' => ''],
+            ['important' => 0, 'type' => 'admin_message', 'name' => 'Adminname', 'date' => '17/02/2023', 'time' => '15:04', 'loc' => 'MSK', 'content' => ['Diam, aliquet rhoncus consectetur nibh dui elementum ut vivamus. Turpis neque nunc odio in ut consectetur gravida. Vitae in duis ut sem ullamcorper eros nullam varius. Sagittis diam suspendisse nunc, facilisis.', 'https://website.com'], 'filename' => ''],
+            ['important' => 1, 'type' => 'admin_note', 'name' => 'Adminname', 'date' => '17/02/2023', 'time' => '15:04', 'loc' => 'MSK', 'content' => ['Vitae in duis ut sem ullamcorper eros nullam varius. Sagittis diam suspendisse nunc, facilisis.'], 'filename' => ''],
+            ['important' => 0, 'type' => 'admin_message', 'name' => 'Adminname', 'date' => '17/02/2023', 'time' => '15:04', 'loc' => 'MSK', 'content' => ['Mattis fames rhoncus sodales elementum eu, purus quisque. Facilisi scelerisque sed sit neque amet, purus. Ullamcorper molestie tellus morbi mattis rhoncus. Diam, aliquet rhoncus consectetur nibh dui elementum ut vivamus. Turpis neque nunc odio in ut consectetur gravida. Vitae in duis ut sem ullamcorper eros nullam varius. Sagittis diam suspendisse nunc, facilisis.'], 'filename' => 'Attached file.doc'],
+            ['important' => 0, 'type' => 'user_message', 'name' => 'Valeriy Burdaleyba', 'date' => '17/02/2023', 'time' => '15:04', 'loc' => 'MSK', 'content' => ['Mattis fames rhoncus sodales elementum eu, purus quisque. Facilisi scelerisque sed sit neque amet, purus. Ullamcorper molestie tellus morbi mattis rhoncus. Diam, aliquet rhoncus consectetur nibh dui elementum ut vivamus. Turpis neque nunc odio in ut consectetur gravida. Vitae in duis ut sem ullamcorper eros nullam varius. Sagittis diam suspendisse nunc, facilisis.', 'https://website.com', 'Mattis fames rhoncus sodales elementum eu, purus quisque. Facilisi scelerisque sed sit neque amet, purus. Ullamcorper molestie tellus morbi mattis rhoncus.', 'Vitae in duis ut sem ullamcorper eros nullam varius. Sagittis diam suspendisse nunc, facilisis.'], 'filename' => 'Attached file.doc'],
         ];
 
         return $messages;
+    }
+
+    public static function ticketLogs() {
+        $logs = [
+            ['title' => 'Статус изменен на', 'status' => 'Closed', 'username' => 'Pavel-Admin', 'date' => '21/12/2022', 'time' => '00:10', 'loc' => 'MSK'],
+            ['title' => 'Статус изменен на', 'status' => 'Answered', 'username' => 'Pavel-Admin', 'date' => '26/08/2022', 'time' => '14:06', 'loc' => 'MSK'],
+            ['title' => 'Добавлен ответ', 'status' => '', 'username' => 'Pavel-Admin', 'date' => '26/08/2022', 'time' => '12:15', 'loc' => 'MSK'],
+            ['title' => 'Добавлен ответ', 'status' => '', 'username' => 'Valeriy Burdaleyba', 'date' => '26/08/2022', 'time' => '07:13', 'loc' => 'MSK'],
+            ['title' => 'Добавлен ответ', 'status' => '', 'username' => 'Pavel-Admin', 'date' => '26/08/2022', 'time' => '01:19', 'loc' => 'MSK'],
+            ['title' => 'Статус изменен на', 'status' => 'Opened', 'username' => 'Valeriy Burdaleyba', 'date' => '21/12/2022', 'time' => '00:24', 'loc' => 'MSK'],
+            ['title' => 'Статус изменен на', 'status' => 'Closed', 'username' => 'Pavel-Admin', 'date' => '21/12/2022', 'time' => '10:47', 'loc' => 'MSK'],
+            ['title' => 'Статус изменен на', 'status' => 'Answered', 'username' => 'Pavel-Admin', 'date' => '26/08/2022', 'time' => '22:11', 'loc' => 'MSK'],
+            ['title' => 'Добавлен ответ', 'status' => '', 'username' => 'Pavel-Admin', 'date' => '10/08/2022', 'time' => '19:32', 'loc' => 'MSK'],
+            ['title' => 'Открыт заново', 'status' => '', 'username' => 'Valeriy Burdaleyba', 'date' => '08/08/2022', 'time' => '14:12', 'loc' => 'MSK'],
+            ['title' => 'Автоматически закрылся', 'status' => '', 'username' => 'Pavel-Admin', 'date' => '05/08/2022', 'time' => '16:59', 'loc' => 'MSK'],
+            ['title' => 'Открыт', 'status' => '', 'username' => 'Valeriy Burdaleyba', 'date' => '13/07/2022', 'time' => '05:43', 'loc' => 'MSK'],
+        ];
+
+        return $logs;
     }
 }

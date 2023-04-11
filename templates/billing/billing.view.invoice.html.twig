@@ -103,8 +103,8 @@
 
 					<div class="bg-gray-50 rounded-md border border-gray-300 shadow-sm divide-y text-sm">
 						<div class="pt-6 pb-5 px-6 space-y-1">
-							<p>Дата создания: </p>
-							<p>Оплатить до: </p>
+							<p>Дата создания: {{ data.invoice_created }}</p>
+							<p>Оплатить до: {{ data.invoice_paydate }}</p>
 						</div>
 						{% for invoice in invoices %}
 							<div class="flex">
