@@ -1,0 +1,8 @@
+.dockerignore
+.git
+.gitignore
+README.MD
+LICENSE
+.vscode
+.idea
+.gitlab-ci.yml
