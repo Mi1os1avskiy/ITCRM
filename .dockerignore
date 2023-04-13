@@ -6,3 +6,5 @@ LICENSE
 .vscode
 .idea
 .gitlab-ci.yml
+docker-compose*
+.docker
