@@ -1,0 +1,43 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  DOCKER_BUILD_PATH: .
+  DOCKER_REGISTRY: hub.int.brainq.com
+  DOCKER_REGISTRY_LOGIN: gitlab
+  DOCKER_REGISTRY_PATH: ishosting
+  DOCKER_IMAGE_VERSION: ${CI_COMMIT_SHORT_SHA}-${CI_COMMIT_REF_SLUG}
+  DOCKER_IMAGE_NAME: itcrm
+  DOCKERFILE: .docker/Dockerfile
+
+.kaniko_build: &kaniko_build
+  before_script:
+    - export VAULT_TOKEN="$(vault write -field=token auth/jwt/login role=$VAULT_ROLE jwt=$CI_JOB_JWT)"
+    - export DOCKER_REGISTRY_PASSWORD="$(vault kv get -field=$DOCKER_REGISTRY_LOGIN internal/harbor)"
+  script:
+    - echo "{\"auths\":{\"$DOCKER_REGISTRY\":{\"username\":\"$DOCKER_REGISTRY_LOGIN\",\"password\":\"$DOCKER_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context $DOCKER_BUILD_PATH --dockerfile $DOCKERFILE
+      --destination $DOCKER_REGISTRY/$DOCKER_REGISTRY_PATH/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_VERSION
+
+ish:itcrm:build:
+  stage: build
+  image: 
+    name: ${KANIKO_EXECUTOR_IMAGE}
+    entrypoint: [""]
+  rules:
+    - if: $CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "master"
+  variables:
+    VAULT_ROLE: ishosting-itcrm-build
+  <<: *kaniko_build
+
+ish:itcrm:deploy:
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "master"
+  variables:
+    ITCRM_RELEASE: ${CI_COMMIT_REF_SLUG}
+    IMAGE_VERSION: ${CI_COMMIT_SHORT_SHA}-${CI_COMMIT_REF_SLUG}
+  trigger: 
+    project: ishosting/deployment
+    strategy: depend
