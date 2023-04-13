@@ -14,7 +14,6 @@ LABEL maintainer="a.remniov@brainq.com"
 WORKDIR /var/www/html
 
 RUN addgroup --gid 1000 ishosting && adduser --shell /bin/bash --uid 1000 --gid 1000 --disabled-password --gecos "" ishosting
-RUN chmod u+s /bin/ping
 
 COPY . .
 RUN rm -rf frontend
