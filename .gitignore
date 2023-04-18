@@ -24,3 +24,4 @@
 node_modules
 
 /public/dist/*.css
+.DS_Store
