@@ -1,9 +1,16 @@
 <?php
 namespace App\Controller;
 
-use App\Controller\Billing\InvoiceController;
-use App\Controller\Clients\Users;
-use App\Controller\Support\TicketsController;
+use App\Controller\Data\CreditsController;
+use App\Controller\Data\EmailsController;
+use App\Controller\Data\InvoicesController;
+use App\Controller\Data\NotesController;
+use App\Controller\Data\ServicesController;
+use App\Controller\Data\TicketsController;
+use App\Controller\Data\TransactionsController;
+use App\Controller\Data\UsersController;
+use App\Controller\Misc\MiscController;
+use App\Controller\Misc\StatusesController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,7 +32,7 @@ class IndexController extends AbstractController
     {
         return $this->render('clients/clients.html.twig', [
             'title' => 'Клиенты',
-            'users' => Users::CreateTable(),
+            'users' => UsersController::CreateTable(),
         ]);
     }
 
@@ -60,6 +67,8 @@ class IndexController extends AbstractController
     {
         return $this->render('clients/profile/overview.html.twig', [
             'title' => 'Overview',
+            'get' => UsersController::ClientOverview(),
+            'users' => UsersController::CreateTable(),
         ]);
     }
 
@@ -70,6 +79,8 @@ class IndexController extends AbstractController
     {
         return $this->render('clients/profile/profile.html.twig', [
             'title' => 'Profile',
+            'users' => UsersController::CreateTable(),
+            'statuses' => StatusesController::clientStatuses(),
         ]);
     }
 
@@ -80,6 +91,9 @@ class IndexController extends AbstractController
     {
         return $this->render('clients/profile/services.html.twig', [
             'title' => 'Services',
+            'users' => UsersController::CreateTable(),
+            'services' => ServicesController::allServices(),
+            'statuses' => StatusesController::clientServiceStatuses(),
         ]);
     }
 
@@ -90,6 +104,10 @@ class IndexController extends AbstractController
     {
         return $this->render('clients/profile/invoices.html.twig', [
             'title' => 'Invoices',
+            'users' => UsersController::CreateTable(),
+            'pay_methods' => MiscController::paymentMethods(),
+            'statuses' => StatusesController::invoiceStatuses(),
+            'invoices' => InvoicesController::allInvoices(),
         ]);
     }
 
@@ -100,6 +118,8 @@ class IndexController extends AbstractController
     {
         return $this->render('clients/profile/tickets.html.twig', [
             'title' => 'Tickets',
+            'tickets' => TicketsController::ticketsTable(),
+            'statuses' => StatusesController::ticketStatuses(),
         ]);
     }
 
@@ -110,6 +130,7 @@ class IndexController extends AbstractController
     {
         return $this->render('clients/profile/credits.html.twig', [
             'title' => 'Credits',
+            'credits' => CreditsController::allCredits(),
         ]);
     }
 
@@ -120,6 +141,8 @@ class IndexController extends AbstractController
     {
         return $this->render('clients/profile/transactions.html.twig', [
             'title' => 'Transactions',
+            'transactions' => TransactionsController::allTransactions(),
+            'statuses' => StatusesController::transactionStatuses(),
         ]);
     }
 
@@ -130,6 +153,7 @@ class IndexController extends AbstractController
     {
         return $this->render('clients/profile/emails.html.twig', [
             'title' => 'Emails',
+            'emails' => EmailsController::allEmails(),
         ]);
     }
 
@@ -140,6 +164,7 @@ class IndexController extends AbstractController
     {
         return $this->render('clients/profile/notes.html.twig', [
             'title' => 'Notes',
+            'notes' => NotesController::allNotes(),
         ]);
     }
 
@@ -151,7 +176,7 @@ class IndexController extends AbstractController
         return $this->render('support/support.tickets.html.twig', [
             'title' => 'Тикеты',
             'tickets' => TicketsController::ticketsTable(),
-            'statuses' => TicketsController::ticketStatuses(),
+            'statuses' => StatusesController::ticketStatuses(),
             'time' => TicketsController::timeDiff(),
         ]);
     }
@@ -217,7 +242,7 @@ class IndexController extends AbstractController
             'data' => TicketsController::ticketData(),
             'tabs' => TicketsController::ticketNavigation(),
             'tickets' => TicketsController::ticketsTable(),
-            'statuses' => TicketsController::ticketStatuses(),
+            'statuses' => StatusesController::ticketStatuses(),
         ]);
     }
 
@@ -238,6 +263,8 @@ class IndexController extends AbstractController
     {
         return $this->render('billing/billing.invoices.html.twig', [
             'title' => 'Инвойсы',
+            'invoices' => InvoicesController::allInvoices(),
+            'statuses' => StatusesController::invoiceStatuses(),
         ]);
     }
 
@@ -258,9 +285,8 @@ class IndexController extends AbstractController
     {
         return $this->render('billing/billing.edit.draft.invoice.html.twig', [
             'title' => 'Редактировать инвойс',
-            'services' => InvoiceController::allServices(),
-            'data' => InvoiceController::invoiceUserData(),
-            'saved' => InvoiceController::lastSaved()
+            'services' => InvoicesController::allServices(),
+            'data' => InvoicesController::invoiceUserData(),
         ]);
     }
 
@@ -271,9 +297,9 @@ class IndexController extends AbstractController
     {
         return $this->render('billing/billing.view.invoice.html.twig', [
             'title' => 'Инвойс',
-            'data' => InvoiceController::invoiceData(),
-            'invoices' => InvoiceController::createInvoices(),
-            'statuses' => InvoiceController::invoiceStatuses(),
+            'data' => InvoicesController::invoiceData(),
+            'invoices' => InvoicesController::createInvoices(),
+            'statuses' => StatusesController::invoiceStatuses(),
         ]);
     }
 
@@ -284,6 +310,18 @@ class IndexController extends AbstractController
     {
         return $this->render('billing/billing.transactions.html.twig', [
             'title' => 'Транзакции',
+            'transactions' => TransactionsController::allTransactions(),
+            'statuses' => StatusesController::transactionStatuses(),
+            'pay_methods' => MiscController::paymentMethods(),
+            ''
+        ]);
+    }
+
+
+    public function statusesForAside(): Response
+    {
+        return $this->render('parts/aside.html.twig', [
+            'tickets' => StatusesController::ticketStatuses(),
         ]);
     }
 }

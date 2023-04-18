@@ -21,9 +21,9 @@
 						{% endfor %}
 						<div class="flex items-center space-x-4">
 							<p class="font-semibold text-lg">{{ title }} #{{ data.invoice_id }}, ${{ res|number_format('2', '.', '') }}</p>
-							{% for status in statuses %}
-								{% if status.title == data.invoice_status %}
-									<span class="py-0.5 px-3 rounded-xl text-sm font-medium {{ status.css }}">{{ status.title }}</span>
+							{% for i in statuses %}
+								{% if i.val == data.invoice_status %}
+									<span class="py-0.5 px-3 rounded-xl text-sm font-medium bg-{{ i.color }}-100 text-{{ i.color }}-800">{{ i.val }}</span>
 								{% endif %}
 							{% endfor %}
 						</div>

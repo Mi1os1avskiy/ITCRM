@@ -43,25 +43,11 @@
 					<div class="relative mt-2 rounded-md shadow-sm">
 						<select class="w-full border border-gray-300 rounded-md text-sm">
 							<option>Не выбран</option>
-							<option>Coinpayments</option>
-							<option>Stripe</option>
-							<option>AdvCash</option>
-							<option>AliPay</option>
-							<option>Paxum</option>
-							<option>Boleto</option>
+							{% for i in pay_methods %}
+								<option>{{ i }}</option>
+							{% endfor %}
 						</select>
 					</div>
-
-					{% set statuses = [
-						{'name': 'Не оплачена', 'color': 'red'},
-						{'name': 'Мошенническая', 'color': 'red'},
-						{'name': 'Возвращена', 'color': 'orange'},
-						{'name': 'Заморожена', 'color': 'blue'},
-						{'name': 'В ожидании', 'color': 'blue'},
-						{'name': 'Оплачена', 'color': 'green'},
-						{'name': 'Игнорируется', 'color': 'gray'},
-						{'name': 'Отменена', 'color': 'gray'},
-						]%}
 
 					<p class="mt-6 text-sm text-left font-medium text-gray-700">Статус транзакции</p>
 					<fieldset class="mt-2 divide-y divide-gray-200 border border-gray-300 rounded-md shadow-sm text-sm">
@@ -70,7 +56,7 @@
 							<div class="relative flex items-center p-3">
 								<input id="pending" name="pending" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
 								<div class="ml-4 w-2.5 h-2.5 rounded-full bg-{{ status.color }}-400"></div>
-								<label for="pending" class="ml-4 text-gray-700">{{ status.name }}</label>
+								<label for="pending" class="ml-4 text-gray-700">{{ status.val }}</label>
 							</div>
 						{% endfor %}
 

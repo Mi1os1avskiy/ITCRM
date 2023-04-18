@@ -17,12 +17,12 @@
         <div class="mx-auto mt-4 px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 items-center justify-between flex-shrink-0">
                 <div class="relative">
-                    <button type="button" class="relative inline-flex items-center rounded-md bg-indigo-600 pl-[15px] pr-[17px] py-[9px] shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <a href="{{ path('billing_new_invoice') }}" class="relative inline-flex items-center rounded-md bg-indigo-600 pl-[15px] pr-[17px] py-[9px] shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="white"/>
                         </svg>
                         <span class="ml-2 text-sm font-medium text-white">Добавить</span>
-                    </button>
+                    </a>
                 </div>
 
                 <div class="flex items-center">
@@ -50,20 +50,7 @@
 
     </profile-settings>
 
-
-
     {% block table %}
-
-        {% set invoices = [
-            {'num': '098249', 'status': 'Pending', 'payment': 'Coinpayments', 'excerpt': '17/02/2023', 'paydate': '17/03/2023', 'amount': '99.00'},
-            {'num': '098249', 'status': 'Paid', 'payment': 'Coinpayments', 'excerpt': '17/02/2023', 'paydate': '17/03/2023', 'amount': '99.99'},
-            {'num': '098249', 'status': 'Draft', 'payment': 'Coinpayments', 'excerpt': '17/02/2023', 'paydate': '17/03/2023', 'amount': '190.00'},
-            {'num': '098249', 'status': 'Cancelled', 'payment': 'Coinpayments', 'excerpt': '17/02/2023', 'paydate': '17/03/2023', 'amount': '250.00'},
-            {'num': '098249', 'status': 'Paid', 'payment': 'Coinpayments', 'excerpt': '17/02/2023', 'paydate': '17/03/2023', 'amount': '99.99'},
-            {'num': '098249', 'status': 'Cancelled', 'payment': 'Coinpayments', 'excerpt': '17/02/2023', 'paydate': '17/03/2023', 'amount': '375.00'},
-            {'num': '098249', 'status': 'Pending', 'payment': 'Coinpayments', 'excerpt': '17/02/2023', 'paydate': '17/03/2023', 'amount': '130.99'},
-            {'num': '098249', 'status': 'Overdue', 'payment': 'Coinpayments', 'excerpt': '17/02/2023', 'paydate': '17/03/2023', 'amount': '199.00'}
-        ] %}
 
         <div class="hidden sm:block">
             <div class="mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,26 +72,22 @@
                             <tbody class="divide-y divide-gray-200 bg-white">
 
                                 {% for invoice in invoices %}
-
-                                    <tr class="flex text-sm">
-                                        <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left font-medium">{{ invoice.num }}</td>
+                                    <tr class="flex text-sm {% if invoice.status == 'Draft' %}bg-gray-50{% endif %}">
+                                        <td class="flex-none w-32 whitespace-nowrap px-6 py-4 text-left font-medium {% if invoice.status == 'Draft' %}text-gray-500{% endif %}">
+                                            <a {% if invoice.status == 'Draft' %}href="{{ path('billing_edit_draft') }}"{% else %}href="{{ path('billing_view_invoice') }}"{% endif %} class="hover:text-indigo-700">{{ invoice.id }}</a>
+                                        </td>
                                         <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
-                                            {% if invoice.status == 'Pending' %}
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">{{ invoice.status }}</span>
-                                            {% elseif invoice.status == 'Paid' %}
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">{{ invoice.status }}</span>
-                                            {% elseif invoice.status in ['Cancelled', 'Overdue'] %}
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">{{ invoice.status }}</span>
-                                            {% elseif invoice.status == 'Draft' %}
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">{{ invoice.status }}</span>
-                                            {% endif %}
+                                            {% for i in statuses %}
+                                                {% if invoice.status == i.val %}
+                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ i.color }}-100 text-{{ i.color }}-800">{{ i.val }}</span>
+                                                {% endif %}
+                                            {% endfor %}
                                         </td>
                                         <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">{{ invoice.payment }}</td>
                                         <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">{{ invoice.excerpt }}</td>
                                         <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">{{ invoice.paydate }}</td>
-                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">${{ invoice.amount }}</td>
+                                        <td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-right">${{ invoice.amount|number_format('2', '.', '') }}</td>
                                     </tr>
-
                                 {% endfor %}
 
                             </tbody>

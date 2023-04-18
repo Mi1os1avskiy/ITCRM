@@ -38,19 +38,6 @@
 
         {% block table %}
 
-            {% set transactions = [
-                {'date': '17/02/2023', 'id': '2550-250', 'status': 'Оплачена', 'paymethod': 'Инвойс 4833749', 'description': 'Оплата инвойса с входящей транзакции', 'amount': '230.00'},
-                {'date': '17/02/2023', 'id': '2550-250', 'status': 'Заморожена', 'paymethod': 'Инвойс 4833749', 'description': 'Оплата инвойса с входящей транзакции', 'amount': '230.00'},
-                {'date': '17/02/2023', 'id': '', 'status': 'Мошенническая', 'paymethod': 'Custom', 'description': 'Оплата инвойса с входящей транзакции', 'amount': '1230.00'},
-                {'date': '17/02/2023', 'id': 'TC09862324260957', 'status': 'Возвращена', 'paymethod': 'Инвойс 4833749', 'description': 'Пополнение баланса', 'amount': '100.00'},
-                {'date': '17/02/2023', 'id': 'ea3418d6-22fc-40e9-ae62-d8d759da8a1a', 'status': 'Игнорируется', 'paymethod': 'Custom', 'description': 'Оплата инвойса с входящей транзакции', 'amount': '130.00'},
-                {'date': '17/02/2023', 'id': '2550-250', 'status': 'Не оплачена', 'paymethod': 'Инвойс 4833749', 'description': 'Инвойс #5691', 'amount': '130.00'},
-                {'date': '17/02/2023', 'id': '2550-250', 'status': 'В ожидании', 'paymethod': 'Инвойс 4833749', 'description': 'Инвойс #5691', 'amount': '100.00'},
-                {'date': '17/02/2023', 'id': 'TC09862324260957', 'status': 'Оплачена → Возвращена', 'paymethod': 'Инвойс 4833749', 'description': 'Пополнение баланса', 'amount': '1230.00'},
-                {'date': '17/02/2023', 'id': '', 'status': 'Оплачена → Мошенническая', 'paymethod': 'Custom', 'description': 'Оплата инвойса с входящей транзакции', 'amount': '230.99'},
-                {'date': '17/02/2023', 'id': 'ea3418d6-22fc-40e9-ae62-d8d759da8a1a', 'status': 'Оплачена → Отменена', 'paymethod': 'Инвойс 4833749', 'description': 'Оплата инвойса с входящей транзакции', 'amount': '123.45'},
-            ] %}
-
             <div class="hidden sm:block">
                 <div class="mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="mt-2 flex flex-col">
@@ -76,18 +63,15 @@
                                         <td class="px-6 py-4">{{ item.date }}</td>
                                         <td class="px-6 py-4"><p class="truncate w-40" title="{{ item.id }}">{{ item.id }}</p></td>
                                         <td class="px-6 py-4">
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                                                {% if item.status == 'Оплачена' %}bg-green-100 text-green-800
-                                                {% elseif item.status in ['Заморожена', 'В ожидании'] %}bg-blue-100 text-blue-800
-                                                {% elseif item.status in ['Мошенническая', 'Не оплачена', 'Оплачена → Мошенническая'] %}bg-red-100 text-red-800
-                                                {% elseif item.status in ['Возвращена', 'Оплачена → Возвращена'] %}bg-orange-200 text-orange-800
-                                                {% elseif item.status in ['Игнорируется', 'Оплачена → Отменена'] %}bg-gray-100 text-gray-800
+                                            {% for i in statuses %}
+                                                {% if item.status == i.val %}
+                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ i.color }}-100 text-{{ i.color }}-800">{{ i.val }}</span>
                                                 {% endif %}
-                                            ">{{ item.status }}</span>
+                                            {% endfor %}
                                         </td>
-                                        <td class="whitespace-nowrap px-6 py-4">{{ item.paymethod }}</td>
+                                        <td class="whitespace-nowrap px-6 py-4">{{ item.method }}</td>
                                         <td class="whitespace-nowrap px-6 py-4">{{ item.description }}</td>
-                                        <td class="px-6 py-4 text-right">${{ item.amount }}</td>
+                                        <td class="px-6 py-4 text-right">${{ item.amount|number_format('2', '.', '') }}</td>
                                     </tr>
 
                                 {% endfor %}

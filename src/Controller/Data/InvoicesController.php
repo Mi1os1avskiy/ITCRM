@@ -1,10 +1,26 @@
 <?php
-namespace App\Controller\Billing;
+namespace App\Controller\Data;
 
 use DateTime;
 
-class InvoiceController
+class InvoicesController
 {
+    public static function allInvoices() {
+        $list = [
+            ['id' => '098249', 'status' => 'Pending', 'client' => 'Leslie Alexander', 'payment' => 'Coinpayments', 'excerpt' => '17/02/2023', 'paydate' => '17/03/2023', 'amount' => 99],
+            ['id' => '098249', 'status' => 'Paid', 'client' => 'Kristin Watson', 'payment' => 'Stripe', 'excerpt' => '17/02/2023', 'paydate' => '17/03/2023', 'amount' => 99],
+            ['id' => '098249', 'status' =>'Draft', 'client' => 'Eleanor Pena', 'payment' => '', 'excerpt' => '17/02/2023', 'paydate' => '17/03/2023', 'amount' => 190],
+            ['id' => '098249', 'status' => 'Cancelled', 'client' => 'et_venenatis_tortor@mail.com', 'payment' => 'AdvCash', 'excerpt' => '17/02/2023', 'paydate' => '17/03/2023', 'amount' => 250],
+            ['id' => '098249', 'status' => 'Paid', 'client' => 'Jacob Jones', 'payment' => 'AliPay', 'excerpt' => '17/02/2023', 'paydate' => '17/03/2023', 'amount' => 99.99],
+            ['id' => '098249', 'status' => 'Cancelled', 'client' => 'Darlene Robertson', 'payment' => 'Paxum', 'excerpt' => '17/02/2023', 'paydate' => '17/03/2023', 'amount' => 375],
+            ['id' => '098249', 'status' => 'Pending', 'client' => 'Courtney Henry', 'payment' => 'Coinpayments', 'excerpt' => '17/02/2023', 'paydate' => '17/03/2023', 'amount' => 130.99],
+            ['id' => '098249', 'status' => 'Overdue', 'client' => 'Albert Flores', 'payment' => 'Boleto', 'excerpt' => '17/02/2023', 'paydate' => '17/03/2023', 'amount' => 199],
+        ];
+
+        return $list;
+    }
+
+
     public static function invoiceData(): array
     {
         $user_created = '15/02/2019';
@@ -87,9 +103,9 @@ class InvoiceController
 
     public static function createInvoices() {
         return [
-            new InvoiceController(293023, 'Lite - Linux SSD', 'Renew', 5.5, '01/07/2022', '31/07/2023', 'Netherlands', '5.32.123.221', 'No panel', 'Xeon 1x2.60 GHz', 1, '20GB SSD', '1 Gbps', 'IPv4x1', 'Daily', 'No administration', 'CentOS 8 x64', 'Basic DDoS защита от L2 - L4'),
-            new InvoiceController(293024, 'Exclusive - Windows NVMe', 'Upgrade', 75, '16/01/2023', '15/02/2023', 'Romania', '5.32.123.221', 'No panel', 'Xeon 6x2.90 GHz', '32 Gb', '100GB NVMe', '1 Gbps', 'IPv4x1', 'Daily', '', 'Windows Server 2008 R2 Standart (En)', ''),
-            new InvoiceController(293025, 'Exclusive - Windows NVMe', 'New', 10, '03/07/2022', '02/09/2023', 'Germany', '5.32.123.221', 'No panel', 'Xeon 2x2.60 GHz', '16 Gb', '20GB SSD', '1 Gbps', 'IPv4x1', 'Daily', '', 'CentOS 8 x64', ''),
+            new InvoicesController(293023, 'Lite - Linux SSD', 'Renew', 5.5, '01/07/2022', '31/07/2023', 'Netherlands', '5.32.123.221', 'No panel', 'Xeon 1x2.60 GHz', 1, '20GB SSD', '1 Gbps', 'IPv4x1', 'Daily', 'No administration', 'CentOS 8 x64', 'Basic DDoS защита от L2 - L4'),
+            new InvoicesController(293024, 'Exclusive - Windows NVMe', 'Upgrade', 75, '16/01/2023', '15/02/2023', 'Romania', '5.32.123.221', 'No panel', 'Xeon 6x2.90 GHz', '32 Gb', '100GB NVMe', '1 Gbps', 'IPv4x1', 'Daily', '', 'Windows Server 2008 R2 Standart (En)', ''),
+            new InvoicesController(293025, 'Exclusive - Windows NVMe', 'New', 10, '03/07/2022', '02/09/2023', 'Germany', '5.32.123.221', 'No panel', 'Xeon 2x2.60 GHz', '16 Gb', '20GB SSD', '1 Gbps', 'IPv4x1', 'Daily', '', 'CentOS 8 x64', ''),
         ];
     }
 
@@ -102,7 +118,8 @@ class InvoiceController
             'invoice_date' => '10/10/2023',
             'invoice_time' => '23:59',
             'invoice_title' => 'Non tristique diam risus nullam congue venenatis. Cursus commodo id nulla nunc neque adipiscing pulvinar sed maecenas. Elit cras amet tempus malesuada phasellus nec tortor convallis eu.',
-            'invoice_discount' => 0
+            'invoice_discount' => 0,
+            'invoice_last_saved' => ['date' => '23/12/2023', 'time' => '16:17:55' , 'loc' => 'MSK'],
         ];
 
         return $data;
@@ -125,43 +142,4 @@ class InvoiceController
 
         return $services;
     }
-
-    public static function lastSaved (): array
-    {
-        $saved = [
-            'date' => '23/12/2023',
-            'time' => '16:17:55',
-            'loc' => 'MSK'
-        ];
-
-        return $saved;
-    }
-
-    public static function invoiceStatuses() {
-        $statuses = [
-            'status_1' => [
-                'title' => 'Paid',
-                'css' => 'bg-green-100 text-green-800'
-            ],
-            'status_2' => [
-                'title' => 'Pending',
-                'css' => 'bg-red-100 text-red-800'
-            ],
-            'status_3' => [
-                'title' => 'Overdue',
-                'css' => 'bg-gray-100 text-gray-800'
-            ],
-            'status_4' => [
-                'title' => 'Cancelled',
-                'css' => 'bg-gray-100 text-gray-800'
-            ],
-            'status_5' => [
-                'title' => 'Draft',
-                'css' => 'bg-purple-100 text-purple-800'
-            ],
-        ];
-
-        return $statuses;
-    }
-
 }

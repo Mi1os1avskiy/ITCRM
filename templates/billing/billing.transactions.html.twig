@@ -50,11 +50,13 @@
 												<span class="text-gray-700 whitespace-nowrap">Все транзакции</span>
 											</button>
 										</li>
-										<li>
-											<button type="button" class="w-full py-3 px-5 hover:bg-gray-100">
-												<span class="text-gray-700 whitespace-nowrap">Не все транзакции</span>
-											</button>
-										</li>
+										{% for i in statuses %}
+											<li>
+												<button type="button" class="w-full py-3 px-5 hover:bg-gray-100 text-left">
+													<span class="text-gray-700 whitespace-nowrap">{{ i.val }}</span>
+												</button>
+											</li>
+										{% endfor %}
 									</ul>
 								</div>
 							</nav>
@@ -84,19 +86,6 @@
 			{% endblock %}
 
 			{% block table %}
-
-				{% set transactions = [
-					{'id': '2378-1234', 'date': '12/22/2023', 'invoice_type': 1, 'invoice': '34809234', 'client': 'Leslie Alexander', 'method': 'Payserra', 'amount': 99, 'status': 'Оплачена'},
-					{'id': '2378-1234', 'date': '12/22/2023', 'invoice_type': 2, 'invoice': '34809234', 'client': 'Floyd Miles', 'method': 'Mastercard *1234', 'amount': 99, 'status': 'Отменена'},
-					{'id': '2378-1234', 'date': '12/22/2023', 'invoice_type': 3, 'invoice': '34809234', 'client': 'Cameron Williamson', 'method': 'Coinpayments', 'amount': 99, 'status': 'Мошенническая'},
-					{'id': '2378-1234', 'date': '12/22/2023', 'invoice_type': 4, 'invoice': '34809234', 'client': 'sapien@mail.com', 'method': 'Payserra', 'amount': 34, 'status': 'Оплачена'},
-					{'id': '2378-1234', 'date': '12/22/2023', 'invoice_type': 5, 'invoice': '34809234', 'client': 'tortor_ut@mail.com', 'method': 'VISA *3245', 'amount': 5, 'status': 'Заморожена'},
-					{'id': '2378-1234', 'date': '12/22/2023', 'invoice_type': 6, 'invoice': '34809234', 'client': 'et_venenatis_tortor@mail.com', 'method': 'Test Gateway', 'amount': 15, 'status': 'Оплачена'},
-					{'id': '2378-1234', 'date': '12/22/2023', 'invoice_type': 7, 'invoice': '34809234', 'client': 'Jerome Bell', 'method': 'Payserra', 'amount': 7, 'status': 'Игнорируется'},
-					{'id': '2378-1234', 'date': '12/22/2023', 'invoice_type': 8, 'invoice': '34809234', 'client': 'ultrices@mail.com', 'method': 'Payserra', 'amount': 23, 'status': 'Возвращена'},
-					{'id': '2378-1234', 'date': '12/22/2023', 'invoice_type': 3, 'invoice': '34809234', 'client': 'vulputate@mail.com', 'method': 'Payserra', 'amount': 12000, 'status': 'Оплачена'},
-					{'id': '2378-1234', 'date': '12/22/2023', 'invoice_type': 1, 'invoice': '34809234', 'client': 'Wade Warren', 'method': 'Payserra', 'amount': 323, 'status': 'Не оплачена'},
-				] %}
 
 				<div class="hidden sm:block">
 					<div class="mx-auto px-4 sm:px-6 lg:px-8">
@@ -155,14 +144,11 @@
 												${{ item.amount|number_format(2, '.', '') }}
 											</td>
 											<td class="px-6 py-4">
-												<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                                                {% if item.status == 'Оплачена' %}bg-green-100 text-green-800
-                                                {% elseif item.status in ['Заморожена', 'В ожидании'] %}bg-blue-100 text-blue-800
-                                                {% elseif item.status in ['Мошенническая', 'Не оплачена', 'Оплачена → Мошенническая'] %}bg-red-100 text-red-800
-                                                {% elseif item.status in ['Возвращена', 'Оплачена → Возвращена'] %}bg-orange-200 text-orange-800
-                                                {% elseif item.status in ['Игнорируется', 'Оплачена → Отменена'] %}bg-gray-100 text-gray-800
-                                                {% endif %}
-	                                            ">{{ item.status }}</span>
+												{% for i in statuses %}
+													{% if item.status == i.val %}
+														<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ i.color }}-100 text-{{ i.color }}-800">{{ i.val }}</span>
+													{% endif %}
+												{% endfor %}
 											</td>
 											<td class="whitespace-nowrap px-6 py-4">
 												<button @click="billingTransactionsDetails()" type="button" class="flex items-center">

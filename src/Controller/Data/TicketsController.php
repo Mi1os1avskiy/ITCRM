@@ -1,7 +1,5 @@
 <?php
-namespace App\Controller\Support;
-
-use DateTime;
+namespace App\Controller\Data;
 
 class TicketsController
 {
@@ -35,46 +33,6 @@ class TicketsController
             new TicketsController('094357', 'Massa massa senectus velit metus euismod vitae imperdiet sem.', 'Closed', 3, 'Служба поддержки', 'Darlene Robertson', '2h 3m'),
             new TicketsController('763458', 'Malesuada quisque felis vitae risus consequat.', 'Important!', 2, 'Служба поддержки', 'Jerome Bell', '2h 3m')
         ];
-    }
-    
-
-    public static function ticketStatuses() {
-        $statuses = [
-            'status_1' => [
-                'title' => 'Important!',
-                'css' => 'bg-red-100 text-red-800'
-            ],
-            'status_2' => [
-                'title' => 'Open',
-                'css' => 'bg-red-100 text-red-800'
-            ],
-            'status_3' => [
-                'title' => 'In progress',
-                'css' => 'bg-orange-200 text-orange-800'
-            ],
-            'status_4' => [
-                'title' => 'Answered',
-                'css' => 'bg-yellow-100 text-yellow-800'
-            ],
-            'status_5' => [
-                'title' => 'Customer reply',
-                'css' => 'bg-yellow-100 text-yellow-800'
-            ],
-            'status_6' => [
-                'title' => 'Waiting for manager',
-                'css' => 'bg-yellow-100 text-yellow-800'
-            ],
-            'status_7' => [
-                'title' => 'On hold',
-                'css' => 'bg-blue-100 text-blue-800'
-            ],
-            'status_8' => [
-                'title' => 'Closed',
-                'css' => 'bg-green-100 text-green-800'
-            ],
-        ];
-
-        return $statuses;
     }
 
     public static function timeDiff() {

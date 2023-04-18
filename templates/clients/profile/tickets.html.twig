@@ -34,26 +34,16 @@
                                     </svg>
                                 </span>
 							</button>
-							<ul class="absolute z-10 mt-12 max-h-60 w-48 max-w-lg overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
-								<li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9" id="listbox-option-0" role="option">
-									<div class="flex items-center">
-										<span class="font-normal ml-3 block truncate">Action 1</span>
-									</div>
-									<span class="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4">
-                                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/>
-                                        </svg>
-                                    </span>
+							<ul class="absolute z-10 mt-12 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+								<li class="text-gray-700">
+									<button @click="supportTicketsClose()" type="button" class="py-3 px-4 hover:bg-gray-50">
+										<span class="pr-16 whitespace-nowrap">Закрыть тикеты</span>
+									</button>
 								</li>
-								<li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9" id="listbox-option-1" role="option">
-									<div class="flex items-center">
-										<span class="font-normal ml-3 block truncate">Action 2</span>
-									</div>
-									<span class="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4">
-                                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/>
-                                        </svg>
-                                    </span>
+								<li class="text-gray-700">
+									<button @click="supportTicketsDelete()" type="button" class="py-3 px-4 hover:bg-gray-50">
+										<span class="pr-16 whitespace-nowrap">Удалить тикеты</span>
+									</button>
 								</li>
 							</ul>
 						</div>
@@ -78,16 +68,6 @@
 
 		{% block table %}
 
-			{% set tickets = [
-				{'id': '098249', 'theme': 'Amet sagittis quis fames cursus vel risus.', 'status': 'Open', 'priority': 3, 'dept': 'Служба поддержки', 'answered': '2h 3m'},
-				{'id': '1234231', 'theme': 'At sed consectetur tempus neque nascetur auctor.', 'status': 'In progress', 'priority': 1, 'dept': 'Служба поддержки', 'answered': '2h 3m'},
-				{'id': '345345', 'theme': 'Malesuada quisque felis vitae risus consequat.', 'status': 'Answered', 'priority': 1, 'dept': 'Служба поддержки', 'answered': '2h 3m'},
-				{'id': '324543', 'theme': 'Lacus etiam adipiscing ac morbi.', 'status': 'Customer reply', 'priority': 2, 'dept': 'Служба поддержки', 'answered': '2h 3m'},
-				{'id': '8476534', 'theme': 'Sit elit nulla vestibulum mi nunc.', 'status': 'Waiting for manager', 'priority': 3, 'dept': 'Служба поддержки', 'answered': '2h 3m'},
-				{'id': '908345', 'theme': 'Dictum feugiat in senectus est platea.', 'status': 'On hold', 'priority': 3, 'dept': 'Служба поддержки', 'answered': '2h 3m'},
-				{'id': '094357', 'theme': 'Massa massa senectus velit metus euismod vitae imperdiet sem.', 'status': 'Closed', 'priority': 2, 'dept': 'Служба поддержки', 'answered': '2h 3m'}
-			] %}
-
 			<div class="hidden sm:block">
 				<div class="mx-auto px-4 sm:px-6 lg:px-8">
 					<div class="mt-2 flex flex-col">
@@ -97,7 +77,7 @@
 								<thead>
 									<tr class="bg-gray-50 text-sm text-gray-900 border border-t">
 										<th class="pl-6 py-3 text-left" scope="col"></th>
-										<th class="pr-6 py-3 text-left font-medium whitespace-nowrap" scope="col">ID - Тема</th>
+										<th class="px-6 py-3 text-left font-medium whitespace-nowrap" scope="col">ID - Тема</th>
 										<th class="px-6 py-3 text-left font-medium" scope="col">Статус</th>
 										<th class="px-6 py-3 text-left font-medium" scope="col">Приоритет</th>
 										<th class="px-6 py-3 text-left font-medium" scope="col">Департамент</th>
@@ -113,18 +93,15 @@
 										<td class="whitespace-nowrap pl-6 py-4 text-left">
 											<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
 										</td>
-										<td class="whitespace-nowrap pr-6 py-4 text-sm text-gray-900 font-medium">
-											<a href="#" class="hover:text-indigo-700">#{{ ticket.id }} - {{ ticket.theme }}</a>
+										<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900 font-medium">
+											<a href="{{ path('support_ticket_answer') }}" class="hover:text-indigo-700">#{{ ticket.id }} - {{ ticket.theme }}</a>
 										</td>
 										<td class="whitespace-nowrap px-6 py-4 text-sm text-left">
-											<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-											{% if ticket.status in ['Open', 'Important!'] %}bg-red-100 text-red-800
-											{% elseif ticket.status == 'In progress' %}bg-orange-200 text-orange-800
-											{% elseif ticket.status in ['Answered', 'Customer reply', 'Waiting for manager'] %}bg-yellow-100 text-yellow-800
-											{% elseif ticket.status == 'On hold' %}bg-blue-100 text-blue-800
-											{% elseif ticket.status == 'Closed' %}bg-green-100 text-green-800
-											{% endif %}
-											">{{ ticket.status }}</span>
+											{% for i in statuses %}
+												{% if ticket.status == i.val %}
+													<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ i.color }}-{% if i.color == 'orange' %}200{% else %}100{% endif %} text-{{ i.color }}-800">{{ i.val }}</span>
+												{% endif %}
+											{% endfor %}
 										</td>
 										<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
 											{% if ticket.priority == 3 %}
@@ -139,7 +116,7 @@
 											{% endif %}
 										</td>
 										<td class="whitespace-nowrap px-6 py-4 text-sm">{{ ticket.dept }}</td>
-										<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">{{ ticket.answered }}</td>
+										<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">{{ ticket.time }}</td>
 									</tr>
 
 								{% endfor %}

@@ -80,7 +80,7 @@
 			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
 				<p class="text-sm font-medium text-gray-700 self-center">Статус аккаунта</p>
 				<div class="relative sm:col-span-2">
-					<button type="button" class="relative w-full max-w-lg cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="false" aria-expanded-autohide aria-labelledby="listbox-label">
+					<button type="button" class="relative w-full max-w-lg cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-expanded="false" aria-expanded-autohide aria-labelledby="listbox-label">
                         <span class="pointer-events-none flex items-center">
                             <span aria-label="Online" class="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-green-400"></span>
                             <span class="ml-3 block truncate">Active</span>
@@ -92,55 +92,15 @@
                         </span>
 					</button>
 
-					<ul class="absolute z-10 mt-1 max-h-60 w-full max-w-lg overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
-						<li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9">
-							<div class="flex items-center">
-								<!-- Online: "bg-green-400", Not Online: "bg-gray-200" -->
-								<span class="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-green-400" aria-hidden="true"></span>
-								<!-- Selected: "font-semibold", Not Selected: "font-normal" -->
-								<span class="font-normal ml-3 block truncate">Active</span>
-							</div>
-							<span class="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4">
-                                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/>
-                                </svg>
-                            </span>
-						</li>
-						<li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9">
-							<div class="flex items-center">
-								<!-- Online: "bg-green-400", Not Online: "bg-gray-200" -->
-								<span class="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-yellow-400" aria-hidden="true"></span>
-								<!-- Selected: "font-semibold", Not Selected: "font-normal" -->
-								<span class="font-normal ml-3 block truncate">Pending</span>
-							</div>
-							<span class="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4">
-                                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/>
-                                </svg>
-                            </span>
-						</li>
-						<li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9">
-							<div class="flex items-center">
-								<span class="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-gray-400" aria-hidden="true"></span>
-								<span class="font-normal ml-3 block truncate">Inactive</span>
-							</div>
-							<span class="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4">
-                                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/>
-                                </svg>
-                            </span>
-						</li>
-						<li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9">
-							<div class="flex items-center">
-								<span class="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-gray-400" aria-hidden="true"></span>
-								<span class="font-normal ml-3 block truncate">Closed</span>
-							</div>
-							<span class="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4">
-                                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/>
-                                </svg>
-                            </span>
-						</li>
+					<ul class="absolute z-10 mt-1 max-h-60 w-64 max-w-lg overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+						{% for i in statuses %}
+							<li>
+								<button type="button" class="w-full flex items-center text-gray-900 py-2 px-3 hover:bg-gray-100">
+									<span class="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-{{ i.color }}-400"></span>
+									<span class="ml-3 truncate">{{ i.val }}</span>
+								</button>
+							</li>
+						{% endfor %}
 					</ul>
 				</div>
 			</div>

@@ -10,39 +10,6 @@
 
     {% endblock %}
 
-    <!-- Activity list (smallest breakpoint only) -->
-    {#
-    <div class="shadow sm:hidden">
-        <ul role="list" class="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden">
-            <li>
-                <a href="#" class="block bg-white px-4 py-4 hover:bg-gray-50">
-                    <span class="flex items-center space-x-4">
-                      <span class="flex flex-1 space-x-2 truncate">
-                        <span class="flex flex-col truncate text-sm text-gray-500">
-                          <span class="truncate">#c203202</span>
-                          <span><span class="font-medium text-gray-900">$20,000</span> USD</span>
-                          <time datetime="2020-07-11">July 11, 2020</time>
-                        </span>
-                      </span>
-                        <!-- Heroicon name: mini/chevron-right -->
-                      <svg class="h-5 w-5 flex-shrink-0 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                </a>
-            </li>
-            <!-- More transactions... -->
-        </ul>
-
-        <nav class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3" aria-label="Pagination">
-            <div class="flex flex-1 justify-between">
-                <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-500">Previous</a>
-                <a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-500">Next</a>
-            </div>
-        </nav>
-    </div>
-    #}
-
     <div class="mt-4">
 
         {% block control %}
@@ -50,11 +17,11 @@
             <div class="mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center flex-shrink-0 h-16 justify-between">
                     <div class="flex space-y-4">
-                        <button type="button" class="inline-flex items-center rounded-md border border-gray-300 px-4 py-2 text-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <a href="#" onclick="location.reload(); return false;" class="inline-flex items-center rounded-md border border-gray-300 px-4 py-2 text-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.3122 11.4236C14.526 14.3576 11.5102 16.0988 8.57612 15.3127C7.6071 15.053 6.77006 14.5514 6.11034 13.8904L5.7988 13.5789L8.23203 13.5785C8.64624 13.5784 8.98197 13.2425 8.98189 12.8283C8.98182 12.4141 8.64597 12.0784 8.23176 12.0785L3.98833 12.0792C3.78941 12.0792 3.59866 12.1583 3.45803 12.299C3.3174 12.4397 3.23842 12.6305 3.23846 12.8294L3.23935 17.0712C3.23944 17.4854 3.5753 17.8211 3.98951 17.821C4.40372 17.821 4.73944 17.4851 4.73935 17.0709L4.73884 14.6403L5.04869 14.9501C5.88973 15.7926 6.95741 16.4318 8.18789 16.7615C11.9222 17.7621 15.7605 15.5461 16.7611 11.8118C16.8683 11.4117 16.6309 11.0005 16.2308 10.8932C15.8307 10.786 15.4194 11.0235 15.3122 11.4236ZM16.5411 7.70119C16.6818 7.56051 16.7608 7.36971 16.7608 7.17078L16.7601 2.92883C16.76 2.51462 16.4242 2.17889 16.0099 2.17896C15.5957 2.17902 15.26 2.51487 15.2601 2.92908L15.2605 5.35995L14.9507 5.05013C14.1097 4.20771 13.0417 3.56827 11.8114 3.23859C8.0771 2.238 4.23874 4.45407 3.23814 8.18834C3.13094 8.58844 3.36837 8.99969 3.76847 9.1069C4.16857 9.2141 4.57983 8.97667 4.68703 8.57657C5.47321 5.6425 8.48907 3.9013 11.4231 4.68748C12.3922 4.94714 13.2293 5.44881 13.889 6.10979L14.2001 6.4209L11.7681 6.4209C11.3539 6.4209 11.0181 6.75669 11.0181 7.1709C11.0181 7.58512 11.3539 7.9209 11.7681 7.9209H16.0108C16.2097 7.9209 16.4005 7.84187 16.5411 7.70119Z" fill="#6B7280"/>
                             </svg>
-                        </button>
+                        </a>
                     </div>
 
                     <div class="flex items-center">
@@ -75,17 +42,6 @@
         {% endblock %}
 
         {% block table %}
-
-            {% set services = [
-                {'id': 'Personal VPN and Socks 5 proxy with dedicated IP FR', 'ip': '255.255.255.255', 'amount': '130.99', 'cycle': 'Месяц', 'date': '17/02/2023', 'paydate': '17/02/2023', 'status': 'Active'},
-                {'id': 'Velit etiam sit laoreet sit', 'ip': '1.1.1.1', 'amount': '10.99', 'cycle': 'Месяц', 'date': '17/02/2023', 'paydate': '17/02/2023', 'status': 'Pending'},
-                {'id': 'Lite - Windows SSD SG', 'ip': '1.1.1.1', 'amount': '100.00', 'cycle': 'Месяц', 'date': '17/02/2023', 'paydate': '17/02/2023', 'status': 'Terminated'},
-                {'id': 'Personal VPN and Socks 5 proxy', 'ip': '1.1.1.1', 'amount': '125.25', 'cycle': 'Месяц', 'date': '17/02/2023', 'paydate': '17/02/2023', 'status': 'Cancelled'},
-                {'id': 'Semper tortor nunc quis aenean', 'ip': '255.255.255.255', 'amount': '130.99', 'cycle': 'Месяц', 'date': '17/02/2023', 'paydate': '17/02/2023', 'status': 'Pending'},
-                {'id': 'Mi sit at proin ut', 'ip': '1.1.1.1', 'amount': '99.99', 'cycle': 'Месяц', 'date': '17/02/2023', 'paydate': '17/02/2023', 'status': 'Active'},
-                {'id': 'Socks 5 proxy with dedicated IP FR', 'ip': '192.168.1.1', 'amount': '123.45', 'cycle': 'Месяц', 'date': '17/02/2023', 'paydate': '17/02/2023', 'status': 'Active'},
-                {'id': 'Lite - Windows SSD SG', 'ip': '1.1.1.1', 'amount': '99.99', 'cycle': 'Месяц', 'date': '17/02/2023', 'paydate': '17/02/2023', 'status': 'Terminated'}
-            ] %}
 
         <div class="hidden sm:block">
             <div class="mx-auto px-4 sm:px-6 lg:px-8">
@@ -116,15 +72,11 @@
                                     <td class="whitespace-nowrap px-6 py-4 text-gray-500">{{ service.date }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 text-gray-500">{{ service.paydate }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">
-                                        {% if service.status == 'Active' %}
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 capitalize">{{ service.status }}</span>
-                                        {% elseif service.status == "Pending" %}
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 capitalize">Pending</span>
-                                        {% elseif service.status == 'Terminated' %}
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 capitalize">Terminated</span>
-                                        {% elseif service.status == 'Cancelled' %}
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 capitalize">Cancelled</span>
-                                        {% endif %}
+                                        {% for i in statuses %}
+                                            {% if service.status == i.val %}
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ i.color }}-100 text-{{ i.color }}-800 capitalize">{{ i.val }}</span>
+                                            {% endif %}
+                                        {% endfor %}
                                     </td>
                                 </tr>
 
@@ -147,7 +99,6 @@
                                                 <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
                                             </svg>
                                         </a>
-                                        <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
                                         <a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
                                         <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
                                         <a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
