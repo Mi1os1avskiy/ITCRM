@@ -49,11 +49,11 @@ class TicketsController
 
     public static function ticketNavigation() {
         $tabs = [
-            ['eng' => 'answer', 'rus' => 'Ответ', 'val' => 0],
-            ['eng' => 'notes', 'rus' => 'Заметки', 'val' => 0],
-            ['eng' => 'options', 'rus' => 'Опции', 'val' => 0],
-            ['eng' => 'log', 'rus' => 'Лог', 'val' => 0],
-            ['eng' => 'others', 'rus' => 'Другие тикеты', 'val' => 0],
+            ['eng' => 'answer', 'rus' => 'Ответ'],
+            ['eng' => 'notes', 'rus' => 'Заметки'],
+            ['eng' => 'options', 'rus' => 'Опции'],
+            ['eng' => 'log', 'rus' => 'Лог'],
+            ['eng' => 'others', 'rus' => 'Другие тикеты'],
         ];
 
         return $tabs;

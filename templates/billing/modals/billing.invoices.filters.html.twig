@@ -64,16 +64,16 @@
 							<input type="text" class="w-full rounded-md border-gray-300 pl-10 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:text-gray-400 placeholder:font-light" placeholder="До">
 						</div>
 					</div>
+
+					{% set payments = payments() %}
+
 					<p class="mt-6 text-sm text-left font-medium text-gray-700">Способ оплаты</p>
 					<div class="relative mt-2 rounded-md shadow-sm">
 						<select class="w-full border border-gray-300 rounded-md text-sm">
 							<option>Не выбран</option>
-							<option>Coinpayments</option>
-							<option>Stripe</option>
-							<option>AdvCash</option>
-							<option>AliPay</option>
-							<option>Paxum</option>
-							<option>Boleto</option>
+							{% for i in payments %}
+								<option>{{ i }}</option>
+							{% endfor %}
 						</select>
 					</div>
 					<p class="mt-6 text-sm text-left font-medium text-gray-700">Даты</p>

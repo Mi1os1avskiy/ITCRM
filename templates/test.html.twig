@@ -1,0 +1,24 @@
+{% extends 'support/support.base.html.twig' %}
+
+{% set title = 'TEST' %}
+
+{% block content %}
+
+	<support-settings inline-template>
+
+		<div class="mt-6">
+			<div class="max-w-5xl px-4 sm:px-6 lg:px-8 space-y-6">
+				{% set navTabs = navTabs() %}
+				{% set data = userData() %}
+				{% for i in navTabs %}
+					<p>{{ i.rus }}</p>
+				{% endfor %}
+				{% for i in data %}
+					<p>{{ i.credit }}</p>
+				{% endfor %}
+			</div>
+		</div>
+
+	</support-settings>
+
+{% endblock %}

@@ -39,11 +39,12 @@
 						</div>
 						<input type="text" class="block w-full rounded-md border-gray-300 pl-10 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:text-gray-400 placeholder:font-light" placeholder="Реселлер Email или ID">
 					</div>
+
 					<p class="mt-6 text-sm text-left font-medium text-gray-700">Способ оплаты</p>
 					<div class="relative mt-2 rounded-md shadow-sm">
 						<select class="w-full border border-gray-300 rounded-md text-sm">
 							<option>Не выбран</option>
-							{% for i in pay_methods %}
+							{% for i in payments() %}
 								<option>{{ i }}</option>
 							{% endfor %}
 						</select>

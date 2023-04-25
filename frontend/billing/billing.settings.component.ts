@@ -8,6 +8,7 @@ const BillingInvoiceNotationAdd = 'billing-invoice-notation-add';
 const BillingInvoiceNotationEdit = 'billing-invoice-notation-edit';
 const BillingInvoiceAddPayment = 'billing-invoice-add-payment';
 const BillingInvoiceCancel = 'billing-invoice-cancel';
+const BillingAddTransaction = 'billing-add-transaction';
 
 export const BillingSettingsComponent = {
     data() {
@@ -16,6 +17,14 @@ export const BillingSettingsComponent = {
         }
     },
     methods: {
+        billingAddTransaction() {
+            const self = <any>this;
+            self.$modals(BillingAddTransaction).show()
+                .then((data: any) => {
+                })
+                .catch(() => {
+                });
+        },
         billingInvoicesFilters() {
             const self = <any>this;
             self.$modals(BillingInvoicesFilters).show()

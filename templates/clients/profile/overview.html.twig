@@ -4,10 +4,8 @@
 
 {% block content %}
 
-    {% set id = get %}
-
     {% for user in users %}
-        {% if id == user.id %}
+        {% if userID() == user.id %}
 
             {% block header %}
                 {% include 'clients/header.profile.html.twig' %}

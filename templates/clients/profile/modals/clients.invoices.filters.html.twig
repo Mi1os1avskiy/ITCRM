@@ -56,11 +56,13 @@
 						</div>
 					</div>
 
+					{% set payments = payments() %}
+
 					<p class="mt-6 text-sm text-left font-medium text-gray-700">Способ оплаты</p>
 					<div class="relative mt-2 rounded-md shadow-sm">
 						<select class="w-full border border-gray-300 rounded-md text-sm">
 							<option>Не выбран</option>
-							{% for i in pay_methods %}
+							{% for i in payments %}
 								<option>{{ i }}</option>
 							{% endfor %}
 						</select>

@@ -2,7 +2,6 @@
 namespace App\Controller;
 
 use App\Controller\Data\CreditsController;
-use App\Controller\Data\EmailsController;
 use App\Controller\Data\InvoicesController;
 use App\Controller\Data\NotesController;
 use App\Controller\Data\ServicesController;
@@ -67,7 +66,6 @@ class IndexController extends AbstractController
     {
         return $this->render('clients/profile/overview.html.twig', [
             'title' => 'Overview',
-            'get' => UsersController::ClientOverview(),
             'users' => UsersController::CreateTable(),
         ]);
     }
@@ -105,7 +103,6 @@ class IndexController extends AbstractController
         return $this->render('clients/profile/invoices.html.twig', [
             'title' => 'Invoices',
             'users' => UsersController::CreateTable(),
-            'pay_methods' => MiscController::paymentMethods(),
             'statuses' => StatusesController::invoiceStatuses(),
             'invoices' => InvoicesController::allInvoices(),
         ]);
@@ -153,7 +150,7 @@ class IndexController extends AbstractController
     {
         return $this->render('clients/profile/emails.html.twig', [
             'title' => 'Emails',
-            'emails' => EmailsController::allEmails(),
+            'data' => UsersController::ClientEmails(),
         ]);
     }
 
@@ -191,6 +188,7 @@ class IndexController extends AbstractController
             'data' => TicketsController::ticketData(),
             'tabs' => TicketsController::ticketNavigation(),
             'messages' => TicketsController::ticketMessages(),
+            'statuses' => StatusesController::ticketStatuses(),
         ]);
     }
 
@@ -204,6 +202,7 @@ class IndexController extends AbstractController
             'data' => TicketsController::ticketData(),
             'tabs' => TicketsController::ticketNavigation(),
             'messages' => TicketsController::ticketMessages(),
+            'statuses' => StatusesController::ticketStatuses(),
         ]);
     }
 
@@ -216,6 +215,7 @@ class IndexController extends AbstractController
             'title' => 'Тикет #',
             'data' => TicketsController::ticketData(),
             'tabs' => TicketsController::ticketNavigation(),
+            'statuses' => StatusesController::ticketStatuses(),
         ]);
     }
 
@@ -229,6 +229,7 @@ class IndexController extends AbstractController
             'data' => TicketsController::ticketData(),
             'tabs' => TicketsController::ticketNavigation(),
             'logs' => TicketsController::ticketLogs(),
+            'statuses' => StatusesController::ticketStatuses(),
         ]);
     }
 
@@ -312,16 +313,15 @@ class IndexController extends AbstractController
             'title' => 'Транзакции',
             'transactions' => TransactionsController::allTransactions(),
             'statuses' => StatusesController::transactionStatuses(),
-            'pay_methods' => MiscController::paymentMethods(),
-            ''
         ]);
     }
 
 
-    public function statusesForAside(): Response
+    /**
+     * @Route("/test", name="test")
+     */
+    public function test(): Response
     {
-        return $this->render('parts/aside.html.twig', [
-            'tickets' => StatusesController::ticketStatuses(),
-        ]);
+        return $this->render('test.html.twig');
     }
 }

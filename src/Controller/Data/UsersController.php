@@ -48,14 +48,20 @@ class UsersController
         ];
     }
 
-    public static function ClientOverview() {
-        $get = $_GET;
-        $res = 111;
+    public static function navigationTabs() {
+        $tabs = [
+            ['eng' => 'overview', 'rus' => 'Обзор', 'val' => 0],
+            ['eng' => 'profile', 'rus' => 'Профиль', 'val' => 0],
+            ['eng' => 'services', 'rus' => 'Услуги', 'val' => 0],
+            ['eng' => 'invoices', 'rus' => 'Инвойсы', 'val' => 1],
+            ['eng' => 'tickets', 'rus' => 'Тикеты', 'val' => 99.5],
+            ['eng' => 'credits', 'rus' => 'Кредиты', 'val' => 0],
+            ['eng' => 'transactions', 'rus' => 'Транзакции', 'val' => 0],
+            ['eng' => 'emails', 'rus' => 'Письма', 'val' => 3],
+            ['eng' => 'notes', 'rus' => 'Заметки', 'val' => 0],
+        ];
 
-        foreach ($get as $i) {
-            $res = $i;
-        }
-        return $res;
+        return $tabs;
     }
 
     public static function ClientEmails() {

@@ -8,6 +8,8 @@
 		<div class="flex flex-1 flex-col">
 			<main class="flex-1 mb-24">
 
+				{% set userID = userID() %}
+
 				{% block content %}{% endblock %}
 
 			</main>
@@ -15,5 +17,3 @@
 	</clients-module>
 
 {% endblock %}
-
-
