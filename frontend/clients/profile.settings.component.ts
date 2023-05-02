@@ -10,6 +10,7 @@ const NotesAdd = 'clients-notes-add';
 const NotesEdit = 'clients-notes-edit';
 
 export const ProfileSettingsComponent = {
+
 	data() {
 		return {
 			personalData: {}

@@ -11,13 +11,12 @@
 		{'date': '14/01/2023', 'time': '22:22:22', 'ip': '2a02:c7f:f64f:5700:b56e:3c00:586', 'loc': 'GE'}
 	] %}
 
-	<div class="relative w-[800px] transform overflow-hidden rounded-lg bg-white my-auto px-4 py-6 shadow-xl transition-all sm:px-6">
+	<div class="relative w-[800px] transform overflow-hidden rounded-lg bg-white shadow-xl transition-all">
 
-		<div class="flex justify-between">
-			<h3 class="mb-6 text-lg font-medium">IP логи</h3>
+		<div class="flex justify-between py-5 px-6 bg-gray-50">
+			<h2 class="text-lg font-medium text-gray-900">IP логи</h2>
 			<div class="ml-3 flex h-7 items-center">
-				<button @click="close(false)" type="button" class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-					<span class="sr-only">Close panel</span>
+				<button @click="close(false)" type="button" class="rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
 					<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
 						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
 					</svg>
@@ -25,9 +24,9 @@
 			</div>
 		</div>
 
-		<table class="min-w-full rounded-lg border border-gray-200">
+		<table class="min-w-full rounded-lg">
 			<thead>
-			<tr class="bg-gray-50 border border-b-gray-200 text-sm">
+			<tr class="bg-gray-50 border-b text-gray-900 text-sm">
 				<th class="px-6 py-3 text-left font-medium" scope="col">Дата</th>
 				<th class="px-6 py-3 text-left font-medium" scope="col">Время</th>
 				<th class="px-6 py-3 text-left font-medium" scope="col">IP</th>
@@ -38,7 +37,7 @@
 
 			{% for log in arr %}
 
-				<tr class="text-left text-gray-500">
+				<tr class="text-left text-gray-500 text-sm">
 					<td class="px-6 py-4">
 						{{ log.date }}
 					</td>
@@ -89,7 +88,7 @@
 					<p class="text-sm font-medium text-gray-500">1 - {{ arr|length }} из {{ arr|length }}</p>
 					<div class="flex ml-4">
 						<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
-							{% for i in range(low=25, high=100, step=25) %}
+							{% for i in range(low=5, high=20, step=5) %}
 								<option>{{ i }}</option>
 							{% endfor %}
 						</select>

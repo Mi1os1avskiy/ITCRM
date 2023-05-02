@@ -68,4 +68,17 @@ class StatusesController
 
         return $list;
     }
+
+    public static function orderStatuses() {
+        $list = [
+            ['val' => 'Pending', 'color' => 'red'],
+            ['val' => 'Rejected', 'color' => 'red'],
+            ['val' => 'Ordered', 'color' => 'yellow'],
+            ['val' => 'Active', 'color' => 'green'],
+            ['val' => 'Suspended', 'color' => 'blue'],
+            ['val' => 'Terminated', 'color' => 'red'],
+        ];
+
+        return $list;
+    }
 }

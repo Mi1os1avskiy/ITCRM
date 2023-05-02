@@ -74,42 +74,14 @@
 							<div class="py-3 ml-11">
 								<div class="h-[1px] w-full bg-gray-700"></div>
 							</div>
-							<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<div class="w-5 h-5 flex items-center justify-center">
-									<div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-								</div>
-								<span class="ml-4 text-red-400">Pending</span>
-							</a>
-							<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<div class="w-5 h-5 flex items-center justify-center">
-									<div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-								</div>
-								<span class="ml-4 text-red-400">Rejected</span>
-							</a>
-							<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<div class="w-5 h-5 flex items-center justify-center">
-									<div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
-								</div>
-								<span class="ml-4 text-yellow-400">Ordered</span>
-							</a>
-							<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<div class="w-5 h-5 flex items-center justify-center">
-									<div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
-								</div>
-								<span class="ml-4 text-green-400">Active</span>
-							</a>
-							<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<div class="w-5 h-5 flex items-center justify-center">
-									<div class="w-2.5 h-2.5 rounded-full bg-blue-400"></div>
-								</div>
-								<span class="ml-4 text-blue-400">Suspended</span>
-							</a>
-							<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<div class="w-5 h-5 flex items-center justify-center">
-									<div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-								</div>
-								<span class="ml-4 text-red-400">Terminated</span>
-							</a>
+							{% for i in orderStats() %}
+								<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+									<div class="w-5 h-5 flex items-center justify-center">
+										<div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+									</div>
+									<span class="ml-4 text-{{ i.color }}-400">{{ i.val }}</span>
+								</a>
+							{% endfor %}
 						</div>
 
 						<button aria-expanded="false" class="overflow-x-auto w-full mb-1 text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
@@ -173,54 +145,14 @@
 							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Неназначенные</span>
 							</a>
-							<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<div class="w-5 h-5 flex items-center justify-center">
-									<div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-								</div>
-								<span class="ml-4 text-red-400">Open</span>
-							</a>
-							<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<div class="w-5 h-5 flex items-center justify-center">
-									<div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-								</div>
-								<span class="ml-4 text-red-400">In progress</span>
-							</a>
-							<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<div class="w-5 h-5 flex items-center justify-center">
-									<div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
-								</div>
-								<span class="ml-4 text-yellow-400">Answered</span>
-							</a>
-							<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<div class="w-5 h-5 flex items-center justify-center">
-									<div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
-								</div>
-								<span class="ml-4 text-yellow-400">Custom reply</span>
-							</a>
-							<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<div class="w-5 h-5 flex items-center justify-center">
-									<div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
-								</div>
-								<span class="ml-4 text-yellow-400">Wait for manager</span>
-							</a>
-							<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<div class="w-5 h-5 flex items-center justify-center">
-									<div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-								</div>
-								<span class="ml-4 text-red-400">Important!</span>
-							</a>
-							<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<div class="w-5 h-5 flex items-center justify-center">
-									<div class="w-2.5 h-2.5 rounded-full bg-sky-400"></div>
-								</div>
-								<span class="ml-4 text-sky-400">On hold</span>
-							</a>
-							<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<div class="w-5 h-5 flex items-center justify-center">
-									<div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
-								</div>
-								<span class="ml-4 text-green-400">Closed</span>
-							</a>
+							{% for i in ticketStats() %}
+								<a href="{{ path('support_tickets', { sort:i.val }) }}" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+									<div class="w-5 h-5 flex items-center justify-center">
+										<div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+									</div>
+									<span class="ml-4 text-{{ i.color }}-400">{{ i.val }}</span>
+								</a>
+							{% endfor %}
 						</div>
 						<button aria-expanded="false" class="overflow-x-auto w-full mb-1 text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
 							<span class="flex items-center pointer-events-none">

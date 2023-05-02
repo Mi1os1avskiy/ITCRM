@@ -98,14 +98,16 @@
 									<nav class="flex items-center w-64 truncate lg:w-full text-sm text-gray-700">
 										<a href="#" class="py-[9px] px-[13px] border rounded-l-md focus:text-indigo-500 focus:bg-indigo-50 focus:border-indigo-500">Ожидают ответа</a>
 										<a href="#" class="py-[9px] px-[13px] border focus:text-indigo-500 focus:bg-indigo-50 focus:border-indigo-500">Все активные</a>
-										<a href="#" class="flex items-center py-[9px] px-[18px] space-x-3 border focus:text-indigo-500 focus:bg-indigo-50 focus:border-indigo-500">
-											<div class="h-2.5 w-2.5 rounded-full bg-blue-600"></div>
-											<span>On hold</span>
-										</a>
-										<a href="#" class="flex items-center py-[9px] px-[18px] space-x-3 border focus:text-indigo-500 focus:bg-indigo-50 focus:border-indigo-500">
-											<div class="h-2.5 w-2.5 rounded-full bg-orange-600"></div>
-											<span>In progress</span>
-										</a>
+										{% if getGet() %}
+											{% for i in ticketStats() %}
+												{% if getGet() == i.val %}
+													<a href="#" class="flex items-center py-[9px] px-[18px] space-x-3 border focus:text-indigo-500 focus:bg-indigo-50 focus:border-indigo-500">
+														<div class="h-2.5 w-2.5 rounded-full bg-{{ i.color }}-600"></div>
+														<span>{{ i.val }}</span>
+													</a>
+												{% endif %}
+											{% endfor %}
+										{% endif %}
 										<div>
 											<button type="button" class="py-[9px] px-[13px] border rounded-r-md focus:bg-indigo-50 focus:border-indigo-500" aria-expanded="false" aria-expanded-autohide>
 												<svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -114,46 +116,18 @@
 											</button>
 											<ul class="absolute z-10 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
 												<li class="border-b border-gray-100">
-													<button type="button" class="w-full py-3 px-5 text-left hover:bg-gray-100">
+													<a href="{{ path('support_tickets') }}" class="w-full py-3 px-5 text-left hover:bg-gray-100">
 														<span class="text-gray-700 whitespace-nowrap">Все тикеты</span>
-													</button>
+													</a>
 												</li>
-												<li>
-													<button type="button" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
-														<div class="h-2.5 w-2.5 rounded-full bg-red-400"></div>
-														<span class="text-gray-700 whitespace-nowrap">Important!</span>
-													</button>
-												</li>
-												<li>
-													<button type="button" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
-														<div class="h-2.5 w-2.5 rounded-full bg-red-500"></div>
-														<span class="text-gray-700 whitespace-nowrap">Open</span>
-													</button>
-												</li>
-												<li>
-													<button type="button" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
-														<div class="h-2.5 w-2.5 rounded-full bg-yellow-400"></div>
-														<span class="text-gray-700 whitespace-nowrap">Answered</span>
-													</button>
-												</li>
-												<li>
-													<button type="button" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
-														<div class="h-2.5 w-2.5 rounded-full bg-yellow-400"></div>
-														<span class="text-gray-700 whitespace-nowrap">Customer reply</span>
-													</button>
-												</li>
-												<li>
-													<button type="button" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
-														<div class="h-2.5 w-2.5 rounded-full bg-yellow-400"></div>
-														<span class="text-gray-700 whitespace-nowrap">Waiting for manager</span>
-													</button>
-												</li>
-												<li>
-													<button type="button" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
-														<div class="h-2.5 w-2.5 rounded-full bg-green-400"></div>
-														<span class="text-gray-700 whitespace-nowrap">Closed</span>
-													</button>
-												</li>
+												{% for i in ticketStats() %}
+													<li>
+														<a href="{{ path('support_tickets', { sort:i.val }) }}" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
+															<div class="h-2.5 w-2.5 rounded-full bg-{{ i.color }}-400"></div>
+															<span class="text-gray-700 whitespace-nowrap">{{ i.val }}</span>
+														</a>
+													</li>
+												{% endfor %}
 											</ul>
 										</div>
 									</nav>
@@ -170,12 +144,12 @@
 											<input name="search" class="block w-full rounded-md border border-gray-300 bg-white py-[9px] pl-10 pr-3 leading-5 placeholder-gray-400 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Поиск" type="search">
 										</div>
 									</div>
-									<button type="button" class="inline-flex items-center ml-2 rounded-l-md border border-gray-300 pl-[15px] pr-[17px] py-[9px] shadow-sm hover:bg-gray-50 focus:border-indigo-500">
+									<a href="{{ path('support_tickets') }}" class="inline-flex items-center ml-2 rounded-l-md border border-gray-300 pl-[15px] pr-[17px] py-[9px] shadow-sm hover:bg-gray-50 focus:border-indigo-500">
 										<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM8.28033 7.21967C7.98744 6.92678 7.51256 6.92678 7.21967 7.21967C6.92678 7.51256 6.92678 7.98744 7.21967 8.28033L8.93934 10L7.21967 11.7197C6.92678 12.0126 6.92678 12.4874 7.21967 12.7803C7.51256 13.0732 7.98744 13.0732 8.28033 12.7803L10 11.0607L11.7197 12.7803C12.0126 13.0732 12.4874 13.0732 12.7803 12.7803C13.0732 12.4874 13.0732 12.0126 12.7803 11.7197L11.0607 10L12.7803 8.28033C13.0732 7.98744 13.0732 7.51256 12.7803 7.21967C12.4874 6.92678 12.0126 6.92678 11.7197 7.21967L10 8.93934L8.28033 7.21967Z" fill="#6B7280"/>
 										</svg>
 										<span class="ml-2 text-sm text-gray-700">2</span>
-									</button>
+									</a>
 									<button @click="supportFilters()" type="button" class="inline-flex items-center rounded-r-md border border-gray-300 pl-[15px] pr-[17px] py-[9px] shadow-sm hover:bg-gray-50 focus:border-indigo-500">
 										<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path fill-rule="evenodd" clip-rule="evenodd" d="M4.47102 3.46746C6.27039 3.15991 8.11739 3 10 3C11.8826 3 13.7296 3.15991 15.529 3.46746C15.8007 3.51389 16 3.75747 16 4.04302V5.8223C16 6.28643 15.8222 6.73155 15.5057 7.05974L11.9943 10.7013C11.6778 11.0295 11.5 11.4746 11.5 11.9387V14.3004C11.5 14.832 11.267 15.3348 10.8667 15.6669L9.41389 16.8722C9.24505 17.0122 9.01372 17.0396 8.81883 16.9424C8.62394 16.8453 8.5 16.6409 8.5 16.4167V11.9387C8.5 11.4746 8.32221 11.0295 8.00574 10.7013L4.49426 7.05974C4.17779 6.73155 4 6.28643 4 5.8223V4.04302C4 3.75747 4.19934 3.51389 4.47102 3.46746Z" fill="#6B7280"/>
@@ -210,6 +184,8 @@
 											<tbody class="divide-y divide-gray-200 bg-white">
 
 											{% for ticket in tickets %}
+												{% if getGet() %}
+												{% if ticket.status == getGet() %}
 
 												<tr>
 													<td class="whitespace-nowrap pl-6 py-4">
@@ -248,6 +224,45 @@
 													<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{{ time }}</td>
 												</tr>
 
+												{% endif %}
+													{% else %}
+														<tr>
+															<td class="whitespace-nowrap pl-6 py-4">
+																<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
+															</td>
+															<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
+																<a href="{{ path('support_ticket_answer') }}" class="font-medium hover:text-indigo-700">
+																	<p class="truncate w-96 hover:w-full">#{{ ticket.id }} - {{ ticket.theme }}</p>
+																</a>
+															</td>
+															<td class="whitespace-nowrap px-6 py-4">
+																{% for i in statuses %}
+																	{% if ticket.status == i.val %}
+																		<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ i.color }}-{% if i.color == 'orange' %}200{% else %}100{% endif %} text-{{ i.color }}-800">{{ i.val }}</span>
+																	{% endif %}
+																{% endfor %}
+															</td>
+															<td class="whitespace-nowrap px-6 py-4">
+																{% if ticket.priority == 3 %}
+																	<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
+																{% elseif ticket.priority == 2 %}
+																	<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
+																	<div class="mt-0.5 h-0.5 w-2.5 rounded bg-orange-400"></div>
+																{% elseif ticket.priority == 1 %}
+																	<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
+																	<div class="mt-0.5 h-0.5 w-2.5 rounded bg-red-400"></div>
+																	<div class="mt-0.5 h-0.5 w-2.5 rounded bg-red-400"></div>
+																{% endif %}
+															</td>
+															<td class="whitespace-nowrap px-6 py-4 text-sm">
+																<p>{{ ticket.dept }}</p>
+															</td>
+															<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+																<p class="truncate w-36 hover:w-full">{{ ticket.client }}</p>
+															</td>
+															<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{{ time }}</td>
+														</tr>
+												{% endif %}
 											{% endfor %}
 
 											</tbody>

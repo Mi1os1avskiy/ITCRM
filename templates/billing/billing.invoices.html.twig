@@ -120,7 +120,7 @@
 								<table class="min-w-full divide-y divide-gray-200">
 									<thead>
 									<tr class="flex bg-gray-50 text-gray-900 text-sm border border-t">
-										<th class="flex-none w-32 px-6 py-3 text-left font-medium" scope="col">N</th>
+										<th class="flex-none w-32 px-6 py-3 text-left font-medium" scope="col">ID</th>
 										<th class="flex-none w-40 px-6 py-3 text-left font-medium" scope="col">Статус</th>
 										<th class="grow w-40 px-6 py-3 text-left font-medium" scope="col">Клиент</th>
 										<th class="flex-none w-40 px-6 py-3 text-left font-medium whitespace-nowrap" scope="col">Способ оплаты</th>
@@ -146,7 +146,7 @@
 												{% endfor %}
 											</td>
 											<td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-												<a {% if invoice.status == 'Draft' %}href="{{ path('billing_edit_draft') }}"{% else %}href="{{ path('billing_view_invoice') }}"{% endif %} class="hover:text-indigo-700">{{ invoice.client }}</a>
+												<a {% if invoice.status == 'Draft' %}href="{{ path('billing_edit_draft') }}"{% else %}href="{{ path('overview') }}"{% endif %} class="hover:text-indigo-700">{{ invoice.client }}</a>
 											</td>
 											<td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">{{ invoice.payment }}</td>
 											<td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">{{ invoice.excerpt }}</td>
