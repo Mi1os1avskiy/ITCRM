@@ -53,36 +53,14 @@
 												<span class="text-gray-700 whitespace-nowrap">Все инвойсы</span>
 											</button>
 										</li>
-										<li>
-											<button type="button" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
-												<div class="h-2.5 w-2.5 rounded-full bg-green-400"></div>
-												<span class="text-gray-700 whitespace-nowrap">Paid</span>
-											</button>
-										</li>
-										<li>
-											<button type="button" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
-												<div class="h-2.5 w-2.5 rounded-full bg-red-400"></div>
-												<span class="text-gray-700 whitespace-nowrap">Pending</span>
-											</button>
-										</li>
-										<li>
-											<button type="button" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
-												<div class="h-2.5 w-2.5 rounded-full bg-gray-400"></div>
-												<span class="text-gray-700 whitespace-nowrap">Overdue</span>
-											</button>
-										</li>
-										<li>
-											<button type="button" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
-												<div class="h-2.5 w-2.5 rounded-full bg-gray-400"></div>
-												<span class="text-gray-700 whitespace-nowrap">Cancelled</span>
-											</button>
-										</li>
-										<li>
-											<button type="button" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
-												<div class="h-2.5 w-2.5 rounded-full bg-purple-400"></div>
-												<span class="text-gray-700 whitespace-nowrap">Draft</span>
-											</button>
-										</li>
+										{% for val, css in invoice_statuses %}
+											<li>
+												<button type="button" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
+													<div class="h-2.5 w-2.5 rounded-full bg-{{ css }}-400"></div>
+													<span class="text-gray-700 whitespace-nowrap">{{ val }}</span>
+												</button>
+											</li>
+										{% endfor %}
 									</ul>
 								</div>
 							</nav>
@@ -139,9 +117,9 @@
 												<a {% if invoice.status == 'Draft' %}href="{{ path('billing_edit_draft') }}"{% else %}href="{{ path('billing_view_invoice') }}"{% endif %} class="hover:text-indigo-700">{{ invoice.id }}</a>
 											</td>
 											<td class="flex-none w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
-												{% for i in statuses %}
-													{% if invoice.status == i.val %}
-														<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ i.color }}-100 text-{{ i.color }}-800">{{ i.val }}</span>
+												{% for val, css in invoice_statuses %}
+													{% if invoice.status == val %}
+														<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-100 text-{{ css }}-800">{{ val }}</span>
 													{% endif %}
 												{% endfor %}
 											</td>

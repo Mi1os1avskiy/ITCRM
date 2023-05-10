@@ -4,79 +4,67 @@
 
 {% block content %}
 
-    {% for user in users %}
-        {% if userID() == user.id %}
+    <profile-settings inline-template>
+        <dl class="mx-8 pt-4 divide-y divide-gray-200">
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">ID</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">#{{ user.id }}</dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Имя</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">{{ user.name }}</dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Email</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">{{ user.email }}</dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Язык использования</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">{{ user.lang }}</dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Номер телефона</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">{% if user.phone %}{{ user.phone }}{% else %}-{% endif %}</dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Адрес</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">
+                    {% for i in user.address %}
+                        <p>{{ i }}</p>
+                    {% endfor %}
+                </dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">Название компании</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">{{ user.company }}</dd>
+            </div>
+            <div class="sm:flex items-center py-5 sm:grid sm:grid-cols-3 gap-4">
+                <dt class="text-sm font-medium text-gray-500">Последний логин</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">
+                    <span>{{ user.last_log.date }} • <span class="text-indigo-700">{{ user.last_log.ip }}</span> ({{ user.last_log.geo }})</span>
+                    <button @click="overviewLogs()" type="button" class="inline-flex items-center ml-4 rounded-md border border-gray-300 px-4 py-2 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        <span class="text-xs font-medium text-gray-700">История</span>
+                    </button>
+                </dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">IP регистрации</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2"><span class="text-indigo-700">{{ user.ip }}</span> ({{ user.ccode }})</dd>
+            </div>
+            <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt class="text-sm font-medium text-gray-500">2FA</dt>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2">
+                    {% if user.twofa %}
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Включена</span>
+                        {% else %}
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Выключена</span>
+                    {% endif %}
+                </dd>
+            </div>
+        </dl>
+    </profile-settings>
 
-            {% block header %}
-                {% include 'clients/header.profile.html.twig' %}
-            {% endblock %}
-
-            <profile-settings inline-template>
-
-                <dl class="mx-8 pt-4 divide-y divide-gray-200">
-                    <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm font-medium text-gray-500">ID</dt>
-                        <dd class="max-sm:mt-2 text-sm sm:col-span-2">#{{ user.id }}</dd>
-                    </div>
-                    <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm font-medium text-gray-500">Имя</dt>
-                        <dd class="max-sm:mt-2 text-sm sm:col-span-2">{{ user.name }}</dd>
-                    </div>
-                    <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm font-medium text-gray-500">Email</dt>
-                        <dd class="max-sm:mt-2 text-sm sm:col-span-2">{{ user.email }}</dd>
-                    </div>
-                    <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm font-medium text-gray-500">Язык использования</dt>
-                        <dd class="max-sm:mt-2 text-sm sm:col-span-2">{{ user.lang }}</dd>
-                    </div>
-                    <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm font-medium text-gray-500">Номер телефона</dt>
-                        <dd class="max-sm:mt-2 text-sm sm:col-span-2">{% if user.phone %}{{ user.phone }}{% else %}-{% endif %}</dd>
-                    </div>
-                    <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm font-medium text-gray-500">Адрес</dt>
-                        <dd class="max-sm:mt-2 text-sm sm:col-span-2">
-                            {% for i in user.address %}
-                                <p>{{ i }}</p>
-                            {% endfor %}
-                        </dd>
-                    </div>
-                    <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm font-medium text-gray-500">Название компании</dt>
-                        <dd class="max-sm:mt-2 text-sm sm:col-span-2">{{ user.company }}</dd>
-                    </div>
-                    <div class="sm:flex items-center py-5 sm:grid sm:grid-cols-3 gap-4">
-                        <dt class="text-sm font-medium text-gray-500">Последний логин</dt>
-                        <dd class="max-sm:mt-2 text-sm sm:col-span-2">
-                            <span>{{ user.last_log.date }} • <span class="text-indigo-700">{{ user.last_log.ip }}</span> ({{ user.last_log.geo }})</span>
-                            <button @click="overviewLogs()" type="button" class="inline-flex items-center ml-4 rounded-md border border-gray-300 px-4 py-2 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                <span class="text-xs font-medium text-gray-700">История</span>
-                            </button>
-                        </dd>
-                    </div>
-                    <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm font-medium text-gray-500">IP регистрации</dt>
-                        <dd class="max-sm:mt-2 text-sm sm:col-span-2"><span class="text-indigo-700">{{ user.ip }}</span> ({{ user.ccode }})</dd>
-                    </div>
-                    <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm font-medium text-gray-500">2FA</dt>
-                        <dd class="max-sm:mt-2 text-sm sm:col-span-2">
-                            {% if user.twofa %}
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Включена</span>
-                                {% else %}
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Выключена</span>
-                            {% endif %}
-                        </dd>
-                    </div>
-                </dl>
-            </profile-settings>
-
-            {% block modals %}
-                {% include 'clients/profile/modals/clients.overview.iplogs.html.twig' %}
-            {% endblock %}
-
-        {% endif %}
-    {% endfor %}
+    {% include 'clients/profile/modals/clients.overview.iplogs.html.twig' %}
 
 {% endblock %}
+

@@ -4,17 +4,11 @@
 
 {% block content %}
 
-	{% block header %}
-
-		{% include 'clients/header.profile.html.twig' %}
-
-	{% endblock %}
-
-	<div class="mt-4">
+	<profile-settings inline-template>
 
 		{% block control %}
 
-			<div class="mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="mt-4 mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="relative flex items-center flex-shrink-0 h-16">
 					<a href="{{ path('new_ticket') }}" class="relative inline-flex items-center rounded-md bg-indigo-600 pl-[15px] pr-[17px] py-[9px] shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
 						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,7 +60,9 @@
 
 		{% endblock %}
 
-		{% block table %}
+		</profile-settings>
+
+	{% block table %}
 
 			<div class="hidden sm:block">
 				<div class="mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,6 +83,8 @@
 
 								<tbody class="divide-y divide-gray-200 bg-white">
 
+								{% set statuses = {'Important!': 'red', 'Open': 'red', 'In progress': 'orange', 'Answered': 'yellow', 'Customer reply': 'yellow', 'Waiting for manager': 'yellow', 'On hold': 'blue', 'Closed': 'green'} %}
+
 								{% for ticket in tickets %}
 
 									<tr>
@@ -97,9 +95,9 @@
 											<a href="{{ path('support_ticket_answer') }}" class="hover:text-indigo-700">#{{ ticket.id }} - {{ ticket.theme }}</a>
 										</td>
 										<td class="whitespace-nowrap px-6 py-4 text-sm text-left">
-											{% for i in statuses %}
-												{% if ticket.status == i.val %}
-													<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ i.color }}-{% if i.color == 'orange' %}200{% else %}100{% endif %} text-{{ i.color }}-800">{{ i.val }}</span>
+											{% for val, css in statuses %}
+												{% if ticket.status == val %}
+													<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if css == 'orange' %}200{% else %}100{% endif %} text-{{ css }}-800">{{ val }}</span>
 												{% endif %}
 											{% endfor %}
 										</td>
@@ -171,7 +169,5 @@
 			</div>
 
 		{% endblock %}
-
-	</div>
 
 {% endblock %}

@@ -50,10 +50,10 @@
 												<span class="text-gray-700 whitespace-nowrap">Все транзакции</span>
 											</button>
 										</li>
-										{% for i in statuses %}
+										{% for val, css in transaction_statuses %}
 											<li>
 												<button type="button" class="w-full py-3 px-5 hover:bg-gray-100 text-left">
-													<span class="text-gray-700 whitespace-nowrap">{{ i.val }}</span>
+													<span class="text-gray-700 whitespace-nowrap">{{ val }}</span>
 												</button>
 											</li>
 										{% endfor %}
@@ -132,9 +132,9 @@
 												${{ item.amount|number_format(2, '.', '') }}
 											</td>
 											<td class="px-6 py-4">
-												{% for i in statuses %}
-													{% if item.status == i.val %}
-														<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ i.color }}-100 text-{{ i.color }}-800">{{ i.val }}</span>
+												{% for val, css in transaction_statuses %}
+													{% if item.status == val %}
+														<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-100 text-{{ css }}-800">{{ val }}</span>
 													{% endif %}
 												{% endfor %}
 											</td>

@@ -11,33 +11,18 @@ class TwigExtension extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new TwigFunction('navTabs', [$this, 'profileNavigation']),
             new TwigFunction('answers', [$this, 'preparedAnswers']),
-            new TwigFunction('userData', [$this, 'userData']),
+            new TwigFunction('allClients', [$this, 'allClients']),
             new TwigFunction('userID', [$this, 'getUserID']),
             new TwigFunction('payments', [$this, 'paymentMethods']),
             new TwigFunction('dump', [$this, 'getDump']),
             new TwigFunction('transactoinsImgs', [$this, 'billingTransactionsSvg']),
-            new TwigFunction('orderStats', [$this, 'orderStats']),
-            new TwigFunction('ticketStats', [$this, 'ticketStats']),
             new TwigFunction('getGet', [$this, 'getGet'])
         ];
     }
 
-    public function profileNavigation() {
-        return UsersController::navigationTabs();
-    }
-
-    public function userData() {
+    public function allClients() {
         return UsersController::CreateTable();
-    }
-
-    public function orderStats() {
-        return StatusesController::orderStatuses();
-    }
-
-    public function ticketStats() {
-        return StatusesController::ticketStatuses();
     }
 
     public static function getUserID()

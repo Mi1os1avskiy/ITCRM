@@ -4,12 +4,6 @@
 
 {% block content %}
 
-    {% block header %}
-
-        {% include 'clients/header.profile.html.twig' %}
-
-    {% endblock %}
-
     <profile-settings inline-template>
 
     {% block control %}
@@ -69,6 +63,8 @@
                                 </tr>
                             </thead>
 
+                            {% set statuses = {'Pending': 'red', 'Paid': 'green', 'Cancelled': 'gray', 'Overdue': 'gray', 'Draft': 'purple'} %}
+
                             <tbody class="divide-y divide-gray-200 bg-white">
 
                                 {% for invoice in invoices %}
@@ -77,9 +73,9 @@
                                             <a {% if invoice.status == 'Draft' %}href="{{ path('billing_edit_draft') }}"{% else %}href="{{ path('billing_view_invoice') }}"{% endif %} class="hover:text-indigo-700">{{ invoice.id }}</a>
                                         </td>
                                         <td class="grow w-40 whitespace-nowrap px-6 py-4 text-sm text-left">
-                                            {% for i in statuses %}
-                                                {% if invoice.status == i.val %}
-                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ i.color }}-100 text-{{ i.color }}-800">{{ i.val }}</span>
+                                            {% for val, css in statuses %}
+                                                {% if invoice.status == val %}
+                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-100 text-{{ css }}-800">{{ val }}</span>
                                                 {% endif %}
                                             {% endfor %}
                                         </td>

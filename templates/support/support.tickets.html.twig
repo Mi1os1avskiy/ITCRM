@@ -99,11 +99,11 @@
 										<a href="#" class="py-[9px] px-[13px] border rounded-l-md focus:text-indigo-500 focus:bg-indigo-50 focus:border-indigo-500">Ожидают ответа</a>
 										<a href="#" class="py-[9px] px-[13px] border focus:text-indigo-500 focus:bg-indigo-50 focus:border-indigo-500">Все активные</a>
 										{% if getGet() %}
-											{% for i in ticketStats() %}
-												{% if getGet() == i.val %}
+											{% for val, css in ticket_statuses %}
+												{% if getGet() == val %}
 													<a href="#" class="flex items-center py-[9px] px-[18px] space-x-3 border focus:text-indigo-500 focus:bg-indigo-50 focus:border-indigo-500">
-														<div class="h-2.5 w-2.5 rounded-full bg-{{ i.color }}-600"></div>
-														<span>{{ i.val }}</span>
+														<div class="h-2.5 w-2.5 rounded-full bg-{{ css }}-600"></div>
+														<span>{{ val }}</span>
 													</a>
 												{% endif %}
 											{% endfor %}
@@ -120,11 +120,11 @@
 														<span class="text-gray-700 whitespace-nowrap">Все тикеты</span>
 													</a>
 												</li>
-												{% for i in ticketStats() %}
+												{% for val, css in ticket_statuses %}
 													<li>
-														<a href="{{ path('support_tickets', { sort:i.val }) }}" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
-															<div class="h-2.5 w-2.5 rounded-full bg-{{ i.color }}-400"></div>
-															<span class="text-gray-700 whitespace-nowrap">{{ i.val }}</span>
+														<a href="{{ path('support_tickets', { sort:val }) }}" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
+															<div class="h-2.5 w-2.5 rounded-full bg-{{ css }}-400"></div>
+															<span class="text-gray-700 whitespace-nowrap">{{ val }}</span>
 														</a>
 													</li>
 												{% endfor %}
@@ -181,6 +181,7 @@
 												<th class="px-6 py-3 text-left text-sm font-medium whitespace-nowrap" scope="col">Последний ответ</th>
 											</tr>
 											</thead>
+
 											<tbody class="divide-y divide-gray-200 bg-white">
 
 											{% for ticket in tickets %}
@@ -193,13 +194,13 @@
 													</td>
 													<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
 														<a href="{{ path('support_ticket_answer') }}" class="font-medium hover:text-indigo-700">
-															<p class="truncate w-96 hover:w-full">#{{ ticket.id }} - {{ ticket.theme }}</p>
+															<p title="{{ ticket.theme }}">#{{ ticket.id }} - {{ ticket.theme }}</p>
 														</a>
 													</td>
 													<td class="whitespace-nowrap px-6 py-4">
-														{% for i in statuses %}
-															{% if ticket.status == i.val %}
-																<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ i.color }}-{% if i.color == 'orange' %}200{% else %}100{% endif %} text-{{ i.color }}-800">{{ i.val }}</span>
+														{% for val, css in ticket_statuses %}
+															{% if ticket.status == val %}
+																<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if css == 'orange' %}200{% else %}100{% endif %} text-{{ css }}-800">{{ val }}</span>
 															{% endif %}
 														{% endfor %}
 													</td>
@@ -232,13 +233,13 @@
 															</td>
 															<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
 																<a href="{{ path('support_ticket_answer') }}" class="font-medium hover:text-indigo-700">
-																	<p class="truncate w-96 hover:w-full">#{{ ticket.id }} - {{ ticket.theme }}</p>
+																	<p title="{{ ticket.theme }}">#{{ ticket.id }} - {{ ticket.theme }}</p>
 																</a>
 															</td>
 															<td class="whitespace-nowrap px-6 py-4">
-																{% for i in statuses %}
-																	{% if ticket.status == i.val %}
-																		<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ i.color }}-{% if i.color == 'orange' %}200{% else %}100{% endif %} text-{{ i.color }}-800">{{ i.val }}</span>
+																{% for val, css in ticket_statuses %}
+																	{% if ticket.status == val %}
+																		<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if css == 'orange' %}200{% else %}100{% endif %} text-{{ css }}-800">{{ val }}</span>
 																	{% endif %}
 																{% endfor %}
 															</td>

@@ -8,39 +8,40 @@
 
 		<div class="mt-6">
 			<div class="max-w-5xl px-4 sm:px-6 lg:px-8 space-y-6">
-				{% set navTabs = navTabs() %}
-				{% set data = userData() %}
-				{% for i in navTabs %}
-					<p>{{ i.rus }}</p>
-				{% endfor %}
-				{% for i in data %}
-					<p>{{ i.credit }}</p>
+
+				{% set x = 123 %}
+
+				{# invoices #}
+				{% set statuses = {'Pending': 'red', 'Paid': 'green', 'Cancelled': 'gray', 'Overdue': 'gray', 'Draft': 'purple'} %}
+
+				{# tickets #}
+				{% set statuses = {'Important!': 'red', 'Open': 'red', 'In progress': 'orange', 'Answered': 'yellow', 'Customer reply': 'yellow', 'Waiting for manager': 'yellow', 'On hold': 'blue', 'Closed': 'green'} %}
+
+				{# transactions #}
+				{% set statuses = {'Частично засчитана': 'red', 'Не засчитана': 'red', 'Мошенническая': 'red', 'Возвращена': 'orange', 'Заморожена': 'blue', 'В ожидании': 'blue', 'Засчитана': 'green', 'Игнорируется': 'gray', 'Отменена': 'gray'} %}
+
+
+				{% for i in iplogs %}
+					{% if i.id == 111 %}
+						{% set x = 321 %}
+					{% for j in i.logs %}
+
+						<p>{{ j.date }}</p>
+
+					{% endfor %}
+					{% endif %}
 				{% endfor %}
 
-				<div class="relative">
-					<button type="button" class="relative flex items-center w-full -ml-px cursor-default space-x-2 rounded-r-md border border-gray-300 bg-gray-50 py-2 px-3 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="false" aria-expanded-autohide aria-labelledby="listbox-label">
-						<span class="pointer-events-none h-2.5 w-2.5 flex-shrink-0 rounded-full bg-green-400"></span>
-						<span class="pointer-events-none">Верифицирован</span>
-						<svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-						</svg>
-					</button>
 
-					<ul class="absolute z-10 mt-1 max-h-60 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
-						<li class="text-gray-900 relative cursor-pointer select-none py-2 pl-3 pr-9 hover:bg-gray-100">
-							<div class="flex items-center">
-								<span class="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-green-400" aria-hidden="true"></span>
-								<span class="font-normal ml-3 block truncate">Верифицирован</span>
-							</div>
-						</li>
-						<li class="text-gray-900 relative cursor-pointer select-none py-2 pl-3 pr-9 hover:bg-gray-100">
-							<div class="flex items-center">
-								<span class="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-red-400" aria-hidden="true"></span>
-								<span class="font-normal ml-3 block truncate">Не верифицирован</span>
-							</div>
-						</li>
-					</ul>
-				</div>
+				{% set filt = ['one', 'two', 'three', 'four', 'five'] %}
+				{% for i in filt|filter(i => i not in ['two', 'three']) %}
+					<p>{{ i }}</p>
+				{% endfor %}
+
+				<hr>
+				<p>{{ x }}</p>
+
+
 			</div>
 		</div>
 

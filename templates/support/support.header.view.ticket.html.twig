@@ -42,11 +42,11 @@
 						</svg>
 					</button>
 					<ul class="absolute z-10 mt-2 right-0 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
-						{% for i in statuses %}
+						{% for val, css in ticket_statuses %}
 							<li>
 								<button type="button" class="w-full flex items-center py-3 px-4 space-x-4 text-left hover:bg-gray-100">
-									<span class="h-2.5 w-2.5 rounded-full bg-{{ i.color }}-400"></span>
-									<span class="text-gray-700 whitespace-nowrap">{{ i.val }}</span>
+									<span class="h-2.5 w-2.5 rounded-full bg-{{ css }}-400"></span>
+									<span class="text-gray-700 whitespace-nowrap">{{ val }}</span>
 								</button>
 							</li>
 						{% endfor %}

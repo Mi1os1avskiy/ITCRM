@@ -4,12 +4,6 @@
 
 {% block content %}
 
-    {% block header %}
-
-        {% include 'clients/header.profile.html.twig' %}
-
-    {% endblock %}
-
     <profile-settings inline-template>
 
         <div class="mt-4">
@@ -31,59 +25,63 @@
 
                 <div class="mx-auto px-4 sm:px-6 lg:px-8 mt-2 space-y-3">
 
-                    {% for note in notes %}
+                    {% for item in clients_data %}
+                        {% if item.id == userID %}
+                            {% for note in item.notes %}
 
-                        <div class="lg:w-[930px] max-w-full px-6 pb-5 bg-yellow-50 rounded-md">
-                            <div class="flex justify-between py-5 items-center">
-                                <div>
-                                    <div class="flex items-center space-x-1.5">
-                                        {% if note.status %}
-                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10ZM10 5C10.4142 5 10.75 5.33579 10.75 5.75V10.25C10.75 10.6642 10.4142 11 10 11C9.58579 11 9.25 10.6642 9.25 10.25V5.75C9.25 5.33579 9.58579 5 10 5ZM10 15C10.5523 15 11 14.5523 11 14C11 13.4477 10.5523 13 10 13C9.44771 13 9 13.4477 9 14C9 14.5523 9.44771 15 10 15Z" fill="#F97316"/>
-                                            </svg>
-                                        {% endif %}
-                                        <p class="text-gray-900 font-medium">Заметка от {{ note.user }}</p>
+                                <div class="lg:w-[930px] max-w-full px-6 pb-5 bg-yellow-50 rounded-md">
+                                    <div class="flex justify-between py-5 items-center">
+                                        <div>
+                                            <div class="flex items-center space-x-1.5">
+                                                {% if note.status %}
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10ZM10 5C10.4142 5 10.75 5.33579 10.75 5.75V10.25C10.75 10.6642 10.4142 11 10 11C9.58579 11 9.25 10.6642 9.25 10.25V5.75C9.25 5.33579 9.58579 5 10 5ZM10 15C10.5523 15 11 14.5523 11 14C11 13.4477 10.5523 13 10 13C9.44771 13 9 13.4477 9 14C9 14.5523 9.44771 15 10 15Z" fill="#F97316"/>
+                                                    </svg>
+                                                {% endif %}
+                                                <p class="text-gray-900 font-medium">Заметка от {{ note.user }}</p>
+                                            </div>
+                                            <div class="text-xs text-yellow-800">{{ note.date }}, {{ note.time }} {{ note.loc }}</div>
+                                        </div>
+                                        <div class="relative flex items-center mr-2">
+                                            <button type="button" class="relative p-2 rounded-full hover:bg-yellow-100" aria-expanded="false" aria-expanded-autohide>
+                                                <svg class="pointer-events-none text-gray-800 hover:text-gray-900" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M3 10C3 9.17157 3.67157 8.5 4.5 8.5C5.32843 8.5 6 9.17157 6 10C6 10.8284 5.32843 11.5 4.5 11.5C3.67157 11.5 3 10.8284 3 10Z" fill="currentColor"/>
+                                                    <path d="M8.5 10C8.5 9.17157 9.17157 8.5 10 8.5C10.8284 8.5 11.5 9.17157 11.5 10C11.5 10.8284 10.8284 11.5 10 11.5C9.17157 11.5 8.5 10.8284 8.5 10Z" fill="currentColor"/>
+                                                    <path d="M15.5 8.5C14.6716 8.5 14 9.17157 14 10C14 10.8284 14.6716 11.5 15.5 11.5C16.3284 11.5 17 10.8284 17 10C17 9.17157 16.3284 8.5 15.5 8.5Z" fill="currentColor"/>
+                                                </svg>
+                                            </button>
+                                            <ul class="absolute z-10 w-40 top-10 divide-y divide-gray-100 rounded-md bg-white text-sm text-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                                <li class="hover:bg-gray-50">
+                                                    <button @click="notesEdit()" type="button" class="w-full py-3 px-4 text-left">Редактировать</button>
+                                                </li>
+                                                <li class="hover:bg-gray-50">
+                                                    <button type="button" class="w-full py-3 px-4 text-left">Удалить</button>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <div class="text-xs text-yellow-800">{{ note.date }}, {{ note.time }} {{ note.loc }}</div>
-                                </div>
-                                <div class="relative flex items-center mr-2">
-                                    <button type="button" class="relative p-2 rounded-full hover:bg-yellow-100" aria-expanded="false" aria-expanded-autohide>
-                                        <svg class="pointer-events-none text-gray-800 hover:text-gray-900" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M3 10C3 9.17157 3.67157 8.5 4.5 8.5C5.32843 8.5 6 9.17157 6 10C6 10.8284 5.32843 11.5 4.5 11.5C3.67157 11.5 3 10.8284 3 10Z" fill="currentColor"/>
-                                            <path d="M8.5 10C8.5 9.17157 9.17157 8.5 10 8.5C10.8284 8.5 11.5 9.17157 11.5 10C11.5 10.8284 10.8284 11.5 10 11.5C9.17157 11.5 8.5 10.8284 8.5 10Z" fill="currentColor"/>
-                                            <path d="M15.5 8.5C14.6716 8.5 14 9.17157 14 10C14 10.8284 14.6716 11.5 15.5 11.5C16.3284 11.5 17 10.8284 17 10C17 9.17157 16.3284 8.5 15.5 8.5Z" fill="currentColor"/>
-                                        </svg>
-                                    </button>
-                                    <ul class="absolute z-10 w-40 top-10 divide-y divide-gray-100 rounded-md bg-white text-sm text-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                        <li class="hover:bg-gray-50">
-                                            <button @click="notesEdit()" type="button" class="w-full py-3 px-4 text-left">Редактировать</button>
-                                        </li>
-                                        <li class="hover:bg-gray-50">
-                                            <button type="button" class="w-full py-3 px-4 text-left">Удалить</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
 
-                            {% for unit in note.text %}
-                                {% if loop.index == 2 %}
-                                    <div class="mb-4 pl-3 border-l-2 border-yellow-700 text-sm text-gray-700">{{ unit }}</div>
-                                {% else %}
-                                    <div class="mb-4 text-sm text-gray-700">{{ unit }}</div>
-                                {% endif %}
+                                    {% for unit in note.text %}
+                                        {% if loop.index == 2 %}
+                                            <div class="mb-4 pl-3 border-l-2 border-yellow-700 text-sm text-gray-700">{{ unit }}</div>
+                                        {% else %}
+                                            <div class="mb-4 text-sm text-gray-700">{{ unit }}</div>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if note.file %}
+                                        <button class="py-2 px-3 bg-yellow-100 hover:bg-yellow-200 rounded-full flex items-center">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7 3.5C7 2.67157 7.67157 2 8.5 2H12.3787C12.7765 2 13.158 2.15804 13.4393 2.43934L16.5607 5.56066C16.842 5.84197 17 6.2235 17 6.62132V12.5C17 13.3284 16.3284 14 15.5 14H14.5V10.6213C14.5 9.82567 14.1839 9.06261 13.6213 8.5L10.5 5.37868C9.93739 4.81607 9.17433 4.5 8.37868 4.5H7V3.5Z" fill="#D97706"/>
+                                                <path d="M4.5 6C3.67157 6 3 6.67157 3 7.5V16.5C3 17.3284 3.67157 18 4.5 18H11.5C12.3284 18 13 17.3284 13 16.5V10.6213C13 10.2235 12.842 9.84197 12.5607 9.56066L9.43934 6.43934C9.15804 6.15804 8.7765 6 8.37868 6H4.5Z" fill="#D97706"/>
+                                            </svg>
+                                            <span class="ml-3 text-sm text-gray-800 font-medium">{{ note.file }}</span>
+                                        </button>
+                                    {% endif %}
+                                </div>
+
                             {% endfor %}
-
-                            {% if note.file %}
-                                <button class="py-2 px-3 bg-yellow-100 hover:bg-yellow-200 rounded-full flex items-center">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M7 3.5C7 2.67157 7.67157 2 8.5 2H12.3787C12.7765 2 13.158 2.15804 13.4393 2.43934L16.5607 5.56066C16.842 5.84197 17 6.2235 17 6.62132V12.5C17 13.3284 16.3284 14 15.5 14H14.5V10.6213C14.5 9.82567 14.1839 9.06261 13.6213 8.5L10.5 5.37868C9.93739 4.81607 9.17433 4.5 8.37868 4.5H7V3.5Z" fill="#D97706"/>
-                                        <path d="M4.5 6C3.67157 6 3 6.67157 3 7.5V16.5C3 17.3284 3.67157 18 4.5 18H11.5C12.3284 18 13 17.3284 13 16.5V10.6213C13 10.2235 12.842 9.84197 12.5607 9.56066L9.43934 6.43934C9.15804 6.15804 8.7765 6 8.37868 6H4.5Z" fill="#D97706"/>
-                                    </svg>
-                                    <span class="ml-3 text-sm text-gray-800 font-medium">{{ note.file }}</span>
-                                </button>
-                            {% endif %}
-                        </div>
-
+                        {% endif %}
                     {% endfor %}
 
                 </div>

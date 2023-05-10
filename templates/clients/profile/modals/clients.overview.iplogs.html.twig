@@ -4,13 +4,6 @@
 
 {% block modal_content %}
 
-	{% set arr = [
-		{'date': '17/02/2023', 'time': '17:30:02', 'ip': '37.214.49.5', 'loc': 'BY'},
-		{'date': '02/02/2023', 'time': '12:25:15', 'ip': '37.214.49.5', 'loc': 'BY'},
-		{'date': '28/01/2023', 'time': '03:10:13', 'ip': '2a02:c7f:f64f:5700:b56e:3c00:586', 'loc': 'GE'},
-		{'date': '14/01/2023', 'time': '22:22:22', 'ip': '2a02:c7f:f64f:5700:b56e:3c00:586', 'loc': 'GE'}
-	] %}
-
 	<div class="relative w-[800px] transform overflow-hidden rounded-lg bg-white shadow-xl transition-all">
 
 		<div class="flex justify-between py-5 px-6 bg-gray-50">
@@ -35,23 +28,27 @@
 			</thead>
 			<tbody class="divide-y divide-gray-200 bg-white">
 
-			{% for log in arr %}
+			{% for item in clients_data %}
+				{% if item.id == userID %}
+					{% for i in item.logs %}
 
-				<tr class="text-left text-gray-500 text-sm">
-					<td class="px-6 py-4">
-						{{ log.date }}
-					</td>
-					<td class="px-6 py-4">
-						{{ log.time }}
-					</td>
-					<td class="px-6 py-4">
-						<a target="_blank" href="https://www.geodatatool.com/en/?ip={{ log.ip }}" class="hover:text-indigo-700">{{ log.ip }}</a>
-					</td>
-					<td class="px-6 py-4 text-sm text-gray-500">
-						{{ log.loc }}
-					</td>
-				</tr>
+						<tr class="text-left text-gray-500 text-sm">
+							<td class="px-6 py-4">
+								{{ i.date }}
+							</td>
+							<td class="px-6 py-4">
+								{{ i.time }}
+							</td>
+							<td class="px-6 py-4">
+								<a target="_blank" href="https://www.geodatatool.com/en/?ip={{ i.ip }}" class="hover:text-indigo-700">{{ i.ip }}</a>
+							</td>
+							<td class="px-6 py-4 text-sm text-gray-500">
+								{{ i.loc }}
+							</td>
+						</tr>
 
+					{% endfor %}
+				{% endif %}
 			{% endfor %}
 
 			</tbody>
@@ -85,7 +82,7 @@
 					</nav>
 				</div>
 				<div class="flex items-center">
-					<p class="text-sm font-medium text-gray-500">1 - {{ arr|length }} из {{ arr|length }}</p>
+					<p class="text-sm font-medium text-gray-500">1 - 5 из 5</p>
 					<div class="flex ml-4">
 						<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
 							{% for i in range(low=5, high=20, step=5) %}

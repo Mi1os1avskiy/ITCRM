@@ -14,6 +14,12 @@
 {% block body %}
 
 	<main id="app">
+
+		{% set transaction_statuses = {'Частично засчитана': 'red', 'Не засчитана': 'red', 'Мошенническая': 'red', 'Возвращена': 'orange', 'Заморожена': 'blue', 'В ожидании': 'blue', 'Засчитана': 'green', 'Игнорируется': 'gray', 'Отменена': 'gray'} %}
+		{% set invoice_statuses = {'Pending': 'red', 'Paid': 'green', 'Cancelled': 'gray', 'Overdue': 'gray', 'Draft': 'purple'} %}
+		{% set ticket_statuses = {'Important!': 'red', 'Open': 'red', 'In progress': 'orange', 'Answered': 'yellow', 'Customer reply': 'yellow', 'Waiting for manager': 'yellow', 'On hold': 'blue', 'Closed': 'green'} %}
+		{% set order_statuses = {'Pending': 'red', 'Rejected': 'red', 'Ordered': 'yellow', 'Active': 'green', 'Suspended': 'blue','Terminated': 'red'} %}
+
 		{% block aside %}
 			{% include "/parts/aside.html.twig" %}
 		{% endblock %}

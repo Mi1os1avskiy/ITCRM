@@ -35,9 +35,9 @@
 									</a>
 								</td>
 								<td class="whitespace-nowrap px-6 py-4">
-									{% for i in statuses %}
-										{% if ticket.status == i.val %}
-											<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ i.color }}-{% if i.val == 'In progress' %}200{% else %}100{% endif %} text-{{ i.color }}-800">{{ i.val }}</span>
+									{% for val, css in ticket_statuses %}
+										{% if ticket.status == val %}
+											<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if val == 'In progress' %}200{% else %}100{% endif %} text-{{ css }}-800">{{ val }}</span>
 										{% endif %}
 									{% endfor %}
 								</td>
