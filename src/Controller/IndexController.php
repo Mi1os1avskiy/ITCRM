@@ -6,6 +6,8 @@ use App\Controller\Data\ServicesController;
 use App\Controller\Data\TicketsController;
 use App\Controller\Data\TransactionsController;
 use App\Controller\Data\UsersController;
+use App\Controller\Misc\TestController;
+use App\Controller\Misc\TwigExtension;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -176,7 +178,6 @@ class IndexController extends AbstractController
         return $this->render('support/overview/answer.html.twig', [
             'title' => 'Тикет #',
             'data' => TicketsController::ticketData(),
-            'tabs' => TicketsController::ticketNavigation(),
             'messages' => TicketsController::ticketMessages(),
         ]);
     }
@@ -189,7 +190,6 @@ class IndexController extends AbstractController
         return $this->render('support/overview/notes.html.twig', [
             'title' => 'Тикет #',
             'data' => TicketsController::ticketData(),
-            'tabs' => TicketsController::ticketNavigation(),
             'messages' => TicketsController::ticketMessages(),
         ]);
     }
@@ -202,7 +202,6 @@ class IndexController extends AbstractController
         return $this->render('support/overview/options.html.twig', [
             'title' => 'Тикет #',
             'data' => TicketsController::ticketData(),
-            'tabs' => TicketsController::ticketNavigation(),
         ]);
     }
 
@@ -214,7 +213,6 @@ class IndexController extends AbstractController
         return $this->render('support/overview/log.html.twig', [
             'title' => 'Тикет #',
             'data' => TicketsController::ticketData(),
-            'tabs' => TicketsController::ticketNavigation(),
             'logs' => TicketsController::ticketLogs(),
         ]);
     }
@@ -227,7 +225,6 @@ class IndexController extends AbstractController
         return $this->render('support/overview/others.html.twig', [
             'title' => 'Тикет #',
             'data' => TicketsController::ticketData(),
-            'tabs' => TicketsController::ticketNavigation(),
             'tickets' => TicketsController::ticketsTable(),
         ]);
     }
@@ -304,8 +301,11 @@ class IndexController extends AbstractController
      */
     public function test(): Response
     {
+		//return $this->json(['some name' => 'some value']);
+
         return $this->render('test.html.twig', [
-            'iplogs' => UsersController::ClientsData()
+            'iplogs' => UsersController::ClientsData(),
+			'test' => TestController::class,
         ]);
     }
 }

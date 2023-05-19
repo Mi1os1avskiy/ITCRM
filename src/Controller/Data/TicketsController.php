@@ -47,18 +47,6 @@ class TicketsController
         return $res;
     }
 
-    public static function ticketNavigation() {
-        $tabs = [
-            ['eng' => 'answer', 'rus' => 'Ответ'],
-            ['eng' => 'notes', 'rus' => 'Заметки'],
-            ['eng' => 'options', 'rus' => 'Опции'],
-            ['eng' => 'log', 'rus' => 'Лог'],
-            ['eng' => 'others', 'rus' => 'Другие тикеты'],
-        ];
-
-        return $tabs;
-    }
-
     public static function ticketData() {
         $data = [
             'ticket_id' => 1647064,
