@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\Data\InvoicesController;
+use App\Controller\Data\LettersController;
 use App\Controller\Data\ServicesController;
 use App\Controller\Data\TicketsController;
 use App\Controller\Data\TransactionsController;
@@ -157,6 +158,28 @@ class IndexController extends AbstractController
             'clients_data' => UsersController::ClientsData(),
         ]);
     }
+
+	/**
+	 * @Route("/clients/letters", name="letters")
+	 */
+	public function letters(): Response
+	{
+		return $this->render('clients/clients.letters.html.twig', [
+			'title' => 'Письма',
+			'letters' => LettersController::allLetters(),
+		]);
+	}
+
+	/**
+	 * @Route("/clients/letter", name="letter")
+	 */
+	public function letter(): Response
+	{
+		return $this->render('clients/clients.letters.letter.html.twig', [
+			'title' => 'Письмо',
+			'letter' => LettersController::oneLetter(),
+		]);
+	}
 
     /**
      * @Route("/support/tickets", name="support_tickets")

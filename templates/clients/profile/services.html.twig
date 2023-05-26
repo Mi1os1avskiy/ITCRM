@@ -59,7 +59,9 @@
                             {% for service in services %}
 
                                 <tr class="text-sm">
-                                    <td class="truncate font-medium whitespace-nowrap px-6 py-4">{{ service.id }}</td>
+                                    <td class="truncate font-medium whitespace-nowrap px-6 py-4">
+	                                    <a href="#" class="hover:text-indigo-700">{{ service.title }}</a>
+                                    </td>
                                     <td class="whitespace-nowrap px-6 py-4 text-gray-500">{{ service.ip }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 text-right text-gray-500">${{ service.amount }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 text-gray-500">{{ service.cycle }}</td>

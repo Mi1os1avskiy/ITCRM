@@ -7,19 +7,9 @@
 	<support-settings inline-template>
 
 		<div class="mt-6">
-			<div class="max-w-5xl px-4 sm:px-6 lg:px-8 space-y-6">
+			<div class="px-4 sm:px-6 lg:px-8 space-y-6">
 
 				{% set x = 123 %}
-
-				{# invoices #}
-				{% set statuses = {'Pending': 'red', 'Paid': 'green', 'Cancelled': 'gray', 'Overdue': 'gray', 'Draft': 'purple'} %}
-
-				{# tickets #}
-				{% set statuses = {'Important!': 'red', 'Open': 'red', 'In progress': 'orange', 'Answered': 'yellow', 'Customer reply': 'yellow', 'Waiting for manager': 'yellow', 'On hold': 'blue', 'Closed': 'green'} %}
-
-				{# transactions #}
-				{% set statuses = {'Частично засчитана': 'red', 'Не засчитана': 'red', 'Мошенническая': 'red', 'Возвращена': 'orange', 'Заморожена': 'blue', 'В ожидании': 'blue', 'Засчитана': 'green', 'Игнорируется': 'gray', 'Отменена': 'gray'} %}
-
 
 				{% for i in iplogs %}
 					{% if i.id == 111 %}
@@ -38,10 +28,16 @@
 					<p>{{ i }}</p>
 				{% endfor %}
 
-				<hr>
 				<p>{{ x }}</p>
+				<hr>
 
+				{% set qwer %}
+					<div>TEST</div>
+					<div>TEST 2</div>
+				{% endset %}
 
+				{{ qwer }}
+				{{ qwer }}
 
 			</div>
 		</div>
