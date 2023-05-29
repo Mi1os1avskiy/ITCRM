@@ -38,12 +38,12 @@
 }
 
 
-.aside-menu [aria-expanded="true"] .arrow {
-	transform: rotate(90deg);
+[aria-expanded="true"] .arrow {
+	transform: rotate(180deg);
 }
 
-.ticket-answers [aria-expanded="true"] .arrow {
-	transform: rotate(180deg);
+.aside-menu [aria-expanded="true"] .arrow {
+	transform: rotate(90deg);
 }
 
 .ticket-answers > button[aria-expanded="true"] {
