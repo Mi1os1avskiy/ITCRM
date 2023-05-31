@@ -146,7 +146,7 @@
 											<td class="px-6 py-4">
 												{% for val, css in transaction_statuses %}
 													{% if item.status == val %}
-														<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-100 text-{{ css }}-800 whitespace-nowrap">{{ val }}</span>
+														<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if val == 'Возвращена' %}200{% else %}100{% endif %} text-{{ css }}-800 whitespace-nowrap">{{ val }}</span>
 													{% endif %}
 												{% endfor %}
 											</td>
