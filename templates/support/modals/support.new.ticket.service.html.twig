@@ -5,12 +5,12 @@
 {% block modal_content %}
 
 	{% set services = [
-		{'service': 'Без услуги', 'id': '', 'ip': '', 'status': ''},
-		{'service': 'Premium - Linux SSD', 'id': '#23427', 'ip': '123.255.255.017', 'status': 'Active'},
-		{'service': 'Lite - Linux SSD', 'id': '#23427', 'ip': '123.255.255.017', 'status': 'Cancelled'},
-		{'service': 'Exclusive - Linux SSD', 'id': '#23427', 'ip': '123.255.255.017', 'status': 'Active'},
-		{'service': 'Elite - Linux SSD', 'id': '#23427', 'ip': '123.255.255.017', 'status': 'Terminated'},
-		{'service': 'Start - Linux SSD', 'id': '#23427', 'ip': '123.255.255.017', 'status': 'Active'}
+		{'title': 'Без услуги', 'id': '', 'ip': '', 'status': ''},
+		{'title': 'Premium - Linux SSD', 'id': '#23427', 'ip': '123.255.255.017', 'status': 'Active'},
+		{'title': 'Lite - Linux SSD', 'id': '#23427', 'ip': '123.255.255.017', 'status': 'Cancelled'},
+		{'title': 'Exclusive - Linux SSD', 'id': '#23427', 'ip': '123.255.255.017', 'status': 'Active'},
+		{'title': 'Elite - Linux SSD', 'id': '#23427', 'ip': '123.255.255.017', 'status': 'Terminated'},
+		{'title': 'Start - Linux SSD', 'id': '#23427', 'ip': '123.255.255.017', 'status': 'Active'}
 	] %}
 
 	<div class="relative w-[800px] transform overflow-hidden rounded-lg bg-white my-auto shadow-xl transition-all">
@@ -42,10 +42,10 @@
 				{% for service in services %}
 					<tr class="flex p-4 space-x-4 border-y border-b-gray-200 border-t-transparent group hover:bg-indigo-50 hover:border-indigo-200">
 						<td class="flex-none">
-							<input type="radio" name="service" id="{{ service.service }}" class="border-gray-300">
+							<input type="radio" name="service" id="{{ service.title }}" class="border-gray-300">
 						</td>
 						<td class="flex-none font-medium whitespace-nowrap">
-							<label for="{{ service.service }}" class="group-hover:text-indigo-900">{{ service.service }}</label>
+							<label for="{{ service.title }}" class="group-hover:text-indigo-900">{{ service.title }}</label>
 						</td>
 						<td class="flex-grow text-gray-500 text-left">{{ service.id }}</td>
 						<td class="flex-none text-gray-500 text-left">{{ service.ip }}</td>

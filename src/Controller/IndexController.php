@@ -47,7 +47,7 @@ class IndexController extends AbstractController
 //    /**
 //     * @Route("/clients/{id}", name="profile")
 //     */
-//    #[Route('/clients/{id}', name: 'profile')]
+//    #[Route('/clients/{id}', name: 'profile', methods: ['GET'])]
 //    public function user($id): Response
 //    {
 //        $links = ['overview', 'profile', 'services', 'invoices', 'tickets', 'credits', 'emails', 'notes', 'log'];
