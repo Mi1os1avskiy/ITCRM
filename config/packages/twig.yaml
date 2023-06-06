@@ -2,6 +2,10 @@ twig:
     default_path: '%kernel.project_dir%/templates'
     globals:
         product: is*admin
+        test_glob:
+            0: {'id': 111, 'text': 'first item'}
+            1: {'id': 222, 'text': 'second item'}
+            2: {'id': 333, 'text': 'third item'}
 
 when@test:
     twig:

@@ -31,7 +31,9 @@
 				<p>{{ x }}</p>
 				<hr>
 
-				{{ testF() }}
+				{% for i in test_glob %}
+				<p>{{ i.id }} - {{ i.text }}</p>
+				{% endfor %}
 
 			</div>
 		</div>

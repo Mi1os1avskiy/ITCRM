@@ -17,24 +17,14 @@ class TwigExtension extends AbstractExtension
             new TwigFunction('payments', [$this, 'paymentMethods']),
             new TwigFunction('dump', [$this, 'getDump']),
             new TwigFunction('getGet', [$this, 'getGet']),
-			new TwigFunction('testF', [$this, 'testFunc'])
+			new TwigFunction('test', [$this, 'testFunc'])
         ];
     }
 
 	public function testFunc() {
-		function rectangle($x, $y) {
-			$str = "*";
-			for ($i = 1; $i < $x; $i++)
-			{
-				$str .= " *";
-			}
-			for ($j = 0; $j < $y; $j++)
-			{
-				echo $str . "\n";
-			}
-		}
-
-		rectangle(3, 2);
+		$a = [1, 3, 5, 7];
+		$b = [2, 4, 7, 8];
+		return dd(array_diff($a, $b));
 	}
 
     public function allClients() {
