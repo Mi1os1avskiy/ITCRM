@@ -318,6 +318,15 @@ class IndexController extends AbstractController
         ]);
     }
 
+	/**
+	 * @Route("/orders", name="orders")
+	 */
+	public function orders(): Response
+	{
+		return $this->render('orders/orders.html.twig', [
+			'title' => 'Заказы',
+		]);
+	}
 
     /**
      * @Route("/test", name="test")
