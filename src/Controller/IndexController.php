@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\Data\InvoicesController;
 use App\Controller\Data\LettersController;
+use App\Controller\Data\OrdersController;
 use App\Controller\Data\ServicesController;
 use App\Controller\Data\TicketsController;
 use App\Controller\Data\TransactionsController;
@@ -325,6 +326,7 @@ class IndexController extends AbstractController
 	{
 		return $this->render('orders/orders.html.twig', [
 			'title' => 'Заказы',
+			'orders' => OrdersController::allOrders(),
 		]);
 	}
 

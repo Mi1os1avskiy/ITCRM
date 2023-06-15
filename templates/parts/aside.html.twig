@@ -78,9 +78,9 @@
 							{% for val, css in order_statuses %}
 								<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 									<div class="w-5 h-5 flex items-center justify-center">
-										<div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+										<div class="w-2.5 h-2.5 rounded-full bg-{% if val == 'Suspended' %}sky{% else %}{{ css }}{% endif %}-400"></div>
 									</div>
-									<span class="ml-4 text-{{ css }}-400">{{ val }}</span>
+									<span class="ml-4 text-{% if val == 'Suspended' %}sky{% else %}{{ css }}{% endif %}-400">{{ val }}</span>
 								</a>
 							{% endfor %}
 						</div>

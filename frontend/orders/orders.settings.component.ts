@@ -1,6 +1,7 @@
 import {NotificationLevels, Notification} from "../misc/notifications/notification";
 
 const OrdersFilters = 'orders-filters';
+const OrdersSpecialSettingsModal = 'orders-special-setting-modal';
 
 export const OrdersSettingsComponent = {
     data() {
@@ -12,6 +13,14 @@ export const OrdersSettingsComponent = {
         ordersFilters() {
             const self = <any>this;
             self.$modals(OrdersFilters).show()
+                .then((data: any) => {
+                })
+                .catch(() => {
+                });
+        },
+        ordersSpecialSettingsModal() {
+            const self = <any>this;
+            self.$modals(OrdersSpecialSettingsModal).show()
                 .then((data: any) => {
                 })
                 .catch(() => {
