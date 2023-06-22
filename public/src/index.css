@@ -46,6 +46,10 @@
 	transform: rotate(90deg);
 }
 
+.aside-menu button[aria-expanded="true"] {
+	background: #111827;
+}
+
 .ticket-answers > button[aria-expanded="true"] {
 	background: #F9FAFB;
 }

@@ -23,6 +23,9 @@ module.exports = {
 			},
 			colors: {
 				myColor: '#1db8f5'
+			},
+			fontFamily: {
+				sans: ['Inter var', ...defaultTheme.fontFamily.sans],
 			}
 		}
 	},

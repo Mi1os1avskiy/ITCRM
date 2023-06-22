@@ -19,6 +19,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "is-core-frontend": "git+https://oauth2:kT1FNYBQzF-o4JNaDBG1@gitlab.brainq.com/ishosting/remake/core/frontend.git",
     "tailwindcss": "^3.2.1",
+    "tailwindcss-font-inter": "^3.0.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
   },

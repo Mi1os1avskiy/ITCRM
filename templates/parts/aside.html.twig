@@ -18,7 +18,7 @@
 			<div v-cloak class="flex flex-1 flex-col overflow-y-auto pt-1 h-auto absolute bottom-0 top-16 md:top-0 md:relative bg-gray-800 z-10 duration-200" :class="!!isOpened ? 'opacity-100 translate-x-0': 'opacity-0 -translate-x-full md:opacity-100 md:flex md:transform-none'">
 				<nav class="flex flex-col h-full mt-6 aside-menu">
 					<div class="flex-auto px-3 mb-6">
-						<button aria-expanded="false" type="button" class="overflow-x-auto w-full mb-1 text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
+						<button aria-expanded="false" type="button" class="overflow-x-auto w-full mb-1 text-gray-300 hover:bg-gray-700 group flex items-center justify-between p-2 text-sm font-medium rounded-md">
 							<span class="flex items-center pointer-events-none">
 								<svg class="text-gray-400 group-hover:text-gray-200 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
 									<path d="M10 2.35418C10.7329 1.52375 11.8053 1 13 1C15.2091 1 17 2.79086 17 5C17 7.20914 15.2091 9 13 9C11.8053 9 10.7329 8.47624 10 7.64582M13 19H1V18C1 14.6863 3.68629 12 7 12C10.3137 12 13 14.6863 13 18V19ZM13 19H19V18C19 14.6863 16.3137 12 13 12C11.9071 12 10.8825 12.2922 10 12.8027M11 5C11 7.20914 9.20914 9 7 9C4.79086 9 3 7.20914 3 5C3 2.79086 4.79086 1 7 1C9.20914 1 11 2.79086 11 5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -30,21 +30,21 @@
 							</svg>
 						</button>
 						<div class="space-y-1 mb-6 overflow-x-hidden">
-							<a href="{{ path('clients') }}" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="{{ path('clients') }}" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Список</span>
 							</a>
-							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="#" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Группы</span>
 							</a>
-							<a href="{{ path('letters') }}" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="{{ path('letters') }}" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Письма</span>
 							</a>
-							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="#" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Логи</span>
 							</a>
 						</div>
 
-						<button aria-expanded="false" type="button" class="overflow-x-auto w-full mb-1 text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
+						<button aria-expanded="false" type="button" class="overflow-x-auto w-full mb-1 text-gray-300 hover:bg-gray-700 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
 							<span class="flex items-center pointer-events-none">
 								<svg class="text-gray-400 group-hover:text-white mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
 									<path d="M5 2H3C1.89543 2 1 2.89543 1 4V16C1 17.1046 1.89543 18 3 18H15C16.1046 18 17 17.1046 17 16V4C17 2.89543 16.1046 2 15 2H13M9 1V9M9 9L12 6M9 9L6 6M1 11H3.58579C3.851 11 4.10536 11.1054 4.29289 11.2929L6.70711 13.7071C6.89464 13.8946 7.149 14 7.41421 14H10.5858C10.851 14 11.1054 13.8946 11.2929 13.7071L13.7071 11.2929C13.8946 11.1054 14.149 11 14.4142 11H17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -59,15 +59,15 @@
 							</span>
 						</button>
 						<div class="space-y-1 mb-6 overflow-x-hidden">
-							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="#" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Новые заказы</span>
 							</a>
-							<a href="{{ path('orders') }}" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="{{ path('orders') }}" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Все заказы</span>
 							</a>
-							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M10 3C10.5523 3 11 3.44772 11 4V9H16C16.5523 9 17 9.44772 17 10C17 10.5523 16.5523 11 16 11H11V16C11 16.5523 10.5523 17 10 17C9.44772 17 9 16.5523 9 16V11H4C3.44772 11 3 10.5523 3 10C3 9.44771 3.44772 9 4 9L9 9V4C9 3.44772 9.44772 3 10 3Z" fill="#9CA3AF"/>
+							<a href="#" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+								<svg class="text-gray-400 group-hover:text-white" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M10 3C10.5523 3 11 3.44772 11 4V9H16C16.5523 9 17 9.44772 17 10C17 10.5523 16.5523 11 16 11H11V16C11 16.5523 10.5523 17 10 17C9.44772 17 9 16.5523 9 16V11H4C3.44772 11 3 10.5523 3 10C3 9.44771 3.44772 9 4 9L9 9V4C9 3.44772 9.44772 3 10 3Z" fill="currentColor"/>
 								</svg>
 								<span class="ml-4">Новый заказ</span>
 							</a>
@@ -76,16 +76,16 @@
 							</div>
 
 							{% for val, css in order_statuses %}
-								<a href="#" class="hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+								<a href="#" class="hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 									<div class="w-5 h-5 flex items-center justify-center">
-										<div class="w-2.5 h-2.5 rounded-full bg-{% if val == 'Suspended' %}sky{% else %}{{ css }}{% endif %}-400"></div>
+										<div class="w-2.5 h-2.5 rounded-full bg-{{ css }}-400"></div>
 									</div>
-									<span class="ml-4 text-{% if val == 'Suspended' %}sky{% else %}{{ css }}{% endif %}-400">{{ val }}</span>
+									<span class="ml-4 text-{{ css }}-400">{{ val }}</span>
 								</a>
 							{% endfor %}
 						</div>
 
-						<button aria-expanded="false" class="overflow-x-auto w-full mb-1 text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
+						<button aria-expanded="false" class="overflow-x-auto w-full mb-1 text-gray-300 hover:bg-gray-700 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
 							<span class="flex items-center pointer-events-none">
 								<svg class="text-gray-400 group-hover:text-white mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16" stroke="currentColor" aria-hidden="true">
 									<path d="M15 5V3C15 1.89543 14.1046 1 13 1H3C1.89543 1 1 1.89543 1 3V9C1 10.1046 1.89543 11 3 11H5M7 15H17C18.1046 15 19 14.1046 19 13V7C19 5.89543 18.1046 5 17 5H7C5.89543 5 5 5.89543 5 7V13C5 14.1046 5.89543 15 7 15ZM14 10C14 11.1046 13.1046 12 12 12C10.8954 12 10 11.1046 10 10C10 8.89543 10.8954 8 12 8C13.1046 8 14 8.89543 14 10Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -97,26 +97,26 @@
 							</svg>
 						</button>
 						<div class="space-y-1 mb-6 overflow-x-hidden">
-							<a href="{{ path('billing_transactions') }}" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="{{ path('billing_transactions') }}" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Транзакции</span>
 							</a>
-							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="#" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Логи гейтвея</span>
 							</a>
 							<div class="py-3 ml-11">
 								<div class="h-[1px] w-full bg-gray-700"></div>
 							</div>
-							<a href="{{ path('billing_invoices') }}" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="{{ path('billing_invoices') }}" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Инвойсы</span>
 							</a>
-							<a href="{{ path('billing_new_invoice') }}" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M10 3C10.5523 3 11 3.44772 11 4V9H16C16.5523 9 17 9.44772 17 10C17 10.5523 16.5523 11 16 11H11V16C11 16.5523 10.5523 17 10 17C9.44772 17 9 16.5523 9 16V11H4C3.44772 11 3 10.5523 3 10C3 9.44771 3.44772 9 4 9L9 9V4C9 3.44772 9.44772 3 10 3Z" fill="#9CA3AF"/>
+							<a href="{{ path('billing_new_invoice') }}" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+								<svg class="text-gray-400 group-hover:text-white" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M10 3C10.5523 3 11 3.44772 11 4V9H16C16.5523 9 17 9.44772 17 10C17 10.5523 16.5523 11 16 11H11V16C11 16.5523 10.5523 17 10 17C9.44772 17 9 16.5523 9 16V11H4C3.44772 11 3 10.5523 3 10C3 9.44771 3.44772 9 4 9L9 9V4C9 3.44772 9.44772 3 10 3Z" fill="currentColor"/>
 								</svg>
 								<span class="ml-4">Новый инвойс</span>
 							</a>
 						</div>
-						<button aria-expanded="false" class="overflow-x-auto w-full mb-1 text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
+						<button aria-expanded="false" class="overflow-x-auto w-full mb-1 text-gray-300 hover:bg-gray-700 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
 							<span class="flex items-center pointer-events-none">
 								<svg class="text-gray-400 group-hover:text-white mr-3 flex-shrink-0 h-6 w-6" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M18 10C18 14.4183 14.4183 18 10 18V20C15.5228 20 20 15.5228 20 10H18ZM10 18C5.58172 18 2 14.4183 2 10H0C0 15.5228 4.47715 20 10 20V18ZM2 10C2 5.58172 5.58172 2 10 2V0C4.47715 0 0 4.47715 0 10H2ZM10 2C14.4183 2 18 5.58172 18 10H20C20 4.47715 15.5228 0 10 0V2ZM13 10C13 11.6569 11.6569 13 10 13V15C12.7614 15 15 12.7614 15 10H13ZM10 13C8.34315 13 7 11.6569 7 10H5C5 12.7614 7.23858 15 10 15V13ZM7 10C7 8.34315 8.34315 7 10 7V5C7.23858 5 5 7.23858 5 10H7ZM10 7C11.6569 7 13 8.34315 13 10H15C15 7.23858 12.7614 5 10 5V7ZM15.6569 2.92893L12.1213 6.46447L13.5355 7.87868L17.0711 4.34315L15.6569 2.92893ZM12.1213 13.5355L15.6569 17.0711L17.0711 15.6569L13.5355 12.1213L12.1213 13.5355ZM7.87868 6.46447L4.34315 2.92893L2.92893 4.34315L6.46447 7.87868L7.87868 6.46447ZM6.46447 12.1213L2.92893 15.6569L4.34315 17.0711L7.87868 13.5355L6.46447 12.1213Z" fill="currentColor"/>
@@ -128,35 +128,35 @@
 							</svg>
 						</button>
 						<div class="space-y-1 mb-6 overflow-x-hidden">
-							<a href="{{ path('support_tickets') }}" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="{{ path('support_tickets') }}" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Тикеты</span>
 							</a>
-							<a href="{{ path('new_ticket') }}" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M10 3C10.5523 3 11 3.44772 11 4V9H16C16.5523 9 17 9.44772 17 10C17 10.5523 16.5523 11 16 11H11V16C11 16.5523 10.5523 17 10 17C9.44772 17 9 16.5523 9 16V11H4C3.44772 11 3 10.5523 3 10C3 9.44771 3.44772 9 4 9L9 9V4C9 3.44772 9.44772 3 10 3Z" fill="#9CA3AF"/>
+							<a href="{{ path('new_ticket') }}" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+								<svg class="text-gray-400 group-hover:text-white" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M10 3C10.5523 3 11 3.44772 11 4V9H16C16.5523 9 17 9.44772 17 10C17 10.5523 16.5523 11 16 11H11V16C11 16.5523 10.5523 17 10 17C9.44772 17 9 16.5523 9 16V11H4C3.44772 11 3 10.5523 3 10C3 9.44771 3.44772 9 4 9L9 9V4C9 3.44772 9.44772 3 10 3Z" fill="currentColor"/>
 								</svg>
 								<span class="ml-4">Новый тикет</span>
 							</a>
 							<div class="py-3 ml-11">
 								<div class="h-[1px] w-full bg-gray-700"></div>
 							</div>
-							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="#" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Все активные</span>
 							</a>
-							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="#" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Неназначенные</span>
 							</a>
 
 							{% for val, css in ticket_statuses %}
-								<a href="{{ path('support_tickets', { sort:val }) }}" class="flex px-3 py-2 space-x-3 text-{{ css }}-400 text-sm font-medium rounded-md hover:bg-gray-900">
+								<a href="{{ path('support_tickets', { sort:val }) }}" class="flex px-3 py-2 space-x-3 text-{{ css }}-400 text-sm font-medium rounded-md hover:bg-gray-700">
 									<div class="flex items-center w-5 h-5">
-										<div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+										<div class="w-2.5 h-2.5 rounded-full bg-{{ css }}-400"></div>
 									</div>
 									<div>{{ val }}</div>
 								</a>
 							{% endfor %}
 						</div>
-						<button aria-expanded="false" class="overflow-x-auto w-full mb-1 text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
+						<button aria-expanded="false" class="overflow-x-auto w-full mb-1 text-gray-300 hover:bg-gray-700 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
 							<span class="flex items-center pointer-events-none">
 								<svg class="text-gray-400 group-hover:text-white mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
 									<path d="M8.32463 2.31731C8.75103 0.560897 11.249 0.560897 11.6754 2.31731C11.9508 3.45193 13.2507 3.99038 14.2478 3.38285C15.7913 2.44239 17.5576 4.2087 16.6172 5.75218C16.0096 6.74925 16.5481 8.04918 17.6827 8.32463C19.4391 8.75103 19.4391 11.249 17.6827 11.6754C16.5481 11.9508 16.0096 13.2507 16.6172 14.2478C17.5576 15.7913 15.7913 17.5576 14.2478 16.6172C13.2507 16.0096 11.9508 16.5481 11.6754 17.6827C11.249 19.4391 8.75103 19.4391 8.32463 17.6827C8.04918 16.5481 6.74926 16.0096 5.75219 16.6172C4.2087 17.5576 2.44239 15.7913 3.38285 14.2478C3.99038 13.2507 3.45193 11.9508 2.31731 11.6754C0.560897 11.249 0.560897 8.75103 2.31731 8.32463C3.45193 8.04918 3.99037 6.74926 3.38285 5.75218C2.44239 4.2087 4.2087 2.44239 5.75219 3.38285C6.74926 3.99037 8.04918 3.45193 8.32463 2.31731Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -169,23 +169,23 @@
 							</svg>
 						</button>
 						<div class="space-y-1 mb-6 overflow-x-hidden">
-							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="#" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Админы</span>
 							</a>
-							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="#" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Роли</span>
 							</a>
-							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="#" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Группы</span>
 							</a>
-							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="#" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Статусы тикетов</span>
 							</a>
-							<a href="#" class="text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+							<a href="#" class="text-gray-300 hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 								<span class="ml-9">Продукты</span>
 							</a>
 						</div>
-						<a href="#" class="overflow-x-hidden w-full mb-6 text-gray-300 hover:text-white hover:bg-gray-900 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
+						<a href="#" class="overflow-x-hidden w-full mb-6 text-gray-300 hover:bg-gray-700 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
 							<span class="flex items-center pointer-events-none">
 								<svg class="text-gray-400 group-hover:text-white mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
 									<path d="M19 19L13 13M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -196,14 +196,14 @@
 					</div>
 
 					<div class="flex-initial bg-gray-700 px-3 py-2">
-						<button aria-expanded="false" class="overflow-x-auto w-full group text-gray-300 hover:text-gray-200 hover:bg-gray-600 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
-							<div class="flex items-center space-x-2">
-								<svg class="text-gray-300 group-hover:text-gray-200" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<button aria-expanded="false" class="overflow-x-auto w-full group text-gray-300 hover:bg-gray-600 group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md">
+							<div class="flex items-center space-x-2 pointer-events-none">
+								<svg class="text-gray-400 group-hover:text-gray-300" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M21.6 12C21.6 17.302 17.3019 21.6 12 21.6C6.69806 21.6 2.39999 17.302 2.39999 12C2.39999 6.69809 6.69806 2.40002 12 2.40002C17.3019 2.40002 21.6 6.69809 21.6 12ZM15 9.00002C15 10.6569 13.6568 12 12 12C10.3431 12 8.99999 10.6569 8.99999 9.00002C8.99999 7.34317 10.3431 6.00002 12 6.00002C13.6568 6.00002 15 7.34317 15 9.00002ZM12 14.4C9.64959 14.4 7.56224 15.5263 6.24814 17.2685C7.6741 18.8244 9.72312 19.8 12 19.8C14.2769 19.8 16.3259 18.8245 17.7518 17.2685C16.4377 15.5263 14.3504 14.4 12 14.4Z" fill="currentColor"/>
 								</svg>
 								<span>Аккаунт</span>
 							</div>
-							<div class="flex items-center">
+							<div class="flex items-center pointer-events-none">
 								<svg class="text-gray-300 group-hover:text-gray-200" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M10 3C10.2652 3 10.5196 3.10536 10.7071 3.29289L13.7071 6.29289C14.0976 6.68342 14.0976 7.31658 13.7071 7.70711C13.3166 8.09763 12.6834 8.09763 12.2929 7.70711L10 5.41421L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711C5.90237 7.31658 5.90237 6.68342 6.29289 6.29289L9.29289 3.29289C9.48043 3.10536 9.73478 3 10 3ZM6.29289 12.2929C6.68342 11.9024 7.31658 11.9024 7.70711 12.2929L10 14.5858L12.2929 12.2929C12.6834 11.9024 13.3166 11.9024 13.7071 12.2929C14.0976 12.6834 14.0976 13.3166 13.7071 13.7071L10.7071 16.7071C10.3166 17.0976 9.68342 17.0976 9.29289 16.7071L6.29289 13.7071C5.90237 13.3166 5.90237 12.6834 6.29289 12.2929Z" fill="currentColor"/>
 								</svg>

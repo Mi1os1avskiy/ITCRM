@@ -144,9 +144,9 @@
 
 								{% for val, css in invoice_statuses %}
 
-									<div class="group flex items-center py-3 px-4 space-x-4 hover:bg-indigo-200">
-										<input id="{{ val }}" name="{{ val }}" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-										<label for="{{ val }}" class="w-full flex items-center">
+									<div class="group flex items-center pl-4 space-x-4 hover:bg-indigo-200">
+										<input id="invoice_{{ val }}" name="{{ val }}" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+										<label for="invoice_{{ val }}" class="w-full flex items-center py-3">
 											<span class="mr-4 h-2.5 w-2.5 bg-{{ css }}-400 rounded-full"></span>
 											<span class="text-sm text-gray-900 group-hover:text-indigo-900">{{ val }}</span>
 										</label>
@@ -163,9 +163,9 @@
 
 								{% for val, css in order_statuses %}
 
-									<div class="group flex items-center py-3 px-4 space-x-4 hover:bg-indigo-200">
-										<input id="{{ val }}" name="{{ val }}" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-										<label for="{{ val }}" class="w-full flex items-center">
+									<div class="group flex items-center pl-4 space-x-4 hover:bg-indigo-200">
+										<input id="order_{{ val }}" name="{{ val }}" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+										<label for="order_{{ val }}" class="w-full flex items-center py-3">
 											<span class="mr-4 h-2.5 w-2.5 bg-{{ css }}-400 rounded-full"></span>
 											<span class="text-sm text-gray-900 group-hover:text-indigo-900">{{ val }}</span>
 										</label>

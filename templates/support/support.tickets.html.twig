@@ -15,7 +15,7 @@
 
 					<div class="bg-gray-50 mx-auto px-4 sm:px-6 lg:px-8">
 						<div class="flex py-4 justify-between">
-							<div class="flex items-center font-semibold text-lg">
+							<div class="flex items-center font-semibold text-gray-900 text-lg">
 								{{ title }}
 							</div>
 							<div class="flex items-center space-x-3">
@@ -192,8 +192,8 @@
 														<td class="whitespace-nowrap pl-6 py-4">
 															<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
 														</td>
-														<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
-															<a href="{{ path('support_ticket_answer') }}" class="font-medium hover:text-indigo-700">
+														<td class="flex whitespace-nowrap text-sm text-gray-900">
+															<a href="{{ path('support_ticket_answer') }}" class="w-full px-6 py-4 font-medium hover:text-indigo-700">
 																<p title="{{ ticket.theme }}">#{{ ticket.id }} - {{ ticket.theme }}</p>
 															</a>
 														</td>
