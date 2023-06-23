@@ -77,9 +77,13 @@
 
                                         <tr>
                                             <td class="px-6 py-4 text-sm font-medium whitespace-nowrap">{{ credit.date }}, {{ credit.time}} ({{ credit.country }})</td>
-                                            <td class="px-6 py-4 text-sm text-gray-500">{{ credit.method }}{% if credit.id %} #{{ credit.id }} by <a href="{{ path('billing_view_invoice') }}" class="text-gray-900 hover:text-indigo-700">{{ credit.user }}</a>{% endif %}</td>
+                                            <td class="px-6 py-4 text-sm text-gray-500">{{ credit.method }}{% if credit.id %} #{{ credit.id }} by <span class="text-gray-900">{{ credit.user }}</span>{% endif %}</td>
                                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                                <a href="#" class="hover:text-indigo-700">{{ credit.appointment }}</a>
+	                                            {% if credit.appointment_type %}
+		                                            <a href="{{ path('billing_view_invoice') }}" class="hover:text-indigo-700">{{ credit.appointment }}</a>
+	                                            {% else %}
+		                                            <span>{{ credit.appointment }}</span>
+	                                            {% endif %}
                                             </td>
                                             <td class="whitespace-nowrap px-6 py-4 text-sm text-{% if credit.amount_stat == 'normal' %}green{% elseif credit.amount_stat == 'high' %}red{% else %}gray{% endif %}-500">${{ credit.amount|number_format('2', '.', '') }}</td>
                                             <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{{ credit.description }}</td>

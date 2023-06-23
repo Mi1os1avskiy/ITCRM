@@ -37,16 +37,35 @@
 
 				<hr>
 
-				<div class="flex h-24 w-96 border border-black rounded-md overflow-hidden">
-					<a href="#" class="p-4 inline-block h-full w-full bg-gray-300">Клиенты</a>
-				</div>
+				<label class="w-fit relative flex items-center pl-4 border bg-gray-50 cursor-pointer peer-checked:bg-red-500">
+					<input id="123" name="123" type="checkbox" class="peer z-10 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+					<span class="-ml-8 w-48 py-3 pl-16 text-left peer-checked:bg-red-100 peer-checked:text-yellow-600">TEXT</span>
+				</label>
 
+				<ul class="grid grid-cols-3 gap-x-5 m-10 max-w-md mx-auto">
+					<li class="relative">
+						<input class="sr-only peer" type="radio" value="yes" name="answer" id="answer_yes">
+						<label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent" for="answer_yes">Yes</label>
+						<div class="absolute hidden w-5 h-5 peer-checked:block top-5 right-3">👍</div>
+					</li>
 
+					<li class="relative">
+						<input class="sr-only peer" type="radio" value="no" name="answer" id="answer_no">
+						<label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-red-500 peer-checked:ring-2 peer-checked:border-transparent" for="answer_no">No</label>
+						<div class="absolute hidden w-5 h-5 peer-checked:block top-5 right-3">👎</div>
+					</li>
+
+					<li class="relative">
+						<input class="sr-only peer" type="radio" value="maybe" name="answer" id="answer_maybe">
+						<label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-yellow-500 peer-checked:ring-2 peer-checked:border-transparent" for="answer_maybe">Maybe</label>
+						<div class="absolute hidden w-5 h-5 peer-checked:block top-5 right-3">🤔</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 
 	</support-settings>
 
-	<div class="text-orange-400 text-orange-800 text-blue-400 bg-blue-400 bg-orange-200"></div>
+	<div class="text-orange-400 text-orange-800 text-blue-400 text-green-500 bg-blue-400 bg-orange-200"></div>
 
 {% endblock %}

@@ -140,47 +140,25 @@
 
 					<p class="mt-6 text-sm text-left font-medium text-gray-700">Статус</p>
 					<fieldset class="mt-2 divide-y divide-gray-200 border border-gray-300 rounded-md shadow-sm text-sm">
-						<div class="relative flex items-center py-3 px-4">
-							<input id="pending" name="pending" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-							<div class="ml-4 w-2.5 h-2.5 rounded-full bg-red-400"></div>
-							<label for="pending" class="ml-4 text-gray-700">Pending</label>
-						</div>
-						<div class="relative flex items-center py-3 px-4">
-							<input id="paid" name="paid" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-							<div class="ml-4 w-2.5 h-2.5 rounded-full bg-green-400"></div>
-							<label for="paid" class="ml-4 text-gray-700">Paid</label>
-						</div>
-						<div class="relative flex items-center py-3 px-4">
-							<input id="overdue" name="overdue" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-							<div class="ml-4 w-2.5 h-2.5 rounded-full bg-gray-400"></div>
-							<label for="overdue" class="ml-4 text-gray-700">Overdue</label>
-						</div>
-						<div class="relative flex items-center py-3 px-4">
-							<input id="cancelled" name="cancelled" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-							<div class="ml-4 w-2.5 h-2.5 rounded-full bg-gray-400"></div>
-							<label for="cancelled" class="ml-4 text-gray-700">Cancelled</label>
-						</div>
-						<div class="relative flex items-center py-3 px-4">
-							<input id="draft" name="draft" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-							<div class="ml-4 w-2.5 h-2.5 rounded-full bg-purple-400"></div>
-							<label for="draft" class="ml-4 text-gray-700">Draft</label>
-						</div>
+						{% for val, css in invoice_statuses %}
+							<div class="relative flex items-center pl-4 space-x-4">
+								<input id="{{ val }}" name="{{ val }}" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+								<div class="w-2.5 h-2.5 rounded-full bg-{{ css }}-400"></div>
+								<label for="{{ val }}" class="w-full py-3 text-gray-700 text-left cursor-pointer">{{ val }}</label>
+							</div>
+						{% endfor %}
 					</fieldset>
+
+					{% set invoice_types = ['Custom', 'Initial', 'Prolong'] %}
 
 					<p class="mt-6 text-sm text-left font-medium text-gray-700">Тип инвойса</p>
 					<fieldset class="mt-2 divide-y divide-gray-200 border border-gray-300 rounded-md shadow-sm text-sm">
-						<div class="relative flex items-center py-3 px-4">
-							<input id="custom" name="custom" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-							<label for="custom" class="ml-4 text-gray-700">Custom invoice</label>
-						</div>
-						<div class="relative flex items-center py-3 px-4">
-							<input id="initial" name="initial" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-							<label for="initial" class="ml-4 text-gray-700">Initial invoice</label>
-						</div>
-						<div class="relative flex items-center py-3 px-4">
-							<input id="prolong" name="prolong" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-							<label for="prolong" class="ml-4 text-gray-700">Prolong invoice</label>
-						</div>
+						{% for type in invoice_types %}
+							<label class="relative flex items-center pl-4 space-x-4 cursor-pointer peer-checked:bg-gray-200">
+								<input id="{{ type }}" name="{{ type }}" type="checkbox" class="peer h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+								<span class="w-full py-3 text-gray-700 text-left">{{ type }} invoice</span>
+							</label>
+						{% endfor %}
 					</fieldset>
 				</div>
 			</div>
