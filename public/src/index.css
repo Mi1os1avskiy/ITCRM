@@ -37,6 +37,9 @@
 	display: none !important;
 }
 
+input[type="checkbox"], input[type="checkbox"] + label {
+	cursor: pointer;
+}
 
 [aria-expanded="true"] .arrow {
 	transform: rotate(180deg);

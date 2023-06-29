@@ -50,12 +50,12 @@
                                                     <path d="M15.5 8.5C14.6716 8.5 14 9.17157 14 10C14 10.8284 14.6716 11.5 15.5 11.5C16.3284 11.5 17 10.8284 17 10C17 9.17157 16.3284 8.5 15.5 8.5Z" fill="currentColor"/>
                                                 </svg>
                                             </button>
-                                            <ul class="absolute z-10 w-40 top-10 divide-y divide-gray-100 rounded-md bg-white text-sm text-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                            <ul class="absolute z-10 w-40 top-10 right-0 divide-y divide-gray-100 rounded-md bg-white text-sm text-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                                 <li class="hover:bg-gray-50">
                                                     <button @click="notesEdit()" type="button" class="w-full py-3 px-4 text-left">Редактировать</button>
                                                 </li>
                                                 <li class="hover:bg-gray-50">
-                                                    <button type="button" class="w-full py-3 px-4 text-left">Удалить</button>
+                                                    <button @click="notesDelete()" type="button" class="w-full py-3 px-4 text-left">Удалить</button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -95,6 +95,7 @@
     {% block modals %}
         {% include 'clients/profile/modals/clients.notes.add.html.twig' %}
         {% include 'clients/profile/modals/clients.notes.edit.html.twig' %}
+	    {% include 'clients/profile/modals/clients.notes.delete.html.twig' %}
     {% endblock %}
 
 {% endblock %}

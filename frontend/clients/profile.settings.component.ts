@@ -8,6 +8,7 @@ const CreditsAdd = 'credits-add';
 const CreditsDelete = 'credits-delete';
 const NotesAdd = 'clients-notes-add';
 const NotesEdit = 'clients-notes-edit';
+const NotesDelete = 'profile-notes-delete';
 
 export const ProfileSettingsComponent = {
 
@@ -82,6 +83,14 @@ export const ProfileSettingsComponent = {
 		notesEdit() {
 			const self = <any>this;
 			self.$modals(NotesEdit).show()
+				.then((data: any) => {
+				})
+				.catch(() => {
+				});
+		},
+		notesDelete() {
+			const self = <any>this;
+			self.$modals(NotesDelete).show()
 				.then((data: any) => {
 				})
 				.catch(() => {
