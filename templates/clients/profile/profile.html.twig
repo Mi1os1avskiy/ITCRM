@@ -5,41 +5,41 @@
 {% block content %}
 
 	<profile-settings inline-template>
-		<form class="mx-auto pt-6 px-4 sm:px-6 lg:px-8 space-y-5 divide-y divide-gray-200">
+		<form class="mx-auto pt-6 px-4 sm:px-6 lg:px-8 space-y-5 divide-y divide-gray-200 text-gray-900">
 			<h3 class="text-lg font-medium leading-6 text-gray-900">Персональные данные</h3>
 
-			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
+			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6">
 				<p class="text-sm font-medium text-gray-700 self-center">Имя</p>
 				<div class="sm:col-span-2">
-					<input type="text" autocomplete="given-name" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" value="Lex">
+					<input type="text" autocomplete="given-name" class="block w-full py-[9px] px-[13px] max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm" value="Lex">
 				</div>
 			</div>
 
-			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
+			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6">
 				<p class="text-sm font-medium text-gray-700 self-center">Фамилия</p>
 				<div class="sm:col-span-2">
-					<input type="text" autocomplete="family-name" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" value="Stark">
+					<input type="text" autocomplete="family-name" class="block w-full py-[9px] px-[13px] max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm" value="Stark">
 				</div>
 			</div>
 
-			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
+			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6">
 				<p class="text-sm font-medium text-gray-700 self-center">Название компании</p>
 				<div class="sm:col-span-2">
-					<input type="text" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Microsoft">
+					<input type="text" class="block w-full py-[9px] px-[13px] max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm" placeholder="Microsoft">
 				</div>
 			</div>
 
-			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
+			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6">
 				<p class="text-sm font-medium text-gray-700 self-center">Email</p>
 				<div class="sm:col-span-2">
 
 					<div class="flex max-w-lg">
 						<div class="flex-grow focus-within:z-10">
-							<input type="email" class="w-full rounded-l-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" value="mail@mail.com">
+							<input type="email" class="w-full py-[9px] px-[13px] rounded-l-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm" value="mail@mail.com">
 						</div>
 
 						<div class="relative">
-							<button type="button" class="relative flex items-center w-full -ml-px cursor-default space-x-2 rounded-r-md border border-gray-300 bg-gray-50 py-2 px-3 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="false" aria-expanded-autohide aria-labelledby="listbox-label">
+							<button type="button" class="relative flex items-center w-full -ml-px cursor-default space-x-2 rounded-r-md border border-gray-300 bg-gray-50 py-[9px] px-[13px] text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="false" aria-expanded-autohide aria-labelledby="listbox-label">
 	                            <span class="pointer-events-none h-2.5 w-2.5 flex-shrink-0 rounded-full bg-green-400"></span>
 	                            <span class="pointer-events-none">Верифицирован</span>
 	                            <svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,17 +47,17 @@
 	                            </svg>
 							</button>
 
-							<ul class="absolute z-10 mt-1 max-h-60 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
-								<li class="text-gray-900 relative cursor-pointer select-none py-2 pl-3 pr-9 hover:bg-gray-100">
-									<div class="flex items-center">
-										<span class="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-red-400" aria-hidden="true"></span>
-										<span class="font-normal ml-3 block truncate">Не верифицирован</span>
+							<ul class="absolute z-10 mt-1 max-h-60 overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+								<li class="text-gray-900 relative cursor-pointer select-none py-2 px-4 hover:bg-gray-100">
+									<div class="flex items-center space-x-3">
+										<span class="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-red-400"></span>
+										<span class="text-gray-700 truncate">Не верифицирован</span>
 									</div>
 								</li>
-								<li class="text-gray-900 relative cursor-pointer select-none py-2 pl-3 pr-9 hover:bg-gray-100">
-									<div class="flex items-center">
-										<span class="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-green-400" aria-hidden="true"></span>
-										<span class="font-normal ml-3 block truncate">Верифицирован</span>
+								<li class="text-gray-900 relative cursor-pointer select-none py-2 px-4 hover:bg-gray-100">
+									<div class="flex items-center space-x-3">
+										<span class="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-green-400"></span>
+										<span class="text-gray-700 truncate">Верифицирован</span>
 									</div>
 								</li>
 							</ul>
@@ -66,17 +66,17 @@
 				</div>
 			</div>
 
-			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
+			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6">
 				<p class="text-sm font-medium text-gray-700 self-center">Номер телефона</p>
 				<div class="sm:col-span-2">
-					<input type="tel" class="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="+1">
+					<input type="tel" class="block w-full py-[9px] px-[13px] max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm" placeholder="+1">
 				</div>
 			</div>
 
-			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
+			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6">
 				<p class="text-sm font-medium text-gray-700 self-center">Статус аккаунта</p>
 				<div class="relative sm:col-span-2">
-					<button type="button" class="relative w-full max-w-lg cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-expanded="false" aria-expanded-autohide aria-labelledby="listbox-label">
+					<button type="button" class="relative w-full py-[9px] px-[13px] max-w-lg cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 text-sm" aria-expanded="false" aria-expanded-autohide>
 	                    <span class="pointer-events-none flex items-center">
 	                        <span aria-label="Online" class="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-green-400"></span>
 	                        <span class="ml-3 block truncate">Active</span>
@@ -88,12 +88,10 @@
 	                    </span>
 					</button>
 
-					{% set statuses = {'Active': 'green', 'Pending': 'yellow', 'Inactive': 'gray', 'Closed': 'gray'} %}
-
 					<ul class="absolute z-10 mt-1 max-h-60 w-64 max-w-lg overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-						{% for val, css in statuses %}
+						{% for val, css in user_statuses %}
 							<li>
-								<button type="button" class="w-full flex items-center text-gray-900 py-2 px-3 hover:bg-gray-100">
+								<button type="button" class="w-full flex items-center text-gray-900 py-2 px-4 hover:bg-indigo-600 hover:text-white">
 									<span class="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-{{ css }}-400"></span>
 									<span class="ml-3 truncate">{{ val }}</span>
 								</button>
@@ -103,23 +101,23 @@
 				</div>
 			</div>
 
-			<div class="pt-5 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
+			<div class="pt-5 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6">
 				<div class="col-start-2">
-					<button type="button" class="rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Сохранить изменения</button>
+					<button type="button" class="rounded-md border border-transparent bg-indigo-600 py-[9px] px-[17px] text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Сохранить изменения</button>
 				</div>
 			</div>
 
 			<h3 class="pt-10 text-lg font-medium leading-6 text-gray-900">Безопасность</h3>
 
-			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
+			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6">
 				<div class="text-sm font-medium text-gray-700 self-center">Пароль</div>
-				<button @click="changePassword()" type="button" class="w-fit rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Изменить</button>
+				<button @click="changePassword()" type="button" class="w-fit rounded-md border border-gray-300 bg-white py-[9px] px-[13px] text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Изменить</button>
 			</div>
 
-			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
+			<div class="pt-5 max-sm:space-y-2 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6">
 				<div class="text-sm font-medium text-gray-700 self-center">2FA</div>
 				<div class="flex items-center">
-					<button @click="disable2fa()" type="button" class="w-fit shrink-0 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Отключить 2FA</button>
+					<button @click="disable2fa()" type="button" class="w-fit shrink-0 rounded-md border border-gray-300 bg-white py-[9px] px-[13px] text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Отключить 2FA</button>
 					<p class="whitespace-nowrap ml-6 font-medium text-sm text-gray-700">Код восстановления: HsxS-BCve-hoYo-PfWn-Wqvk</p>
 				</div>
 			</div>

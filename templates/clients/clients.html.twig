@@ -12,19 +12,15 @@
 
 					{% block header %}
 
-						<div class="bg-gray-100 mx-auto px-4 sm:px-6 lg:px-8">
-							<div class="flex h-16 justify-between space-x-2">
-								<p class="flex items-center font-semibold text-lg">{{ title }}</p>
-								<div class="flex items-center">
-									<div class="flex-shrink-0">
-										<a href="{{ path('new_user') }}" class="relative inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-											<svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-												<path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"/>
-											</svg>
-											<span>Добавить</span>
-										</a>
-									</div>
-								</div>
+						<div class="px-8 py-4 bg-gray-50 border-b border-gray-200">
+							<div class="flex justify-between space-x-4">
+								<p class="flex items-center font-semibold text-lg text-gray-900">{{ title }}</p>
+								<a href="{{ path('new_user') }}" class="inline-flex items-center rounded-md border-0 bg-indigo-600 pl-[15px] pr-[17px] py-[9px] text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+									<svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+										<path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"/>
+									</svg>
+									<span>Добавить</span>
+								</a>
 							</div>
 						</div>
 
@@ -32,12 +28,12 @@
 
 					{% block filters %}
 						<clients-list-filters inline-template>
-							<div class="mt-4 mx-auto px-4 sm:px-6 lg:px-8">
-								<div class="sm:flex h-16 justify-between">
+							<div class="mx-auto px-8">
+								<div class="sm:flex mt-6 justify-between">
 									<div class="flex items-center">
 										<div class="relative">
-											<button type="button" class="relative w-32 md:w-48 cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-sm text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500" aria-haspopup="listbox" aria-expanded="false" aria-expanded-autohide aria-labelledby="listbox-label">
-												<p class="pointer-events-none block truncate">Все статусы</p>
+											<button type="button" class="relative w-32 md:w-48 cursor-default rounded-md border border-gray-300 bg-white px-[13px] py-[9px] text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500" aria-haspopup="listbox" aria-expanded="false" aria-expanded-autohide>
+												<p class="pointer-events-none block text-sm text-gray-900 truncate">Все статусы</p>
 												<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
 													<svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 														<path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd"/>
@@ -45,18 +41,17 @@
 												</div>
 											</button>
 
-											{% set statuses = ['Active', 'Pending', 'Inactive', 'Closed'] %}
+											{% set statuses = ['Active', 'Closed', 'Inactive', 'Unconfirmed', 'Email не подтвержден'] %}
 
-											<ul class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
+											<ul class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+
+												<li class="bg-gray-50 hover:bg-gray-100">
+													<button type="button" class="w-full px-4 py-2 text-gray-900 text-sm font-semibold text-left">Все статусы</button>
+												</li>
 
 												{% for status in statuses %}
-													<li class="text-gray-900 relative cursor-default select-none py-2 pl-8 pr-4" role="option">
-														<p class="font-normal block truncate">{{ status }}</p>
-														<div class="text-indigo-600 absolute inset-y-0 left-0 flex items-center pl-1.5">
-															<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-																<path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/>
-															</svg>
-														</div>
+													<li class="hover:bg-gray-50">
+														<button type="button" class="w-full px-4 py-2 text-gray-700 text-sm text-left">{{ status }}</button>
 													</li>
 												{% endfor %}
 
@@ -64,17 +59,13 @@
 										</div>
 									</div>
 
-									<div class="flex items-center sm:ml-2 mt-2 sm:mt-0">
-										<div class="w-64 max-w-xl lg:max-w-xs">
-											<div class="relative">
-												<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-													<svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-														<path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
-													</svg>
-												</div>
-												<input name="search" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Поиск по Email или ID" type="search">
-											</div>
+									<div class="relative flex items-center mt-2 sm:mt-0">
+										<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-[13px]">
+											<svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+												<path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+											</svg>
 										</div>
+										<input name="search" class="w-64 rounded-md border border-gray-300 shadow-sm bg-white py-[9px] pl-10 pr-[13px] text-sm placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500" placeholder="Поиск по Email или ID" type="search">
 									</div>
 
 								</div>
@@ -85,12 +76,12 @@
 					{% block table %}
 
 						<div class="hidden sm:block">
-							<div class="mx-auto px-4 sm:px-6 lg:px-8">
-								<div class="mt-2 flex flex-col">
-									<div class="min-w-full overflow-hidden overflow-x-auto align-middle shadow sm:rounded-lg">
+							<div class="mx-auto px-8">
+								<div class="mt-4 flex flex-col">
+									<div class="min-w-full overflow-hidden overflow-x-auto align-middle rounded-t-lg border border-gray-200">
 										<table class="min-w-full divide-y divide-gray-200">
 											<thead>
-											<tr class="bg-gray-50 text-gray-900 text-sm border border-t">
+											<tr class="bg-gray-50 border-b border-gray-300 text-gray-900 text-sm">
 												<th class="px-6 py-3 text-left font-medium" scope="col">ID</th>
 												<th class="px-6 py-3 text-left font-medium" scope="col">Email</th>
 												<th class="px-6 py-3 text-left font-medium" scope="col">Имя</th>
@@ -132,45 +123,44 @@
 
 											</tbody>
 										</table>
-
-										<div class="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-4 sm:px-6">
-											<div class="flex flex-1 justify-between sm:hidden">
-												<a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
-												<a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+									</div>
+									<div class="-mt-px border rounded-b-lg bg-gray-50 border-t py-4 px-6">
+										<div class="flex flex-1 justify-between sm:hidden">
+											<a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
+											<a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+										</div>
+										<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+											<div>
+												<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+													<a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+														<span class="sr-only">Previous</span>
+														<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+															<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd"/>
+														</svg>
+													</a>
+													<a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
+													<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
+													<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
+													<span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
+													<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
+													<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
+													<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
+													<a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+														<span class="sr-only">Next</span>
+														<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+															<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/>
+														</svg>
+													</a>
+												</nav>
 											</div>
-											<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-												<div>
-													<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-														<a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-															<span class="sr-only">Previous</span>
-															<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-																<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd"/>
-															</svg>
-														</a>
-														<a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
-														<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
-														<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
-														<span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
-														<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
-														<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
-														<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
-														<a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-															<span class="sr-only">Next</span>
-															<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-																<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/>
-															</svg>
-														</a>
-													</nav>
-												</div>
-												<div class="flex items-center">
-													<p class="text-sm font-medium text-gray-500">1 - {{ users|length }} из {{ users|length }}</p>
-													<div class="flex ml-4">
-														<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
-															{% for i in range(low=25, high=100, step=25) %}
-																<option>{{ i }}</option>
-															{% endfor %}
-														</select>
-													</div>
+											<div class="flex items-center">
+												<p class="text-sm font-medium text-gray-500">1 - {{ users|length }} из {{ users|length }}</p>
+												<div class="flex ml-4">
+													<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
+														{% for i in range(low=25, high=100, step=25) %}
+															<option>{{ i }}</option>
+														{% endfor %}
+													</select>
 												</div>
 											</div>
 										</div>

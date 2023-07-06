@@ -5,7 +5,7 @@
 {% block content %}
 
     <profile-settings inline-template>
-        <dl class="mx-8 pt-4 divide-y divide-gray-200">
+        <dl class="mx-8 pt-6 divide-y divide-gray-200 text-gray-900">
             <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
                 <dt class="text-sm font-medium text-gray-500">ID</dt>
                 <dd class="max-sm:mt-2 text-sm sm:col-span-2">#{{ user.id }}</dd>
@@ -41,7 +41,7 @@
             <div class="sm:flex items-center py-5 sm:grid sm:grid-cols-3 gap-4">
                 <dt class="text-sm font-medium text-gray-500">Последний логин</dt>
                 <dd class="max-sm:mt-2 text-sm sm:col-span-2">
-                    <span>{{ user.last_log.date }} {{ user.last_log.time }} • <a target="_blank" href="https://www.geodatatool.com/en/?ip={{ user.last_log.ip }}" class="hover:text-indigo-700">{{ user.last_log.ip }}</a> ({{ user.last_log.geo }})</span>
+                    <span>{{ user.last_log.date }} {{ user.last_log.time }} • <a target="_blank" href="https://www.geodatatool.com/en/?ip={{ user.last_log.ip }}" class="text-indigo-700">{{ user.last_log.ip }}</a> ({{ user.last_log.geo }})</span>
                     <button @click="overviewLogs()" type="button" class="inline-flex items-center ml-4 rounded-md border border-gray-300 px-4 py-2 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         <span class="text-xs font-medium text-gray-700">История</span>
                     </button>
@@ -49,7 +49,7 @@
             </div>
             <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
                 <dt class="text-sm font-medium text-gray-500">IP регистрации</dt>
-                <dd class="max-sm:mt-2 text-sm sm:col-span-2"><a target="_blank" href="https://www.geodatatool.com/en/?ip={{ user.ip }}" class="hover:text-indigo-700">{{ user.ip }}</a> ({{ user.ccode }})</dd>
+                <dd class="max-sm:mt-2 text-sm sm:col-span-2"><a target="_blank" href="https://www.geodatatool.com/en/?ip={{ user.ip }}" class="text-indigo-700">{{ user.ip }}</a> ({{ user.ccode }})</dd>
             </div>
             <div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
                 <dt class="text-sm font-medium text-gray-500">2FA</dt>
