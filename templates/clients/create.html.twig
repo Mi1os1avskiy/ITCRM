@@ -42,7 +42,7 @@
 												</div>
 											</div>
 											<div v-if="$form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid">
-												<p class="text-sm text-red-600" v-for="item in $form['personalData.firstname'].$errors">${item}</p>
+												<p class="text-sm text-red-500" v-for="item in $form['personalData.firstname'].$errors">${item}</p>
 											</div>
 										</div>
 									</div>
@@ -61,7 +61,7 @@
 												</div>
 											</div>
 											<div v-if="$form['personalData.lastname'] && $form['personalData.lastname'].$dirty && !$form['personalData.lastname'].$valid">
-												<p class="text-sm text-red-600" v-for="item in $form['personalData.lastname'].$errors">${item}</p>
+												<p class="text-sm text-red-500" v-for="item in $form['personalData.lastname'].$errors">${item}</p>
 											</div>
 										</div>
 									</div>
@@ -87,7 +87,7 @@
 												</div>
 												<div class="absolute inset-y-0 right-0 flex items-center">
 													<div class="relative">
-														<button type="button" class="relative w-full rounded-r-md border border-gray-300 bg-gray-50 py-2 pl-3 pr-10 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="false" aria-expanded-autohide aria-labelledby="listbox-label">
+														<button type="button" class="relative w-full rounded-r-md border border-gray-300 bg-gray-50 py-2 pl-3 pr-10 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-expanded="false" aria-expanded-autohide>
 															<div class="flex items-center space-x-3 pointer-events-none">
 																<div class="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-green-400"></div>
 																<p>Верифицирован</p>
@@ -99,7 +99,7 @@
 															</div>
 														</button>
 
-														<ul class="absolute z-10 mt-1 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
+														<ul class="absolute z-10 mt-1 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
 															<li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9" role="option">
 																<div class="flex items-center">
 																	<div class="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-red-400" aria-hidden="true"></div>
@@ -117,7 +117,7 @@
 												</div>
 											</div>
 											<div v-if="$form['personalData.email'] && $form['personalData.email'].$dirty && !$form['personalData.email'].$valid">
-												<p class="text-sm text-red-600" v-for="item in $form['personalData.email'].$errors">${item}</p>
+												<p class="text-sm text-red-500" v-for="item in $form['personalData.email'].$errors">${item}</p>
 											</div>
 										</div>
 									</div>
@@ -126,7 +126,7 @@
 										<p class="max-sm:mb-2 text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Номер телефона</p>
 										<div class="w-full max-w-lg mt-1 sm:col-span-2 sm:mt-0">
 											<div class="relative">
-												<input v-model="personalData.phone" type="tel" placeholder="+1"
+												<input v-model="personalData.phone" type="text" placeholder="+1"
 												       class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:text-gray-400"
 												       :class="{'bg-red-50 placeholder-red-300': $form['personalData.phone'] && $form['personalData.phone'].$dirty && !$form['personalData.phone'].$valid}">
 												<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.phone'] && $form['personalData.phone'].$dirty && !$form['personalData.phone'].$valid">
@@ -136,7 +136,7 @@
 												</div>
 											</div>
 											<div v-if="$form['personalData.phone'] && $form['personalData.phone'].$dirty && !$form['personalData.phone'].$valid">
-												<p class="text-sm text-red-600" v-for="item in $form['personalData.phone'].$errors">${item}</p>
+												<p class="text-sm text-red-500" v-for="item in $form['personalData.phone'].$errors">${item}</p>
 											</div>
 										</div>
 									</div>
@@ -190,7 +190,7 @@
 												</button>
 											</div>
 											<div v-if="$form['personalData.password'] && $form['personalData.password'].$dirty && !$form['personalData.password'].$valid">
-												<p class="text-sm text-red-600" v-for="item in $form['personalData.password'].$errors">${item}</p>
+												<p class="text-sm text-red-500" v-for="item in $form['personalData.password'].$errors">${item}</p>
 											</div>
 										</div>
 									</div>
