@@ -126,7 +126,7 @@
 										<p class="max-sm:mb-2 text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Номер телефона</p>
 										<div class="w-full max-w-lg mt-1 sm:col-span-2 sm:mt-0">
 											<div class="relative">
-												<input v-model="personalData.phone" type="text" placeholder="+1"
+												<input v-model="personalData.phone" type="tel" placeholder="+1"
 												       class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:text-gray-400"
 												       :class="{'bg-red-50 placeholder-red-300': $form['personalData.phone'] && $form['personalData.phone'].$dirty && !$form['personalData.phone'].$valid}">
 												<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.phone'] && $form['personalData.phone'].$dirty && !$form['personalData.phone'].$valid">

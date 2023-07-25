@@ -22,7 +22,7 @@
                                     <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input name="search" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Поиск по Имени или ID" type="search">
+                            <input name="search" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Поиск по Услуге" type="search">
                         </div>
                     </div>
                 </div>
@@ -36,17 +36,17 @@
         <div class="hidden sm:block">
             <div class="mx-auto px-8">
                 <div class="mt-4 flex flex-col">
-                    <div class="min-w-full overflow-hidden overflow-x-auto align-middle shadow rounded-t-lg border border-gray-200">
-                        <table class="min-w-full divide-y divide-gray-200">
+                    <div class="min-w-full overflow-hidden overflow-x-auto align-middle rounded-t-lg border border-gray-200">
+                        <table class="min-w-full">
                             <thead>
-                                <tr class="bg-gray-50 text-gray-900 text-sm">
-                                    <th class="px-6 py-3 text-left font-medium" scope="col">ID - Услуга</th>
-                                    <th class="px-6 py-3 text-left font-medium" scope="col">IP</th>
-                                    <th class="px-6 py-3 text-right font-medium" scope="col">Сумма</th>
-                                    <th class="px-6 py-3 whitespace-nowrap text-left font-medium" scope="col">Цикл оплаты</th>
-                                    <th class="px-6 py-3 whitespace-nowrap text-left font-medium" scope="col">Дата регистрации</th>
-                                    <th class="px-6 py-3 whitespace-nowrap text-left font-medium" scope="col">Оплатить до</th>
-                                    <th class="px-6 py-3 text-left font-medium" scope="col">Статус</th>
+                                <tr class="bg-gray-50 border-b border-gray-300 text-gray-900 text-sm">
+                                    <th class="pl-6 pr-3 py-3 text-left font-medium">Услуга</th>
+                                    <th class="w-[150px] px-3 py-3 text-left font-medium">IP</th>
+                                    <th class="w-[110px] px-3 py-3 text-right font-medium">Сумма</th>
+                                    <th class="w-[130px] px-3 py-3 whitespace-nowrap text-left font-medium">Цикл оплаты</th>
+                                    <th class="w-[140px] px-3 py-3 whitespace-nowrap text-left font-medium">Дата рег.</th>
+                                    <th class="w-[140px] px-3 py-3 whitespace-nowrap text-left font-medium">Next due date</th>
+                                    <th class="w-[130px] pl-3 pr-6 py-3 text-left font-medium">Статус</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
@@ -56,15 +56,15 @@
                             {% for service in services %}
 
                                 <tr class="text-sm">
-                                    <td class="truncate font-medium whitespace-nowrap px-6 py-4">
-	                                    <a href="#" class="hover:text-indigo-700">{{ service.title }}</a>
+                                    <td class="inline-block max-xl:w-64 max-2xl:w-96 truncate font-medium pl-6 pr-3 py-4">
+	                                    <a href="#" class="hover:text-indigo-700" title="{{ service.title }}">{{ service.title }}</a>
                                     </td>
-                                    <td class="whitespace-nowrap px-6 py-4 text-gray-500">{{ service.ip }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 text-right text-gray-500">${{ service.amount }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 text-gray-500">{{ service.cycle }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 text-gray-500">{{ service.date }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 text-gray-500">{{ service.paydate }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">
+                                    <td class="whitespace-nowrap px-3 py-4 text-gray-500">{{ service.ip }}</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-right text-gray-500">${{ service.amount }}</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-gray-500">{{ service.cycle }}</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-gray-500">{{ service.date }}</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-gray-500">{{ service.paydate }}</td>
+                                    <td class="whitespace-nowrap pl-3 pr-6 py-4">
                                         {% for val, css in statuses %}
                                             {% if service.status == val %}
                                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-100 text-{{ css }}-800 capitalize">{{ val }}</span>

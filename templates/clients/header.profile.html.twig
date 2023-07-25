@@ -18,7 +18,7 @@
         </svg>
 		<span>Клиент #{{ userID() }}</span>
 	</nav>
-	<div class="flex items-center h-12 mt-2 space-x-4">
+	<div class="flex items-center h-[38px] mt-2 space-x-4">
 		<span class="font-semibold leading-6 text-lg">Клиент {% if user.name %}{{ user.name }}{% else %}{{ user.email }}{% endif %}</span>
 		<span class="px-3 pt-0.5 pb-1 rounded-full text-xs font-medium
 		{% for val, css in user_statuses %}
@@ -29,42 +29,26 @@
 </div>
 
 <nav class="bg-gray-50 border-b-2 mx-auto px-8">
-	<div class="inline-block sm:flex sm:pt-4 sm:space-x-8">
+	<div class="inline-block -mb-px sm:flex sm:pt-4 sm:space-x-8">
 		{% for tab in tabs %}
-			<a href="/clients/{{ tab.eng }}" class="block sm:inline-flex pb-1 sm:pb-4 max-sm:mb-3 items-center border-b-2 border-transparent text-gray-500 text-sm font-medium leading-5 hover:border-gray-300 hover:text-gray-700 {% if currentTab == tab.eng %} border-indigo-600 text-indigo-600 pointer-events-none{% endif %}">{{ tab.rus|capitalize }}</a>
+			<a href="/clients/{{ tab.eng }}" class="block h-9 sm:inline-flex pb-1 sm:pb-4 max-sm:mb-3 items-center border-b-2 border-transparent text-sm font-medium leading-5 hover:border-gray-300 hover:text-gray-700 {% if currentTab == tab.eng %} border-indigo-600 text-indigo-600 pointer-events-none{% else %} text-gray-500 {% endif %}">{{ tab.rus|capitalize }}</a>
 		{% endfor %}
 	</div>
 </nav>
 
+{% set pinned_notes = ['Ipsum lacus id gravida venenatis velit cursus aliquet eros. Massa at habitant potenti senectus id pretium faucibus. Odio libero placerat lectus lectus eget tortor scelerisque tincidunt. Sed ultricies consequat interdum vel mauris nunc. Orci fermentum consequat semper tortor. Enim adipiscing donec lobortis elit libero vivamus. Leo magna donec gravida dictum platea. Aliquam vehicula augue cursus pharetra nunc praesent ornare.', 'Nisl ut enim cursus nisi. Pulvinar id diam hac ipsum pharetra diam vulputate.', 'Ipsum lacus id gravida venenatis velit cursus aliquet eros.'] %}
+
 {% if currentTab != 'notes' %}
 
-	<div class="max-w-7xl mt-6 px-8">
-		<div class="grid grid-cols-3 gap-x-2">
-			<div class="flex items-center bg-yellow-50 rounded-lg py-5 px-6 space-x-4 ">
-				<p class="text-sm text-gray-700 line-clamp-3">Ipsum lacus id gravida venenatis velit cursus aliquet eros. Massa at habitant potenti senectus id pretium faucibus. Odio libero placerat lectus lectus eget tortor scelerisque tincidunt. Sed ultricies consequat interdum vel mauris nunc. Orci fermentum consequat semper tortor. Enim adipiscing donec lobortis elit libero vivamus. Leo magna donec gravida dictum platea. Aliquam vehicula augue cursus pharetra nunc praesent ornare.</p>
-				<a href="{{ path('notes') }}">
-					<svg class="shrink-0 text-gray-500 hover:text-gray-900" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M7.62639 14.7071C7.23587 14.3166 7.23587 13.6834 7.62639 13.2929L10.9193 10L7.62639 6.70711C7.23587 6.31658 7.23586 5.68342 7.62639 5.29289C8.01691 4.90237 8.65008 4.90237 9.0406 5.29289L13.0406 9.29289C13.4311 9.68342 13.4311 10.3166 13.0406 10.7071L9.0406 14.7071C8.65008 15.0976 8.01691 15.0976 7.62639 14.7071Z" fill="currentColor"/>
-					</svg>
-				</a>
+	<div class="mt-6 px-8 space-y-2">
+		{% for i in pinned_notes %}
+			<div class="flex bg-yellow-50 rounded-lg py-4 px-6 space-x-4 ">
+				<svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10ZM10 5C10.4142 5 10.75 5.33579 10.75 5.75V10.25C10.75 10.6642 10.4142 11 10 11C9.58579 11 9.25 10.6642 9.25 10.25V5.75C9.25 5.33579 9.58579 5 10 5ZM10 15C10.5523 15 11 14.5523 11 14C11 13.4477 10.5523 13 10 13C9.44771 13 9 13.4477 9 14C9 14.5523 9.44771 15 10 15Z" fill="#F97316"/>
+				</svg>
+				<p class="text-sm text-gray-700 line-clamp-3">{{ i }}</p>
 			</div>
-			<div class="flex items-center bg-yellow-50 rounded-lg py-5 px-6 space-x-4">
-				<div class="text-sm text-gray-700 line-clamp-3">Nisl ut enim cursus nisi. Pulvinar id diam hac ipsum pharetra diam vulputate.</div>
-				<a href="{{ path('notes') }}">
-					<svg class="shrink-0 text-gray-500 hover:text-gray-900" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M7.62639 14.7071C7.23587 14.3166 7.23587 13.6834 7.62639 13.2929L10.9193 10L7.62639 6.70711C7.23587 6.31658 7.23586 5.68342 7.62639 5.29289C8.01691 4.90237 8.65008 4.90237 9.0406 5.29289L13.0406 9.29289C13.4311 9.68342 13.4311 10.3166 13.0406 10.7071L9.0406 14.7071C8.65008 15.0976 8.01691 15.0976 7.62639 14.7071Z" fill="currentColor"/>
-					</svg>
-				</a>
-			</div>
-			<div class="flex items-center bg-yellow-50 rounded-lg py-5 px-6 space-x-4">
-				<div class="text-sm text-gray-700 line-clamp-3">Ipsum lacus id gravida venenatis velit cursus aliquet eros.</div>
-				<a href="{{ path('notes') }}">
-					<svg class="shrink-0 text-gray-500 hover:text-gray-900" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M7.62639 14.7071C7.23587 14.3166 7.23587 13.6834 7.62639 13.2929L10.9193 10L7.62639 6.70711C7.23587 6.31658 7.23586 5.68342 7.62639 5.29289C8.01691 4.90237 8.65008 4.90237 9.0406 5.29289L13.0406 9.29289C13.4311 9.68342 13.4311 10.3166 13.0406 10.7071L9.0406 14.7071C8.65008 15.0976 8.01691 15.0976 7.62639 14.7071Z" fill="currentColor"/>
-					</svg>
-				</a>
-			</div>
-		</div>
+		{% endfor %}
 	</div>
 
 {% endif %}
