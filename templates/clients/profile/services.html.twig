@@ -55,15 +55,15 @@
 
                             {% for service in services %}
 
-                                <tr class="text-sm">
-                                    <td class="inline-block max-xl:w-64 max-2xl:w-96 truncate font-medium pl-6 pr-3 py-4">
+                                <tr class="text-sm text-gray-500">
+                                    <td class="inline-block max-xl:w-64 max-2xl:w-96 truncate text-gray-900 font-medium pl-6 pr-3 py-4">
 	                                    <a href="#" class="hover:text-indigo-700" title="{{ service.title }}">{{ service.title }}</a>
                                     </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-gray-500">{{ service.ip }}</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-right text-gray-500">${{ service.amount }}</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-gray-500">{{ service.cycle }}</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-gray-500">{{ service.date }}</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-gray-500">{{ service.paydate }}</td>
+                                    <td class="whitespace-nowrap px-3 py-4">{{ service.ip }}</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-right">${{ service.amount }}</td>
+                                    <td class="whitespace-nowrap px-3 py-4">{{ service.cycle }}</td>
+                                    <td class="whitespace-nowrap px-3 py-4">{{ service.date }}</td>
+                                    <td class="whitespace-nowrap px-3 py-4">{{ service.paydate }}</td>
                                     <td class="whitespace-nowrap pl-3 pr-6 py-4">
                                         {% for val, css in statuses %}
                                             {% if service.status == val %}

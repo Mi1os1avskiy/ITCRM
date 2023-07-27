@@ -23,7 +23,7 @@
 
 					<form class="mx-auto mb-[104px] px-8">
 						<div class="divide-y divide-gray-200">
-							<div class="space-y-6 pt-6 sm:space-y-5">
+							<div class="text-gray-900 space-y-6 pt-6 sm:space-y-5">
 								<div>
 									<h3 class="text-lg font-medium leading-6 text-gray-900">Персональные данные</h3>
 								</div>
@@ -42,7 +42,7 @@
 												</div>
 											</div>
 											<div v-if="$form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid">
-												<p class="text-sm text-red-500" v-for="item in $form['personalData.firstname'].$errors">${item}</p>
+												<p class="mt-2 text-sm text-red-500" v-for="item in $form['personalData.firstname'].$errors">${item}</p>
 											</div>
 										</div>
 									</div>
@@ -61,7 +61,7 @@
 												</div>
 											</div>
 											<div v-if="$form['personalData.lastname'] && $form['personalData.lastname'].$dirty && !$form['personalData.lastname'].$valid">
-												<p class="text-sm text-red-500" v-for="item in $form['personalData.lastname'].$errors">${item}</p>
+												<p class="mt-2 text-sm text-red-500" v-for="item in $form['personalData.lastname'].$errors">${item}</p>
 											</div>
 										</div>
 									</div>
@@ -117,7 +117,7 @@
 												</div>
 											</div>
 											<div v-if="$form['personalData.email'] && $form['personalData.email'].$dirty && !$form['personalData.email'].$valid">
-												<p class="text-sm text-red-500" v-for="item in $form['personalData.email'].$errors">${item}</p>
+												<p class="mt-2 text-sm text-red-500" v-for="item in $form['personalData.email'].$errors">${item}</p>
 											</div>
 										</div>
 									</div>
@@ -136,7 +136,7 @@
 												</div>
 											</div>
 											<div v-if="$form['personalData.phone'] && $form['personalData.phone'].$dirty && !$form['personalData.phone'].$valid">
-												<p class="text-sm text-red-500" v-for="item in $form['personalData.phone'].$errors">${item}</p>
+												<p class="mt-2 text-sm text-red-500" v-for="item in $form['personalData.phone'].$errors">${item}</p>
 											</div>
 										</div>
 									</div>
@@ -190,7 +190,7 @@
 												</button>
 											</div>
 											<div v-if="$form['personalData.password'] && $form['personalData.password'].$dirty && !$form['personalData.password'].$valid">
-												<p class="text-sm text-red-500" v-for="item in $form['personalData.password'].$errors">${item}</p>
+												<p class="mt-2 text-sm text-red-500" v-for="item in $form['personalData.password'].$errors">${item}</p>
 											</div>
 										</div>
 									</div>
