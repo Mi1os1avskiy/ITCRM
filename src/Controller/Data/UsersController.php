@@ -40,7 +40,7 @@ class UsersController
 
     public static function CreateTable() {
         return [
-            new UsersController(111, 'test@test.test', 'Lex Stark', 350,  3,  'Active', '17/02/2023', 'Ru', '', ['Belarus', 'Minsk'], 'VSh', ['date' => '11/04/2023', 'time' => '14:21:32', 'ip' => '37.214.25.177', 'geo' => 'BY'], '37.214.25.177', 'BY', 1),
+            new UsersController(111, 'test@test.test', '', 350,  3,  'Active', '17/02/2023', 'Ru', '', ['Belarus', 'Minsk'], 'VSh', ['date' => '11/04/2023', 'time' => '14:21:32', 'ip' => '37.214.25.177', 'geo' => 'BY'], '37.214.25.177', 'BY', 1),
             new UsersController(222, 'miloslavskiy@tut.by', 'Aleksandr Miloslavskiy', 1200, 1, 'Pending', '17/02/2023', 'Ru', '+375 29 638-33-96', ['Belarus', 'Minsk', 'Kollektornaya, 32-60', '220004'], 'BrainQ', ['date' => '11/04/2023', 'time' => '14:21:32', 'ip' => '37.214.25.177', 'geo' => 'BY'], '37.214.25.177', 'BY', 1),
             new UsersController(333, 'dawkins@mail.com', 'Richard Dawkins', 2222, 4, 'Inactive', '17/02/2023', 'En', '', ['Australian Capital Territory', 'Road STIRLING', '24 Monteagle Road STIRLING ACT', '2611'], 'Dawkins Co', ['date' => '11/04/2023', 'time' => '14:21:32', 'ip' => '37.214.25.177', 'geo' => 'US'], '37.214.25.177', 'US', 0),
             new UsersController(444, 'tyson@gmail.com', 'Neil deGrass Tyson', 99.99, 2, 'Closed', '17/02/2023', 'En', '+1 234 567-89-00', ['United States', 'Main st', 'New-York', '12345'], 'Haydens Planetarium', ['date' => '11/04/2023', 'time' => '14:21:32', 'ip' => '37.214.25.177', 'geo' => 'US'], '37.214.25.177', 'US', 1),
