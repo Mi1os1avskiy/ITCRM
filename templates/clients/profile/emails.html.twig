@@ -29,33 +29,39 @@
 	{% block table %}
 
 		<div class="hidden sm:block">
-			<div class="mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="mx-auto px-8">
 				<div class="mt-2 flex flex-col">
-					<div class="min-w-full overflow-hidden overflow-x-auto align-middle shadow sm:rounded-lg">
+					<div class="min-w-full overflow-hidden overflow-x-auto align-middle rounded-lg border border-gray-200">
 
-						<table class="min-w-full divide-y divide-gray-200">
+						<table class="min-w-full">
 							<thead>
-							<tr class="bg-gray-50 text-sm text-gray-900 border border-t">
-								<th class="px-6 py-3 text-left font-medium" scope="col">Отдел</th>
-								<th class="px-6 py-3 text-left font-medium" scope="col">Заголовок</th>
-								<th class="px-6 py-3 text-left font-medium whitespace-nowrap" scope="col">Дата и Время</th>
+							<tr class="bg-gray-50 border-b border-gray-300 text-sm text-gray-900">
+								<th class="w-[200px] pl-6 pr-3 py-3 text-left font-medium">Отдел</th>
+								<th class="px-3 py-3 text-left font-medium">Заголовок</th>
+								<th class="w-[220px] px-3 py-3 text-left font-medium whitespace-nowrap">Дата и Время</th>
+								<th class="w-[160px] pl-3 pr-6 py-3 text-left font-medium">Статус</th>
 							</tr>
 							</thead>
 
 							<tbody class="divide-y divide-gray-200">
-
-
 
 							{% for item in clients_data %}
 								{% if item.id == userID %}
 									{% for email in item.emails %}
 
 										<tr class="text-sm text-gray-500">
-											<td class="px-6 py-4">{{ email.dept }}</td>
-											<td class="px-6 py-4 text-gray-900 font-medium">
+											<td class="pl-6 pr-3 py-4 whitespace-nowrap">{{ email.dept }}</td>
+											<td class="px-3 py-4 text-gray-900 font-medium whitespace-nowrap">
 												<a href="#" class="hover:text-indigo-700">{{ email.title }}</a>
 											</td>
-											<td class="px-6 py-4">{{ email.date }}, {{ email.time}} ({{ email.loc }})</td>
+											<td class="px-3 py-4 whitespace-nowrap">{{ email.date }}, {{ email.time}} ({{ email.loc }})</td>
+											<td class="pl-3 pr-6 py-4 whitespace-nowrap">
+												{% if email.status %}
+													<span class="py-0.5 px-2.5 bg-green-100 rounded-xl text-green-800 text-xs font-medium">Доставлено</span>
+												{% else %}
+													<span class="py-0.5 px-2.5 bg-red-100 rounded-xl text-red-800 text-xs font-medium">Не доставлено</span>
+												{% endif %}
+											</td>
 										</tr>
 
 									{% endfor %}
