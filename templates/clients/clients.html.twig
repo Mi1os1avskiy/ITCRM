@@ -32,7 +32,7 @@
 								<div class="sm:flex mt-6 justify-between">
 									<div class="flex items-center">
 										<div class="relative">
-											<button type="button" class="relative w-32 md:w-48 cursor-default rounded-md border border-gray-300 bg-white px-[13px] py-[9px] text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500" aria-haspopup="listbox" aria-expanded="false" aria-expanded-autohide>
+											<button type="button" class="relative w-48 cursor-default rounded-md border border-gray-300 bg-white px-[13px] py-[9px] text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500" aria-expanded="false" aria-expanded-autohide>
 												<p class="pointer-events-none block text-sm text-gray-900 truncate">Все статусы</p>
 												<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
 													<svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -82,36 +82,34 @@
 										<table class="min-w-full divide-y divide-gray-200">
 											<thead>
 											<tr class="bg-gray-50 border-b border-gray-300 text-gray-900 text-sm">
-												<th class="px-6 py-3 text-left font-medium" scope="col">ID</th>
-												<th class="px-6 py-3 text-left font-medium" scope="col">Email</th>
-												<th class="px-6 py-3 text-left font-medium" scope="col">Имя</th>
-												<th class="px-6 py-3 text-right font-medium" scope="col">Баланс</th>
-												<th class="px-6 py-3 text-right font-medium" scope="col">Услуги</th>
-												<th class="px-6 py-3 text-left font-medium" scope="col">Статус</th>
-												<th class="px-6 py-3 text-left font-medium" scope="col">Зарегистрирован</th>
+												<th class="w-36 pl-6 pr-3 py-3 text-left font-medium">ID</th>
+												<th class="px-3 py-3 text-left font-medium">Email</th>
+												<th class="px-3 py-3 text-left font-medium">Имя</th>
+												<th class="w-40 px-3 py-3 text-right font-medium">Баланс</th>
+												<th class="w-40 px-3 py-3 text-right font-medium">Услуги</th>
+												<th class="w-40 px-3 py-3 text-left font-medium">Статус</th>
+												<th class="w-44 pl-3 pr-6 py-3 text-left font-medium">Зарегистрирован</th>
 											</tr>
 											</thead>
 											<tbody class="divide-y divide-gray-200 bg-white">
 
-											{% set statuses = {'Active': 'green', 'Pending': 'yellow', 'Inactive': 'gray', 'Closed': 'gray'} %}
-
 											{% for user in users %}
 
-												<tr class="text-sm">
-													<td class="px-6 py-4">
-														<a href="{{ path('overview', { id: user.id }) }}" class="truncate text-gray-500 hover:text-indigo-700">#{{ user.id }}</a>
+												<tr class="text-sm text-gray-900">
+													<td class="pl-6 pr-3 py-4">
+														<a href="{{ path('overview', { id: user.id }) }}" class="hover:text-indigo-700">#{{ user.id }}</a>
 													</td>
-													<td class="px-6 py-4">
-														<a href="{{ path('overview', { id: user.id }) }}" class="truncate text-gray-900 font-medium hover:text-indigo-700">{{ user.email }}</a>
+													<td class="px-3 py-4">
+														<a href="{{ path('overview', { id: user.id }) }}" class="font-medium hover:text-indigo-700">{{ user.email }}</a>
 													</td>
-													<td class="px-6 py-4">
-														<a href="{{ path('overview', { id: user.id }) }}" class="truncate text-gray-500 hover:text-indigo-700">{{ user.name }}</a>
+													<td class="px-3 py-4">
+														<a href="{{ path('overview', { id: user.id }) }}" class="truncate hover:text-indigo-700">{{ user.name }}</a>
 													</td>
-													<td class="px-6 py-4 text-gray-500 text-right">${{ user.credit }}</td>
-													<td class="px-6 py-4 text-gray-500 text-right">{{ user.services }}</td>
-													<td class="px-6 py-4">
+													<td class="px-3 py-4 text-gray-500 text-right">${{ user.credit }}</td>
+													<td class="px-3 py-4 text-gray-500 text-right">{{ user.services }}</td>
+													<td class="pl-3 pr-6 py-4">
 														<span class="px-2.5 py-0.5 rounded-full text-xs font-medium
-														{% for val, css in statuses %}
+														{% for val, css in user_statuses %}
 															{% if user.status == val %} bg-{{ css }}-100 text-{{ css }}-800{% endif %}
 														{% endfor %}">{{ user.status }}
 														</span>
