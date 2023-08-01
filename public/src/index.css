@@ -24,7 +24,6 @@
 }
 */
 
-
 [aria-expanded="false"] + * {
 	display: none;
 }
