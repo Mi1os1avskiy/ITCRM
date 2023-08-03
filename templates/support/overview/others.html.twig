@@ -4,24 +4,24 @@
 
 {% block content %}
 
-	{% block header %}
-		{% include 'support/support.header.view.ticket.html.twig' %}
-	{% endblock %}
-
 	<support-settings inline-template>
 
-		<div class="my-6 mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="mt-2 flex flex-col">
-				<div class="min-w-full overflow-hidden overflow-x-auto align-middle shadow sm:rounded-lg">
+		<div>
+			{% block header %}
+				{% include 'support/support.header.view.ticket.html.twig' %}
+			{% endblock %}
+
+			<div class="py-6 px-8">
+				<div class="min-w-full overflow-hidden border align-middle rounded-lg">
 
 					<table class="min-w-full divide-y divide-gray-200">
 						<thead>
-						<tr class="bg-gray-50 text-gray-900 font-medium border border-t">
-							<th class="px-6 py-3 text-left text-sm font-medium" scope="col">ID - Тема</th>
-							<th class="px-6 py-3 text-left text-sm font-medium" scope="col">Статус</th>
-							<th class="px-6 py-3 text-left text-sm font-medium" scope="col">Приоритет</th>
-							<th class="px-6 py-3 text-left text-sm font-medium" scope="col">Департамент</th>
-							<th class="px-6 py-3 text-left text-sm font-medium whitespace-nowrap" scope="col">Последний ответ</th>
+						<tr class="bg-gray-50 text-gray-900 text-sm">
+							<th class="p-3 pl-6 text-left font-medium">ID - Тема</th>
+							<th class="w-[184px] p-3 text-left font-medium">Статус</th>
+							<th class="w-[100px] p-3 text-left font-medium">Приоритет</th>
+							<th class="w-[184px] p-3 text-left font-medium">Департамент</th>
+							<th class="p-3 pr-6 text-left font-medium">Ответ</th>
 						</tr>
 						</thead>
 						<tbody class="divide-y divide-gray-200 bg-white">
@@ -29,19 +29,17 @@
 						{% for ticket in tickets %}
 
 							<tr>
-								<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900">
-									<a href="{{ path('support_ticket_answer') }}" class="font-medium hover:text-indigo-700">
-										<p class="truncate w-96" title="{{ ticket.theme }}">#{{ ticket.id }} - {{ ticket.theme }}</p>
-									</a>
+								<td class="whitespace-nowrap py-4 pl-6 pr-3">
+									<a href="{{ path('support_ticket_answer') }}" class="text-gray-900 text-sm font-medium hover:text-indigo-700" title="{{ ticket.theme }}">#{{ ticket.id }} - {{ ticket.theme }}</a>
 								</td>
-								<td class="whitespace-nowrap px-6 py-4">
+								<td class="whitespace-nowrap py-4 px-3">
 									{% for val, css in ticket_statuses %}
 										{% if ticket.status == val %}
 											<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if val == 'In progress' %}200{% else %}100{% endif %} text-{{ css }}-800">{{ val }}</span>
 										{% endif %}
 									{% endfor %}
 								</td>
-								<td class="whitespace-nowrap px-6 py-4">
+								<td class="whitespace-nowrap py-4 px-3">
 									{% if ticket.priority == 3 %}
 										<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
 									{% elseif ticket.priority == 2 %}
@@ -53,10 +51,10 @@
 										<div class="mt-0.5 h-0.5 w-2.5 rounded bg-red-400"></div>
 									{% endif %}
 								</td>
-								<td class="whitespace-nowrap px-6 py-4 text-sm">
+								<td class="whitespace-nowrap py-4 px-3 text-sm">
 									<p>{{ ticket.dept }}</p>
 								</td>
-								<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{{ ticket.time }}</td>
+								<td class="whitespace-nowrap py-4 pl-3 pr-6 text-sm text-gray-500">{{ ticket.time }}</td>
 							</tr>
 
 						{% endfor %}
@@ -109,11 +107,6 @@
 			</div>
 		</div>
 
-
 	</support-settings>
-
-	{% block modals %}
-
-	{% endblock %}
 
 {% endblock %}

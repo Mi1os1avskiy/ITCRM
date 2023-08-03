@@ -28,10 +28,10 @@
 	</div>
 </div>
 
-<nav class="bg-gray-50 border-b-2 mx-auto px-8">
-	<div class="inline-block -mb-px sm:flex sm:pt-4 sm:space-x-8">
+<nav class="bg-gray-50 border-b px-8">
+	<div class="-mb-px flex pt-4 space-x-8">
 		{% for tab in tabs %}
-			<a href="/clients/{{ tab.eng }}" class="block h-9 sm:inline-flex pb-1 sm:pb-4 max-sm:mb-3 items-center border-b-2 border-transparent text-sm font-medium leading-5 hover:border-gray-300 hover:text-gray-700 {% if currentTab == tab.eng %} border-indigo-600 text-indigo-600 pointer-events-none{% else %} text-gray-500 {% endif %}">{{ tab.rus|capitalize }}</a>
+			<a href="/clients/{{ tab.eng }}" class="pb-[14px] border-b-2 border-transparent text-sm font-medium leading-5 hover:border-gray-300 hover:text-gray-700 {% if currentTab == tab.eng %} border-indigo-600 text-indigo-600 pointer-events-none{% else %} text-gray-500 {% endif %}">{{ tab.rus|capitalize }}</a>
 		{% endfor %}
 	</div>
 </nav>
