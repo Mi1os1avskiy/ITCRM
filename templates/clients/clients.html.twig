@@ -82,13 +82,13 @@
 										<table class="min-w-full divide-y divide-gray-200">
 											<thead>
 											<tr class="bg-gray-50 border-b border-gray-300 text-gray-900 text-sm">
-												<th class="w-36 pl-6 pr-3 py-3 text-left font-medium">ID</th>
+												<th class="w-[140px] pl-6 pr-3 py-3 text-left font-medium">ID</th>
 												<th class="px-3 py-3 text-left font-medium">Email</th>
 												<th class="px-3 py-3 text-left font-medium">Имя</th>
 												<th class="w-40 px-3 py-3 text-right font-medium">Баланс</th>
 												<th class="w-40 px-3 py-3 text-right font-medium">Услуги</th>
 												<th class="w-40 px-3 py-3 text-left font-medium">Статус</th>
-												<th class="w-44 pl-3 pr-6 py-3 text-left font-medium">Зарегистрирован</th>
+												<th class="w-[175px] pl-3 pr-6 py-3 text-left font-medium">Зарегистрирован</th>
 											</tr>
 											</thead>
 											<tbody class="divide-y divide-gray-200 bg-white">
@@ -100,21 +100,21 @@
 														<a href="{{ path('overview', { id: user.id }) }}" class="hover:text-indigo-700">#{{ user.id }}</a>
 													</td>
 													<td class="px-3 py-4">
-														<a href="{{ path('overview', { id: user.id }) }}" class="font-medium hover:text-indigo-700">{{ user.email }}</a>
+														<a href="{{ path('overview', { id: user.id }) }}" class="inline-block max-[1400px]:w-[143px] truncate font-medium hover:text-indigo-700">{{ user.email }}</a>
 													</td>
 													<td class="px-3 py-4">
-														<a href="{{ path('overview', { id: user.id }) }}" class="truncate hover:text-indigo-700">{{ user.name }}</a>
+														<a href="{{ path('overview', { id: user.id }) }}" class="inline-block max-[1400px]:w-[143px] truncate hover:text-indigo-700">{{ user.name }}</a>
 													</td>
 													<td class="px-3 py-4 text-gray-500 text-right">${{ user.credit }}</td>
 													<td class="px-3 py-4 text-gray-500 text-right">{{ user.services }}</td>
-													<td class="pl-3 pr-6 py-4">
+													<td class="px-3 py-4">
 														<span class="px-2.5 py-0.5 rounded-full text-xs font-medium
 														{% for val, css in user_statuses %}
 															{% if user.status == val %} bg-{{ css }}-100 text-{{ css }}-800{% endif %}
 														{% endfor %}">{{ user.status }}
 														</span>
 													</td>
-													<td class="whitespace-nowrap px-6 py-4 text-gray-500">{{ user.created }}</td>
+													<td class="pl-3 pr-6 py-4 text-gray-500">{{ user.created }}</td>
 												</tr>
 
 											{% endfor %}
@@ -152,7 +152,7 @@
 												</nav>
 											</div>
 											<div class="flex items-center">
-												<p class="text-sm font-medium text-gray-500">1 - {{ users|length }} из {{ users|length }}</p>
+												<p class="text-sm text-gray-500">1 - {{ users|length }} из {{ users|length }}</p>
 												<div class="flex ml-4">
 													<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
 														{% for i in range(low=25, high=100, step=25) %}

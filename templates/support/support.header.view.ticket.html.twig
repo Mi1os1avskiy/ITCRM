@@ -1,4 +1,4 @@
-<div class="mx-auto px-8 py-4 bg-gray-50">
+<div class="px-8 py-4 bg-gray-50">
 	<nav class="flex items-center space-x-4 text-sm text-gray-500 font-medium">
 		<a href="{{ path('support_tickets') }}">Тикеты</a>
         <svg width="20" height="20" viewBox="0 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +55,7 @@
 	</div>
 </div>
 
-<div class="flex mx-auto px-8 bg-gray-50">
+<div class="flex px-8 bg-gray-50">
 	<div class="w-[344px] flex items-center shrink-0 py-4 px-6 space-x-2 border border-gray-300 rounded-l-lg">
 		<svg class="flex-shrink-0" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect width="48" height="48" rx="24" fill="#F3F4F6"/>
@@ -67,7 +67,7 @@
 			<p class="text-gray-500 truncate">{{ data.ticket_username }}</p>
 		</div>
 	</div>
-	<div class="flex grow items-center justify-between -ml-px py-4 px-6 space-x-6 border border-gray-300 rounded-r-lg">
+	<div class="flex grow items-center -ml-px py-4 px-6 space-x-6 border border-gray-300 rounded-r-lg">
 		<div class="flex items-center space-x-6">
 			<div class="flex items-center space-x-2">
 				<svg class="flex-shrink-0" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +76,7 @@
 					<path d="M33.75 19.9308L24.75 25.1808V34.1808L33.3779 29.1478C33.6083 29.0134 33.75 28.7668 33.75 28.5V19.9308Z" fill="#374151"/>
 					<path d="M23.25 34.1808V25.1808L14.25 19.9308V28.5C14.25 28.7668 14.3917 29.0134 14.6221 29.1478L23.25 34.1808Z" fill="#374151"/>
 				</svg>
-				<div class="w-[230px]">
+				<div>
 					<div class="flex space-x-2 font-medium">
 						<p class="text-gray-900 text-sm truncate" title="{{ data.ticket_service }}">{{ data.ticket_service }}</p>
 						<span class="px-2.5 py-0.5 rounded-full text-xs bg-green-100 text-green-800">{{ data.ticket_status }}</span>
@@ -96,14 +96,13 @@
 				<p class="text-gray-900">Оплата</p>
 				<p class="text-gray-500">{{ data.ticket_paydate }}</p>
 			</div>
+			<button @click="supportNewTicketService()" type="button" class="py-[9px] px-[15px] border border-gray-300 rounded-md shadow-sm bg-white hover:bg-gray-50">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+					<path d="M5.29885 12.8829L4.03706 16.0374C3.8738 16.4455 4.27884 16.8506 4.68699 16.6873L7.84146 15.4255C8.34443 15.2243 8.80128 14.9231 9.18433 14.5401L14.0088 9.71589L11.0088 6.7159L6.18433 11.5401C5.80128 11.9231 5.50003 12.38 5.29885 12.8829Z" fill="#6B7280"/>
+					<path d="M11.7159 6.00881L14.7159 9.00881L16.1035 7.62132C16.9319 6.79289 16.9319 5.44975 16.1035 4.62132C15.2751 3.79289 13.9319 3.79289 13.1035 4.62132L11.7159 6.00881Z" fill="#6B7280"/>
+				</svg>
+			</button>
 		</div>
-
-		<button @click="supportNewTicketService()" type="button" class="py-[9px] px-[15px] border border-gray-300 rounded-md shadow-sm bg-white hover:bg-gray-50">
-			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-				<path d="M5.29885 12.8829L4.03706 16.0374C3.8738 16.4455 4.27884 16.8506 4.68699 16.6873L7.84146 15.4255C8.34443 15.2243 8.80128 14.9231 9.18433 14.5401L14.0088 9.71589L11.0088 6.7159L6.18433 11.5401C5.80128 11.9231 5.50003 12.38 5.29885 12.8829Z" fill="#6B7280"/>
-				<path d="M11.7159 6.00881L14.7159 9.00881L16.1035 7.62132C16.9319 6.79289 16.9319 5.44975 16.1035 4.62132C15.2751 3.79289 13.9319 3.79289 13.1035 4.62132L11.7159 6.00881Z" fill="#6B7280"/>
-			</svg>
-		</button>
 	</div>
 </div>
 
