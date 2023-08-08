@@ -5,7 +5,7 @@
 {% block content %}
 
     <profile-settings inline-template>
-        <dl class="px-8 py-6 divide-y divide-gray-200 text-gray-900 text-sm">
+        <div class="px-8 py-6 divide-y divide-gray-200 text-gray-900 text-sm">
             <div class="flex py-5 space-x-6">
                 <div class="w-[344px] font-medium text-gray-500">ID</div>
                 <div>#{{ user.id }}</div>
@@ -57,7 +57,7 @@
                     {% endif %}
                 </div>
             </div>
-        </dl>
+        </div>
     </profile-settings>
 
     {% include 'clients/profile/modals/clients.overview.iplogs.html.twig' %}
