@@ -75,11 +75,18 @@
                                 {% for credit in item.credits %}
 
                                     <tr>
-                                        <td class="truncate pl-6 pr-3 py-4 text-gray-900 text-sm font-medium">{{ credit.date }}, {{ credit.time}} ({{ credit.country }})</td>
-                                        <td class="truncate px-3 py-4 text-sm text-gray-500">{{ credit.method }} <a href="#" class="text-gray-900 hover:text-indigo-700">{{ credit.method_id }}</a></td>
+                                        <td class="truncate pl-6 pr-3 py-4 text-gray-500 text-sm">{{ credit.date }}, {{ credit.time}} ({{ credit.country }})</td>
+                                        <td class="truncate px-3 py-4 text-sm text-gray-500">
+	                                        <span>{{ credit.method }}</span>
+	                                        {% if credit.method_id %}
+		                                        <a href="#" class="text-gray-900 hover:text-indigo-700">{{ credit.method_id }}</a>
+	                                        {% endif %}
+                                        </td>
                                         <td class="truncate px-3 py-4 text-sm text-gray-500">
 	                                        <span>{{ credit.appointment }}</span>
-	                                        <a href="{{ path('billing_view_invoice') }}" class="text-gray-900 hover:text-indigo-700">{{ credit.appointment_id }}</a>
+	                                        {% if credit.appointment_id %}
+	                                            <a href="{{ path('billing_view_invoice') }}" class="text-gray-900 hover:text-indigo-700">{{ credit.appointment_id }}</a>
+	                                        {% endif %}
                                         </td>
                                         <td class="px-3 py-4 text-sm text-{% if credit.amount_stat == 'normal' %}green{% elseif credit.amount_stat == 'high' %}red{% else %}gray{% endif %}-500">${{ credit.amount|number_format('2', '.', '') }}</td>
                                         <td class="truncate pl-3 pr-6 py-4 text-sm text-gray-500">{{ credit.description }}</td>
