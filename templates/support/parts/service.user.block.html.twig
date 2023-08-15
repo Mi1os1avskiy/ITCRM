@@ -1,17 +1,15 @@
 {% set client_empty %}
 
-	<div class="w-[344px] flex items-center py-4 px-6 space-x-4 border border-gray-300 rounded-l-lg text-sm font-medium">
-		<div class="flex items-center space-x-2">
-			<svg class="flex-shrink-0 text-gray-100" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<rect width="48" height="48" rx="24" fill="currentColor"/>
-				<path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 18C19.5 15.5147 21.5147 13.5 24 13.5C26.4852 13.5 28.5 15.5147 28.5 18C28.5 20.4853 26.4852 22.5 24 22.5C21.5147 22.5 19.5 20.4853 19.5 18Z" fill="#374151"/>
-				<path fill-rule="evenodd" clip-rule="evenodd" d="M15.7512 32.1053C15.8286 27.6156 19.4919 24 24 24C28.5081 24 32.1716 27.6157 32.2487 32.1056C32.2538 32.4034 32.0823 32.676 31.8116 32.8002C29.4327 33.8918 26.7865 34.5 24.0003 34.5C21.2138 34.5 18.5674 33.8917 16.1883 32.7999C15.9176 32.6757 15.7461 32.4031 15.7512 32.1053Z" fill="#374151"/>
+	<div class="w-[344px] h-[72px] flex items-center py-4 px-6 space-x-4 border border-gray-300 rounded-l-lg">
+		<div class="w-[186px] flex items-center space-x-2">
+			<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect width="40" height="40" rx="20" fill="#F3F4F6"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 14C15.5 11.5147 17.5147 9.5 20 9.5C22.4853 9.5 24.5 11.5147 24.5 14C24.5 16.4853 22.4853 18.5 20 18.5C17.5147 18.5 15.5 16.4853 15.5 14Z" fill="#374151"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M11.7512 28.1053C11.8286 23.6156 15.492 20 20 20C24.5081 20 28.1716 23.6157 28.2488 28.1056C28.2539 28.4034 28.0823 28.676 27.8117 28.8002C25.4327 29.8918 22.7865 30.5 20.0003 30.5C17.2139 30.5 14.5674 29.8917 12.1883 28.7999C11.9176 28.6757 11.7461 28.4031 11.7512 28.1053Z" fill="#374151"/>
 			</svg>
-			<p class="text-gray-900 truncate">Клиент не выбран</p>
+			<p class="text-gray-900 text-sm font-medium truncate">Клиент не выбран</p>
 		</div>
-
-		<button @click="supportNewTicketClient()" type="button" class="py-[9px] px-[13px] border border-gray-300 rounded-md shadow-sm text-gray-700 hover:bg-gray-50">Выбрать</button>
-
+		<button @click="supportNewTicketClient()" type="button" class="py-[9px] px-[17px] border border-gray-300 rounded-md shadow-sm text-gray-700 text-sm font-medium hover:bg-gray-50">Выбрать</button>
 	</div>
 
 {% endset %}
@@ -92,20 +90,20 @@
 {% endset %}
 
 {% set service_empty %}
-	<div class="flex grow flex-shrink-0 items-center -ml-px py-5 px-6 space-x-6 bg-gray-50 border border-gray-300 rounded-r-lg text-sm font-medium">
+	<div class="h-[72px] flex grow flex-shrink-0 items-center -ml-px py-4 px-6 space-x-6 bg-gray-50 border border-gray-300 rounded-r-lg">
 		<div class="flex grow space-x-2">
-			<svg class="flex-shrink-0" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<rect width="48" height="48" rx="24" fill="#F3F4F6"/>
-				<path d="M24.3779 13.6022C24.1444 13.4659 23.8556 13.4659 23.6221 13.6022L15 18.6317L24 23.8817L33 18.6317L24.3779 13.6022Z" fill="#374151"/>
-				<path d="M33.75 19.9308L24.75 25.1808V34.1808L33.3779 29.1478C33.6083 29.0134 33.75 28.7668 33.75 28.5V19.9308Z" fill="#374151"/>
-				<path d="M23.25 34.1808V25.1808L14.25 19.9308V28.5C14.25 28.7668 14.3917 29.0134 14.6221 29.1478L23.25 34.1808Z" fill="#374151"/>
+			<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect width="40" height="40" rx="20" fill="#F3F4F6"/>
+				<path d="M20.3779 9.60217C20.1444 9.46594 19.8556 9.46594 19.6221 9.60217L11 14.6317L20 19.8817L29 14.6317L20.3779 9.60217Z" fill="#374151"/>
+				<path d="M29.75 15.9308L20.75 21.1808V30.1808L29.3779 25.1478C29.6083 25.0134 29.75 24.7668 29.75 24.5V15.9308Z" fill="#374151"/>
+				<path d="M19.25 30.1808V21.1808L10.25 15.9308V24.5C10.25 24.7668 10.3917 25.0134 10.6221 25.1478L19.25 30.1808Z" fill="#374151"/>
 			</svg>
-			<div class="flex flex-col justify-center">
-				<div class="text-gray-900">Услуга не выбрана</div>
-				<div class="text-gray-500">Выберите клиента для начала</div>
+			<div>
+				<div class="text-gray-900 text-sm font-medium">Услуга не выбрана</div>
+				<div class="text-gray-500 text-sm font-medium">Выберите клиента для начала</div>
 			</div>
 		</div>
-		<button @click="supportNewTicketServiceAdd()" type="button" class="py-[9px] px-[13px] border border-gray-300 rounded-md shadow-sm text-gray-700 bg-gray-50 opacity-30 cursor-default">Выбрать</button>
+		<button @click="supportNewTicketService()" type="button" class="py-[9px] px-[17px] border border-gray-300 rounded-md shadow-sm text-gray-700 text-sm font-medium bg-gray-50 opacity-30 pointer-events-none">Выбрать</button>
 	</div>
 {% endset %}
 

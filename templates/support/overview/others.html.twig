@@ -91,15 +91,13 @@
 									</a>
 								</nav>
 							</div>
-							<div class="flex items-center">
-								<p class="text-sm font-medium text-gray-500">1 - 8 из 97</p>
-								<div class="flex lg:ml-6">
-									<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
-										{% for i in 1..4 %}
-											<option>{{ i * 25 }}</option>
-										{% endfor %}
-									</select>
-								</div>
+							<div class="flex items-center space-x-4">
+								<p class="text-sm text-gray-500">1 - 8 из 97</p>
+								<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
+									{% for i in 1..4 %}
+										<option>{{ i * 25 }}</option>
+									{% endfor %}
+								</select>
 							</div>
 						</div>
 					</div>
