@@ -6,44 +6,36 @@
 
 	<profile-settings inline-template>
 
-		{% block control %}
+		<div class="px-8">
 
-			<div class="mt-4 mx-auto px-4 sm:px-6 lg:px-8">
-				<div class="relative flex items-center flex-shrink-0 h-16">
-					<a href="{{ path('new_ticket') }}" class="relative inline-flex items-center rounded-md bg-indigo-600 pl-[15px] pr-[17px] py-[9px] shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="white"/>
-						</svg>
-						<span class="ml-2 text-sm font-medium text-white">Добавить</span>
-					</a>
-				</div>
-				<div class="flex h-12 mb-4 justify-between">
-					<div class="flex space-x-4 items-center">
-						<div class="relative flex flex-shrink-0">
-							<button type="button" class="relative rounded-md border border-gray-300 bg-white py-[9px] pl-[13px] pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="false" aria-expanded-autohide aria-labelledby="listbox-label">
-								<span class="pointer-events-none block truncate">Действия</span>
-								<span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
-                                    </svg>
-                                </span>
-							</button>
-							<ul class="absolute z-10 mt-12 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-								<li class="text-gray-700">
-									<button @click="supportTicketsClose()" type="button" class="py-3 px-4 hover:bg-gray-50">
-										<span class="pr-16 whitespace-nowrap">Закрыть тикеты</span>
-									</button>
-								</li>
-								<li class="text-gray-700">
-									<button @click="supportTicketsDelete()" type="button" class="py-3 px-4 hover:bg-gray-50">
-										<span class="pr-16 whitespace-nowrap">Удалить тикеты</span>
-									</button>
-								</li>
-							</ul>
-						</div>
+			<div class="pt-6 relative flex items-center flex-shrink-0">
+				<a href="{{ path('new_ticket') }}" class="relative inline-flex items-center rounded-md bg-indigo-600 pl-[15px] pr-[17px] py-[9px] shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="white"/>
+					</svg>
+					<span class="ml-2 text-sm font-medium text-white">Добавить</span>
+				</a>
+			</div>
+			<div class="py-4 space-y-4">
+				<div class="flex items-center justify-between">
+					<div class="h-[38px] relative flex flex-shrink-0">
+						<button type="button" class="flex rounded-md border border-gray-300 bg-white py-[9px] px-[13px] shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 text-sm" aria-expanded="false" aria-expanded-autohide>
+							<span class="pointer-events-none truncate">Действия</span>
+							<svg class="pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M10 3C10.2652 3 10.5196 3.10536 10.7071 3.29289L13.7071 6.29289C14.0976 6.68342 14.0976 7.31658 13.7071 7.70711C13.3166 8.09763 12.6834 8.09763 12.2929 7.70711L10 5.41421L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711C5.90237 7.31658 5.90237 6.68342 6.29289 6.29289L9.29289 3.29289C9.48043 3.10536 9.73478 3 10 3ZM6.29289 12.2929C6.68342 11.9024 7.31658 11.9024 7.70711 12.2929L10 14.5858L12.2929 12.2929C12.6834 11.9024 13.3166 11.9024 13.7071 12.2929C14.0976 12.6834 14.0976 13.3166 13.7071 13.7071L10.7071 16.7071C10.3166 17.0976 9.68342 17.0976 9.29289 16.7071L6.29289 13.7071C5.90237 13.3166 5.90237 12.6834 6.29289 12.2929Z" fill="#9CA3AF"/>
+							</svg>
+						</button>
+						<ul class="absolute w-[224px] z-10 mt-[46px] rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+							<li class="py-1 text-gray-700">
+								<button @click="supportTicketsClose()" type="button" class="w-full py-2 px-4 text-left hover:bg-gray-50">Закрыть тикеты</button>
+							</li>
+							<li class="py-1 text-gray-700">
+								<button @click="supportTicketsDelete()" type="button" class="w-full py-2 px-4 text-left hover:bg-gray-50">Удалить тикеты</button>
+							</li>
+						</ul>
 					</div>
 
-					<div class="flex items-center">
+					<div class="h-[38px] flex items-center">
 						<div class="w-60 max-w-lg lg:max-w-xs">
 							<div class="relative">
 								<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -56,116 +48,112 @@
 						</div>
 					</div>
 				</div>
-			</div>
 
-		{% endblock %}
+				{% block table %}
 
-		</profile-settings>
+				<div class="flex flex-col">
+					<div class="min-w-full overflow-hidden overflow-x-auto align-middle border rounded-lg">
 
-	{% block table %}
+						<table class="min-w-full divide-y divide-gray-200">
+							<thead>
+							<tr class="bg-gray-50 text-sm text-gray-900">
+								<th class="inline-block w-10"></th>
+								<th class="min-w-[449px] p-3 text-left font-medium">ID - Тема</th>
+								<th class="w-[184px] p-3 text-left font-medium">Статус</th>
+								<th class="w-[100px] p-3 text-left font-medium">Приоритет</th>
+								<th class="w-[184px] p-3 text-left font-medium">Департамент</th>
+								<th class="w-[100px] pl-3 pr-6 text-left font-medium truncate">Ответ</th>
+							</tr>
+							</thead>
 
-			<div class="hidden sm:block">
-				<div class="mx-auto px-4 sm:px-6 lg:px-8">
-					<div class="mt-2 flex flex-col">
-						<div class="min-w-full overflow-hidden overflow-x-auto align-middle shadow sm:rounded-lg">
+							<tbody class="divide-y divide-gray-200 bg-white">
 
-							<table class="min-w-full divide-y divide-gray-200">
-								<thead>
-									<tr class="bg-gray-50 text-sm text-gray-900 border border-t">
-										<th class="pl-6 py-3 text-left" scope="col"></th>
-										<th class="px-6 py-3 text-left font-medium whitespace-nowrap" scope="col">ID - Тема</th>
-										<th class="px-6 py-3 text-left font-medium" scope="col">Статус</th>
-										<th class="px-6 py-3 text-left font-medium" scope="col">Приоритет</th>
-										<th class="px-6 py-3 text-left font-medium" scope="col">Департамент</th>
-										<th class="px-6 py-3 text-left font-medium whitespace-nowrap" scope="col">Последний ответ</th>
-									</tr>
-								</thead>
+							{% for ticket in tickets %}
 
-								<tbody class="divide-y divide-gray-200 bg-white">
-
-								{% set statuses = {'Important!': 'red', 'Open': 'red', 'In progress': 'orange', 'Answered': 'yellow', 'Customer reply': 'yellow', 'Waiting for manager': 'yellow', 'On hold': 'blue', 'Closed': 'green'} %}
-
-								{% for ticket in tickets %}
-
-									<tr>
-										<td class="whitespace-nowrap pl-6 py-4 text-left">
-											<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
-										</td>
-										<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-900 font-medium">
-											<a href="{{ path('support_ticket_answer') }}" class="hover:text-indigo-700">#{{ ticket.id }} - {{ ticket.theme }}</a>
-										</td>
-										<td class="whitespace-nowrap px-6 py-4 text-sm text-left">
-											{% for val, css in statuses %}
-												{% if ticket.status == val %}
-													<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if css == 'orange' %}200{% else %}100{% endif %} text-{{ css }}-800">{{ val }}</span>
-												{% endif %}
-											{% endfor %}
-										</td>
-										<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">
-											{% if ticket.priority == 3 %}
-												<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
-											{% elseif ticket.priority == 2 %}
-												<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
-												<div class="mt-0.5 h-0.5 w-2.5 rounded bg-orange-400"></div>
-											{% elseif ticket.priority == 1 %}
-												<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
-												<div class="mt-0.5 h-0.5 w-2.5 rounded bg-red-400"></div>
-												<div class="mt-0.5 h-0.5 w-2.5 rounded bg-red-400"></div>
+								<tr>
+									<td class="w-10 relative pl-6">
+										<input type="checkbox" class="absolute -mt-2 h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
+									</td>
+									<td class="min-w-[449px] text-sm text-gray-900">
+										<a href="{{ path('support_ticket_answer') }}" class="flex px-3 py-4 w-full font-medium hover:text-indigo-700">
+											<p class="line-clamp-1 overflow-hidden" >#{{ ticket.id }} - {{ ticket.theme }}</p>
+										</a>
+									</td>
+									<td class="px-3 py-4 truncate">
+										{% for val, css in ticket_statuses %}
+											{% if ticket.status == val %}
+												<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if css == 'orange' %}200{% else %}100{% endif %} text-{{ css }}-800">{{ val }}</span>
 											{% endif %}
-										</td>
-										<td class="whitespace-nowrap px-6 py-4 text-sm">{{ ticket.dept }}</td>
-										<td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500 text-left">{{ ticket.time }}</td>
-									</tr>
+										{% endfor %}
+									</td>
+									<td class="px-3 py-4 text-sm">
+										{% if ticket.priority == 3 %}
+											<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
+										{% elseif ticket.priority == 2 %}
+											<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
+											<div class="mt-0.5 h-0.5 w-2.5 rounded bg-orange-400"></div>
+										{% elseif ticket.priority == 1 %}
+											<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
+											<div class="mt-0.5 h-0.5 w-2.5 rounded bg-red-400"></div>
+											<div class="mt-0.5 h-0.5 w-2.5 rounded bg-red-400"></div>
+										{% endif %}
+									</td>
+									<td class="px-3 py-4 text-sm truncate">{{ ticket.dept }}</td>
+									<td class="pl-3 pr-6 py-4 text-sm text-gray-500 text-left truncate">{{ ticket.time }}</td>
+								</tr>
 
-								{% endfor %}
+							{% endfor %}
 
-								</tbody>
-							</table>
+							</tbody>
+						</table>
 
-							<div class="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-4 sm:px-6">
-								<div class="flex flex-1 justify-between sm:hidden">
-									<a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
-									<a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+						<div class="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-4 sm:px-6">
+							<div class="flex flex-1 justify-between sm:hidden">
+								<a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
+								<a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+							</div>
+							<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+								<div>
+									<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+										<a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+											<span class="sr-only">Previous</span>
+											<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+												<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+											</svg>
+										</a>
+										<a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
+										<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
+										<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
+										<span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
+										<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
+										<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
+										<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
+										<a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+											<span class="sr-only">Next</span>
+											<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+												<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+											</svg>
+										</a>
+									</nav>
 								</div>
-								<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-									<div>
-										<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-											<a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-												<span class="sr-only">Previous</span>
-												<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-													<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
-												</svg>
-											</a>
-											<a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
-											<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
-											<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
-											<span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
-											<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
-											<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
-											<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
-											<a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-												<span class="sr-only">Next</span>
-												<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-													<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-												</svg>
-											</a>
-										</nav>
-									</div>
-									<div class="flex items-center space-x-4">
-										<p class="text-sm text-gray-500">1 - 7 из 7</p>
-										<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
-											{% for i in range(low=25, high=100, step=25) %}
-												<option>{{ i }}</option>
-											{% endfor %}
-										</select>
-									</div>
+								<div class="flex items-center space-x-4">
+									<p class="text-sm text-gray-500">1 - 7 из 7</p>
+									<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
+										{% for i in range(low=25, high=100, step=25) %}
+											<option>{{ i }}</option>
+										{% endfor %}
+									</select>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
-		{% endblock %}
+				{% endblock %}
+
+			</div>
+		</div>
+
+	</profile-settings>
 
 {% endblock %}
