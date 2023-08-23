@@ -1,12 +1,12 @@
 <table class="min-w-full divide-y divide-gray-200">
 	<thead>
-	<tr class="bg-gray-50 text-sm text-gray-900 border border-t">
-		<th class="px-6 py-3 text-left font-medium" scope="col">Дата и время</th>
-		<th class="px-6 py-3 text-left font-medium" scope="col">Способ оплаты</th>
-		<th class="px-6 py-3 text-left font-medium" scope="col">ID транзакции</th>
-		<th class="px-6 py-3 text-right font-medium" scope="col">Статус</th>
-		<th class="px-6 py-3 text-right font-medium whitespace-nowrap" scope="col">Сумма</th>
-		<th class="px-6 py-3 text-right font-medium" scope="col">Статус транзакции</th>
+	<tr class="bg-gray-50 text-sm text-gray-900">
+		<th class="w-[220px] p-3 pl-6 text-left font-medium whitespace-nowrap">Дата и время</th>
+		<th class="w-[170px] p-3 text-left font-medium whitespace-nowrap">Способ оплаты</th>
+		<th class="p-3 text-left font-medium whitespace-nowrap">ID транзакции</th>
+		<th class="w-[130px] p-3 text-right font-medium">Статус</th>
+		<th class="w-[110px] p-3 text-right font-medium">Сумма</th>
+		<th class="w-[190px] p-3 pr-6 text-right font-medium whitespace-nowrap">Статус транзакции</th>
 	</tr>
 	</thead>
 
@@ -21,14 +21,14 @@
 	{% for item in history %}
 
 		<tr class="text-sm text-gray-500">
-			<td class="px-6 py-4">{{ item.date }}, {{ item.time }} ({{ item.loc }})</td>
-			<td class="px-6 py-4">{{ item.paymethod }}</td>
-			<td class="px-6 py-4">{{ item.id }}</td>
-			<td class="px-6 py-4 text-right">
+			<td class="pl-6 pr-3 py-4">{{ item.date }} {{ item.time }} ({{ item.loc }})</td>
+			<td class="px-3 py-4">{{ item.paymethod }}</td>
+			<td class="px-3 py-4">{{ item.id }}</td>
+			<td class="px-3 py-4 text-right">
 				<span class="py-0.5 px-2.5 rounded-lg text-xs font-medium {% if item.status == 'Active' %}bg-green-100 text-green-800{% else %}bg-red-100 text-red-800{% endif %}">{{ item.status }}</span>
 			</td>
-			<td class="px-6 py-4 text-right">${{ item.amount|number_format('2', '.', '') }}</td>
-			<td class="px-6 py-4 text-right">${{ item.amount|number_format('2', '.', '') }} {% if item.status == 'Active' %}applied{% else %}failed{% endif %}</td>
+			<td class="px-3 py-4 text-right">${{ item.amount|number_format('2', '.', '') }}</td>
+			<td class="pl-3 pr-6 py-4 text-right">${{ item.amount|number_format('2', '.', '') }} {% if item.status == 'Active' %}applied{% else %}failed{% endif %}</td>
 		</tr>
 
 	{% endfor %}

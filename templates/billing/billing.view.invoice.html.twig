@@ -5,149 +5,28 @@
 	<billing-settings inline-template>
 
 		<div>
-			<div class="py-4 px-4 sm:px-6 lg:px-8 space-y-4 bg-gray-50">
-				<div class="space-y-2">
-					<nav class="flex items-center space-x-3 text-sm text-gray-500 font-medium">
-						<a href="{{ path('billing_invoices') }}">Инвойсы</a>
-						<svg width="20" height="20" viewBox="0 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#9CA3AF"/>
-						</svg>
-						<span>{{ title }} #{{ data.invoice_id }}</span>
-					</nav>
-					<div class="flex items-center justify-between space-x-4">
-						{% set res = 0 %}
-						{% for i in invoices %}
-							{% set res = res + i.amount %}
+			<div class="py-4 px-8 space-y-2 bg-gray-50">
+				<nav class="flex items-center space-x-4 text-sm text-gray-500 font-medium">
+					<a href="{{ path('billing_invoices') }}">Инвойсы</a>
+					<svg width="20" height="20" viewBox="0 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#9CA3AF"/>
+					</svg>
+					<span>{{ title }} #{{ data.invoice_id }}</span>
+				</nav>
+				<div class="flex items-center justify-between space-x-4">
+					{% set res = 0 %}
+					{% for i in invoices %}
+						{% set res = res + i.amount %}
+					{% endfor %}
+					<div class="flex items-center space-x-4">
+						<p class="font-semibold text-lg">{{ title }} {{ data.invoice_id }}, ${{ res|number_format('2', '.', '') }}</p>
+						{% for val, css in invoice_statuses %}
+							{% if val == data.invoice_status %}
+								<span class="py-0.5 px-3 rounded-xl text-sm font-medium bg-{{ css }}-100 text-{{ css }}-800">{{ val }}</span>
+							{% endif %}
 						{% endfor %}
-						<div class="flex items-center space-x-4">
-							<p class="font-semibold text-lg">{{ title }} #{{ data.invoice_id }}, ${{ res|number_format('2', '.', '') }}</p>
-							{% for val, css in invoice_statuses %}
-								{% if val == data.invoice_status %}
-									<span class="py-0.5 px-3 rounded-xl text-sm font-medium bg-{{ css }}-100 text-{{ css }}-800">{{ val }}</span>
-								{% endif %}
-							{% endfor %}
-						</div>
-						<div class="flex space-x-3">
-							<button @click="billingInvoiceAddPayment()" type="button" class="flex items-center space-x-2 rounded-md border py-[9px] pl-[15px] pr-[17px] text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="#6B7280"/>
-								</svg>
-								<span>Добавить платёж</span>
-							</button>
-							<button @click="billingInvoiceCancel()" type="button" class="flex items-center space-x-2 rounded-md border py-[9px] pl-[15px] pr-[17px] text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M9 2C8.62123 2 8.27497 2.214 8.10557 2.55279L7.38197 4H4C3.44772 4 3 4.44772 3 5C3 5.55228 3.44772 6 4 6L4 16C4 17.1046 4.89543 18 6 18H14C15.1046 18 16 17.1046 16 16V6C16.5523 6 17 5.55228 17 5C17 4.44772 16.5523 4 16 4H12.618L11.8944 2.55279C11.725 2.214 11.3788 2 11 2H9ZM7 8C7 7.44772 7.44772 7 8 7C8.55228 7 9 7.44772 9 8V14C9 14.5523 8.55228 15 8 15C7.44772 15 7 14.5523 7 14V8ZM12 7C11.4477 7 11 7.44772 11 8V14C11 14.5523 11.4477 15 12 15C12.5523 15 13 14.5523 13 14V8C13 7.44772 12.5523 7 12 7Z" fill="#6B7280"/>
-								</svg>
-								<span>Отменить инвойс</span>
-							</button>
-						</div>
 					</div>
-				</div>
-
-				<div class="flex items-center p-2 space-x-2 rounded-md border border-gray-300 text-gray-900 text-sm">
-					<div class="flex items-center space-x-2 pl-4">
-						<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<rect width="40" height="40" rx="20" fill="#F3F4F6"/>
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 14C15.5 11.5147 17.5147 9.5 20 9.5C22.4853 9.5 24.5 11.5147 24.5 14C24.5 16.4853 22.4853 18.5 20 18.5C17.5147 18.5 15.5 16.4853 15.5 14Z" fill="#374151"/>
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M11.7512 28.1053C11.8286 23.6156 15.492 20 20 20C24.5081 20 28.1716 23.6157 28.2488 28.1056C28.2539 28.4034 28.0823 28.676 27.8117 28.8002C25.4327 29.8918 22.7865 30.5 20.0003 30.5C17.2139 30.5 14.5674 29.8917 12.1883 28.7999C11.9176 28.6757 11.7461 28.4031 11.7512 28.1053Z" fill="#374151"/>
-						</svg>
-						<div class="py-3 pr-4">
-							<p class="font-medium">{{ data.invoice_email }}</p>
-							<p class="text-gray-500 font-medium">{{ data.invoice_user }}</p>
-						</div>
-					</div>
-					<div class="py-3 px-4">
-						<p class="text-gray-500 font-medium">Клиент</p>
-						<p class="font-medium">{{ data.invoice_user_existing }}</p>
-					</div>
-					<div class="py-3 px-4">
-						<p class="text-gray-500 font-medium">Услуги</p>
-						<p class="font-medium">{{ data.invoice_services }}</p>
-					</div>
-					<div class="py-3 px-4">
-						<p class="text-gray-500 font-medium">Заметки</p>
-						<p class="font-medium">{{ data.invoice_notes }}</p>
-					</div>
-					<div class="py-3 px-4">
-						<p class="text-gray-500 font-medium">Баланс</p>
-						<p class="font-medium">${{ data.invoice_balance|number_format('2', '.', '') }}</p>
-					</div>
-					<div class="py-3 px-4">
-						<p class="text-gray-500 font-medium">Последняя активность</p>
-						<p class="font-medium">{{ data.invoice_last_date }}, {{ data.invoice_last_time }} • {{ data.invoice_last_ip }} ({{ data.invoice_last_loc }})</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="mx-auto py-6 px-4 sm:px-6 lg:px-8 text-gray-900">
-				<div class="flex-1 max-w-5xl space-y-6">
-					{% if data.invoice_status == 'Paid' %}
-						<div class="w-full flex py-4 px-6 bg-green-50 rounded-md text-sm">
-							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM13.8566 8.19113C14.1002 7.85614 14.0261 7.38708 13.6911 7.14345C13.3561 6.89982 12.8871 6.97388 12.6434 7.30887L9.15969 12.099L7.28033 10.2197C6.98744 9.92678 6.51256 9.92678 6.21967 10.2197C5.92678 10.5126 5.92678 10.9874 6.21967 11.2803L8.71967 13.7803C8.87477 13.9354 9.08999 14.0149 9.30867 13.9977C9.52734 13.9805 9.72754 13.8685 9.85655 13.6911L13.8566 8.19113Z" fill="#34D399"/>
-							</svg>
-							<p class="ml-4 text-green-800 font-medium">Invoice paid</p>
-							<p class="ml-2 text-green-700">{{ data.invoice_paid_date }}, {{ data.invoice_paid_type }}, ${{ data.invoice_paid|number_format('2', '.', '') }}</p>
-						</div>
-					{% endif %}
-
-					<div class="w-full flex justify-between py-5 px-6 space-x-6 bg-yellow-50 rounded-md border border-gray-300 text-sm">
-						<div class="space-y-1">
-							<p class="text-xs font-medium">Примечание</p>
-							<p class="text-gray-400">{% if data.invoice_notation %}{{ data.invoice_notation }}{% endif %}</p>
-						</div>
-						<button {% if data.invoice_notation %}@click="billingInvoiceNotationEdit()"{% else %}@click="billingInvoiceNotationAdd()"{% endif %} type="button" class="h-fit rounded-md border py-[7px] px-[11px] bg-white text-gray-700 text-xs font-medium shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-							<span>{% if data.invoice_notation %}Изменить{% else %}Добавить{% endif %}</span>
-						</button>
-					</div>
-
-					<div class="bg-gray-50 rounded-md border border-gray-300 shadow-sm divide-y text-sm">
-						<div class="pt-6 pb-5 px-6 space-y-1">
-							<p>Дата создания: {{ data.invoice_created }}</p>
-							<p>Оплатить до: {{ data.invoice_paydate }}</p>
-						</div>
-						{% for invoice in invoices %}
-							<div class="flex">
-								<div class="flex-1 py-5 px-6 space-y-4">
-									<div class="flex space-x-2">
-										<div>
-											<p class="font-semibold">{{ invoice.title }}</p>
-											<p class="text-indigo-900 text-xs">#{{ invoice.id }}</p>
-										</div>
-										<div class="h-fit py-0.5 px-2.5 rounded-xl text-xs font-medium bg-green-100 text-green-800">{{ invoice.status }}</div>
-									</div>
-									<hr>
-									<div class="space-y-1">
-										<p>{{ invoice.date_created }} - {{ invoice.date_expiring }}</p>
-										{% if invoice.loc %}<p>Location: {{ invoice.loc }}</p>{% endif %}
-										{% if invoice.ip %}<p>IP: {{ invoice.ip }}</p>{% endif %}
-										{% if invoice.panel %}<p>Panel: {{ invoice.panel }}</p>{% endif %}
-										{% if invoice.cpu %}<p>CPU: {{ invoice.cpu }}</p>{% endif %}
-										{% if invoice.ram %}<p>RAM: {{ invoice.ram }}</p>{% endif %}
-										{% if invoice.disk %}<p>Disk: {{ invoice.disk }}</p>{% endif %}
-										{% if invoice.port %}<p>Port: {{ invoice.port }}</p>{% endif %}
-										{% if invoice.add %}<p>Additional: {{ invoice.add }}</p>{% endif %}
-										{% if invoice.backup %}<p>Backup: {{ invoice.backup }}</p>{% endif %}
-										{% if invoice.admin %}<p>Administration: {{ invoice.admin }}</p>{% endif %}
-										{% if invoice.os %}<p>OS: {{ invoice.os }}</p>{% endif %}
-										{% if invoice.ddos %}<p>DDoS protection: {{ invoice.ddos }}</p>{% endif %}
-									</div>
-								</div>
-								<div class="pt-5 pr-6">$ {{ invoice.amount|number_format('2', '.', '') }}</div>
-							</div>
-						{% endfor %}
-						<div class="flex justify-end pt-4 pb-6 pr-6">
-							{% set total = res - data.invoice_discount - data.invoice_paid %}
-							<div class="space-y-1">
-								<p>Всего по инвойсу: ${{ res|number_format('2', '.', '') }}</p>
-								<p>Скидка: ${{ data.invoice_discount|number_format('2', '.', '') }}</p>
-								<p>Оплачено: ${{ data.invoice_paid|number_format('2', '.', '') }}</p>
-								<p>Итого к оплате: ${{ total|number_format('2', '.', '') }}</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="flex justify-between">
+					<div class="h-[38px] flex space-x-3">
 						<button @click="billingInvoiceAddPayment()" type="button" class="flex items-center space-x-2 rounded-md border py-[9px] pl-[15px] pr-[17px] text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
 							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="#6B7280"/>
@@ -162,23 +41,128 @@
 						</button>
 					</div>
 				</div>
-
-				<div class="my-8 rounded-md border border-gray-300">
-					<div class="bg-gray-50 rounded-t-md border-b border-gray-200">
-						<div class="px-6 pt-4">
-							<div>
-								<nav class="-mb-px flex space-x-8">
-									<a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 whitespace-nowrap border-b-2 px-1 pb-4 text-sm font-medium">Транзакции</a>
-									<a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 whitespace-nowrap border-b-2 px-1 pb-4 text-sm font-medium">История платежей</a>
-								</nav>
-							</div>
-						</div>
+			</div>
+			<div class="px-8 pb-4 bg-gray-50">
+				<div class="h-[72px] flex items-center py-4 px-6 space-x-2 rounded-md border border-gray-300 text-gray-900 text-sm">
+					<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect width="40" height="40" rx="20" fill="#F3F4F6"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 14C15.5 11.5147 17.5147 9.5 20 9.5C22.4853 9.5 24.5 11.5147 24.5 14C24.5 16.4853 22.4853 18.5 20 18.5C17.5147 18.5 15.5 16.4853 15.5 14Z" fill="#374151"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M11.7512 28.1053C11.8286 23.6156 15.492 20 20 20C24.5081 20 28.1716 23.6157 28.2488 28.1056C28.2539 28.4034 28.0823 28.676 27.8117 28.8002C25.4327 29.8918 22.7865 30.5 20.0003 30.5C17.2139 30.5 14.5674 29.8917 12.1883 28.7999C11.9176 28.6757 11.7461 28.4031 11.7512 28.1053Z" fill="#374151"/>
+					</svg>
+					<div>
+						<p class="font-medium">{{ data.invoice_email }}</p>
+						<p class="text-gray-500 font-medium">{{ data.invoice_user }}</p>
 					</div>
-
-					{% include 'billing/parts/invoice.table.history.html.twig' %}
-
 				</div>
 			</div>
+
+			<div class="max-w-[805px] pt-6 pb-4 px-8 space-y-6 text-gray-900">
+
+				{% if data.invoice_status == 'Paid' %}
+					<div class="max-w-[805px] flex py-4 px-6 bg-green-50 rounded-md text-sm">
+						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM13.8566 8.19113C14.1002 7.85614 14.0261 7.38708 13.6911 7.14345C13.3561 6.89982 12.8871 6.97388 12.6434 7.30887L9.15969 12.099L7.28033 10.2197C6.98744 9.92678 6.51256 9.92678 6.21967 10.2197C5.92678 10.5126 5.92678 10.9874 6.21967 11.2803L8.71967 13.7803C8.87477 13.9354 9.08999 14.0149 9.30867 13.9977C9.52734 13.9805 9.72754 13.8685 9.85655 13.6911L13.8566 8.19113Z" fill="#34D399"/>
+						</svg>
+						<p class="ml-4 text-green-800 font-medium">Invoice paid</p>
+						<p class="ml-2 text-green-700">{{ data.invoice_paid_date }}, {{ data.invoice_paid_type }}, ${{ data.invoice_paid|number_format('2', '.', '') }}</p>
+					</div>
+				{% endif %}
+
+				<div class="flex items-center py-5 px-6 space-x-6 bg-yellow-50 rounded-md border border-gray-300 text-sm">
+					<div class="space-y-1">
+						<p class="text-gray-400 text-xs font-medium">Примечание</p>
+						<p>{% if data.invoice_notation %}{{ data.invoice_notation }}{% endif %}</p>
+					</div>
+					<button {% if data.invoice_notation %}@click="billingInvoiceNotationEdit()"{% else %}@click="billingInvoiceNotationAdd()"{% endif %} type="button" class="rounded-md border py-[7px] px-[11px] bg-white text-gray-700 text-xs font-medium shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+						<span>{% if data.invoice_notation %}Изменить{% else %}Добавить{% endif %}</span>
+					</button>
+				</div>
+
+				{% if data.invoice_status == 'Paid' %}
+					<div class="py-5 px-6 bg-gray-50 rounded-md border border-gray-300 text-sm">
+						<div class="space-y-1">
+							<p class="font-semibold">Описание</p>
+							<p>Cursus commodo id nulla nunc neque adipiscing pulvinar sed maecenas. Elit cras amet tempus malesuada phasellus nec tortor convallis eu.</p>
+						</div>
+					</div>
+				{% endif %}
+
+				<div class="bg-gray-50 rounded-md border border-gray-300 shadow-sm divide-y text-sm">
+					<div class="pt-6 pb-5 px-6 space-y-1">
+						<p>Дата создания: {{ data.invoice_created }}</p>
+						<p>Оплатить до: {{ data.invoice_paydate }}</p>
+					</div>
+					{% for invoice in invoices %}
+						<div class="flex">
+							<div class="flex-1 py-5 px-6 space-y-4">
+								<div class="flex space-x-2">
+									<div>
+										<p class="font-semibold">{{ invoice.title }}</p>
+										<p class="text-indigo-900 text-xs">{{ invoice.id }}</p>
+									</div>
+									<div class="h-fit py-0.5 px-2.5 rounded-xl text-xs font-medium bg-green-100 text-green-800">{{ invoice.status }}</div>
+								</div>
+								<hr>
+								<div class="space-y-1">
+									<p>{{ invoice.date_created }} - {{ invoice.date_expiring }}</p>
+									{% if invoice.loc %}<p>Location: {{ invoice.loc }}</p>{% endif %}
+									{% if invoice.ip %}<p>IP: {{ invoice.ip }}</p>{% endif %}
+									{% if invoice.panel %}<p>Panel: {{ invoice.panel }}</p>{% endif %}
+									{% if invoice.cpu %}<p>CPU: {{ invoice.cpu }}</p>{% endif %}
+									{% if invoice.ram %}<p>RAM: {{ invoice.ram }}</p>{% endif %}
+									{% if invoice.disk %}<p>Disk: {{ invoice.disk }}</p>{% endif %}
+									{% if invoice.port %}<p>Port: {{ invoice.port }}</p>{% endif %}
+									{% if invoice.add %}<p>Additional: {{ invoice.add }}</p>{% endif %}
+									{% if invoice.backup %}<p>Backup: {{ invoice.backup }}</p>{% endif %}
+									{% if invoice.admin %}<p>Administration: {{ invoice.admin }}</p>{% endif %}
+									{% if invoice.os %}<p>OS: {{ invoice.os }}</p>{% endif %}
+									{% if invoice.ddos %}<p>DDoS protection: {{ invoice.ddos }}</p>{% endif %}
+								</div>
+							</div>
+							<div class="py-5 pr-6">$ {{ invoice.amount|number_format('2', '.', '') }}</div>
+						</div>
+					{% endfor %}
+					<div class="flex justify-end p-6 pt-4">
+						{% set total = res - data.invoice_discount - data.invoice_paid %}
+						<div class="space-y-1">
+							<p>Всего по инвойсу: ${{ res|number_format('2', '.', '') }}</p>
+							<p>Скидка: ${{ data.invoice_discount|number_format('2', '.', '') }}</p>
+							<p>Оплачено: ${{ data.invoice_paid|number_format('2', '.', '') }}</p>
+							<p class="font-semibold">Итого к оплате: ${{ total|number_format('2', '.', '') }}</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="flex justify-between">
+					<button @click="billingInvoiceAddPayment()" type="button" class="flex items-center space-x-2 rounded-md border py-[9px] pl-[15px] pr-[17px] text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="#6B7280"/>
+						</svg>
+						<span>Добавить платёж</span>
+					</button>
+					<button @click="billingInvoiceCancel()" type="button" class="flex items-center space-x-2 rounded-md border py-[9px] pl-[15px] pr-[17px] text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M9 2C8.62123 2 8.27497 2.214 8.10557 2.55279L7.38197 4H4C3.44772 4 3 4.44772 3 5C3 5.55228 3.44772 6 4 6L4 16C4 17.1046 4.89543 18 6 18H14C15.1046 18 16 17.1046 16 16V6C16.5523 6 17 5.55228 17 5C17 4.44772 16.5523 4 16 4H12.618L11.8944 2.55279C11.725 2.214 11.3788 2 11 2H9ZM7 8C7 7.44772 7.44772 7 8 7C8.55228 7 9 7.44772 9 8V14C9 14.5523 8.55228 15 8 15C7.44772 15 7 14.5523 7 14V8ZM12 7C11.4477 7 11 7.44772 11 8V14C11 14.5523 11.4477 15 12 15C12.5523 15 13 14.5523 13 14V8C13 7.44772 12.5523 7 12 7Z" fill="#6B7280"/>
+						</svg>
+						<span>Отменить инвойс</span>
+					</button>
+				</div>
+			</div>
+
+			<div class="pt-4 pb-6 px-8">
+				<div class="rounded-md border border-gray-300">
+					<div class="px-6 pt-4 bg-gray-50 rounded-t-md border-b border-gray-200">
+						<nav class="-mb-px flex space-x-8">
+							<a href="#" class="text-indigo-600 whitespace-nowrap border-b-2 border-indigo-500 px-1 pb-4 text-sm font-medium">Транзакции</a>
+							<a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 whitespace-nowrap border-b-2 px-1 pb-4 text-sm font-medium">История платежей</a>
+						</nav>
+					</div>
+					{% include 'billing/parts/invoice.table.history.html.twig' %}
+				</div>
+			</div>
+
+
+
 		</div>
 
 	</billing-settings>

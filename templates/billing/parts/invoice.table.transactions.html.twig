@@ -1,11 +1,11 @@
 <table class="min-w-full divide-y divide-gray-200">
 	<thead>
-	<tr class="bg-gray-50 text-sm text-gray-900 border border-t">
-		<th class="px-6 py-3 text-left font-medium" scope="col">Дата и время</th>
-		<th class="px-6 py-3 text-left font-medium" scope="col">Способ оплаты</th>
-		<th class="px-6 py-3 text-left font-medium" scope="col">ID транзакции</th>
-		<th class="px-6 py-3 text-right font-medium whitespace-nowrap" scope="col">Сумма</th>
-		<th class="px-6 py-3 text-right font-medium" scope="col">Комиссия</th>
+	<tr class="bg-gray-50 text-sm text-gray-900">
+		<th class="w-[220px] p-3 pl-6 text-left font-medium whitespace-nowrap">Дата и время</th>
+		<th class="p-3 text-left font-medium whitespace-nowrap">Способ оплаты</th>
+		<th class="p-3 text-left font-medium whitespace-nowrap">ID транзакции</th>
+		<th class="w-[110px] p-3 text-right font-medium whitespace-nowrap">Сумма</th>
+		<th class="w-40 p-3 pr-6 text-right font-medium">Комиссия</th>
 	</tr>
 	</thead>
 
@@ -19,11 +19,11 @@
 	{% for item in transactions %}
 
 		<tr class="text-sm text-gray-500">
-			<td class="px-6 py-4">{{ item.date }}, {{ item.time }} ({{ item.loc }})</td>
-			<td class="px-6 py-4">{{ item.paymethod }}</td>
-			<td class="px-6 py-4">{{ item.id }}</td>
-			<td class="px-6 py-4 {% if item.id == false %}text-red-500{% endif %} text-right">${{ item.amount|number_format('2', '.', '') }}</td>
-			<td class="px-6 py-4 text-right">${{ item.commission|number_format('2', '.', '') }}</td>
+			<td class="pl-6 pr-3 py-4 truncate">{{ item.date }}, {{ item.time }} ({{ item.loc }})</td>
+			<td class="px-3 py-4">{{ item.paymethod }}</td>
+			<td class="px-3 py-4">{{ item.id }}</td>
+			<td class="px-3 py-4 {% if item.id == false %}text-red-500{% endif %} text-right">${{ item.amount|number_format('2', '.', '') }}</td>
+			<td class="pl-3 pr-6 py-4 text-right">${{ item.commission|number_format('2', '.', '') }}</td>
 		</tr>
 
 	{% endfor %}
