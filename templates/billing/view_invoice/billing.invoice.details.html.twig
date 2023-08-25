@@ -1,0 +1,89 @@
+{% extends 'billing/view_invoice/invoice.base.html.twig' %}
+
+{% set currentTab = 'details' %}
+
+{% block details %}
+
+	<div class="py-6 px-8">
+		<h3 class="text-gray-900 text-lg font-medium">Транзакции</h3>
+
+		<div class="mt-5 rounded-md border border-gray-300 overflow-hidden">
+			<table class="min-w-full divide-y divide-gray-200">
+				<thead>
+				<tr class="bg-gray-50 border-b border-gray-300 text-sm text-gray-900">
+					<th class="w-[216px] p-3 pl-6 text-left font-medium whitespace-nowrap">Дата и время</th>
+					<th class="w-[216px] p-3 text-left font-medium whitespace-nowrap">Способ оплаты</th>
+					<th class="p-3 text-left font-medium whitespace-nowrap">ID транзакции</th>
+					<th class="w-[136px] p-3 text-right font-medium whitespace-nowrap">Сумма</th>
+					<th class="w-40 p-3 pr-6 text-right font-medium">Комиссия</th>
+				</tr>
+				</thead>
+
+				<tbody class="divide-y divide-gray-200">
+
+				{% set transactions = [
+					{'date': '10/10/2023', 'time': '10:07', 'loc': 'MSK', 'paymethod': 'Intercassa', 'id': '2387468234682364', 'amount': 8, 'commission': 0},
+					{'date': '10/10/2023', 'time': '10:07', 'loc': 'MSK', 'paymethod': 'Balance', 'id': '', 'amount': 2, 'commission': 0},
+				] %}
+
+				{% for item in transactions %}
+
+					<tr class="text-sm text-gray-500">
+						<td class="pl-6 pr-3 py-4 truncate">{{ item.date }} {{ item.time }} ({{ item.loc }})</td>
+						<td class="px-3 py-4">{{ item.paymethod }}</td>
+						<td class="px-3 py-4">{{ item.id }}</td>
+						<td class="px-3 py-4 {% if item.id == false %}text-red-500{% endif %} text-right">${{ item.amount|number_format('2', '.', '') }}</td>
+						<td class="pl-3 pr-6 py-4 text-right">${{ item.commission|number_format('2', '.', '') }}</td>
+					</tr>
+
+				{% endfor %}
+
+				</tbody>
+			</table>
+		</div>
+
+		<h3 class="mt-8 text-gray-900 text-lg font-medium">История платежей</h3>
+
+		<div class="mt-5 rounded-md border border-gray-300 overflow-hidden">
+			<table class="min-w-full divide-y divide-gray-200">
+				<thead>
+				<tr class="bg-gray-50 border-b border-gray-300 text-sm text-gray-900">
+					<th class="w-[208px] p-3 pl-6 text-left font-medium whitespace-nowrap">Дата и время</th>
+					<th class="w-[168px] p-3 text-left font-medium whitespace-nowrap">Способ оплаты</th>
+					<th class="p-3 text-left font-medium whitespace-nowrap">ID транзакции</th>
+					<th class="w-[136px] p-3 text-right font-medium">Статус</th>
+					<th class="w-[112px] p-3 text-right font-medium">Сумма</th>
+					<th class="w-[192px] p-3 pr-6 text-right font-medium whitespace-nowrap">Статус транзакции</th>
+				</tr>
+				</thead>
+
+				<tbody class="divide-y divide-gray-200">
+
+				{% set history = [
+					{'date': '10/10/2023', 'time': '10:07', 'loc': 'MSK', 'paymethod': 'Intercassa', 'id': '92039', 'status': 'Active', 'amount': 8},
+					{'date': '10/10/2023', 'time': '10:07', 'loc': 'MSK', 'paymethod': 'Visa *0230', 'id': '92040', 'status': 'Failed', 'amount': 2},
+					{'date': '10/10/2023', 'time': '10:07', 'loc': 'MSK', 'paymethod': 'Balance', 'id': '92041', 'status': 'Active', 'amount': 3},
+				] %}
+
+				{% for item in history %}
+
+					<tr class="text-sm text-gray-500">
+						<td class="pl-6 pr-3 py-4 truncate">{{ item.date }} {{ item.time }} ({{ item.loc }})</td>
+						<td class="px-3 py-4">{{ item.paymethod }}</td>
+						<td class="px-3 py-4">{{ item.id }}</td>
+						<td class="px-3 py-4 text-right">
+							<span class="py-0.5 px-2.5 rounded-lg text-xs font-medium {% if item.status == 'Active' %}bg-green-100 text-green-800{% else %}bg-red-100 text-red-800{% endif %}">{{ item.status }}</span>
+						</td>
+						<td class="px-3 py-4 text-right">${{ item.amount|number_format('2', '.', '') }}</td>
+						<td class="pl-3 pr-6 py-4 text-right">${{ item.amount|number_format('2', '.', '') }} {% if item.status == 'Active' %}applied{% else %}failed{% endif %}</td>
+					</tr>
+
+				{% endfor %}
+
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+
+{% endblock %}

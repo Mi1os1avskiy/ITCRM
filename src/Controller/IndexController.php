@@ -297,16 +297,28 @@ class IndexController extends AbstractController
     }
 
     /**
-     * @Route("/billing/billing.view.invoice.html.twig", name="billing_view_invoice")
+     * @Route("/billing/invoice/overview", name="invoice_overview")
      */
     public function billingViewInvoice(): Response
     {
-        return $this->render('billing/billing.view.invoice.html.twig', [
+        return $this->render('billing/view_invoice/billing.invoice.overview.html.twig', [
             'title' => 'Инвойс',
             'data' => InvoicesController::invoiceData(),
             'invoices' => InvoicesController::createInvoices(),
         ]);
     }
+
+	/**
+	 * @Route("/billing/invoice/details", name="invoice_payment_details")
+	 */
+	public function billingInvoicePaymentDetails(): Response
+	{
+		return $this->render('billing/view_invoice/billing.invoice.details.html.twig', [
+			'title' => 'Инвойс',
+			'data' => InvoicesController::invoiceData(),
+			'invoices' => InvoicesController::createInvoices(),
+		]);
+	}
 
     /**
      * @Route("/billing/billing.transactions.html.twig", name="billing_transactions")
