@@ -29,27 +29,26 @@
 				<span class="text-gray-500 text-sm font-medium">Служба поддержки</span>
 			</div>
 
-			<div class="flex">
-				<button type="button" class="inline-flex items-center rounded-l-md border-r border-red-700 bg-red-500 px-[17px] py-[9px] shadow-sm hover:bg-red-600">
-					<span class="text-sm font-medium text-white">Open</span>
+			<div class="relative">
+				<button type="button" class="w-[224px] flex items-center py-2 px-3 space-x-2 rounded-md border border-gray-300 shadow-sm hover:bg-gray-100" aria-expanded="false" aria-expanded-autohide>
+					<svg class="text-red-400 pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M10 15C12.7614 15 15 12.7614 15 10C15 7.23858 12.7614 5 10 5C7.23858 5 5 7.23858 5 10C5 12.7614 7.23858 15 10 15Z" fill="currentColor"/>
+					</svg>
+					<span class="flex-1 text-left pointer-events-none">Open</span>
+					<svg class="pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+					</svg>
 				</button>
-				<div class="relative -ml-px">
-					<button type="button" class="rounded-r-md border-l border-red-700 bg-red-500 p-[9px] shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2" aria-expanded="false" aria-expanded-autohide>
-						<svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M5.23017 7.20938C5.52875 6.92228 6.00353 6.93159 6.29063 7.23017L10 11.1679L13.7094 7.23017C13.9965 6.93159 14.4713 6.92228 14.7698 7.20938C15.0684 7.49647 15.0777 7.97125 14.7906 8.26983L10.5406 12.7698C10.3992 12.9169 10.204 13 10 13C9.79599 13 9.60078 12.9169 9.45938 12.7698L5.20938 8.26983C4.92228 7.97125 4.93159 7.49647 5.23017 7.20938Z" fill="white"/>
-						</svg>
-					</button>
-					<ul class="absolute z-10 mt-2 right-0 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
-						{% for val, css in ticket_statuses %}
-							<li>
-								<button type="button" class="w-full flex items-center py-3 px-4 space-x-4 text-left hover:bg-gray-100">
-									<span class="h-2.5 w-2.5 rounded-full bg-{{ css }}-400"></span>
-									<span class="text-gray-700 whitespace-nowrap">{{ val }}</span>
-								</button>
-							</li>
-						{% endfor %}
-					</ul>
-				</div>
+				<ul class="absolute w-[224px] z-10 top-11 right-0 py-1 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+					{% for val, css in ticket_statuses %}
+						<li>
+							<button type="button" class="w-full flex items-center py-3 px-4 space-x-4 text-left hover:bg-gray-100">
+								<span class="h-2.5 w-2.5 rounded-full bg-{{ css }}-400"></span>
+								<span class="text-gray-700 whitespace-nowrap">{{ val }}</span>
+							</button>
+						</li>
+					{% endfor %}
+				</ul>
 			</div>
 		</div>
 	</div>

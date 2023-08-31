@@ -2,6 +2,8 @@ import {NotificationLevels, Notification} from "../misc/notifications/notificati
 
 const SupportTicketsDelete = 'support-tickets-delete';
 const SupportTicketsClose = 'support-tickets-close';
+const SupportTicketNoteDelete = 'ticket-note-delete';
+const SupportTicketAdminAnswerDelete = 'ticket-admin-answer-delete';
 const SupportFilters = 'support-filters';
 const SupportNewTicketClient = 'support-new-ticket-client';
 const SupportNewTicketService = 'support-new-ticket-service';
@@ -28,6 +30,40 @@ export const SupportSettingsComponent = {
                 })
                 .catch(() => {
                 });
+        },
+        supportTicketNoteDelete() {
+            const self = <any>this;
+            self.$modals(SupportTicketNoteDelete).show()
+                .then((data: any) => {
+                    self.$notifications('global').notify(
+                        new Notification(NotificationLevels.SUCCESS, "Удаление заметки", "Заметка успешно удалена")
+                    );
+                })
+                .catch(() => {
+                });
+        },
+        supportTicketAdminAnswerDelete() {
+            const self = <any>this;
+            self.$modals(SupportTicketAdminAnswerDelete).show()
+                .then((data: any) => {
+                    self.$notifications('global').notify(
+                        new Notification(NotificationLevels.SUCCESS, "Удаление ответа", "Ответ успешно удалён")
+                    );
+                })
+                .catch(() => {
+                });
+        },
+        supportTicketAddAnswer() {
+            const self = <any>this;
+            self.$notifications('global').notify(
+                new Notification(NotificationLevels.SUCCESS, "Добавление ответа", "Ответ успешно добавлен")
+            );
+        },
+        supportTicketAddNote() {
+            const self = <any>this;
+            self.$notifications('global').notify(
+                new Notification(NotificationLevels.SUCCESS, "Добавление заметки", "Заметка успешно добавлена")
+            );
         },
         supportFilters() {
             const self = <any>this;

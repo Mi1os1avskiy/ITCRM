@@ -1,14 +1,14 @@
 {% extends 'billing/billing.base.html.twig' %}
 
 {% set icons = [
-	{'type': 1, 'title': 'Оплаченный инвойс', 'img': '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Оплаченный инвойс</title><path fill-rule="evenodd" clip-rule="evenodd" d="M3 3.5C3 2.67157 3.67157 2 4.5 2H11.3787C11.7765 2 12.158 2.15804 12.4393 2.43934L16.5607 6.56066C16.842 6.84197 17 7.2235 17 7.62132V16.5C17 17.3284 16.3284 18 15.5 18H4.5C3.67157 18 3 17.3284 3 16.5V3.5ZM13.8566 9.19113C14.1002 8.85614 14.0261 8.38708 13.6911 8.14345C13.3561 7.89982 12.8871 7.97388 12.6434 8.30887L9.15969 13.099L7.28033 11.2197C6.98744 10.9268 6.51256 10.9268 6.21967 11.2197C5.92678 11.5126 5.92678 11.9874 6.21967 12.2803L8.71967 14.7803C8.87477 14.9354 9.08999 15.0149 9.30867 14.9977C9.52734 14.9805 9.72754 14.8685 9.85655 14.6911L13.8566 9.19113Z" fill="#10B981"/></svg>'},
-	{'type': 2, 'title': 'Неоплаченный инвойс', 'img': '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Неоплаченный инвойс</title><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 2C3.67157 2 3 2.67157 3 3.5V16.5C3 17.3284 3.67157 18 4.5 18H15.5C16.3284 18 17 17.3284 17 16.5V7.62132C17 7.2235 16.842 6.84197 16.5607 6.56066L12.4393 2.43934C12.158 2.15804 11.7765 2 11.3787 2H4.5ZM9.875 14.5C9.59886 14.5 9.375 14.2761 9.375 14V13.875C8.51054 13.875 7.78272 13.29 7.56583 12.4943C7.49321 12.2278 7.72386 12 8 12H8.25C8.49098 12 8.68566 12.1949 8.86296 12.3724L8.863 12.3725C8.88886 12.3983 8.91434 12.4239 8.93954 12.4483C9.0521 12.5577 9.20569 12.625 9.375 12.625V11.375C8.33947 11.375 7.5 10.5355 7.5 9.5C7.5 8.46447 8.33947 7.625 9.375 7.625V7.5C9.375 7.22386 9.59886 7 9.875 7H10.125C10.4011 7 10.625 7.22386 10.625 7.5V7.625C11.4895 7.625 12.2173 8.21001 12.4342 9.00573C12.5068 9.27215 12.2761 9.5 12 9.5H11.75C11.509 9.5 11.3143 9.3051 11.137 9.12759L11.1369 9.12745C11.1111 9.1016 11.0856 9.07612 11.0605 9.05167C10.9479 8.94233 10.7943 8.875 10.625 8.875V10.125C11.6605 10.125 12.5 10.9645 12.5 12C12.5 13.0355 11.6605 13.875 10.625 13.875V14C10.625 14.2761 10.4011 14.5 10.125 14.5H9.875ZM8.75 9.5C8.75 9.15482 9.02982 8.875 9.375 8.875V10.125C9.02982 10.125 8.75 9.84518 8.75 9.5ZM11.25 12C11.25 12.3452 10.9702 12.625 10.625 12.625V11.375C10.9702 11.375 11.25 11.6548 11.25 12Z" fill="#EF4444"/></svg>'},
-	{'type': 3, 'title': 'Отменённый инвойс', 'img': '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Отменённый инвойс</title><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 2C3.67157 2 3 2.67157 3 3.5V16.5C3 17.3284 3.67157 18 4.5 18H15.5C16.3284 18 17 17.3284 17 16.5V7.62132C17 7.2235 16.842 6.84197 16.5607 6.56066L12.4393 2.43934C12.158 2.15804 11.7765 2 11.3787 2H4.5ZM8.28033 8.21967C7.98744 7.92678 7.51256 7.92678 7.21967 8.21967C6.92678 8.51256 6.92678 8.98744 7.21967 9.28033L8.93934 11L7.21967 12.7197C6.92678 13.0126 6.92678 13.4874 7.21967 13.7803C7.51256 14.0732 7.98744 14.0732 8.28033 13.7803L10 12.0607L11.7197 13.7803C12.0126 14.0732 12.4874 14.0732 12.7803 13.7803C13.0732 13.4874 13.0732 13.0126 12.7803 12.7197L11.0607 11L12.7803 9.28033C13.0732 8.98744 13.0732 8.51256 12.7803 8.21967C12.4874 7.92678 12.0126 7.92678 11.7197 8.21967L10 9.93934L8.28033 8.21967Z" fill="#6B7280"/></svg>'},
-	{'type': 4, 'title': 'Несуществующий платёж', 'img': '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Несуществующий платёж</title><path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 3C2.67157 3 2 3.67157 2 4.5V15.5C2 16.3284 2.67157 17 3.5 17H16.5C17.3284 17 18 16.3284 18 15.5V4.5C18 3.67157 17.3284 3 16.5 3H3.5ZM9.875 13.75C9.59886 13.75 9.375 13.5261 9.375 13.25V13.125C8.51054 13.125 7.78272 12.54 7.56583 11.7443C7.49321 11.4778 7.72386 11.25 8 11.25H8.25C8.49098 11.25 8.68566 11.4449 8.86296 11.6224L8.863 11.6225C8.88886 11.6483 8.91434 11.6739 8.93954 11.6983C9.0521 11.8077 9.20569 11.875 9.375 11.875V10.625C8.33947 10.625 7.5 9.78553 7.5 8.75C7.5 7.71447 8.33947 6.875 9.375 6.875V6.75C9.375 6.47386 9.59886 6.25 9.875 6.25H10.125C10.4011 6.25 10.625 6.47386 10.625 6.75V6.875C11.4895 6.875 12.2173 7.46001 12.4342 8.25573C12.5068 8.52215 12.2761 8.75 12 8.75H11.75C11.509 8.75 11.3143 8.5551 11.137 8.37759L11.1369 8.37745C11.1111 8.3516 11.0856 8.32612 11.0605 8.30167C10.9479 8.19233 10.7943 8.125 10.625 8.125V9.375C11.6605 9.375 12.5 10.2145 12.5 11.25C12.5 12.2855 11.6605 13.125 10.625 13.125V13.25C10.625 13.5261 10.4011 13.75 10.125 13.75H9.875ZM8.75 8.75C8.75 8.40482 9.02982 8.125 9.375 8.125V9.375C9.02982 9.375 8.75 9.09518 8.75 8.75ZM11.25 11.25C11.25 11.5952 10.9702 11.875 10.625 11.875V10.625C10.9702 10.625 11.25 10.9048 11.25 11.25Z" fill="#D1D5DB"/></svg>'},
-	{'type': 5, 'title': 'Несуществующий инвойс', 'img': '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Несуществующий инвойс</title><path fill-rule="evenodd" clip-rule="evenodd" d="M3 3.5C3 2.67157 3.67157 2 4.5 2H11.3787C11.7765 2 12.158 2.15804 12.4393 2.43934L16.5607 6.56066C16.842 6.84197 17 7.2235 17 7.62132V16.5C17 17.3284 16.3284 18 15.5 18H4.5C3.67157 18 3 17.3284 3 16.5V3.5Z" fill="#D1D5DB"/></svg>'},
-	{'type': 6, 'title': 'Задан клиент', 'img': '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Задан клиент</title><path d="M10 8C11.6569 8 13 6.65685 13 5C13 3.34315 11.6569 2 10 2C8.34315 2 7 3.34315 7 5C7 6.65685 8.34315 8 10 8Z" fill="#6B7280"/><path d="M3.46517 14.4935C3.27029 15.0016 3.44435 15.571 3.8742 15.9046C5.56656 17.218 7.69202 18 10.0001 18C12.3106 18 14.438 17.2164 16.1312 15.9006C16.5608 15.5667 16.7345 14.9971 16.5393 14.4892C15.5301 11.8635 12.9842 10 10.0031 10C7.02032 10 4.47329 11.8656 3.46517 14.4935Z" fill="#6B7280"/></svg>'},
-	{'type': 7, 'title': 'Платёж без инвойса', 'img': '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Платёж без инвойса</title><path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 3C2.67157 3 2 3.67157 2 4.5V15.5C2 16.3284 2.67157 17 3.5 17H16.5C17.3284 17 18 16.3284 18 15.5V4.5C18 3.67157 17.3284 3 16.5 3H3.5ZM7.64286 6C7.28782 6 7 6.33579 7 6.75V13.25C7 13.6642 7.28782 14 7.64286 14H12.3571C12.7122 14 13 13.6642 13 13.25V8.81066C13 8.61175 12.9323 8.42098 12.8117 8.28033L11.0454 6.21967C10.9249 6.07902 10.7614 6 10.5909 6H7.64286Z" fill="#EF4444"/></svg>'},
-	{'type': 8, 'title': 'Нет информации', 'img': '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Нет информации</title><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 2C3.67157 2 3 2.67157 3 3.5V16.5C3 17.3284 3.67157 18 4.5 18H15.5C16.3284 18 17 17.3284 17 16.5V7.62132C17 7.2235 16.842 6.84197 16.5607 6.56066L12.4393 2.43934C12.158 2.15804 11.7765 2 11.3787 2H4.5ZM11 6C11 6.55228 10.5523 7 10 7C9.44771 7 9 6.55228 9 6C9 5.44772 9.44771 5 10 5C10.5523 5 11 5.44772 11 6ZM9 9C8.58579 9 8.25 9.33579 8.25 9.75C8.25 10.1642 8.58579 10.5 9 10.5H9.25338C9.41332 10.5 9.53213 10.6481 9.49743 10.8042L9.03829 12.8704C8.79542 13.9633 9.62706 15 10.7466 15H11C11.4142 15 11.75 14.6642 11.75 14.25C11.75 13.8358 11.4142 13.5 11 13.5H10.7466C10.5867 13.5 10.4679 13.3519 10.5026 13.1958L10.9617 11.1296C11.2046 10.0367 10.3729 9 9.25338 9H9Z" fill="#D1D5DB"/></svg>'},
+	{'type': 1, 'title': 'Оплаченный инвойс', 'img': '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3 3.5C3 2.67157 3.67157 2 4.5 2H11.3787C11.7765 2 12.158 2.15804 12.4393 2.43934L16.5607 6.56066C16.842 6.84197 17 7.2235 17 7.62132V16.5C17 17.3284 16.3284 18 15.5 18H4.5C3.67157 18 3 17.3284 3 16.5V3.5ZM13.8566 9.19113C14.1002 8.85614 14.0261 8.38708 13.6911 8.14345C13.3561 7.89982 12.8871 7.97388 12.6434 8.30887L9.15969 13.099L7.28033 11.2197C6.98744 10.9268 6.51256 10.9268 6.21967 11.2197C5.92678 11.5126 5.92678 11.9874 6.21967 12.2803L8.71967 14.7803C8.87477 14.9354 9.08999 15.0149 9.30867 14.9977C9.52734 14.9805 9.72754 14.8685 9.85655 14.6911L13.8566 9.19113Z" fill="#10B981"/></svg>'},
+	{'type': 2, 'title': 'Неоплаченный инвойс', 'img': '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 2C3.67157 2 3 2.67157 3 3.5V16.5C3 17.3284 3.67157 18 4.5 18H15.5C16.3284 18 17 17.3284 17 16.5V7.62132C17 7.2235 16.842 6.84197 16.5607 6.56066L12.4393 2.43934C12.158 2.15804 11.7765 2 11.3787 2H4.5ZM9.875 14.5C9.59886 14.5 9.375 14.2761 9.375 14V13.875C8.51054 13.875 7.78272 13.29 7.56583 12.4943C7.49321 12.2278 7.72386 12 8 12H8.25C8.49098 12 8.68566 12.1949 8.86296 12.3724L8.863 12.3725C8.88886 12.3983 8.91434 12.4239 8.93954 12.4483C9.0521 12.5577 9.20569 12.625 9.375 12.625V11.375C8.33947 11.375 7.5 10.5355 7.5 9.5C7.5 8.46447 8.33947 7.625 9.375 7.625V7.5C9.375 7.22386 9.59886 7 9.875 7H10.125C10.4011 7 10.625 7.22386 10.625 7.5V7.625C11.4895 7.625 12.2173 8.21001 12.4342 9.00573C12.5068 9.27215 12.2761 9.5 12 9.5H11.75C11.509 9.5 11.3143 9.3051 11.137 9.12759L11.1369 9.12745C11.1111 9.1016 11.0856 9.07612 11.0605 9.05167C10.9479 8.94233 10.7943 8.875 10.625 8.875V10.125C11.6605 10.125 12.5 10.9645 12.5 12C12.5 13.0355 11.6605 13.875 10.625 13.875V14C10.625 14.2761 10.4011 14.5 10.125 14.5H9.875ZM8.75 9.5C8.75 9.15482 9.02982 8.875 9.375 8.875V10.125C9.02982 10.125 8.75 9.84518 8.75 9.5ZM11.25 12C11.25 12.3452 10.9702 12.625 10.625 12.625V11.375C10.9702 11.375 11.25 11.6548 11.25 12Z" fill="#EF4444"/></svg>'},
+	{'type': 3, 'title': 'Отменённый инвойс', 'img': '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 2C3.67157 2 3 2.67157 3 3.5V16.5C3 17.3284 3.67157 18 4.5 18H15.5C16.3284 18 17 17.3284 17 16.5V7.62132C17 7.2235 16.842 6.84197 16.5607 6.56066L12.4393 2.43934C12.158 2.15804 11.7765 2 11.3787 2H4.5ZM8.28033 8.21967C7.98744 7.92678 7.51256 7.92678 7.21967 8.21967C6.92678 8.51256 6.92678 8.98744 7.21967 9.28033L8.93934 11L7.21967 12.7197C6.92678 13.0126 6.92678 13.4874 7.21967 13.7803C7.51256 14.0732 7.98744 14.0732 8.28033 13.7803L10 12.0607L11.7197 13.7803C12.0126 14.0732 12.4874 14.0732 12.7803 13.7803C13.0732 13.4874 13.0732 13.0126 12.7803 12.7197L11.0607 11L12.7803 9.28033C13.0732 8.98744 13.0732 8.51256 12.7803 8.21967C12.4874 7.92678 12.0126 7.92678 11.7197 8.21967L10 9.93934L8.28033 8.21967Z" fill="#6B7280"/></svg>'},
+	{'type': 4, 'title': 'Платёж несуществующий', 'img': '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 3C2.67157 3 2 3.67157 2 4.5V15.5C2 16.3284 2.67157 17 3.5 17H16.5C17.3284 17 18 16.3284 18 15.5V4.5C18 3.67157 17.3284 3 16.5 3H3.5ZM9.875 13.75C9.59886 13.75 9.375 13.5261 9.375 13.25V13.125C8.51054 13.125 7.78272 12.54 7.56583 11.7443C7.49321 11.4778 7.72386 11.25 8 11.25H8.25C8.49098 11.25 8.68566 11.4449 8.86296 11.6224L8.863 11.6225C8.88886 11.6483 8.91434 11.6739 8.93954 11.6983C9.0521 11.8077 9.20569 11.875 9.375 11.875V10.625C8.33947 10.625 7.5 9.78553 7.5 8.75C7.5 7.71447 8.33947 6.875 9.375 6.875V6.75C9.375 6.47386 9.59886 6.25 9.875 6.25H10.125C10.4011 6.25 10.625 6.47386 10.625 6.75V6.875C11.4895 6.875 12.2173 7.46001 12.4342 8.25573C12.5068 8.52215 12.2761 8.75 12 8.75H11.75C11.509 8.75 11.3143 8.5551 11.137 8.37759L11.1369 8.37745C11.1111 8.3516 11.0856 8.32612 11.0605 8.30167C10.9479 8.19233 10.7943 8.125 10.625 8.125V9.375C11.6605 9.375 12.5 10.2145 12.5 11.25C12.5 12.2855 11.6605 13.125 10.625 13.125V13.25C10.625 13.5261 10.4011 13.75 10.125 13.75H9.875ZM8.75 8.75C8.75 8.40482 9.02982 8.125 9.375 8.125V9.375C9.02982 9.375 8.75 9.09518 8.75 8.75ZM11.25 11.25C11.25 11.5952 10.9702 11.875 10.625 11.875V10.625C10.9702 10.625 11.25 10.9048 11.25 11.25Z" fill="#D1D5DB"/></svg>'},
+	{'type': 5, 'title': 'Несуществующий инвойс', 'img': '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3 3.5C3 2.67157 3.67157 2 4.5 2H11.3787C11.7765 2 12.158 2.15804 12.4393 2.43934L16.5607 6.56066C16.842 6.84197 17 7.2235 17 7.62132V16.5C17 17.3284 16.3284 18 15.5 18H4.5C3.67157 18 3 17.3284 3 16.5V3.5Z" fill="#D1D5DB"/></svg>'},
+	{'type': 6, 'title': 'Задан клиент', 'img': '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 8C11.6569 8 13 6.65685 13 5C13 3.34315 11.6569 2 10 2C8.34315 2 7 3.34315 7 5C7 6.65685 8.34315 8 10 8Z" fill="#6B7280"/><path d="M3.46517 14.4935C3.27029 15.0016 3.44435 15.571 3.8742 15.9046C5.56656 17.218 7.69202 18 10.0001 18C12.3106 18 14.438 17.2164 16.1312 15.9006C16.5608 15.5667 16.7345 14.9971 16.5393 14.4892C15.5301 11.8635 12.9842 10 10.0031 10C7.02032 10 4.47329 11.8656 3.46517 14.4935Z" fill="#6B7280"/></svg>'},
+	{'type': 7, 'title': 'Оплата без инвойса', 'img': '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 3C2.67157 3 2 3.67157 2 4.5V15.5C2 16.3284 2.67157 17 3.5 17H16.5C17.3284 17 18 16.3284 18 15.5V4.5C18 3.67157 17.3284 3 16.5 3H3.5ZM7.64286 6C7.28782 6 7 6.33579 7 6.75V13.25C7 13.6642 7.28782 14 7.64286 14H12.3571C12.7122 14 13 13.6642 13 13.25V8.81066C13 8.61175 12.9323 8.42098 12.8117 8.28033L11.0454 6.21967C10.9249 6.07902 10.7614 6 10.5909 6H7.64286Z" fill="#6B7280"/></svg>'},
+	{'type': 8, 'title': 'Нет информации', 'img': '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 2C3.67157 2 3 2.67157 3 3.5V16.5C3 17.3284 3.67157 18 4.5 18H15.5C16.3284 18 17 17.3284 17 16.5V7.62132C17 7.2235 16.842 6.84197 16.5607 6.56066L12.4393 2.43934C12.158 2.15804 11.7765 2 11.3787 2H4.5ZM11 6C11 6.55228 10.5523 7 10 7C9.44771 7 9 6.55228 9 6C9 5.44772 9.44771 5 10 5C10.5523 5 11 5.44772 11 6ZM9 9C8.58579 9 8.25 9.33579 8.25 9.75C8.25 10.1642 8.58579 10.5 9 10.5H9.25338C9.41332 10.5 9.53213 10.6481 9.49743 10.8042L9.03829 12.8704C8.79542 13.9633 9.62706 15 10.7466 15H11C11.4142 15 11.75 14.6642 11.75 14.25C11.75 13.8358 11.4142 13.5 11 13.5H10.7466C10.5867 13.5 10.4679 13.3519 10.5026 13.1958L10.9617 11.1296C11.2046 10.0367 10.3729 9 9.25338 9H9Z" fill="#D1D5DB"/></svg>'},
 ] %}
 
 {% block content %}
@@ -19,78 +19,63 @@
 
 			{% block header %}
 
-				<div class="bg-gray-50 mx-auto px-4 sm:px-6 lg:px-8">
-					<div class="flex py-4 justify-between">
-						<div class="flex items-center font-semibold text-lg">
-							{{ title }}
-						</div>
-						<div class="flex items-center">
-							<div class="flex-shrink-0">
-								<button @click="billingAddTransaction()" type="button" class="relative inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-[9px] text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-									<svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-										<path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"/>
-									</svg>
-									<span>Добавить</span>
-								</button>
-							</div>
-						</div>
-					</div>
+				<div class="flex items-center justify-between py-4 px-8 bg-gray-50">
+					<h3 class="text-lg font-semibold">{{ title }}</h3>
+					<button @click="billingAddTransaction()" type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md border border-transparent bg-indigo-600 shadow-sm hover:bg-indigo-700">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+							<path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="white"/>
+						</svg>
+						<span class="text-white text-sm font-medium ">Добавить</span>
+					</button>
 				</div>
 
 			{% endblock %}
 
 			{% block control %}
 
-				<div class="mt-4 mx-auto px-4 sm:px-6 lg:px-8">
-					<div class="flex h-12 mb-4 justify-between">
-						<div class="flex items-center">
-							<nav class="flex items-center w-64 truncate lg:w-full text-sm text-gray-700">
-								<a href="#" class="py-[9px] px-[13px] border rounded-l-md focus:text-indigo-500 focus:bg-indigo-50 focus:border-indigo-500">Все входящие</a>
-								<a href="#" class="py-[9px] px-[13px] border focus:text-indigo-500 focus:bg-indigo-50 focus:border-indigo-500">Все исходящие</a>
-								<a href="#" class="py-[9px] px-[13px] border focus:text-indigo-500 focus:bg-indigo-50 focus:border-indigo-500">Игнорируются и заморожены</a>
-								<a href="#" class="py-[9px] px-[13px] border focus:text-indigo-500 focus:bg-indigo-50 focus:border-indigo-500">Все</a>
-								<div>
-									<button type="button" class="py-[9px] px-[13px] border rounded-r-md focus:bg-indigo-50 focus:border-indigo-500" aria-expanded="false" aria-expanded-autohide>
-										<svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M5.23017 7.20938C5.52875 6.92228 6.00353 6.93159 6.29063 7.23017L10 11.1679L13.7094 7.23017C13.9965 6.93159 14.4713 6.92228 14.7698 7.20938C15.0684 7.49647 15.0777 7.97125 14.7906 8.26983L10.5406 12.7698C10.3992 12.9169 10.204 13 10 13C9.79599 13 9.60078 12.9169 9.45938 12.7698L5.20938 8.26983C4.92228 7.97125 4.93159 7.49647 5.23017 7.20938Z" fill="#6B7280"/>
-										</svg>
-									</button>
-									<ul class="absolute z-10 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-										<li class="border-b border-gray-100">
-											<button type="button" class="w-full py-3 px-5 text-left hover:bg-gray-100">
-												<span class="text-gray-700 whitespace-nowrap">Все транзакции</span>
-											</button>
-										</li>
-										{% for val, css in transaction_statuses %}
-											<li>
-												<button type="button" class="w-full py-3 px-5 hover:bg-gray-100 text-left">
-													<span class="text-gray-700 whitespace-nowrap">{{ val }}</span>
-												</button>
-											</li>
-										{% endfor %}
-									</ul>
-								</div>
-							</nav>
-						</div>
-
-						<div class="flex items-center space-x-2">
-							<div class="w-48 max-w-lg lg:max-w-xs">
-								<div class="relative">
-									<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-[13px]">
-										<svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-											<path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
-										</svg>
-									</div>
-									<input name="search" class="block w-full rounded-md border border-gray-300 bg-white py-[9px] pl-10 pr-3 leading-5 placeholder-gray-400 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Поиск по сумме" type="search">
-								</div>
-							</div>
-							<button @click="billingTransactionsFilters()" type="button" class="inline-flex items-center rounded-md border border-gray-300 pl-[15px] pr-[17px] py-[9px] shadow-sm hover:bg-gray-50 focus:border-indigo-500">
-								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M4.47102 3.46746C6.27039 3.15991 8.11739 3 10 3C11.8826 3 13.7296 3.15991 15.529 3.46746C15.8007 3.51389 16 3.75747 16 4.04302V5.8223C16 6.28643 15.8222 6.73155 15.5057 7.05974L11.9943 10.7013C11.6778 11.0295 11.5 11.4746 11.5 11.9387V14.3004C11.5 14.832 11.267 15.3348 10.8667 15.6669L9.41389 16.8722C9.24505 17.0122 9.01372 17.0396 8.81883 16.9424C8.62394 16.8453 8.5 16.6409 8.5 16.4167V11.9387C8.5 11.4746 8.32221 11.0295 8.00574 10.7013L4.49426 7.05974C4.17779 6.73155 4 6.28643 4 5.8223V4.04302C4 3.75747 4.19934 3.51389 4.47102 3.46746Z" fill="#6B7280"/>
+				<div class="flex justify-between pt-6 px-8">
+					<nav class="flex items-center -space-x-px text-sm text-gray-700 font-medium">
+						<a href="#" class="py-2 px-4 border border-gray-300 rounded-l-md hover:bg-gray-50">Все</a>
+						<a href="#" class="py-2 px-4 border border-gray-300 hover:bg-gray-50">Все входящие</a>
+						<a href="#" class="py-2 px-4 border border-gray-300 hover:bg-gray-50">Все исходящие</a>
+						<div class="relative">
+							<button type="button" class="p-2 border border-gray-300 rounded-r-md hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+								<svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M5.23017 7.20938C5.52875 6.92228 6.00353 6.93159 6.29063 7.23017L10 11.1679L13.7094 7.23017C13.9965 6.93159 14.4713 6.92228 14.7698 7.20938C15.0684 7.49647 15.0777 7.97125 14.7906 8.26983L10.5406 12.7698C10.3992 12.9169 10.204 13 10 13C9.79599 13 9.60078 12.9169 9.45938 12.7698L5.20938 8.26983C4.92228 7.97125 4.93159 7.49647 5.23017 7.20938Z" fill="#6B7280"/>
 								</svg>
-								<span class="ml-2 text-sm text-gray-700">Фильтры</span>
 							</button>
+
+							<ul class="absolute z-10 top-10 right-0 w-[280px] py-1 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+								<li>
+									<button type="button" class="w-full py-2 px-4 text-gray-700 text-left hover:bg-indigo-600 hover:text-white">Незасчитанные и замороженные</button>
+								</li>
+								{% for val, css in transaction_filter %}
+								<li>
+									<button type="button" class="w-full flex items-center py-2 px-4 space-x-3 text-gray-700 text-left hover:bg-indigo-600 hover:text-white">
+										<span class="h-2.5 w-2.5 bg-{{ css }}-400 rounded-full"></span>
+										<span>{{ val }}</span>
+									</button>
+								</li>
+								{% endfor %}
+							</ul>
 						</div>
+					</nav>
+
+					<div class="flex items-center space-x-2">
+						<div class="relative w-[220px]">
+							<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5C10.519 14.5 11.893 13.8852 12.8891 12.8891C13.8852 11.893 14.5 10.519 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5ZM2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 10.6625 15.4197 12.1906 14.4517 13.3911L17.7803 16.7197C18.0732 17.0126 18.0732 17.4874 17.7803 17.7803C17.4874 18.0732 17.0126 18.0732 16.7197 17.7803L13.3911 14.4517C12.1906 15.4197 10.6625 16 9 16C5.13401 16 2 12.866 2 9Z" fill="#6B7280"/>
+								</svg>
+							</div>
+							<input name="search" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Поиск по UID и Сумме" type="search">
+						</div>
+						<button @click="billingTransactionsFilters()" type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md border border-gray-300 shadow-sm hover:bg-gray-50">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M4.47102 3.46746C6.27039 3.15991 8.11739 3 10 3C11.8826 3 13.7296 3.15991 15.529 3.46746C15.8007 3.51389 16 3.75747 16 4.04302V5.8223C16 6.28643 15.8222 6.73155 15.5057 7.05974L11.9943 10.7013C11.6778 11.0295 11.5 11.4746 11.5 11.9387V14.3004C11.5 14.832 11.267 15.3348 10.8667 15.6669L9.41389 16.8722C9.24505 17.0122 9.01372 17.0396 8.81883 16.9424C8.62394 16.8453 8.5 16.6409 8.5 16.4167V11.9387C8.5 11.4746 8.32221 11.0295 8.00574 10.7013L4.49426 7.05974C4.17779 6.73155 4 6.28643 4 5.8223V4.04302C4 3.75747 4.19934 3.51389 4.47102 3.46746Z" fill="#6B7280"/>
+							</svg>
+							<span class="text-sm text-gray-700 font-medium">Фильтры</span>
+						</button>
 					</div>
 				</div>
 
@@ -98,116 +83,121 @@
 
 			{% block table %}
 
-				<div class="hidden sm:block">
-					<div class="mx-auto px-4 sm:px-6 lg:px-8">
-						<div class="mt-2 flex flex-col">
-							<div class="min-w-full overflow-hidden overflow-x-auto align-middle shadow sm:rounded-lg">
+				<div class="py-4 px-8">
+					<div class="min-w-full overflow-hidden overflow-x-auto border rounded-t-lg">
 
-								<table class="min-w-full divide-y divide-gray-200">
-									<thead>
-									<tr class="bg-gray-50 text-gray-900 text-sm border border-t">
-										<th class="px-6 py-3 text-left font-medium" scope="col">ID</th>
-										<th class="px-6 py-3 text-left font-medium" scope="col">Дата</th>
-										<th class="px-6 py-3 text-left font-medium" scope="col">Инвойс</th>
-										<th class="px-6 py-3 text-left font-medium" scope="col">Клиент</th>
-										<th class="px-6 py-3 text-left font-medium" scope="col">Метод оплаты</th>
-										<th class="px-6 py-3 text-right font-medium" scope="col">Сумма</th>
-										<th class="px-6 py-3 text-left font-medium" scope="col">Статус</th>
-										<th class="px-6 py-3 text-left font-medium" scope="col">Детали</th>
-										<th class="px-6 py-3" scope="col"></th>
-									</tr>
-									</thead>
-									<tbody class="divide-y divide-gray-200 bg-white">
+						<table class="min-w-full divide-y divide-gray-200">
+							<thead>
+							<tr class="bg-gray-50 text-gray-900 text-sm border-b border-gray-300">
+								<th class="w-[130px] p-3 pl-6 text-left font-medium">UID</th>
+								<th class="w-[110px] p-3 text-left font-medium">Дата</th>
+								<th class="w-[110px] p-3 text-left font-medium">Инвойс</th>
+								<th class="w-[168px] p-3 text-left font-medium">Клиент</th>
+								<th class="w-[130px] p-3 text-left font-medium truncate">Метод оплаты</th>
+								<th class="w-[120px] p-3 text-right font-medium">Сумма</th>
+								<th class="w-[168px] p-3 text-left font-medium">Статус</th>
+								<th class="p-3 pr-6 text-left font-medium">Детали</th>
+							</tr>
+							</thead>
+							<tbody class="divide-y divide-gray-200 bg-white">
 
-									{% for item in transactions %}
+							{% for item in transactions %}
 
-										<tr class="text-sm">
-											<td class="whitespace-nowrap pl-6 py-4">
-												<a href="#" class="font-medium hover:text-indigo-700">#{{ item.id }}</a>
-											</td>
-											<td class="whitespace-nowrap px-6 py-4 text-gray-500">{{ item.date }}</td>
-											<td class="whitespace-nowrap flex px-6 py-4 space-x-2">
-												{% for i in icons %}
-													{% if item.invoice_type == i.type %}
-														{{ i.img|raw }}
-													{% endif %}
-												{% endfor %}
-												<span class="text-gray-500 cursor-default">#{{ item.invoice }}</span>
-											</td>
-											<td class="whitespace-nowrap px-6 py-4">
-												<a href="{{ path('overview') }}" class="text-gray-500 hover:text-indigo-700">{{ item.client }}</a>
-											</td>
-											<td class="whitespace-nowrap px-6 py-4 text-gray-500">
-												{{ item.method }}
-											</td>
-											<td class="whitespace-nowrap px-6 py-4 text-gray-500 text-right">
-												${{ item.amount|number_format(2, '.', '') }}
-											</td>
-											<td class="px-6 py-4">
-												{% for val, css in transaction_statuses %}
-													{% if item.status == val %}
-														<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if val == 'Возвращена' %}200{% else %}100{% endif %} text-{{ css }}-800 whitespace-nowrap">{{ val }}</span>
-													{% endif %}
-												{% endfor %}
-											</td>
-											<td class="px-6 py-4 text-gray-500 font-medium">
-												<div class="flex">
-													<p class="grow w-48 truncate" title="{{ item.details }}">{{ item.details }}</p>
-												</div>
-											</td>
-											<td class="whitespace-nowrap px-6 py-4">
-												<button @click="billingTransactionsDetails()" type="button" class="flex items-center">
-													<svg class="text-gray-500 hover:text-indigo-700" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path fill-rule="evenodd" clip-rule="evenodd" d="M18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10ZM11 6C11 6.55228 10.5523 7 10 7C9.44771 7 9 6.55228 9 6C9 5.44772 9.44771 5 10 5C10.5523 5 11 5.44772 11 6ZM9 9C8.58579 9 8.25 9.33579 8.25 9.75C8.25 10.1642 8.58579 10.5 9 10.5H9.25338C9.41332 10.5 9.53213 10.6481 9.49743 10.8042L9.03829 12.8704C8.79542 13.9633 9.62706 15 10.7466 15H11C11.4142 15 11.75 14.6642 11.75 14.25C11.75 13.8358 11.4142 13.5 11 13.5H10.7466C10.5867 13.5 10.4679 13.3519 10.5026 13.1958L10.9617 11.1296C11.2046 10.0367 10.3729 9 9.25338 9H9Z" fill="currentColor"/>
-													</svg>
-												</button>
-											</td>
-										</tr>
+								<tr class="text-sm">
+									<td class="py-4 pl-6 pr-3">
+										<a href="#" class="font-medium hover:text-indigo-700">
+											<p class="max-w-[94px] truncate" title="{{ item.id }}">{{ item.id }}</p>
+										</a>
+									</td>
+									<td class="whitespace-nowrap py-4 px-3 text-gray-500 cursor-default">{{ item.date }}</td>
+									<td class="whitespace-nowrap flex items-center py-4 px-3 space-x-2">
+										{% for i in icons %}
+											{% if item.invoice_type == i.type %}
+												<div title="{{ i.title }}">{{ i.img|raw }}</div>
+											{% endif %}
+										{% endfor %}
+										<span class="text-gray-500 {% if item.invoice_type == 7 %}text-gray-400{% endif %} cursor-default">{{ item.invoice }}</span>
+									</td>
+									<td class="py-4 px-3">
+										<a href="{{ path('overview') }}" class="text-gray-900 font-medium hover:text-indigo-700">
+											<p class="w-36 truncate">{{ item.client }}</p>
+										</a>
+									</td>
+									<td class="py-4 px-3 text-gray-500 cursor-default">
+										<p class="w-[106px] truncate">{{ item.method }}</p>
+									</td>
+									<td>
+										<div class="flex items-center justify-end px-3 space-x-2">
+											{% if item.refund %}
+											<div title="Был возврат средств">
+												<svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+													<path d="M11.2499 10.8176V13.4324C11.6816 13.3527 12.0745 13.2046 12.3876 12.9999C12.8698 12.6846 12.9999 12.352 12.9999 12.125C12.9999 11.898 12.8698 11.5654 12.3876 11.2501C12.0745 11.0454 11.6816 10.8973 11.2499 10.8176Z" fill="#EF4444"/>
+													<path d="M8.82961 8.61947C8.88337 8.67543 8.94464 8.73053 9.01404 8.78416C9.22197 8.94484 9.47355 9.06777 9.75 9.1469V6.60315C9.67545 6.62449 9.60271 6.64901 9.53215 6.6766C9.48721 6.69417 9.44315 6.71299 9.40007 6.73302C9.25996 6.79816 9.13019 6.87614 9.01404 6.96589C8.63658 7.25757 8.5 7.59253 8.5 7.87503C8.5 8.05887 8.55784 8.26493 8.70228 8.46683C8.73898 8.51812 8.78126 8.56915 8.82961 8.61947Z" fill="#EF4444"/>
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M18.5 10C18.5 14.4183 14.9183 18 10.5 18C6.08172 18 2.5 14.4183 2.5 10C2.5 5.58172 6.08172 2 10.5 2C14.9183 2 18.5 5.58172 18.5 10ZM10.4999 4C10.9142 4 11.2499 4.33579 11.2499 4.75V5.06584C11.8423 5.17106 12.4182 5.40427 12.9031 5.77893C13.3293 6.10829 13.6467 6.51836 13.8282 6.97896C13.9801 7.36432 13.7908 7.79985 13.4055 7.95174C13.0201 8.10363 12.5846 7.91437 12.4327 7.52901C12.3599 7.34437 12.22 7.14675 11.9859 6.96586C11.778 6.80519 11.5264 6.68225 11.2499 6.60312V9.29944C11.948 9.39233 12.6327 9.61819 13.2085 9.99467C13.9955 10.5093 14.4999 11.2644 14.4999 12.125C14.4999 12.9856 13.9955 13.7407 13.2085 14.2553C12.6327 14.6318 11.948 14.8577 11.2499 14.9506V15.25C11.2499 15.6642 10.9142 16 10.4999 16C10.0857 16 9.74994 15.6642 9.74994 15.25V14.9506C9.05186 14.8577 8.3672 14.6318 7.79141 14.2553C7.30887 13.9398 6.9337 13.5376 6.71337 13.0672C6.5377 12.692 6.69937 12.2455 7.07449 12.0699C7.4496 11.8942 7.89611 12.0559 8.07178 12.431C8.15258 12.6035 8.31692 12.8067 8.61229 12.9999C8.92537 13.2046 9.3183 13.3526 9.74994 13.4324V10.6842C9.15762 10.5789 8.58167 10.3457 8.09681 9.97107C7.40033 9.43288 6.99994 8.68017 6.99994 7.875C6.99994 7.06983 7.40034 6.31712 8.09681 5.77893C8.58167 5.40427 9.15762 5.17106 9.74994 5.06584V4.75C9.74994 4.33579 10.0857 4 10.4999 4Z" fill="#EF4444"/>
+												</svg>
+											</div>
+											{% endif %}
 
+											<button @click="billingTransactionsDetails({{ item.details.id }})" type="button" class="flex items-center text-gray-900 text-sm font-medium hover:text-indigo-700">
+												<span>${{ item.amount|number_format(2, '.', '') }}</span>
+											</button>
+										</div>
+									</td>
+									<td class="py-4 px-3 cursor-default">
+										{% for val, css in transaction_statuses %}
+											{% if item.status == val %}
+												<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if val == 'Возвращена' %}200{% else %}100{% endif %} text-{{ css }}-800 whitespace-nowrap">{{ val }}</span>
+											{% endif %}
+										{% endfor %}
+									</td>
+									<td class="py-4 pl-3 pr-6 text-gray-500 font-medium cursor-default">
+										<p class="line-clamp-1 overflow-hidden" title="{{ item.details.name }}">{{ item.details.name }}</p>
+									</td>
+								</tr>
+
+							{% endfor %}
+
+							</tbody>
+						</table>
+
+					</div>
+
+					<div class="-mt-px w-full flex items-center justify-between border rounded-b-lg bg-gray-50 py-4 px-6">
+						<div class="flex flex-1 justify-between sm:hidden">
+							<a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
+							<a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+						</div>
+						<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+							<div>
+								<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+									<a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+										<span class="sr-only">Previous</span>
+										<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+											<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+										</svg>
+									</a>
+									<a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
+									<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
+									<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
+									<span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
+									<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
+									<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
+									<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
+									<a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+										<span class="sr-only">Next</span>
+										<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+											<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+										</svg>
+									</a>
+								</nav>
+							</div>
+							<div class="flex items-center space-x-4">
+								<p class="text-sm text-gray-500">1 - 8 из 97</p>
+								<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
+									{% for i in 1..4 %}
+										<option>{{ i * 25 }}</option>
 									{% endfor %}
-
-									</tbody>
-								</table>
-
-								<div class="w-full flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-4 sm:px-6">
-									<div class="flex flex-1 justify-between sm:hidden">
-										<a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
-										<a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
-									</div>
-									<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-										<div>
-											<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-												<a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-													<span class="sr-only">Previous</span>
-													<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-														<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
-													</svg>
-												</a>
-												<a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
-												<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
-												<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
-												<span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
-												<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
-												<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
-												<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
-												<a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-													<span class="sr-only">Next</span>
-													<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-														<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-													</svg>
-												</a>
-											</nav>
-										</div>
-										<div class="flex items-center space-x-4">
-											<p class="text-sm text-gray-500">1 - 8 из 97</p>
-											<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
-												{% for i in 1..4 %}
-													<option>{{ i * 25 }}</option>
-												{% endfor %}
-											</select>
-										</div>
-									</div>
-								</div>
+								</select>
 							</div>
 						</div>
 					</div>

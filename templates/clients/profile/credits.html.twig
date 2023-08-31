@@ -85,7 +85,7 @@
                                         <td class="truncate px-3 py-4 text-sm text-gray-500">
 	                                        <span>{{ credit.appointment }}</span>
 	                                        {% if credit.appointment_id %}
-	                                            <a href="{{ path('billing_view_invoice') }}" class="text-gray-900 hover:text-indigo-700">{{ credit.appointment_id }}</a>
+	                                            <a href="{{ path('invoice_overview') }}" class="text-gray-900 hover:text-indigo-700">{{ credit.appointment_id }}</a>
 	                                        {% endif %}
                                         </td>
                                         <td class="px-3 py-4 text-sm text-{% if credit.amount_stat == 'normal' %}green{% elseif credit.amount_stat == 'high' %}red{% else %}gray{% endif %}-500">${{ credit.amount|number_format('2', '.', '') }}</td>

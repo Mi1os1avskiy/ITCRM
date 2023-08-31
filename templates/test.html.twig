@@ -6,66 +6,76 @@
 
 	<support-settings inline-template>
 
-		<div class="mt-6">
-			<div class="px-4 sm:px-6 lg:px-8 space-y-6">
+		<div class="p-8 space-y-6 divide-y-2">
 
+			<div>
 				{% set x = 123 %}
 
 				{% for i in iplogs %}
 					{% if i.id == 111 %}
 						{% set x = 321 %}
-					{% for j in i.logs %}
+						{% for j in i.logs %}
 
-						<p>{{ j.date }}</p>
+							<p>{{ j.date }}</p>
 
-					{% endfor %}
+						{% endfor %}
 					{% endif %}
 				{% endfor %}
 
 				<p>{{ x }}</p>
+			</div>
 
-				<hr>
-
+			<div>
 				{% set filt = ['one', 'two', 'three', 'four', 'five'] %}
 				{% for i in filt|filter(i => i not in ['two', 'three']) %}
 					<p>{{ i }}</p>
 				{% endfor %}
+			</div>
 
-				<hr>
-
+			<div>
 				{% for i in test_glob %}
-				<p>{{ i.id }} - {{ i.text }}</p>
+					<p>{{ i.id }} - {{ i.text }}</p>
 				{% endfor %}
+			</div>
 
-				<hr>
-
-				<div class="relative">
-					<button type="button" class="p-[9px] rounded-r-md bg-indigo-600 shadow-sm hover:bg-indigo-700" aria-expanded="false" aria-expanded-autohide>
-						<svg class="pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M5.23017 7.20938C5.52875 6.92228 6.00353 6.93159 6.29063 7.23017L10 11.1679L13.7094 7.23017C13.9965 6.93159 14.4713 6.92228 14.7698 7.20938C15.0684 7.49647 15.0777 7.97125 14.7906 8.26983L10.5406 12.7698C10.3992 12.9169 10.204 13 10 13C9.79599 13 9.60078 12.9169 9.45938 12.7698L5.20938 8.26983C4.92228 7.97125 4.93159 7.49647 5.23017 7.20938Z" fill="white"/>
-						</svg>
-					</button>
-					<ul class="absolute z-10 top-10 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
-						{% for val, css in ticket_statuses|filter(val => val not in ['Open', 'Customer reply']) %}
-							{% if val not in ['Open', 'Customer reply'] %}
-							<li>
-								<button type="button" class="w-full flex items-center py-3 px-4 space-x-4 text-left hover:bg-gray-100">
-									<span class="h-2.5 w-2.5 rounded-full bg-{{ css }}-400"></span>
-									<span class="text-gray-700 whitespace-nowrap">Ответ и {{ val }}</span>
-								</button>
-							</li>
-							{% endif %}
-						{% endfor %}
-						<li class="border-t">
-							<button type="button" class="w-full py-3 px-4 text-left hover:bg-gray-100">
-								Ответить заметкой
-							</button>
-						</li>
-					</ul>
+			<div>
+				<div class="flex py-4 space-x-4">
+					<a href="{{ path('test', { sort:1 }) }}" class="inline-block py-2 px-4 border rounded-md hover:bg-gray-50">Sort less</a>
+					<a href="{{ path('test', { sort:2 }) }}" class="inline-block py-2 px-4 border rounded-md hover:bg-gray-50">Sort more</a>
+					<a href="{{ path('test') }}" class="inline-block py-2 px-4 border rounded-md hover:bg-gray-50">Clear</a>
 				</div>
 
-				<hr>
+				{% set arr = [] %}
 
+				{% set arr = arr|merge([getGet()]) %}
+				{% for i in arr %}
+					<div><b>{{ i }}</b></div>
+				{% endfor %}
+			</div>
+
+			<div class="flex items-center py-4 space-x-8">
+				<div class="py-4 px-8 space-y-2 border rounded-lg">
+					<p>Отступы как в фигме: 8 16 8 16</p>
+					<button type="button" class="flex py-2 px-4 space-x-2 border border-transparent rounded-md bg-indigo-600 hover:bg-indigo-700">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+							<path d="M10 3.75V16.25M16.25 10L3.75 10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+						<span class="text-white text-sm font-medium">Button text</span>
+					</button>
+				</div>
+				<div class="py-4 px-8 space-y-2 border rounded-lg">
+					<p>Отступы как предлагал я: 8 16 8 12</p>
+					<button type="button" class="flex py-2 pl-3 pr-4 space-x-2 border border-transparent rounded-md bg-indigo-600 hover:bg-indigo-700">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+							<path d="M10 3.75V16.25M16.25 10L3.75 10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+						<span class="text-white text-sm font-medium">Button text</span>
+					</button>
+				</div>
+			</div>
+
+			{#
+			<div>
 				<ul class="grid grid-cols-3 gap-x-5 m-10 max-w-md mx-auto">
 					<li class="relative">
 						<input class="sr-only peer" type="radio" value="yes" name="answer" id="answer_yes">
@@ -86,71 +96,12 @@
 					</li>
 				</ul>
 			</div>
+			#}
+
 		</div>
-
-		<div class="px-4 sm:px-6 lg:px-8">
-			<div class="sm:flex sm:items-center">
-				<div class="sm:flex-auto">
-					<h1 class="text-base font-semibold leading-6 text-gray-900">Invoice</h1>
-					<p class="mt-2 text-sm text-gray-700">For work completed from <time datetime="2022-08-01">August 1, 2022</time> to <time datetime="2022-08-31">August 31, 2022</time>.</p>
-				</div>
-				<div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-					<button type="button" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Print</button>
-				</div>
-			</div>
-			<div class="-mx-4 mt-8 flow-root sm:mx-0">
-				<table class="min-w-full">
-					<colgroup>
-						<col class="w-full sm:w-1/2">
-						<col class="sm:w-1/6">
-						<col class="sm:w-1/6">
-						<col class="sm:w-1/6">
-					</colgroup>
-					<thead class="border-b border-gray-300 text-gray-900">
-					<tr>
-						<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Project</th>
-						<th scope="col" class="hidden px-3 py-3.5 text-right text-sm font-semibold text-gray-900 sm:table-cell">Hours</th>
-						<th scope="col" class="hidden px-3 py-3.5 text-right text-sm font-semibold text-gray-900 sm:table-cell">Rate</th>
-						<th scope="col" class="py-3.5 pl-3 pr-4 text-right text-sm font-semibold text-gray-900 sm:pr-0">Price</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr class="border-b border-gray-200">
-						<td class="max-w-0 py-5 pl-4 pr-3 text-sm sm:pl-0">
-							<div class="font-medium text-gray-900">Logo redesign</div>
-							<div class="mt-1 truncate text-gray-500">New logo and digital asset playbook.</div>
-						</td>
-						<td class="hidden px-3 py-5 text-right text-sm text-gray-500 sm:table-cell">20.0</td>
-						<td class="hidden px-3 py-5 text-right text-sm text-gray-500 sm:table-cell">$100.00</td>
-						<td class="py-5 pl-3 pr-4 text-right text-sm text-gray-500 sm:pr-0">$2,000.00</td>
-					</tr>
-
-					<!-- More projects... -->
-					</tbody>
-					<tfoot>
-					<tr>
-						<th scope="row" colspan="3" class="hidden pl-4 pr-3 pt-6 text-right text-sm font-normal text-gray-500 sm:table-cell sm:pl-0">Subtotal</th>
-						<th scope="row" class="pl-4 pr-3 pt-6 text-left text-sm font-normal text-gray-500 sm:hidden">Subtotal</th>
-						<td class="pl-3 pr-4 pt-6 text-right text-sm text-gray-500 sm:pr-0">$8,800.00</td>
-					</tr>
-					<tr>
-						<th scope="row" colspan="3" class="hidden pl-4 pr-3 pt-4 text-right text-sm font-normal text-gray-500 sm:table-cell sm:pl-0">Tax</th>
-						<th scope="row" class="pl-4 pr-3 pt-4 text-left text-sm font-normal text-gray-500 sm:hidden">Tax</th>
-						<td class="pl-3 pr-4 pt-4 text-right text-sm text-gray-500 sm:pr-0">$1,760.00</td>
-					</tr>
-					<tr>
-						<th scope="row" colspan="3" class="hidden pl-4 pr-3 pt-4 text-right text-sm font-semibold text-gray-900 sm:table-cell sm:pl-0">Total</th>
-						<th scope="row" class="pl-4 pr-3 pt-4 text-left text-sm font-semibold text-gray-900 sm:hidden">Total</th>
-						<td class="pl-3 pr-4 pt-4 text-right text-sm font-semibold text-gray-900 sm:pr-0">$10,560.00</td>
-					</tr>
-					</tfoot>
-				</table>
-			</div>
-		</div>
-
 
 	</support-settings>
 
-	<div class="text-orange-400 text-orange-800 text-blue-400 text-green-500 bg-blue-400 bg-orange-200"></div>
+	<div class="text-orange-400 text-orange-800 text-blue-400 text-green-500 bg-blue-400 bg-orange-200 bg-gray-400"></div>
 
 {% endblock %}

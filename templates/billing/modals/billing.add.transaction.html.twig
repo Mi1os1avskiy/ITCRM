@@ -4,60 +4,59 @@
 
 {% block modal_content %}
 
-	<div class="relative transform overflow-hidden rounded-lg bg-white my-auto text-left shadow-xl transition-all sm:w-full sm:max-w-lg">
-		<div class="flex items-start justify-between py-5 px-6 bg-gray-50">
-			<h2 class="text-lg font-medium text-gray-900">Добавить транзакцию</h2>
-			<div class="ml-3 flex h-7 items-center">
-				<button @click="close(false)" type="button" class="rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-					<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-					</svg>
-				</button>
-			</div>
+	<div class="relative transform overflow-hidden rounded-lg bg-white my-auto text-left shadow-xl transition-all w-full max-w-lg">
+		<div class="flex items-center justify-between py-5 px-6 bg-gray-50">
+			<h2 class="text-lg font-medium text-gray-900 leading-6">Добавить транзакцию</h2>
+			<button @click="close(false)" type="button" class="rounded-md text-gray-400 hover:text-gray-500">
+				<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+				</svg>
+			</button>
 		</div>
 		<div class="px-6 py-5 space-y-5">
 			<div class="flex space-x-6">
 				<div class="flex-1 space-y-1">
-					<p class="text-sm font-medium text-gray-700">Trans UID</p>
-					<input type="text" class="w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:text-gray-400 placeholder:font-light" placeholder="UID">
+					<p class="text-sm font-medium text-gray-700">UID транзакции</p>
+					<input type="text" class="w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400 placeholder:font-light" placeholder="UID">
 				</div>
 				<div class="flex-1 space-y-1">
-					<p class="text-sm font-medium text-gray-700">Payment ID</p>
-					<input type="text" class="w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:text-gray-400 placeholder:font-light" placeholder="ID">
+					<p class="text-sm font-medium text-gray-700">ID оплаты</p>
+					<input type="text" class="w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400 placeholder:font-light" placeholder="ID">
 				</div>
 			</div>
 			<div class="flex space-x-6">
 				<div class="flex-1 space-y-1">
-					<p class="text-sm font-medium text-gray-700">Invoice ID</p>
-					<input type="text" class="w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:text-gray-400 placeholder:font-light" placeholder="ID">
+					<p class="text-sm font-medium text-gray-700">ID инвойса</p>
+					<input type="text" class="w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400 placeholder:font-light" placeholder="ID">
 				</div>
 				<div class="flex-1 space-y-1">
-					<p class="text-sm font-medium text-gray-700">Client ID</p>
-					<input type="text" class="w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:text-gray-400 placeholder:font-light" placeholder="ID">
+					<p class="text-sm font-medium text-gray-700">ID, Email клиента</p>
+					<input type="text" class="w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400 placeholder:font-light" placeholder="ID, Email">
 				</div>
 			</div>
 			<div class="space-y-1">
-				<p class="text-gray-700 text-sm font-medium">Description</p>
+				<p class="text-gray-700 text-sm font-medium">Описание</p>
 				<div class="relative rounded-md">
-					<textarea class="w-full resize-none py-[9px] px-[13px] rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:text-gray-400" placeholder="Описание"></textarea>
+					<textarea class="w-full py-2 px-3 rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400" placeholder="Описание"></textarea>
 				</div>
 			</div>
 			<div class="flex space-x-6">
 				<div class="flex-1 space-y-1">
-					<p class="text-sm font-medium text-gray-700">Amount In</p>
+					<p class="text-sm font-medium text-gray-700">Сумма добавления</p>
 					<div class="relative mt-2 rounded-md shadow-sm">
 						<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-							<span class="font-extralight text-gray-900">$</span>
+							<span class="text-gray-900">$</span>
 						</div>
-						<input type="text" class="w-full rounded-md border-gray-300 pl-10 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:text-gray-400 placeholder:font-light" placeholder="00.00">
-					</div>				</div>
+						<input type="text" class="w-full rounded-md border-gray-300 pl-10 focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400 placeholder:font-light" placeholder="00.00">
+					</div>
+				</div>
 				<div class="flex-1 space-y-1">
-					<p class="text-sm font-medium text-gray-700">Amount Out</p>
+					<p class="text-sm font-medium text-gray-700">Сумма списания</p>
 					<div class="relative mt-2 rounded-md shadow-sm">
 						<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-							<span class="font-extralight text-gray-900">$</span>
+							<span class="text-gray-900">$</span>
 						</div>
-						<input type="text" class="w-full rounded-md border-gray-300 pl-10 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:text-gray-400 placeholder:font-light" placeholder="00.00">
+						<input type="text" class="w-full rounded-md border-gray-300 pl-10 focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400 placeholder:font-light" placeholder="00.00">
 					</div>
 				</div>
 			</div>
@@ -65,7 +64,7 @@
 			{% set payments = payments() %}
 
 			<div class="space-y-1">
-				<p class="text-sm font-medium text-gray-700">Pay method</p>
+				<p class="text-sm font-medium text-gray-700">Метод оплаты</p>
 				<div class="relative mt-2 rounded-md shadow-sm">
 					<select class="w-full border border-gray-300 rounded-md text-sm">
 						<option>None</option>
@@ -76,9 +75,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="sm:flex sm:space-x-3 py-5 px-6 bg-gray-50 sm:text-sm font-medium">
-			<button @click="close(false)" type="button" class="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Отменить</button>
-			<button @click="close(true)" type="button" class="max-sm:mt-3 w-full rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Добавить</button>
+		<div class="flex space-x-3 py-5 px-6 bg-gray-50 text-sm font-medium">
+			<button @click="close(false)" type="button" class="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-50">Отменить</button>
+			<button @click="close(true)" type="button" class="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-white shadow-sm hover:bg-indigo-700">Добавить</button>
 		</div>
 	</div>
 

@@ -49,7 +49,7 @@
 							</div>
 							<div class="flex items-center">
 								<div class="flex-shrink-0">
-									<a href="{{ path('new_ticket') }}" class="relative inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">
+									<a href="{{ path('new_ticket') }}" class="relative inline-flex items-center py-2 pl-3 pr-4 rounded-md border border-transparent bg-indigo-600 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">
 										<svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 											<path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"/>
 										</svg>
@@ -72,7 +72,7 @@
 					<div class="flex mb-4 px-8 justify-between">
 						<div class="flex space-x-4 items-center">
 							<div class="relative flex flex-shrink-0">
-								<button type="button" class="flex space-x-1 rounded-md border border-gray-300 bg-white py-2 px-4 text-left shadow-sm hover:bg-gray-50 text-sm" aria-expanded="false" aria-expanded-autohide>
+								<button type="button" class="flex space-x-1 rounded-md border border-gray-300 bg-white py-2 pl-4 pr-3 text-left shadow-sm hover:bg-gray-50 text-sm" aria-expanded="false" aria-expanded-autohide>
 									<span class="pointer-events-none">Действия</span>
 									<span class="pointer-events-none flex items-center">
 	                                    <svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -96,7 +96,16 @@
 							<nav class="flex items-center text-sm text-gray-700">
 								<a href="#" class="py-2 px-4 border border-gray-300 rounded-l-md hover:bg-gray-50">Ожидают ответа</a>
 								<a href="#" class="-ml-px py-2 px-4 border border-gray-300 hover:bg-gray-50">Все активные</a>
-
+								{% if getGet() %}
+									{% for val, css in ticket_statuses %}
+										{% if getGet() == val %}
+											<div class="z-10 -ml-px flex items-center py-2 px-4 space-x-3 border border-indigo-500 bg-indigo-50 text-indigo-700 cursor-default">
+												<div class="h-2.5 w-2.5 rounded-full bg-{{ css }}-400"></div>
+												<span>{{ val }}</span>
+											</div>
+										{% endif %}
+									{% endfor %}
+								{% endif %}
 								<div class="relative">
 									<button type="button" class="-ml-px p-2 border border-gray-300 rounded-r-md hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 										<svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -132,6 +141,14 @@
 								<input name="search" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Поиск" type="search">
 							</div>
 							<div class="flex items-center">
+								{% if getGet() %}
+									<a href="{{ path('support_tickets') }}" class="inline-flex items-center rounded-l-md border border-gray-300 pl-3 pr-4 py-2 space-x-2 shadow-sm hover:bg-gray-50">
+										<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM8.28033 7.21967C7.98744 6.92678 7.51256 6.92678 7.21967 7.21967C6.92678 7.51256 6.92678 7.98744 7.21967 8.28033L8.93934 10L7.21967 11.7197C6.92678 12.0126 6.92678 12.4874 7.21967 12.7803C7.51256 13.0732 7.98744 13.0732 8.28033 12.7803L10 11.0607L11.7197 12.7803C12.0126 13.0732 12.4874 13.0732 12.7803 12.7803C13.0732 12.4874 13.0732 12.0126 12.7803 11.7197L11.0607 10L12.7803 8.28033C13.0732 7.98744 13.0732 7.51256 12.7803 7.21967C12.4874 6.92678 12.0126 6.92678 11.7197 7.21967L10 8.93934L8.28033 7.21967Z" fill="#6B7280"/>
+										</svg>
+										<span class="text-sm text-gray-700">1</span>
+									</a>
+								{% endif %}
 								<button @click="supportFilters()" type="button" class="inline-flex items-center -ml-px rounded-{% if getGet() %}r-{% endif %}md border border-gray-300 pl-3 pr-4 py-2 shadow-sm hover:bg-gray-50">
 									<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path fill-rule="evenodd" clip-rule="evenodd" d="M4.47102 3.46746C6.27039 3.15991 8.11739 3 10 3C11.8826 3 13.7296 3.15991 15.529 3.46746C15.8007 3.51389 16 3.75747 16 4.04302V5.8223C16 6.28643 15.8222 6.73155 15.5057 7.05974L11.9943 10.7013C11.6778 11.0295 11.5 11.4746 11.5 11.9387V14.3004C11.5 14.832 11.267 15.3348 10.8667 15.6669L9.41389 16.8722C9.24505 17.0122 9.01372 17.0396 8.81883 16.9424C8.62394 16.8453 8.5 16.6409 8.5 16.4167V11.9387C8.5 11.4746 8.32221 11.0295 8.00574 10.7013L4.49426 7.05974C4.17779 6.73155 4 6.28643 4 5.8223V4.04302C4 3.75747 4.19934 3.51389 4.47102 3.46746Z" fill="#6B7280"/>

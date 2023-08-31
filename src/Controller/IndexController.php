@@ -321,7 +321,7 @@ class IndexController extends AbstractController
 	}
 
     /**
-     * @Route("/billing/billing.transactions.html.twig", name="billing_transactions")
+     * @Route("/billing/transactions", name="billing_transactions")
      */
     public function billingTransactions(): Response
     {
@@ -351,7 +351,6 @@ class IndexController extends AbstractController
 
         return $this->render('test.html.twig', [
             'iplogs' => UsersController::ClientsData(),
-			'test' => TestController::class,
         ]);
     }
 }

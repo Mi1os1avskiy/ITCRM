@@ -41,9 +41,13 @@ export const BillingSettingsComponent = {
                 .catch(() => {
                 });
         },
-        billingTransactionsDetails() {
+        billingTransactionsDetails(detailsID: bigint) {
+            console.log(detailsID);
             const self = <any>this;
-            self.$modals(BillingTransactionsDetails).show()
+            const data = {
+                detailsType: detailsID
+            };
+            self.$modals(BillingTransactionsDetails).show(data)
                 .then((data: any) => {
                 })
                 .catch(() => {

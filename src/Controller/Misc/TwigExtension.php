@@ -17,7 +17,8 @@ class TwigExtension extends AbstractExtension
             new TwigFunction('payments', [$this, 'paymentMethods']),
             new TwigFunction('dump', [$this, 'getDump']),
             new TwigFunction('getGet', [$this, 'getGet']),
-			new TwigFunction('test', [$this, 'testFunc'])
+			new TwigFunction('test', [$this, 'testFunc']),
+			new TwigFunction('post', [$this, 'getPost'])
         ];
     }
 
@@ -51,6 +52,16 @@ class TwigExtension extends AbstractExtension
 
         return $get;
     }
+
+	public static function getPost() {
+		static $post;
+
+		if($_POST) {
+			$post = current($_POST);
+		}
+
+		return $post;
+	}
 
     public static function getDump() {
         return dd($_GET);

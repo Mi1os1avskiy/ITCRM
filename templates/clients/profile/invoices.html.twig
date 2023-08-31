@@ -62,7 +62,7 @@
                         {% for invoice in invoices %}
                             <tr class="text-sm {% if invoice.status == 'Draft' %}bg-gray-50{% endif %}">
                                 <td class="py-4 pl-6 pr-3 text-left font-medium text-gray-900 {% if invoice.status == 'Draft' %}text-gray-500{% endif %}">
-                                    <a {% if invoice.status == 'Draft' %}href="{{ path('billing_edit_draft') }}"{% else %}href="{{ path('billing_view_invoice') }}"{% endif %} class="hover:text-indigo-700">{{ invoice.id }}</a>
+                                    <a {% if invoice.status == 'Draft' %}href="{{ path('billing_edit_draft') }}"{% else %}href="{{ path('invoice_overview') }}"{% endif %} class="hover:text-indigo-700">{{ invoice.id }}</a>
                                 </td>
                                 <td class="py-4 px-3 text-left">
                                     {% for val, css in invoice_statuses %}

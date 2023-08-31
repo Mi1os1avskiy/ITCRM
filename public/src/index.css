@@ -56,8 +56,12 @@ input[type="checkbox"], input[type="checkbox"] + label {
 	background: #F9FAFB;
 }
 
-.ticket-answers > button[aria-expanded="true"] .change_color {
+.ticket-answers > button[aria-expanded="true"] .change_text_color {
 	color: #1F2937;
+}
+
+.ticket-answers > button[aria-expanded="true"] .change_icon_color {
+	color: #374151;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
