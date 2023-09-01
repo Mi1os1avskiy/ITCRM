@@ -21,23 +21,25 @@
 							<th class="w-[184px] p-3 text-left font-medium">Статус</th>
 							<th class="w-[100px] p-3 text-left font-medium">Приоритет</th>
 							<th class="w-[184px] p-3 text-left font-medium">Департамент</th>
-							<th class="p-3 pr-6 text-left font-medium">Ответ</th>
+							<th class="w-[100px] p-3 pr-6 text-left font-medium">Ответ</th>
 						</tr>
 						</thead>
-						<tbody class="divide-y divide-gray-200 bg-white">
+						<tbody class="divide-y bg-white">
 
 						{% for ticket in tickets %}
 
 							<tr>
-								<td class="whitespace-nowrap py-4 pl-6 pr-3">
-									<a href="{{ path('support_ticket_answer') }}" class="text-gray-900 text-sm font-medium hover:text-indigo-700" title="{{ ticket.theme }}">#{{ ticket.id }} - {{ ticket.theme }}</a>
+								<td>
+									<a href="{{ path('support_ticket_answer') }}" class="py-4 pl-6 pr-3 text-gray-900 text-sm font-medium hover:text-indigo-700" title="{{ ticket.theme }}">#{{ ticket.id }} - {{ ticket.theme }}</a>
 								</td>
-								<td class="whitespace-nowrap py-4 px-3">
-									{% for val, css in ticket_statuses %}
-										{% if ticket.status == val %}
-											<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if val == 'In progress' %}200{% else %}100{% endif %} text-{{ css }}-800">{{ val }}</span>
-										{% endif %}
-									{% endfor %}
+								<td>
+									<div class="flex">
+										{% for val, css in ticket_statuses %}
+											{% if ticket.status == val %}
+												<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if val == 'In progress' %}200{% else %}100{% endif %} text-{{ css }}-800">{{ val }}</span>
+											{% endif %}
+										{% endfor %}
+									</div>
 								</td>
 								<td class="whitespace-nowrap py-4 px-3">
 									{% if ticket.priority == 3 %}
@@ -51,8 +53,8 @@
 										<div class="mt-0.5 h-0.5 w-2.5 rounded bg-red-400"></div>
 									{% endif %}
 								</td>
-								<td class="whitespace-nowrap py-4 px-3 text-sm">
-									<p>{{ ticket.dept }}</p>
+								<td class="whitespace-nowrap py-4 px-3">
+									<p class="text-gray-900 text-sm">{{ ticket.dept }}</p>
 								</td>
 								<td class="whitespace-nowrap py-4 pl-3 pr-6 text-sm text-gray-500">{{ ticket.time }}</td>
 							</tr>

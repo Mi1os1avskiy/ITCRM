@@ -190,12 +190,12 @@
 												<td class="w-10 relative pl-6">
 													<input type="checkbox" class="absolute -mt-2 h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
 												</td>
-												<td class="min-w-[293px] px-3 py-4 text-sm text-gray-900">
-													<a href="{{ path('support_ticket_answer') }}" class="font-medium hover:text-indigo-700">
+												<td class="min-w-[293px] px-3 text-sm text-gray-900">
+													<a href="{{ path('support_ticket_answer') }}" class="py-4 font-medium hover:text-indigo-700">
 														<p class="line-clamp-1 overflow-hidden" title="#{{ ticket.id }} - {{ ticket.theme }}">#{{ ticket.id }} - {{ ticket.theme }}</p>
 													</a>
 												</td>
-												<td class="whitespace-nowrap px-3 py-4">
+												<td class="whitespace-nowrap px-3">
 													{% for val, css in ticket_statuses %}
 														{% if ticket.status == val %}
 															<span class="inline-block align-middle px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if css == 'orange' %}200{% else %}100{% endif %} text-{{ css }}-800 cursor-default">{{ val }}</span>

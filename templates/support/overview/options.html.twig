@@ -10,19 +10,19 @@
 				{% include 'support/support.header.view.ticket.html.twig' %}
 			{% endblock %}
 
-			<div class="my-6 px-8">
-				<form class="space-y-5 divide-y divide-gray-200">
-					<div class="grid grid-cols-3 items-start gap-6">
-						<p class="text-gray-700 text-sm font-medium self-center">Тема тикета</p>
-						<div class="col-span-2">
-							<input type="text" class="block w-full py-[9px] px-[13px] text-sm text-gray-900 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" value="{{ data.ticket_title }}">
-						</div>
+			<div class="py-6 px-8">
+				<form class="space-y-5">
+					<div class="flex space-x-6">
+						<p class="w-80 text-gray-700 text-sm font-medium self-center">Тема тикета</p>
+						<input type="text" class="flex-1 py-2 px-4 text-sm text-gray-900 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" value="{{ data.ticket_title }}">
 					</div>
 
-					<div class="pt-5 grid grid-cols-3 items-start gap-6">
-						<p class="text-sm font-medium text-gray-700 self-center">Назначен</p>
-						<div class="relative col-span-2">
-							<button type="button" class="flex items-center w-[345px] py-[9px] px-[13px] space-x-2 rounded-md border border-gray-300 bg-white text-sm text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500" aria-expanded="false" aria-expanded-autohide>
+					<hr>
+
+					<div class="flex space-x-6">
+						<p class="w-80 text-sm font-medium text-gray-700 self-center">Назначен</p>
+						<div class="relative">
+							<button type="button" class="flex items-center w-80 py-2 px-3 space-x-2 rounded-md border border-gray-300 bg-white text-sm text-left shadow-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 								<svg class="shrink-0 pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10ZM12.5 7.5C12.5 8.88071 11.3807 10 10 10C8.61929 10 7.5 8.88071 7.5 7.5C7.5 6.11929 8.61929 5 10 5C11.3807 5 12.5 6.11929 12.5 7.5ZM10 12C8.04133 12 6.30187 12.9385 5.20679 14.3904C6.39509 15.687 8.1026 16.5 10 16.5C11.8974 16.5 13.6049 15.687 14.7932 14.3904C13.6981 12.9385 11.9587 12 10 12Z" fill="#6B7280"/>
 								</svg>
@@ -32,22 +32,24 @@
 								</svg>
 							</button>
 
-							<ul class="absolute z-10 left-0 mt-1 max-h-60 w-[345px] overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+							<ul class="absolute z-10 left-0 top-10 w-80 overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
 								<li>
-									<button type="button" class="w-full py-3 px-4 text-gray-400 text-left hover:bg-gray-50">Не назначен</button>
+									<button type="button" class="w-full py-2 px-4 text-gray-400 text-left hover:bg-gray-50">Не назначен</button>
 								</li>
 								<li>
-									<button type="button" class="w-full py-3 px-4 text-gray-700 text-left hover:bg-gray-50">Пункт 2</button>
+									<button type="button" class="w-full py-2 px-4 text-gray-700 text-left hover:bg-gray-50">Пункт 2</button>
 								</li>
 								<li>
-									<button type="button" class="w-full py-3 px-4 text-gray-700 text-left hover:bg-gray-50">Пункт 3</button>
+									<button type="button" class="w-full py-2 px-4 text-gray-700 text-left hover:bg-gray-50">Пункт 3</button>
 								</li>
 							</ul>
 						</div>
 					</div>
 
-					<div class="pt-5 flex justify-end">
-						<button type="submit" class="rounded-md border border-transparent bg-indigo-600 py-2 px-[17px] text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Сохранить изменения</button>
+					<hr>
+
+					<div class="flex justify-end">
+						<button type="submit" class="rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">Сохранить изменения</button>
 					</div>
 				</form>
 			</div>
