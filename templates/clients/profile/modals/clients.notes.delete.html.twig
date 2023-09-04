@@ -1,15 +1,15 @@
 {% extends'/misc/modals/base.modal.html.twig' %}
 
-{% block modal_name %}profile-notes-delete{% endblock %}
+{% block modal_name %}profile-note-delete{% endblock %}
 
 {% block modal_content %}
 
-	<div class="relative transform overflow-hidden rounded-lg bg-white my-auto p-6 space-y-6 text-left shadow-xl transition-all sm:w-full sm:max-w-lg">
-		<h3 class="text-lg font-medium text-gray-900">Удалить заметку</h3>
-		<div class="text-sm text-gray-700">Вы уверены, что хотите удалить заметку?</div>
-		<div class="sm:flex sm:space-x-3 sm:text-sm font-medium">
-			<button @click="close(false)" type="button" class="w-full rounded-md border border-gray-300 px-4 py-2 text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Отменить</button>
-			<button @click="close(true)" type="button" class="max-sm:mt-3 w-full rounded-md border border-transparent bg-red-600 px-4 py-2 text-white text-sm font-medium shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Удалить</button>
+	<div class="w-96 transform overflow-hidden rounded-lg bg-white my-auto p-6 space-y-6 text-left shadow-xl transition-all">
+		<h3 class="text-gray-900 text-lg font-medium">Удалить заметку</h3>
+		<div class="text-gray-700 text-sm">Вы уверены, что хотите удалить заметку?</div>
+		<div class="flex space-x-3 text-sm font-medium">
+			<button @click="close(false)" type="button" class="w-full py-2 px-4 rounded-md border border-gray-300 text-gray-700 shadow-sm hover:bg-gray-50">Отменить</button>
+			<button @click="close(true)" type="button" class="w-full py-2 px-4 rounded-md border border-transparent bg-red-600 text-white shadow-sm hover:bg-red-700">Удалить</button>
 		</div>
 	</div>
 

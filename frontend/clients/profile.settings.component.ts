@@ -6,9 +6,7 @@ const OverviewLogs = 'overview-logs-modal';
 const InvoicesFilters = 'invoices-filters';
 const CreditsAdd = 'credits-add';
 const CreditsDelete = 'credits-delete';
-const NotesAdd = 'clients-notes-add';
-const NotesEdit = 'clients-notes-edit';
-const NotesDelete = 'profile-notes-delete';
+const NoteDelete = 'profile-note-delete';
 
 export const ProfileSettingsComponent = {
 
@@ -72,26 +70,19 @@ export const ProfileSettingsComponent = {
 				.catch(() => {
 				});
 		},
-		notesAdd() {
+		noteAdd() {
 			const self = <any>this;
-			self.$modals(NotesAdd).show()
-				.then((data: any) => {
-				})
-				.catch(() => {
-				});
+			self.$notifications('global').notify(
+				new Notification(NotificationLevels.SUCCESS, "Добавление заметки", "Заметка успешно добавлена")
+			);
 		},
-		notesEdit() {
+		noteDelete() {
 			const self = <any>this;
-			self.$modals(NotesEdit).show()
+			self.$modals(NoteDelete).show()
 				.then((data: any) => {
-				})
-				.catch(() => {
-				});
-		},
-		notesDelete() {
-			const self = <any>this;
-			self.$modals(NotesDelete).show()
-				.then((data: any) => {
+					self.$notifications('global').notify(
+						new Notification(NotificationLevels.SUCCESS, "Удаление заметки", "Заметка успешно удалена")
+					);
 				})
 				.catch(() => {
 				});
