@@ -73,7 +73,50 @@
 					</div>
 				</div>
 
-				
+				<div class="pt-5 space-y-5">
+					<div class="flex space-x-10 text-gray-900 text-lg font-medium">
+						<div class="w-1/2">Ограничения</div>
+						<div class="w-1/2">Разрешения</div>
+					</div>
+					<div class="flex space-x-10 text-gray-700 text-sm font-medium">
+						<div class="w-1/2 p-5 bg-gray-50 border-b rounded-xl">
+							<div class="flex items-center justify-between pb-5 border-b">
+								<div>Запретить пополнение баланса</div>
+								<label for="toggle_topup" class="relative flex items-center cursor-pointer">
+									<input type="checkbox" id="toggle_topup" class="sr-only">
+									<div class="toggle block bg-gray-200 w-11 h-6 rounded-full"></div>
+									<div class="dot absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition"></div>
+								</label>
+							</div>
+							<div class="flex items-center justify-between py-5 border-b">
+								<div>Запретить оплаты инвойсов</div>
+								<label for="toggle_invoicing" class="relative flex items-center cursor-pointer">
+									<input type="checkbox" id="toggle_invoicing" class="sr-only">
+									<div class="toggle block bg-gray-200 w-11 h-6 rounded-full"></div>
+									<div class="dot absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition"></div>
+								</label>
+							</div>
+							<div class="flex items-center justify-between pt-5">
+								<div>Запретить создание новых заказов и продлений</div>
+								<label for="toggle_orders" class="relative flex items-center cursor-pointer">
+									<input type="checkbox" id="toggle_orders" class="sr-only">
+									<div class="toggle block bg-gray-200 w-11 h-6 rounded-full"></div>
+									<div class="dot absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition"></div>
+								</label>
+							</div>
+						</div>
+						<div class="w-1/2 p-5 bg-gray-50 border-b rounded-xl">
+							<div class="flex items-center justify-between pb-5 border-b">
+								<div>Разрешить отмену услуг в ЛК со штрафом</div>
+								<label for="toggle_services" class="relative flex items-center cursor-pointer">
+									<input type="checkbox" id="toggle_services" class="sr-only">
+									<div class="toggle block bg-gray-200 w-11 h-6 rounded-full"></div>
+									<div class="dot absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition"></div>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
 
 				<div class="flex pt-5 justify-center">
 					<button @click="profileSaveChanges()" type="button" class="py-2 px-4 rounded-md border border-transparent bg-indigo-600 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">Сохранить изменения</button>

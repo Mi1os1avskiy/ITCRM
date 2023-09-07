@@ -4,13 +4,20 @@
 
 {% block modal_content %}
 
-	<div class="relative w-full max-w-lg transform overflow-hidden rounded-lg bg-white my-auto p-6 space-y-6 text-left shadow-xl transition-all">
-		<h3 class="text-lg font-medium text-gray-900">Отключить 2FA</h3>
-		<div class="text-sm text-gray-700">
+	<div class="relative w-full max-w-lg transform overflow-hidden rounded-lg bg-white my-auto text-left shadow-xl transition-all">
+		<div class="flex items-center justify-between py-5 px-6 bg-gray-50">
+			<h2 class="text-lg leading-6 font-medium text-gray-900">Отключить 2FA</h2>
+			<button @click="close(false)" type="button" class="rounded-md text-gray-400 hover:text-gray-500">
+				<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+				</svg>
+			</button>
+		</div>
+		<div class="py-5 px-6 text-sm text-gray-700">
 			<p>Функция была включена пользователем.</p>
 			<p><span class="text-red-600">Внимание:</span> отключение этой функции необратимо!</p>
 		</div>
-		<div class="flex space-x-3 text-sm font-medium">
+		<div class="flex py-5 px-6 space-x-3 text-sm font-medium">
 			<button @click="close(false)" type="button" class="w-full py-2 px-4 rounded-md border border-gray-300 text-gray-700 shadow-sm hover:bg-gray-50">Отмена</button>
 			<button @click="close(true)" type="button" class="w-full py-2 px-4 rounded-md border border-transparent bg-red-600 text-white shadow-sm hover:bg-red-700">Отключить</button>
 		</div>
