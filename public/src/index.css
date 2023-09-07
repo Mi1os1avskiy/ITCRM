@@ -80,3 +80,10 @@ input[type="checkbox"], input[type="checkbox"] + label {
 	border-color: mediumpurple;
 }
 
+input:checked ~ .dot {
+	transform: translateX(100%);
+}
+
+input:checked ~ .toggle {
+	background-color: #4F46E5;
+}

@@ -143,7 +143,7 @@
 						{% for val, css in invoice_statuses %}
 							<div class="relative flex items-center pl-4 space-x-4">
 								<input id="{{ val }}" name="{{ val }}" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-								<div class="w-2.5 h-2.5 rounded-full bg-{{ css }}-400"></div>
+								<span class="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-{{ css }}-400"></span>
 								<label for="{{ val }}" class="w-full py-3 text-gray-700 text-left">{{ val }}</label>
 							</div>
 						{% endfor %}

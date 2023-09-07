@@ -1,8 +1,29 @@
+import {NotificationLevels, Notification} from "../misc/notifications/notification";
+import {PasswordDisplayingMixin, PasswordGenerator} from "is-core-frontend";
+
 export const ClientsCreateComponent = {
 	data() {
 		return {
 			personalData: {}
 		}
+	},
+	mixins: [
+		PasswordDisplayingMixin
+	],
+	methods: {
+		clientAdd() {
+			const self = <any>this;
+			self.$notifications('global').notify(
+				new Notification(NotificationLevels.SUCCESS, "Новый клиент", "Успешно добавлен")
+			);
+		},
+		generateNewPassword() {
+			const self = <any>this;
+			self.password = PasswordGenerator.generate();
+			if (!!self.isPasswordHidden) {
+				self.toggleShowHide();
+			}
+		},
 	},
 	validators: {
 		'personalData.firstname': [
@@ -69,7 +90,7 @@ export const ClientsCreateComponent = {
 				}
 			}
 		],
-		'personalData.password': [
+		'password': [
 			{
 				handler: (val: string) => {
 					return !!val;

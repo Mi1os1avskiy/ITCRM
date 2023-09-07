@@ -1,4 +1,5 @@
 import {NotificationLevels, Notification} from "../misc/notifications/notification";
+import {PasswordDisplayingMixin, PasswordGenerator} from "is-core-frontend";
 
 const ProfileSettings2faModalIdentity = 'profile-settings-2fa-modal';
 const ProfileSettingsPasswordModalIdentity = 'profile-settings-password-modal';
@@ -15,7 +16,23 @@ export const ProfileSettingsComponent = {
 			personalData: {}
 		}
 	},
+	mixins: [
+		PasswordDisplayingMixin
+	],
 	methods: {
+		generateNewPassword() {
+			const self = <any>this;
+			self.password = PasswordGenerator.generate();
+			if (!!self.isPasswordHidden) {
+				self.toggleShowHide();
+			}
+		},
+		profileSaveChanges() {
+			const self = <any>this;
+			self.$notifications('global').notify(
+				new Notification(NotificationLevels.SUCCESS, "Редактирование", "Изменения успешно сохранены")
+			);
+		},
 		disable2fa() {
 			const self = <any>this;
 			self.$modals(ProfileSettings2faModalIdentity).show()
