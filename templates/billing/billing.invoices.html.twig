@@ -121,7 +121,7 @@
 								<td class="px-3 py-4 text-left">{{ invoice.payment }}</td>
 								<td class="px-3 py-4 text-left">{{ invoice.excerpt }}</td>
 								<td class="px-3 py-4 text-left">{% if invoice.payment %}{{ invoice.paydate }}{% endif %}</td>
-								<td class="pl-3 pr-6 py-4 text-right">${{ invoice.amount }}</td>
+								<td class="pl-3 pr-6 py-4 text-right">${{ invoice.amount|number_format(2, '.', '') }}</td>
 							</tr>
 
 						{% endfor %}

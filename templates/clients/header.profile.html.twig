@@ -8,6 +8,7 @@
 	{'eng': 'transactions', 'rus': 'Транзакции'},
 	{'eng': 'emails', 'rus': 'Письма'},
 	{'eng': 'notes', 'rus': 'Заметки'},
+	{'eng': 'duplicates', 'rus': 'Дубликаты аккаунтов'},
 	] %}
 
 <div class="bg-gray-50 mx-auto px-8">
@@ -31,7 +32,7 @@
 <nav class="bg-gray-50 border-b px-8">
 	<div class="-mb-px flex pt-4 space-x-8">
 		{% for tab in tabs %}
-			<a href="/clients/{{ tab.eng }}" class="pb-[14px] border-b-2 text-sm font-medium leading-5 hover:border-gray-300 hover:text-gray-700 {% if currentTab == tab.eng %} border-indigo-500 text-indigo-600 pointer-events-none{% else %} text-gray-500 {% endif %}">{{ tab.rus|capitalize }}</a>
+			<a href="/clients/{{ tab.eng }}" class="pb-[14px] border-b-2 border-transparent text-sm font-medium leading-5 hover:border-gray-300 hover:text-gray-700 {% if currentTab == tab.eng %} border-indigo-500 text-indigo-600 pointer-events-none{% else %} text-gray-500 {% endif %}">{{ tab.rus|capitalize }}</a>
 		{% endfor %}
 	</div>
 </nav>

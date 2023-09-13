@@ -65,7 +65,6 @@ class IndexController extends AbstractController
     public function overview(): Response
     {
         return $this->render('clients/profile/overview.html.twig', [
-            'title' => 'Overview',
             'clients_data' => UsersController::ClientsData(),
         ]);
     }
@@ -76,7 +75,6 @@ class IndexController extends AbstractController
     public function profile(): Response
     {
         return $this->render('clients/profile/profile.html.twig', [
-            'title' => 'Profile',
             'users' => UsersController::CreateTable(),
         ]);
     }
@@ -87,7 +85,6 @@ class IndexController extends AbstractController
     public function services(): Response
     {
         return $this->render('clients/profile/services.html.twig', [
-            'title' => 'Services',
             'users' => UsersController::CreateTable(),
             'services' => ServicesController::allServices(),
         ]);
@@ -99,7 +96,6 @@ class IndexController extends AbstractController
     public function invoices(): Response
     {
         return $this->render('clients/profile/invoices.html.twig', [
-            'title' => 'Invoices',
             'users' => UsersController::CreateTable(),
             'invoices' => InvoicesController::allInvoices(),
         ]);
@@ -111,7 +107,6 @@ class IndexController extends AbstractController
     public function tickets(): Response
     {
         return $this->render('clients/profile/tickets.html.twig', [
-            'title' => 'Tickets',
             'tickets' => TicketsController::ticketsTable(),
         ]);
     }
@@ -122,7 +117,6 @@ class IndexController extends AbstractController
     public function credits(): Response
     {
         return $this->render('clients/profile/credits.html.twig', [
-            'title' => 'Credits',
             'clients_data' => UsersController::ClientsData(),
         ]);
     }
@@ -133,7 +127,6 @@ class IndexController extends AbstractController
     public function transactions(): Response
     {
         return $this->render('clients/profile/transactions.html.twig', [
-            'title' => 'Transactions',
             'transactions' => TransactionsController::allTransactions(),
         ]);
     }
@@ -144,7 +137,6 @@ class IndexController extends AbstractController
     public function emails(): Response
     {
         return $this->render('clients/profile/emails.html.twig', [
-            'title' => 'Emails',
             'clients_data' => UsersController::ClientsData(),
         ]);
     }
@@ -155,10 +147,19 @@ class IndexController extends AbstractController
     public function notes(): Response
     {
         return $this->render('clients/profile/notes.html.twig', [
-            'title' => 'Notes',
             'clients_data' => UsersController::ClientsData(),
         ]);
     }
+
+	/**
+	 * @Route("/clients/duplicates", name="duplicates")
+	 */
+	public function duplicates(): Response
+	{
+		return $this->render('clients/profile/duplicates.html.twig', [
+			'duplicates' => UsersController::duplicates(),
+		]);
+	}
 
 	/**
 	 * @Route("/clients/letters", name="letters")

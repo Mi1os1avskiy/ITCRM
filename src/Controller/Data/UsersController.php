@@ -175,4 +175,19 @@ class UsersController
 
         return $list;
     }
+
+	public static function duplicates() {
+		$list = [
+			['id' => '30045', 'email' => 'sapolsky@stanford.com', 'name' => 'Robert Sapolsky', 'balance' => 22, 'services' => 32, 'status' => 'Active', 'registered' => '17/02/2023'],
+			['id' => '30045', 'email' => 'sapolsky@stanford.com', 'name' => 'Robert Sapolsky', 'balance' => 22, 'services' => 32, 'status' => 'Active', 'registered' => '17/02/2023'],
+			['id' => '30045', 'email' => 'sapolsky@stanford.com', 'name' => 'Robert Sapolsky', 'balance' => 22, 'services' => 32, 'status' => 'Active', 'registered' => '17/02/2023'],
+			['id' => '30045', 'email' => 'sapolsky@stanford.com', 'name' => 'Robert Sapolsky', 'balance' => 22, 'services' => 32, 'status' => 'Active', 'registered' => '17/02/2023'],
+			['id' => '30045', 'email' => 'sapolsky@stanford.com', 'name' => 'Robert Sapolsky', 'balance' => 22, 'services' => 32, 'status' => 'Active', 'registered' => '17/02/2023'],
+			['id' => '30045', 'email' => 'sapolsky@stanford.com', 'name' => 'Robert Sapolsky', 'balance' => 22, 'services' => 32, 'status' => 'Active', 'registered' => '17/02/2023'],
+			['id' => '30045', 'email' => 'sapolsky@stanford.com', 'name' => 'Robert Sapolsky', 'balance' => 22, 'services' => 32, 'status' => 'Active', 'registered' => '17/02/2023'],
+			['id' => '30045', 'email' => 'sapolsky@stanford.com', 'name' => 'Robert Sapolsky', 'balance' => 22, 'services' => 32, 'status' => 'Active', 'registered' => '17/02/2023'],
+		];
+
+		return $list;
+	}
 }

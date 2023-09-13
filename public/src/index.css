@@ -87,3 +87,63 @@ input:checked ~ .dot {
 input:checked ~ .toggle {
 	background-color: #4F46E5;
 }
+
+
+/*[popover] {*/
+/*	inset: unset;*/
+/*	bottom: anchor(top);*/
+/*	left: anchor(center);*/
+/*	translate: -50%;*/
+/*	margin: 0.25rem 0;*/
+/*}*/
+
+@layer demo {
+	[popovertarget] {
+		anchor-name: --select-button;
+	}
+	.select-menu:has(:open) svg {
+		rotate: 180deg;
+	}
+	option:hover {
+		background: lightblue;
+	}
+	svg {
+		transition: rotate 0.2s;
+	}
+	[popover] {
+		anchor-default: --select-button;
+		width: anchor-size(width);
+		left: anchor(left);
+	}
+}
+
+:root {
+}
+
+
+
+
+.popover__content {
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	bottom: 60px;
+}
+.popover__content:before {
+	position: absolute;
+	z-index: -1;
+	content: "";
+	right: calc(50% - 10px);
+	bottom: -8px;
+	border-style: solid;
+	border-width: 10px 10px 0 10px;
+	border-color: #1F2937 transparent transparent transparent;
+
+}
+.popover__wrapper:hover .popover__content {
+	z-index: 10;
+	opacity: 1;
+	visibility: visible;
+	transform: translate(0, 4px);
+	transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
