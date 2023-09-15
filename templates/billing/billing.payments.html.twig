@@ -1,0 +1,141 @@
+{% extends 'billing/billing.base.html.twig' %}
+
+{% block content %}
+
+	<billing-settings inline-template>
+
+		<div>
+
+			{% block header %}
+
+				<div class="flex items-center justify-between py-4 px-8 bg-gray-50 border-b">
+					<h3 class="text-lg font-semibold">{{ title }}</h3>
+					<button type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md bg-indigo-600 shadow-sm hover:bg-indigo-700">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+							<path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="white"/>
+						</svg>
+						<span class="text-white text-sm font-medium">Добавить</span>
+					</button>
+				</div>
+
+			{% endblock %}
+
+			{% block control %}
+
+				<div class="flex pt-6 px-8 space-x-3">
+					<input type="search" class="w-64 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400" placeholder="Email или ID клиента">
+					<input type="search" class="w-40 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400" placeholder="Payment ID">
+					<input type="search" class="w-40 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400" placeholder="Основной инвойс">
+					<input type="search" class="w-40 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400" placeholder="UID">
+				</div>
+
+			{% endblock %}
+
+			{% block table %}
+
+				<div class="py-4 px-8">
+					<div class="min-w-full overflow-hidden overflow-x-auto border rounded-t-lg">
+
+						<table class="min-w-full divide-y divide-gray-200">
+							<thead>
+							<tr class="bg-gray-50 text-gray-900 text-sm border-b border-gray-300">
+								<th class="w-[92px] p-3 pl-6 text-left font-medium truncate">Pay ID</th>
+								<th class="w-[191px] p-3 text-left font-medium">Дата</th>
+								<th class="w-[176px] p-3 text-left font-medium">Клиент</th>
+								<th class="w-[112px] p-3 text-left font-medium">Сумма</th>
+								<th class="w-[136px] p-3 text-left font-medium truncate">Способ оплаты</th>
+								<th class="p-3 text-left font-medium">Описание</th>
+								<th class="w-[114px] p-3 pr-6 text-left font-medium">Статус</th>
+							</tr>
+							</thead>
+							<tbody class="divide-y divide-gray-200 bg-white">
+
+							{% for i in payments %}
+
+								<tr class="text-sm">
+									<td class="py-4 pl-6 pr-3 text-gray-500">{{ i.id }}</td>
+									<td class="whitespace-nowrap py-4 px-3 text-gray-500 cursor-default">{{ i.date }}, {{ i.time }} ({{ i.loc }})</td>
+									<td class="py-4 px-3">
+										<a href="{{ path('overview') }}" class="text-gray-900 font-medium truncate hover:text-indigo-700">{{ i.client }}</a>
+									</td>
+									<td class="py-4 px-3 text-gray-500 cursor-default">${{ i.amount|number_format(2, '.', '') }}</td>
+									<td class="py-4 px-3 text-gray-500 cursor-default">{{ i.paymethod }}</td>
+									<td class="py-4 px-3 cursor-default">
+										{% if i.description.type == 'balance' %}
+										<p class="text-gray-500">Пополнение баланса</p>
+										{% else %}
+										<p class="line-clamp-1 overflow-hidden">
+											<span class="text-gray-500">Основной инвойс: </span>
+											<a href="{{ path('invoice_overview') }}" class="text-gray-900 font-medium hover:text-indigo-700">{{ i.description.invoice }}</a>
+										</p>
+										<p class="w-48 min-w-full text-gray-500 line-clamp-1 overflow-hidden" title="{{ i.description.type }} #{{ i.description.invoice }}{% for j in i.description.details %}&#10;{{ j }}{% endfor %}">{{ i.description.details|first }}</p>
+										{% endif %}
+									</td>
+									<td class="py-4 pl-3 pr-6 text-gray-500 font-medium cursor-default">
+										{% for val, css in payment_statuses %}
+											{% if i.status == val %}
+												<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if css == 'orange' %}200{% else %}100{% endif %} text-{{ css }}-800 whitespace-nowrap">{{ val }}</span>
+											{% endif %}
+										{% endfor %}
+									</td>
+								</tr>
+
+							{% endfor %}
+
+							</tbody>
+						</table>
+
+					</div>
+
+					<div class="-mt-px w-full flex items-center justify-between border rounded-b-lg bg-gray-50 py-4 px-6">
+						<div class="flex flex-1 justify-between sm:hidden">
+							<a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
+							<a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+						</div>
+						<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+							<div>
+								<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+									<a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+										<span class="sr-only">Previous</span>
+										<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+											<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+										</svg>
+									</a>
+									<a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
+									<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
+									<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
+									<span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
+									<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
+									<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
+									<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
+									<a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+										<span class="sr-only">Next</span>
+										<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+											<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+										</svg>
+									</a>
+								</nav>
+							</div>
+							<div class="flex items-center space-x-4">
+								<p class="text-sm text-gray-500">1 - {{ payments|length }} из {{ payments|length }}</p>
+								<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
+									{% for i in 1..4 %}
+										<option>{{ i * 25 }}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			{% endblock %}
+
+			{% block modals %}
+
+			{% endblock %}
+
+		</div>
+
+	</billing-settings>
+
+{% endblock %}

@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Controller\Data\InvoicesController;
 use App\Controller\Data\LettersController;
 use App\Controller\Data\OrdersController;
+use App\Controller\Data\PaymentsController;
 use App\Controller\Data\ServicesController;
 use App\Controller\Data\TicketsController;
 use App\Controller\Data\TransactionsController;
@@ -331,6 +332,17 @@ class IndexController extends AbstractController
             'transactions' => TransactionsController::allTransactions(),
         ]);
     }
+
+	/**
+	 * @Route("/billing/payments", name="billing_payments")
+	 */
+	public function billingPayments(): Response
+	{
+		return $this->render('billing/billing.payments.html.twig', [
+			'title' => 'Платежи',
+			'payments' => PaymentsController::allPayments(),
+		]);
+	}
 
 	/**
 	 * @Route("/orders", name="orders")

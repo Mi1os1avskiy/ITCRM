@@ -122,7 +122,7 @@ input:checked ~ .toggle {
 
 
 
-
+/*	tooltips	*/
 .popover__content {
 	opacity: 0;
 	visibility: hidden;
@@ -147,3 +147,4 @@ input:checked ~ .toggle {
 	transform: translate(0, 4px);
 	transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
 }
+/*	end of tooltips	*/
