@@ -44,26 +44,32 @@
                     {% for item in transactions %}
 
                         <tr class="text-sm text-gray-500">
-                            <td class="pl-6 pr-3 py-4">{{ item.date }}</td>
-                            <td class="px-3 py-4">
-	                            <p class="w-[166px] truncate" title="{{ item.id }}">{{ item.id }}</p>
+                            <td class="pl-6 pr-3 py-4 cursor-default">
+	                            <p>{{ item.date }}</p>
                             </td>
-                            <td class="px-3 py-4">
+                            <td class="px-3 py-4 cursor-default">
+	                            <p class="w-[106px] truncate" title="{{ item.id }}">{{ item.id }}</p>
+                            </td>
+                            <td class="px-3 py-4 cursor-default">
                                 {% for val, css in transaction_statuses %}
                                     {% if item.status == val %}
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if val == "Возвращена" %}200{% else %}100{% endif%} text-{{ css }}-800 truncate">{{ val }}</span>
+                                        <div class="w-fit px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if val == "Возвращена" %}200{% else %}100{% endif%} text-{{ css }}-800 truncate">{{ val }}</div>
                                     {% endif %}
                                 {% endfor %}
                             </td>
-                            <td class="whitespace-nowrap px-3 py-4">{{ item.method }}</td>
-                            <td class="whitespace-nowrap px-3 py-4">
+                            <td class="whitespace-nowrap px-3 py-4 cursor-default">
+	                            <p>{{ item.method }}</p>
+                            </td>
+                            <td class="whitespace-nowrap px-3 py-4 cursor-default">
 	                            {% if item.invoice_exist %}
 		                            Инвойс <a href="{{ path('invoice_overview') }}" class="text-gray-900 hover:text-indigo-700">{{ item.invoice }}</a>
 	                            {% else %}
-		                            {{ item.description }}
+		                            <p>{{ item.description }}</p>
 	                            {% endif %}
                             </td>
-                            <td class="pl-3 pr-6 py-4 text-right">${{ item.amount|number_format('2', '.', '') }}</td>
+	                        <td class="pl-3 pr-6 py-4 text-right cursor-default">
+		                        <p>${{ item.amount|number_format('2', '.', '') }}</p>
+	                        </td>
                         </tr>
 
                     {% endfor %}
@@ -101,7 +107,7 @@
                             </nav>
                         </div>
                         <div class="flex items-center space-x-4">
-                            <p class="text-sm text-gray-500">1 - 10 из 10</p>
+                            <p class="text-sm text-gray-500">1 - {{ transactions|length }} из {{ transactions|length }}</p>
                             <select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
                                 {% for i in range(low=25, high=100, step=25) %}
                                     <option>{{ i }}</option>
