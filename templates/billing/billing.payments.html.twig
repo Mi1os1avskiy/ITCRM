@@ -68,7 +68,7 @@
 											<span class="text-gray-500">Основной инвойс: </span>
 											<a href="{{ path('invoice_overview') }}" class="text-gray-900 font-medium hover:text-indigo-700">{{ i.description.invoice }}</a>
 										</p>
-										<p class="w-48 min-w-full text-gray-500 line-clamp-1 overflow-hidden" title="{{ i.description.type }} #{{ i.description.invoice }}{% for j in i.description.details %}&#10;{{ j }}{% endfor %}">{{ i.description.details|first }}</p>
+										<p class="w-48 min-w-full text-gray-500 line-clamp-1 overflow-hidden" title="Основной инвойс: {{ i.description.invoice }}{% for j in i.description.details %}&#10;{{ j }}{% endfor %}">{{ i.description.details|first }}</p>
 										{% endif %}
 									</td>
 									<td class="py-4 pl-3 pr-6 text-gray-500 font-medium cursor-default">
