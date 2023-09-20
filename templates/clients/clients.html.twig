@@ -5,172 +5,180 @@
 {% block main %}
 
 	<clients-module inline-template>
-		<div class="flex flex-1 flex-col">
-			<main class="flex-1 mb-24">
+		<main class="mb-24">
 
-				{% block content %}
+			{% block content %}
 
-					{% block header %}
+				{% block header %}
 
-						<div class="px-8 py-4 bg-gray-50 border-b border-gray-200">
-							<div class="flex justify-between space-x-4">
-								<p class="flex items-center font-semibold text-lg text-gray-900">{{ title }}</p>
-								<a href="{{ path('new_user') }}" class="inline-flex items-center rounded-md border-0 bg-indigo-600 pl-[15px] pr-[17px] py-[9px] text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-									<svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-										<path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"/>
-									</svg>
-									<span>Добавить</span>
-								</a>
-							</div>
+					<div class="px-8 py-4 bg-gray-50 border-b border-gray-200">
+						<div class="flex justify-between space-x-4">
+							<p class="flex items-center font-semibold text-lg text-gray-900">{{ title }}</p>
+							<a href="{{ path('new_user') }}" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md border-0 bg-indigo-600 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+									<path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="white"/>
+								</svg>
+								<span>Добавить</span>
+							</a>
 						</div>
-
-					{% endblock %}
-
-					{% block filters %}
-						<clients-list-filters inline-template>
-							<div class="mx-auto px-8">
-								<div class="sm:flex mt-6 justify-between">
-									<div class="flex items-center">
-										<div class="relative">
-											<button type="button" class="relative w-48 cursor-default rounded-md border border-gray-300 bg-white px-[13px] py-[9px] text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500" aria-expanded="false" aria-expanded-autohide>
-												<p class="pointer-events-none block text-sm text-gray-900 truncate">Все статусы</p>
-												<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-													<svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-														<path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd"/>
-													</svg>
-												</div>
-											</button>
-
-											{% set statuses = ['Active', 'Closed', 'Inactive', 'Unconfirmed', 'Email не подтвержден'] %}
-
-											<ul class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
-
-												<li class="bg-gray-50 hover:bg-gray-100">
-													<button type="button" class="w-full px-4 py-2 text-gray-900 text-sm font-semibold text-left">Все статусы</button>
-												</li>
-
-												{% for status in statuses %}
-													<li class="hover:bg-gray-50">
-														<button type="button" class="w-full px-4 py-2 text-gray-700 text-sm text-left">{{ status }}</button>
-													</li>
-												{% endfor %}
-
-											</ul>
-										</div>
-									</div>
-
-									<div class="relative flex items-center mt-2 sm:mt-0">
-										<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-[13px]">
-											<svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-												<path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
-											</svg>
-										</div>
-										<input name="search" class="w-64 rounded-md border border-gray-300 shadow-sm bg-white py-[9px] pl-10 pr-[13px] text-sm placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500" placeholder="Поиск по Email или ID" type="search">
-									</div>
-
-								</div>
-							</div>
-						</clients-list-filters>
-					{% endblock %}
-
-					{% block table %}
-
-						<div class="hidden sm:block">
-							<div class="mx-auto px-8">
-								<div class="mt-4 flex flex-col">
-									<div class="min-w-full overflow-hidden overflow-x-auto align-middle rounded-t-lg border border-gray-200">
-										<table class="min-w-full divide-y divide-gray-200">
-											<thead>
-											<tr class="bg-gray-50 border-b border-gray-300 text-gray-900 text-sm">
-												<th class="w-[140px] pl-6 pr-3 py-3 text-left font-medium">ID</th>
-												<th class="px-3 py-3 text-left font-medium">Email</th>
-												<th class="px-3 py-3 text-left font-medium">Имя</th>
-												<th class="w-40 px-3 py-3 text-right font-medium">Баланс</th>
-												<th class="w-40 px-3 py-3 text-right font-medium">Услуги</th>
-												<th class="w-40 px-3 py-3 text-left font-medium">Статус</th>
-												<th class="w-[175px] pl-3 pr-6 py-3 text-left font-medium">Зарегистрирован</th>
-											</tr>
-											</thead>
-											<tbody class="divide-y divide-gray-200 bg-white">
-
-											{% for user in users %}
-
-												<tr class="text-sm text-gray-900">
-													<td class="pl-6 pr-3 py-4">
-														<a href="{{ path('overview', { id: user.id }) }}" class="hover:text-indigo-700">{{ user.id }}</a>
-													</td>
-													<td class="min-w-[143px] px-3 py-4">
-														<a href="{{ path('overview', { id: user.id }) }}" class="line-clamp-1 overflow-hidden font-medium hover:text-indigo-700">{{ user.email }}</a>
-													</td>
-													<td class="min-w-[143px] px-3 py-4">
-														<a href="{{ path('overview', { id: user.id }) }}" class="line-clamp-1 overflow-hidden hover:text-indigo-700">{{ user.name }}</a>
-													</td>
-													<td class="px-3 py-4 text-gray-500 text-right">${{ user.credit }}</td>
-													<td class="px-3 py-4 text-gray-500 text-right">{{ user.services }}</td>
-													<td class="px-3 py-4">
-														<span class="px-2.5 py-0.5 rounded-full text-xs font-medium
-														{% for val, css in user_statuses %}
-															{% if user.status == val %} bg-{{ css }}-100 text-{{ css }}-800{% endif %}
-														{% endfor %}">{{ user.status }}
-														</span>
-													</td>
-													<td class="pl-3 pr-6 py-4 text-gray-500">{{ user.created }}</td>
-												</tr>
-
-											{% endfor %}
-
-											</tbody>
-										</table>
-									</div>
-									<div class="-mt-px border rounded-b-lg bg-gray-50 border-t py-4 px-6">
-										<div class="flex flex-1 justify-between sm:hidden">
-											<a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
-											<a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
-										</div>
-										<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-											<div>
-												<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-													<a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-														<span class="sr-only">Previous</span>
-														<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-															<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd"/>
-														</svg>
-													</a>
-													<a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
-													<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
-													<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
-													<span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
-													<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
-													<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
-													<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
-													<a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-														<span class="sr-only">Next</span>
-														<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-															<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/>
-														</svg>
-													</a>
-												</nav>
-											</div>
-											<div class="flex items-center space-x-4">
-												<p class="text-sm text-gray-500">1 - {{ users|length }} из {{ users|length }}</p>
-												<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
-													{% for i in range(low=25, high=100, step=25) %}
-														<option>{{ i }}</option>
-													{% endfor %}
-												</select>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					{% endblock %}
+					</div>
 
 				{% endblock %}
 
-			</main>
-		</div>
+				{% block filters %}
+					<clients-list-filters inline-template>
+						<div class="flex justify-between pt-6 px-8">
+							<div class="flex items-center">
+								<div class="relative">
+									<button type="button" class="flex justify-between w-[220px] py-2 px-3 space-x-2 rounded-md border border-gray-300 bg-white text-left shadow-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+										<p class="text-sm text-gray-900 pointer-events-none">{% if getGet() is empty %}Все статусы{% else %}{{ getGet() }}{% endif %}</p>
+										<svg class="pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29292 7.29289C5.68345 6.90237 6.31661 6.90237 6.70713 7.29289L10 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68344 13.0976 9.29292 12.7071L5.29292 8.70711C4.9024 8.31658 4.9024 7.68342 5.29292 7.29289Z" fill="#9CA3AF"/>
+										</svg>
+									</button>
+
+									{% set statuses = ['Active', 'Closed', 'Inactive', 'Unconfirmed', 'Email не подтвержден'] %}
+
+									<ul class="absolute z-10 top-10 w-full overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+										<li>
+											<a href="{{ path('clients') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 {% if getGet() is empty %}text-gray-900 font-semibold bg-gray-50 hover:bg-gray-100{% endif %}">Все статусы</a>
+										</li>
+										{% for status in statuses %}
+										<li>
+											<a href="{{ path('clients', { sort:status }) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 {% if getGet() == status %}text-gray-900 font-semibold bg-gray-50 hover:bg-gray-100{% endif %}">{{ status }}</a>
+										</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+
+							<div class="relative flex items-center">
+								<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+									<svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+										<path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+									</svg>
+								</div>
+								<input name="search" class="w-[240px] rounded-md border border-gray-300 shadow-sm bg-white py-2 pl-10 pr-3 text-sm placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500" placeholder="Поиск по Email или ID" type="search">
+							</div>
+						</div>
+					</clients-list-filters>
+				{% endblock %}
+
+				{% block table %}
+
+					<div class="py-4 px-8">
+						<div class="min-w-full overflow-hidden overflow-x-auto align-middle rounded-t-lg border border-gray-200">
+							<table class="min-w-full divide-y divide-gray-200">
+								<thead>
+								<tr class="bg-gray-50 border-b border-gray-300 text-gray-900 text-sm">
+									<th class="w-[136px] pl-6 pr-3 py-3 text-left font-medium">ID</th>
+									<th class="px-3 py-3 text-left font-medium">Email</th>
+									<th class="w-[184px] px-3 py-3 text-left font-medium">Имя</th>
+									<th class="w-40 px-3 py-3 text-right font-medium">Баланс</th>
+									<th class="w-[104px] px-3 py-3 text-right font-medium">Услуги</th>
+									<th class="w-[136px] px-3 py-3 text-left font-medium">Статус</th>
+									<th class="w-[168px] pl-3 pr-6 py-3 text-left font-medium">Зарегистрирован</th>
+								</tr>
+								</thead>
+								<tbody class="divide-y divide-gray-200 bg-white">
+
+								{% set duplicates = [] %}
+
+								{% for user in users %}
+
+									{% set table_body %}
+
+									<tr class="text-sm text-gray-900">
+										<td class="pl-6 pr-3 py-4">
+											<a href="{{ path('overview', { id: user.id }) }}" class="font-medium hover:text-indigo-700">{{ user.id }}</a>
+											{% for i in duplicates %}
+												{% if i == user.email %}
+												<p class="text-rose-500">Duplicate</p>
+												{% endif %}
+											{% endfor %}
+										</td>
+										<td class="px-3 py-4">
+											<a href="{{ path('overview', { id: user.id }) }}" class="font-medium hover:text-indigo-700">
+												<p class="w-40 min-w-full truncate">{{ user.email }}</p>
+											</a>
+										</td>
+										<td class="min-w-[143px] px-3 py-4">
+											<a href="{{ path('overview', { id: user.id }) }}" class="line-clamp-1 font-medium hover:text-indigo-700">{{ user.name }}</a>
+										</td>
+										<td class="px-3 py-4 text-gray-500 text-right">${{ user.credit }}</td>
+										<td class="px-3 py-4 text-gray-500 text-right">{{ user.services }}</td>
+										<td class="px-3 py-4">
+											<span class="px-2.5 py-0.5 rounded-full text-xs font-medium
+											{% for val, css in user_statuses %}
+												{% if user.status == val %} bg-{{ css }}-100 text-{{ css }}-800{% endif %}
+											{% endfor %}">{{ user.status }}
+											</span>
+										</td>
+										<td class="pl-3 pr-6 py-4 text-gray-500">{{ user.created }}</td>
+									</tr>
+									{% set duplicates = duplicates|merge( [user.email] ) %}
+
+									{% endset %}
+
+									{% if getGet() %}
+										{% if user.status == getGet() %}
+											{{ table_body }}
+										{% endif %}
+									{% else %}
+										{{ table_body }}
+									{% endif %}
+
+								{% endfor %}
+
+								</tbody>
+							</table>
+						</div>
+						<div class="-mt-px border rounded-b-lg bg-gray-50 border-t py-4 px-6">
+							<div class="flex flex-1 justify-between sm:hidden">
+								<a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
+								<a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
+							</div>
+							<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+								<div>
+									<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+										<a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+											<span class="sr-only">Previous</span>
+											<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+												<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd"/>
+											</svg>
+										</a>
+										<a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
+										<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
+										<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
+										<span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
+										<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
+										<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
+										<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
+										<a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+											<span class="sr-only">Next</span>
+											<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+												<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/>
+											</svg>
+										</a>
+									</nav>
+								</div>
+								<div class="flex items-center space-x-4">
+									<p class="text-sm text-gray-500">1 - {{ users|length }} из {{ users|length }}</p>
+									<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
+										{% for i in range(low=25, high=100, step=25) %}
+											<option>{{ i }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				{% endblock %}
+
+			{% endblock %}
+
+		</main>
 	</clients-module>
 
 {% endblock %}
