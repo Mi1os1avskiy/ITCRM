@@ -93,7 +93,7 @@
 											<a href="{{ path('overview', { id: user.id }) }}" class="font-medium hover:text-indigo-700">{{ user.id }}</a>
 											{% for i in duplicates %}
 												{% if i == user.email %}
-												<p class="text-rose-500">Duplicate</p>
+												<p class="text-rose-500 cursor-default">Duplicate</p>
 												{% endif %}
 											{% endfor %}
 										</td>
@@ -105,16 +105,16 @@
 										<td class="min-w-[143px] px-3 py-4">
 											<a href="{{ path('overview', { id: user.id }) }}" class="line-clamp-1 font-medium hover:text-indigo-700">{{ user.name }}</a>
 										</td>
-										<td class="px-3 py-4 text-gray-500 text-right">${{ user.credit }}</td>
-										<td class="px-3 py-4 text-gray-500 text-right">{{ user.services }}</td>
-										<td class="px-3 py-4">
+										<td class="px-3 py-4 text-gray-500 text-right cursor-default">${{ user.credit }}</td>
+										<td class="px-3 py-4 text-gray-500 text-right cursor-default">{{ user.services }}</td>
+										<td class="px-3 py-4 cursor-default">
 											<span class="px-2.5 py-0.5 rounded-full text-xs font-medium
 											{% for val, css in user_statuses %}
 												{% if user.status == val %} bg-{{ css }}-100 text-{{ css }}-800{% endif %}
 											{% endfor %}">{{ user.status }}
 											</span>
 										</td>
-										<td class="pl-3 pr-6 py-4 text-gray-500">{{ user.created }}</td>
+										<td class="pl-3 pr-6 py-4 text-gray-500 cursor-default">{{ user.created }}</td>
 									</tr>
 									{% set duplicates = duplicates|merge( [user.email] ) %}
 
