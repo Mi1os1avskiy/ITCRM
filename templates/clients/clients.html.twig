@@ -93,7 +93,7 @@
 											<a href="{{ path('overview', { id: user.id }) }}" class="font-medium hover:text-indigo-700">{{ user.id }}</a>
 											{% for i in duplicates %}
 												{% if i == user.email %}
-												<p class="text-rose-500 cursor-default">Duplicate</p>
+												<p class="text-red-500 cursor-default">Duplicate</p>
 												{% endif %}
 											{% endfor %}
 										</td>

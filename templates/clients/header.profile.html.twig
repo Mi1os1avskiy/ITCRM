@@ -17,7 +17,7 @@
         <svg width="20" height="20" viewBox="0 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#9CA3AF"/>
         </svg>
-		<span>Клиент #{{ userID() }}</span>
+		<span>Клиент {{ userID() }}</span>
 	</nav>
 	<div class="flex items-center h-[38px] mt-2 space-x-4">
 		<span class="font-semibold leading-6 text-lg">Клиент {% if user.name %}{{ user.name }}{% else %}{{ user.email }}{% endif %}</span>
@@ -37,7 +37,7 @@
 	</div>
 </nav>
 
-{% set pinned_notes = ['Ipsum lacus id gravida venenatis velit cursus aliquet eros. Massa at habitant potenti senectus id pretium faucibus. Odio libero placerat lectus lectus eget tortor scelerisque tincidunt. Sed ultricies consequat interdum vel mauris nunc. Orci fermentum consequat semper tortor. Enim adipiscing donec lobortis elit libero vivamus. Leo magna donec gravida dictum platea. Aliquam vehicula augue cursus pharetra nunc praesent ornare.', 'Nisl ut enim cursus nisi. Pulvinar id diam hac ipsum pharetra diam vulputate.', 'Ipsum lacus id gravida venenatis velit cursus aliquet eros.'] %}
+{% set pinned_notes = ['Ipsum lacus id gravida venenatis velit cursus aliquet eros. Massa at habitant potenti senectus id pretium faucibus. Odio libero placerat lectus lectus eget tortor scelerisque tincidunt. Sed ultricies consequat interdum vel mauris nunc. Orci fermentum consequat semper tortor. Enim adipiscing donec lobortis elit libero vivamus. Leo magna donec gravida dictum platea. Aliquam vehicula augue cursus pharetra nunc praesent ornare.', 'Nisl ut enim cursus nisi. Pulvinar id diam hac ipsum pharetra diam vulputate.'] %}
 
 {% if currentTab != 'notes' %}
 
