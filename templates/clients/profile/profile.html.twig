@@ -37,7 +37,7 @@
 				<div class="flex pt-5 space-x-6">
 					<p class="w-[344px] font-medium text-gray-700 self-center">Статус аккаунта</p>
 					<div class="relative w-80">
-						<button type="button" class="relative w-full py-2 px-3 cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500" aria-expanded="false" aria-expanded-autohide>
+						<button type="button" class="relative w-full py-2 px-3 rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 	                    <span class="pointer-events-none flex items-center">
 	                        <span aria-label="Online" class="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-green-400"></span>
 	                        <span class="ml-3 block truncate">Active</span>
@@ -50,12 +50,12 @@
 						</button>
 
 						{% set statuses = {'Active': 'green', 'Inactive': 'gray', 'Closed': 'gray'} %}
-						<ul class="absolute z-10 top-10 w-80 overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+						<ul class="hidden absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
 							{% for val, css in statuses %}
-								<li>
-									<button type="button" class="w-full flex items-center py-2 px-4 space-x-3 text-sm hover:bg-indigo-600 hover:text-white">
-										<span class="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-{{ css }}-400"></span>
-										<span>{{ val }}</span>
+								<li class="text-gray-900 relative cursor-default select-none" role="option">
+									<button type="button" class="flex items-center w-full py-2 pl-3 pr-9 space-x-3 hover:bg-gray-50">
+										<div class="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-{{ css }}-400"></div>
+										<p>{{ val }}</p>
 									</button>
 								</li>
 							{% endfor %}
@@ -91,7 +91,7 @@
 							<div class="flex items-center justify-between py-5 border-b">
 								<div>Запретить оплаты инвойсов</div>
 								<label for="toggle_invoicing" class="relative flex items-center cursor-pointer">
-									<input type="checkbox" id="toggle_invoicing" class="sr-only">
+									<input type="checkbox" checked id="toggle_invoicing" class="sr-only">
 									<div class="toggle block bg-gray-200 w-11 h-6 rounded-full"></div>
 									<div class="dot absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition"></div>
 								</label>

@@ -13,12 +13,12 @@
 				{% block header %}
 
 				<div class="flex items-center justify-between py-4 px-8 bg-gray-50 border-b">
-					<h3 class="font-semibold text-lg">{{ title }}</h3>
+					<h3 class="text-gray-900 font-semibold text-lg leading-6">{{ title }}</h3>
 					<div class="flex items-center space-x-3">
-						<div class="relative flex items-center border border-gray-300 rounded-md">
+						<div class="relative flex items-center ring-1 ring-gray-300 rounded-md">
 							<div class="w-[100px] flex py-2 pl-3 pr-4 space-x-2">
 								<button type="button">
-									<svg class="text-gray-500 hover:text-gray-700 active:text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+									<svg class="text-gray-500 hover:text-gray-700" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
 										<path fill-rule="evenodd" clip-rule="evenodd" d="M15.3125 11.4236C14.5263 14.3576 11.5104 16.0988 8.57636 15.3127C7.60734 15.053 6.7703 14.5514 6.11058 13.8904L5.79904 13.5789L8.23227 13.5784C8.64649 13.5784 8.98221 13.2425 8.98214 12.8283C8.98206 12.4141 8.64622 12.0784 8.232 12.0784L3.98857 12.0792C3.78965 12.0792 3.5989 12.1583 3.45827 12.299C3.31764 12.4397 3.23866 12.6304 3.23871 12.8294L3.2396 17.0712C3.23968 17.4854 3.57554 17.8211 3.98975 17.821C4.40397 17.821 4.73968 17.4851 4.7396 17.0709L4.73909 14.6402L5.04894 14.9501C5.88997 15.7926 6.95765 16.4318 8.18814 16.7615C11.9224 17.7621 15.7608 15.5461 16.7613 11.8118C16.8686 11.4117 16.6311 11.0004 16.231 10.8932C15.8309 10.786 15.4197 11.0235 15.3125 11.4236ZM16.5414 7.70119C16.682 7.56051 16.761 7.36971 16.761 7.17078L16.7603 2.92883C16.7602 2.51462 16.4244 2.17888 16.0102 2.17895C15.596 2.17902 15.2602 2.51486 15.2603 2.92907L15.2607 5.35994L14.9509 5.05013C14.1099 4.20771 13.042 3.56826 11.8116 3.23859C8.07734 2.23799 4.23898 4.45407 3.23839 8.18833C3.13118 8.58843 3.36862 8.99969 3.76872 9.10689C4.16882 9.2141 4.58007 8.97666 4.68728 8.57656C5.47346 5.6425 8.48931 3.90129 11.4234 4.68747C12.3924 4.94713 13.2295 5.44881 13.8892 6.10979L14.2003 6.4209L11.7684 6.4209C11.3542 6.4209 11.0184 6.75669 11.0184 7.1709C11.0184 7.58511 11.3542 7.9209 11.7684 7.9209H16.011C16.2099 7.9209 16.4007 7.84186 16.5414 7.70119Z" fill="currentColor"/>
 									</svg>
 								</button>
@@ -30,7 +30,7 @@
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M5.23017 7.20938C5.52875 6.92228 6.00353 6.93159 6.29063 7.23017L10 11.1679L13.7094 7.23017C13.9965 6.93159 14.4713 6.92228 14.7698 7.20938C15.0684 7.49647 15.0777 7.97125 14.7906 8.26983L10.5406 12.7698C10.3992 12.9169 10.204 13 10 13C9.79599 13 9.60078 12.9169 9.45938 12.7698L5.20938 8.26983C4.92228 7.97125 4.93159 7.49647 5.23017 7.20938Z" fill="#6B7280"/>
 								</svg>
 							</button>
-							{% set intervals = ['30 секунд', '1 минута', '5 минут'] %}
+							{% set intervals = ['30 секунд', '1 минута', '5 минут', '10 минут', '15 минут'] %}
 							<ul class="absolute z-10 w-[136px] top-10 py-1 rounded-md bg-white text-sm text-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 								{% for i in intervals %}
 									<li class="hover:bg-gray-50">
@@ -79,7 +79,7 @@
 												<path fill-rule="evenodd" clip-rule="evenodd" d="M9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5C10.519 14.5 11.893 13.8852 12.8891 12.8891C13.8852 11.893 14.5 10.519 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5ZM2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 10.6625 15.4197 12.1906 14.4517 13.3911L17.7803 16.7197C18.0732 17.0126 18.0732 17.4874 17.7803 17.7803C17.4874 18.0732 17.0126 18.0732 16.7197 17.7803L13.3911 14.4517C12.1906 15.4197 10.6625 16 9 16C5.13401 16 2 12.866 2 9Z" fill="#6B7280"/>
 											</svg>
 										</div>
-										<input name="search" class="block w-full py-2 pl-10 pr-3 rounded-md border border-gray-300 text-sm placeholder-gray-400 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500" placeholder="Поиск по Сумме или IP" type="search">
+										<input name="search" class="block w-full py-2 pl-10 pr-3 rounded-md border border-gray-300 text-sm placeholder-gray-400" placeholder="Поиск по Сумме или IP" type="search">
 									</div>
 								</div>
 								<button @click="ordersFilters()" type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md border border-gray-300 shadow-sm hover:bg-gray-50">
@@ -98,7 +98,7 @@
 						<div class="py-4">
 							<div class="border rounded-t-lg overflow-hidden overflow-x-auto">
 								<table class="min-w-full">
-									<thead class="border-b border-gray-300 bg-gray-50 rounded-lg ">
+									<thead class="border-b border-gray-300 bg-gray-50 rounded-t-lg ">
 									<tr class="text-gray-900 text-sm font-medium">
 										<th class="p-3 pl-6 text-left font-medium whitespace-nowrap">ID - Тариф</th>
 										<th class="w-14 p-3 text-left font-medium">Лок.</th>
@@ -147,45 +147,9 @@
 									</tbody>
 								</table>
 							</div>
-							<div class="-mt-px border rounded-b-lg bg-gray-50 border-t py-4 px-6">
-								<div class="flex flex-1 justify-between sm:hidden">
-									<a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
-									<a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
-								</div>
-								<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-									<div>
-										<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-											<a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-												<span class="sr-only">Previous</span>
-												<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-													<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
-												</svg>
-											</a>
-											<a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
-											<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
-											<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
-											<span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
-											<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
-											<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
-											<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
-											<a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-												<span class="sr-only">Next</span>
-												<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-													<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-												</svg>
-											</a>
-										</nav>
-									</div>
-									<div class="flex items-center space-x-4">
-										<p class="text-sm text-gray-500">1 - {{ orders|length}} из {{ orders|length}}</p>
-										<select class="rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
-											{% for i in 1..4 %}
-												<option>{{ i * 25 }}</option>
-											{% endfor %}
-										</select>
-									</div>
-								</div>
-							</div>
+
+							{% include 'parts/pagination.html.twig' %}
+
 						</div>
 
 						{% endblock %}

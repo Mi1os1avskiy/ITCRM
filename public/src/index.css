@@ -46,6 +46,7 @@ input[type="checkbox"], input[type="checkbox"] + label {
 
 .aside-menu [aria-expanded="true"] .arrow {
 	transform: rotate(90deg);
+	transition: 0.2s;
 }
 
 .aside-menu button[aria-expanded="true"] {
@@ -86,6 +87,16 @@ input:checked ~ .dot {
 
 input:checked ~ .toggle {
 	background-color: #4F46E5;
+}
+
+[type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus {
+	outline: none;
+	outline-offset: 0;
+	box-shadow: none;
+}
+
+[type='text']:hover, [type='email']:hover, [type='url']:hover, [type='password']:hover, [type='number']:hover, [type='date']:hover, [type='datetime-local']:hover, [type='month']:hover, [type='search']:hover, [type='tel']:hover, [type='time']:hover, [type='week']:hover, [multiple]:hover, select:hover {
+	background: #F9FAFB;
 }
 
 

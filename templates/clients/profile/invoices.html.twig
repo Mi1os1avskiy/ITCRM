@@ -10,7 +10,7 @@
 
         <div class="pt-6 px-8">
             <div class="flex items-center justify-between flex-shrink-0">
-                <a href="{{ path('billing_new_invoice') }}" class="flex items-center rounded-md bg-indigo-600 pl-[15px] pr-[17px] py-[9px] space-x-2 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <a href="{{ path('billing_new_invoice') }}" class="flex items-center py-2 pl-3 pr-4 space-x-2 border border-transparent rounded-md bg-indigo-600 shadow-sm hover:bg-indigo-700">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="white"/>
                     </svg>
@@ -24,13 +24,13 @@
 				                <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
 			                </svg>
 		                </div>
-		                <input name="search" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Поиск по ID" type="search">
+		                <input name="search" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 text-sm" placeholder="Поиск по ID" type="search">
 	                </div>
-                    <button @click="invoicesFilters()" type="button" class="inline-flex items-center rounded-md border border-gray-300 px-4 py-2 text-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.62803 1.60102C5.02718 1.2056 7.48986 1 10 1C12.5101 1 14.9728 1.2056 17.372 1.60102C17.7342 1.66072 18 1.97389 18 2.34103V4.62868C18 5.22542 17.7629 5.79771 17.341 6.21967L12.659 10.9017C12.2371 11.3236 12 11.8959 12 12.4926V15.5291C12 16.2126 11.6893 16.859 11.1556 17.286L9.21852 18.8357C8.99339 19.0158 8.68496 19.0509 8.42511 18.926C8.16526 18.8011 8 18.5383 8 18.25V12.4926C8 11.8959 7.76295 11.3236 7.34099 10.9017L2.65901 6.21967C2.23705 5.79771 2 5.22542 2 4.62868V2.34103C2 1.97389 2.26578 1.66072 2.62803 1.60102Z" fill="#6B7280"/>
-                        </svg>
-                        <span class="ml-2">Фильтры</span>
+                    <button @click="invoicesFilters()" type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md border border-gray-300 text-sm shadow-sm hover:bg-gray-50">
+	                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+		                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.47102 3.46746C6.27039 3.15991 8.11739 3 10 3C11.8826 3 13.7296 3.15991 15.529 3.46746C15.8007 3.51389 16 3.75747 16 4.04302V5.8223C16 6.28643 15.8222 6.73155 15.5057 7.05974L11.9943 10.7013C11.6778 11.0295 11.5 11.4746 11.5 11.9387V14.3004C11.5 14.832 11.267 15.3348 10.8667 15.6669L9.41389 16.8722C9.24505 17.0122 9.01372 17.0396 8.81883 16.9424C8.62394 16.8453 8.5 16.6409 8.5 16.4167V11.9387C8.5 11.4746 8.32221 11.0295 8.00574 10.7013L4.49426 7.05974C4.17779 6.73155 4 6.28643 4 5.8223V4.04302C4 3.75747 4.19934 3.51389 4.47102 3.46746Z" fill="#6B7280"/>
+	                    </svg>
+                        <span>Фильтры</span>
                     </button>
                 </div>
             </div>
@@ -43,7 +43,7 @@
     {% block table %}
 
         <div class="py-4 px-8">
-	        <div class="min-w-full overflow-hidden border align-middle rounded-lg">
+	        <div class="min-w-full overflow-hidden border align-middle rounded-t-lg">
 
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead>
@@ -80,48 +80,10 @@
 
                     </tbody>
                 </table>
-
-                <div class="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-4 sm:px-6">
-                    <div class="flex flex-1 justify-between sm:hidden">
-                        <a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
-                        <a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
-                    </div>
-                    <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-                        <div>
-                            <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                                <a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-                                    <span class="sr-only">Previous</span>
-                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
-                                    </svg>
-                                </a>
-                                <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
-                                <a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
-                                <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
-                                <a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
-                                <span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
-                                <a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
-                                <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
-                                <a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
-                                <a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-                                    <span class="sr-only">Next</span>
-                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-                                    </svg>
-                                </a>
-                            </nav>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <p class="text-sm text-gray-500">1 - 8 из 8</p>
-                            <select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
-                                {% for i in range(low=25, high=100, step=25) %}
-                                    <option>{{ i }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                </div>
             </div>
+
+	        {% include 'parts/pagination.html.twig' %}
+
         </div>
 
     {% endblock %}

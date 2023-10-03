@@ -28,6 +28,7 @@ class LettersController
 			'title' => 'Ваша услуга будет удалена через 24 часа',
 			'date' => '18/04/2023',
 			'time' => '21:00:41',
+			'email' => 'Valariy-burdaleyba@mail.com',
 			'client' => 'Valeriy Burdaleyba',
 			'message' => 'Этим письмом мы информируем вас о том, что ваша неоплаченная услуга будет удалена в течении 24 часов и ее восстановление будет невозможно.',
 			'service' => 'Lite - Linux',

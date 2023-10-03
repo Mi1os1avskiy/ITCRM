@@ -6,7 +6,7 @@
 
 		<div class="py-4 px-8 flex items-center justify-between space-x-4 bg-gray-100">
 			<p class="font-semibold text-lg">{{ title }}</p>
-			<a href="{{ path('billing_new_invoice') }}" class="flex items-center pl-3 pr-4 py-2 space-x-2 rounded-md border border-transparent bg-indigo-600 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">
+			<a href="{{ path('billing_new_invoice') }}" class="flex items-center pl-3 pr-4 py-2 space-x-2 rounded-md bg-indigo-600 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">
 				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
 					<path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="white"/>
 				</svg>
@@ -34,13 +34,13 @@
 								<div class="h-2.5 w-2.5 rounded-full bg-green-400"></div>
 								<span>Paid</span>
 							</a>
-							<div>
+							<div class="relative">
 								<button type="button" class="-ml-px py-2 px-3 border border-gray-300 rounded-r-md hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-									<svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<svg class="arrow pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path fill-rule="evenodd" clip-rule="evenodd" d="M5.23017 7.20938C5.52875 6.92228 6.00353 6.93159 6.29063 7.23017L10 11.1679L13.7094 7.23017C13.9965 6.93159 14.4713 6.92228 14.7698 7.20938C15.0684 7.49647 15.0777 7.97125 14.7906 8.26983L10.5406 12.7698C10.3992 12.9169 10.204 13 10 13C9.79599 13 9.60078 12.9169 9.45938 12.7698L5.20938 8.26983C4.92228 7.97125 4.93159 7.49647 5.23017 7.20938Z" fill="#6B7280"/>
 									</svg>
 								</button>
-								<ul class="absolute z-10 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+								<ul class="absolute z-10 top-10 py-1 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
 									<li class="border-b border-gray-100">
 										<button type="button" class="w-full py-3 px-5 text-left hover:bg-gray-100">
 											<span class="text-gray-700 whitespace-nowrap">Все инвойсы</span>
@@ -69,8 +69,8 @@
 									<input name="search" class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 text-sm" placeholder="Поиск по Сумме" type="search">
 								</div>
 							</div>
-							<button @click="billingInvoicesFilters()" type="button" class="inline-flex items-center py-2 px-4 space-x-2 rounded-md border border-gray-300 shadow-sm hover:bg-gray-50">
-								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<button @click="billingInvoicesFilters()" type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md border border-gray-300 shadow-sm hover:bg-gray-50">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
 									<path fill-rule="evenodd" clip-rule="evenodd" d="M4.47102 3.46746C6.27039 3.15991 8.11739 3 10 3C11.8826 3 13.7296 3.15991 15.529 3.46746C15.8007 3.51389 16 3.75747 16 4.04302V5.8223C16 6.28643 15.8222 6.73155 15.5057 7.05974L11.9943 10.7013C11.6778 11.0295 11.5 11.4746 11.5 11.9387V14.3004C11.5 14.832 11.267 15.3348 10.8667 15.6669L9.41389 16.8722C9.24505 17.0122 9.01372 17.0396 8.81883 16.9424C8.62394 16.8453 8.5 16.6409 8.5 16.4167V11.9387C8.5 11.4746 8.32221 11.0295 8.00574 10.7013L4.49426 7.05974C4.17779 6.73155 4 6.28643 4 5.8223V4.04302C4 3.75747 4.19934 3.51389 4.47102 3.46746Z" fill="#6B7280"/>
 								</svg>
 								<span class="text-sm text-gray-700">Фильтры</span>
@@ -83,7 +83,7 @@
 
 			{% block table %}
 
-				<div class="mt-4 min-w-full overflow-hidden overflow-x-auto border rounded-lg">
+				<div class="mt-4 min-w-full overflow-hidden overflow-x-auto border rounded-t-lg">
 
 					<table class="min-w-full divide-y divide-gray-200">
 						<thead>
@@ -94,7 +94,7 @@
 							<th class="w-40 p-3 text-left font-medium whitespace-nowrap">Способ оплаты</th>
 							<th class="w-[150px] p-3 text-left font-medium whitespace-nowrap">Дата выписки</th>
 							<th class="w-[140px] p-3 text-left font-medium whitespace-nowrap">Оплатить до</th>
-							<th class="w-[110px] p-3 text-right font-medium">Сумма</th>
+							<th class="w-[110px] pl-3 pr-6 text-right font-medium">Сумма</th>
 						</tr>
 						</thead>
 
@@ -128,44 +128,9 @@
 
 						</tbody>
 					</table>
-
-					<div class="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-4 sm:px-6">
-						<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-							<div>
-								<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-									<a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-										<span class="sr-only">Previous</span>
-										<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-											<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
-										</svg>
-									</a>
-									<!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
-									<a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
-									<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
-									<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
-									<span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
-									<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
-									<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
-									<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
-									<a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-										<span class="sr-only">Next</span>
-										<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-											<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-										</svg>
-									</a>
-								</nav>
-							</div>
-							<div class="flex items-center space-x-4">
-								<p class="text-sm text-gray-500">1 - 8 из 8</p>
-								<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
-									{% for i in range(low=25, high=100, step=25) %}
-										<option>{{ i }}</option>
-									{% endfor %}
-								</select>
-							</div>
-						</div>
-					</div>
 				</div>
+
+				{% include 'parts/pagination.html.twig' %}
 
 			{% endblock %}
 

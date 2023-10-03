@@ -8,24 +8,25 @@
 
 		<div class="px-8">
 
-			<div class="pt-6 relative flex items-center flex-shrink-0">
-				<a href="{{ path('new_ticket') }}" class="relative inline-flex items-center rounded-md bg-indigo-600 pl-[15px] pr-[17px] py-[9px] shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<div class="pt-6">
+				<a href="{{ path('new_ticket') }}" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 border border-transparent rounded-md bg-indigo-600 shadow-sm hover:bg-indigo-700">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
 						<path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="white"/>
 					</svg>
-					<span class="ml-2 text-sm font-medium text-white">Добавить</span>
+					<span class="text-sm font-medium text-white">Добавить</span>
 				</a>
 			</div>
+
 			<div class="py-4 space-y-4">
 				<div class="flex items-center justify-between">
-					<div class="h-[38px] relative flex flex-shrink-0">
-						<button type="button" class="flex rounded-md border border-gray-300 bg-white py-[9px] px-[13px] shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 text-sm" aria-expanded="false" aria-expanded-autohide>
+					<div class="relative">
+						<button type="button" class="flex items-center py-2 px-3 space-x-2 rounded-md border border-gray-300 shadow-sm text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 							<span class="pointer-events-none truncate">Действия</span>
 							<svg class="pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M10 3C10.2652 3 10.5196 3.10536 10.7071 3.29289L13.7071 6.29289C14.0976 6.68342 14.0976 7.31658 13.7071 7.70711C13.3166 8.09763 12.6834 8.09763 12.2929 7.70711L10 5.41421L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711C5.90237 7.31658 5.90237 6.68342 6.29289 6.29289L9.29289 3.29289C9.48043 3.10536 9.73478 3 10 3ZM6.29289 12.2929C6.68342 11.9024 7.31658 11.9024 7.70711 12.2929L10 14.5858L12.2929 12.2929C12.6834 11.9024 13.3166 11.9024 13.7071 12.2929C14.0976 12.6834 14.0976 13.3166 13.7071 13.7071L10.7071 16.7071C10.3166 17.0976 9.68342 17.0976 9.29289 16.7071L6.29289 13.7071C5.90237 13.3166 5.90237 12.6834 6.29289 12.2929Z" fill="#9CA3AF"/>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#111827"/>
 							</svg>
 						</button>
-						<ul class="absolute w-[224px] z-10 mt-[46px] rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+						<ul class="absolute w-[224px] z-10 top-10 rounded-md bg-white ring-1 ring-black ring-opacity-5 shadow-lg focus:outline-none text-sm">
 							<li class="py-1 text-gray-700">
 								<button @click="supportTicketsClose()" type="button" class="w-full py-2 px-4 text-left hover:bg-gray-50">Закрыть тикеты</button>
 							</li>
@@ -35,24 +36,20 @@
 						</ul>
 					</div>
 
-					<div class="h-[38px] flex items-center">
-						<div class="w-60 max-w-lg lg:max-w-xs">
-							<div class="relative">
-								<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-									<svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-										<path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
-									</svg>
-								</div>
-								<input class="block w-full rounded-md border border-gray-300 bg-white py-[9px] pl-10 pr-3 leading-5 placeholder-gray-400 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" placeholder="Поиск по Теме или ID" type="search">
-							</div>
+					<div class="relative w-60">
+						<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5C10.519 14.5 11.893 13.8852 12.8891 12.8891C13.8852 11.893 14.5 10.519 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5ZM2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 10.6625 15.4197 12.1906 14.4517 13.3911L17.7803 16.7197C18.0732 17.0126 18.0732 17.4874 17.7803 17.7803C17.4874 18.0732 17.0126 18.0732 16.7197 17.7803L13.3911 14.4517C12.1906 15.4197 10.6625 16 9 16C5.13401 16 2 12.866 2 9Z" fill="#6B7280"/>
+							</svg>
 						</div>
+						<input class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 text-sm" placeholder="Поиск по Теме или ID" type="search">
 					</div>
 				</div>
 
 				{% block table %}
 
 				<div class="flex flex-col">
-					<div class="min-w-full overflow-hidden overflow-x-auto align-middle border rounded-lg">
+					<div class="min-w-full overflow-hidden overflow-x-auto align-middle border rounded-t-lg">
 
 						<table class="min-w-full divide-y divide-gray-200">
 							<thead>
@@ -106,47 +103,10 @@
 
 							</tbody>
 						</table>
-
-						<div class="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-4 sm:px-6">
-							<div class="flex flex-1 justify-between sm:hidden">
-								<a href="#" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
-								<a href="#" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
-							</div>
-							<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-								<div>
-									<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-										<a href="#" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-											<span class="sr-only">Previous</span>
-											<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-												<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
-											</svg>
-										</a>
-										<a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
-										<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
-										<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
-										<span class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
-										<a href="#" class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
-										<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
-										<a href="#" class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
-										<a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
-											<span class="sr-only">Next</span>
-											<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-												<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-											</svg>
-										</a>
-									</nav>
-								</div>
-								<div class="flex items-center space-x-4">
-									<p class="text-sm text-gray-500">1 - 7 из 7</p>
-									<select class="relative inline-flex items-center rounded-md border border-gray-300 pl-3 pr-9 py-2 text-sm text-gray-900">
-										{% for i in range(low=25, high=100, step=25) %}
-											<option>{{ i }}</option>
-										{% endfor %}
-									</select>
-								</div>
-							</div>
-						</div>
 					</div>
+
+					{% include 'parts/pagination.html.twig' %}
+
 				</div>
 
 				{% endblock %}

@@ -134,7 +134,7 @@
 							<p class="self-center text-sm font-medium text-gray-700">Статус аккаунта</p>
 						</div>
 						<div class="relative w-80">
-							<button type="button" class="relative w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" aria-haspopup="listbox" aria-expanded="false" aria-expanded-autohide aria-labelledby="listbox-label">
+							<button type="button" class="relative w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 shadow-sm text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 								<div class="flex items-center pointer-events-none">
 									<div class="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-green-400"></div>
 									<p class="ml-3 truncate">Active</p>
@@ -245,7 +245,7 @@
 									<p class="mt-2 text-sm text-red-500" v-for="item in $form['password'].$errors">${item}</p>
 								</div>
 							</div>
-							<button @click="generateNewPassword()" type="button" class="py-2 px-4 rounded-md border border-gray-300 shadow-sm bg-gray-50 text-sm font-medium text-gray-700 hover:bg-gray-100">Сгенерировать</button>
+							<button @click="generateNewPassword()" type="button" class="py-2 px-4 rounded-md border border-gray-300 shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50">Сгенерировать</button>
 						</div>
 
 					</div>
