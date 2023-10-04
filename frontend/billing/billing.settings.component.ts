@@ -17,6 +17,18 @@ export const BillingSettingsComponent = {
         }
     },
     methods: {
+        draftInvoiceSave() {
+            const self = <any>this;
+            self.$notifications('global').notify(
+                new Notification(NotificationLevels.SUCCESS, "Сохранение черновика", "Черновик успешно сохранён")
+            );
+        },
+        draftInvoicePublish() {
+            const self = <any>this;
+            self.$notifications('global').notify(
+                new Notification(NotificationLevels.SUCCESS, "Публикация черновика", "Черновик успешно опубликован")
+            );
+        },
         billingAddTransaction() {
             const self = <any>this;
             self.$modals(BillingAddTransaction).show()

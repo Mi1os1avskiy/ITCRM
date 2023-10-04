@@ -93,6 +93,8 @@ input:checked ~ .toggle {
 	outline: none;
 	outline-offset: 0;
 	box-shadow: none;
+	border-color: #6366F1;
+	color: #111827;
 }
 
 [type='text']:hover, [type='email']:hover, [type='url']:hover, [type='password']:hover, [type='number']:hover, [type='date']:hover, [type='datetime-local']:hover, [type='month']:hover, [type='search']:hover, [type='tel']:hover, [type='time']:hover, [type='week']:hover, [multiple]:hover, select:hover {
@@ -157,5 +159,6 @@ input:checked ~ .toggle {
 	visibility: visible;
 	transform: translate(0, 4px);
 	transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+	transition-delay: 0.5s;
 }
 /*	end of tooltips	*/
