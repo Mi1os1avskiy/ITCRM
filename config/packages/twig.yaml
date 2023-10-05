@@ -6,7 +6,20 @@ twig:
             0: {'id': 111, 'text': 'first item'}
             1: {'id': 222, 'text': 'second item'}
             2: {'id': 333, 'text': 'third item'}
-
+        user_statuses:
+            {'Active': 'green', 'Unconfirmed': 'yellow', 'Inactive': 'gray', 'Closed': 'gray'}
+        transaction_statuses:
+            {'Частично засчитана': 'red', 'Не засчитана': 'red', 'Мошенническая': 'red', 'Возвращена': 'orange', 'Заморожена': 'blue', 'В ожидании': 'blue', 'Засчитана': 'green', 'Игнорируется': 'gray', 'Отменена': 'gray'}
+        transaction_filter:
+            {'Возвращена': 'orange', 'Заморожена': 'blue', 'В ожидании': 'blue', 'Игнорируется': 'gray'}
+        invoice_statuses:
+            {'Pending': 'red', 'Paid': 'green', 'Cancelled': 'gray', 'Overdue': 'gray', 'Draft': 'purple'}
+        ticket_statuses:
+            {'Important!': 'red', 'Open': 'red', 'In progress': 'orange', 'Answered': 'yellow', 'Customer reply': 'yellow', 'Waiting for manager': 'yellow', 'On hold': 'blue', 'Closed': 'green'}
+        order_statuses:
+            {'Pending': 'red', 'In progress': 'orange', 'Suspended': 'blue', 'Active': 'green', 'Cancelled': 'gray', 'Terminated': 'gray'}
+        payment_statuses:
+            {'Cancelled': 'gray', 'Expired': 'orange', 'New': 'yellow', 'Error': 'red', 'Paid': 'green', 'Wait': 'blue'}
 when@test:
     twig:
         strict_variables: true

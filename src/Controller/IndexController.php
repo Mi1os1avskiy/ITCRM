@@ -1,15 +1,13 @@
 <?php
 namespace App\Controller;
 
-use App\Controller\Data\InvoicesController;
+use App\Controller\Data\BillingController;
 use App\Controller\Data\LettersController;
 use App\Controller\Data\OrdersController;
 use App\Controller\Data\PaymentsController;
 use App\Controller\Data\ServicesController;
 use App\Controller\Data\TicketsController;
-use App\Controller\Data\TransactionsController;
 use App\Controller\Data\UsersController;
-use App\Controller\Misc\TestController;
 use App\Controller\Misc\TwigExtension;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -98,7 +96,7 @@ class IndexController extends AbstractController
     {
         return $this->render('clients/profile/invoices.html.twig', [
             'users' => UsersController::CreateTable(),
-            'invoices' => InvoicesController::allInvoices(),
+            'invoices' => BillingController::allInvoices(),
         ]);
     }
 
@@ -128,7 +126,7 @@ class IndexController extends AbstractController
     public function transactions(): Response
     {
         return $this->render('clients/profile/transactions.html.twig', [
-            'transactions' => TransactionsController::allTransactions(),
+            'transactions' => BillingController::allTransactions(),
         ]);
     }
 
@@ -266,18 +264,18 @@ class IndexController extends AbstractController
     }
 
     /**
-     * @Route("/billing/billing.invoices.html.twig", name="billing_invoices")
+     * @Route("/billing/invoices", name="billing_invoices")
      */
     public function billingInvoices(): Response
     {
         return $this->render('billing/billing.invoices.html.twig', [
             'title' => 'Инвойсы',
-            'invoices' => InvoicesController::allInvoices(),
+            'invoices' => BillingController::allInvoices()
         ]);
     }
 
     /**
-     * @Route("/billing/billing.new.invoice.html.twig", name="billing_new_invoice")
+     * @Route("/billing/new_invoice", name="billing_new_invoice")
      */
     public function billingNewInvoice(): Response
     {
@@ -287,14 +285,14 @@ class IndexController extends AbstractController
     }
 
     /**
-     * @Route("/billing/billing.edit.draft.invoice.html.twig", name="billing_edit_draft")
+     * @Route("/billing/draft", name="billing_edit_draft")
      */
     public function billingEditDraft(): Response
     {
         return $this->render('billing/billing.edit.draft.invoice.html.twig', [
             'title' => 'Редактировать инвойс',
-            'services' => InvoicesController::allServices(),
-            'data' => InvoicesController::invoiceUserData(),
+            'services' => BillingController::allServices(),
+            'data' => BillingController::invoiceUserData(),
         ]);
     }
 
@@ -305,8 +303,8 @@ class IndexController extends AbstractController
     {
         return $this->render('billing/view_invoice/billing.invoice.overview.html.twig', [
             'title' => 'Инвойс',
-            'data' => InvoicesController::invoiceData(),
-            'invoices' => InvoicesController::createInvoices(),
+            'data' => BillingController::invoiceData(),
+            'invoices' => BillingController::createInvoices(),
         ]);
     }
 
@@ -317,8 +315,8 @@ class IndexController extends AbstractController
 	{
 		return $this->render('billing/view_invoice/billing.invoice.details.html.twig', [
 			'title' => 'Инвойс',
-			'data' => InvoicesController::invoiceData(),
-			'invoices' => InvoicesController::createInvoices(),
+			'data' => BillingController::invoiceData(),
+			'invoices' => BillingController::createInvoices(),
 		]);
 	}
 
@@ -329,7 +327,7 @@ class IndexController extends AbstractController
     {
         return $this->render('billing/billing.transactions.html.twig', [
             'title' => 'Транзакции',
-            'transactions' => TransactionsController::allTransactions(),
+            'transactions' => BillingController::allTransactions(),
         ]);
     }
 
@@ -340,7 +338,7 @@ class IndexController extends AbstractController
 	{
 		return $this->render('billing/billing.payments.html.twig', [
 			'title' => 'Платежи',
-			'payments' => PaymentsController::allPayments(),
+			'payments' => BillingController::allPayments(),
 		]);
 	}
 

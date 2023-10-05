@@ -9,23 +9,6 @@
 		<div class="p-8 space-y-6 divide-y-2">
 
 			<div>
-				{% set x = 123 %}
-
-				{% for i in iplogs %}
-					{% if i.id == 111 %}
-						{% set x = 321 %}
-						{% for j in i.logs %}
-
-							<p>{{ j.date }}</p>
-
-						{% endfor %}
-					{% endif %}
-				{% endfor %}
-
-				<p>{{ x }}</p>
-			</div>
-
-			<div>
 				{% set filt = ['one', 'two', 'three', 'four', 'five'] %}
 				{% for i in filt|filter(i => i not in ['two', 'three']) %}
 					<p>{{ i }}</p>
@@ -33,6 +16,7 @@
 			</div>
 
 			<div>
+				{# config/packages/twig.yaml #}
 				{% for i in test_glob %}
 					<p>{{ i.id }} - {{ i.text }}</p>
 				{% endfor %}
@@ -51,25 +35,6 @@
 				{% for i in arr %}
 					<div><b>{{ i }}</b></div>
 				{% endfor %}
-			</div>
-
-			<div class="py-6">
-				<label class="relative inline-flex items-center cursor-pointer">
-					<input type="checkbox" value="" class="sr-only peer">
-					<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-					<span class="ml-3 text-sm font-medium text-gray-900">Toggle me</span>
-				</label>
-			</div>
-
-			<div class="py-6 flex items-center w-full">
-				<label for="toggleB" class="flex items-center cursor-pointer">
-					<div class="relative">
-						<input type="checkbox" id="toggleB" class="sr-only">
-						<div class="toggle block bg-gray-200 w-14 h-8 rounded-full"></div>
-						<div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
-					</div>
-					<div class="ml-3 text-gray-700 font-medium">Toggle Me!</div>
-				</label>
 			</div>
 
 			<div class="flex p-8 space-x-4">
@@ -136,3 +101,4 @@
 	<div class="text-orange-400 text-orange-800 text-blue-400 text-green-500 bg-blue-400 bg-orange-200 bg-gray-400 bg-purple-400"></div>
 
 {% endblock %}
+

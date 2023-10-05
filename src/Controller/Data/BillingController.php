@@ -3,7 +3,7 @@ namespace App\Controller\Data;
 
 use DateTime;
 
-class InvoicesController
+class BillingController
 {
     public static function allInvoices() {
         $list = [
@@ -103,9 +103,9 @@ class InvoicesController
 
     public static function createInvoices() {
         return [
-            new InvoicesController(293023, 'Lite - Linux SSD', 'Renew', 5.5, '01/07/2022', '31/07/2023', 'Netherlands', '5.32.123.221', 'No panel', 'Xeon 1x2.60 GHz', 1, '20GB SSD', '1 Gbps', 'IPv4x1', 'Daily', 'No administration', 'CentOS 8 x64', 'Basic DDoS защита от L2 - L4'),
-            new InvoicesController(293024, 'Exclusive - Windows NVMe', 'Upgrade', 75, '16/01/2023', '15/02/2023', 'Romania', '5.32.123.221', 'No panel', 'Xeon 6x2.90 GHz', '32 Gb', '100GB NVMe', '1 Gbps', 'IPv4x1', 'Daily', '', 'Windows Server 2008 R2 Standart (En)', ''),
-            new InvoicesController(293025, 'Exclusive - Windows NVMe', 'New', 10, '03/07/2022', '02/09/2023', 'Germany', '5.32.123.221', 'No panel', 'Xeon 2x2.60 GHz', '16 Gb', '20GB SSD', '1 Gbps', 'IPv4x1', 'Daily', '', 'CentOS 8 x64', ''),
+            new BillingController(293023, 'Lite - Linux SSD', 'Renew', 5.5, '01/07/2022', '31/07/2023', 'Netherlands', '5.32.123.221', 'No panel', 'Xeon 1x2.60 GHz', 1, '20GB SSD', '1 Gbps', 'IPv4x1', 'Daily', 'No administration', 'CentOS 8 x64', 'Basic DDoS защита от L2 - L4'),
+            new BillingController(293024, 'Exclusive - Windows NVMe', 'Upgrade', 75, '16/01/2023', '15/02/2023', 'Romania', '5.32.123.221', 'No panel', 'Xeon 6x2.90 GHz', '32 Gb', '100GB NVMe', '1 Gbps', 'IPv4x1', 'Daily', '', 'Windows Server 2008 R2 Standart (En)', ''),
+            new BillingController(293025, 'Exclusive - Windows NVMe', 'New', 10, '03/07/2022', '02/09/2023', 'Germany', '5.32.123.221', 'No panel', 'Xeon 2x2.60 GHz', '16 Gb', '20GB SSD', '1 Gbps', 'IPv4x1', 'Daily', '', 'CentOS 8 x64', ''),
         ];
     }
 
@@ -142,10 +142,7 @@ class InvoicesController
 
         return $services;
     }
-}
 
-class TransactionsController
-{
 	public static function allTransactions() {
 		$list = [
 			['id' => 'TC09862324260957', 'date' => '17/02/2023', 'invoice_exist' => 0, 'invoice_type' => 1, 'invoice' => '93913', 'client' => 'Leslie Alexander', 'method' => 'payserra', 'description' => 'Оплата инвойса с входящей транзакции', 'refund' => 0, 'amount' => 99, 'status' => 'Засчитана', 'details' => ['name' => 'Deposit via Paysera: Payment for is*hosting: #2530', 'id' => 1]],
@@ -162,10 +159,7 @@ class TransactionsController
 
 		return $list;
 	}
-}
 
-class PaymentsController
-{
 	public static function allPayments() {
 		$list = [
 			[
