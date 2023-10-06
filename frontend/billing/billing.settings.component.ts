@@ -20,13 +20,13 @@ export const BillingSettingsComponent = {
         draftInvoiceSave() {
             const self = <any>this;
             self.$notifications('global').notify(
-                new Notification(NotificationLevels.SUCCESS, "Сохранение черновика", "Черновик успешно сохранён")
+                new Notification(NotificationLevels.SUCCESS, "Сохранение", "Инвойс успешно сохранён в Draft")
             );
         },
         draftInvoicePublish() {
             const self = <any>this;
             self.$notifications('global').notify(
-                new Notification(NotificationLevels.SUCCESS, "Публикация черновика", "Черновик успешно опубликован")
+                new Notification(NotificationLevels.SUCCESS, "Опубликовано", "Инвойс успешно опубликован")
             );
         },
         billingAddTransaction() {

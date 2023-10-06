@@ -289,7 +289,7 @@ class IndexController extends AbstractController
      */
     public function billingEditDraft(): Response
     {
-        return $this->render('billing/billing.edit.draft.invoice.html.twig', [
+        return $this->render('billing/billing.draft.invoice.html.twig', [
             'title' => 'Редактировать инвойс',
             'services' => BillingController::allServices(),
             'data' => BillingController::invoiceUserData(),

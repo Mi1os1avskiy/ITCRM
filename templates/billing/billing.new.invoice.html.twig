@@ -25,26 +25,21 @@
 
 				<div class="space-y-5">
 					<div class="flex items-center space-x-6">
-						<p class="w-[344px] text-gray-700 text-sm font-medium">Клиент</p>
-						<div class="relative">
-							<button type="button" class="w-80 flex justify-between py-2 px-3 rounded-md border border-gray-300 shadow-sm text-left shadow-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-								<p class="pointer-events-none text-gray-400 text-sm">Выберите клиента</p>
-								<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-								</svg>
-							</button>
+						<div class="w-[344px] text-gray-700 text-sm font-medium">Клиент <span class="text-red-500">*</span></div>
+						<div class="relative w-80">
+							<input class="w-full py-2 pl-3 pr-10 border border-gray-300 rounded-md shadow-sm text-gray-900 text-sm text-left shadow-sm placeholder:text-gray-400 hover:bg-gray-50" placeholder="Выберите клиента" type="text" aria-expanded="false" aria-expanded-autohide>
 
-							{% set names = ['Richard Dawkins', 'Neil deGrass Tyson', 'Robert Sapolsky'] %}
-							<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+							<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+							{% for i in allClients() %}
 								<li>
-									<button type="button" class="w-full py-2 px-4 text-gray-900 font-semibold text-left bg-gray-50 hover:bg-gray-100">Не выбран</button>
+									<button type="button" class="w-full py-2 px-4 text-gray-900 text-sm text-left truncate hover:bg-gray-50 hover:font-medium">{{ i.email }} <span class="text-gray-500">{{ i.id }}</span></button>
 								</li>
-								{% for i in names %}
-									<li>
-										<button type="button" class="w-full py-2 px-4 text-gray-700 text-left hover:bg-gray-100">{{ i }}</button>
-									</li>
-								{% endfor %}
+							{% endfor %}
 							</ul>
+
+							<svg class="absolute top-2 right-3 arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+							</svg>
 						</div>
 					</div>
 
@@ -52,25 +47,25 @@
 
 					<div class="flex items-center space-x-6">
 						<p class="w-[344px] text-gray-700 text-sm font-medium">Тариф</p>
-						<div class="relative">
-							<button type="button" class="w-80 flex justify-between py-2 px-3 rounded-md border border-gray-300 shadow-sm text-left shadow-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-								<p class="pointer-events-none text-gray-400 text-sm">Выберите тариф</p>
-								<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-								</svg>
-							</button>
 
-							{% set plans = ['Plan 111', 'Plan 112', 'Plan 113'] %}
-							<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
-								<li>
-									<button type="button" class="w-full py-2 px-4 text-gray-900 font-semibold text-left bg-gray-50 hover:bg-gray-100">Не выбран</button>
-								</li>
+						{% set plans = ['Plan 111', 'Plan 112', 'Plan 113'] %}
+
+						<div class="relative w-80 popover__wrapper">
+							<input disabled class="w-full py-2 pl-3 pr-10 border border-gray-300 rounded-md shadow-sm text-gray-900 text-sm text-left shadow-sm truncate placeholder:text-gray-400 hover:bg-gray-50 disabled:bg-gray-50 disabled:text-gray-500" placeholder="Выберите тариф" type="text" aria-expanded="false" aria-expanded-autohide>
+
+							<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 								{% for i in plans %}
 									<li>
-										<button type="button" class="w-full py-2 px-4 text-gray-700 text-left hover:bg-gray-100">{{ i }}</button>
+										<button type="button" class="w-full py-2 px-4 text-gray-900 text-sm text-left truncate hover:bg-gray-50 hover:font-medium">{{ i }}</button>
 									</li>
 								{% endfor %}
 							</ul>
+
+							<svg class="absolute top-2 right-3 arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+							</svg>
+
+							<div class="popover__content left-[93px] w-fit py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">Выберите клиента</div>
 						</div>
 					</div>
 
@@ -79,7 +74,7 @@
 					<div class="flex items-center space-x-6">
 						<p class="w-[344px] text-gray-700 text-sm font-medium">Срок оплаты</p>
 						<div class="relative w-80">
-							<input class="block w-full text-gray-900 text-sm rounded-md border border-gray-300 shadow-sm py-2 pl-3 pr-10 placeholder-gray-400" placeholder="Дата оплаты" value="30/09/2023" type="text">
+							<input class="block w-full text-gray-900 text-sm rounded-md border border-gray-300 shadow-sm py-2 pl-3 pr-10 space-x-2 placeholder-gray-400" placeholder="Дата оплаты" value="30/09/2023" type="text">
 							<div class="absolute inset-y-0 right-3 flex items-center">
 								<button type="button">
 									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -109,7 +104,7 @@
 							<p class="text-gray-700 text-sm font-medium">Описание</p>
 							<p class="text-gray-500 text-xs">Отображается клиенту</p>
 						</div>
-						<textarea class="w-80 py-2 px-3 rounded-md border border-gray-300 shadow0sm text-sm placeholder-gray-400" placeholder="Описание"></textarea>
+						<textarea class="w-80 h-20 min-h-[38px] max-h-64 py-2 px-3 rounded-md border border-gray-300 shadow-sm text-gray-900 text-sm placeholder-gray-400" placeholder="Описание"></textarea>
 					</div>
 				</div>
 
@@ -128,7 +123,7 @@
 								<p class="text-gray-900 text-sm font-medium">№</p>
 							</div>
 							<div class="flex-1 p-3">
-								<p class="text-gray-900 text-sm font-medium">Наименование</p>
+								<p class="text-gray-900 text-sm font-medium">Описание</p>
 							</div>
 							<div class="w-[176px] py-3 pl-3 pr-6">
 								<p class="text-gray-900 text-sm font-medium">Сумма</p>
@@ -147,7 +142,7 @@
 								<p class="text-gray-500 text-sm">1</p>
 							</div>
 							<div class="flex-1 py-2 px-3">
-								<input class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-gray-900 text-sm placeholder-gray-400" placeholder="Наименование" type="text"/>
+								<input class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-gray-900 text-sm placeholder-gray-400" placeholder="Описание" type="text"/>
 							</div>
 							<div class="w-[176px] py-2 pl-3 pr-6">
 								<input class="w-[140px] py-2 px-3 border border-gray-300 rounded-md shadow-sm text-gray-900 text-sm placeholder-gray-400" placeholder="Сумма" type="text"/>

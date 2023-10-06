@@ -40,7 +40,7 @@ input[type="checkbox"], input[type="checkbox"] + label {
 	cursor: pointer;
 }
 
-[aria-expanded="true"] .arrow {
+[aria-expanded="true"] .arrow, [aria-expanded="true"] ~ .arrow {
 	transform: rotate(180deg);
 }
 
@@ -140,7 +140,7 @@ input:checked ~ .toggle {
 	opacity: 0;
 	visibility: hidden;
 	position: absolute;
-	bottom: 60px;
+	bottom: 54px;
 }
 .popover__content:before {
 	position: absolute;
