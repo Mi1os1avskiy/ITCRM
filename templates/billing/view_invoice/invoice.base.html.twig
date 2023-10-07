@@ -19,14 +19,14 @@
 						<div class="flex flex-1 items-center space-x-4">
 							<p class="font-semibold text-lg">{{ title }} {{ data.invoice_id }}</p>
 							{% for val, css in invoice_statuses %}
-								{% if val == data.invoice_status %}
+								{% if val == getGet() %}
 									<span class="py-0.5 px-3 rounded-xl text-sm font-medium bg-{{ css }}-100 text-{{ css }}-800">{{ val }}</span>
 								{% endif %}
 							{% endfor %}
 						</div>
 
 						<div class="flex space-x-4">
-							{% if data.invoice_status == "Pending" %}
+							{% if getGet() == "Pending" %}
 							<div class="flex space-x-3">
 								<button type="button" class="py-2 px-4 rounded-md ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50">PDF: Ru</button>
 								<button type="button" class="py-2 px-4 rounded-md ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50">PDF: Eng</button>
@@ -50,23 +50,9 @@
 					</div>
 				</div>
 
-				<div class="pb-2 px-8 bg-gray-50">
-					<div class="flex items-center py-4 px-6 space-x-2 rounded-md border border-gray-300 text-gray-900 text-sm">
-						<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<rect width="40" height="40" rx="20" fill="#F3F4F6"/>
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 14C15.5 11.5147 17.5147 9.5 20 9.5C22.4853 9.5 24.5 11.5147 24.5 14C24.5 16.4853 22.4853 18.5 20 18.5C17.5147 18.5 15.5 16.4853 15.5 14Z" fill="#374151"/>
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M11.7512 28.1053C11.8286 23.6156 15.492 20 20 20C24.5081 20 28.1716 23.6157 28.2488 28.1056C28.2539 28.4034 28.0823 28.676 27.8117 28.8002C25.4327 29.8918 22.7865 30.5 20.0003 30.5C17.2139 30.5 14.5674 29.8917 12.1883 28.7999C11.9176 28.6757 11.7461 28.4031 11.7512 28.1053Z" fill="#374151"/>
-						</svg>
-						<div>
-							<p class="font-medium">{{ data.invoice_email }}</p>
-							<p class="text-gray-500 font-medium">{{ data.invoice_user }}</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="-mb-px flex pt-4 px-8 space-x-8 border-b bg-gray-50">
-					<a href="{{ path('invoice_overview') }}" class="pb-[14px] border-b-2 text-sm font-medium leading-5 hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'overview' %} border-indigo-500 text-indigo-600 pointer-events-none{% else %} text-gray-500 border-transparent {% endif %}">Обзор</a>
-					<a href="{{ path('invoice_payment_details') }}" class="pb-[14px] border-b-2 text-sm font-medium leading-5 hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'details' %} border-indigo-500 text-indigo-600 pointer-events-none{% else %} text-gray-500 border-transparent {% endif %}">Подробности оплаты</a>
+				<div class="flex pt-4 px-8 space-x-8 border-b bg-gray-50">
+					<a href="{{ path('invoice_overview') }}" class="pb-[14px] border-b-2 text-sm font-medium hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'overview' %} border-indigo-500 text-indigo-600 pointer-events-none{% else %} text-gray-500 border-transparent {% endif %}">Обзор</a>
+					<a href="{{ path('invoice_payment_details') }}" class="pb-[14px] border-b-2 text-sm font-medium hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'details' %} border-indigo-500 text-indigo-600 pointer-events-none{% else %} text-gray-500 border-transparent {% endif %}">Подробности оплаты</a>
 				</div>
 
 			{% endblock %}
