@@ -38,7 +38,10 @@
 							<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 								{% for i in allClients() %}
 									<li>
-										<button type="button" class="w-full py-2 px-4 text-gray-900 text-sm text-left truncate {% if i.email == client %}bg-indigo-600 text-gray-50{% else %}hover:bg-gray-50 hover:font-medium{% endif %}">{{ i.email }} <span class="text-gray-500 {% if i.email == client %}text-gray-300{% endif%}">{{ i.id }}</span></button>
+										<button type="button" class="w-full py-2 px-4 space-x-3 text-gray-900 text-sm text-left truncate {% if i.email == client %}bg-indigo-600 text-gray-50{% else %}hover:bg-gray-50 hover:font-medium{% endif %}">
+											<span>{{ i.email }}</span>
+											<span class="text-gray-500 {% if i.email == client %}text-gray-300{% endif%}">{{ i.id }}</span>
+										</button>
 									</li>
 								{% endfor %}
 							</ul>
