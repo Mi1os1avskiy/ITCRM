@@ -4,83 +4,124 @@
 
 {% block overview %}
 
-	<div class="max-w-[805px] pt-6 pb-4 px-8 space-y-6 text-gray-900">
-
-		{% if data.invoice_status == 'Paid' %}
-			<div class="max-w-[805px] flex py-4 px-6 bg-green-50 rounded-md text-sm">
-				<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM13.8566 8.19113C14.1002 7.85614 14.0261 7.38708 13.6911 7.14345C13.3561 6.89982 12.8871 6.97388 12.6434 7.30887L9.15969 12.099L7.28033 10.2197C6.98744 9.92678 6.51256 9.92678 6.21967 10.2197C5.92678 10.5126 5.92678 10.9874 6.21967 11.2803L8.71967 13.7803C8.87477 13.9354 9.08999 14.0149 9.30867 13.9977C9.52734 13.9805 9.72754 13.8685 9.85655 13.6911L13.8566 8.19113Z" fill="#34D399"/>
-				</svg>
-				<p class="ml-4 text-green-800 font-medium">Invoice paid</p>
-				<p class="ml-2 text-green-700">{{ data.invoice_paid_date }}, {{ data.invoice_paid_type }}, ${{ data.invoice_paid|number_format('2', '.', '') }}</p>
+	<div class="flex pt-6 pb-4 px-8 space-x-6 text-gray-900">
+		<div class="w-[656px] space-y-10">
+{#			{% if data.invoice_description %}#}
+			{% if getGet() != 'Pending' %}
+			<div class="p-4 space-y-1 ring-1 ring-gray-200 rounded-lg">
+				<div class="flex space-x-1">
+					<p class="flex-1 text-gray-400 text-xs font-medium">Описание</p>
+					<p class="flex-1 text-gray-400 text-xs font-medium text-right">Отображается клиенту</p>
+				</div>
+				<div class="text-sm">{{ data.invoice_description }}</div>
 			</div>
-		{% endif %}
+			{% endif %}
 
-		<div class="flex items-center py-5 px-6 space-x-6 bg-yellow-50 rounded-md border border-gray-300 text-sm">
-			<div class="space-y-1">
-				<p class="text-gray-400 text-xs font-medium">Примечание</p>
-				<p>{% if data.invoice_notation %}{{ data.invoice_notation }}{% endif %}</p>
-			</div>
-			<button {% if data.invoice_notation %}@click="billingInvoiceNotationEdit()"{% else %}@click="billingInvoiceNotationAdd()"{% endif %} type="button" class="rounded-md border py-2 px-3 bg-white text-gray-700 text-xs font-medium shadow-sm hover:bg-gray-50">
-				<span>{% if data.invoice_notation %}Изменить{% else %}Добавить{% endif %}</span>
-			</button>
-		</div>
+			<div class="space-y-5">
+				<h3 class="text-lg font-medium">Счёт</h3>
+				<div class="w-full overflow-hidden ring-1 ring-gray-200 rounded-lg">
+					<table class="w-full">
+						<thead>
+						<tr class="bg-gray-50 ring-b ring-1 ring-gray-300 text-sm font-medium">
+							<th class="w-16 py-3 pl-6 pr-3 text-left">№</th>
+							<th class="p-3 text-left truncate">Наименование услуги</th>
+							<th class="w-44 py-3 pl-3 pr-6 text-right">Сумма</th>
+						</tr>
+						</thead>
+						<tbody class="divide-y text-gray-500 text-sm">
 
-		{% if data.invoice_status == 'Paid' %}
-			<div class="py-5 px-6 bg-gray-50 rounded-md border border-gray-300 text-sm">
-				<div class="space-y-1">
-					<p class="font-semibold">Описание</p>
-					<p>Cursus commodo id nulla nunc neque adipiscing pulvinar sed maecenas. Elit cras amet tempus malesuada phasellus nec tortor convallis eu.</p>
+						{% set res = 0 %}
+
+						{% for i in services %}
+							<tr>
+								<td class="py-4 pl-6 pr-3">{{ i.id }}</td>
+								<td class="py-4 px-3">{{ i.service }}</td>
+								<td class="py-4 pl-3 pr-6 text-right">$ {{ i.amount|number_format('2', '.', '') }}</td>
+							</tr>
+							{% set res = res + i.amount %}
+						{% endfor %}
+						</tbody>
+					</table>
+
+					<div class="py-4 pl-3 pr-6 space-y-1 ring-t ring-1 ring-gray-200 bg-gray-50 text-sm">
+						<p class="text-right">Всего по инвойсу: $ {{ res }}</p>
+						<p class="text-right">Скидка по промокоду: $ {{ data.invoice_discount|number_format('2', '.', '') }}</p>
+						<p class="text-right">Оплачено: $ {{ data.invoice_paid|number_format('2', '.', '') }}</p>
+						{% set total = res - data.invoice_discount - data.invoice_paid %}
+						<p class="font-semibold text-right">Итого к оплате: $ {{ total|number_format('2', '.', '') }}</p>
+					</div>
 				</div>
 			</div>
-		{% endif %}
-
-		<div class="bg-gray-50 rounded-md border border-gray-300 shadow-sm divide-y text-sm">
-			<div class="p-6 pb-5 space-y-1">
-				<p>Дата создания: {{ data.invoice_created }}</p>
-				<p>Оплатить до: {{ data.invoice_paydate }}</p>
-			</div>
-			{% for invoice in invoices %}
-				<div class="flex">
-					<div class="flex-1 py-5 px-6 space-y-4">
-						<div class="flex space-x-2">
-							<div>
-								<p class="font-semibold">{{ invoice.title }}</p>
-								<p class="text-indigo-900 text-xs">{{ invoice.id }}</p>
+		</div>
+		<div class="flex-1 space-y-6">
+			<div class="ring-1 ring-gray-200 rounded-lg divide-y overflow-hidden">
+				<div class="py-3 px-6 bg-gray-50 text-sm font-medium">Общая информация</div>
+				<div class="flex py-3 px-6 space-x-4">
+					<div class="flex-1 text-gray-700 text-sm">Имя клиента</div>
+					<div class="flex-1 text-sm font-medium text-right">
+						<a href="{{ path('overview') }}" class="hover:text-indigo-700">{{ data.invoice_user }}</a>
+					</div>
+				</div>
+				<div class="flex py-3 px-6 space-x-4">
+					<div class="flex-1 text-gray-700 text-sm">ID услуги</div>
+					<div class="flex-1 text-indigo-700 text-sm font-medium text-right">{{ data.invoice_service_id }}</div>
+				</div>
+				<div class="flex py-3 px-6 space-x-4">
+					<div class="flex-1 text-gray-700 text-sm">Дата выставления</div>
+					<div class="flex-1 text-sm font-medium text-right">{{ data.invoice_issued }}</div>
+				</div>
+				<div class="flex py-3 px-6 space-x-4">
+					<div class="flex-1 text-gray-700 text-sm">Срок оплаты</div>
+					<div class="flex-1 text-sm font-medium text-right">{{ data.invoice_paydate }}</div>
+				</div>
+				<div class="flex py-3 px-6 space-x-4">
+					<div class="flex-1 text-gray-700 text-sm">Всего по инвойсу</div>
+					<div class="flex-1 text-sm font-medium text-right">$ {{ res|number_format(2, '.', '') }}</div>
+				</div>
+				<div class="flex py-3 px-6 space-x-4">
+					<div class="flex flex-1 space-x-2 text-gray-700 text-sm">
+						<span>Итого к оплате</span>
+						<div class="popover__wrapper relative inline-block p-0.5">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+								<path d="M7.5 7.5L7.52766 7.48617C7.90974 7.29513 8.33994 7.64023 8.23634 8.05465L7.76366 9.94535C7.66006 10.3598 8.09026 10.7049 8.47234 10.5138L8.5 10.5M14 8C14 11.3137 11.3137 14 8 14C4.68629 14 2 11.3137 2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8ZM8 5.5H8.005V5.505H8V5.5Z" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+							<div class="popover__content bottom-8 -left-[113px] w-fit py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">
+								<p>“Всего по инвойсу” за вычетом</p>
+								<p>“Оплачено” и “Cкидка по промокоду”</p>
 							</div>
-							<div class="h-fit py-0.5 px-2.5 rounded-xl text-xs font-medium bg-green-100 text-green-800">{{ invoice.status }}</div>
-						</div>
-						<hr>
-						<div class="space-y-1">
-							<p>{{ invoice.date_created }} - {{ invoice.date_expiring }}</p>
-							{% if invoice.loc %}<p>Location: {{ invoice.loc }}</p>{% endif %}
-							{% if invoice.ip %}<p>IP: {{ invoice.ip }}</p>{% endif %}
-							{% if invoice.panel %}<p>Panel: {{ invoice.panel }}</p>{% endif %}
-							{% if invoice.cpu %}<p>CPU: {{ invoice.cpu }}</p>{% endif %}
-							{% if invoice.ram %}<p>RAM: {{ invoice.ram }}</p>{% endif %}
-							{% if invoice.disk %}<p>Disk: {{ invoice.disk }}</p>{% endif %}
-							{% if invoice.port %}<p>Port: {{ invoice.port }}</p>{% endif %}
-							{% if invoice.add %}<p>Additional: {{ invoice.add }}</p>{% endif %}
-							{% if invoice.backup %}<p>Backup: {{ invoice.backup }}</p>{% endif %}
-							{% if invoice.admin %}<p>Administration: {{ invoice.admin }}</p>{% endif %}
-							{% if invoice.os %}<p>OS: {{ invoice.os }}</p>{% endif %}
-							{% if invoice.ddos %}<p>DDoS protection: {{ invoice.ddos }}</p>{% endif %}
 						</div>
 					</div>
-					<div class="py-5 pr-6">$ {{ invoice.amount|number_format('2', '.', '') }}</div>
+					<div class="flex-1 text-sm font-medium text-right">$ {{ total|number_format(2, '.', '') }}</div>
 				</div>
-			{% endfor %}
-			<div class="flex justify-end p-6 pt-4">
-				{% set res = 0 %}
-				{% for i in invoices %}
-					{% set res = res + i.amount %}
-				{% endfor %}
-				{% set total = res - data.invoice_discount - data.invoice_paid %}
-				<div class="space-y-1">
-					<p>Всего по инвойсу: ${{ res|number_format('2', '.', '') }}</p>
-					<p>Скидка: ${{ data.invoice_discount|number_format('2', '.', '') }}</p>
-					<p>Оплачено: ${{ data.invoice_paid|number_format('2', '.', '') }}</p>
-					<p class="font-semibold">Итого к оплате: ${{ total|number_format('2', '.', '') }}</p>
+				<div class="flex py-3 px-6 space-x-4">
+					<div class="flex-1 text-gray-700 text-sm">Статус инвойса</div>
+					<div class="flex-1 text-right">
+						{% if getGet() %}
+							{% for val, css in invoice_statuses %}
+								{% if val == getGet() %}
+									<span class="py-0.5 px-3 rounded-xl text-sm font-medium bg-{{ css }}-100 text-{{ css }}-800">{{ val }}</span>
+								{% endif %}
+							{% endfor %}
+						{% else %}
+							<span class="py-0.5 px-3 rounded-xl text-sm font-medium bg-green-100 text-green-800">Paid</span>
+						{% endif %}
+					</div>
+				</div>
+				<div class="flex py-3 px-6 space-x-4">
+					<div class="flex-1 text-gray-700 text-sm">Дата последней оплаты</div>
+					<div class="flex-1 text-sm font-medium text-right"></div>
+				</div>
+				<div class="flex py-3 px-6 space-x-4">
+					<div class="flex-1 text-gray-700 text-sm">Способ оплаты</div>
+					<div class="flex-1 text-sm font-medium text-right"></div>
+				</div>
+			</div>
+
+			<div class="space-y-4">
+				<h3 class="text-lg font-medium">Примечание</h3>
+				<div class="p-4 space-y-1 ring-1 ring-gray-200 rounded-lg bg-yellow-50">
+					<p class="text-gray-400 text-xs font-medium">Примечание</p>
+					<textarea class="w-full p-0 border-0 bg-yellow-50 rounded-md text-sm resize-none focus:bg-white">{{ data.invoice_notation }}</textarea>
 				</div>
 			</div>
 		</div>

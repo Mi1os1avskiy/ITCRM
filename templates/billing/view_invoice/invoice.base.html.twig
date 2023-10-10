@@ -17,21 +17,24 @@
 					</nav>
 					<div class="flex items-center justify-between space-x-4">
 						<div class="flex flex-1 items-center space-x-4">
-							<p class="font-semibold text-lg">{{ title }} {{ data.invoice_id }}</p>
-							{% for val, css in invoice_statuses %}
-								{% if val == getGet() %}
-									<span class="py-0.5 px-3 rounded-xl text-sm font-medium bg-{{ css }}-100 text-{{ css }}-800">{{ val }}</span>
-								{% endif %}
-							{% endfor %}
+							<p class="font-semibold text-lg leading-6">{{ title }} {{ data.invoice_id }}</p>
+							{% if getGet() %}
+								{% for val, css in invoice_statuses %}
+									{% if val == getGet() %}
+										<span class="py-0.5 px-3 rounded-xl text-sm font-medium bg-{{ css }}-100 text-{{ css }}-800">{{ val }}</span>
+									{% endif %}
+								{% endfor %}
+							{% else %}
+								<span class="py-0.5 px-3 rounded-xl text-sm font-medium bg-green-100 text-green-800">Paid</span>
+							{% endif %}
 						</div>
 
 						<div class="flex space-x-4">
-							{% if getGet() == "Pending" %}
 							<div class="flex space-x-3">
 								<button type="button" class="py-2 px-4 rounded-md ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50">PDF: Ru</button>
 								<button type="button" class="py-2 px-4 rounded-md ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50">PDF: Eng</button>
 							</div>
-							{% endif %}
+							{% if getGet() == "Pending" %}
 							<div class="flex space-x-3">
 								<button @click="billingInvoiceAddPayment()" type="button" class="flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50">
 									<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,13 +49,15 @@
 									<span>Отменить инвойс</span>
 								</button>
 							</div>
+							{% endif %}
 						</div>
 					</div>
 				</div>
 
+				{% set status = getGet() %}
 				<div class="flex pt-4 px-8 space-x-8 border-b bg-gray-50">
-					<a href="{{ path('invoice_overview') }}" class="pb-[14px] border-b-2 text-sm font-medium hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'overview' %} border-indigo-500 text-indigo-600 pointer-events-none{% else %} text-gray-500 border-transparent {% endif %}">Обзор</a>
-					<a href="{{ path('invoice_payment_details') }}" class="pb-[14px] border-b-2 text-sm font-medium hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'details' %} border-indigo-500 text-indigo-600 pointer-events-none{% else %} text-gray-500 border-transparent {% endif %}">Подробности оплаты</a>
+					<a href="{% if status %}{{ path('invoice_overview', { status:status }) }}{% else %}{{ path('invoice_overview') }}{% endif %}" class="pb-[14px] border-b-2 text-sm font-medium hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'overview' %} border-indigo-500 text-indigo-600 pointer-events-none{% else %} text-gray-500 border-transparent {% endif %}">Обзор</a>
+					<a href="{% if status %}{{ path('invoice_payment_details', { status:status }) }}{% else %}{{ path('invoice_payment_details') }}{% endif %}" class="pb-[14px] border-b-2 text-sm font-medium hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'details' %} border-indigo-500 text-indigo-600 pointer-events-none{% else %} text-gray-500 border-transparent {% endif %}">Подробности оплаты</a>
 				</div>
 
 			{% endblock %}

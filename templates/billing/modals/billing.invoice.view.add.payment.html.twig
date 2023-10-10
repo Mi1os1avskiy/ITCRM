@@ -4,7 +4,7 @@
 
 {% block modal_content %}
 
-	<div class="w-[512px] relative transform overflow-hidden rounded-lg bg-white my-auto transition-all text-left">
+	<form class="w-[512px] relative transform overflow-hidden rounded-lg bg-white my-auto transition-all text-left">
 		<h3 class="py-5 px-6 bg-gray-50 text-gray-900 text-lg font-medium">Добавить платёж</h3>
 		<div class="py-5 px-6 space-y-5">
 			<div class="w-full p-4 rounded-md bg-purple-50 text-purple-900 text-sm text-center">Баланс клиента: ${{ data.user_balance|number_format('2', '.', '') }}</div>
@@ -91,6 +91,6 @@
 			<button @click="close(false)" type="button" class="w-full rounded-md border border-gray-300 px-4 py-2 text-gray-700 shadow-sm bg-white hover:bg-gray-50">Отменить</button>
 			<button @click="close(true)" type="button" class="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-white shadow-sm hover:bg-indigo-700">Добавить</button>
 		</div>
-	</div>
+	</form>
 
 {% endblock %}

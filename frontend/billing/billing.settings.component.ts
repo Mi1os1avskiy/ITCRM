@@ -93,6 +93,14 @@ export const BillingSettingsComponent = {
             const self = <any>this;
             self.$modals(BillingInvoiceAddPayment).show()
                 .then((data: any) => {
+                    setTimeout(
+                        function(){
+                            location.href = "http://127.0.0.1:8000/billing/invoice/details"
+                        },
+                        1000);
+                    self.$notifications('global').notify(
+                        new Notification(NotificationLevels.SUCCESS, "Платёж", "Платёж успешно добавлен")
+                    );
                 })
                 .catch(() => {
                 });

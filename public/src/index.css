@@ -140,7 +140,6 @@ input:checked ~ .toggle {
 	opacity: 0;
 	visibility: hidden;
 	position: absolute;
-	bottom: 54px;
 }
 .popover__content:before {
 	position: absolute;

@@ -33,7 +33,7 @@
 						{% set client = 'dawkins@mail.com' %}
 
 						<div class="relative w-80">
-							<input class="w-full py-2 pl-3 pr-10 border border-gray-300 rounded-md shadow-sm text-gray-900 text-sm text-left shadow-sm placeholder:text-gray-400 hover:bg-gray-50" value="{{ client }}" placeholder="Выберите клиента" type="text" aria-expanded="false" aria-expanded-autohide>
+							<input class="w-full py-2 pl-3 pr-10 border border-gray-300 rounded-md shadow-sm text-sm text-left placeholder:text-gray-400 hover:bg-gray-50" value="{{ client }}" placeholder="Выберите клиента" type="text" aria-expanded="false" aria-expanded-autohide>
 
 							<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 								{% for i in allClients() %}
@@ -60,7 +60,7 @@
 						{% set plans = ['5453 - Lite - Linux SSD NL ($5.00 Monthly)', 'Plan 111', 'Plan 112', 'Plan 113'] %}
 
 						<div class="relative w-80">
-							<input class="w-full py-2 pl-3 pr-10 border border-gray-300 rounded-md shadow-sm text-gray-900 text-sm text-left shadow-sm truncate placeholder:text-gray-400 hover:bg-gray-50" value="{{ plans|first }}" placeholder="Выберите тариф" type="text" aria-expanded="false" aria-expanded-autohide>
+							<input class="w-full py-2 pl-3 pr-10 border border-gray-300 rounded-md shadow-sm text-sm text-left truncate placeholder:text-gray-400 hover:bg-gray-50" value="{{ plans|first }}" placeholder="Выберите тариф" type="text" aria-expanded="false" aria-expanded-autohide>
 
 							<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 								{% for i in plans %}
@@ -116,7 +116,7 @@
 				</div>
 
 				<div class="space-y-5">
-					<h3 class="text-gray-900 text-lg font-medium leading-6">Добавить счет</h3>
+					<h3 class="text-gray-900 text-lg font-medium leading-6">Добавить счёт</h3>
 					<div class="border rounded-lg overflow-hidden">
 						<div class="flex items-center border-b border-gray-300 bg-gray-50">
 							<div class="w-[104px] py-3 pl-6 pr-3">
@@ -130,14 +130,19 @@
 								<p class="text-gray-900 text-sm font-medium">№</p>
 							</div>
 							<div class="flex-1 p-3">
-								<p class="text-gray-900 text-sm font-medium">Описание</p>
+								<p class="text-gray-900 text-sm font-medium">Наименование услуги</p>
 							</div>
 							<div class="w-[176px] py-3 pl-3 pr-6">
 								<p class="text-gray-900 text-sm font-medium">Сумма</p>
 							</div>
 						</div>
 
-						{% set num_rows = 4 %}
+						{% set services = [
+							{'id': 1, 'title': '', 'amount': ''},
+							{'id': 2, 'title': 'disk: 30GB SSD (30/ssd) => 80GB SSD (80/ssd)', 'amount': 100},
+							{'id': 3, 'title': 'ip: IPv4 1 шт. (1 Free) => IPv4 38 шт. (1 Free)ip: IPv4 1 шт. (1 Free) => IPv4 38 шт. (1 Free)', 'amount': 550},
+							{'id': 4, 'title': 'backup: Еженедельное (free) => Ежедневное (daily)', 'amount': 1000},
+						] %}
 
 						{% macro row(id, title, amount) %}
 						<div class="flex items-center border-b">
@@ -152,18 +157,18 @@
 								<p class="text-gray-500 text-sm">{{ id }}</p>
 							</div>
 							<div class="flex-1 py-2 px-3">
-								<input class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-gray-900 text-sm placeholder-gray-400" value="{{ title }}" placeholder="Описание" type="text"/>
+								<input class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-gray-900 text-sm placeholder-gray-400" value="{{ title }}" placeholder="Наименование услуги" type="text"/>
 							</div>
 							<div class="w-[176px] py-2 pl-3 pr-6">
-								<input class="w-[140px] py-2 px-3 border border-gray-300 rounded-md shadow-sm text-gray-900 text-sm placeholder-gray-400" value="{{ amount }}" placeholder="Сумма" type="text"/>
+								<input class="w-[140px] py-2 px-3 border border-gray-300 rounded-md shadow-sm text-gray-900 text-sm placeholder-gray-400" value="{{ amount|number_format(2, '.', '') }}" placeholder="Сумма" type="text"/>
 							</div>
 						</div>
 						{% endmacro %}
 
 						{% import _self as table %}
 
-						{% for i in 1..num_rows %}
-							{{ table.row(i) }}
+						{% for i in services %}
+							{{ table.row(i.id, i.title, i.amount) }}
 						{% endfor %}
 
 						<div class="flex bg-gray-50">

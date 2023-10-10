@@ -304,7 +304,7 @@ class IndexController extends AbstractController
         return $this->render('billing/view_invoice/billing.invoice.overview.html.twig', [
             'title' => 'Инвойс',
             'data' => BillingController::invoiceData(),
-            'invoices' => BillingController::createInvoices(),
+            'services' => BillingController::InvoiceServices(),
         ]);
     }
 
@@ -316,7 +316,6 @@ class IndexController extends AbstractController
 		return $this->render('billing/view_invoice/billing.invoice.details.html.twig', [
 			'title' => 'Инвойс',
 			'data' => BillingController::invoiceData(),
-			'invoices' => BillingController::createInvoices(),
 		]);
 	}
 
