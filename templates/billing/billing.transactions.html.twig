@@ -90,7 +90,7 @@
 							<thead>
 							<tr class="bg-gray-50 text-gray-900 text-sm border-b border-gray-300">
 								<th class="w-[130px] p-3 pl-6 text-left font-medium">UID</th>
-								<th class="w-[110px] p-3 text-left font-medium">Дата</th>
+								<th class="w-[190px] p-3 text-left font-medium">Дата</th>
 								<th class="w-[110px] p-3 text-left font-medium">Инвойс</th>
 								<th class="w-[168px] p-3 text-left font-medium">Клиент</th>
 								<th class="w-[130px] p-3 text-left font-medium truncate">Метод оплаты</th>
@@ -106,7 +106,7 @@
 								<tr class="text-sm">
 									<td class="py-4 pl-6 pr-3">
 										<a href="#" class="font-medium hover:text-indigo-700">
-											<p class="max-w-[94px] truncate" title="{{ item.id }}">{{ item.id }}</p>
+											<p class="w-14 min-w-full truncate" title="{{ item.id }}">{{ item.id }}</p>
 										</a>
 									</td>
 									<td class="whitespace-nowrap py-4 px-3 text-gray-500 cursor-default">{{ item.date }}</td>
@@ -151,7 +151,7 @@
 										{% endfor %}
 									</td>
 									<td class="py-4 pl-3 pr-6 text-gray-500 font-medium cursor-default">
-										<p class="line-clamp-1 overflow-hidden" title="{{ item.details.name }}">{{ item.details.name }}</p>
+										<p class="w-14 min-w-full truncate" title="{{ item.details.name }}">{{ item.details.name }}</p>
 									</td>
 								</tr>
 

@@ -95,7 +95,7 @@ export const BillingSettingsComponent = {
                 .then((data: any) => {
                     setTimeout(
                         function(){
-                            window.location.href = "../invoice/details?status=Pending"
+                            window.location.href = "/billing/invoice/details?status=Pending"
                         },
                         1000);
                     self.$notifications('global').notify(

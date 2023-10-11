@@ -53,7 +53,7 @@
                             <th class="p-3 text-left font-medium whitespace-nowrap">Способ оплаты</th>
                             <th class="p-3 text-left font-medium whitespace-nowrap">Дата выписки</th>
                             <th class="p-3 text-left font-medium whitespace-nowrap">Оплатить до</th>
-                            <th class="py-3 pl-3 pr-6 text-right font-medium">Сумма</th>
+                            <th class="w-[110px] py-3 pl-3 pr-6 text-right font-medium">Сумма</th>
                         </tr>
                     </thead>
 
@@ -72,8 +72,8 @@
                                     {% endfor %}
                                 </td>
                                 <td class="py-4 px-3 text-gray-500 text-left">{{ invoice.payment }}</td>
-                                <td class="py-4 px-3 text-gray-500 text-left">{{ invoice.excerpt }}</td>
-                                <td class="py-4 px-3 text-gray-500 text-left">{{ invoice.paydate }}</td>
+                                <td class="py-4 px-3 text-gray-500 text-left truncate">{{ invoice.excerpt }}</td>
+                                <td class="py-4 px-3 text-gray-500 text-left truncate">{{ invoice.paydate }}</td>
                                 <td class="py-4 pl-3 pr-6 text-gray-500 text-right font-medium">${{ invoice.amount|number_format('2', '.', '') }}</td>
                             </tr>
                         {% endfor %}

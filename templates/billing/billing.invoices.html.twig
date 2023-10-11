@@ -96,8 +96,8 @@
 							<th class="w-[115px] p-3 text-left font-medium">Статус</th>
 							<th class="p-3 text-left font-medium">Клиент</th>
 							<th class="w-40 p-3 text-left font-medium whitespace-nowrap">Способ оплаты</th>
-							<th class="w-[150px] p-3 text-left font-medium whitespace-nowrap">Дата выписки</th>
-							<th class="w-[140px] p-3 text-left font-medium whitespace-nowrap">Оплатить до</th>
+							<th class="w-[190px] p-3 text-left font-medium whitespace-nowrap">Дата выписки</th>
+							<th class="w-[190px] p-3 text-left font-medium whitespace-nowrap">Оплатить до</th>
 							<th class="w-[110px] pl-3 pr-6 text-right font-medium">Сумма</th>
 						</tr>
 						</thead>
@@ -117,13 +117,13 @@
 									{% endfor %}
 								</td>
 								<td class="px-3 py-4 text-left">
-									<a href="{{ path('overview') }}" class="hover:text-indigo-700">
-										<p class="line-clamp-1 overflow-hidden">{{ invoice.client }}</p>
+									<a href="{{ path('overview') }}" class="text-gray-900 font-medium hover:text-indigo-700">
+										<p class="w-40 min-w-full truncate">{{ invoice.client }}</p>
 									</a>
 								</td>
 								<td class="px-3 py-4 text-left">{{ invoice.payment }}</td>
-								<td class="px-3 py-4 text-left">{{ invoice.excerpt }}</td>
-								<td class="px-3 py-4 text-left">{% if invoice.payment %}{{ invoice.paydate }}{% endif %}</td>
+								<td class="px-3 py-4 text-left truncate">{{ invoice.excerpt }}</td>
+								<td class="px-3 py-4 text-left truncate">{{ invoice.paydate }}</td>
 								<td class="pl-3 pr-6 py-4 text-right">${{ invoice.amount|number_format(2, '.', '') }}</td>
 							</tr>
 						{% endfor %}
