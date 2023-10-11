@@ -141,6 +141,7 @@ input:checked ~ .toggle {
 	visibility: hidden;
 	position: absolute;
 }
+
 .popover__content:before {
 	position: absolute;
 	z-index: -1;
@@ -150,8 +151,8 @@ input:checked ~ .toggle {
 	border-style: solid;
 	border-width: 10px 10px 0 10px;
 	border-color: #1F2937 transparent transparent transparent;
-
 }
+
 .popover__wrapper:hover .popover__content {
 	z-index: 10;
 	opacity: 1;
