@@ -22,5 +22,6 @@ const app = new Vue({
 		'support-module': () => import(/* webpackChunkName: "support" */ "./support/module"),
 		'billing-module': () => import(/* webpackChunkName: "support" */ "./billing/module"),
 		'orders-module': () => import(/* webpackChunkName: "orders" */ "./orders/module"),
+		'settings-module': () => import(/* webpackChunkName: "orders" */ "./settings/module"),
 	}
 });

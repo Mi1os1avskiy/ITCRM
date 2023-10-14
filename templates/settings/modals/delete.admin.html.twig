@@ -1,0 +1,16 @@
+{% extends'/misc/modals/base.modal.html.twig' %}
+
+{% block modal_name %}delete-admin{% endblock %}
+
+{% block modal_content %}
+
+	<div class="relative transform overflow-hidden rounded-lg bg-white my-auto p-6 space-y-6 text-left shadow-xl transition-all w-full max-w-sm">
+		<h3 class="text-lg font-medium text-gray-900 leading-6">Удаление администратора</h3>
+		<div class="text-sm text-gray-700">Вы уверены, что хотите удалить администратора?</div>
+		<div class="flex space-x-3 text-sm font-medium">
+			<button @click="close(false)" type="button" class="w-full rounded-md ring-1 ring-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-50">Отменить</button>
+			<button @click="close(true)" type="button" class="w-full rounded-md bg-red-600 px-4 py-2 text-white shadow-sm hover:bg-red-700">Удалить</button>
+		</div>
+	</div>
+
+{% endblock %}

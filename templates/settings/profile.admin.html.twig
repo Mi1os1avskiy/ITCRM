@@ -1,0 +1,232 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+	<settings-module inline-template v-cloak>
+
+		<div class="pb-20">
+
+			{% set admin = [] %}
+			{% for i in admins %}
+				{% if getGet() == i.id %}
+					{% set admin = i %}
+				{% endif %}
+			{% endfor %}
+
+			{% block content %}
+
+				{% block header %}
+
+					<div class="bg-gray-50 py-4 px-8 space-y-2">
+						<nav class="flex items-center space-x-4 text-sm text-gray-500 font-medium">
+							<a href="{{ path('settings_admins') }}">Администраторы</a>
+							<svg width="20" height="20" viewBox="0 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#9CA3AF"/>
+							</svg>
+							<span>{% if admin %}Администратор {{ admin.login }}{% else %}Добавить администратора{% endif %}</span>
+						</nav>
+						<div class="h-9 flex items-center">
+							<h3 class="text-gray-900 font-semibold text-lg leading-6">{% if admin %}Администратор {{ admin.name }}{% else %}Новый Администратор{% endif %}</h3>
+						</div>
+					</div>
+
+				{% endblock %}
+
+				<settings-settings inline-template>
+					<div class="py-6 px-8 space-y-8 text-gray-900">
+						<div class="space-y-10">
+							<div class="space-y-5">
+								<h4 class="text-lg font-medium">Персональные данные</h4>
+								<div class="space-y-5">
+									<div class="grid grid-cols-3 gap-4">
+										<div class="space-y-1">
+											<p class="text-gray-700 text-sm font-medium">Логин <span class="text-red-500">*</span></p>
+											<input class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm placeholder-gray-400" {% if admin %}value="{{ admin.login }}"{% endif %} placeholder="Введите логин" type="text">
+										</div>
+										<div class="space-y-1">
+											<p class="text-gray-700 text-sm font-medium">Отображаемое имя <span class="text-red-500">*</span></p>
+											<input class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm placeholder-gray-400" {% if admin %}value="{{ admin.name }}"{% endif %} placeholder="Введите отображаемое имя" type="text">
+										</div>
+									</div>
+									<div class="grid grid-cols-3 gap-4">
+										<div class="space-y-1">
+											<p class="text-gray-700 text-sm font-medium">Email <span class="text-red-500">*</span></p>
+											<input class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm placeholder-gray-400" {% if admin %}value="{{ admin.email }}"{% endif %} placeholder="Введите email" type="email">
+										</div>
+										<div class="space-y-1">
+											<p class="text-gray-700 text-sm font-medium">Public email <span class="text-red-500">*</span></p>
+											<input class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm placeholder-gray-400" {% if admin %}value="{{ admin.public_email }}"{% endif %} placeholder="Введите public email" type="email">
+										</div>
+										<div class="space-y-1">
+											<p class="text-gray-700 text-sm font-medium">Public email title <span class="text-red-500">*</span></p>
+											<input class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm placeholder-gray-400" {% if admin %}value="{{ admin.public_email_title }}"{% endif %} placeholder="Введите public email title" type="email">
+										</div>
+									</div>
+									<div class="grid grid-cols-3 gap-4">
+										<div class="space-y-1">
+											<p class="text-gray-700 text-sm font-medium">Admin group <span class="text-red-500">*</span></p>
+
+											{% set admin_groups = ['Full privilegies', 'Junior admin', 'Middle admin', 'Senior admin', 'Sales manager', 'General support', 'Junior admin + Basepass', 'For UA', 'For Tests'] %}
+
+											<div class="relative">
+												<input class="w-full py-2 pl-3 pr-10 border border-gray-300 rounded-md shadow-sm text-sm text-left placeholder:text-gray-400 hover:bg-gray-50" {% if admin %}value="{{ admin.group }}"{% endif %} placeholder="Выберите группу админов" type="text" aria-expanded="false" aria-expanded-autohide>
+
+												<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+													<li class=""></li>
+													{% for i in admin_groups %}
+														<li>
+															<button type="button" class="w-full py-2 px-4 space-x-3 text-gray-700 text-sm text-left truncate {% if admin and admin.group == i %}bg-indigo-600 text-gray-50{% else %}hover:bg-gray-50 hover:font-medium{% endif %}">{{ i }}</button>
+														</li>
+													{% endfor %}
+												</ul>
+
+												<svg class="absolute top-2 right-3 arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+												</svg>
+											</div>
+										</div>
+										<div class="space-y-1">
+											<p class="text-gray-700 text-sm font-medium">Password <span class="text-red-500">*</span></p>
+											<div class="flex rounded-md shadow-sm w-full">
+												<div class="relative flex items-center flex-grow items-stretch focus-within:z-10">
+													<input v-model="password" :type="isPasswordHidden ? 'password' : 'text'" class="block w-full pr-10 rounded-md border-gray-300 shadow-sm text-sm placeholder-gray-400" placeholder="•••••••••••••">
+													<button @click="toggleShowHide()" type="button">
+														<svg v-if="isPasswordHidden" class="absolute top-2 right-3" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+															<path fill-rule="evenodd" clip-rule="evenodd" d="M3.28033 2.21967C2.98744 1.92678 2.51256 1.92678 2.21967 2.21967C1.92678 2.51256 1.92678 2.98744 2.21967 3.28033L16.7197 17.7803C17.0126 18.0732 17.4874 18.0732 17.7803 17.7803C18.0732 17.4874 18.0732 17.0126 17.7803 16.7197L16.0352 14.9745C17.5064 13.8594 18.6595 12.3465 19.3344 10.5959C19.4814 10.2144 19.4816 9.79127 19.3347 9.40962C17.892 5.66051 14.256 3 9.99859 3C8.28207 3 6.66657 3.43249 5.2551 4.19444L3.28033 2.21967ZM7.75194 6.69128L8.84367 7.78301C9.18951 7.60223 9.58291 7.5 10.0002 7.5C11.3809 7.5 12.5002 8.61929 12.5002 10C12.5002 10.4173 12.398 10.8107 12.2172 11.1565L13.3091 12.2484C13.7454 11.6077 14.0004 10.8336 14.0004 10C14.0004 7.79086 12.2095 6 10.0004 6C9.16675 6 8.39268 6.25501 7.75194 6.69128Z" fill="#9CA3AF"/>
+															<path d="M10.7484 13.9302L13.2711 16.4529C12.2462 16.8074 11.1458 17 10.0004 17C5.74298 17 2.10698 14.3395 0.664255 10.5904C0.517392 10.2087 0.517518 9.78563 0.66461 9.40408C1.15603 8.12932 1.90108 6.98057 2.83791 6.01969L6.0702 9.25198C6.02436 9.4943 6.00037 9.74435 6.00037 10C6.00037 12.2091 7.79123 14 10.0004 14C10.256 14 10.5061 13.976 10.7484 13.9302Z" fill="#9CA3AF"/>
+														</svg>
+														<svg v-if="!isPasswordHidden" class="absolute top-2 right-3" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+															<path d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z" fill="#9CA3AF"/>
+															<path fill-rule="evenodd" clip-rule="evenodd" d="M0.664255 10.5904C0.517392 10.2087 0.517518 9.78563 0.66461 9.40408C2.10878 5.65788 5.7433 3 9.99859 3C14.256 3 17.892 5.66051 19.3347 9.40962C19.4816 9.79127 19.4814 10.2144 19.3344 10.5959C17.8902 14.3421 14.2557 17 10.0004 17C5.74298 17 2.10698 14.3395 0.664255 10.5904ZM14.0004 10C14.0004 12.2091 12.2095 14 10.0004 14C7.79123 14 6.00037 12.2091 6.00037 10C6.00037 7.79086 7.79123 6 10.0004 6C12.2095 6 14.0004 7.79086 14.0004 10Z" fill="#9CA3AF"/>
+														</svg>
+													</button>
+												</div>
+											</div>
+										</div>
+										<div class="flex items-end">
+											<button @click="generateNewPassword()" type="button" class="py-2 px-4 rounded-md border border-gray-300 shadow-sm text-gray-700 text-sm font-medium hover:bg-gray-500">Сгенерировать</button>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-center py-2 space-x-2">
+									<input id="activate_account" class="h-4 w-4 rounded border-gray-300 text-indigo-600" type="checkbox">
+									<label for="activate_account" class="text-sm">Активировать аккаунт</label>
+								</div>
+							</div>
+
+							<div class="space-y-5">
+								<h4 class="text-lg font-medium">Контактные данные</h4>
+								<div class="space-y-5">
+									<div class="grid grid-cols-3 gap-4">
+										<div class="space-y-1">
+											<p class="text-gray-700 text-sm font-medium">Номер телефона</p>
+											<input class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm placeholder-gray-400" {% if admin %}value="{{ admin.tel }}"{% endif %} placeholder="Введите номер телефона" type="tel">
+										</div>
+										<div class="space-y-1">
+											<p class="text-gray-700 text-sm font-medium">Skype</p>
+											<input class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm placeholder-gray-400" {% if admin %}value="{{ admin.skype }}"{% endif %} placeholder="Введите skype" type="text">
+										</div>
+										<div class="space-y-1">
+											<p class="text-gray-700 text-sm font-medium">ICQ</p>
+											<input class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm placeholder-gray-400" {% if admin %}value="{{ admin.icq }}"{% endif %} placeholder="Введите ICQ" type="text">
+										</div>
+									</div>
+									<div class="grid grid-cols-3 gap-4">
+										<div class="space-y-1">
+											<p class="text-gray-700 text-sm font-medium">Telegram</p>
+											<input class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm placeholder-gray-400" {% if admin %}value="{{ admin.telegram }}"{% endif %} placeholder="Введите telegram" type="text">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="grid grid-cols-2 gap-10">
+								<div class="space-y-10">
+									<div class="space-y-5">
+										<h4 class="text-lg font-medium">Assigned Department</h4>
+										<div class="flex space-x-14">
+											<div class="space-y-2">
+												<div class="flex items-center py-2 space-x-2">
+													<input id="support" checked class="h-4 w-4 rounded border-gray-300 text-indigo-600" type="checkbox">
+													<label for="support" class="text-sm">Служба поддержки</label>
+												</div>
+												<div class="flex items-center py-2 space-x-2">
+													<input id="administration" checked class="h-4 w-4 rounded border-gray-300 text-indigo-600" type="checkbox">
+													<label for="administration" class="text-sm">Администрирование</label>
+												</div>
+											</div>
+											<div class="space-y-2">
+												<div class="flex items-center py-2 space-x-2">
+													<input id="server_restart" checked class="h-4 w-4 rounded border-gray-300 text-indigo-600" type="checkbox">
+													<label for="server_restart" class="text-sm">Перезагрузка сервера</label>
+												</div>
+												<div class="flex items-center py-2 space-x-2">
+													<input id="billing"checked  class="h-4 w-4 rounded border-gray-300 text-indigo-600" type="checkbox">
+													<label for="billing" class="text-sm">Биллинг</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="space-y-5">
+										<h4 class="text-lg font-medium">Дополнительные данные</h4>
+										<div class="space-y-1">
+											<p class="text-gray-700 text-sm font-medium">Whmcs username</p>
+											<input class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm placeholder-gray-400" placeholder="Введите whmcs username" type="text">
+										</div>
+									</div>
+								</div>
+
+								<div class="space-y-5">
+									<h4 class="text-lg font-medium">Настройка уведомлений</h4>
+									<div class="space-y-1">
+										<div class="flex items-center py-2 space-x-2">
+											<input id="new_admin" class="h-4 w-4 rounded border-gray-300 text-indigo-600" type="checkbox">
+											<label for="new_admin" class="text-sm">Добавление нового администратора</label>
+										</div>
+										<div class="flex items-center py-2 space-x-2">
+											<input id="del_admin" class="h-4 w-4 rounded border-gray-300 text-indigo-600" type="checkbox">
+											<label for="del_admin" class="text-sm">Удаление администратора</label>
+										</div>
+										<div class="flex items-center py-2 space-x-2">
+											<input id="order" class="h-4 w-4 rounded border-gray-300 text-indigo-600" type="checkbox">
+											<label for="order" class="text-sm">Заказ был создан и оплачен</label>
+										</div>
+										<div class="flex items-center py-2 space-x-2">
+											<input id="ticket_waiting" class="h-4 w-4 rounded border-gray-300 text-indigo-600" type="checkbox">
+											<label for="ticket_waiting" class="text-sm">Тикет был переведён в статус Waiting for manager</label>
+										</div>
+										<div class="flex items-center py-2 space-x-2">
+											<input id="ticket_opened" class="h-4 w-4 rounded border-gray-300 text-indigo-600" type="checkbox">
+											<label for="ticket_opened" class="text-sm">Тикет был открыт клиентом</label>
+										</div>
+										<div class="flex items-center py-2 space-x-2">
+											<input id="ticket_answered" class="h-4 w-4 rounded border-gray-300 text-indigo-600" type="checkbox">
+											<label for="ticket_answered" class="text-sm">Клиент ответил на тикет</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="flex justify-between pt-10">
+							<div class="flex space-x-3">
+								<a href="{{ path('settings_admins') }}" class="py-2 px-4 rounded-md ring-1 ring-gray-300 text-gray-700 text-sm font-medium shadow-sm bg-white hover:bg-gray-50">Отмена</a>
+								<button {% if admin %}@click="settingsSaveChanges()"{% else %}@click="settingsAddAdmin()"{% endif %} type="button" class="py-2 px-4 rounded-md bg-indigo-600 text-white text-sm font-medium shadow-sm hover:bg-indigo-700">{% if admin %}Сохранить{% else %}Добавить админа{% endif %}</button>
+							</div>
+							{% if admin %}
+								<button @click="deleteAdmin()" type="button" class="py-2 px-4 rounded-md bg-red-500 text-white text-sm font-medium shadow-sm hover:bg-red-600">Удалить Администратора</button>
+							{% endif %}
+						</div>
+					</div>
+				</settings-settings>
+
+			{% endblock %}
+
+			{% block modals %}
+				{% include 'settings/modals/delete.admin.html.twig' %}
+			{% endblock %}
+
+		</div>
+
+	</settings-module>
+
+{% endblock %}

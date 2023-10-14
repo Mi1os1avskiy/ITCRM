@@ -6,6 +6,7 @@ use App\Controller\Data\LettersController;
 use App\Controller\Data\OrdersController;
 use App\Controller\Data\PaymentsController;
 use App\Controller\Data\ServicesController;
+use App\Controller\Data\SettingsController;
 use App\Controller\Data\TicketsController;
 use App\Controller\Data\UsersController;
 use App\Controller\Misc\TwigExtension;
@@ -353,14 +354,35 @@ class IndexController extends AbstractController
 	}
 
     /**
-     * @Route("/test", name="test")
+     * @Route("/settings/admins", name="settings_admins")
      */
-    public function test(): Response
+    public function admins(): Response
     {
-		//return $this->json(['some name' => 'some value']);
-
-        return $this->render('test.html.twig', [
-            'iplogs' => UsersController::ClientsData(),
+        return $this->render('settings/admins.html.twig', [
+			'title' => 'Список админов',
+			'admins' => SettingsController::allAdmins(),
         ]);
     }
+
+	/**
+	 * @Route("/settings/admin", name="settings_profile_admin")
+	 */
+	public function newAdmin(): Response
+	{
+		return $this->render('settings/profile.admin.html.twig', [
+			'admins' => SettingsController::allAdmins(),
+		]);
+	}
+
+	/**
+	 * @Route("/test", name="test")
+	 */
+	public function test(): Response
+	{
+		//return $this->json(['some name' => 'some value']);
+
+		return $this->render('test.html.twig', [
+			'iplogs' => UsersController::ClientsData(),
+		]);
+	}
 }

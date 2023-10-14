@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block main %}
+
+	<settings-module inline-template>
+
+		<main class="mb-24">
+
+			{% block content %}
+
+				{% block header %}
+
+					<div class="flex items-center justify-between py-4 px-8 bg-gray-50 border-b">
+						<h3 class="text-gray-900 font-semibold text-lg leading-6">{{ title }}</h3>
+						<a href="{{ path('settings_profile_admin') }}" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md bg-indigo-600 text-white text-sm font-medium shadow-sm hover:bg-indigo-700">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+								<path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="white"/>
+							</svg>
+							<span>Добавить</span>
+						</a>
+					</div>
+
+				{% endblock %}
+
+				<settings-settings inline-template>
+
+					<div class="pt-6 pb-4 px-8">
+
+						{% block table %}
+
+							<div class="border rounded-t-lg overflow-hidden overflow-x-auto">
+								<table class="min-w-full">
+									<thead class="border-b border-gray-300 bg-gray-50 rounded-t-lg ">
+									<tr class="text-gray-900 text-sm font-medium">
+										<th class="p-3 pl-6 text-left font-medium">Логин</th>
+										<th class="p-3 text-left font-medium truncate">Отображаемое имя</th>
+										<th class="p-3 text-left font-medium">Группа</th>
+										<th class="w-20 p-3 text-left font-medium">Роли</th>
+										<th class="w-28 p-3 text-left font-medium truncate">Last logged</th>
+										<th class="w-[152px] p-3 text-left font-medium">Whmcs</th>
+										<th class="w-[152px] p-3 pr-6 text-left font-medium">Telegram</th>
+									</tr>
+									</thead>
+
+									<tbody class="divide-y divide-gray-200">
+
+									{% for admin in admins %}
+
+										<tr class="text-sm">
+											<td class="py-4 pl-6 pr-3">
+												<a href="{{ path('settings_profile_admin', {user:admin.id}) }}" class="text-gray-900 font-medium hover:text-indigo-700">{{ admin.login }}</a>
+											</td>
+											<td class="py-4 px-3">
+												<a href="{{ path('settings_profile_admin', {user:admin.id}) }}" class="text-gray-900 font-medium hover:text-indigo-700">{{ admin.name }}</a>
+											</td>
+											<td class="py-4 px-3 text-gray-500">
+												<p class="w-40 min-w-full truncate">{{ admin.group }}</p>
+											</td>
+											<td class="py-4 px-3 text-gray-500">{{ admin.roles }}</td>
+											<td class="py-4 px-3 text-gray-500">{{ admin.last_logged|default('Never') }}</td>
+											<td class="py-4 px-3 text-gray-500">{{ admin.whmcs|default('[NONE]') }}</td>
+											<td class="py-4 px-3 text-gray-500">{{ admin.telegram }}</td>
+										</tr>
+
+									{% endfor %}
+
+									</tbody>
+								</table>
+							</div>
+
+							{% include 'parts/pagination.html.twig' %}
+
+						{% endblock %}
+
+					</div>
+
+				</settings-settings>
+
+			{% endblock %}
+
+		</main>
+
+	</settings-module>
+
+{% endblock %}
