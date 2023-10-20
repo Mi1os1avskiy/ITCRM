@@ -14,7 +14,7 @@ class LettersController
 			['id' => '6', 'dept' => 'Служба поддержки', 'receiver' => 'nibh_consequat@mail.com', 'title' => 'Et molestie sapien quisque turpis', 'date' => '17/02/2023', 'time' => '13:17', 'loc' => 'MSK', 'status' => 1],
 			['id' => '7', 'dept' => 'Служба поддержки', 'receiver' => 'ulla_ullamcorper@mail.com', 'title' => 'Non egestas pellentesque faucibus pellentesque', 'date' => '17/02/2023', 'time' => '13:17', 'loc' => 'MSK', 'status' => 0],
 			['id' => '8', 'dept' => 'Служба поддержки', 'receiver' => 'arcuvivamus_fermentum@mail.com', 'title' => 'Neque non eget dolor tristique', 'date' => '17/02/2023', 'time' => '13:17', 'loc' => 'MSK', 'status' => 1],
-			['id' => '9', 'dept' => 'Служба поддержки', 'receiver' => 'sapien@mail.com', 'title' => 'Est ultricies semper nec dictumst', 'date' => '17/02/2023', 'time' => '13:17', 'loc' => 'MSK', 'status' => 1],
+			['id' => '9', 'dept' => 'Служба поддержки', 'receiver' => 'sapien@mail.com', 'title' => 'Est ultricies semper nec dictumst', 'date' => '17/02/2023', 'time' => '13:17', 'loc' => 'MSK', 'status' => 2],
 			['id' => '10', 'dept' => 'Служба поддержки', 'receiver' => 'portafusce@mail.com', 'title' => 'Tristique mi vitae ornare id', 'date' => '17/02/2023', 'time' => '13:17', 'loc' => 'MSK', 'status' => 1],
 			['id' => '11', 'dept' => 'Служба поддержки', 'receiver' => 'ultrices@mail.com', 'title' => 'Amet vulputate sem eu placeratv', 'date' => '17/02/2023', 'time' => '13:17', 'loc' => 'MSK', 'status' => 1],
 		];

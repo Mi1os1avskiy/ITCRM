@@ -51,9 +51,9 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead>
                         <tr class="bg-gray-50 border-b border-gray-300 text-sm text-gray-900">
-                            <th class="w-60 pl-6 pr-3 py-3 text-left font-medium">Дата и Время</th>
-                            <th class="w-[220px] px-3 py-3 text-left font-medium">Метод платежа</th>
-                            <th class="w-[170px] px-3 py-3 text-left font-medium">Назначение</th>
+                            <th class="w-[208px] pl-6 pr-3 py-3 text-left font-medium">Дата и Время</th>
+                            <th class="w-[232px] px-3 py-3 text-left font-medium">Метод платежа</th>
+                            <th class="w-[192px] px-3 py-3 text-left font-medium">Назначение</th>
                             <th class="w-[100px] px-3 py-3 text-left font-medium">Сумма</th>
                             <th class="pl-3 pr-6 py-3 text-left font-medium">Описание</th>
                         </tr>
@@ -67,20 +67,22 @@
 
                                 <tr>
                                     <td class="truncate pl-6 pr-3 py-4 text-gray-500 text-sm">{{ credit.date }}, {{ credit.time}} ({{ credit.country }})</td>
-                                    <td class="truncate px-3 py-4 text-sm text-gray-500">
+                                    <td class="px-3 py-4 text-sm text-gray-500">
                                         <span>{{ credit.method }}</span>
                                         {% if credit.method_id %}
-	                                        <a href="#" class="text-gray-900 hover:text-indigo-700">{{ credit.method_id }}</a>
+	                                        <a href="#" class="text-gray-900 font-medium hover:text-indigo-700">{{ credit.method_id }}</a>
                                         {% endif %}
                                     </td>
-                                    <td class="truncate px-3 py-4 text-sm text-gray-500">
+                                    <td class="px-3 py-4 text-sm text-gray-500">
                                         <span>{{ credit.appointment }}</span>
                                         {% if credit.appointment_id %}
-                                            <a href="{{ path('invoice_overview') }}" class="text-gray-900 hover:text-indigo-700">{{ credit.appointment_id }}</a>
+                                            <a href="{{ path('invoice_overview') }}" class="text-gray-900 font-medium hover:text-indigo-700">{{ credit.appointment_id }}</a>
                                         {% endif %}
                                     </td>
                                     <td class="px-3 py-4 text-sm text-{% if credit.amount_stat == 'normal' %}green{% elseif credit.amount_stat == 'high' %}red{% else %}gray{% endif %}-500">${{ credit.amount|number_format('2', '.', '') }}</td>
-                                    <td class="truncate pl-3 pr-6 py-4 text-sm text-gray-500">{{ credit.description }}</td>
+                                    <td class="pl-3 pr-6 py-4 text-sm text-gray-500">
+	                                    <p class="w-72 min-w-full truncate" title="{{ credit.description }}">{{ credit.description }}</p>
+                                    </td>
                                 </tr>
 
                             {% endfor %}

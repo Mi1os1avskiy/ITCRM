@@ -1,0 +1,102 @@
+{% extends'/misc/modals/base.modal.html.twig' %}
+
+{% block modal_name %}settings-answer-editor{% endblock %}
+
+{% block modal_content %}
+
+	<div class="relative transform overflow-hidden rounded-lg bg-white my-auto text-left shadow-xl transition-all w-full max-w-5xl">
+		<div class="py-5 px-6 bg-gray-50">
+			<div class="h-9 flex items-center justify-between">
+				<h2 v-if="data.id > 0" class="text-lg font-medium text-gray-900 leading-6">Редактирование ответа</h2>
+				<h2 v-else class="text-lg font-medium text-gray-900 leading-6">Добавить ответ</h2>
+				<button @click="close(false)" type="button" class="rounded-md text-gray-400 hover:text-gray-500">
+					<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+					</svg>
+				</button>
+			</div>
+		</div>
+
+		{% set answer_data = {'category': 'Партнёрская программа', 'lang': 'Ru', 'title': 'ISP6 Обновление', 'content': 'Здравствуйте,
+Надеюсь, что это сообщение застало вас в добром здравии. Я понимаю, что вы обеспокоены скоростью вашего виртуального сервера, и я благодарен за возможность прояснить для вас ситуацию.
+Во-первых, важно понимать, что хотя ваш виртуальный сервер оснащен портом 1 Гбит, это не означает, что он будет постоянно достигать скорости 1 Гбит/с. Это связано с тем, что сетевой порт является общим ресурсом для всех виртуальных серверов на одной физической машине.
+Совместное использование обеспечивает экономическую эффективность и позволяет нам предлагать доступные цены для виртуальных серверов. Однако это также означает, что доступная пропускная способность делится между различными серверами, что может привести к снижению скорости, особенно в периоды пиковой нагрузки, когда другие серверы потребляют больше ресурсов. Кроме этого, тестирование скорости также зависит от используемых инструментов и пропускной способности другого сервера, который участвует в тестировании, поэтому эти результаты нельзя считать объективными. Мы рекомендуем оценивать скорость сети в результате практического применения. Важно отметить, что наш отдел мониторинга отслеживает нагрузку и не допускает использования более 50% от пропускной способности, чтобы обеспечивать высокую скорость сети для всех клиентов вне зависимости от времени.
+Кроме этого, у нас описаны условия рекомендуемой постоянной нагрузки для каждого тарифного плана, которые позволяют ограничивать злоупотребления и гарантировать высокую скорость для пиковых нагрузок:
+https://ishosting.com/ru/acceptable-use-policy
+Если ваши проекты требуют гарантированных ресурсов, мы предлагаем рассмотреть наши предложения по выделенным серверам. Этот вариант означает, что в вашем распоряжении будут ресурсы всего сервера, обеспечивающие максимальную производительность и скорость.
+Однако имейте в виду, что выделенные серверы потребуют значительно больших инвестиций по сравнению с нашими предложениями виртуальных серверов из-за значительных ресурсов, выделенных исключительно для вашего использования.
+Наша команда будет рада обсудить ваши потребности и порекомендовать наиболее подходящий для вас план. Вы можете ответить на этот запрос или связаться с нашим отделом продаж напрямую по адресу sales@ishoting.com, если вы хотите обсудить детали.
+Благодарим вас за понимание и терпение. Мы высоко ценим ваш бизнес и стремимся удовлетворить ваши потребности.'} %}
+
+		<div class="py-5 px-6 space-y-5">
+			<div class="flex space-x-4">
+				<div class="flex-1 space-y-1">
+					<p>Категория <span class="text-red-500">*</span></p>
+
+					<div class="relative">
+						<button type="button" class="w-full flex justify-between py-2 px-3 space-x-2 rounded-md border border-gray-300 bg-white text-left shadow-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+							<p v-if="data.id > 0" class="text-sm text-gray-900 pointer-events-none">{{ answer_data.category }}</p>
+							<p v-else class="text-sm text-gray-400 pointer-events-none">Введите категорию</p>
+							<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29292 7.29289C5.68345 6.90237 6.31661 6.90237 6.70713 7.29289L10 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68344 13.0976 9.29292 12.7071L5.29292 8.70711C4.9024 8.31658 4.9024 7.68342 5.29292 7.29289Z" fill="#9CA3AF"/>
+							</svg>
+						</button>
+
+						<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+							{% for i in categories %}
+								<li>
+									<button v-if="data.id > 0" type="button" class="w-full py-2 px-4 space-x-3 text-sm text-left truncate {% if i == answer_data.category %}bg-indigo-600 text-gray-50{% else %}text-gray-700 hover:bg-gray-50 hover:font-medium{% endif %}">{{ i }}</button>
+									<button v-else type="button" class="w-full py-2 px-4 space-x-3 text-sm text-left truncate text-gray-700 hover:bg-gray-50 hover:font-medium">{{ i }}</button>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+
+				<div class="w-48 space-y-1">
+					<p>Язык</p>
+
+					<div class="relative">
+						<button type="button" class="w-full flex justify-between py-2 px-3 space-x-2 rounded-md border border-gray-300 bg-white text-left shadow-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+							<p v-if="data.id > 0" class="text-sm text-gray-900 pointer-events-none">{{ answer_data.lang }}</p>
+							<p v-else class="text-sm text-gray-900 pointer-events-none">Auto</p>
+							<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29292 7.29289C5.68345 6.90237 6.31661 6.90237 6.70713 7.29289L10 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68344 13.0976 9.29292 12.7071L5.29292 8.70711C4.9024 8.31658 4.9024 7.68342 5.29292 7.29289Z" fill="#9CA3AF"/>
+							</svg>
+						</button>
+
+						{% set langs = ['Auto', 'Ru', 'Eng'] %}
+
+						<ul class="absolute z-10 top-10 w-full overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+							{% for i in langs %}
+							<li>
+								<a v-if="data.id > 0"  href="#" class="block px-4 py-2 text-sm {% if i == answer_data.lang %}bg-indigo-600 text-gray-50{% else %}text-gray-700 hover:bg-gray-50 hover:font-medium{% endif %}">{{ i }}</a>
+								<a v-else href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:font-medium">{{ i }}</a>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="space-y-1">
+				<p>Заголовок <span class="text-red-500">*</span></p>
+
+				<input v-if="data.id > 0" class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm placeholder:text-gray-400" placeholder="Введите заголовок" type="text" value="{{ answer_data.title }}"/>
+				<input v-else class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm placeholder:text-gray-400" placeholder="Введите заголовок" type="text"/>
+			</div>
+			<div class="space-y-1">
+				<p>Ответ <span class="text-red-500">*</span></p>
+
+				<textarea v-if="data.id > 0" class="min-h-[316px] w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm placeholder:text-gray-400" placeholder="Введите ответ">{{ answer_data.content }}</textarea>
+				<textarea v-else class="min-h-[316px] w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm placeholder:text-gray-400" placeholder="Введите ответ"></textarea>
+			</div>
+		</div>
+
+		<div class="flex justify-end py-5 px-6 space-x-3 bg-gray-50 text-sm font-medium">
+			<button @click="close(false)" type="button" class="py-2 px-4 rounded-md bg-white ring-1 ring-gray-300 text-gray-700 shadow-sm hover:bg-gray-50">Отменить</button>
+			<button @click="close(true)" type="button" class="py-2 px-4 rounded-md bg-indigo-600 text-white shadow-sm hover:bg-indigo-700">Сохранить</button>
+		</div>
+	</div>
+
+{% endblock %}

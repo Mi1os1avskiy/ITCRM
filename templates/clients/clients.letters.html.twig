@@ -5,7 +5,7 @@
 {% block main %}
 
 	<clients-module inline-template>
-		<main class="mb-24">
+		<main class="pb-24">
 
 			{% block content %}
 
@@ -14,7 +14,7 @@
 				</div>
 
 				<div class="flex justify-end pt-6 px-8">
-					<div class="relative rounded-md shadow-sm">
+					<div class="w-60 relative rounded-md shadow-sm">
 						<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
 								<path fill-rule="evenodd" clip-rule="evenodd" d="M9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5C10.519 14.5 11.893 13.8852 12.8891 12.8891C13.8852 11.893 14.5 10.519 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5ZM2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 10.6625 15.4197 12.1906 14.4517 13.3911L17.7803 16.7197C18.0732 17.0126 18.0732 17.4874 17.7803 17.7803C17.4874 18.0732 17.0126 18.0732 16.7197 17.7803L13.3911 14.4517C12.1906 15.4197 10.6625 16 9 16C5.13401 16 2 12.866 2 9Z" fill="#6B7280"/>
@@ -52,8 +52,10 @@
 										</td>
 										<td class="px-3 py-4 text-gray-500 whitespace-nowrap cursor-default">{{ letter.date }}, {{ letter.time }} ({{ letter.loc }})</td>
 										<td class="pl-3 pr-6 py-4 cursor-default">
-											{% if letter.status %}
+											{% if letter.status == 1 %}
 												<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 wh">Доставлено</span>
+											{% elseif letter.status == 2 %}
+												<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-200 text-orange-800 wh">Отказ от писем</span>
 											{% else %}
 												<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 whitespace-nowrap">Не доставлено</span>
 											{% endif %}

@@ -32,7 +32,7 @@
 							<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 							{% for i in allClients() %}
 								<li>
-									<button type="button" class="w-full py-2 px-4 space-x-3 text-gray-900 text-sm text-left truncate hover:bg-gray-50 hover:font-medium">
+									<button type="button" class="w-full py-2 px-4 space-x-3 text-gray-900 text-sm text-left truncate hover:bg-gray-50 hover:font-medium" title=" {{ i.email }} {{ i.id }} ">
 										<span>{{ i.email }}</span>
 										<span class="text-gray-500">{{ i.id }}</span>
 									</button>

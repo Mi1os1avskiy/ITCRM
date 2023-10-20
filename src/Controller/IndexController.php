@@ -375,6 +375,26 @@ class IndexController extends AbstractController
 	}
 
 	/**
+	 * @Route("/settings/answers", name="settings_answers")
+	 */
+	public function answers(): Response
+	{
+		return $this->render('settings/answers/answers.html.twig', [
+			'answers' => SettingsController::adminAnswers(),
+		]);
+	}
+
+	/**
+	 * @Route("/settings/categories", name="settings_categories")
+	 */
+	public function categories(): Response
+	{
+		return $this->render('settings/answers/categories.html.twig', [
+
+		]);
+	}
+
+	/**
 	 * @Route("/test", name="test")
 	 */
 	public function test(): Response

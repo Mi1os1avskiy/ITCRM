@@ -136,7 +136,7 @@ input:checked ~ .toggle {
 
 
 /*	tooltips	*/
-.popover__content {
+.popover__content, .popover__left {
 	opacity: 0;
 	visibility: hidden;
 	position: absolute;
@@ -153,7 +153,18 @@ input:checked ~ .toggle {
 	border-color: #1F2937 transparent transparent transparent;
 }
 
-.popover__wrapper:hover .popover__content {
+.popover__left:before {
+	position: absolute;
+	z-index: -1;
+	content: "";
+	left: 10px;
+	bottom: -8px;
+	border-style: solid;
+	border-width: 10px 10px 0 10px;
+	border-color: #1F2937 transparent transparent transparent;
+}
+
+.popover__wrapper:hover .popover__content, .popover__wrapper:hover .popover__left {
 	z-index: 10;
 	opacity: 1;
 	visibility: visible;

@@ -1,8 +1,8 @@
 import {NotificationLevels, Notification} from "../misc/notifications/notification";
 import {PasswordDisplayingMixin, PasswordGenerator} from "is-core-frontend";
 
-const SettingsAddAdmin = 'settings-add-admin';
 const DeleteAdmin = 'delete-admin';
+const AnswerEditor = 'settings-answer-editor';
 
 export const SettingsSettingsComponent = {
     data() {
@@ -40,6 +40,17 @@ export const SettingsSettingsComponent = {
             self.$modals(DeleteAdmin).show()
                 .then((data: any) => {
                     window.location.href = "/settings/admins";
+                })
+                .catch(() => {
+                });
+        },
+        answerEditor(answerID: bigint) {
+            const self = <any>this;
+            const data = {
+                id: answerID
+            };
+            self.$modals(AnswerEditor).show(data)
+                .then((data: any) => {
                 })
                 .catch(() => {
                 });

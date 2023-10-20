@@ -1,0 +1,69 @@
+{% extends 'settings/answers/base.answers.html.twig' %}
+
+{% set currentTab = 'settings_answers' %}
+
+{% block answers %}
+
+	<div class="h-[884px] flex ring-1 ring-gray-300 rounded-lg text-gray-900 overflow-hidden">
+
+		<nav class="w-56 flex flex-col border-r border-gray-300 overflow-scroll">
+			<a href="#" class="py-3 px-4 bg-gray-50 text-sm font-medium">Все категории</a>
+			{% for i in navigation %}
+				<a href="#" class="py-3 px-4 text-gray-700 text-sm hover:bg-gray-50 hover:text-indigo-700">{{ i }}</a>
+			{% endfor %}
+		</nav>
+
+		<div class="relative flex-1">
+			<div class="flex justify-between p-4 border-b border-gray-300">
+				<div class="flex items-center py-2 space-x-4">
+					<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
+					<button>
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+							<path d="M12.2837 7.5L11.9952 15M8.00481 15L7.71635 7.5M16.023 4.82547C16.308 4.86851 16.592 4.91456 16.875 4.96358M16.023 4.82547L15.1332 16.3938C15.058 17.3707 14.2434 18.125 13.2637 18.125H6.73631C5.75655 18.125 4.94198 17.3707 4.86683 16.3938L3.97696 4.82547M16.023 4.82547C15.0677 4.6812 14.1013 4.57071 13.125 4.49527M3.125 4.96358C3.40798 4.91456 3.69198 4.86851 3.97696 4.82547M3.97696 4.82547C4.93231 4.6812 5.89874 4.57071 6.875 4.49527M13.125 4.49527V3.73182C13.125 2.74902 12.3661 1.92853 11.3838 1.8971C10.9244 1.8824 10.463 1.875 10 1.875C9.53696 1.875 9.07565 1.8824 8.61618 1.8971C7.63388 1.92853 6.875 2.74902 6.875 3.73182V4.49527M13.125 4.49527C12.0938 4.41558 11.0516 4.375 10 4.375C8.94836 4.375 7.9062 4.41558 6.875 4.49527" stroke="#D1D5DB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</button>
+				</div>
+				<div class="flex space-x-3">
+					<div class="flex">
+						<button class="z-10 py-2 px-4 bg-indigo-50 border border-indigo-500 rounded-l-md text-indigo-700 text-sm font-medium">Все</button>
+						<button class="-ml-px py-2 px-4 border border-gray-300 text-gray-700 text-sm font-medium">Ru</button>
+						<button class="-ml-px py-2 px-4 border border-gray-300 rounded-r-md text-gray-700 text-sm font-medium">Eng</button>
+					</div>
+					<div class="relative flex items-center">
+						<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+							<svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+								<path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+							</svg>
+						</div>
+						<input class="w-72 rounded-md border border-gray-300 py-2 pl-10 pr-3 text-sm placeholder-gray-400" placeholder="Введите заголовок или описание" type="text">
+					</div>
+				</div>
+			</div>
+
+			<div class="max-h-[813px] overflow-scroll">
+				{% for answer in answers %}
+					<div class="flex items-center pt-3 pb-2 px-4 space-x-4 border-b border-gray-300 cursor-default hover:bg-gray-50">
+						<input type="checkbox" class="h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
+						<div class="flex-1 space-y-1">
+							<p class="text-gray-500 text-xs leading-5">{{ answer.category }}</p>
+							<h4 class="text-gray-700 text-sm font-medium">{{ answer.title }}</h4>
+							<div class="text-gray-700 text-xs line-clamp-1">{{ answer.content|raw }}</div>
+						</div>
+						<button @click="answerEditor({{ answer.id }})" type="button">
+							<svg class="text-gray-500 hover:text-indigo-700" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+								<path d="M5.29885 12.8829L4.03706 16.0374C3.8738 16.4455 4.27884 16.8506 4.68699 16.6873L7.84146 15.4255C8.34443 15.2243 8.80128 14.9231 9.18433 14.5401L14.0088 9.71589L11.0088 6.7159L6.18433 11.5401C5.80128 11.9231 5.50003 12.38 5.29885 12.8829Z" fill="currentColor"/>
+								<path d="M11.7159 6.00881L14.7159 9.00881L16.1035 7.62132C16.9319 6.79289 16.9319 5.44975 16.1035 4.62132C15.2751 3.79289 13.9319 3.79289 13.1035 4.62132L11.7159 6.00881Z" fill="currentColor"/>
+							</svg>
+						</button>
+						<button type="button" aria-expanded="false" aria-expanded-autohide>
+							<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M5.23017 7.20938C5.52875 6.92228 6.00353 6.93159 6.29063 7.23017L10 11.1679L13.7094 7.23017C13.9965 6.93159 14.4713 6.92228 14.7698 7.20938C15.0684 7.49647 15.0777 7.97125 14.7906 8.26983L10.5406 12.7698C10.3992 12.9169 10.204 13 10 13C9.79599 13 9.60078 12.9169 9.45938 12.7698L5.20938 8.26983C4.92228 7.97125 4.93159 7.49647 5.23017 7.20938Z" fill="#6B7280"/>
+							</svg>
+						</button>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

@@ -62,7 +62,9 @@
 			<path fill-rule="evenodd" clip-rule="evenodd" d="M15.7512 32.1053C15.8286 27.6156 19.4919 24 24 24C28.5081 24 32.1716 27.6157 32.2487 32.1056C32.2538 32.4034 32.0823 32.676 31.8116 32.8002C29.4327 33.8918 26.7865 34.5 24.0003 34.5C21.2138 34.5 18.5674 33.8917 16.1883 32.7999C15.9176 32.6757 15.7461 32.4031 15.7512 32.1053Z" fill="#374151"/>
 		</svg>
 		<div class="overflow-hidden">
-			<p class="text-gray-900 text-sm font-medium truncate">{{ data.ticket_email }}</p>
+			<a href="{{ path('profile') }}" class="text-gray-900 text-sm font-medium hover:text-indigo-700" title="{{ data.ticket_email }}">
+				<p class="w-60 min-w-full truncate">{{ data.ticket_email }}</p>
+			</a>
 			<p class="text-gray-500 text-sm font-medium truncate">{{ data.ticket_username }}</p>
 		</div>
 	</div>
