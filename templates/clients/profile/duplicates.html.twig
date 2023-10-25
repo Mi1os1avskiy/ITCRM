@@ -24,7 +24,7 @@
 		<div class="py-4 px-8">
 			<div class="min-w-full overflow-hidden overflow-x-auto align-middle rounded-t-lg border border-gray-200">
 
-				<table class="min-w-full">
+				<table class="min-w-full cursor-default">
 					<thead>
 					<tr class="bg-gray-50 border-b border-gray-300 text-sm text-gray-900">
 						<th class="w-[136px] pl-6 pr-3 py-3 text-left font-medium">ID</th>
@@ -44,7 +44,7 @@
 					<tr class="text-sm text-gray-500">
 						<td class="pl-6 pr-3 py-4 whitespace-nowrap">
 							<a href="{{ path('overview') }}" class="text-gray-900 font-medium hover:text-indigo-700">#{{ i.id }}</a>
-							<p class="text-red-500 cursor-default">Duplicate</p>
+							<p class="text-red-500">Duplicate</p>
 						</td>
 						<td class="px-3 py-4 whitespace-nowrap">
 							<a href="{{ path('overview') }}" class="text-gray-900 font-medium hover:text-indigo-700">{{ i.email }}</a>
