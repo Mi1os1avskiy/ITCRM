@@ -16,17 +16,21 @@
 						<svg width="20" height="20" viewBox="0 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#9CA3AF"/>
 						</svg>
-						<p>Письмо #{{ letter.id }}</p>
+						<p>Просмотр письма клиента</p>
 					</nav>
-					<div class="h-[38px] flex items-center">
-						<p class="text-gray-900 font-semibold text-lg">Письмо {{ letter.email }}</p>
+					<div class="space-y-1">
+						<div class="flex space-x-3">
+							<p class="text-gray-900 font-semibold text-lg leading-6">Служба поддержки</p>
+							<span class="py-0.5 px-3 rounded-xl bg-green-100 text-green-800 text-sm font-medium">Доставлено</span>
+						</div>
+						<p class="text-gray-500 text-xs">кому: {{ letter.email }}</p>
 					</div>
 				</div>
 
 			{% endblock %}
 
-			<div class="my-6 mx-8 border border-gray-200 rounded-lg bg-gray-50 overflow-hidden">
-				<div class="flex justify-between py-5 px-6 border-b bg-white">
+			<div class="my-6 mx-8 ring-1 ring-gray-200 rounded-lg bg-gray-50 overflow-hidden">
+				<div class="h-[70px] flex items-center justify-between py-5 px-6 border-b bg-white">
 					<p class="text-gray-900 font-semibold">{{ letter.title }}</p>
 					<p class="text-gray-600 text-sm">{{ letter.date }}, {{ letter.time }}</p>
 				</div>

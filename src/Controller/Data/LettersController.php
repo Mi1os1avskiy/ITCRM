@@ -25,7 +25,7 @@ class LettersController
 	public static function oneLetter() {
 		$letter = [
 			'id' => 'c239833',
-			'title' => 'Ваша услуга будет удалена через 24 часа',
+			'title' => 'Сброс пароля аккаунта',
 			'date' => '18/04/2023',
 			'time' => '21:00:41',
 			'email' => 'Valariy-burdaleyba@mail.com',
