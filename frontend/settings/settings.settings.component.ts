@@ -110,6 +110,39 @@ export const SettingsSettingsComponent = {
             let body = document.querySelector(body_id) as HTMLInputElement;
             body.classList.toggle('bg-gray-50');
         },
+        editingCategory(cat: number) {
+            const self = <any>this;
+            let header_edit = document.getElementById('header_edit') as HTMLInputElement;
+            let header_create = document.getElementById('header_create') as HTMLInputElement;
+            let del_btn = document.getElementById('del_btn') as HTMLInputElement;
+            let input = document.getElementById('header_input') as HTMLInputElement;
+            let create_btn = document.getElementById('create_btn') as HTMLInputElement;
+            let edit_btn = document.getElementById('edit_btn') as HTMLInputElement;
+            let categories = ['IP адреса', 'Network', 'SSL сертификаты', 'Биллинг', 'Бухгалтерия', 'Быстрые ответы', 'Верификация', 'Вопросы по заказу', 'Партнёрская программа', 'Уведомления'];
+
+
+            if (!!cat) {
+                header_edit.classList.remove('hidden');
+                header_create.classList.add('hidden');
+                del_btn.classList.remove('hidden');
+                create_btn.classList.add('hidden');
+                edit_btn.classList.remove('hidden');
+
+                for (let i in categories) {
+                    if (cat-1 === Number(i)) {
+                        input.setAttribute('value', categories[i]);
+                    }
+                }
+            }
+            else {
+                header_edit.classList.add('hidden');
+                header_create.classList.remove('hidden');
+                del_btn.classList.add('hidden');
+                input.removeAttribute('value');
+                edit_btn.classList.add('hidden');
+                create_btn.classList.remove('hidden');
+            }
+        },
     }
 }
 
