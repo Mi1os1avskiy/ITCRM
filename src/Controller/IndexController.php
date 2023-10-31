@@ -20,7 +20,7 @@ class IndexController extends AbstractController
     public function index(): Response
     {
         return $this->render('index.html.twig', [
-            'title' => 'Start page',
+            'title' => 'Sign in',
         ]);
     }
 
