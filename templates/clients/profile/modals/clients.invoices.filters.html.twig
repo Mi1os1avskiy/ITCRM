@@ -54,16 +54,23 @@
 						</div>
 					</div>
 
-					{% set payments = payments() %}
 					<div class="space-y-2">
 						<p class="text-sm text-left font-medium text-gray-700">Способ оплаты</p>
-						<div class="relative rounded-md shadow-sm">
-							<select class="w-full border border-gray-300 rounded-md text-sm">
-								<option>Не выбран</option>
-								{% for i in payments %}
-									<option>{{ i }}</option>
+						<div class="relative">
+							<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md border border-gray-300 text-left shadow-sm text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+								<p class="pointer-events-none text-gray-900">Не выбран</p>
+								<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+								</svg>
+							</button>
+
+							<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+								{% for i in payments() %}
+									<li>
+										<button type="button" class="w-full py-2 px-4 text-gray-700 text-left hover:bg-gray-100">{{ i }}</button>
+									</li>
 								{% endfor %}
-							</select>
+							</ul>
 						</div>
 					</div>
 

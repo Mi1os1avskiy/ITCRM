@@ -353,6 +353,20 @@ class IndexController extends AbstractController
 		]);
 	}
 
+	/**
+	 * @Route("/orders/new_order", name="new_order")
+	 */
+	public function newOrder(): Response
+	{
+		return $this->render('orders/new.order.html.twig', [
+			'title' => 'Новый заказ',
+			'clients' => OrdersController::ordersClients(),
+			'tariff_plans' => OrdersController::ordersTariffPlans(),
+			'tariff_groups' => OrdersController::ordersTariffGroups(),
+			'amount' => OrdersController::ordersTariffAmount(),
+		]);
+	}
+
     /**
      * @Route("/settings/admins", name="settings_admins")
      */
