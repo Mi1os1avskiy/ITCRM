@@ -15,7 +15,7 @@ twig:
         invoice_statuses:
             {'Pending': 'red', 'Paid': 'green', 'Cancelled': 'gray', 'Overdue': 'gray', 'Draft': 'purple'}
         ticket_statuses:
-            {'Important!': 'red', 'Open': 'red', 'In progress': 'orange', 'Answered': 'yellow', 'Customer reply': 'yellow', 'Waiting for manager': 'yellow', 'On hold': 'blue', 'Closed': 'green'}
+            {'Important!': 'red', 'Open': 'red', 'In progress': 'orange', 'Answered': 'yellow', 'Customer reply': 'yellow', 'Waiting for manager': 'yellow', 'On hold': 'blue', 'Closed': 'green', 'Payment Issues': 'red'}
         order_statuses:
             {'Pending': 'red', 'In progress': 'orange', 'Suspended': 'blue', 'Active': 'green', 'Cancelled': 'gray', 'Terminated': 'gray'}
         payment_statuses:

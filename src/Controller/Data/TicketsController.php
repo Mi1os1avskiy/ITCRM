@@ -29,7 +29,8 @@ class TicketsController
             new TicketsController('345345', 'Malesuada quisque felis vitae risus consequat.', 'Answered', 1, 'Служба поддержки', 'Wade Warren', '2h 3m'),
             new TicketsController('324543', 'Lacus etiam adipiscing ac morbi.', 'Customer reply', 3, 'Служба поддержки', 'Essther Howard', '2h 3m'),
             new TicketsController('8476534', 'Sit elit nulla vestibulum mi nunc.', 'Waiting for manager', 3, 'Служба поддержки', 'Jenny Wilson', '2h 3m'),
-            new TicketsController('908345', 'Dictum feugiat in senectus est platea.', 'On hold', 1, 'Служба поддержки', 'Marvin McKinney', '2h 3m'),
+			new TicketsController('987435', 'Commodo dignissim orci volutpat sit sem auctor ac neque.', 'Payment Issues', 1, 'Служба поддержки', 'Darlene Robertson', '2h 3m'),
+            new TicketsController('908345', 'Dictum feugiat in senectus est platea.', 'On hold', 1, 'Перезагрузка сервера', 'Marvin McKinney', '2h 3m'),
             new TicketsController('094357', 'Massa massa senectus velit metus euismod vitae imperdiet sem.', 'Closed', 3, 'Служба поддержки', 'Darlene Robertson', '2h 3m'),
             new TicketsController('763458', 'Malesuada quisque felis vitae risus consequat.', 'Important!', 2, 'Служба поддержки', 'Jerome Bell', '2h 3m')
         ];

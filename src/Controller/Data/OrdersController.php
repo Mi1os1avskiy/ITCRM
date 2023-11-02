@@ -39,7 +39,7 @@ class OrdersController
 		$list = [
 			'Lite - Linux SSD 5.00 / 0 .00 (+3/6 вариантов)',
 			'Start - Linux SSD 10.00 / 0.00 (+3/6 вариантов)',
-			'Medium - Linux SSD 20.00 / 0.00 (+3/6 вариантов)'.
+			'Medium - Linux SSD 20.00 / 0.00 (+3/6 вариантов)',
 			'Premium - Linux SSD 40.00 / 0.00 (+3/6 вариантов)',
 			'Elite - Linux SSD 60.00 / 0.00 (+3/6 вариантов)',
 			'Exclusive - Linux SSD 90.00 / 0.00 (+3/6 вариантов) ',
