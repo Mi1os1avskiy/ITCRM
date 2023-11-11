@@ -62,7 +62,7 @@
                             </td>
                             <td class="whitespace-nowrap px-3 py-4 cursor-default">
 	                            {% if item.invoice_exist %}
-		                            Инвойс <a href="{{ path('invoice_overview') }}" class="text-gray-900 hover:text-indigo-700">{{ item.invoice }}</a>
+		                            Инвойс <a href="{{ path('invoice_overview') }}" class="text-gray-900 font-medium hover:text-indigo-700">{{ item.invoice }}</a>
 	                            {% else %}
 		                            <p class="w-44 min-w-full truncate" title="{{ item.description }}">{{ item.description }}</p>
 	                            {% endif %}

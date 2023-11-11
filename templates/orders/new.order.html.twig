@@ -27,7 +27,7 @@
 
 				<orders-settings inline-template>
 
-					<div class="py-6 px-8">
+					<div class="py-6 px-8 space-y-6">
 						<div class="flex py-5 px-6 space-x-5 bg-gray-50">
 							<div class="flex-1 relative">
 								<svg class="absolute top-2 left-3 pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -89,6 +89,487 @@
 									{% endfor %}
 								</ul>
 							</div>
+						</div>
+
+						<div class="flex bg-yellow-50 rounded-lg py-4 px-6 space-x-4 ">
+							<svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10ZM10 5C10.4142 5 10.75 5.33579 10.75 5.75V10.25C10.75 10.6642 10.4142 11 10 11C9.58579 11 9.25 10.6642 9.25 10.25V5.75C9.25 5.33579 9.58579 5 10 5ZM10 15C10.5523 15 11 14.5523 11 14C11 13.4477 10.5523 13 10 13C9.44771 13 9 13.4477 9 14C9 14.5523 9.44771 15 10 15Z" fill="#F97316"/>
+							</svg>
+							<p class="text-sm text-gray-700 line-clamp-3">Ipsum lacus id gravida venenatis velit cursus aliquet eros. Massa at habitant potenti senectus id pretium faucibus. Odio libero placerat lectus lectus eget tortor scelerisque tincidunt. Sed ultricies consequat interdum vel mauris nunc. Orci fermentum consequat semper tortor. Enim adipiscing donec lobortis elit libero vivamus. Leo magna donec gravida dictum platea. Aliquam vehicula augue cursus pharetra nunc praesent ornare.</p>
+						</div>
+
+						<div class="pb-2 bg-gray-50 divide-y">
+							<h3 class="py-5 px-6 text-gray-900 font-semibold">Слоты</h3>
+							<div class="bg-white divide-y">
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3 text-gray-600 text-sm font-medium">Примечания от клиента</div>
+									<div class="grow py-4 pl-3 pr-6">
+										<textarea class="w-full h-14 min-h-[56px] max-h-[120px] py-2 px-3 rounded-md text-gray-900 text-sm placeholder-gray-400" placeholder="Примечание"></textarea>
+									</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3 text-gray-600 text-sm font-medium">Тарифный план</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">RU-7 (Special) 155.00 / 0.00 (+6/6 вариантов)</div>
+									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$90.00 <span class="truncate">в 1 мес</span></div>
+									<div class="w-[324px] py-4 pl-3 pr-6 text-gray-900 text-sm">Static</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3">
+										<div class="text-gray-600 text-sm font-medium">CPU</div>
+										<div class="text-gray-400 text-xs">cpu</div>
+									</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">Intel® Xeon® E-2288G 8x 3.70 GHz (до 5.00 GHz Turbo Boost) / 16 Threads</div>
+									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 мес</span></div>
+									<div class="w-[324px] py-4 pl-3 pr-6 text-gray-900 text-sm">Static</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3">
+										<div class="text-gray-600 text-sm font-medium">RAM</div>
+										<div class="text-gray-400 text-xs">ram</div>
+									</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">32GB DDR4</div>
+									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 мес</span></div>
+									<div class="w-[324px] py-4 pl-3 pr-6">
+										<div class="relative">
+											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">32GB DDR4</p>
+												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+												</svg>
+											</button>
+											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">32GB DDR4</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">64GB DDR4</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">128GB DDR4</button>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3">
+										<div class="text-gray-600 text-sm font-medium">Панель управления</div>
+										<div class="text-gray-400 text-xs">panel</div>
+									</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">Без панели (только установка ОС)</div>
+									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
+									<div class="w-[324px] py-4 pl-3 pr-6">
+										<div class="relative">
+											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">Без панели (только установка ОС)</p>
+												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+												</svg>
+											</button>
+											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Без панели (только установка ОС)</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">VestaCP (nginx+apache) (vesta/apache)</button>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3">
+										<div class="text-gray-600 text-sm font-medium">Администрирование</div>
+										<div class="text-gray-400 text-xs">administration</div>
+									</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">Без администрирования</div>
+									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
+									<div class="w-[324px] py-4 pl-3 pr-6">
+										<div class="relative">
+											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">Без администрирования</p>
+												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+												</svg>
+											</button>
+											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Без администрирования</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">С администрированием</button>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3">
+										<div class="text-gray-600 text-sm font-medium">OS</div>
+										<div class="text-gray-400 text-xs">os</div>
+									</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">CentOS 8.x</div>
+									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
+									<div class="w-[324px] py-4 pl-3 pr-6">
+										<div class="relative">
+											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">CentOS 8.x</p>
+												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+												</svg>
+											</button>
+											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">CentOS 8.x</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Linux</button>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3">
+										<div class="text-gray-600 text-sm font-medium">Диск</div>
+										<div class="text-gray-400 text-xs">disk0</div>
+									</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">2TB HDD</div>
+									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
+									<div class="w-[324px] py-4 pl-3 pr-6">
+										<div class="relative">
+											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">2TB HDD</p>
+												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+												</svg>
+											</button>
+											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">2TB HDD</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">4TB HDD</button>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3">
+										<div class="text-gray-600 text-sm font-medium">Диск</div>
+										<div class="text-gray-400 text-xs">disk1</div>
+									</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">None</div>
+									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
+									<div class="w-[324px] py-4 pl-3 pr-6">
+										<div class="relative">
+											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">None</p>
+												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+												</svg>
+											</button>
+											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">None</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">2TB HDD</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">4TB HDD</button>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3">
+										<div class="text-gray-600 text-sm font-medium">Диск</div>
+										<div class="text-gray-400 text-xs">disk2</div>
+									</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">None</div>
+									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
+									<div class="w-[324px] py-4 pl-3 pr-6">
+										<div class="relative">
+											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">None</p>
+												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+												</svg>
+											</button>
+											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">None</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">2TB HDD</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">4TB HDD</button>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3">
+										<div class="text-gray-600 text-sm font-medium">Диск</div>
+										<div class="text-gray-400 text-xs">disk3</div>
+									</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">None</div>
+									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
+									<div class="w-[324px] py-4 pl-3 pr-6">
+										<div class="relative">
+											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">None</p>
+												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+												</svg>
+											</button>
+											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">None</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">2TB HDD</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">4TB HDD</button>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3">
+										<div class="text-gray-600 text-sm font-medium">IP</div>
+										<div class="text-gray-400 text-xs">ip</div>
+									</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-yellow-700 text-sm">IPv4 - 3</div>
+									<div class="w-[144px] py-4 px-3 text-yellow-700 text-sm">$8.00 <span class="truncate">в 1 месяц</span></div>
+									<div class="w-[324px] flex items-center py-4 pl-3 pr-6 space-x-5">
+										<input id="range" class="w-16 py-2 px-3 rounded-md text-sm" value="0" type="number" min="0" max="256">
+										<input class="shrink" type="range" value="0" min="0" max="256" onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)">
+										<script>
+											function rangeSlide(value) {
+												document.getElementById('range').value = value;
+											}
+										</script>
+									</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3">
+										<div class="text-gray-600 text-sm font-medium">Порт</div>
+										<div class="text-gray-400 text-xs">port</div>
+									</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">Порт 100 Mbps трафик не учитывается</div>
+									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
+									<div class="w-[324px] py-4 pl-3 pr-6">
+										<div class="relative">
+											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">Порт 100 Mbps трафик не учитывается</p>
+												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+												</svg>
+											</button>
+											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Порт 100 Mbps трафик не учитывается</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Порт 250 Mbps трафик не учитывается</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Порт 500 Mbps трафик учитывается</button>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3">
+										<div class="text-gray-600 text-sm font-medium">Разрядность OS</div>
+										<div class="text-gray-400 text-xs">osbit</div>
+									</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">64 Bit (рекомендуется)</div>
+									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
+									<div class="w-[324px] py-4 pl-3 pr-6">
+										<div class="relative">
+											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">64 Bit (рекомендуется)</p>
+												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+												</svg>
+											</button>
+											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">64 Bit (рекомендуется)</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">32 Bit</button>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3">
+										<div class="text-gray-600 text-sm font-medium">RAID</div>
+										<div class="text-gray-400 text-xs">raid</div>
+									</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">None</div>
+									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
+									<div class="w-[324px] py-4 pl-3 pr-6">
+										<div class="relative">
+											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">None</p>
+												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+												</svg>
+											</button>
+											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">None</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">2x</button>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3">
+										<div class="text-gray-600 text-sm font-medium">Мониторинг состояния дисков</div>
+										<div class="text-gray-400 text-xs">mondisk</div>
+									</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">Установить и настроить (рекомендуется)</div>
+									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
+									<div class="w-[324px] py-4 pl-3 pr-6">
+										<div class="relative">
+											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">Установить и настроить (рекомендуется)</p>
+												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+												</svg>
+											</button>
+											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Установить и настроить (рекомендуется)</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Не устанавливать</button>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-center">
+									<div class="w-[288px] py-4 pl-6 pr-3">
+										<div class="text-gray-600 text-sm font-medium">IPMI</div>
+										<div class="text-gray-400 text-xs">ipmi</div>
+									</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">On</div>
+									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
+									<div class="w-[324px] py-4 pl-3 pr-6">
+										<div class="relative">
+											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">Не выбрано</p>
+												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
+												</svg>
+											</button>
+											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Не выбрано</button>
+												</li>
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Стандарт</button>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="pb-2 bg-gray-50 divide-y">
+							<h3 class="py-5 px-6 text-gray-900 font-semibold">Сервисы</h3>
+							<div class="flex items-center py-4 px-6 space-x-4 bg-white">
+								<div class="text-gray-600 text-sm font-medium">Число создаваемых сервисов</div>
+								<input class="w-[152px] py-2 px-3 rounded-md text-sm placeholder-gray-400" placeholder="Кол-во сервисов" type="text">
+							</div>
+						</div>
+
+						<div class="pb-2 bg-gray-50 divide-y">
+							<h3 class="py-5 px-6 text-gray-900 font-semibold">Оплата</h3>
+							<div class="py-5 px-6 space-y-5">
+								<div class="space-y-1">
+									<div class="text-gray-700 text-sm font-medium">Платёжный период</div>
+									<div class="flex">
+										<input name="pay_period" id="m1" class="peer/m1 hidden" type="radio" checked>
+										<label for="m1" class="py-2 px-4 bg-white ring-1 ring-gray-300 rounded-l-md text-gray-700 text-sm font-medium cursor-pointer hover:bg-gray-50 peer-checked/m1:z-10 peer-checked/m1:bg-indigo-50 peer-checked/m1:text-indigo-700 peer-checked/m1:ring-indigo-500">1 месяц</label>
+
+										<input name="pay_period" id="m3" class="peer/m3 hidden" type="radio">
+										<label for="m3" class="py-2 px-4 bg-white ring-1 ring-gray-300 text-gray-700 text-sm font-medium cursor-pointer hover:bg-gray-50 peer-checked/m3:z-10 peer-checked/m3:bg-indigo-50 peer-checked/m3:text-indigo-700 peer-checked/m3:ring-indigo-500">3 месяца</label>
+
+										<input name="pay_period" id="m6" class="peer/m6 hidden" type="radio">
+										<label for="m6" class="py-2 px-4 bg-white ring-1 ring-gray-300 text-gray-700 text-sm font-medium cursor-pointer hover:bg-gray-50 peer-checked/m6:z-10 peer-checked/m6:bg-indigo-50 peer-checked/m6:text-indigo-700 peer-checked/m6:ring-indigo-500">6 месяцев</label>
+
+										<input name="pay_period" id="m12" class="peer/m12 hidden" type="radio">
+										<label for="m12" class="py-2 px-4 bg-white ring-1 ring-gray-300 rounded-r-md text-gray-700 text-sm font-medium cursor-pointer hover:bg-gray-50 peer-checked/m12:z-10 peer-checked/m12:bg-indigo-50 peer-checked/m12:text-indigo-700 peer-checked/m12:ring-indigo-500">1 год</label>
+									</div>
+								</div>
+
+								<div class="h-9 flex items-center">
+									<input id="free_period" type="checkbox" class="peer h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-1 focus:ring-indigo-500">
+									<label for="free_period" class="ml-2 text-gray-900 text-sm">Бесплатный тестовый период</label>
+									<input class="hidden w-[99px] ml-4 py-2 px-3 rounded-md text-sm placeholder-gray-400 peer-checked:block" placeholder="Дней" type="text">
+								</div>
+
+								<div class="space-y-1">
+									<div class="text-gray-700 text-sm font-medium">Промокод</div>
+									<div class="flex">
+										<input id="promo_input" disabled class="w-[226px] z-10 py-2 px-3 rounded-l-md text-gray-900 text-sm placeholder-gray-400 disabled:bg-gray-50 disabled:text-gray-500" placeholder="Введите промокод" value="QWERTY" type="text">
+										<button id="promo_btn" @click="orderPromo()" class="py-2 px-4 bg-white ring-1 ring-gray-300 rounded-r-md text-gray-700 text-sm font-medium hover:bg-gray-50" type="button">Удалить</button>
+									</div>
+								</div>
+
+								{% set promo = 3 %}
+								{% set discount = 0 %}
+								{% set price = 140 %}
+
+								<div class="space-y-1">
+									<div class="text-gray-900 text-sm">
+										<span class="font-semibold">Скидка по промокоду </span>
+										<span>"QWERTY": ${{ promo|number_format(2, '.', '') }}</span>
+									</div>
+									<div class="text-gray-900 text-sm">
+										<span class="font-semibold">Скидка по акции: </span>
+										<span>{% if discount %}${{ discount|number_format(2, '.', '') }}{% else %}Без скидки{% endif %}</span>
+									</div>
+									<div class="text-gray-900 text-sm">
+										<span class="font-semibold">Цена без скидок: </span>
+										<span>${{ price|number_format(2, '.', '') }}</span>
+									</div>
+									<div class="text-gray-900 text-sm">
+										<span class="font-semibold">Итоговая цена: </span>
+										<span>${{ (price - discount - promo)|number_format(2, '.', '') }}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="py-5 px-6 space-y-1 ring-1 ring-gray-300 rounded-lg bg-yellow-50">
+							<div class="text-gray-900 text-xs font-medium">Примечания администратора</div>
+							<div class="text-gray-400 text-sm">Примечание</div>
+						</div>
+
+						<div class="flex justify-end space-x-3">
+							<a href="{{ path('orders') }}" class="py-2 px-4 ring-1 ring-gray-300 rounded-md shadow-sm text-gray-700 text-sm font-medium hover:bg-gray-50">Отмена</a>
+							<button @click="orderCreating()" class="py-2 px-4 bg-indigo-600 rounded-md shadow-sm text-white text-sm font-medium hover:bg-indigo-700" type="button">Сформировать заказ</button>
 						</div>
 					</div>
 

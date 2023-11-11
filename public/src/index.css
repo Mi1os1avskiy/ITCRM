@@ -89,6 +89,7 @@ input:checked ~ .toggle {
 	background-color: #4F46E5;
 }
 
+/*
 [type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus {
 	outline: none;
 	outline-offset: 0;
@@ -99,6 +100,31 @@ input:checked ~ .toggle {
 
 [type='text']:hover, [type='email']:hover, [type='url']:hover, [type='password']:hover, [type='number']:hover, [type='date']:hover, [type='datetime-local']:hover, [type='month']:hover, [type='search']:hover, [type='tel']:hover, [type='time']:hover, [type='week']:hover, [multiple]:hover, select:hover {
 	background: #F9FAFB;
+}
+*/
+
+input, textarea {
+	outline: none;
+	border: none;
+	box-shadow: 0 0 0 1px #D1D5DB;
+}
+
+input:hover, textarea:hover {
+	background: #F9FAFB;
+}
+
+input:focus {
+	outline: none;
+	box-shadow: 0 0 0 1px #6366F1;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+input[type='number'] {
+	-moz-appearance: textfield;
 }
 
 
@@ -173,4 +199,3 @@ input:checked ~ .toggle {
 	transition-delay: 0.5s;
 }
 /*	end of tooltips	*/
-

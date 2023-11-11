@@ -29,12 +29,11 @@
 		</div>
 		<div class="w-[400px] h-fit ring-1 ring-gray-200 rounded-lg overflow-hidden">
 			<div class="py-5 px-6 bg-gray-50">
-				<p id="header_edit" class="hidden text-gray-900 text-lg font-medium leading-6">Редактирование категории</p>
-				<p id="header_create" class="header_create text-gray-900 text-lg font-medium leading-6">Создание новой категории</p>
+				<p id="header" class="header_create text-gray-900 text-lg font-medium leading-6">Создание новой категории</p>
 			</div>
 			<div class="py-5 px-6 space-y-1">
 				<p class="text-gray-700 text-sm font-medium">Заголовок <span class="text-red-500 text-sm font-medium">*</span></p>
-				<input id="header_input" class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-gray-700 text-sm placeholder-gray-400" placeholder="Введите заголовок" type="text">
+				<input id="input" class="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm text-gray-700 text-sm placeholder-gray-400" placeholder="Введите заголовок" type="text">
 			</div>
 			<div class="flex py-5 px-6 space-x-3 bg-gray-50">
 				<button id="del_btn" @click="deleteCategory()" class="hidden p-2 ring-1 ring-gray-300 rounded-md bg-white hover:bg-gray-50" type="button">
@@ -43,8 +42,7 @@
 					</svg>
 				</button>
 				<button @click="editingCategory()" class="w-full py-2 px-4 bg-white ring-1 ring-gray-300 rounded-md text-gray-700 text-sm font-medium hover:bg-gray-50" type="button">Отменить</button>
-				<button id="create_btn" @click="createCategory()" class="w-full py-2 px-4 bg-indigo-600 rounded-md text-white text-sm font-medium hover:bg-indigo-700" type="button">Создать</button>
-				<button id="edit_btn" @click="editCategory()" class="hidden w-full py-2 px-4 bg-indigo-600 rounded-md text-white text-sm font-medium hover:bg-indigo-700" type="button">Сохранить</button>
+				<button id="create_edit_btn" @click="createCategory()" class="w-full py-2 px-4 bg-indigo-600 rounded-md text-white text-sm font-medium hover:bg-indigo-700" type="button">Создать</button>
 			</div>
 		</div>
 	</div>
