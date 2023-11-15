@@ -6,10 +6,8 @@
 
 		<div class="py-4 px-8 flex items-center justify-between space-x-4 bg-gray-100">
 			<p class="font-semibold text-lg">{{ title }}</p>
-			<a href="{{ path('billing_new_invoice') }}" class="flex items-center pl-3 pr-4 py-2 space-x-2 rounded-md bg-indigo-600 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">
-				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-					<path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="white"/>
-				</svg>
+			<a href="{{ path('billing_new_invoice') }}" class="flex items-center pl-3 pr-4 py-2 space-x-2 rounded-md bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700">
+				{{ source('misc/svg/plus.svg') }}
 				<span>Добавить</span>
 			</a>
 		</div>
@@ -22,37 +20,31 @@
 
 			{% block control %}
 
-				<div class="pt-6">
+				<div class="mt-6">
 					<div class="flex justify-between">
 						<div class="flex items-center text-sm text-gray-700">
-							<a href="#" class="py-2 px-4 border border-gray-300 rounded-l-md hover:bg-gray-50">Все</a>
-							<a href="#" class="flex items-center -ml-px py-2 pl-3 pr-4 space-x-2 border border-gray-300 hover:bg-gray-50">
-								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M10 15C12.7614 15 15 12.7614 15 10C15 7.23858 12.7614 5 10 5C7.23858 5 5 7.23858 5 10C5 12.7614 7.23858 15 10 15Z" fill="#F87171"/>
-								</svg>
+							<a href="#" class="py-2 px-4 ring-1 ring-gray-300 rounded-l-md hover:bg-gray-50">Все</a>
+							<a href="#" class="flex items-center ml-px py-2 pl-3 pr-4 space-x-2 ring-1 ring-gray-300 hover:bg-gray-50">
+								{{ source('misc/svg/circles/red-400.svg') }}
 								<span>Pending</span>
 							</a>
-							<a href="#" class="flex items-center -ml-px py-2 pl-3 pr-4 space-x-2 border border-gray-300 hover:bg-gray-50">
-								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M10 15C12.7614 15 15 12.7614 15 10C15 7.23858 12.7614 5 10 5C7.23858 5 5 7.23858 5 10C5 12.7614 7.23858 15 10 15Z" fill="#34D399"/>
-								</svg>
+							<a href="#" class="flex items-center ml-px py-2 pl-3 pr-4 space-x-2 ring-1 ring-gray-300 hover:bg-gray-50">
+								{{ source('misc/svg/circles/green-400.svg') }}
 								<span>Paid</span>
 							</a>
 							<div class="relative">
-								<button type="button" class="-ml-px py-2 px-3 border border-gray-300 rounded-r-md hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-									<svg class="arrow pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path fill-rule="evenodd" clip-rule="evenodd" d="M5.23017 7.20938C5.52875 6.92228 6.00353 6.93159 6.29063 7.23017L10 11.1679L13.7094 7.23017C13.9965 6.93159 14.4713 6.92228 14.7698 7.20938C15.0684 7.49647 15.0777 7.97125 14.7906 8.26983L10.5406 12.7698C10.3992 12.9169 10.204 13 10 13C9.79599 13 9.60078 12.9169 9.45938 12.7698L5.20938 8.26983C4.92228 7.97125 4.93159 7.49647 5.23017 7.20938Z" fill="#6B7280"/>
-									</svg>
+								<button type="button" class="ml-px py-2 px-3 ring-1 ring-gray-300 rounded-r-md hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+									{{ source('misc/svg/arrow.svg') }}
 								</button>
-								<ul class="absolute z-10 top-10 py-1 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+								<ul class="dropdown text-sm">
 									<li class="border-b border-gray-100">
-										<button type="button" class="w-full py-3 px-5 text-left hover:bg-gray-100">
+										<button type="button" class="w-full py-3 px-5 text-left">
 											<span class="text-gray-700 whitespace-nowrap">Все инвойсы</span>
 										</button>
 									</li>
 									{% for val, css in invoice_statuses %}
 										<li>
-											<button type="button" class="flex items-center w-full py-3 px-5 space-x-4 hover:bg-gray-100">
+											<button type="button" class="flex items-center w-full py-3 px-5 space-x-4 ">
 												<div class="h-2.5 w-2.5 rounded-full bg-{{ css }}-400"></div>
 												<span class="text-gray-700 whitespace-nowrap">{{ val }}</span>
 											</button>
@@ -66,17 +58,13 @@
 							<div class="w-[220px]">
 								<div class="relative">
 									<div class="pointer-events-none absolute inset-y-0 flex items-center pl-3">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5C10.519 14.5 11.893 13.8852 12.8891 12.8891C13.8852 11.893 14.5 10.519 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5ZM2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 10.6625 15.4197 12.1906 14.4517 13.3911L17.7803 16.7197C18.0732 17.0126 18.0732 17.4874 17.7803 17.7803C17.4874 18.0732 17.0126 18.0732 16.7197 17.7803L13.3911 14.4517C12.1906 15.4197 10.6625 16 9 16C5.13401 16 2 12.866 2 9Z" fill="#6B7280"/>
-										</svg>
+										{{ source('misc/svg/search.svg') }}
 									</div>
-									<input class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 text-sm" placeholder="Поиск по Сумме" type="text">
+									<input class="inputs block w-full py-2 pl-10 pr-3 text-sm" placeholder="Поиск по Сумме" type="text">
 								</div>
 							</div>
-							<button @click="billingInvoicesFilters()" type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md border border-gray-300 shadow-sm hover:bg-gray-50">
-								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M4.47102 3.46746C6.27039 3.15991 8.11739 3 10 3C11.8826 3 13.7296 3.15991 15.529 3.46746C15.8007 3.51389 16 3.75747 16 4.04302V5.8223C16 6.28643 15.8222 6.73155 15.5057 7.05974L11.9943 10.7013C11.6778 11.0295 11.5 11.4746 11.5 11.9387V14.3004C11.5 14.832 11.267 15.3348 10.8667 15.6669L9.41389 16.8722C9.24505 17.0122 9.01372 17.0396 8.81883 16.9424C8.62394 16.8453 8.5 16.6409 8.5 16.4167V11.9387C8.5 11.4746 8.32221 11.0295 8.00574 10.7013L4.49426 7.05974C4.17779 6.73155 4 6.28643 4 5.8223V4.04302C4 3.75747 4.19934 3.51389 4.47102 3.46746Z" fill="#6B7280"/>
-								</svg>
+							<button @click="billingInvoicesFilters()" type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md ring-1 ring-gray-300 hover:bg-gray-50">
+								{{ source('misc/svg/filters.svg') }}
 								<span class="text-gray-700 text-sm font-medium">Фильтры</span>
 							</button>
 						</div>
@@ -91,7 +79,7 @@
 
 					<table class="min-w-full divide-y divide-gray-200">
 						<thead>
-						<tr class="bg-gray-50 border-b border-gray-300 text-gray-900 text-sm">
+						<tr class="bg-gray-50 border-b border-gray-300 text-sm">
 							<th class="w-[110px] pl-6 pr-3 py-3 text-left font-medium">ID</th>
 							<th class="w-[115px] p-3 text-left font-medium">Статус</th>
 							<th class="p-3 text-left font-medium">Клиент</th>
@@ -105,8 +93,8 @@
 						<tbody class="divide-y divide-gray-200 bg-white">
 
 						{% for invoice in invoices %}
-							<tr class="text-gray-500 text-sm {% if invoice.status == 'Draft' %}bg-gray-50{% endif %}">
-								<td class="pl-6 pr-3 py-4 text-left font-medium {% if invoice.status != 'Draft' %}text-gray-900{% endif %}">
+							<tr class="text-sm">
+								<td class="pl-6 pr-3 py-4 text-left font-medium">
 									<a {% if invoice.status == 'Draft' %}href="{{ path('billing_edit_draft') }}"{% else %}href="{{ path('invoice_overview', { status:invoice.status }) }}"{% endif %} class="hover:text-indigo-700">{{ invoice.id }}</a>
 								</td>
 								<td class="px-3 py-4 text-left">
@@ -117,7 +105,7 @@
 									{% endfor %}
 								</td>
 								<td class="px-3 py-4 text-left">
-									<a href="{{ path('overview') }}" class="text-gray-900 font-medium hover:text-indigo-700">
+									<a href="{{ path('overview') }}" class="font-medium hover:text-indigo-700">
 										<p class="w-40 min-w-full truncate">{{ invoice.client }}</p>
 									</a>
 								</td>

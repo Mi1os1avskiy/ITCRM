@@ -4,14 +4,14 @@
 
 {% block overview %}
 
-	<div class="flex pt-6 pb-4 px-8 space-x-6 text-gray-900">
+	<div class="flex pt-6 pb-4 px-8 space-x-6">
 		<div class="w-[656px] space-y-10">
 {#			{% if data.invoice_description %}#}
 			{% if getGet() != 'Pending' %}
 			<div class="p-4 space-y-1 ring-1 ring-gray-200 rounded-lg">
 				<div class="flex space-x-1">
-					<p class="flex-1 text-gray-400 text-xs font-medium">Описание</p>
-					<p class="flex-1 text-gray-400 text-xs font-medium text-right">Отображается клиенту</p>
+					<p class="grow text-gray-400 text-xs font-medium">Описание</p>
+					<p class="text-gray-400 text-xs font-medium text-right">Отображается клиенту</p>
 				</div>
 				<div class="text-sm">{{ data.invoice_description }}</div>
 			</div>
@@ -57,29 +57,29 @@
 			<div class="ring-1 ring-gray-200 rounded-lg divide-y overflow-hidden">
 				<div class="py-3 px-6 bg-gray-50 text-sm font-medium">Общая информация</div>
 				<div class="flex py-3 px-6 space-x-4">
-					<div class="flex-1 text-gray-700 text-sm">Имя клиента</div>
-					<div class="flex-1 text-sm font-medium text-right">
+					<div class="grow text-gray-700 text-sm">Имя клиента</div>
+					<div class="text-sm font-medium text-right">
 						<a href="{{ path('overview') }}" class="hover:text-indigo-700">{{ data.invoice_user }}</a>
 					</div>
 				</div>
 				<div class="flex py-3 px-6 space-x-4">
-					<div class="flex-1 text-gray-700 text-sm">ID услуги</div>
-					<div class="flex-1 text-indigo-700 text-sm font-medium text-right">{{ data.invoice_service_id }}</div>
+					<div class="grow text-gray-700 text-sm">ID услуги</div>
+					<div class="text-indigo-700 text-sm font-medium text-right">{{ data.invoice_service_id }}</div>
 				</div>
 				<div class="flex py-3 px-6 space-x-4">
-					<div class="flex-1 text-gray-700 text-sm">Дата выставления</div>
-					<div class="flex-1 text-sm font-medium text-right">{{ data.invoice_issued }}</div>
+					<div class="grow text-gray-700 text-sm">Дата выставления</div>
+					<div class="text-sm font-medium text-right">{{ data.invoice_issued }}</div>
 				</div>
 				<div class="flex py-3 px-6 space-x-4">
-					<div class="flex-1 text-gray-700 text-sm">Срок оплаты</div>
-					<div class="flex-1 text-sm font-medium text-right">{{ data.invoice_paydate }}</div>
+					<div class="grow text-gray-700 text-sm">Срок оплаты</div>
+					<div class="text-sm font-medium text-right">{{ data.invoice_paydate }}</div>
 				</div>
 				<div class="flex py-3 px-6 space-x-4">
-					<div class="flex-1 text-gray-700 text-sm">Всего по инвойсу</div>
-					<div class="flex-1 text-sm font-medium text-right">$ {{ res|number_format(2, '.', '') }}</div>
+					<div class="grow text-gray-700 text-sm">Всего по инвойсу</div>
+					<div class="text-sm font-medium text-right">$ {{ res|number_format(2, '.', '') }}</div>
 				</div>
 				<div class="flex py-3 px-6 space-x-4">
-					<div class="flex flex-1 space-x-2 text-gray-700 text-sm">
+					<div class="flex grow space-x-2 text-gray-700 text-sm">
 						<span>Итого к оплате</span>
 						<div class="popover__wrapper relative inline-block p-0.5">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -91,11 +91,11 @@
 							</div>
 						</div>
 					</div>
-					<div class="flex-1 text-sm font-medium text-right">$ {{ total|number_format(2, '.', '') }}</div>
+					<div class="text-sm font-medium text-right">$ {{ total|number_format(2, '.', '') }}</div>
 				</div>
 				<div class="flex py-3 px-6 space-x-4">
-					<div class="flex-1 text-gray-700 text-sm">Статус инвойса</div>
-					<div class="flex-1 text-right">
+					<div class="grow text-gray-700 text-sm">Статус инвойса</div>
+					<div class="text-right">
 						{% if getGet() %}
 							{% for val, css in invoice_statuses %}
 								{% if val == getGet() %}
@@ -108,12 +108,12 @@
 					</div>
 				</div>
 				<div class="flex py-3 px-6 space-x-4">
-					<div class="flex-1 text-gray-700 text-sm">Дата последней оплаты</div>
-					<div class="flex-1 text-sm font-medium text-right"></div>
+					<div class="grow text-gray-700 text-sm">Дата последней оплаты</div>
+					<div class="text-sm font-medium text-right"></div>
 				</div>
 				<div class="flex py-3 px-6 space-x-4">
-					<div class="flex-1 text-gray-700 text-sm">Способ оплаты</div>
-					<div class="flex-1 text-sm font-medium text-right"></div>
+					<div class="grow text-gray-700 text-sm">Способ оплаты</div>
+					<div class="text-sm font-medium text-right"></div>
 				</div>
 			</div>
 
@@ -131,7 +131,5 @@
 
 {% block modals %}
 	{{ parent() }}
-	{% include 'billing/modals/billing.invoice.view.notation.add.html.twig' %}
-	{% include 'billing/modals/billing.invoice.view.notation.edit.html.twig' %}
 {% endblock %}
 

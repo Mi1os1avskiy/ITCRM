@@ -10,9 +10,9 @@
 				<div class="py-4 px-8 space-y-2 bg-gray-50">
 					<nav class="flex items-center space-x-4 text-sm text-gray-500 font-medium">
 						<a href="{{ path('billing_invoices') }}">Инвойсы</a>
-						<svg width="20" height="20" viewBox="0 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#9CA3AF"/>
-						</svg>
+						<div class="-rotate-90">
+							{{ source('misc/svg/arrow.svg') }}
+						</div>
 						<span>{{ title }} {{ data.invoice_id }}</span>
 					</nav>
 					<div class="flex items-center justify-between space-x-4">
@@ -31,21 +31,17 @@
 
 						<div class="flex space-x-4">
 							<div class="flex space-x-3">
-								<button type="button" class="py-2 px-4 rounded-md ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50">PDF: Ru</button>
-								<button type="button" class="py-2 px-4 rounded-md ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50">PDF: Eng</button>
+								<button type="button" class="py-2 px-4 rounded-md ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium hover:bg-gray-50">PDF: Ru</button>
+								<button type="button" class="py-2 px-4 rounded-md ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium hover:bg-gray-50">PDF: Eng</button>
 							</div>
 							{% if getGet() == "Pending" %}
 							<div class="flex space-x-3">
-								<button @click="billingInvoiceAddPayment()" type="button" class="flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50">
-									<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="#6B7280"/>
-									</svg>
+								<button @click="billingInvoiceAddPayment()" type="button" class="flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium hover:bg-gray-50">
+									{{ source('misc/svg/plus-gray-500.svg') }}
 									<span>Добавить платёж</span>
 								</button>
-								<button @click="billingInvoiceCancel()" type="button" class="flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium shadow-sm hover:bg-gray-50">
-									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-										<path d="M12.2837 7.5L11.9952 15M8.00481 15L7.71635 7.5M16.023 4.82547C16.308 4.86851 16.592 4.91456 16.875 4.96358M16.023 4.82547L15.1332 16.3938C15.058 17.3707 14.2434 18.125 13.2637 18.125H6.73631C5.75655 18.125 4.94198 17.3707 4.86683 16.3938L3.97696 4.82547M16.023 4.82547C15.0677 4.6812 14.1013 4.57071 13.125 4.49527M3.125 4.96358C3.40798 4.91456 3.69198 4.86851 3.97696 4.82547M3.97696 4.82547C4.93231 4.6812 5.89874 4.57071 6.875 4.49527M13.125 4.49527V3.73182C13.125 2.74902 12.3661 1.92853 11.3838 1.8971C10.9244 1.8824 10.463 1.875 10 1.875C9.53696 1.875 9.07565 1.8824 8.61618 1.8971C7.63388 1.92853 6.875 2.74902 6.875 3.73182V4.49527M13.125 4.49527C12.0938 4.41558 11.0516 4.375 10 4.375C8.94836 4.375 7.9062 4.41558 6.875 4.49527" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-									</svg>
+								<button @click="billingInvoiceCancel()" type="button" class="flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium hover:bg-gray-50">
+									{{ source('misc/svg/bucket-20x20.svg') }}
 									<span>Отменить инвойс</span>
 								</button>
 							</div>

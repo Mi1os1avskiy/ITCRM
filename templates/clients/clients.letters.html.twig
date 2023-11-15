@@ -10,27 +10,25 @@
 			{% block content %}
 
 				<div class="h-[70px] flex items-center py-4 px-8 bg-gray-100">
-					<h3 class="text-gray-900 font-semibold text-lg leading-6">{{ title }}</h3>
+					<h3 class="font-semibold text-lg leading-6">{{ title }}</h3>
 				</div>
 
 				<div class="flex justify-end pt-6 px-8">
 					<div class="w-60 relative rounded-md shadow-sm">
 						<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5C10.519 14.5 11.893 13.8852 12.8891 12.8891C13.8852 11.893 14.5 10.519 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5ZM2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 10.6625 15.4197 12.1906 14.4517 13.3911L17.7803 16.7197C18.0732 17.0126 18.0732 17.4874 17.7803 17.7803C17.4874 18.0732 17.0126 18.0732 16.7197 17.7803L13.3911 14.4517C12.1906 15.4197 10.6625 16 9 16C5.13401 16 2 12.866 2 9Z" fill="#6B7280"/>
-							</svg>
+							{{ source('misc/svg/search.svg') }}
 						</div>
-						<input type="text" class="block w-full rounded-md border-gray-300 pl-10 text-sm placeholder:text-gray-400" placeholder="ID, Email клиента">
+						<input class="inputs block w-full pl-10 text-sm" placeholder="ID, Email клиента" type="text">
 					</div>
 				</div>
 
 				{% block table %}
 
-					<div class="mt-4 px-8 flex flex-col">
+					<div class="mt-4 px-8">
 						<div class="min-w-full overflow-hidden overflow-x-auto align-middle border rounded-t-lg">
-							<table class="min-w-full divide-y divide-gray-200">
+							<table class="min-w-full">
 								<thead>
-								<tr class="bg-gray-50 text-gray-900 text-sm border-b border-gray-300">
+								<tr class="bg-gray-50 text-sm border-b border-gray-300">
 									<th class="w-[180px] pl-6 pr-3 py-3 text-left font-medium">Отдел</th>
 									<th class="w-[200px] p-3 text-left font-medium">Получатель</th>
 									<th class="min-w-[200px] p-3 text-left font-medium">Заголовок</th>
@@ -38,7 +36,7 @@
 									<th class="w-[150px] pl-3 pr-6 py-3 text-left font-medium">Статус</th>
 								</tr>
 								</thead>
-								<tbody class="divide-y divide-gray-200 bg-white">
+								<tbody class="divide-y">
 
 								{% for letter in letters %}
 
@@ -47,7 +45,7 @@
 										<td class="px-3 py-4 text-gray-500 cursor-default">
 											<p class="w-[176px] truncate" title="{{ letter.receiver }}">{{ letter.receiver }}</p>
 										</td>
-										<td class="px-3 py-4 text-gray-900 font-medium">
+										<td class="px-3 py-4 font-medium">
 											<a href="{{ path('letter') }}" class="line-clamp-1 overflow-hidden hover:text-indigo-700" title="{{ letter.title }}">{{ letter.title }}</a>
 										</td>
 										<td class="px-3 py-4 text-gray-500 whitespace-nowrap cursor-default">{{ letter.date }}, {{ letter.time }} ({{ letter.loc }})</td>

@@ -11,85 +11,55 @@
 			<div class="flex space-x-4">
 				<div class="flex-1 space-y-1">
 					<p class="text-gray-700 text-sm font-medium">Способ оплаты</p>
-					<div class="relative flex py-2 px-3 space-x-2 rounded-md border border-gray-300 text-sm">
-						<span class="flex-1 pointer-events-none">Custom</span>
-						<button type="button" aria-expanded="false" aria-haspopup="true" aria-expanded-autohide>
-							<svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-							</svg>
+					<div class="relative">
+						<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+							<p class="pointer-events-none">Не выбран</p>
+							{{ source('misc/svg/arrow.svg') }}
 						</button>
-						<ul class="absolute -left-2 top-8 z-10 mt-2 w-56 origin-top-right rounded-md bg-white text-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-							<li>
-								<button type="button" class="w-full px-4 py-3 text-left hover:bg-gray-50">Custom</button>
-							</li>
-							<li>
-								<button type="button" class="w-full px-4 py-3 text-left hover:bg-gray-50">Custom 2</button>
-							</li>
-							<li>
-								<button type="button" class="w-full px-4 py-3 text-left hover:bg-gray-50">Custom 3</button>
-							</li>
+
+						<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
+							{% for i in payments() %}
+								<li>
+									<button type="button" class="w-full py-2 px-4 text-gray-700 text-left">{{ i }}</button>
+								</li>
+							{% endfor %}
 						</ul>
 					</div>
 				</div>
 				<div class="flex-none space-y-1">
 					<p class="text-gray-700 text-sm font-medium">Дата</p>
-					<div class="relative flex py-2 px-4 space-x-3 rounded-md border border-gray-300">
-						<input class="w-20 placeholder-gray-400 text-sm focus:outline-none" placeholder="00/00/0000">
-						<button type="button" aria-expanded="false" aria-haspopup="true" aria-expanded-autohide>
-							<svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M5.25 12C5.25 11.5858 5.58579 11.25 6 11.25H6.01C6.42421 11.25 6.76 11.5858 6.76 12V12.01C6.76 12.4242 6.42421 12.76 6.01 12.76H6C5.58579 12.76 5.25 12.4242 5.25 12.01V12Z" fill="#6B7280"/>
-								<path d="M6 13.25C5.58579 13.25 5.25 13.5858 5.25 14V14.01C5.25 14.4242 5.58579 14.76 6 14.76H6.01C6.42421 14.76 6.76 14.4242 6.76 14.01V14C6.76 13.5858 6.42421 13.25 6.01 13.25H6Z" fill="#6B7280"/>
-								<path d="M7.25 12C7.25 11.5858 7.58579 11.25 8 11.25H8.01C8.42421 11.25 8.76 11.5858 8.76 12V12.01C8.76 12.4242 8.42421 12.76 8.01 12.76H8C7.58579 12.76 7.25 12.4242 7.25 12.01V12Z" fill="#6B7280"/>
-								<path d="M8 13.25C7.58579 13.25 7.25 13.5858 7.25 14V14.01C7.25 14.4242 7.58579 14.76 8 14.76H8.01C8.42421 14.76 8.76 14.4242 8.76 14.01V14C8.76 13.5858 8.42421 13.25 8.01 13.25H8Z" fill="#6B7280"/>
-								<path d="M9.25 10C9.25 9.58579 9.58579 9.25 10 9.25H10.01C10.4242 9.25 10.76 9.58579 10.76 10V10.01C10.76 10.4242 10.4242 10.76 10.01 10.76H10C9.58579 10.76 9.25 10.4242 9.25 10.01V10Z" fill="#6B7280"/>
-								<path d="M10 11.25C9.58579 11.25 9.25 11.5858 9.25 12V12.01C9.25 12.4242 9.58579 12.76 10 12.76H10.01C10.4242 12.76 10.76 12.4242 10.76 12.01V12C10.76 11.5858 10.4242 11.25 10.01 11.25H10Z" fill="#6B7280"/>
-								<path d="M9.25 14C9.25 13.5858 9.58579 13.25 10 13.25H10.01C10.4242 13.25 10.76 13.5858 10.76 14V14.01C10.76 14.4242 10.4242 14.76 10.01 14.76H10C9.58579 14.76 9.25 14.4242 9.25 14.01V14Z" fill="#6B7280"/>
-								<path d="M12 9.25C11.5858 9.25 11.25 9.58579 11.25 10V10.01C11.25 10.4242 11.5858 10.76 12 10.76H12.01C12.4242 10.76 12.76 10.4242 12.76 10.01V10C12.76 9.58579 12.4242 9.25 12.01 9.25H12Z" fill="#6B7280"/>
-								<path d="M11.25 12C11.25 11.5858 11.5858 11.25 12 11.25H12.01C12.4242 11.25 12.76 11.5858 12.76 12V12.01C12.76 12.4242 12.4242 12.76 12.01 12.76H12C11.5858 12.76 11.25 12.4242 11.25 12.01V12Z" fill="#6B7280"/>
-								<path d="M12 13.25C11.5858 13.25 11.25 13.5858 11.25 14V14.01C11.25 14.4242 11.5858 14.76 12 14.76H12.01C12.4242 14.76 12.76 14.4242 12.76 14.01V14C12.76 13.5858 12.4242 13.25 12.01 13.25H12Z" fill="#6B7280"/>
-								<path d="M13.25 10C13.25 9.58579 13.5858 9.25 14 9.25H14.01C14.4242 9.25 14.76 9.58579 14.76 10V10.01C14.76 10.4242 14.4242 10.76 14.01 10.76H14C13.5858 10.76 13.25 10.4242 13.25 10.01V10Z" fill="#6B7280"/>
-								<path d="M14 11.25C13.5858 11.25 13.25 11.5858 13.25 12V12.01C13.25 12.4242 13.5858 12.76 14 12.76H14.01C14.4242 12.76 14.76 12.4242 14.76 12.01V12C14.76 11.5858 14.4242 11.25 14.01 11.25H14Z" fill="#6B7280"/>
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M5.75 2C6.16421 2 6.5 2.33579 6.5 2.75V4H13.5V2.75C13.5 2.33579 13.8358 2 14.25 2C14.6642 2 15 2.33579 15 2.75V4H15.25C16.7688 4 18 5.23122 18 6.75V15.25C18 16.7688 16.7688 18 15.25 18H4.75C3.23122 18 2 16.7688 2 15.25V6.75C2 5.23122 3.23122 4 4.75 4H5V2.75C5 2.33579 5.33579 2 5.75 2ZM4.75 7.5C4.05964 7.5 3.5 8.05964 3.5 8.75V15.25C3.5 15.9404 4.05964 16.5 4.75 16.5H15.25C15.9404 16.5 16.5 15.9404 16.5 15.25V8.75C16.5 8.05964 15.9404 7.5 15.25 7.5H4.75Z" fill="#6B7280"/>
-							</svg>
-						</button>
-						<ul class="absolute right-0 top-10 z-10 mt-2 w-32 origin-top-right rounded-md bg-white text-gray-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-							<li>
-								<button type="button" class="w-full px-4 py-3 text-left hover:bg-gray-50">Date picker</button>
-							</li>
-						</ul>
+					<div class="relative w-[140px]">
+						<input class="inputs w-full pl-3 pr-10 text-sm" placeholder="00/00/0000" type="text">
+						<div class="absolute top-2 right-3">
+							{{ source('misc/svg/calendar.svg') }}
+						</div>
 					</div>
 				</div>
 				<div class="flex-none space-y-1">
 					<p class="text-gray-700 text-sm font-medium">Время</p>
-					<div class="relative flex py-2 px-3 space-x-2 rounded-md border border-gray-300">
-						<input class="w-12 placeholder-gray-400 text-sm focus:outline-none" placeholder="00:00">
-					</div>
+					<input class="inputs w-[75px] py-2 px-3 text-sm" placeholder="00:00" type="text">
 				</div>
 			</div>
 			<div class="space-y-1">
 				<p class="text-gray-700 text-sm font-medium">Сумма</p>
-				<div class="relative rounded-md shadow-sm">
-					<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center py-2 px-3">
-						<span class="text-gray-900 text-sm">$</span>
-					</div>
-					<input type="text" class="w-full rounded-md border-gray-300 pl-10 text-sm placeholder:text-gray-400" placeholder="00.00">
+				<div class="relative">
+					<div class="pointer-events-none absolute inset-y-0 flex items-center px-3 text-sm">$</div>
+					<input class="inputs w-full pl-10 text-sm" placeholder="00.00" type="text">
 				</div>
 			</div>
 			<div class="space-y-1">
 				<p class="text-gray-700 text-sm font-medium">Описание</p>
-				<div class="relative rounded-md">
-					<textarea class="w-full resize-none py-2 px-3 rounded-md border-gray-300 text-sm placeholder:text-gray-400" placeholder="Содержание описания"></textarea>
-				</div>
+				<textarea class="inputs w-full resize-none py-2 px-3 text-sm" placeholder="Содержание описания"></textarea>
 			</div>
 			<div class="flex items-center space-x-3">
-				<input type="checkbox" id="send_email" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+				<input type="checkbox" id="send_email" class="checkbox">
 				<label for="send_email" class="text-gray-500 text-sm">Отправить email с информацией о платеже</label>
 			</div>
 		</div>
 
 		<div class="flex py-5 px-6 space-x-3 bg-gray-50 text-sm font-medium">
-			<button @click="close(false)" type="button" class="w-full rounded-md border border-gray-300 px-4 py-2 text-gray-700 shadow-sm bg-white hover:bg-gray-50">Отменить</button>
-			<button @click="close(true)" type="button" class="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-white shadow-sm hover:bg-indigo-700">Добавить</button>
+			<button @click="close(false)" type="button" class="w-full rounded-md ring-1 ring-inset ring-gray-300 px-4 py-2 text-gray-700 bg-white hover:bg-gray-50">Отменить</button>
+			<button @click="close(true)" type="button" class="w-full rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700">Добавить</button>
 		</div>
 	</form>
 

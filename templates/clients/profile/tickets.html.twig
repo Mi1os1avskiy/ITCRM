@@ -9,10 +9,8 @@
 		<div class="px-8">
 
 			<div class="pt-6">
-				<a href="{{ path('new_ticket') }}" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 border border-transparent rounded-md bg-indigo-600 shadow-sm hover:bg-indigo-700">
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-						<path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="white"/>
-					</svg>
+				<a href="{{ path('new_ticket') }}" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md bg-indigo-600 hover:bg-indigo-700">
+					{{ source('misc/svg/plus.svg') }}
 					<span class="text-sm font-medium text-white">Добавить</span>
 				</a>
 			</div>
@@ -20,98 +18,90 @@
 			<div class="py-4 space-y-4">
 				<div class="flex items-center justify-between">
 					<div class="relative">
-						<button type="button" class="flex items-center py-2 pl-4 pr-3 space-x-2 rounded-md border border-gray-300 shadow-sm text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-							<span class="text-gray-700 pointer-events-none truncate">Действия</span>
-							<svg class="arrow text-gray-700 pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="currentColor"/>
-							</svg>
+						<button type="button" class="flex items-center py-2 pl-4 pr-3 space-x-2 rounded-md ring-1 ring-gray-300 text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+							<span class="text-sm pointer-events-none">Действия</span>
+							{{ source('misc/svg/arrow.svg') }}
 						</button>
-						<ul class="absolute w-40 z-10 top-10 py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5 shadow-lg focus:outline-none">
+						<ul class="dropdown w-40">
 							<li>
-								<button @click="supportTicketsClose()" type="button" class="w-full py-2 px-4 text-gray-700 text-sm text-left hover:bg-gray-50">Закрыть тикеты</button>
+								<button @click="supportTicketsClose()" type="button" class="w-full py-2 px-4 text-gray-700 text-sm text-left">Закрыть тикеты</button>
 							</li>
 							<li>
-								<button @click="supportTicketsDelete()" type="button" class="w-full py-2 px-4 text-gray-700 text-sm text-left hover:bg-gray-50">Удалить тикеты</button>
+								<button @click="supportTicketsDelete()" type="button" class="w-full py-2 px-4 text-gray-700 text-sm text-left">Удалить тикеты</button>
 							</li>
 						</ul>
 					</div>
 
 					<div class="relative w-60">
-						<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5C10.519 14.5 11.893 13.8852 12.8891 12.8891C13.8852 11.893 14.5 10.519 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5ZM2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 10.6625 15.4197 12.1906 14.4517 13.3911L17.7803 16.7197C18.0732 17.0126 18.0732 17.4874 17.7803 17.7803C17.4874 18.0732 17.0126 18.0732 16.7197 17.7803L13.3911 14.4517C12.1906 15.4197 10.6625 16 9 16C5.13401 16 2 12.866 2 9Z" fill="#6B7280"/>
-							</svg>
+						<div class="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+							{{ source('misc/svg/search.svg') }}
 						</div>
-						<input class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-400 text-sm" placeholder="Поиск по Теме или ID" type="text">
+						<input class="inputs block w-full py-2 pl-10 pr-3 text-sm" placeholder="Поиск по Теме или ID" type="text">
 					</div>
 				</div>
-
-				{% block table %}
-
-				<div class="flex flex-col">
-					<div class="min-w-full overflow-hidden overflow-x-auto align-middle border rounded-t-lg">
-
-						<table class="min-w-full divide-y divide-gray-200 cursor-default">
-							<thead>
-							<tr class="bg-gray-50 text-sm text-gray-900">
-								<th class="inline-block w-10"></th>
-								<th class="p-3 text-left font-medium">ID - Тема</th>
-								<th class="w-[184px] p-3 text-left font-medium">Статус</th>
-								<th class="w-[100px] p-3 text-left font-medium">Приоритет</th>
-								<th class="w-[184px] p-3 text-left font-medium">Департамент</th>
-								<th class="w-[100px] pl-3 pr-6 text-left font-medium truncate">Ответ</th>
-							</tr>
-							</thead>
-
-							<tbody class="divide-y divide-gray-200 bg-white">
-
-							{% for ticket in tickets %}
-
-								<tr>
-									<td class="w-10 relative pl-6">
-										<input type="checkbox" class="absolute -mt-2 h-4 w-4 rounded border-gray-300 focus:ring-indigo-500">
-									</td>
-									<td class="min-w-[300px] px-3 text-sm text-gray-900">
-										<a href="{{ path('support_ticket_answer') }}" class="py-4 font-medium hover:text-indigo-700" title="#{{ ticket.id }} - {{ ticket.theme }}">
-											<p class="line-clamp-1 overflow-hidden">#{{ ticket.id }} - {{ ticket.theme }}</p>
-										</a>
-									</td>
-									<td class="py-4 px-3">
-										{% for val, css in ticket_statuses %}
-											{% if ticket.status == val %}
-												<div class="w-fit px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if css == 'orange' %}200{% else %}100{% endif %} text-{{ css }}-800 whitespace-nowrap">{{ val }}</div>
-											{% endif %}
-										{% endfor %}
-									</td>
-									<td class="py-4 px-3 text-sm">
-										{% if ticket.priority == 3 %}
-											<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
-										{% elseif ticket.priority == 2 %}
-											<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
-											<div class="mt-0.5 h-0.5 w-2.5 rounded bg-orange-400"></div>
-										{% elseif ticket.priority == 1 %}
-											<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
-											<div class="mt-0.5 h-0.5 w-2.5 rounded bg-red-400"></div>
-											<div class="mt-0.5 h-0.5 w-2.5 rounded bg-red-400"></div>
-										{% endif %}
-									</td>
-									<td class="px-3 py-4 text-gray-500 text-sm truncate">{{ ticket.dept }}</td>
-									<td class="pl-3 pr-6 py-4 text-sm text-gray-500 text-left truncate">{{ ticket.time }}</td>
-								</tr>
-
-							{% endfor %}
-
-							</tbody>
-						</table>
-					</div>
-
-					{% include 'parts/pagination.html.twig' %}
-
-				</div>
-
-				{% endblock %}
-
 			</div>
+
+			{% block table %}
+
+				<div class="min-w-full overflow-hidden overflow-x-auto ring-1 ring-gray-200 rounded-t-lg">
+					<table class="min-w-full cursor-default">
+						<thead>
+						<tr class="bg-gray-50 border-b border-gray-300 text-sm">
+							<th class="inline-block w-10"></th>
+							<th class="p-3 text-left font-medium">ID - Тема</th>
+							<th class="w-[184px] p-3 text-left font-medium">Статус</th>
+							<th class="w-[100px] p-3 text-left font-medium">Приоритет</th>
+							<th class="w-[184px] p-3 text-left font-medium">Департамент</th>
+							<th class="w-[100px] pl-3 pr-6 text-left font-medium truncate">Ответ</th>
+						</tr>
+						</thead>
+
+						<tbody class="divide-y">
+
+						{% for ticket in tickets %}
+
+							<tr>
+								<td class="w-10 relative pl-6">
+									<input type="checkbox" class="absolute -mt-2 checkbox">
+								</td>
+								<td class="min-w-[300px] px-3 text-sm">
+									<a href="{{ path('support_ticket_answer') }}" class="py-4 font-medium hover:text-indigo-700" title="#{{ ticket.id }} - {{ ticket.theme }}">
+										<p class="line-clamp-1 overflow-hidden">#{{ ticket.id }} - {{ ticket.theme }}</p>
+									</a>
+								</td>
+								<td class="py-4 px-3">
+									{% for val, css in ticket_statuses %}
+										{% if ticket.status == val %}
+											<div class="w-fit px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if css == 'orange' %}200{% else %}100{% endif %} text-{{ css }}-800 whitespace-nowrap">{{ val }}</div>
+										{% endif %}
+									{% endfor %}
+								</td>
+								<td class="py-4 px-3 text-sm">
+									{% if ticket.priority == 3 %}
+										<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
+									{% elseif ticket.priority == 2 %}
+										<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
+										<div class="mt-0.5 h-0.5 w-2.5 rounded bg-orange-400"></div>
+									{% elseif ticket.priority == 1 %}
+										<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
+										<div class="mt-0.5 h-0.5 w-2.5 rounded bg-red-400"></div>
+										<div class="mt-0.5 h-0.5 w-2.5 rounded bg-red-400"></div>
+									{% endif %}
+								</td>
+								<td class="px-3 py-4 text-gray-500 text-sm truncate">{{ ticket.dept }}</td>
+								<td class="pl-3 pr-6 py-4 text-sm text-gray-500 text-left truncate">{{ ticket.time }}</td>
+							</tr>
+
+						{% endfor %}
+
+						</tbody>
+					</table>
+				</div>
+
+				{% include 'parts/pagination.html.twig' %}
+
+			{% endblock %}
+
 		</div>
 
 	</profile-settings>

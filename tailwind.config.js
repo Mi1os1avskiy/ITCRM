@@ -2,7 +2,6 @@
 
 const defaultTheme = require('tailwindcss/defaultTheme')
 
-
 module.exports = {
 	content: [
 		// "./node_modules/tailwindcss/**/*.{html,js}",
@@ -26,7 +25,7 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-			}
+			},
 		}
 	},
 	animation: {

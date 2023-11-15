@@ -3,26 +3,24 @@
 {% block main %}
 
 	<clients-module inline-template>
-		<div class="flex flex-1 flex-col">
-			<main class="flex-1 mb-20">
+		<main class="mb-20">
 
-				{% set userID = userID() %}
-				{% set userData = allClients() %}
+			{% set userID = userID() %}
+			{% set userData = allClients() %}
 
-				{% for user in userData %}
-					{% if userID == user.id %}
+			{% for user in userData %}
+				{% if userID == user.id %}
 
-						{% block header %}
-							{% include 'clients/header.profile.html.twig' %}
-						{% endblock %}
+					{% block header %}
+						{% include 'clients/header.profile.html.twig' %}
+					{% endblock %}
 
-						{% block content %}{% endblock %}
+					{% block content %}{% endblock %}
 
-					{% endif %}
-				{% endfor %}
+				{% endif %}
+			{% endfor %}
 
-			</main>
-		</div>
+		</main>
 	</clients-module>
 
 {% endblock %}

@@ -7,36 +7,32 @@
 	<clients-module inline-template>
 		<clients-create inline-template v-cloak>
 			<div class="pb-20">
-
 				<div class="py-4 px-8 space-y-2 bg-gray-50">
 					<nav class="flex items-center space-x-4 text-sm text-gray-500 font-medium">
 						<a href="{{ path ('clients') }}">Клиенты</a>
-						<svg width="20" height="20" viewBox="0 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#9CA3AF"/>
-						</svg>
+						<div class="-rotate-90">
+							{{ source('misc/svg/arrow.svg') }}
+						</div>
 						<p>Добавить клиента</p>
 					</nav>
 					<div class="h-9 flex items-center font-semibold text-lg">{{ title }}</div>
 				</div>
 
-				<form class="py-6 px-8 space-y-5 text-gray-900">
+				<form class="py-6 px-8 space-y-5">
 					<h3 class="text-lg font-medium leading-6">Персональные данные</h3>
 
 					<hr>
 
 					<div class="flex space-x-6">
-						<div class="w-[344px] h-[38px] flex">
+						<div class="w-[344px] flex">
 							<p class="self-center text-sm font-medium text-gray-700">Имя *</p>
 						</div>
 						<div class="w-80">
 							<div class="relative">
-								<input v-model="personalData.firstname" type="text" placeholder="Иван" autocomplete="given-name"
-								       class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400"
+								<input v-model="personalData.firstname" class="inputs block w-full text-sm" type="text" placeholder="Иван" autocomplete="given-name"
 								       :class="{'bg-red-50 placeholder-red-300': $form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid}">
 								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid">
-									<svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-										<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
-									</svg>
+									{{ source('misc/svg/error.svg') }}
 								</div>
 							</div>
 							<div v-if="$form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid">
@@ -48,18 +44,15 @@
 					<hr>
 
 					<div class="flex space-x-6">
-						<div class="w-[344px] h-[38px] flex">
+						<div class="w-[344px] flex">
 							<p class="self-center text-sm font-medium text-gray-700">Фамилия</p>
 						</div>
 						<div class="w-80">
 							<div class="relative">
-								<input v-model="personalData.lastname" type="text" placeholder="Доу" autocomplete="family-name"
-								       class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400"
+								<input v-model="personalData.lastname" class="inputs block w-full text-sm" type="text" placeholder="Доу" autocomplete="family-name"
 								       :class="{'bg-red-50 placeholder-red-300': $form['personalData.lastname'] && $form['personalData.lastname'].$dirty && !$form['personalData.lastname'].$valid}">
 								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.lastname'] && $form['personalData.lastname'].$dirty && !$form['personalData.lastname'].$valid">
-									<svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-										<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
-									</svg>
+									{{ source('misc/svg/error.svg') }}
 								</div>
 							</div>
 							<div v-if="$form['personalData.lastname'] && $form['personalData.lastname'].$dirty && !$form['personalData.lastname'].$valid">
@@ -71,29 +64,26 @@
 					<hr>
 
 					<div class="flex space-x-6">
-						<div class="w-[344px] h-[38px] flex">
+						<div class="w-[344px] flex">
 							<p class="self-center text-sm font-medium text-gray-700">Название компании</p>
 						</div>
 						<div class="w-80">
-							<input type="text" autocomplete="off" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400" placeholder="Майкрософт">
+							<input type="text" autocomplete="off" class="inputs block w-full text-sm" placeholder="Майкрософт">
 						</div>
 					</div>
 
 					<hr>
 
 					<div class="flex space-x-6">
-						<div class="w-[344px] h-[38px] flex">
+						<div class="w-[344px] flex">
 							<p class="self-center text-sm font-medium text-gray-700">Email *</p>
 						</div>
 						<div class="w-80">
 							<div class="relative">
-								<input v-model="personalData.email" type="email" autocomplete="off"
-								       class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400" placeholder="email@email.com"
+								<input v-model="personalData.email" class="inputs block w-full text-sm" placeholder="email@email.com" type="email" autocomplete="off"
 								       :class="{'bg-red-50 placeholder-red-300': $form['personalData.email'] && $form['personalData.email'].$dirty && !$form['personalData.email'].$valid}">
 								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.email'] && $form['personalData.email'].$dirty && !$form['personalData.email'].$valid">
-									<svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-										<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
-									</svg>
+									{{ source('misc/svg/error.svg') }}
 								</div>
 							</div>
 							<div v-if="$form['personalData.email'] && $form['personalData.email'].$dirty && !$form['personalData.email'].$valid">
@@ -105,18 +95,15 @@
 					<hr>
 
 					<div class="flex space-x-6">
-						<div class="w-[344px] h-[38px] flex">
+						<div class="w-[344px] flex">
 							<p class="self-center text-sm font-medium text-gray-700">Номер телефона</p>
 						</div>
 						<div class="w-80">
 							<div class="relative">
-								<input v-model="personalData.phone" type="tel" autocomplete="off" placeholder="+1"
-								       class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400"
+								<input v-model="personalData.phone" class="inputs block w-full text-sm" type="tel" autocomplete="off" placeholder="+1"
 								       :class="{'bg-red-50 placeholder-red-300': $form['personalData.phone'] && $form['personalData.phone'].$dirty && !$form['personalData.phone'].$valid}">
 								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.phone'] && $form['personalData.phone'].$dirty && !$form['personalData.phone'].$valid">
-									<svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-										<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
-									</svg>
+									{{ source('misc/svg/error.svg') }}
 								</div>
 							</div>
 							<div v-if="$form['personalData.phone'] && $form['personalData.phone'].$dirty && !$form['personalData.phone'].$valid">
@@ -130,28 +117,24 @@
 					{% set statuses = {'Active': 'green', 'Inactive': 'gray', 'Closed': 'gray'} %}
 
 					<div class="flex space-x-6">
-						<div class="w-[344px] h-[38px] flex">
+						<div class="w-[344px] flex">
 							<p class="self-center text-sm font-medium text-gray-700">Статус аккаунта</p>
 						</div>
 						<div class="relative w-80">
-							<button type="button" class="w-full flex rounded-md border border-gray-300 py-2 px-3 space-x-2 shadow-sm text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-								<div class="h-5 w-5 p-[5px] pointer-events-none">
-									<div class="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-green-400"></div>
-								</div>
-								<div class="flex-1 text-left pointer-events-none">Active</div>
-								<svg class="arrow pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-								</svg>
+							<button type="button" class="w-full flex rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+								{{ source('misc/svg/circles/green-400.svg') }}
+								<div class="grow text-left pointer-events-none">Active</div>
+								{{ source('misc/svg/arrow.svg') }}
 							</button>
 
-							<ul class="hidden absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+							<ul class="dropdown w-full overflow-auto">
 								{% for val, css in statuses %}
-									<li class="text-gray-900 relative cursor-default select-none" role="option">
+									<li class="relative cursor-default select-none" role="option">
 										<button type="button" class="flex items-center w-full py-2 px-3 space-x-2 hover:bg-gray-50">
 											<div class="h-5 w-5 p-[5px]">
 												<div class="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-{{ css }}-400"></div>
 											</div>
-											<p>{{ val }}</p>
+											<p class="text-sm">{{ val }}</p>
 										</button>
 									</li>
 								{% endfor %}
@@ -162,19 +145,19 @@
 					<hr>
 
 					<div class="flex space-x-6">
-						<div class="w-[344px] h-[38px] flex">
+						<div class="w-[344px] flex">
 							<p class="self-center text-sm font-medium text-gray-700">Верификация email</p>
 						</div>
 						<div class="flex items-center space-x-2">
-							<input id="email_verif" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-							<label for="email_verif" class="text-gray-900 text-sm">Верифицирован</label>
+							<input id="email_verif" type="checkbox" class="checkbox">
+							<label for="email_verif" class="text-sm">Верифицирован</label>
 						</div>
 					</div>
 
 					<hr>
 
 					<div class="pt-5 space-y-5">
-						<div class="flex space-x-10 text-gray-900 text-lg font-medium">
+						<div class="flex space-x-10 text-lg font-medium">
 							<div class="w-1/2">Ограничения</div>
 							<div class="w-1/2">Разрешения</div>
 						</div>
@@ -182,26 +165,26 @@
 							<div class="w-1/2 p-5 bg-gray-50 border-b rounded-xl">
 								<div class="flex items-center justify-between pb-5 border-b">
 									<div>Запретить пополнение баланса</div>
-									<label for="toggle_topup" class="relative flex items-center cursor-pointer">
-										<input type="checkbox" id="toggle_topup" class="sr-only">
-										<div class="toggle block bg-gray-200 w-11 h-6 rounded-full"></div>
-										<div class="dot absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition"></div>
+									<label for="toggle_balance" class="relative flex items-center cursor-pointer">
+										<input type="checkbox" id="toggle_balance" class="sr-only">
+										<div class="toggle_body"></div>
+										<div class="toggle_dot"></div>
 									</label>
 								</div>
 								<div class="flex items-center justify-between py-5 border-b">
 									<div>Запретить оплаты инвойсов</div>
 									<label for="toggle_invoicing" class="relative flex items-center cursor-pointer">
 										<input type="checkbox" id="toggle_invoicing" class="sr-only">
-										<div class="toggle block bg-gray-200 w-11 h-6 rounded-full"></div>
-										<div class="dot absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition"></div>
+										<div class="toggle_body"></div>
+										<div class="toggle_dot"></div>
 									</label>
 								</div>
 								<div class="flex items-center justify-between pt-5">
 									<div>Запретить создание новых заказов и продлений</div>
 									<label for="toggle_orders" class="relative flex items-center cursor-pointer">
 										<input type="checkbox" id="toggle_orders" class="sr-only">
-										<div class="toggle block bg-gray-200 w-11 h-6 rounded-full"></div>
-										<div class="dot absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition"></div>
+										<div class="toggle_body"></div>
+										<div class="toggle_dot"></div>
 									</label>
 								</div>
 							</div>
@@ -210,8 +193,8 @@
 									<div>Разрешить отмену услуг в ЛК со штрафом</div>
 									<label for="toggle_services" class="relative flex items-center cursor-pointer">
 										<input type="checkbox" id="toggle_services" class="sr-only">
-										<div class="toggle block bg-gray-200 w-11 h-6 rounded-full"></div>
-										<div class="dot absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition"></div>
+										<div class="toggle_body"></div>
+										<div class="toggle_dot"></div>
 									</label>
 								</div>
 							</div>
@@ -221,40 +204,39 @@
 					<hr>
 
 					<div class="flex space-x-6">
-						<div class="w-[344px] h-[38px] flex">
+						<div class="w-[344px] flex">
 							<p class="self-center text-sm font-medium text-gray-700">Пароль *</p>
 						</div>
-						<div class="flex space-x-4">
-							<div class="w-80">
-								<div class="relative flex items-center flex-grow items-stretch focus-within:z-10">
-									<input v-model="password" :type="isPasswordHidden ? 'password' : 'text'" placeholder="•••••••••••••"
-									       class="block w-full pr-10 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm placeholder:text-gray-400"
-									       :class="{'bg-red-50 placeholder-red-300': $form['password'] && $form['password'].$dirty && !$form['password'].$valid}">
-									<button @click="toggleShowHide()" type="button">
-										<svg v-if="isPasswordHidden" class="absolute top-2 right-3" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M3.28033 2.21967C2.98744 1.92678 2.51256 1.92678 2.21967 2.21967C1.92678 2.51256 1.92678 2.98744 2.21967 3.28033L16.7197 17.7803C17.0126 18.0732 17.4874 18.0732 17.7803 17.7803C18.0732 17.4874 18.0732 17.0126 17.7803 16.7197L16.0352 14.9745C17.5064 13.8594 18.6595 12.3465 19.3344 10.5959C19.4814 10.2144 19.4816 9.79127 19.3347 9.40962C17.892 5.66051 14.256 3 9.99859 3C8.28207 3 6.66657 3.43249 5.2551 4.19444L3.28033 2.21967ZM7.75194 6.69128L8.84367 7.78301C9.18951 7.60223 9.58291 7.5 10.0002 7.5C11.3809 7.5 12.5002 8.61929 12.5002 10C12.5002 10.4173 12.398 10.8107 12.2172 11.1565L13.3091 12.2484C13.7454 11.6077 14.0004 10.8336 14.0004 10C14.0004 7.79086 12.2095 6 10.0004 6C9.16675 6 8.39268 6.25501 7.75194 6.69128Z" fill="#9CA3AF"/>
-											<path d="M10.7484 13.9302L13.2711 16.4529C12.2462 16.8074 11.1458 17 10.0004 17C5.74298 17 2.10698 14.3395 0.664255 10.5904C0.517392 10.2087 0.517518 9.78563 0.66461 9.40408C1.15603 8.12932 1.90108 6.98057 2.83791 6.01969L6.0702 9.25198C6.02436 9.4943 6.00037 9.74435 6.00037 10C6.00037 12.2091 7.79123 14 10.0004 14C10.256 14 10.5061 13.976 10.7484 13.9302Z" fill="#9CA3AF"/>
-										</svg>
-										<svg v-if="!isPasswordHidden" class="absolute top-2 right-3" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-											<path d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z" fill="#9CA3AF"/>
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M0.664255 10.5904C0.517392 10.2087 0.517518 9.78563 0.66461 9.40408C2.10878 5.65788 5.7433 3 9.99859 3C14.256 3 17.892 5.66051 19.3347 9.40962C19.4816 9.79127 19.4814 10.2144 19.3344 10.5959C17.8902 14.3421 14.2557 17 10.0004 17C5.74298 17 2.10698 14.3395 0.664255 10.5904ZM14.0004 10C14.0004 12.2091 12.2095 14 10.0004 14C7.79123 14 6.00037 12.2091 6.00037 10C6.00037 7.79086 7.79123 6 10.0004 6C12.2095 6 14.0004 7.79086 14.0004 10Z" fill="#9CA3AF"/>
-										</svg>
-									</button>
-								</div>
-								<div v-if="$form['password'] && $form['password'].$dirty && !$form['password'].$valid">
-									<p class="mt-2 text-sm text-red-500" v-for="item in $form['password'].$errors">${item}</p>
-								</div>
+
+						<div class="w-[320px] flex ml-6">
+							<div class="relative flex items-center flex-grow items-stretch focus-within:z-10">
+								<input v-model="password" :type="isPasswordHidden ? 'password' : 'text'" placeholder="•••••••••••••"
+								       class="inputs block w-full pr-10 text-sm"
+								       :class="{'bg-red-50 placeholder-red-300': $form['password'] && $form['password'].$dirty && !$form['password'].$valid}">
+								<button @click="toggleShowHide()" type="button">
+									<svg v-if="isPasswordHidden" class="absolute top-2 right-3" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M3.28033 2.21967C2.98744 1.92678 2.51256 1.92678 2.21967 2.21967C1.92678 2.51256 1.92678 2.98744 2.21967 3.28033L16.7197 17.7803C17.0126 18.0732 17.4874 18.0732 17.7803 17.7803C18.0732 17.4874 18.0732 17.0126 17.7803 16.7197L16.0352 14.9745C17.5064 13.8594 18.6595 12.3465 19.3344 10.5959C19.4814 10.2144 19.4816 9.79127 19.3347 9.40962C17.892 5.66051 14.256 3 9.99859 3C8.28207 3 6.66657 3.43249 5.2551 4.19444L3.28033 2.21967ZM7.75194 6.69128L8.84367 7.78301C9.18951 7.60223 9.58291 7.5 10.0002 7.5C11.3809 7.5 12.5002 8.61929 12.5002 10C12.5002 10.4173 12.398 10.8107 12.2172 11.1565L13.3091 12.2484C13.7454 11.6077 14.0004 10.8336 14.0004 10C14.0004 7.79086 12.2095 6 10.0004 6C9.16675 6 8.39268 6.25501 7.75194 6.69128Z" fill="#9CA3AF"/>
+										<path d="M10.7484 13.9302L13.2711 16.4529C12.2462 16.8074 11.1458 17 10.0004 17C5.74298 17 2.10698 14.3395 0.664255 10.5904C0.517392 10.2087 0.517518 9.78563 0.66461 9.40408C1.15603 8.12932 1.90108 6.98057 2.83791 6.01969L6.0702 9.25198C6.02436 9.4943 6.00037 9.74435 6.00037 10C6.00037 12.2091 7.79123 14 10.0004 14C10.256 14 10.5061 13.976 10.7484 13.9302Z" fill="#9CA3AF"/>
+									</svg>
+									<svg v-if="!isPasswordHidden" class="absolute top-2 right-3" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+										<path d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z" fill="#9CA3AF"/>
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M0.664255 10.5904C0.517392 10.2087 0.517518 9.78563 0.66461 9.40408C2.10878 5.65788 5.7433 3 9.99859 3C14.256 3 17.892 5.66051 19.3347 9.40962C19.4816 9.79127 19.4814 10.2144 19.3344 10.5959C17.8902 14.3421 14.2557 17 10.0004 17C5.74298 17 2.10698 14.3395 0.664255 10.5904ZM14.0004 10C14.0004 12.2091 12.2095 14 10.0004 14C7.79123 14 6.00037 12.2091 6.00037 10C6.00037 7.79086 7.79123 6 10.0004 6C12.2095 6 14.0004 7.79086 14.0004 10Z" fill="#9CA3AF"/>
+									</svg>
+								</button>
 							</div>
-							<button @click="generateNewPassword()" type="button" class="py-2 px-4 rounded-md border border-gray-300 shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50">Сгенерировать</button>
+							<div v-if="$form['password'] && $form['password'].$dirty && !$form['password'].$valid">
+								<p class="mt-2 text-sm text-red-500" v-for="item in $form['password'].$errors">${item}</p>
+							</div>
 						</div>
 
+						<button @click="generateNewPassword()" type="button" class="ml-4 py-2 px-4 rounded-md ring-1 ring-gray-300 font-medium text-gray-700 text-sm hover:bg-gray-50">Сгенерировать</button>
 					</div>
 
 					<hr>
 
 					<div class="flex space-x-6">
 						<div class="w-[344px]"></div>
-						<button @click="clientAdd()" type="button" class="py-2 px-4 rounded-md border border-transparent bg-indigo-600 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">Добавить клиента</button>
+						<button @click="clientAdd()" type="button" class="py-2 px-4 rounded-md bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700">Добавить клиента</button>
 					</div>
 				</form>
 			</div>

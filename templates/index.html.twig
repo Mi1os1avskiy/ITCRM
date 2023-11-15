@@ -8,26 +8,24 @@
 		<div class="flex min-h-screen">
 			<div class="w-[732px] py-28 px-32 shrink-0">
 				<form class="w-[476px]" action="{{ path('clients') }}">
-					<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72" fill="none">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M41.6371 23.9724V11.3717C37.9119 10.6094 34.0714 10.6094 30.3459 11.3717V23.9724H41.6371ZM63 34.4143C62.825 32.7731 62.4897 31.1529 61.9988 29.5773L61.6611 28.4527C61.0984 26.8934 60.3894 25.3914 59.544 23.9663L41.6425 29.5773H30.3516L12.4741 23.942C11.6136 25.3909 10.8943 26.9198 10.327 28.5071L10.0255 29.4141C9.52272 31.0169 9.17928 32.6653 9 34.3359L26.8654 40.0195L15.8156 54.7847C16.9852 56.0436 18.274 57.1856 19.6637 58.195L20.4296 58.7329C21.8482 59.693 23.3524 60.5188 24.9233 61.2L35.9668 46.4347L47.0225 61.2C48.5871 60.5188 50.087 59.6972 51.5039 58.7452L52.288 58.1889C53.6764 57.18 54.9632 56.038 56.1301 54.7786L45.0804 40.0134L63 34.4143Z" fill="#FCC237"/>
-					</svg>
-					<h2 class="mt-20 text-gray-900 text-3xl font-bold">Войдите в свой аккаунт</h2>
+					{{ source('misc/svg/logo.svg') }}
+					<h2 class="mt-20 text-3xl font-bold">Войдите в свой аккаунт</h2>
 					<p class="mt-4 text-gray-500 font-sm font-medium">👋 Добро пожаловать! Пожалуйста, введите свои данные</p>
 					<div class="mt-8">
-						<div class="rounded-md p-4 space-y-1 shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-500">
-							<label for="login" class="block text-xs font-medium text-gray-900">Логин</label>
-							<input type="text" id="login" class="block w-full p-0 border-0 text-gray-900 placeholder:text-gray-400 hover:bg-white focus:ring-0 text-sm" placeholder="Введите логин">
+						<div class="rounded-md p-4 space-y-1 ring-1 ring-inset ring-gray-200 focus-within:ring-2 focus-within:ring-indigo-500">
+							<label for="login" class="block text-xs font-medium">Логин</label>
+							<input type="text" id="login" class="inputs block w-full p-0 ring-0 text-sm hover:bg-white focus:ring-0" placeholder="Введите логин">
 						</div>
 					</div>
 					<div class="mt-4">
-						<div class="rounded-md p-4 space-y-1 shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-500">
-							<label for="password" class="block text-xs font-medium text-gray-900">Пароль</label>
-							<input type="password" id="password" class="block w-full p-0 border-0 text-gray-900 placeholder:text-gray-400 hover:bg-white focus:ring-0 text-sm" placeholder="Введите пароль">
+						<div class="rounded-md p-4 space-y-1 ring-1 ring-inset ring-gray-200 focus-within:ring-2 focus-within:ring-indigo-500">
+							<label for="password" class="block text-xs font-medium">Пароль</label>
+							<input type="password" id="password" class="inputs block w-full p-0 ring-0 text-sm hover:bg-white focus:ring-0" placeholder="Введите пароль">
 						</div>
 					</div>
 					<div class="mt-4 flex items-center space-x-2">
-						<input id="save_user" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-						<label for="save_user" class="text-gray-900 text-sm">Запомнить</label>
+						<input id="save_user" type="checkbox" class="checkbox">
+						<label for="save_user" class="text-sm">Запомнить</label>
 					</div>
 					<div class="mt-14">
 						<button class="w-full py-3 px-6 bg-indigo-600 rounded-md shadow-sm text-white font-medium hover:bg-indigo-700" type="submit">Войти</button>
@@ -35,7 +33,7 @@
 				</form>
 			</div>
 			<div class="grow py-28 pl-32 bg-gray-50 overflow-hidden">
-				<h3 class="text-gray-900 text-xl font-semibold">ITCRM: Administration area</h3>
+				<h3 class="text-xl font-semibold">ITCRM: Administration area</h3>
 				<p class="mt-2 text-gray-500 text-sm font-medium">Система управления клиентами и заказами</p>
 				<img src="{{ asset('src/sign_in_img.png') }}" class="mt-14 max-w-fit">
 			</div>

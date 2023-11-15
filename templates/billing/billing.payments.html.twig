@@ -10,10 +10,8 @@
 
 				<div class="flex items-center justify-between py-4 px-8 bg-gray-50 border-b">
 					<h3 class="text-lg font-semibold">{{ title }}</h3>
-					<button type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md bg-indigo-600 shadow-sm hover:bg-indigo-700">
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-							<path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="white"/>
-						</svg>
+					<button type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md bg-indigo-600 hover:bg-indigo-700">
+						{{ source('misc/svg/plus.svg') }}
 						<span class="text-white text-sm font-medium">Добавить</span>
 					</button>
 				</div>
@@ -23,10 +21,10 @@
 			{% block control %}
 
 				<div class="flex pt-6 px-8 space-x-3">
-					<input type="text" class="w-64 rounded-md border-gray-300 shadow-sm text-sm placeholder:text-gray-400" placeholder="Email или ID клиента">
-					<input type="text" class="w-40 rounded-md border-gray-300 shadow-sm text-sm placeholder:text-gray-400" placeholder="Payment ID">
-					<input type="text" class="w-40 rounded-md border-gray-300 shadow-sm text-sm placeholder:text-gray-400" placeholder="Основной инвойс">
-					<input type="text" class="w-40 rounded-md border-gray-300 shadow-sm text-sm placeholder:text-gray-400" placeholder="UID">
+					<input type="text" class="w-64 inputs text-sm" placeholder="Email или ID клиента">
+					<input type="text" class="w-40 inputs text-sm" placeholder="Payment ID">
+					<input type="text" class="w-40 inputs text-sm" placeholder="Основной инвойс">
+					<input type="text" class="w-40 inputs text-sm" placeholder="UID">
 				</div>
 
 			{% endblock %}
@@ -36,9 +34,9 @@
 				<div class="py-4 px-8">
 					<div class="min-w-full overflow-hidden overflow-x-auto border rounded-t-lg">
 
-						<table class="min-w-full divide-y divide-gray-200">
+						<table class="min-w-full">
 							<thead>
-							<tr class="bg-gray-50 text-gray-900 text-sm border-b border-gray-300">
+							<tr class="bg-gray-50 text-sm border-b border-gray-300">
 								<th class="w-[92px] p-3 pl-6 text-left font-medium truncate">Pay ID</th>
 								<th class="w-[191px] p-3 text-left font-medium">Дата</th>
 								<th class="w-[176px] p-3 text-left font-medium">Клиент</th>
@@ -48,7 +46,7 @@
 								<th class="w-[114px] p-3 pr-6 text-left font-medium">Статус</th>
 							</tr>
 							</thead>
-							<tbody class="divide-y divide-gray-200 bg-white">
+							<tbody class="divide-y">
 
 							{% for i in payments %}
 
@@ -56,7 +54,7 @@
 									<td class="py-4 pl-6 pr-3 text-gray-500">{{ i.id }}</td>
 									<td class="whitespace-nowrap py-4 px-3 text-gray-500 cursor-default">{{ i.date }}, {{ i.time }} ({{ i.loc }})</td>
 									<td class="py-4 px-3">
-										<a href="{{ path('overview') }}" class="text-gray-900 font-medium truncate hover:text-indigo-700">{{ i.client }}</a>
+										<a href="{{ path('overview') }}" class="font-medium truncate hover:text-indigo-700">{{ i.client }}</a>
 									</td>
 									<td class="py-4 px-3 text-gray-500 cursor-default">${{ i.amount|number_format(2, '.', '') }}</td>
 									<td class="py-4 px-3 text-gray-500 cursor-default">{{ i.paymethod }}</td>
@@ -66,7 +64,7 @@
 										{% else %}
 										<p class="line-clamp-1 overflow-hidden">
 											<span class="text-gray-500">Основной инвойс: </span>
-											<a href="{{ path('invoice_overview') }}" class="text-gray-900 font-medium hover:text-indigo-700">{{ i.description.invoice }}</a>
+											<a href="{{ path('invoice_overview') }}" class="font-medium hover:text-indigo-700">{{ i.description.invoice }}</a>
 										</p>
 										<p class="w-48 min-w-full text-gray-500 line-clamp-1 overflow-hidden" title="Основной инвойс: {{ i.description.invoice }}{% for j in i.description.details %}&#10;{{ j }}{% endfor %}">{{ i.description.details|first }}</p>
 										{% endif %}
@@ -84,7 +82,6 @@
 
 							</tbody>
 						</table>
-
 					</div>
 
 					{% include 'parts/pagination.html.twig' %}

@@ -24,7 +24,7 @@ class TicketsController
     public static function ticketsTable()
     {
         return [
-            new TicketsController('098249', 'Amet sagittis quis fames cursus vel risus.', 'Open', 3, 'Служба поддержки', 'valeron-burdaleyba@mail.com', '2h 3m'),
+            new TicketsController('098249', 'Amet sagittis quis fames cursus vel risus.', 'Open', 3, 'Служба поддержки', 'valeron-burdaleyba@mail.com', '44m 11s'),
             new TicketsController('1234231', 'At sed consectetur tempus neque nascetur auctor.', 'In progress', 2, 'Служба поддержки', 'Alex Finn', '2h 3m'),
             new TicketsController('345345', 'Malesuada quisque felis vitae risus consequat.', 'Answered', 1, 'Служба поддержки', 'Wade Warren', '2h 3m'),
             new TicketsController('324543', 'Lacus etiam adipiscing ac morbi.', 'Customer reply', 3, 'Служба поддержки', 'Essther Howard', '2h 3m'),

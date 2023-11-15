@@ -5,7 +5,7 @@
 {% block content %}
 
     <profile-settings inline-template>
-        <div class="px-8 py-6 divide-y divide-gray-200 text-gray-900 text-sm">
+        <div class="px-8 py-6 divide-y text-sm">
             <div class="flex py-5 space-x-6">
                 <div class="w-[344px] font-medium text-gray-500">ID</div>
                 <div>#{{ user.id }}</div>
@@ -41,7 +41,7 @@
             <div class="flex items-center py-5 space-x-6">
                 <div class="w-[344px] font-medium text-gray-500">Последний логин</div>
                 <div>{{ user.last_log.date }} {{ user.last_log.time }} • <a target="_blank" href="https://www.geodatatool.com/en/?ip={{ user.last_log.ip }}" class="text-indigo-700">{{ user.last_log.ip }}</a> ({{ user.last_log.geo }})</div>
-                <button @click="overviewLogs()" type="button" class="py-1.5 px-3 rounded-md border border-gray-300 text-xs font-medium text-gray-700 shadow-sm hover:bg-gray-50">История</button>
+                <button @click="overviewLogs()" type="button" class="py-1.5 px-3 rounded ring-1 ring-gray-300 text-xs font-medium text-gray-700 hover:bg-gray-50">История</button>
             </div>
             <div class="flex py-5 space-x-6">
                 <div class="w-[344px] font-medium text-gray-500">IP регистрации</div>
