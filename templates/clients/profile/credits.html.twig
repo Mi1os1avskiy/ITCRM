@@ -11,18 +11,14 @@
             <div class="pt-6 px-8">
                 <div class="flex items-center justify-between">
                     <div class="flex space-x-4">
-                        <div class="py-2 px-4 rounded-md bg-green-100 text-green-800 font-semibold leading-5">$99.50</div>
-                        <div class="flex">
-                            <button @click="creditsDelete()" type="button" class="flex py-2 pl-3 pr-4 space-x-2 rounded-l-md border border-transparent border-r-indigo-700 bg-indigo-600 shadow-sm hover:bg-indigo-700">
-	                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-		                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4 10C4 9.58579 4.33579 9.25 4.75 9.25L15.25 9.25C15.6642 9.25 16 9.58579 16 10C16 10.4142 15.6642 10.75 15.25 10.75L4.75 10.75C4.33579 10.75 4 10.4142 4 10Z" fill="white"/>
-	                            </svg>
+                        <div class="py-2 px-4 rounded-md bg-green-100 text-green-800 text-sm font-semibold">$99.50</div>
+                        <div class="flex divide-x divide-indigo-700">
+                            <button @click="creditsDelete()" type="button" class="flex py-2 pl-3 pr-4 space-x-2 rounded-l-md bg-indigo-600 hover:bg-indigo-700">
+	                            {{ source('misc/svg/minus.svg') }}
                                 <span class="text-sm font-medium text-white">Списать</span>
                             </button>
-	                        <button @click="creditsAdd()" type="button" class="flex -ml-px py-2 pl-3 pr-4 space-x-2 rounded-r-md border border-transparent border-l-indigo-700 bg-indigo-600 shadow-sm hover:bg-indigo-700">
-		                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-			                        <path d="M10.75 4.75C10.75 4.33579 10.4142 4 10 4C9.58579 4 9.25 4.33579 9.25 4.75V9.25H4.75C4.33579 9.25 4 9.58579 4 10C4 10.4142 4.33579 10.75 4.75 10.75L9.25 10.75V15.25C9.25 15.6642 9.58579 16 10 16C10.4142 16 10.75 15.6642 10.75 15.25V10.75L15.25 10.75C15.6642 10.75 16 10.4142 16 10C16 9.58579 15.6642 9.25 15.25 9.25H10.75V4.75Z" fill="white"/>
-		                        </svg>
+	                        <button @click="creditsAdd()" type="button" class="flex py-2 pl-3 pr-4 space-x-2 rounded-r-md bg-indigo-600 hover:bg-indigo-700">
+		                        {{ source('misc/svg/plus.svg') }}
 		                        <span class="text-sm font-medium text-white">Добавить</span>
 	                        </button>
                         </div>
@@ -30,11 +26,9 @@
 
                     <div class="w-60 relative flex items-center">
                         <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-	                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-		                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5C10.519 14.5 11.893 13.8852 12.8891 12.8891C13.8852 11.893 14.5 10.519 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5ZM2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 10.6625 15.4197 12.1906 14.4517 13.3911L17.7803 16.7197C18.0732 17.0126 18.0732 17.4874 17.7803 17.7803C17.4874 18.0732 17.0126 18.0732 16.7197 17.7803L13.3911 14.4517C12.1906 15.4197 10.6625 16 9 16C5.13401 16 2 12.866 2 9Z" fill="#6B7280"/>
-	                        </svg>
+	                        {{ source('misc/svg/search.svg') }}
                         </div>
-                        <input class="block w-full rounded-md border border-gray-300 py-2 pl-10 pr-3 placeholder-gray-400 text-sm" placeholder="Поиск по Сумме" type="text">
+                        <input class="inputs block w-full py-2 pl-10 pr-3 text-sm" placeholder="Поиск по Сумме" type="text">
                     </div>
                 </div>
             </div>
@@ -46,11 +40,11 @@
     {% block table %}
 
         <div class="py-4 px-8">
-            <div class="min-w-full overflow-hidden overflow-x-auto align-middle border rounded-t-lg">
+            <div class="min-w-full overflow-hidden overflow-x-auto ring-1 ring-gray-200 rounded-t-lg">
 
-                <table class="min-w-full divide-y divide-gray-200 cursor-default">
+                <table class="min-w-full cursor-default">
                     <thead>
-                        <tr class="bg-gray-50 border-b border-gray-300 text-sm text-gray-900">
+                        <tr class="bg-gray-50 border-b border-gray-300 text-sm">
                             <th class="w-[208px] pl-6 pr-3 py-3 text-left font-medium">Дата и Время</th>
                             <th class="w-[232px] px-3 py-3 text-left font-medium">Метод платежа</th>
                             <th class="w-[192px] px-3 py-3 text-left font-medium">Назначение</th>
@@ -59,7 +53,7 @@
                         </tr>
                     </thead>
 
-                    <tbody class="divide-y divide-gray-200">
+                    <tbody class="divide-y">
 
                     {% for item in clients_data %}
                         {% if item.id == userID %}
@@ -70,13 +64,13 @@
                                     <td class="px-3 py-4 text-sm text-gray-500">
                                         <span>{{ credit.method }}</span>
                                         {% if credit.method_id %}
-	                                        <a href="#" class="text-gray-900 font-medium hover:text-indigo-700">{{ credit.method_id }}</a>
+	                                        <a href="#" class="font-medium hover:text-indigo-700">{{ credit.method_id }}</a>
                                         {% endif %}
                                     </td>
                                     <td class="px-3 py-4 text-sm text-gray-500">
                                         <span>{{ credit.appointment }}</span>
                                         {% if credit.appointment_id %}
-                                            <a href="{{ path('invoice_overview') }}" class="text-gray-900 font-medium hover:text-indigo-700">{{ credit.appointment_id }}</a>
+                                            <a href="{{ path('invoice_overview') }}" class="font-medium hover:text-indigo-700">{{ credit.appointment_id }}</a>
                                         {% endif %}
                                     </td>
                                     <td class="px-3 py-4 text-sm text-{% if credit.amount_stat == 'normal' %}green{% elseif credit.amount_stat == 'high' %}red{% else %}gray{% endif %}-500">${{ credit.amount|number_format('2', '.', '') }}</td>

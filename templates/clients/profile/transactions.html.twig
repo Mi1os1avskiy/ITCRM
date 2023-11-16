@@ -8,14 +8,12 @@
 
         <div class="pt-6 px-8">
             <div class="flex items-center justify-between">
-                <div class="rounded-md px-4 py-2 bg-green-100 text-green-800 text-sm font-semibold leading-5">$99.50</div>
+                <div class="rounded-md px-4 py-2 bg-green-100 text-green-800 text-sm font-semibold">$99.50</div>
                 <div class="relative w-60">
-                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-	                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-		                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5C10.519 14.5 11.893 13.8852 12.8891 12.8891C13.8852 11.893 14.5 10.519 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5ZM2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 10.6625 15.4197 12.1906 14.4517 13.3911L17.7803 16.7197C18.0732 17.0126 18.0732 17.4874 17.7803 17.7803C17.4874 18.0732 17.0126 18.0732 16.7197 17.7803L13.3911 14.4517C12.1906 15.4197 10.6625 16 9 16C5.13401 16 2 12.866 2 9Z" fill="#6B7280"/>
-	                    </svg>
+                    <div class="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+	                    {{ source('misc/svg/search.svg') }}
                     </div>
-                    <input class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 text-sm leading-5 placeholder-gray-400" placeholder="Поиск по UID и Сумме" type="text">
+                    <input class="inputs block w-full py-2 pl-10 pr-3 text-sm" placeholder="Поиск по UID и Сумме" type="text">
                 </div>
             </div>
         </div>
@@ -25,11 +23,11 @@
     {% block table %}
 
 	    <div class="py-4 px-8">
-            <div class="min-w-full overflow-hidden overflow-x-auto align-middle border rounded-t-lg">
+            <div class="min-w-full overflow-hidden overflow-x-auto ring-1 ring-gray-200 rounded-t-lg">
 
-                <table class="min-w-full divide-y divide-gray-200">
+                <table class="min-w-full cursor-default">
                     <thead>
-                    <tr class="bg-gray-50 text-sm text-gray-900 border-b border-gray-300">
+                    <tr class="bg-gray-50 text-sm border-b border-gray-300">
                         <th class="w-[200px] pl-6 pr-3 py-3 text-left font-medium">Дата</th>
                         <th class="w-[130px] px-3 py-3 text-left font-medium">UID</th>
                         <th class="w-[190px] px-3 py-3 text-left font-medium">Статус</th>
@@ -39,35 +37,35 @@
                     </tr>
                     </thead>
 
-                    <tbody class="divide-y divide-gray-200">
+                    <tbody class="divide-y">
 
                     {% for item in transactions %}
 
                         <tr class="text-sm text-gray-500">
-                            <td class="pl-6 pr-3 py-4 cursor-default">
+                            <td class="pl-6 pr-3 py-4">
 	                            <p class="truncate">{{ item.date }}</p>
                             </td>
-                            <td class="px-3 py-4 cursor-default">
+                            <td class="px-3 py-4">
 	                            <p class="w-[106px] truncate" title="{{ item.id }}">{{ item.id }}</p>
                             </td>
-                            <td class="px-3 py-4 cursor-default">
+                            <td class="px-3 py-4">
                                 {% for val, css in transaction_statuses %}
                                     {% if item.status == val %}
                                         <div class="w-fit px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if val == "Возвращена" %}200{% else %}100{% endif%} text-{{ css }}-800 truncate">{{ val }}</div>
                                     {% endif %}
                                 {% endfor %}
                             </td>
-                            <td class="whitespace-nowrap px-3 py-4 cursor-default">
+                            <td class="whitespace-nowrap px-3 py-4">
 	                            <p>{{ item.method }}</p>
                             </td>
-                            <td class="whitespace-nowrap px-3 py-4 cursor-default">
+                            <td class="whitespace-nowrap px-3 py-4">
 	                            {% if item.invoice_exist %}
-		                            Инвойс <a href="{{ path('invoice_overview') }}" class="text-gray-900 font-medium hover:text-indigo-700">{{ item.invoice }}</a>
+		                            Инвойс <a href="{{ path('invoice_overview') }}" class="font-medium hover:text-indigo-700">{{ item.invoice }}</a>
 	                            {% else %}
 		                            <p class="w-44 min-w-full truncate" title="{{ item.description }}">{{ item.description }}</p>
 	                            {% endif %}
                             </td>
-	                        <td class="pl-3 pr-6 py-4 text-right cursor-default">
+	                        <td class="pl-3 pr-6 py-4 text-right">
 		                        <p>${{ item.amount|number_format('2', '.', '') }}</p>
 	                        </td>
                         </tr>
