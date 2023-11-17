@@ -57,6 +57,10 @@
 	.dropdown > li:hover {
 		@apply bg-gray-50;
 	}
+
+	.texteditor button {
+		@apply p-2 rounded hover:bg-gray-100 focus:bg-gray-100;
+	}
 }
 
 

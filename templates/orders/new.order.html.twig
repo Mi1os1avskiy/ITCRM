@@ -15,12 +15,12 @@
 					<div class="py-4 px-8 space-y-2 bg-gray-50">
 						<nav class="flex items-center space-x-4 text-sm text-gray-500 font-medium">
 							<a href="{{ path ('orders') }}">Заказы</a>
-							<svg width="20" height="20" viewBox="0 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#9CA3AF"/>
-							</svg>
+							<div class="-rotate-90">
+								{{ source('misc/svg/arrow.svg') }}
+							</div>
 							<p>{{ title }}</p>
 						</nav>
-						<div class="text-gray-900 text-lg font-semibold leading-6">{{ title }}</div>
+						<div class="text-lg font-semibold leading-6">{{ title }}</div>
 					</div>
 
 				{% endblock %}
@@ -30,16 +30,16 @@
 					<div class="py-6 px-8 space-y-6">
 						<div class="flex py-5 px-6 space-x-5 bg-gray-50">
 							<div class="flex-1 relative">
-								<svg class="absolute top-2 left-3 pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10ZM12.5 7.5C12.5 8.88071 11.3807 10 10 10C8.61929 10 7.5 8.88071 7.5 7.5C7.5 6.11929 8.61929 5 10 5C11.3807 5 12.5 6.11929 12.5 7.5ZM10 12C8.04133 12 6.30187 12.9385 5.20679 14.3904C6.39509 15.687 8.1026 16.5 10 16.5C11.8974 16.5 13.6049 15.687 14.7932 14.3904C13.6981 12.9385 11.9587 12 10 12Z" fill="#6B7280"/>
-								</svg>
+								<div class="absolute top-2 left-3 pointer-events-none">
+									{{ source('misc/svg/user.svg') }}
+								</div>
 
-								<input @click="inputSearch()" id="myInput" class="w-full py-2 px-10 border-0 ring-1 ring-gray-300 rounded-md shadow-sm text-sm text-left placeholder:text-gray-400 hover:bg-gray-50 focus:ring-1 focus:ring-indigo-500" placeholder="Введите email клиента" type="text" aria-expanded="false" aria-expanded-autohide>
+								<input @click="inputSearch()" id="myInput" class="inputs w-full py-2 px-10 text-sm" placeholder="Введите email клиента" type="text" aria-expanded="false" aria-expanded-autohide>
 
-								<ul id="myUL" class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+								<ul id="myUL" class="dropdown w-full max-h-72 overflow-auto">
 									{% for i in clients %}
 										<li>
-											<button type="button" class="flex items-center w-full py-2 px-4 space-x-3 hover:bg-gray-50" title="{{ i.email }} {{ i.id }}">
+											<button type="button" class="flex items-center w-full py-2 px-4 space-x-3" title="{{ i.email }} {{ i.id }}">
 												<span class="text-gray-700 text-sm truncate">{{ i.email }}</span>
 												<span class="text-gray-500 text-sm">{{ i.id }}</span>
 											</button>
@@ -47,23 +47,21 @@
 									{% endfor %}
 								</ul>
 
-								<svg class="absolute top-2 right-3 arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-								</svg>
+								<div class="absolute top-2 right-3 arrow pointer-events-none">
+									{{ source('misc/svg/arrow.svg') }}
+								</div>
 							</div>
 
 							<div class="flex-1 relative">
-								<button type="button" class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 shadow-sm text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+								<button type="button" class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 									<div class="w-full text-gray-500 text-sm text-left pointer-events-none">Выберите группу тарифов</div>
-									<svg class="arrow pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-									</svg>
+									{{ source('misc/svg/arrow.svg') }}
 								</button>
 
-								<ul class="hidden absolute z-10 top-10 max-h-60 w-full overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+								<ul class="dropdown max-h-72 w-full overflow-auto">
 									{% for i in tariff_groups %}
 										<li>
-											<button type="button" class="flex items-center w-full py-2 px-4 space-x-3 hover:bg-gray-50" title="{{ i }}">
+											<button type="button" class="flex items-center w-full py-2 px-4 space-x-3" title="{{ i }}">
 												<span class="text-gray-700 text-sm truncate">{{ i }}</span>
 											</button>
 										</li>
@@ -72,17 +70,15 @@
 							</div>
 
 							<div class="flex-1 relative">
-								<button type="button" class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 shadow-sm text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+								<button type="button" class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 									<div class="w-full text-gray-500 text-sm text-left pointer-events-none">Выберите тарифный план</div>
-									<svg class="arrow pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-									</svg>
+									{{ source('misc/svg/arrow.svg') }}
 								</button>
 
-								<ul class="hidden absolute z-10 top-10 max-h-60 w-full overflow-auto rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+								<ul class="dropdown max-h-72 w-full overflow-auto">
 									{% for i in tariff_plans %}
 										<li>
-											<button type="button" class="flex items-center w-full py-2 px-4 space-x-3 hover:bg-gray-50" title="{{ i }}">
+											<button type="button" class="flex items-center w-full py-2 px-4 space-x-3" title="{{ i }}">
 												<span class="text-gray-700 text-sm truncate">{{ i }}</span>
 											</button>
 										</li>
@@ -91,61 +87,59 @@
 							</div>
 						</div>
 
-						<div class="flex bg-yellow-50 rounded-lg py-4 px-6 space-x-4 ">
-							<svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10ZM10 5C10.4142 5 10.75 5.33579 10.75 5.75V10.25C10.75 10.6642 10.4142 11 10 11C9.58579 11 9.25 10.6642 9.25 10.25V5.75C9.25 5.33579 9.58579 5 10 5ZM10 15C10.5523 15 11 14.5523 11 14C11 13.4477 10.5523 13 10 13C9.44771 13 9 13.4477 9 14C9 14.5523 9.44771 15 10 15Z" fill="#F97316"/>
-							</svg>
+						<div class="flex bg-yellow-50 rounded-lg py-4 px-6 space-x-4">
+							<div>
+								{{ source('misc/svg/important.svg') }}
+							</div>
 							<p class="text-sm text-gray-700 line-clamp-3">Ipsum lacus id gravida venenatis velit cursus aliquet eros. Massa at habitant potenti senectus id pretium faucibus. Odio libero placerat lectus lectus eget tortor scelerisque tincidunt. Sed ultricies consequat interdum vel mauris nunc. Orci fermentum consequat semper tortor. Enim adipiscing donec lobortis elit libero vivamus. Leo magna donec gravida dictum platea. Aliquam vehicula augue cursus pharetra nunc praesent ornare.</p>
 						</div>
 
 						<div class="pb-2 bg-gray-50 divide-y">
-							<h3 class="py-5 px-6 text-gray-900 font-semibold">Слоты</h3>
+							<h3 class="py-5 px-6 font-semibold">Слоты</h3>
 							<div class="bg-white divide-y">
 								<div class="flex items-center">
 									<div class="w-[288px] py-4 pl-6 pr-3 text-gray-600 text-sm font-medium">Примечания от клиента</div>
 									<div class="grow py-4 pl-3 pr-6">
-										<textarea class="w-full h-14 min-h-[56px] max-h-[120px] py-2 px-3 rounded-md text-gray-900 text-sm placeholder-gray-400" placeholder="Примечание"></textarea>
+										<textarea class="inputs w-full h-14 min-h-[56px] max-h-[120px] py-2 px-3 text-sm" placeholder="Примечание"></textarea>
 									</div>
 								</div>
 								<div class="flex items-center">
 									<div class="w-[288px] py-4 pl-6 pr-3 text-gray-600 text-sm font-medium">Тарифный план</div>
-									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">RU-7 (Special) 155.00 / 0.00 (+6/6 вариантов)</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-sm">RU-7 (Special) 155.00 / 0.00 (+6/6 вариантов)</div>
 									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$90.00 <span class="truncate">в 1 мес</span></div>
-									<div class="w-[324px] py-4 pl-3 pr-6 text-gray-900 text-sm">Static</div>
+									<div class="w-[324px] py-4 pl-3 pr-6 text-sm">Static</div>
 								</div>
 								<div class="flex items-center">
 									<div class="w-[288px] py-4 pl-6 pr-3">
 										<div class="text-gray-600 text-sm font-medium">CPU</div>
 										<div class="text-gray-400 text-xs">cpu</div>
 									</div>
-									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">Intel® Xeon® E-2288G 8x 3.70 GHz (до 5.00 GHz Turbo Boost) / 16 Threads</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-sm">Intel® Xeon® E-2288G 8x 3.70 GHz (до 5.00 GHz Turbo Boost) / 16 Threads</div>
 									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 мес</span></div>
-									<div class="w-[324px] py-4 pl-3 pr-6 text-gray-900 text-sm">Static</div>
+									<div class="w-[324px] py-4 pl-3 pr-6 text-sm">Static</div>
 								</div>
 								<div class="flex items-center">
 									<div class="w-[288px] py-4 pl-6 pr-3">
 										<div class="text-gray-600 text-sm font-medium">RAM</div>
 										<div class="text-gray-400 text-xs">ram</div>
 									</div>
-									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">32GB DDR4</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-sm">32GB DDR4</div>
 									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 мес</span></div>
 									<div class="w-[324px] py-4 pl-3 pr-6">
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">32GB DDR4</p>
-												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-												</svg>
+												<p class="pointer-events-none line-clamp-1 overflow-hidden">32GB DDR4</p>
+												{{ source('misc/svg/arrow.svg') }}
 											</button>
-											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">32GB DDR4</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">32GB DDR4</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">64GB DDR4</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">64GB DDR4</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">128GB DDR4</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">128GB DDR4</button>
 												</li>
 											</ul>
 										</div>
@@ -156,22 +150,20 @@
 										<div class="text-gray-600 text-sm font-medium">Панель управления</div>
 										<div class="text-gray-400 text-xs">panel</div>
 									</div>
-									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">Без панели (только установка ОС)</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-sm">Без панели (только установка ОС)</div>
 									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
 									<div class="w-[324px] py-4 pl-3 pr-6">
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">Без панели (только установка ОС)</p>
-												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-												</svg>
+												<p class="pointer-events-none line-clamp-1 overflow-hidden">Без панели (только установка ОС)</p>
+												{{ source('misc/svg/arrow.svg') }}
 											</button>
-											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Без панели (только установка ОС)</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">Без панели (только установка ОС)</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">VestaCP (nginx+apache) (vesta/apache)</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">VestaCP (nginx+apache) (vesta/apache)</button>
 												</li>
 											</ul>
 										</div>
@@ -182,22 +174,20 @@
 										<div class="text-gray-600 text-sm font-medium">Администрирование</div>
 										<div class="text-gray-400 text-xs">administration</div>
 									</div>
-									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">Без администрирования</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-sm">Без администрирования</div>
 									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
 									<div class="w-[324px] py-4 pl-3 pr-6">
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">Без администрирования</p>
-												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-												</svg>
+												<p class="pointer-events-none line-clamp-1 overflow-hidden">Без администрирования</p>
+												{{ source('misc/svg/arrow.svg') }}
 											</button>
-											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Без администрирования</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">Без администрирования</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">С администрированием</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">С администрированием</button>
 												</li>
 											</ul>
 										</div>
@@ -208,22 +198,20 @@
 										<div class="text-gray-600 text-sm font-medium">OS</div>
 										<div class="text-gray-400 text-xs">os</div>
 									</div>
-									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">CentOS 8.x</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-sm">CentOS 8.x</div>
 									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
 									<div class="w-[324px] py-4 pl-3 pr-6">
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">CentOS 8.x</p>
-												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-												</svg>
+												<p class="pointer-events-none line-clamp-1 overflow-hidden">CentOS 8.x</p>
+												{{ source('misc/svg/arrow.svg') }}
 											</button>
-											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+											<ul class="dropdown w-full max-h-72 text-sm">
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">CentOS 8.x</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">CentOS 8.x</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Linux</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">Linux</button>
 												</li>
 											</ul>
 										</div>
@@ -234,22 +222,20 @@
 										<div class="text-gray-600 text-sm font-medium">Диск</div>
 										<div class="text-gray-400 text-xs">disk0</div>
 									</div>
-									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">2TB HDD</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-sm">2TB HDD</div>
 									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
 									<div class="w-[324px] py-4 pl-3 pr-6">
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">2TB HDD</p>
-												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-												</svg>
+												<p class="pointer-events-none line-clamp-1 overflow-hidden">2TB HDD</p>
+												{{ source('misc/svg/arrow.svg') }}
 											</button>
-											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+											<ul class="dropdown zw-full max-h-72 overflow-auto text-sm">
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">2TB HDD</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">2TB HDD</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">4TB HDD</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">4TB HDD</button>
 												</li>
 											</ul>
 										</div>
@@ -260,25 +246,23 @@
 										<div class="text-gray-600 text-sm font-medium">Диск</div>
 										<div class="text-gray-400 text-xs">disk1</div>
 									</div>
-									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">None</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-sm">None</div>
 									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
 									<div class="w-[324px] py-4 pl-3 pr-6">
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">None</p>
-												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-												</svg>
+												<p class="pointer-events-none line-clamp-1 overflow-hidden">None</p>
+												{{ source('misc/svg/arrow.svg') }}
 											</button>
-											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">None</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">None</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">2TB HDD</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">2TB HDD</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">4TB HDD</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">4TB HDD</button>
 												</li>
 											</ul>
 										</div>
@@ -289,25 +273,23 @@
 										<div class="text-gray-600 text-sm font-medium">Диск</div>
 										<div class="text-gray-400 text-xs">disk2</div>
 									</div>
-									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">None</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-sm">None</div>
 									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
 									<div class="w-[324px] py-4 pl-3 pr-6">
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">None</p>
-												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-												</svg>
+												<p class="pointer-events-none line-clamp-1 overflow-hidden">None</p>
+												{{ source('misc/svg/arrow.svg') }}
 											</button>
-											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">None</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">None</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">2TB HDD</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">2TB HDD</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">4TB HDD</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">4TB HDD</button>
 												</li>
 											</ul>
 										</div>
@@ -318,25 +300,23 @@
 										<div class="text-gray-600 text-sm font-medium">Диск</div>
 										<div class="text-gray-400 text-xs">disk3</div>
 									</div>
-									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">None</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-sm">None</div>
 									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
 									<div class="w-[324px] py-4 pl-3 pr-6">
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">None</p>
-												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-												</svg>
+												<p class="pointer-events-none line-clamp-1 overflow-hidden">None</p>
+												{{ source('misc/svg/arrow.svg') }}
 											</button>
-											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">None</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">None</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">2TB HDD</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">2TB HDD</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">4TB HDD</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">4TB HDD</button>
 												</li>
 											</ul>
 										</div>
@@ -350,8 +330,8 @@
 									<div class="w-[324px] flex-auto py-4 px-3 text-yellow-700 text-sm">IPv4 - 3</div>
 									<div class="w-[144px] py-4 px-3 text-yellow-700 text-sm">$8.00 <span class="truncate">в 1 месяц</span></div>
 									<div class="w-[324px] flex items-center py-4 pl-3 pr-6 space-x-5">
-										<input id="range" class="w-16 py-2 px-3 rounded-md text-sm" value="0" type="number" min="0" max="256">
-										<input class="shrink" type="range" value="0" min="0" max="256" onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)">
+										<input id="range" class="inputs w-16 py-2 px-3 text-sm" value="0" type="number" min="0" max="256">
+										<input type="range" value="0" min="0" max="256" onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)">
 										<script>
 											function rangeSlide(value) {
 												document.getElementById('range').value = value;
@@ -364,25 +344,23 @@
 										<div class="text-gray-600 text-sm font-medium">Порт</div>
 										<div class="text-gray-400 text-xs">port</div>
 									</div>
-									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">Порт 100 Mbps трафик не учитывается</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-sm">Порт 100 Mbps трафик не учитывается</div>
 									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
 									<div class="w-[324px] py-4 pl-3 pr-6">
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">Порт 100 Mbps трафик не учитывается</p>
-												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-												</svg>
+												<p class="pointer-events-none line-clamp-1 overflow-hidden">Порт 100 Mbps трафик не учитывается</p>
+												{{ source('misc/svg/arrow.svg') }}
 											</button>
-											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Порт 100 Mbps трафик не учитывается</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">Порт 100 Mbps трафик не учитывается</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Порт 250 Mbps трафик не учитывается</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">Порт 250 Mbps трафик не учитывается</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Порт 500 Mbps трафик учитывается</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">Порт 500 Mbps трафик учитывается</button>
 												</li>
 											</ul>
 										</div>
@@ -393,22 +371,20 @@
 										<div class="text-gray-600 text-sm font-medium">Разрядность OS</div>
 										<div class="text-gray-400 text-xs">osbit</div>
 									</div>
-									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">64 Bit (рекомендуется)</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-sm">64 Bit (рекомендуется)</div>
 									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
 									<div class="w-[324px] py-4 pl-3 pr-6">
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">64 Bit (рекомендуется)</p>
-												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-												</svg>
+												<p class="pointer-events-none line-clamp-1 overflow-hidden">64 Bit (рекомендуется)</p>
+												{{ source('misc/svg/arrow.svg') }}
 											</button>
-											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">64 Bit (рекомендуется)</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">64 Bit (рекомендуется)</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">32 Bit</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">32 Bit</button>
 												</li>
 											</ul>
 										</div>
@@ -419,22 +395,20 @@
 										<div class="text-gray-600 text-sm font-medium">RAID</div>
 										<div class="text-gray-400 text-xs">raid</div>
 									</div>
-									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">None</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-sm">None</div>
 									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
 									<div class="w-[324px] py-4 pl-3 pr-6">
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">None</p>
-												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-												</svg>
+												<p class="pointer-events-none line-clamp-1 overflow-hidden">None</p>
+												{{ source('misc/svg/arrow.svg') }}
 											</button>
-											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">None</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">None</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">2x</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">2x</button>
 												</li>
 											</ul>
 										</div>
@@ -445,22 +419,20 @@
 										<div class="text-gray-600 text-sm font-medium">Мониторинг состояния дисков</div>
 										<div class="text-gray-400 text-xs">mondisk</div>
 									</div>
-									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">Установить и настроить (рекомендуется)</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-sm">Установить и настроить (рекомендуется)</div>
 									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
 									<div class="w-[324px] py-4 pl-3 pr-6">
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">Установить и настроить (рекомендуется)</p>
-												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-												</svg>
+												<p class="pointer-events-none line-clamp-1 overflow-hidden">Установить и настроить (рекомендуется)</p>
+												{{ source('misc/svg/arrow.svg') }}
 											</button>
-											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Установить и настроить (рекомендуется)</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">Установить и настроить (рекомендуется)</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Не устанавливать</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">Не устанавливать</button>
 												</li>
 											</ul>
 										</div>
@@ -471,22 +443,20 @@
 										<div class="text-gray-600 text-sm font-medium">IPMI</div>
 										<div class="text-gray-400 text-xs">ipmi</div>
 									</div>
-									<div class="w-[324px] flex-auto py-4 px-3 text-gray-900 text-sm">On</div>
+									<div class="w-[324px] flex-auto py-4 px-3 text-sm">On</div>
 									<div class="w-[144px] py-4 px-3 text-gray-500 text-sm">$0.00 <span class="truncate">в 1 месяц</span></div>
 									<div class="w-[324px] py-4 pl-3 pr-6">
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-												<p class="pointer-events-none text-gray-900 line-clamp-1 overflow-hidden">Не выбрано</p>
-												<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-												</svg>
+												<p class="pointer-events-none line-clamp-1 overflow-hidden">Не выбрано</p>
+												{{ source('misc/svg/arrow.svg') }}
 											</button>
-											<ul class="absolute z-10 top-10 py-1 w-full max-h-72 overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Не выбрано</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">Не выбрано</button>
 												</li>
 												<li>
-													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate hover:bg-gray-100">Стандарт</button>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-left truncate">Стандарт</button>
 												</li>
 											</ul>
 										</div>
@@ -496,15 +466,15 @@
 						</div>
 
 						<div class="pb-2 bg-gray-50 divide-y">
-							<h3 class="py-5 px-6 text-gray-900 font-semibold">Сервисы</h3>
+							<h3 class="py-5 px-6 font-semibold">Сервисы</h3>
 							<div class="flex items-center py-4 px-6 space-x-4 bg-white">
 								<div class="text-gray-600 text-sm font-medium">Число создаваемых сервисов</div>
-								<input class="w-[152px] py-2 px-3 rounded-md text-sm placeholder-gray-400" placeholder="Кол-во сервисов" type="text">
+								<input class="inputs w-[152px] py-2 px-3 text-sm" placeholder="Кол-во сервисов" type="text">
 							</div>
 						</div>
 
 						<div class="pb-2 bg-gray-50 divide-y">
-							<h3 class="py-5 px-6 text-gray-900 font-semibold">Оплата</h3>
+							<h3 class="py-5 px-6 font-semibold">Оплата</h3>
 							<div class="py-5 px-6 space-y-5">
 								<div class="space-y-1">
 									<div class="text-gray-700 text-sm font-medium">Платёжный период</div>
@@ -524,15 +494,15 @@
 								</div>
 
 								<div class="h-9 flex items-center">
-									<input id="free_period" type="checkbox" class="peer h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-1 focus:ring-indigo-500">
-									<label for="free_period" class="ml-2 text-gray-900 text-sm">Бесплатный тестовый период</label>
-									<input class="hidden w-[99px] ml-4 py-2 px-3 rounded-md text-sm placeholder-gray-400 peer-checked:block" placeholder="Дней" type="text">
+									<input id="free_period" type="checkbox" class="checkbox peer">
+									<label for="free_period" class="ml-2 text-sm">Бесплатный тестовый период</label>
+									<input class="inputs hidden w-[99px] ml-4 py-2 px-3 text-sm peer-checked:block" placeholder="Дней" type="text">
 								</div>
 
 								<div class="space-y-1">
 									<div class="text-gray-700 text-sm font-medium">Промокод</div>
 									<div class="flex">
-										<input id="promo_input" disabled class="w-[226px] z-10 py-2 px-3 rounded-l-md text-gray-900 text-sm placeholder-gray-400 disabled:bg-gray-50 disabled:text-gray-500" placeholder="Введите промокод" value="QWERTY" type="text">
+										<input id="promo_input" disabled class="inputs w-[226px] z-10 py-2 px-3 rounded-r-none text-sm disabled:bg-gray-50 disabled:text-gray-500" placeholder="Введите промокод" value="QWERTY" type="text">
 										<button id="promo_btn" @click="orderPromo()" class="py-2 px-4 bg-white ring-1 ring-gray-300 rounded-r-md text-gray-700 text-sm font-medium hover:bg-gray-50" type="button">Удалить</button>
 									</div>
 								</div>
@@ -542,19 +512,19 @@
 								{% set price = 140 %}
 
 								<div class="space-y-1">
-									<div class="text-gray-900 text-sm">
+									<div class="text-sm">
 										<span class="font-semibold">Скидка по промокоду </span>
 										<span>"QWERTY": ${{ promo|number_format(2, '.', '') }}</span>
 									</div>
-									<div class="text-gray-900 text-sm">
+									<div class="text-sm">
 										<span class="font-semibold">Скидка по акции: </span>
 										<span>{% if discount %}${{ discount|number_format(2, '.', '') }}{% else %}Без скидки{% endif %}</span>
 									</div>
-									<div class="text-gray-900 text-sm">
+									<div class="text-sm">
 										<span class="font-semibold">Цена без скидок: </span>
 										<span>${{ price|number_format(2, '.', '') }}</span>
 									</div>
-									<div class="text-gray-900 text-sm">
+									<div class="text-sm">
 										<span class="font-semibold">Итоговая цена: </span>
 										<span>${{ (price - discount - promo)|number_format(2, '.', '') }}</span>
 									</div>
@@ -563,13 +533,13 @@
 						</div>
 
 						<div class="py-5 px-6 space-y-1 ring-1 ring-gray-300 rounded-lg bg-yellow-50">
-							<div class="text-gray-900 text-xs font-medium">Примечания администратора</div>
+							<div class="text-xs font-medium">Примечания администратора</div>
 							<div class="text-gray-400 text-sm">Примечание</div>
 						</div>
 
 						<div class="flex justify-end space-x-3">
-							<a href="{{ path('orders') }}" class="py-2 px-4 ring-1 ring-gray-300 rounded-md shadow-sm text-gray-700 text-sm font-medium hover:bg-gray-50">Отмена</a>
-							<button @click="orderCreating()" class="py-2 px-4 bg-indigo-600 rounded-md shadow-sm text-white text-sm font-medium hover:bg-indigo-700" type="button">Сформировать заказ</button>
+							<a href="{{ path('orders') }}" class="py-2 px-4 ring-1 ring-gray-300 rounded-md text-gray-700 text-sm font-medium hover:bg-gray-50">Отмена</a>
+							<button @click="orderCreating()" class="py-2 px-4 bg-indigo-600 rounded-md text-white text-sm font-medium hover:bg-indigo-700" type="button">Сформировать заказ</button>
 						</div>
 					</div>
 
