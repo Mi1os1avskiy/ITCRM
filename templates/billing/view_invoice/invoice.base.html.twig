@@ -36,12 +36,14 @@
 							</div>
 							{% if getGet() == "Pending" %}
 							<div class="flex space-x-3">
-								<button @click="billingInvoiceAddPayment()" type="button" class="flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium hover:bg-gray-50">
-									{{ source('misc/svg/plus-gray-500.svg') }}
-									<span>Добавить платёж</span>
+								<button @click="billingInvoiceAddPayment()" type="button" class="flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md ring-1 ring-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+									{{ source('misc/svg/plus.svg') }}
+									<span class="text-gray-700 text-sm font-medium">Добавить платёж</span>
 								</button>
 								<button @click="billingInvoiceCancel()" type="button" class="flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium hover:bg-gray-50">
-									{{ source('misc/svg/bucket-20.svg') }}
+									<div class="text-gray-500">
+										{{ source('misc/svg/bucket-20.svg') }}
+									</div>
 									<span>Отменить инвойс</span>
 								</button>
 							</div>

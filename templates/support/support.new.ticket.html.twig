@@ -10,21 +10,21 @@
 			<div class="bg-gray-50 py-4 px-8 space-y-2">
 				<nav class="flex items-center space-x-4 text-sm text-gray-500">
 					<a href="{{ path ('support_tickets') }}"class="font-medium">Тикеты</a>
-					<svg width="20" height="20" viewBox="0 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="#9CA3AF"/>
-					</svg>
+					<div class="-rotate-90">
+						{{ source('misc/svg/arrow.svg') }}
+					</div>
 					<span class="font-medium">{{ title }}</span>
 				</nav>
-				<div class="h-[38px] flex items-center text-gray-900 text-lg font-semibold">{{ title }}</div>
+				<div class="h-9 flex items-center text-lg font-semibold">{{ title }}</div>
 			</div>
 
-			<div class="flex mx-auto px-8">
+			<div class="flex px-8">
 				{% include 'support/parts/service.user.block.html.twig' %}
 			</div>
 
 			<form class="px-8 space-y-6">
-				<input class="w-full py-2 px-3 rounded-md border border-gray-300 text-sm placeholder-gray-400" placeholder="Тема" type="text">
-				<div class="relative rounded-md border border-gray-300">
+				<input class="inputs w-full py-2 px-3 text-sm" placeholder="Тема" type="text">
+				<div class="relative rounded-md ring-1 ring-gray-300">
 
 					{% include 'parts/text.editor.head.html.twig' %}
 
@@ -32,16 +32,15 @@
 						<input class="w-full border-0 focus:outline-none text-sm placeholder-gray-400" placeholder="Содержание тикета">
 
 						<button type="button" class="flex items-center space-x-2 py-2 px-3 bg-gray-50 rounded-full hover:bg-gray-200">
-							<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM10.75 6.75C10.75 6.33579 10.4142 6 10 6C9.58579 6 9.25 6.33579 9.25 6.75V9.25H6.75C6.33579 9.25 6 9.58579 6 10C6 10.4142 6.33579 10.75 6.75 10.75H9.25V13.25C9.25 13.6642 9.58579 14 10 14C10.4142 14 10.75 13.6642 10.75 13.25V10.75H13.25C13.6642 10.75 14 10.4142 14 10C14 9.58579 13.6642 9.25 13.25 9.25H10.75V6.75Z" fill="#9CA3AF"/>
-							</svg>
+							{{ source('misc/svg/add-file.svg') }}
 							<span class="text-sm font-medium text-gray-500">Прикрепить файл</span>
 						</button>
+
 						<div class="flex space-x-3">
-							<input class="flex grow py-2 px-4 border border-gray-300 rounded-md text-sm placeholder-gray-400" placeholder="Добавить запись о выставлении инвойса" type="text">
+							<input class="inputs grow py-2 px-4 text-sm" placeholder="Добавить запись о выставлении инвойса" type="text">
 							<div class="w-[131px] relative">
-								<div class="absolute inset-y-0 left-0 pl-3 flex items-center text-sm cursor-default">$</div>
-								<input class="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 placeholder-gray-400 text-sm" placeholder="0.00" type="text">
+								<div class="absolute inset-y-0 left-3 flex items-center text-sm cursor-default">$</div>
+								<input class="inputs block w-full py-2 pl-10 pr-3 text-sm" placeholder="0.00" type="text">
 							</div>
 						</div>
 					</div>
@@ -53,40 +52,38 @@
 				<div class="flex justify-between">
 					<div class="flex space-x-3">
 						<div class="relative">
-							<button type="button" class="w-[230px] flex items-center py-2 px-3 space-x-2 rounded-md border border-gray-300 shadow-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+							<button type="button" class="w-[230px] flex items-center py-2 px-3 space-x-2 rounded-md ring-1 ring-gray-300 hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 								<div class="h-5 w-5 grid place-content-center space-y-0.5 pointer-events-none">
 									<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
 									<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
 								</div>
 								<div class="grow pointer-events-none text-sm text-left">Средний приоритет</div>
-								<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M5.23017 7.20938C5.52875 6.92228 6.00353 6.93159 6.29063 7.23017L10 11.1679L13.7094 7.23017C13.9965 6.93159 14.4713 6.92228 14.7698 7.20938C15.0684 7.49647 15.0777 7.97125 14.7906 8.26983L10.5406 12.7698C10.3992 12.9169 10.204 13 10 13C9.79599 13 9.60078 12.9169 9.45938 12.7698L5.20938 8.26983C4.92228 7.97125 4.93159 7.49647 5.23017 7.20938Z" fill="#6B7280"/>
-								</svg>
+								{{ source('misc/svg/arrow.svg') }}
 							</button>
-							<ul class="absolute z-10 top-10 w-[230px] rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-gray-700 text-sm">
+							<ul class="dropdown w-[230px]">
 								<li>
-									<button type="button" class="w-full flex items-center py-2 px-4 space-x-3 hover:bg-gray-50">
+									<button type="button" class="w-full flex items-center py-2 px-4 space-x-3">
 										<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
-										<span>Низкий приоритет</span>
+										<span class="text-gray-700 text-sm">Низкий приоритет</span>
 									</button>
 								</li>
 								<li>
-									<button type="button" class="w-full flex items-center py-2 px-4 space-x-3 hover:bg-gray-50">
+									<button type="button" class="w-full flex items-center py-2 px-4 space-x-3">
 										<div class="space-y-0.5">
 											<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
 											<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
 										</div>
-										<span>Средний приоритет</span>
+										<span class="text-gray-700 text-sm">Средний приоритет</span>
 									</button>
 								</li>
 								<li>
-									<button type="button" class="w-full flex items-center py-2 px-4 space-x-3 hover:bg-gray-50">
+									<button type="button" class="w-full flex items-center py-2 px-4 space-x-3">
 										<div class="space-y-0.5">
 											<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
 											<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
 											<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
 										</div>
-										<span>Высокий приоритет</span>
+										<span class="text-gray-700 text-sm">Высокий приоритет</span>
 									</button>
 								</li>
 							</ul>
@@ -95,22 +92,15 @@
 						{% set dept_list = ['Служба поддержки', 'Администрирование', 'Перезагрузка сервера', 'Биллинг'] %}
 
 						<div class="relative">
-							<button type="button" class="w-[230px] flex items-center py-2 px-3 space-x-2 rounded-md border border-gray-300 shadow-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-								<svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M7 8C8.65685 8 10 6.65685 10 5C10 3.34315 8.65685 2 7 2C5.34315 2 4 3.34315 4 5C4 6.65685 5.34315 8 7 8Z" fill="#9CA3AF"/>
-									<path d="M14.5 9C15.8807 9 17 7.88071 17 6.5C17 5.11929 15.8807 4 14.5 4C13.1193 4 12 5.11929 12 6.5C12 7.88071 13.1193 9 14.5 9Z" fill="#9CA3AF"/>
-									<path d="M1.61528 16.428C1.21798 16.1736 0.987847 15.721 1.04605 15.2529C1.41416 12.292 3.93944 10 6.9999 10C10.0604 10 12.5856 12.2914 12.9537 15.2522C13.012 15.7203 12.7818 16.1729 12.3845 16.4273C10.8302 17.4225 8.98243 18 6.9999 18C5.01737 18 3.16959 17.4231 1.61528 16.428Z" fill="#9CA3AF"/>
-									<path d="M14.5001 16C14.4647 16 14.4295 15.9998 14.3943 15.9993C14.4631 15.7025 14.4822 15.3885 14.4423 15.0671C14.2668 13.6562 13.7001 12.367 12.854 11.3116C13.3646 11.1105 13.9208 11 14.5028 11C16.4426 11 18.0956 12.2273 18.7279 13.9478C18.8638 14.3176 18.7045 14.7241 18.3671 14.9275C17.2379 15.6083 15.9147 16 14.5001 16Z" fill="#9CA3AF"/>
-								</svg>
-								<div class="grow text-sm text-left pointer-events-none">Служба поддержки</div>
-								<svg class="arrow pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M5.23017 7.20938C5.52875 6.92228 6.00353 6.93159 6.29063 7.23017L10 11.1679L13.7094 7.23017C13.9965 6.93159 14.4713 6.92228 14.7698 7.20938C15.0684 7.49647 15.0777 7.97125 14.7906 8.26983L10.5406 12.7698C10.3992 12.9169 10.204 13 10 13C9.79599 13 9.60078 12.9169 9.45938 12.7698L5.20938 8.26983C4.92228 7.97125 4.93159 7.49647 5.23017 7.20938Z" fill="#6B7280"/>
-								</svg>
+							<button type="button" class="w-[230px] flex items-center py-2 px-3 space-x-2 rounded-md ring-1 ring-gray-300 hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+								{{ source('misc/svg/users.svg') }}
+								<span class="grow text-sm text-left pointer-events-none">Служба поддержки</span>
+								{{ source('misc/svg/arrow.svg') }}
 							</button>
-							<ul class="absolute z-10 top-10 w-[230px] rounded-md bg-white py-1 text-gray-700 text-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+							<ul class="dropdown w-[230px]">
 								{% for i in dept_list %}
 									<li>
-										<button type="button" class="w-full py-2 px-4 text-left hover:bg-gray-50">{{ i }}</button>
+										<button type="button" class="w-full py-2 px-4 text-gray-700 text-sm text-left hover:bg-gray-50">{{ i }}</button>
 									</li>
 								{% endfor %}
 							</ul>
@@ -119,10 +109,10 @@
 
 					<div class="flex space-x-4">
 						<div class="flex items-center space-x-3">
-							<input type="checkbox" id="return_to_list" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-							<label for="return_to_list" class="text-gray-500 text-sm truncate">Вернуться к списку</label>
+							<input type="checkbox" id="return_to_list" class="checkbox">
+							<label for="return_to_list" class="text-gray-500 text-sm">Вернуться к списку</label>
 						</div>
-						<button type="submit" class="rounded-md border border-transparent bg-indigo-600 px-4 py-2 font-medium text-sm text-white shadow-sm hover:bg-indigo-700">Создать тикет</button>
+						<button type="button" class="rounded-md bg-indigo-600 px-4 py-2 font-medium text-sm text-white hover:bg-indigo-700">Создать тикет</button>
 					</div>
 				</div>
 			</form>
@@ -131,8 +121,8 @@
 	</support-settings>
 
 	{% block modals %}
-		{% include 'support/modals/support.new.ticket.service.html.twig' %}
-		{% include 'support/modals/support.new.ticket.client.html.twig' %}
+		{% include 'support/modals/ticket.user.select.html.twig' %}
+		{% include 'support/modals/ticket.service.select.html.twig' %}
 	{% endblock %}
 
 {% endblock %}

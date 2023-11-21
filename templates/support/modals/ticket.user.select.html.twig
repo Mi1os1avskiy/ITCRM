@@ -1,0 +1,52 @@
+{% extends'/misc/modals/base.modal.html.twig' %}
+
+{% block modal_name %}ticket-user-select{% endblock %}
+
+{% block modal_content %}
+
+	{% set users = [
+		{'email': 'auisque@mail.com', 'name': 'Dianne Russell', 'id': 239238},
+		{'email': 'maurisnulla@mail.com', 'name': 'Jacob Jones', 'id': 23423},
+		{'email': 'proin_aliquet@mail.com', 'name': 'Floyd Miles', 'id': 56748},
+		{'email': 'nibh_consequat@mail.com', 'name': '', 'id': 49873},
+		{'email': 'vulputate@mail.com', 'name': 'Ronald Richards', 'id': 876458},
+		{'email': 'mail@mail.com', 'name': 'Richard Dawkins', 'id': 71567},
+		{'email': 'miloslavskiy@tut.by', 'name': 'Lex Stark', 'id': 14567},
+	] %}
+
+	<div class="relative w-[800px] h-[494px] transform overflow-hidden rounded-lg bg-white my-auto shadow-xl transition-all">
+
+		<div class="flex items-center justify-between py-5 px-6 border-b bg-gray-50">
+			<h2 class="text-lg font-medium leading-6">Выбрать клиента</h2>
+			<div class="flex items-center space-x-4">
+				<div class="w-[220px] relative">
+					<div class="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+						{{ source('misc/svg/search.svg') }}
+					</div>
+					<input type="text" class="inputs block w-full pl-10 text-sm" placeholder="Поиск по Email или ID">
+				</div>
+				<button @click="close(false)" type="button" class="rounded-md text-gray-400 hover:text-gray-500">
+					{{ source('misc/svg/close.svg') }}
+				</button>
+			</div>
+		</div>
+
+		<ul class="h-[338px] overflow-y-scroll divide-y">
+			{% for user in users %}
+				<li class="flex items-center py-4 px-6 space-x-4 text-sm hover:bg-gray-50">
+					<input type="radio" name="user" id="{{ user.email }}" class="checkbox rounded-full">
+					<label for="{{ user.email }}" class="w-[274px] text-left font-medium">{{ user.email }}</label>
+					<div class="w-[274px] text-gray-500 text-left">{{ user.name }}</div>
+					<div class="w-[140px] text-gray-500 text-left">#{{ user.id }}</div>
+				</li>
+			{% endfor %}
+		</ul>
+
+		<div class="flex px-6 py-5 bg-gray-50 space-x-3 text-sm font-medium">
+			<button @click="close(false)" type="button" class="w-full py-2 px-4 rounded-md ring-1 ring-gray-300 text-gray-700 bg-white hover:bg-gray-50">Отменить</button>
+			<button @click="close(true)" type="button" class="w-full py-2 px-4 rounded-md bg-indigo-600 text-white shadow-sm hover:bg-indigo-700">Выбрать</button>
+		</div>
+
+	</div>
+
+{% endblock %}

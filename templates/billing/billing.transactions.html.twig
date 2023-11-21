@@ -21,9 +21,9 @@
 
 				<div class="flex items-center justify-between py-4 px-8 bg-gray-50">
 					<h3 class="text-lg font-semibold">{{ title }}</h3>
-					<button @click="billingAddTransaction()" type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md bg-indigo-600 hover:bg-indigo-700">
+					<button @click="billingAddTransaction()" type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700">
 						{{ source('misc/svg/plus.svg') }}
-						<span class="text-white text-sm font-medium">Добавить</span>
+						<span class="text-sm font-medium">Добавить</span>
 					</button>
 				</div>
 
@@ -76,9 +76,9 @@
 			{% block table %}
 
 				<div class="py-4 px-8">
-					<div class="min-w-full overflow-hidden overflow-x-auto border rounded-t-lg">
+					<div class="min-w-full overflow-hidden overflow-x-auto ring-1 ring-gray-200 rounded-t-lg">
 
-						<table class="min-w-full divide-y">
+						<table class="min-w-full">
 							<thead>
 							<tr class="bg-gray-50 text-sm border-b border-gray-300">
 								<th class="w-[130px] p-3 pl-6 text-left font-medium">UID</th>
@@ -91,7 +91,7 @@
 								<th class="p-3 pr-6 text-left font-medium">Детали</th>
 							</tr>
 							</thead>
-							<tbody class="divide-y bg-white">
+							<tbody class="divide-y">
 
 							{% for item in transactions %}
 

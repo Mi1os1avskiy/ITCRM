@@ -9,11 +9,9 @@
 			<div class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
 
 				<div class="flex justify-between p-6 bg-gray-50">
-					<h2 class="text-lg font-medium text-gray-900">Фильтры</h2>
+					<h2 class="text-lg font-medium">Фильтры</h2>
 					<button @click="close(false)" type="button" class="rounded-md text-gray-400 hover:text-gray-500">
-						<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-						</svg>
+						{{ source('misc/svg/close.svg') }}
 					</button>
 				</div>
 
@@ -21,40 +19,32 @@
 					<div class="space-y-2">
 						<p class="text-sm font-medium text-gray-700 text-left">Поиск</p>
 						<div class="flex space-x-2">
-							<div class="relative rounded-md shadow-sm">
-								<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-										<path fill-rule="evenodd" clip-rule="evenodd" d="M9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5C10.519 14.5 11.893 13.8852 12.8891 12.8891C13.8852 11.893 14.5 10.519 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5ZM2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 10.6625 15.4197 12.1906 14.4517 13.3911L17.7803 16.7197C18.0732 17.0126 18.0732 17.4874 17.7803 17.7803C17.4874 18.0732 17.0126 18.0732 16.7197 17.7803L13.3911 14.4517C12.1906 15.4197 10.6625 16 9 16C5.13401 16 2 12.866 2 9Z" fill="#6B7280"/>
-									</svg>
+							<div class="relative">
+								<div class="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+									{{ source('misc/svg/search.svg') }}
 								</div>
-								<input type="text" class="block w-full rounded-md border-gray-300 pl-10 text-sm placeholder:text-gray-400" placeholder="Имя клиента">
+								<input type="text" class="inputs block w-full pl-10 text-sm" placeholder="Имя клиента">
 							</div>
-							<div class="relative rounded-md shadow-sm">
-								<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-										<path fill-rule="evenodd" clip-rule="evenodd" d="M9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5C10.519 14.5 11.893 13.8852 12.8891 12.8891C13.8852 11.893 14.5 10.519 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5ZM2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 10.6625 15.4197 12.1906 14.4517 13.3911L17.7803 16.7197C18.0732 17.0126 18.0732 17.4874 17.7803 17.7803C17.4874 18.0732 17.0126 18.0732 16.7197 17.7803L13.3911 14.4517C12.1906 15.4197 10.6625 16 9 16C5.13401 16 2 12.866 2 9Z" fill="#6B7280"/>
-									</svg>
+							<div class="relative">
+								<div class="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+									{{ source('misc/svg/search.svg') }}
 								</div>
-								<input type="text" class="block w-full rounded-md border-gray-300 pl-10 text-sm placeholder:text-gray-400" placeholder="Email или ID клиента">
+								<input type="text" class="inputs block w-full pl-10 text-sm" placeholder="Email или ID клиента">
 							</div>
 						</div>
 
 						<div class="flex space-x-2">
-							<div class="relative rounded-md shadow-sm">
-								<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-										<path fill-rule="evenodd" clip-rule="evenodd" d="M9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5C10.519 14.5 11.893 13.8852 12.8891 12.8891C13.8852 11.893 14.5 10.519 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5ZM2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 10.6625 15.4197 12.1906 14.4517 13.3911L17.7803 16.7197C18.0732 17.0126 18.0732 17.4874 17.7803 17.7803C17.4874 18.0732 17.0126 18.0732 16.7197 17.7803L13.3911 14.4517C12.1906 15.4197 10.6625 16 9 16C5.13401 16 2 12.866 2 9Z" fill="#6B7280"/>
-									</svg>
+							<div class="relative">
+								<div class="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+									{{ source('misc/svg/search.svg') }}
 								</div>
-								<input type="text" class="block w-full rounded-md border-gray-300 pl-10 text-sm placeholder:text-gray-400" placeholder="Заголовок">
+								<input type="text" class="inputs block w-full pl-10 text-sm" placeholder="Заголовок">
 							</div>
-							<div class="relative rounded-md shadow-sm">
-								<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-										<path fill-rule="evenodd" clip-rule="evenodd" d="M9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5C10.519 14.5 11.893 13.8852 12.8891 12.8891C13.8852 11.893 14.5 10.519 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5ZM2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 10.6625 15.4197 12.1906 14.4517 13.3911L17.7803 16.7197C18.0732 17.0126 18.0732 17.4874 17.7803 17.7803C17.4874 18.0732 17.0126 18.0732 16.7197 17.7803L13.3911 14.4517C12.1906 15.4197 10.6625 16 9 16C5.13401 16 2 12.866 2 9Z" fill="#6B7280"/>
-									</svg>
+							<div class="relative">
+								<div class="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+									{{ source('misc/svg/search.svg') }}
 								</div>
-								<input type="text" class="block w-full rounded-md border-gray-300 pl-10 text-sm placeholder:text-gray-400" placeholder="ID тикета">
+								<input type="text" class="inputs block w-full pl-10 text-sm" placeholder="ID тикета">
 							</div>
 						</div>
 					</div>
@@ -62,47 +52,19 @@
 					<div class="space-y-2">
 						<p class="text-sm font-medium text-gray-700 text-left">Дата</p>
 						<div class="flex space-x-2">
-							<div class="relative rounded-md shadow-sm">
-								<input type="text" class="block w-full rounded-md border-gray-300 pr-10 text-sm placeholder:text-gray-400" placeholder="От">
-								<button type="button" class="absolute inset-y-0 right-0 flex items-center pr-3" aria-expanded="false" aria-expanded-autohide>
-									<svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M5.25 12C5.25 11.5858 5.58579 11.25 6 11.25H6.01C6.42421 11.25 6.76 11.5858 6.76 12V12.01C6.76 12.4242 6.42421 12.76 6.01 12.76H6C5.58579 12.76 5.25 12.4242 5.25 12.01V12Z" fill="#6B7280"/>
-										<path d="M6 13.25C5.58579 13.25 5.25 13.5858 5.25 14V14.01C5.25 14.4242 5.58579 14.76 6 14.76H6.01C6.42421 14.76 6.76 14.4242 6.76 14.01V14C6.76 13.5858 6.42421 13.25 6.01 13.25H6Z" fill="#6B7280"/>
-										<path d="M7.25 12C7.25 11.5858 7.58579 11.25 8 11.25H8.01C8.42421 11.25 8.76 11.5858 8.76 12V12.01C8.76 12.4242 8.42421 12.76 8.01 12.76H8C7.58579 12.76 7.25 12.4242 7.25 12.01V12Z" fill="#6B7280"/>
-										<path d="M8 13.25C7.58579 13.25 7.25 13.5858 7.25 14V14.01C7.25 14.4242 7.58579 14.76 8 14.76H8.01C8.42421 14.76 8.76 14.4242 8.76 14.01V14C8.76 13.5858 8.42421 13.25 8.01 13.25H8Z" fill="#6B7280"/>
-										<path d="M9.25 10C9.25 9.58579 9.58579 9.25 10 9.25H10.01C10.4242 9.25 10.76 9.58579 10.76 10V10.01C10.76 10.4242 10.4242 10.76 10.01 10.76H10C9.58579 10.76 9.25 10.4242 9.25 10.01V10Z" fill="#6B7280"/>
-										<path d="M10 11.25C9.58579 11.25 9.25 11.5858 9.25 12V12.01C9.25 12.4242 9.58579 12.76 10 12.76H10.01C10.4242 12.76 10.76 12.4242 10.76 12.01V12C10.76 11.5858 10.4242 11.25 10.01 11.25H10Z" fill="#6B7280"/>
-										<path d="M9.25 14C9.25 13.5858 9.58579 13.25 10 13.25H10.01C10.4242 13.25 10.76 13.5858 10.76 14V14.01C10.76 14.4242 10.4242 14.76 10.01 14.76H10C9.58579 14.76 9.25 14.4242 9.25 14.01V14Z" fill="#6B7280"/>
-										<path d="M12 9.25C11.5858 9.25 11.25 9.58579 11.25 10V10.01C11.25 10.4242 11.5858 10.76 12 10.76H12.01C12.4242 10.76 12.76 10.4242 12.76 10.01V10C12.76 9.58579 12.4242 9.25 12.01 9.25H12Z" fill="#6B7280"/>
-										<path d="M11.25 12C11.25 11.5858 11.5858 11.25 12 11.25H12.01C12.4242 11.25 12.76 11.5858 12.76 12V12.01C12.76 12.4242 12.4242 12.76 12.01 12.76H12C11.5858 12.76 11.25 12.4242 11.25 12.01V12Z" fill="#6B7280"/>
-										<path d="M12 13.25C11.5858 13.25 11.25 13.5858 11.25 14V14.01C11.25 14.4242 11.5858 14.76 12 14.76H12.01C12.4242 14.76 12.76 14.4242 12.76 14.01V14C12.76 13.5858 12.4242 13.25 12.01 13.25H12Z" fill="#6B7280"/>
-										<path d="M13.25 10C13.25 9.58579 13.5858 9.25 14 9.25H14.01C14.4242 9.25 14.76 9.58579 14.76 10V10.01C14.76 10.4242 14.4242 10.76 14.01 10.76H14C13.5858 10.76 13.25 10.4242 13.25 10.01V10Z" fill="#6B7280"/>
-										<path d="M14 11.25C13.5858 11.25 13.25 11.5858 13.25 12V12.01C13.25 12.4242 13.5858 12.76 14 12.76H14.01C14.4242 12.76 14.76 12.4242 14.76 12.01V12C14.76 11.5858 14.4242 11.25 14.01 11.25H14Z" fill="#6B7280"/>
-										<path fill-rule="evenodd" clip-rule="evenodd" d="M5.75 2C6.16421 2 6.5 2.33579 6.5 2.75V4H13.5V2.75C13.5 2.33579 13.8358 2 14.25 2C14.6642 2 15 2.33579 15 2.75V4H15.25C16.7688 4 18 5.23122 18 6.75V15.25C18 16.7688 16.7688 18 15.25 18H4.75C3.23122 18 2 16.7688 2 15.25V6.75C2 5.23122 3.23122 4 4.75 4H5V2.75C5 2.33579 5.33579 2 5.75 2ZM4.75 7.5C4.05964 7.5 3.5 8.05964 3.5 8.75V15.25C3.5 15.9404 4.05964 16.5 4.75 16.5H15.25C15.9404 16.5 16.5 15.9404 16.5 15.25V8.75C16.5 8.05964 15.9404 7.5 15.25 7.5H4.75Z" fill="#6B7280"/>
-									</svg>
+							<div class="relative">
+								<input type="text" class="inputs block w-full pr-10 text-sm" placeholder="От">
+								<button type="button" class="absolute inset-y-0 right-3 flex items-center" aria-expanded="false" aria-expanded-autohide>
+									{{ source('misc/svg/calendar.svg') }}
 								</button>
-								<div class="absolute mt-1">
+								<div class="absolute top-10">
 									<input type="date">
 								</div>
 							</div>
-							<div class="relative rounded-md shadow-sm">
-								<input type="text" class="block w-full rounded-md border-gray-300 pr-10 text-sm placeholder:text-gray-400" placeholder="До">
-								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-									<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M5.25 12C5.25 11.5858 5.58579 11.25 6 11.25H6.01C6.42421 11.25 6.76 11.5858 6.76 12V12.01C6.76 12.4242 6.42421 12.76 6.01 12.76H6C5.58579 12.76 5.25 12.4242 5.25 12.01V12Z" fill="#6B7280"/>
-										<path d="M6 13.25C5.58579 13.25 5.25 13.5858 5.25 14V14.01C5.25 14.4242 5.58579 14.76 6 14.76H6.01C6.42421 14.76 6.76 14.4242 6.76 14.01V14C6.76 13.5858 6.42421 13.25 6.01 13.25H6Z" fill="#6B7280"/>
-										<path d="M7.25 12C7.25 11.5858 7.58579 11.25 8 11.25H8.01C8.42421 11.25 8.76 11.5858 8.76 12V12.01C8.76 12.4242 8.42421 12.76 8.01 12.76H8C7.58579 12.76 7.25 12.4242 7.25 12.01V12Z" fill="#6B7280"/>
-										<path d="M8 13.25C7.58579 13.25 7.25 13.5858 7.25 14V14.01C7.25 14.4242 7.58579 14.76 8 14.76H8.01C8.42421 14.76 8.76 14.4242 8.76 14.01V14C8.76 13.5858 8.42421 13.25 8.01 13.25H8Z" fill="#6B7280"/>
-										<path d="M9.25 10C9.25 9.58579 9.58579 9.25 10 9.25H10.01C10.4242 9.25 10.76 9.58579 10.76 10V10.01C10.76 10.4242 10.4242 10.76 10.01 10.76H10C9.58579 10.76 9.25 10.4242 9.25 10.01V10Z" fill="#6B7280"/>
-										<path d="M10 11.25C9.58579 11.25 9.25 11.5858 9.25 12V12.01C9.25 12.4242 9.58579 12.76 10 12.76H10.01C10.4242 12.76 10.76 12.4242 10.76 12.01V12C10.76 11.5858 10.4242 11.25 10.01 11.25H10Z" fill="#6B7280"/>
-										<path d="M9.25 14C9.25 13.5858 9.58579 13.25 10 13.25H10.01C10.4242 13.25 10.76 13.5858 10.76 14V14.01C10.76 14.4242 10.4242 14.76 10.01 14.76H10C9.58579 14.76 9.25 14.4242 9.25 14.01V14Z" fill="#6B7280"/>
-										<path d="M12 9.25C11.5858 9.25 11.25 9.58579 11.25 10V10.01C11.25 10.4242 11.5858 10.76 12 10.76H12.01C12.4242 10.76 12.76 10.4242 12.76 10.01V10C12.76 9.58579 12.4242 9.25 12.01 9.25H12Z" fill="#6B7280"/>
-										<path d="M11.25 12C11.25 11.5858 11.5858 11.25 12 11.25H12.01C12.4242 11.25 12.76 11.5858 12.76 12V12.01C12.76 12.4242 12.4242 12.76 12.01 12.76H12C11.5858 12.76 11.25 12.4242 11.25 12.01V12Z" fill="#6B7280"/>
-										<path d="M12 13.25C11.5858 13.25 11.25 13.5858 11.25 14V14.01C11.25 14.4242 11.5858 14.76 12 14.76H12.01C12.4242 14.76 12.76 14.4242 12.76 14.01V14C12.76 13.5858 12.4242 13.25 12.01 13.25H12Z" fill="#6B7280"/>
-										<path d="M13.25 10C13.25 9.58579 13.5858 9.25 14 9.25H14.01C14.4242 9.25 14.76 9.58579 14.76 10V10.01C14.76 10.4242 14.4242 10.76 14.01 10.76H14C13.5858 10.76 13.25 10.4242 13.25 10.01V10Z" fill="#6B7280"/>
-										<path d="M14 11.25C13.5858 11.25 13.25 11.5858 13.25 12V12.01C13.25 12.4242 13.5858 12.76 14 12.76H14.01C14.4242 12.76 14.76 12.4242 14.76 12.01V12C14.76 11.5858 14.4242 11.25 14.01 11.25H14Z" fill="#6B7280"/>
-										<path fill-rule="evenodd" clip-rule="evenodd" d="M5.75 2C6.16421 2 6.5 2.33579 6.5 2.75V4H13.5V2.75C13.5 2.33579 13.8358 2 14.25 2C14.6642 2 15 2.33579 15 2.75V4H15.25C16.7688 4 18 5.23122 18 6.75V15.25C18 16.7688 16.7688 18 15.25 18H4.75C3.23122 18 2 16.7688 2 15.25V6.75C2 5.23122 3.23122 4 4.75 4H5V2.75C5 2.33579 5.33579 2 5.75 2ZM4.75 7.5C4.05964 7.5 3.5 8.05964 3.5 8.75V15.25C3.5 15.9404 4.05964 16.5 4.75 16.5H15.25C15.9404 16.5 16.5 15.9404 16.5 15.25V8.75C16.5 8.05964 15.9404 7.5 15.25 7.5H4.75Z" fill="#6B7280"/>
-									</svg>
+							<div class="relative">
+								<input type="text" class="inputs block w-full pr-10 text-sm" placeholder="До">
+								<div class="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+									{{ source('misc/svg/calendar.svg') }}
 								</div>
 							</div>
 						</div>
@@ -110,42 +72,38 @@
 
 					<div class="space-y-2">
 						<p class="text-sm font-medium text-gray-700 text-left">Статус</p>
-						<fieldset class="divide-y divide-gray-200 border border-gray-300 rounded-md shadow-sm">
+						<div class="checkbox_field">
 
 							{% for val, css in ticket_statuses %}
 
-								<div class="group flex items-center py-3 px-4 space-x-3 hover:bg-indigo-200">
-									<input id="{{ val }}" name="{{ val }}" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
-									<label for="{{ val }}" class="w-full space-x-3 flex items-center cursor-pointer">
+								<div class="flex items-center pl-4 space-x-3">
+									<input id="{{ val }}" name="{{ val }}" type="checkbox" class="checkbox">
+									<label for="{{ val }}" class="w-full py-3 space-x-3 flex items-center">
 										<span class="h-2.5 w-2.5 bg-{{ css }}-400 rounded-full"></span>
-										<span class="text-sm text-gray-900 group-hover:text-indigo-900">{{ val }}</span>
+										<span class="text-sm">{{ val }}</span>
 									</label>
 								</div>
 
 							{% endfor %}
 
-						</fieldset>
+						</div>
 					</div>
 
 					<div class="space-y-2">
 						<p class="text-sm font-medium text-gray-700 text-left">Назначен</p>
 						<div class="relative">
-							<button type="button" class="flex items-center py-2 px-3 space-x-3 w-full rounded-md border border-gray-300 text-left shadow-sm text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-	                            <svg class="pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" clip-rule="evenodd" d="M18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10ZM12.5 7.5C12.5 8.88071 11.3807 10 10 10C8.61929 10 7.5 8.88071 7.5 7.5C7.5 6.11929 8.61929 5 10 5C11.3807 5 12.5 6.11929 12.5 7.5ZM10 12C8.04133 12 6.30187 12.9385 5.20679 14.3904C6.39509 15.687 8.1026 16.5 10 16.5C11.8974 16.5 13.6049 15.687 14.7932 14.3904C13.6981 12.9385 11.9587 12 10 12Z" fill="#6B7280"/>
-								</svg>
-	                            <span class="flex-1 pointer-events-none text-gray-900">Администратор не выбран</span>
-	                            <svg class="arrow pointer-events-none" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-	                                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.7071 7.29289L9.99999 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68341 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#9CA3AF"/>
-	                            </svg>
+							<button type="button" class="flex items-center py-2 px-3 space-x-3 w-full rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+								{{ source('misc/svg/user.svg') }}
+	                            <span class="flex-1 pointer-events-none">Администратор не выбран</span>
+								{{ source('misc/svg/arrow.svg') }}
 							</button>
 
-							<ul class="absolute z-10 top-10 py-1 w-full overflow-auto rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-sm">
+							<ul class="dropdown  w-full overflow-auto">
 								<li>
-									<button type="button" class="w-full py-2 px-3 text-gray-900 text-left hover:bg-gray-100">Admin</button>
+									<button type="button" class="w-full py-2 px-3 text-sm text-left">Admin</button>
 								</li>
 								<li>
-									<button type="button" class="w-full py-2 px-3 text-gray-900 text-left hover:bg-gray-100">User</button>
+									<button type="button" class="w-full py-2 px-3 text-sm text-left">User</button>
 								</li>
 							</ul>
 						</div>
@@ -153,74 +111,65 @@
 
 					<div class="space-y-2">
 						<p class="text-sm font-medium text-gray-700 text-left">Приоритет</p>
-						<fieldset class="divide-y divide-gray-200 border border-gray-300 rounded-md shadow-sm">
-							<div class="group flex py-3 px-4 space-x-3 hover:bg-indigo-200">
-								<input id="high" name="high" type="checkbox" class="flex place-self-center h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
-								<label for="high" class="w-full flex items-center space-x-3 cursor-pointer">
+						<div class="checkbox_field">
+							<div class="flex items-center pl-4 space-x-3">
+								<input id="high" name="high" type="checkbox" class="checkbox">
+								<label for="high" class="w-full flex items-center py-3 space-x-3">
 									<div class="space-y-0.5">
 										<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
 										<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
 										<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
 									</div>
-									<p class="text-sm text-gray-900 group-hover:text-indigo-900">Высокий приоритет</p>
+									<p class="text-sm">Высокий приоритет</p>
 								</label>
 							</div>
-							<div class="group flex py-3 px-4 space-x-3 hover:bg-indigo-200">
-								<input id="medium" name="medium" type="checkbox" class="flex place-self-center h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
-								<label for="medium" class="w-full flex items-center space-x-3 cursor-pointer">
+							<div class="flex items-center pl-4 space-x-3">
+								<input id="medium" name="medium" type="checkbox" class="checkbox">
+								<label for="medium" class="w-full flex items-center py-3 space-x-3">
 									<div class="space-y-0.5">
 										<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
 										<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
 									</div>
-									<p class="text-sm text-gray-900 group-hover:text-indigo-900">Средний приоритет</p>
+									<p class="text-sm">Средний приоритет</p>
 								</label>
 							</div>
-							<div class="group flex py-3 px-4 space-x-3 hover:bg-indigo-200">
-								<input id="light" name="light" type="checkbox" class="flex place-self-center h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
-								<label for="light" class="w-full flex items-center space-x-3 cursor-pointer">
+							<div class="flex items-center pl-4 space-x-3">
+								<input id="light" name="light" type="checkbox" class="checkbox">
+								<label for="light" class="w-full flex items-center py-3 space-x-3">
 									<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
-									<p class="text-sm text-gray-900 group-hover:text-indigo-900">Низкий приоритет</p>
+									<p class="text-sm">Низкий приоритет</p>
 								</label>
 							</div>
-						</fieldset>
+						</div>
 					</div>
+
+					{% set departments = {'support' : 'Служба поддержки', 'admin' : 'Администрирование', 'restart' : 'Перезагрузка сервера', 'billing' : 'Биллинг'} %}
 
 					<div class="space-y-2">
 						<p class="text-sm font-medium text-gray-700 text-left">Департамент</p>
-						<fieldset class="divide-y divide-gray-200 border border-gray-300 rounded-md shadow-sm">
-							<div class="group flex py-3 px-4 space-x-3 hover:bg-indigo-200">
-								<input id="support" name="support" type="checkbox" class="flex place-self-center h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
-								<label for="support" class="w-full text-sm text-gray-900 text-left group-hover:text-indigo-900 cursor-pointer">Служба поддержки</label>
-							</div>
-							<div class="group flex py-3 px-4 space-x-3 hover:bg-indigo-200">
-								<input id="admin" name="admin" type="checkbox" class="flex place-self-center h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
-								<label for="admin" class="w-full text-sm text-gray-900 text-left group-hover:text-indigo-900 cursor-pointer">Администрирование</label>
-							</div>
-							<div class="group flex py-3 px-4 space-x-3 hover:bg-indigo-200">
-								<input id="restart" name="restart" type="checkbox" class="flex place-self-center h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
-								<label for="restart" class="w-full text-sm text-gray-900 text-left group-hover:text-indigo-900 cursor-pointer">Перезагрузка сервера</label>
-							</div>
-							<div class="group flex py-3 px-4 space-x-3 hover:bg-indigo-200">
-								<input id="billing" name="billing" type="checkbox" class="flex place-self-center h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
-								<label for="billing" class="w-full text-sm text-gray-900 text-left group-hover:text-indigo-900 cursor-pointer">Биллинг</label>
-							</div>
-						</fieldset>
+						<div class="checkbox_field">
+
+							{% for key, val in departments %}
+								<div class="flex items-center pl-4 space-x-3">
+									<input id="{{ key }}" name="{{ key }}" type="checkbox" class="checkbox">
+									<label for="{{ key }}" class="w-full py-3 text-sm text-left">{{ val }}</label>
+								</div>
+							{% endfor %}
+
+						</div>
 					</div>
 				</div>
 
-				<div class="fixed bottom-0 w-[536px] flex justify-between border-t py-5 px-6 bg-white">
-					<button type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md border border-gray-300 shadow-sm hover:bg-gray-50">
-						<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M10 17C13.866 17 17 13.866 17 10C17 6.13401 13.866 3 10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17ZM7.21967 7.21967C7.51256 6.92678 7.98744 6.92678 8.28033 7.21967L10 8.93934L11.7197 7.21967C12.0126 6.92678 12.4874 6.92678 12.7803 7.21967C13.0732 7.51256 13.0732 7.98744 12.7803 8.28033L11.0607 10L12.7803 11.7197C13.0732 12.0126 13.0732 12.4874 12.7803 12.7803C12.4874 13.0732 12.0126 13.0732 11.7197 12.7803L10 11.0607L8.28033 12.7803C7.98744 13.0732 7.51256 13.0732 7.21967 12.7803C6.92678 12.4874 6.92678 12.0126 7.21967 11.7197L8.93934 10L7.21967 8.28033C6.92678 7.98744 6.92678 7.51256 7.21967 7.21967Z" fill="#6B7280"/>
-						</svg>
+				<div class="fixed bottom-0 w-[536px] flex justify-between border-t bg-white py-5 px-6">
+					<button type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md ring-1 ring-gray-300 hover:bg-gray-50">
+						{{ source('misc/svg/clear.svg') }}
 						<span class="text-sm text-gray-700 font-medium">Очистить фильтры (3)</span>
 					</button>
 					<div class="flex space-x-4">
-						<button @click="close(false)" type="button" class="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50">Отменить</button>
-						<button type="submit" class="rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">Показать</button>
+						<button @click="close(false)" type="button" class="rounded-md ring-1 ring-gray-300 py-2 px-4 text-sm font-medium text-gray-700 hover:bg-gray-50">Отменить</button>
+						<button type="submit" class="rounded-md bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700">Показать</button>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>

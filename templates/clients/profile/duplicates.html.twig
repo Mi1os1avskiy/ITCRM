@@ -26,20 +26,19 @@
 					<thead>
 					<tr class="bg-gray-50 border-b border-gray-300 text-sm">
 						<th class="w-[136px] pl-6 pr-3 py-3 text-left font-medium">ID</th>
-						<th class="w-[233px] px-3 py-3 text-left font-medium">Email</th>
-						<th class="w-[184px] px-3 py-3 text-left font-medium whitespace-nowrap">Имя</th>
-						<th class="w-[120px] pl-3 pr-6 py-3 text-right font-medium">Баланс</th>
-						<th class="w-[104px] pl-3 pr-6 py-3 text-right font-medium">Услуги</th>
-						<th class="w-[136px] pl-3 pr-6 py-3 text-left font-medium">Статус</th>
+						<th class="px-3 py-3 text-left font-medium">Email</th>
+						<th class="w-[184px] p-3 text-left font-medium whitespace-nowrap">Имя</th>
+						<th class="w-[120px] p-3 text-right font-medium">Баланс</th>
+						<th class="w-[104px] p-3 text-right font-medium">Услуги</th>
+						<th class="w-[136px] p-3 text-left font-medium">Статус</th>
 						<th class="w-[168px] pl-3 pr-6 py-3 text-left font-medium">Зарегистирован</th>
-
 					</tr>
 					</thead>
 
 					<tbody class="divide-y">
 
 					{% for i in duplicates %}
-					<tr class="text-sm text-gray-500">
+					<tr class="text-sm">
 						<td class="pl-6 pr-3 py-4 whitespace-nowrap">
 							<a href="{{ path('overview') }}" class="font-medium hover:text-indigo-700">#{{ i.id }}</a>
 							<p class="text-red-500">Duplicate</p>
@@ -50,8 +49,8 @@
 						<td class="px-3 py-4 whitespace-nowrap">
 							<a href="{{ path('overview') }}" class="font-medium hover:text-indigo-700">{{ i.name }}</a>
 						</td>
-						<td class="pl-3 pr-6 py-4 text-right">{{ i.balance|number_format(2, '.', '') }}</td>
-						<td class="pl-3 pr-6 py-4 text-right">{{ i.services }}</td>
+						<td class="pl-3 pr-6 py-4 text-gray-500 text-right">${{ i.balance|number_format(2, '.', '') }}</td>
+						<td class="pl-3 pr-6 py-4 text-gray-500 text-right">{{ i.services }}</td>
 						<td class="pl-3 pr-6 py-4">
 							{% for val, css in user_statuses %}
 								{% if i.status == val %}
@@ -59,7 +58,7 @@
 								{% endif %}
 							{% endfor %}
 						</td>
-						<td class="pl-3 pr-6 py-4">{{ i.registered }}</td>
+						<td class="pl-3 pr-6 py-4 text-gray-500">{{ i.registered }}</td>
 					</tr>
 					{% endfor %}
 

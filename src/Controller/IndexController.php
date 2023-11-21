@@ -261,6 +261,7 @@ class IndexController extends AbstractController
     {
         return $this->render('support/support.new.ticket.html.twig', [
             'title' => 'Новый тикет',
+			'data' => TicketsController::ticketData(),
         ]);
     }
 

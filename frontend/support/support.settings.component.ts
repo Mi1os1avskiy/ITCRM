@@ -5,8 +5,8 @@ const SupportTicketsClose = 'support-tickets-close';
 const SupportTicketNoteDelete = 'ticket-note-delete';
 const SupportTicketAdminAnswerDelete = 'ticket-admin-answer-delete';
 const SupportFilters = 'support-filters';
-const SupportNewTicketClient = 'support-new-ticket-client';
-const SupportNewTicketService = 'support-new-ticket-service';
+const TicketUserSelect = 'ticket-user-select';
+const TicketServiceSelect = 'ticket-service-select';
 
 export const SupportSettingsComponent = {
     data() {
@@ -73,17 +73,21 @@ export const SupportSettingsComponent = {
                 .catch(() => {
                 });
         },
-        supportNewTicketClient() {
+        ticketUserSelect() {
             const self = <any>this;
-            self.$modals(SupportNewTicketClient).show()
+            self.$modals(TicketUserSelect).show()
                 .then((data: any) => {
                 })
                 .catch(() => {
                 });
         },
-        supportNewTicketService() {
+        ticketServiceSelect(val: number) {
             const self = <any>this;
-            self.$modals(SupportNewTicketService).show()
+            const data = {
+                header: val
+            };
+            console.log(data.header);
+            self.$modals(TicketServiceSelect).show(data)
                 .then((data: any) => {
                 })
                 .catch(() => {

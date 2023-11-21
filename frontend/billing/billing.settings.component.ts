@@ -52,7 +52,6 @@ export const BillingSettingsComponent = {
                 });
         },
         billingTransactionsDetails(detailsID: bigint) {
-            console.log(detailsID);
             const self = <any>this;
             const data = {
                 detailsType: detailsID

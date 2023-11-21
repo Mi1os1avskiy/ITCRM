@@ -75,9 +75,9 @@
 
 			{% block table %}
 
-				<div class="mt-4 min-w-full overflow-hidden overflow-x-auto border rounded-t-lg">
+				<div class="mt-4 min-w-full overflow-hidden overflow-x-auto ring-1 ring-gray-200 rounded-t-lg">
 
-					<table class="min-w-full divide-y divide-gray-200">
+					<table class="min-w-full">
 						<thead>
 						<tr class="bg-gray-50 border-b border-gray-300 text-sm">
 							<th class="w-[110px] pl-6 pr-3 py-3 text-left font-medium">ID</th>
@@ -90,7 +90,7 @@
 						</tr>
 						</thead>
 
-						<tbody class="divide-y divide-gray-200 bg-white">
+						<tbody class="divide-y">
 
 						{% for invoice in invoices %}
 							<tr class="text-sm">

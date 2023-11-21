@@ -37,7 +37,7 @@ class TicketsController
     }
 
     public static function timeDiff() {
-        $start_time = strtotime("29-07-2023 13:30:30");
+        $start_time = strtotime("16-11-2023 13:30:30");
         $end_time = strtotime('now');
         $diff = $end_time - $start_time - 21 * 3600;
         $hours = floor($diff / 3600);
