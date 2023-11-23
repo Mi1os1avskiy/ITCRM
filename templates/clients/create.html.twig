@@ -162,7 +162,7 @@
 							<div class="w-1/2">Разрешения</div>
 						</div>
 						<div class="flex space-x-6 text-gray-700 text-sm font-medium">
-							<div class="w-1/2 p-5 bg-gray-50 border-b rounded-xl">
+							<div class="w-1/2 p-5 bg-gray-50 border-b border-gray-300 rounded-xl">
 								<div class="flex items-center justify-between pb-5 border-b">
 									<div>Запретить пополнение баланса</div>
 									<label for="toggle_balance" class="relative flex items-center cursor-pointer">
@@ -172,7 +172,7 @@
 									</label>
 								</div>
 								<div class="flex items-center justify-between py-5 border-b">
-									<div>Запретить оплаты инвойсов</div>
+									<div>Запретить оплату инвойсов</div>
 									<label for="toggle_invoicing" class="relative flex items-center cursor-pointer">
 										<input type="checkbox" id="toggle_invoicing" class="sr-only">
 										<div class="toggle_body"></div>
@@ -188,7 +188,7 @@
 									</label>
 								</div>
 							</div>
-							<div class="w-1/2 p-5 bg-gray-50 border-b rounded-xl">
+							<div class="w-1/2 p-5 bg-gray-50 border-b border-gray-300 rounded-xl">
 								<div class="flex items-center justify-between pb-5 border-b">
 									<div>Разрешить отмену услуг в ЛК со штрафом</div>
 									<label for="toggle_services" class="relative flex items-center cursor-pointer">
@@ -234,8 +234,7 @@
 
 					<hr>
 
-					<div class="flex space-x-6">
-						<div class="w-[344px]"></div>
+					<div class="flex justify-center">
 						<button @click="clientAdd()" type="button" class="py-2 px-4 rounded-md bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700">Добавить клиента</button>
 					</div>
 				</form>
