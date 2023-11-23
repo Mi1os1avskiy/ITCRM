@@ -5,8 +5,8 @@
 {% block content %}
 
 	<profile-settings inline-template>
-		<div>
-			<form class="py-6 px-8 space-y-5 divide-y text-sm">
+		<div class="pt-6 pb-4 px-8 space-y-10">
+			<form class="space-y-5 divide-y text-sm">
 				<h3 class="text-lg font-medium leading-6">Персональные данные</h3>
 
 				<div class="flex pt-5 space-x-6">
@@ -76,7 +76,7 @@
 						<div class="w-1/2 text-lg font-medium leading-6">Разрешения</div>
 					</div>
 					<div class="flex space-x-6 text-gray-700 text-sm font-medium">
-						<div class="w-1/2 p-5 bg-gray-50 border-b rounded-xl">
+						<div class="w-1/2 p-5 bg-gray-50 border-b border-gray-300 rounded-xl">
 							<div class="flex items-center justify-between pb-5 border-b">
 								<div>Запретить пополнение баланса</div>
 								<label for="toggle_balance" class="relative flex items-center cursor-pointer">
@@ -86,7 +86,7 @@
 								</label>
 							</div>
 							<div class="flex items-center justify-between py-5 border-b">
-								<div>Запретить оплаты инвойсов</div>
+								<div>Запретить оплату инвойсов</div>
 								<label for="toggle_invoicing" class="relative flex items-center cursor-pointer">
 									<input type="checkbox" id="toggle_invoicing" class="sr-only" checked>
 									<div class="toggle_body"></div>
@@ -115,23 +115,25 @@
 					</div>
 				</div>
 
-				<div class="flex pt-5 justify-center">
+				<div class="flex justify-center pt-5">
 					<button @click="profileSaveChanges()" type="button" class="py-2 px-4 rounded-md bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700">Сохранить изменения</button>
 				</div>
 
-				<h3 class="pt-10 text-lg font-medium leading-6">Безопасность</h3>
+				<hr>
+			</form>
 
+			<div class="space-y-5 divide-y">
+				<h3 class="text-lg font-medium leading-6">Безопасность</h3>
 				<div class="flex items-center pt-5 space-x-6 text-gray-700 text-sm font-medium">
 					<div class="w-[344px]">Пароль</div>
 					<button @click="changePassword()" type="button" class="py-2 px-3 rounded-md ring-1 ring-gray-300 leading-4 hover:bg-gray-50">Изменить</button>
 				</div>
-
 				<div class="flex items-center pt-5 space-x-6 text-gray-700 text-sm font-medium">
 					<div class="w-[344px]">2FA</div>
 					<button @click="disable2fa()" type="button" class="py-2 px-3 rounded-md ring-1 ring-gray-300 leading-4 hover:bg-gray-50">Отключить 2FA</button>
 					<p>Код восстановления: HsxS-BCve-hoYo-PfWn-Wqvk</p>
 				</div>
-			</form>
+			</div>
 
 			{% block modals %}
 				{% include 'clients/profile/modals/clients.profile.password.html.twig' %}

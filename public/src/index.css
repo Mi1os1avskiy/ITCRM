@@ -10,6 +10,10 @@
 	html {
 		@apply text-gray-900;
 	}
+
+	input[type="checkbox"], input[type="checkbox"] ~ label {
+		@apply cursor-pointer;
+	}
 }
 
 @layer components {
@@ -33,7 +37,7 @@
 		@apply w-11 h-6 rounded-full bg-gray-200 hover:bg-gray-300;
 	}
 	input:checked ~ .toggle_body {
-		@apply bg-indigo-500;
+		@apply bg-indigo-600;
 	}
 
 	.toggle_dot {
@@ -82,10 +86,6 @@ input[type='number'] {
 /* end */
 
 
-input[type="checkbox"], input[type="checkbox"] ~ label {
-	cursor: pointer;
-}
-
 [aria-expanded="true"] .arrow, [aria-expanded="true"] ~ .arrow {
 	transform: rotate(180deg);
 }
@@ -116,24 +116,6 @@ input[type="checkbox"], input[type="checkbox"] ~ label {
 		display: none;
 	}
 }
-
-
-/*
-[type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus {
-	outline: none;
-	outline-offset: 0;
-	box-shadow: none;
-	border-color: #6366F1;
-	color: #111827;
-}
-
-[type='text']:hover, [type='email']:hover, [type='url']:hover, [type='password']:hover, [type='number']:hover, [type='date']:hover, [type='datetime-local']:hover, [type='month']:hover, [type='search']:hover, [type='tel']:hover, [type='time']:hover, [type='week']:hover, [multiple]:hover, select:hover {
-	background: #F9FAFB;
-}
-*/
-
-
-
 
 
 /*	tooltips	*/
