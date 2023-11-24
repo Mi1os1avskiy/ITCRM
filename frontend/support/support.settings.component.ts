@@ -92,7 +92,7 @@ export const SupportSettingsComponent = {
                 })
                 .catch(() => {
                 });
-        }
+        },
     }
 }
 

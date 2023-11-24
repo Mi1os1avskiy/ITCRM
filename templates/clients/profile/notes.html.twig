@@ -21,10 +21,10 @@
 		        </div>
 	        </div>
 
-	        <div class="flex justify-end space-x-4">
+	        <div class="flex justify-end space-x-8">
 		        <div class="flex items-center space-x-3">
 			        <input type="checkbox" id="fix_note" class="checkbox">
-			        <label for="fix_note" class="text-gray-500 text-sm">Закрепить</label>
+			        <label for="fix_note" class="text-gray-700 text-sm">Закрепить</label>
 		        </div>
 		        <button @click="noteAdd()" type="button" class="py-2 px-4 rounded-md bg-indigo-600 font-medium text-sm text-white hover:bg-indigo-700">Добавить заметку</button>
 	        </div>
@@ -46,12 +46,12 @@
                                                 {% if note.status %}
 	                                                {{ source('misc/svg/important.svg') }}
                                                 {% endif %}
-                                                <p class="font-medium">Заметка от {{ note.user }}</p>
+                                                <p class="text-sm font-medium">Заметка от {{ note.user }}</p>
                                             </div>
-                                            <div class="text-xs text-yellow-800">{{ note.date }}, {{ note.time }} {{ note.loc }}</div>
+                                            <div class="text-xs text-yellow-800 leading-5">{{ note.date }}, {{ note.time }} {{ note.loc }}</div>
                                         </div>
 	                                    <div class="flex items-center space-x-1">
-		                                    <button type="button" class="p-2.5 rounded-md text-gray-800 hover:bg-yellow-100">
+		                                    <button type="button" class="p-2 rounded-md text-gray-800 hover:bg-yellow-100">
 			                                    {{ source('misc/svg/pencil.svg') }}
 		                                    </button>
 		                                    <button @click="noteDelete()" type="button" class="p-2.5 rounded-md text-gray-800 hover:bg-yellow-100">
