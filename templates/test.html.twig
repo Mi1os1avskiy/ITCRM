@@ -10,8 +10,8 @@
 
 			<div>
 				{% set filt = ['one', 'two', 'three', 'four', 'five'] %}
-				{% for i in filt|filter(i => i not in ['two', 'three']) %}
-					<p>{{ i }}</p>
+				{% for i in filt|filter(i => i not in ['two', 'four']) %}
+					<div class="inline-block mr-4 p-2 ring rounded-md">{{ i }}</div>
 				{% endfor %}
 			</div>
 
@@ -23,37 +23,29 @@
 			</div>
 
 			<div class="popover__wrapper relative inline-block">
-				<h2 class="mt-4 py-2 px-4 border rounded-md hover:bg-gray-50">Hover:me</h2>
-				<div class="popover__content w-fit py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">
+				<h2 class="mt-4 py-2 px-4 border rounded-md hover:bg-gray-50">Hover me</h2>
+				<div class="popover__content w-fit bottom-16 py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">
 					<p>Here is some text for tooltip and there is may be very long string.</p>
 				</div>
 			</div>
 
 			<div>
 				<ul class="grid grid-cols-3 gap-x-5 m-10 max-w-md mx-auto">
-					<li class="relative">
-						<input class="sr-only peer" type="radio" value="yes" name="answer" id="answer_yes">
-						<label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent" for="answer_yes">Yes</label>
-						<div class="absolute hidden w-5 h-5 peer-checked:block top-5 right-3">👍</div>
-					</li>
 
-					<li class="relative">
-						<input class="sr-only peer" type="radio" value="no" name="answer" id="answer_no">
-						<label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-red-500 peer-checked:ring-2 peer-checked:border-transparent" for="answer_no">No</label>
-						<div class="absolute hidden w-5 h-5 peer-checked:block top-5 right-3">👎</div>
-					</li>
+					{% set values = {'yes': '👍', 'no': '👎', 'maybe': '🤔'} %}
 
-					<li class="relative">
-						<input class="sr-only peer" type="radio" value="maybe" name="answer" id="answer_maybe">
-						<label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-yellow-500 peer-checked:ring-2 peer-checked:border-transparent" for="answer_maybe">Maybe</label>
-						<div class="absolute hidden w-5 h-5 peer-checked:block top-5 right-3">🤔</div>
-					</li>
+					{% for key, val in values %}
+						<li class="relative">
+							<input class="sr-only peer" type="radio" value="yes" name="answer" id="answer_{{ key }}">
+							<label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent" for="answer_{{ key }}">{{ key }}</label>
+							<div class="absolute hidden w-5 h-5 peer-checked:block top-5 right-3">{{ val }}</div>
+						</li>
+					{% endfor %}
 				</ul>
 			</div>
 
-
 			<div class="py-8 space-y-4">
-				<div class="w-64 ring-1 ring-gray-500 p-5">
+				<div class="w-fit ring p-4">
 					<div class="w-fit px-2.5 py-0.5 rounded-full bg-green-100 text-xs text-green-800 font-medium whitespace-nowrap">Waiting for Manager</div>
 				</div>
 			</div>
