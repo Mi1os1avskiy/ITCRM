@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+<orders-module inline-template>
+
+	<main class="pb-24">
+
+	{% block header %}
+
+		<div class="bg-gray-50">
+			<div class="py-4 px-8 space-y-2">
+				<nav class="flex items-center space-x-4 text-sm text-gray-500 font-medium">
+					<a href="{{ path('orders') }}">Заказы</a>
+					<div class="-rotate-90">
+						{{ source('misc/svg/arrow.svg') }}
+					</div>
+					<span>{{ user_data.order_id }}</span>
+				</nav>
+				<div class="h-9 flex items-center space-x-4">
+					<div class="text-lg font-semibold">{{ user_data.order_id }} - {{ user_data.title }}</div>
+					<div class="w-fit px-2.5 py-0.5 rounded-full bg-green-100 text-xs text-green-800 font-medium whitespace-nowrap">Услуга: Ordered</div>
+					<div class="w-fit px-2.5 py-0.5 rounded-full bg-red-100 text-xs text-red-800 font-medium whitespace-nowrap">Сервер: Pending</div>
+				</div>
+			</div>
+
+		</div>
+
+	{% endblock %}
+
+	{% block content %}
+
+		<orders-settings inline-template>
+
+			{% block details %}{% endblock %}
+
+			{% block history %}{% endblock %}
+
+		</orders-settings>
+
+		{% block modals %}
+
+		{% endblock %}
+
+	{% endblock %}
+
+	</main>
+
+</orders-module>
+
+{% endblock %}

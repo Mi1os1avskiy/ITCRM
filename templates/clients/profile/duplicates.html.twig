@@ -49,9 +49,9 @@
 						<td class="px-3 py-4 whitespace-nowrap">
 							<a href="{{ path('overview') }}" class="font-medium hover:text-indigo-700">{{ i.name }}</a>
 						</td>
-						<td class="pl-3 pr-6 py-4 text-gray-500 text-right">${{ i.balance|number_format(2, '.', '') }}</td>
-						<td class="pl-3 pr-6 py-4 text-gray-500 text-right">{{ i.services }}</td>
-						<td class="pl-3 pr-6 py-4">
+						<td class="px-3 py-4 text-gray-500 text-right">${{ i.balance|number_format(2, '.', '') }}</td>
+						<td class="px-3 py-4 text-gray-500 text-right">{{ i.services }}</td>
+						<td class="px-3 py-4">
 							{% for val, css in user_statuses %}
 								{% if i.status == val %}
 									<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-100 text-{{ css }}-800 capitalize">{{ val }}</span>

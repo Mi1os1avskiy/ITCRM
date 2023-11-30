@@ -14,6 +14,10 @@
 	input[type="checkbox"], input[type="checkbox"] ~ label {
 		@apply cursor-pointer;
 	}
+
+	svg {
+		@apply flex-shrink-0;
+	}
 }
 
 @layer components {

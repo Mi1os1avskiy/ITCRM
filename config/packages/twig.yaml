@@ -20,6 +20,10 @@ twig:
             {'Pending': 'red', 'In progress': 'orange', 'Suspended': 'blue', 'Active': 'green', 'Cancelled': 'gray', 'Terminated': 'gray'}
         payment_statuses:
             {'Cancelled': 'gray', 'Expired': 'orange', 'New': 'yellow', 'Error': 'red', 'Paid': 'green', 'Wait': 'blue'}
+        server_statuses:
+            {'Pending': 'red', 'Rejected': 'gray', 'Cancelled': 'gray', 'Activating': 'yellow', 'Active': 'green', 'Installing': 'green', 'Running': 'green', 'Stopping': 'orange', 'Stopped': 'orange', 'Starting': 'green', 'Blocked': 'blue', 'Overdue': 'blue', 'Restoring': 'blue', 'Suspended': 'blue', 'Terminated': 'gray', 'Rebooting': 'green'}
+        service_statuses:
+            {'Pending': 'red', 'Rejected': 'gray', 'Ordered': 'red', 'Active': 'green', 'Cancelled': 'gray', Suspended': 'blue', 'Terminated': 'gray'}
 when@test:
     twig:
         strict_variables: true

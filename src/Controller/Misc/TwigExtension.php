@@ -18,8 +18,7 @@ class TwigExtension extends AbstractExtension
             new TwigFunction('dump', [$this, 'getDump']),
             new TwigFunction('getGet', [$this, 'getGet']),
 			new TwigFunction('test', [$this, 'testFunc']),
-			new TwigFunction('post', [$this, 'getPost']),
-			new TwigFunction('countryList', [$this, 'countryList'])
+			new TwigFunction('countryList', [$this, 'countryList']),
         ];
     }
 
@@ -54,19 +53,29 @@ class TwigExtension extends AbstractExtension
         return $get;
     }
 
-	public static function getPost() {
-		static $post;
-
-		if($_POST) {
-			$post = current($_POST);
-		}
-
-		return $post;
-	}
-
     public static function getDump() {
         return dd($_GET);
     }
+
+//	public static function statuses() {
+//		$user = ['Active' => 'green', 'Unconfirmed' => 'yellow', 'Inactive' => 'gray', 'Closed' => 'gray'];
+//		$transaction = ['Частично засчитана' => 'red', 'Не засчитана' => 'red', 'Мошенническая' => 'red', 'Возвращена' => 'orange', 'Заморожена' => 'blue', 'В ожидании' => 'blue', 'Засчитана' => 'green', 'Игнорируется' => 'gray', 'Отменена' => 'gray'];
+//		$transaction_filter = ['Возвращена' => 'orange', 'Заморожена' => 'blue', 'В ожидании' => 'blue', 'Игнорируется' => 'gray'];
+//		$invoice = ['Pending' => 'red', 'Paid' => 'green', 'Cancelled' => 'gray', 'Overdue' => 'gray', 'Draft' => 'purple'];
+//		$ticket = ['Important!' => 'red', 'Open' => 'red', 'In progress' => 'orange', 'Answered' => 'yellow', 'Customer reply' => 'yellow', 'Waiting for manager' => 'yellow', 'On hold' => 'blue', 'Closed' => 'green', 'Payment Issues' => 'red'];
+//		$order = ['Pending' => 'red', 'In progress' => 'orange', 'Suspended' => 'blue', 'Active' => 'green', 'Cancelled' => 'gray', 'Terminated' => 'gray'];
+//		$payment = ['Cancelled' => 'gray', 'Expired' => 'orange', 'New' => 'yellow', 'Error' => 'red', 'Paid' => 'green', 'Wait' => 'blue'];
+//
+//		return $statuses = [
+//			'user_statuses' => $user,
+//			'transaction_statuses' => $transaction,
+//			'transaction_filter' => $transaction_filter,
+//			'invoice_statuses' => $invoice,
+//			'ticket_statuses' => $ticket,
+//			'order_statuses' => $order,
+//			'payment_statuses' => $payment,
+//			];
+//	}
 
     public static function paymentMethods() {
         $list = [
@@ -101,18 +110,6 @@ class TwigExtension extends AbstractExtension
             ['Нарушения' => ['BREIN', 'SMTP KYC', 'Благодарим за решение проблемы', 'Жалоба на сервер', 'Разблокировка в случае серьёзных жалоб / KYC', 'Требуется верификация для разблокировки ВПС']],
             ['IP адреса' => ['192.168.1.1', '192.168.1.2', '192.168.1.3', '192.168.1.4']],
             ['SSL сертификаты' => ['Item 1', 'Item 2', 'Item 3', 'Item 4']],
-        ];
-
-        $list2 = [
-            ['level1' => 'Нарушения', 'level2' => ['BREIN', 'SMTP KYC', 'Благодарим за решение проблемы', 'Жалоба на сервер', 'Разблокировка в случае серьёзных жалоб / KYC', 'Требуется верификация для разблокировки ВПС']],
-            ['level1' => 'IP адреса', 'level2' => ['192.168.1.1', '192.168.1.2', '192.168.1.3', '192.168.1.4']],
-            ['level1' => 'SSL сертификаты', 'level2' => ['Item 1', 'Item 2', 'Item 3', 'Item 4']],
-            ['level1' => 'Биллинг', 'level2' => ['Item 1', 'Item 2', 'Item 3', 'Item 4']],
-            ['level1' => 'Бухгалтерия', 'level2' => ['Item 1', 'Item 2', 'Item 3', 'Item 4']],
-            ['level1' => 'Верификация', 'level2' => ['Item 1', 'Item 2', 'Item 3', 'Item 4']],
-            ['level1' => 'Вопросы по заказу', 'level2' => ['Item 1', 'Item 2', 'Item 3', 'Item 4']],
-            ['level1' => 'Партнёрская программа', 'level2' => ['Item 1', 'Item 2', 'Item 3', 'Item 4']],
-            ['level1' => 'Уведомления', 'level2' => ['Item 1', 'Item 2', 'Item 3', 'Item 4']],
         ];
 
         return $list;

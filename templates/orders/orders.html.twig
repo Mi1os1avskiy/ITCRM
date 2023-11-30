@@ -103,7 +103,7 @@
 
 										<tr class="text-sm">
 											<td class="min-w-[252px] popover__wrapper relative inline-block py-4 pl-6 pr-3 font-medium">
-												<a href="#" class="font-medium line-clamp-1 overflow-hidden hover:text-indigo-700" title="{{ order.id }} - {{ order.tariff}}">{{ order.id }} - {{ order.tariff}}</a>
+												<a href="{{ path('order_details') }}" class="font-medium line-clamp-1 overflow-hidden hover:text-indigo-700" title="{{ order.id }} - {{ order.tariff}}">{{ order.id }} - {{ order.tariff}}</a>
 											</td>
 											<td class="py-4 px-3 text-gray-500">{{ order.loc }}</td>
 											<td class="py-4 px-3 text-gray-500 truncate">{{ order.created_date }}, {{ order.created_time }}</td>

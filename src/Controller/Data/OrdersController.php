@@ -2,7 +2,9 @@
 
 namespace App\Controller\Data;
 
-class OrdersController
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class OrdersController extends AbstractController
 {
 	public static function allOrders() {
 		$list = [
@@ -73,6 +75,28 @@ class OrdersController
 			['amount' => 'IPv4 - 61 шт', 'sum' => '$140.00 в месяц'],
 			['amount' => 'IPv4 - 125 шт', 'sum' => '$250.00 в месяц'],
 			['amount' => 'IPv4 - 253 шт', 'sum' => '$500.00 в месяц']
+		];
+
+		return $list;
+	}
+
+//	#[Template('orders/view.order.base.html.twig')]
+	public static function testUser() {
+		$list = [
+			'order_id' => 1242,
+			'title' => 'Dedicated - NL3',
+			'service' => 'Ordered',
+			'server' => 'Pending',
+			'user_id' => 'c88992',
+			'user_email' => 'valeriy_burdalayba@email.com',
+			'tariff_group' => 'Dedicated - Нидерланды',
+			'tariff_plan' => 'NL3-0 70.00 / 0.00 ( + 6/6 вариантов)',
+			'created_date' => '03/03/2023',
+			'created_time' => '15:58',
+			'created_ip' => '37.214.30.10',
+			'created_loc' => 'BY',
+			'note' => 'Ipsum lacus id gravida venenatis velit cursus aliquet eros. Massa at habitant potenti senectus id pretium faucibus. Odio libero placerat lectus lectus',
+
 		];
 
 		return $list;

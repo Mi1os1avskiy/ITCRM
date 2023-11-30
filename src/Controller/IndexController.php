@@ -368,6 +368,34 @@ class IndexController extends AbstractController
 		]);
 	}
 
+	/**
+	 * @Route("/orders/order_details", name="order_details")
+	 */
+	public function orderDetails(): Response
+	{
+		return $this->render('orders/view_order/details.html.twig', [
+			'title' => 'Детали заказа',
+			'user_data' => OrdersController::testUser(),
+			'clients' => OrdersController::ordersClients(),
+			'tariff_plans' => OrdersController::ordersTariffPlans(),
+			'tariff_groups' => OrdersController::ordersTariffGroups(),
+			'amount' => OrdersController::ordersTariffAmount(),
+		]);
+	}
+
+	/**
+	 * @Route("/orders/order_history", name="order_history")
+	 */
+	public function orderHistory(): Response
+	{
+		return $this->render('orders/view_order/history.html.twig', [
+			'title' => 'История изменений заказа',
+			'user_data' => OrdersController::testUser(),
+			'tariff_groups' => OrdersController::ordersTariffGroups(),
+			'tariff_plans' => OrdersController::ordersTariffPlans(),
+		]);
+	}
+
     /**
      * @Route("/settings/admins", name="settings_admins")
      */
