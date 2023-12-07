@@ -60,7 +60,7 @@
 					<div class="flex mb-4 px-8 justify-between">
 						<div class="flex space-x-4 items-center">
 							<div class="relative flex flex-shrink-0">
-								<button type="button" class="flex py-2 pr-3 pl-4 space-x-2 rounded-md ring-1 ring-gray-300 text-left hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+								<button type="button" class="flex py-2 pl-3 pr-2 space-x-2 rounded-md ring-1 ring-gray-300 text-left hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 									<span class="text-gray-800 text-sm pointer-events-none">Действия</span>
 									{{ source('misc/svg/arrow.svg') }}
 								</button>
@@ -141,8 +141,8 @@
 							<table class="min-w-full">
 								<thead>
 								<tr class="bg-gray-50 border-b border-gray-300 text-sm font-medium">
-									<th class="inline-block w-10"></th>
-									<th class="min-w-[293px] px-3 py-3 text-left font-medium whitespace-nowrap">ID - Тема</th>
+									<th class="w-10"></th>
+									<th class="px-3 py-3 text-left font-medium whitespace-nowrap">ID - Тема</th>
 									<th class="w-[184px] px-3 py-3 text-left font-medium">Статус</th>
 									<th class="w-[100px] px-3 py-3 text-left font-medium">Приоритет</th>
 									<th class="w-[184px] px-3 py-3 text-left font-medium">Департамент</th>
@@ -158,10 +158,10 @@
 									{% set table_body %}
 
 										<tr>
-											<td class="w-10 pl-6">
-												<input type="checkbox" class="flex place-self-center checkbox">
+											<td class="p-0">
+												<input type="checkbox" class="ml-6 flex place-self-center checkbox">
 											</td>
-											<td class="min-w-[293px] px-3 text-sm">
+											<td class="min-w-[200px] px-3 text-sm">
 												<a href="{{ path('support_ticket_answer') }}" class="py-4 font-medium hover:text-indigo-700">
 													<p class="line-clamp-1 overflow-hidden" title="#{{ ticket.id }} - {{ ticket.theme }}">#{{ ticket.id }} - {{ ticket.theme }}</p>
 												</a>
@@ -191,7 +191,7 @@
 											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 cursor-default">
 												<p class="truncate w-36" title="{{ ticket.client }}">{{ ticket.client }}</p>
 											</td>
-											<td class="whitespace-nowrap pl-3 pr-6 py-4 text-sm text-gray-500 cursor-default">{{ time }}</td>
+											<td class="whitespace-nowrap pl-3 pr-6 py-4 text-sm text-gray-500 cursor-default">{{ ticket.time }}</td>
 										</tr>
 
 									{% endset %}

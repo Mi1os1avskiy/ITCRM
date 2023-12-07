@@ -24,6 +24,15 @@ class IndexController extends AbstractController
         ]);
     }
 
+	public function testFunction()
+	{
+		$numbers = range(1, 5);
+
+		return $this->render('test.html.twig', [
+			'numbers' => $numbers,
+		]);
+	}
+
     /**
      * @Route("/clients", name="clients")
      */
