@@ -13,6 +13,19 @@ Vue.use(Notification.Plugin.install);
 
 const app = new Vue({
 	el: "#app",
+	data: {
+		isOpened: true
+	},
+	methods: {
+		toggleMenu() {
+			this.isOpened = !this.isOpened;
+		},
+		menuButtonClick() {
+			if (!this.isOpened) {
+				this.isOpened = true;
+			}
+		}
+	},
 	mixins: [
 		AriaExpandedMixin,
 	],
@@ -20,8 +33,8 @@ const app = new Vue({
 		'menu-panel': MenuPanelComponent,
 		'clients-module': () => import(/* webpackChunkName: "clients" */ "./clients/module"),
 		'support-module': () => import(/* webpackChunkName: "support" */ "./support/module"),
-		'billing-module': () => import(/* webpackChunkName: "support" */ "./billing/module"),
+		'billing-module': () => import(/* webpackChunkName: "billing" */ "./billing/module"),
 		'orders-module': () => import(/* webpackChunkName: "orders" */ "./orders/module"),
-		'settings-module': () => import(/* webpackChunkName: "orders" */ "./settings/module"),
+		'settings-module': () => import(/* webpackChunkName: "settings" */ "./settings/module"),
 	}
 });
