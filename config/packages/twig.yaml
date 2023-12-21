@@ -12,6 +12,8 @@ twig:
             {'Частично засчитана': 'red', 'Не засчитана': 'red', 'Мошенническая': 'red', 'Возвращена': 'orange', 'Заморожена': 'blue', 'В ожидании': 'blue', 'Засчитана': 'green', 'Игнорируется': 'gray', 'Отменена': 'gray'}
         transaction_filter:
             {'Возвращена': 'orange', 'Заморожена': 'blue', 'В ожидании': 'blue', 'Игнорируется': 'gray'}
+        transaction_details_statuses:
+            {'Засчитана': 'green', 'Отменена': 'gray', 'Мошенническая': 'red'}
         invoice_statuses:
             {'Pending': 'red', 'Paid': 'green', 'Cancelled': 'gray', 'Overdue': 'gray', 'Draft': 'purple'}
         ticket_statuses:

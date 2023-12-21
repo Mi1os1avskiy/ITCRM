@@ -24,7 +24,7 @@
 					</div>
 					<div class="py-5 grid grid-cols-3 gap-6">
 						<div class="font-medium text-gray-500">Дата и Время</div>
-						<div class="col-span-2">2022-12-22, 18:34:12</div>
+						<div class="col-span-2">2022/12/22, 18:34:12</div>
 					</div>
 					<div v-if="data.detailsType === 1" class="py-5 grid grid-cols-3 gap-6">
 						<div class="text-sm font-medium text-gray-500">Инвойс</div>
@@ -32,10 +32,10 @@
 					</div>
 					<div class="py-5 grid grid-cols-3 gap-6">
 						<div class="font-medium text-gray-500">Клиент</div>
-						<div class="col-span-2 text-indigo-900 font-medium">
+						<a href="{{ path('profile') }}" class="col-span-2 font-medium hover:text-indigo-900">
 							<p class="truncate">iseli-alex-badboy007@mail.com</p>
 							<p>Leslie Alexander</p>
-						</div>
+						</a>
 					</div>
 					<div class="py-5 grid grid-cols-3 gap-6">
 						<div class="font-medium text-gray-500">Метод оплаты</div>
@@ -56,12 +56,8 @@
 						<div class="font-medium text-gray-500">Движение средств</div>
 						<div class="col-span-2 space-y-4">
 							<div>
-								<p class="font-medium">2023-01-09 • 09:48:57 • $40.00</p>
+								<p class="font-medium">2023/01/09 • 09:48:57 • $40.00</p>
 								<p>Payment of an invoice from an incoming transaction.</p>
-							</div>
-							<div>
-								<p class="font-medium">2023-01-09 • 09:48:57 • $40.00</p>
-								<p>Credit to balance from transaction (balance).</p>
 							</div>
 						</div>
 					</div>
@@ -73,13 +69,13 @@
 								<div class="h-5 w-5 pointer-events-none">
 									<span class="inline-block h-2.5 w-2.5 rounded-full bg-green-400"></span>
 								</div>
-								<div class="grow text-left pointer-events-none">Оплачена</div>
+								<div class="grow text-left pointer-events-none">Засчитана</div>
 								{{ source('misc/svg/arrow.svg') }}
 							</button>
 
 							<ul class="dropdown w-full overflow-auto text-sm">
 
-								{% for val, css in transaction_statuses %}
+								{% for val, css in transaction_details_statuses %}
 									<li class="relative cursor-default">
 										<button type="button" class="w-full flex items-center py-2 px-3 space-x-2">
 											<div class="h-5 w-5">

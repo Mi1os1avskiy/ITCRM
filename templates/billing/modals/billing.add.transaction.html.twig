@@ -29,7 +29,20 @@
 				</div>
 				<div class="flex-1 space-y-1">
 					<p class="text-sm font-medium text-gray-700">ID, Email клиента</p>
-					<input type="text" class="inputs w-full text-sm" placeholder="ID, Email">
+					<div class="flex-1 relative">
+						<input @click="inputSearch()" id="clientID" class="inputs w-full text-sm" placeholder="ID, Email" type="text" aria-expanded="false" aria-expanded-autohide>
+
+						<ul id="userList" class="dropdown right-0 w-[264px] max-h-48 overflow-auto">
+							{% for i in transactions %}
+								<li>
+									<button type="button" class="flex items-center w-full py-2 px-4 space-x-3" title="{{ i.client }} {{ i.invoice }}">
+										<span class="text-gray-700 text-sm truncate">{{ i.client }}</span>
+										<span class="text-gray-500 text-sm">{{ i.invoice }}</span>
+									</button>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
 				</div>
 			</div>
 			<div class="space-y-1">
@@ -61,7 +74,7 @@
 						{{ source('misc/svg/arrow.svg') }}
 					</button>
 
-					<ul class="dropdown w-full max-h-64 overflow-auto text-sm">
+					<ul class="dropdown w-full max-h-[160px] overflow-auto text-sm">
 						{% for i in payments() %}
 							<li>
 								<button type="button" class="w-full py-2 px-4 text-gray-700 text-left">{{ i }}</button>

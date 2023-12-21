@@ -32,22 +32,22 @@
 			{% block control %}
 
 				<div class="flex justify-between pt-6 px-8">
-					<nav class="flex items-center text-sm text-gray-700 font-medium">
-						<a href="#" class="py-2 px-4 ring-1 ring-gray-300 rounded-l-md hover:bg-gray-50">Все</a>
-						<a href="#" class="ml-px py-2 px-4 ring-1 ring-gray-300 hover:bg-gray-50">Все входящие</a>
-						<a href="#" class="ml-px py-2 px-4 ring-1 ring-gray-300 hover:bg-gray-50">Все исходящие</a>
+					<nav class="flex items-center">
+						<a href="#" class="py-2 px-4 ring-1 ring-gray-300 rounded-l-md text-sm text-gray-700 font-medium hover:bg-gray-50">Все</a>
+						<a href="#" class="ml-px py-2 px-4 ring-1 ring-gray-300 text-sm text-gray-700 font-medium hover:bg-gray-50">Все входящие</a>
+						<a href="#" class="ml-px py-2 px-4 ring-1 ring-gray-300 text-sm text-gray-700 font-medium hover:bg-gray-50">Все исходящие</a>
 						<div class="ml-px relative">
 							<button type="button" class="p-2 ring-1 ring-gray-300 rounded-r-md hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 								{{ source('misc/svg/arrow.svg') }}
 							</button>
 
-							<ul class="dropdown right-0 w-[280px] text-sm">
+							<ul class="dropdown right-0 w-[280px]">
 								<li>
-									<button type="button" class="w-full py-2 px-4 text-gray-700 text-left">Незасчитанные и замороженные</button>
+									<button type="button" class="w-full py-2 px-4 text-gray-700 text-sm text-left">Незасчитанные и замороженные</button>
 								</li>
 								{% for val, css in transaction_filter %}
 								<li>
-									<button type="button" class="w-full flex items-center py-2 px-4 space-x-3 text-gray-700 text-left">
+									<button type="button" class="w-full flex items-center py-2 px-4 space-x-3 text-gray-700 text-sm text-left">
 										<span class="h-2.5 w-2.5 bg-{{ css }}-400 rounded-full"></span>
 										<span>{{ val }}</span>
 									</button>
@@ -97,21 +97,21 @@
 
 								<tr class="text-sm">
 									<td class="py-4 pl-6 pr-3">
-										<a href="#" class="font-medium hover:text-indigo-700">
-											<p class="w-14 min-w-full truncate" title="{{ item.id }}">{{ item.id }}</p>
-										</a>
+										<p class="w-14 min-w-full truncate cursor-default" title="{{ item.id }}">{{ item.id }}</p>
 									</td>
 									<td class="whitespace-nowrap py-4 px-3 text-gray-500 cursor-default">{{ item.date }}</td>
-									<td class="whitespace-nowrap popover__wrapper relative flex items-center py-4 px-3 space-x-2">
-										{% for i in icons %}
-											{% if item.invoice_type == i.type %}
-												{{ source( i.src ) }}
-												<div class="popover__left bottom-[50px] -left-1.5 w-fit py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">
-													<p>{{ i.title }}</p>
-												</div>
-											{% endif %}
-										{% endfor %}
-										<span class="text-gray-500 {% if item.invoice_type == 7 %}text-gray-400{% endif %} cursor-default">{{ item.invoice }}</span>
+									<td class="p-0">
+										<div class="whitespace-nowrap popover__wrapper relative flex items-center px-3 space-x-2">
+											{% for i in icons %}
+												{% if item.invoice_type == i.type %}
+													{{ source( i.src ) }}
+													<div class="popover__left bottom-[50px] -left-1.5 w-fit py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">
+														<p>{{ i.title }}</p>
+													</div>
+												{% endif %}
+											{% endfor %}
+											<span class="text-gray-500 {% if item.invoice_type == 7 %}text-gray-400{% endif %} cursor-default">{{ item.invoice }}</span>
+										</div>
 									</td>
 									<td class="py-4 px-3">
 										<a href="{{ path('overview') }}" class="font-medium hover:text-indigo-700">
@@ -121,7 +121,7 @@
 									<td class="py-4 px-3 text-gray-500 cursor-default">
 										<p class="w-[106px] truncate">{{ item.method }}</p>
 									</td>
-									<td>
+									<td class="p-0">
 										<div class="flex items-center justify-end px-3 space-x-2">
 											{% if item.refund %}
 											<div class="popover__wrapper relative">
@@ -133,14 +133,14 @@
 											{% endif %}
 
 											<button @click="billingTransactionsDetails({{ item.details.id }})" type="button" class="flex items-center text-sm font-medium hover:text-indigo-700">
-												<span>${{ item.amount|number_format(2, '.', '') }}</span>
+												<span>{{ item.amount < 0 ? '-'}}${{ (item.amount|abs|number_format(2, '.', '')) }}</span>
 											</button>
 										</div>
 									</td>
 									<td class="py-4 px-3 cursor-default">
 										{% for val, css in transaction_statuses %}
 											{% if item.status == val %}
-												<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if val == 'Возвращена' %}200{% else %}100{% endif %} text-{{ css }}-800 whitespace-nowrap">{{ val }}</span>
+												<div class="w-fit px-2.5 py-0.5 rounded-full text-xs font-medium bg-{{ css }}-{% if val == 'Возвращена' %}200{% else %}100{% endif %} text-{{ css }}-800 whitespace-nowrap">{{ val }}</div>
 											{% endif %}
 										{% endfor %}
 									</td>
