@@ -62,7 +62,7 @@
 
 						<a href="{{ path('orders') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ path('orders') == route ? 'bg-gray-900' }}">Все заказы</a>
 
-						<a href="#" class="group flex items-center py-2 pl-2.5 pr-3 rounded-md space-x-3.5 text-gray-300 hover:bg-gray-700">
+						<a href="{{ path('new_order') }}" class="group flex items-center py-2 pl-2.5 pr-3 rounded-md space-x-3.5 text-gray-300 hover:bg-gray-700">
 							<span class="group-hover:text-white">{{ source('misc/svg/aside/plus.svg') }}</span>
 							<span class="text-sm font-medium truncate">Новый заказ</span>
 						</a>
