@@ -6,28 +6,16 @@
 
 		<div>
 
-			{% block header %}
+			<div class="py-4 px-8 bg-gray-50 border-b">
+				<h3 class="text-lg font-semibold leading-9">{{ title }}</h3>
+			</div>
 
-				<div class="flex items-center justify-between py-4 px-8 bg-gray-50 border-b">
-					<h3 class="text-lg font-semibold">{{ title }}</h3>
-					<button type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700">
-						{{ source('misc/svg/plus.svg') }}
-						<span class="text-sm font-medium">Добавить</span>
-					</button>
-				</div>
-
-			{% endblock %}
-
-			{% block control %}
-
-				<div class="flex pt-6 px-8 space-x-3">
-					<input type="text" class="w-64 inputs text-sm" placeholder="Email или ID клиента">
-					<input type="text" class="w-40 inputs text-sm" placeholder="Payment ID">
-					<input type="text" class="w-40 inputs text-sm" placeholder="Основной инвойс">
-					<input type="text" class="w-40 inputs text-sm" placeholder="UID">
-				</div>
-
-			{% endblock %}
+			<div class="flex pt-6 px-8 space-x-3">
+				<input type="text" class="w-64 inputs text-sm" placeholder="Email или ID клиента">
+				<input type="text" class="w-40 inputs text-sm" placeholder="Payment ID">
+				<input type="text" class="w-40 inputs text-sm" placeholder="Основной инвойс">
+				<input type="text" class="w-40 inputs text-sm" placeholder="UID транзакции">
+			</div>
 
 			{% block table %}
 

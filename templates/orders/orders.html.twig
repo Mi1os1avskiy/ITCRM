@@ -52,7 +52,7 @@
 
 						<div class="flex justify-between pt-6">
 							<div class="flex items-center text-sm text-gray-700 font-medium">
-								<a href="#" class="py-2 px-4 ring-1 ring-gray-300 rounded-l-md hover:bg-gray-50">Все</a>
+								<a href="#" class="z-10 py-2 px-4 ring-1 ring-indigo-500 bg-indigo-50 text-indigo-700 rounded-l-md hover:bg-gray-50">Все</a>
 								<a href="#" class="ml-px py-2 px-4 ring-1 ring-gray-300 hover:bg-gray-50">Новые</a>
 								<a href="#" class="ml-px flex items-center py-2 pl-3 pr-4 space-x-2 ring-1 ring-gray-300 rounded-r-md hover:bg-gray-50">
 									{{ source('misc/svg/circles/green-400.svg') }}
@@ -90,7 +90,7 @@
 										<th class="w-14 p-3 text-left font-medium">Лок.</th>
 										<th class="w-[152px] p-3 text-left font-medium">Создан</th>
 										<th class="w-[152px] p-3 text-left font-medium">Клиент</th>
-										<th class="w-[121px] p-3 text-left font-medium whitespace-nowrap">Метод оплаты</th>
+										<th class="w-[124px] p-3 text-left font-medium whitespace-nowrap">Метод оплаты</th>
 										<th class="w-28 p-3 text-right font-medium">Сумма</th>
 										<th class="w-[114px] p-3 text-left font-medium">Инвойс</th>
 										<th class="w-[122px] p-3 text-left font-medium">Заказ</th>
@@ -102,27 +102,27 @@
 									{% for order in orders %}
 
 										<tr class="text-sm">
-											<td class="min-w-[252px] popover__wrapper relative inline-block py-4 pl-6 pr-3 font-medium">
+											<td class="min-w-40 popover__wrapper relative inline-block py-4 pl-6 pr-3 font-medium">
 												<a href="{{ path('order_details') }}" class="font-medium line-clamp-1 overflow-hidden hover:text-indigo-700" title="{{ order.id }} - {{ order.tariff}}">{{ order.id }} - {{ order.tariff}}</a>
 											</td>
 											<td class="py-4 px-3 text-gray-500">{{ order.loc }}</td>
 											<td class="py-4 px-3 text-gray-500 truncate">{{ order.created_date }}, {{ order.created_time }}</td>
 											<td class="py-4 px-3">
-												<a href="{{ path('overview') }}" class="w-32 line-clamp-1 overflow-hidden hover:text-indigo-700" title="{{ order.client_name }}">{{ order.client_name }}</a>
+												<a href="{{ path('overview') }}" class="w-32 line-clamp-1 overflow-hidden font-medium hover:text-indigo-700" title="{{ order.client_name }}">{{ order.client_name }}</a>
 											</td>
 											<td class="py-4 px-3 text-gray-500 truncate">{{ order.pay_method }}</td>
 											<td class="py-4 px-3 text-gray-500 text-right">${{ order.amount|number_format('2', '.') }}</td>
 											<td class="py-4 px-3">
 												{% for val, css in invoice_statuses %}
 													{% if val == order.invoice_status %}
-														<div class="w-fit py-0.5 px-2.5 rounded-xl bg-{{ css }}-100 text-{{ css }}-800 text-xs">{{ order.invoice_status }}</div>
+														<div class="w-fit py-0.5 px-2.5 rounded-xl bg-{{ css }}-100 text-{{ css }}-800 text-xs font-medium">{{ order.invoice_status }}</div>
 													{% endif %}
 												{% endfor %}
 											</td>
 											<td class="py-4 px-3">
 												{% for val, css in order_statuses %}
 													{% if val == order.order_status %}
-														<div class="w-fit py-0.5 px-2.5 rounded-xl bg-{{ css }}-{% if val == 'In progress' %}200{% else %}100{% endif%} text-{{ css }}-800 text-xs">{{ order.order_status }}</div>
+														<div class="w-fit py-0.5 px-2.5 rounded-xl bg-{{ css }}-{% if val == 'In progress' %}200{% else %}100{% endif%} text-{{ css }}-800 text-xs font-medium">{{ order.order_status }}</div>
 													{% endif %}
 												{% endfor %}
 											</td>
