@@ -47,14 +47,14 @@
 									{% for admin in admins %}
 
 										<tr class="text-sm">
-											<td class="py-4 pl-6 pr-3">
-												<a href="{{ path('settings_profile_admin', {user:admin.id}) }}" class="font-medium overflow-hidden hover:text-indigo-700">{{ admin.login }}</a>
+											<td class="py-4 pl-6 pr-3 max-w-sm">
+												<a href="{{ path('settings_profile_admin', {user:admin.id}) }}" class="block font-medium truncate hover:text-indigo-700">{{ admin.login }}</a>
 											</td>
-											<td class="py-4 px-3">
-												<a href="{{ path('settings_profile_admin', {user:admin.id}) }}" class="font-medium hover:text-indigo-700">{{ admin.name }}</a>
+											<td class="py-4 px-3 max-w-xs">
+												<a href="{{ path('settings_profile_admin', {user:admin.id}) }}" class="block font-medium truncate hover:text-indigo-700">{{ admin.name }}</a>
 											</td>
-											<td class="py-4 px-3 text-gray-500">
-												<p class="truncate">{{ admin.group }}</p>
+											<td class="py-4 px-3 max-w-xs">
+												<div class="text-gray-500 truncate">{{ admin.group }}</div>
 											</td>
 											<td class="py-4 px-3 text-gray-500">{{ admin.roles }}</td>
 											<td class="py-4 px-3 text-gray-500">{{ admin.last_logged|default('Never') }}</td>

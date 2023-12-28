@@ -26,7 +26,7 @@
 
 @layer components {
 	.inputs {
-		@apply border-none ring-1 ring-gray-300 rounded-md placeholder-gray-400 hover:bg-gray-50 focus:ring-indigo-500;
+		@apply border-none ring-1 ring-gray-300 shadow-sm rounded-md placeholder-gray-400 hover:bg-gray-50 focus:ring-indigo-500;
 	}
 
     .checkbox {

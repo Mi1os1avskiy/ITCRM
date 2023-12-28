@@ -1,5 +1,5 @@
 import Vue from "vue";
-import {AriaExpandedMixin, ValidationPlugin} from "is-core-frontend";
+import {AriaExpandedMixin, PasswordDisplayingMixin, ValidationPlugin} from "is-core-frontend";
 import {MenuPanelComponent} from "./misc/menu.panel.component";
 import * as Modal from "./misc/modal/plugin";
 import * as Notification from "./misc/notifications/plugin";
@@ -28,6 +28,7 @@ const app = new Vue({
 	},
 	mixins: [
 		AriaExpandedMixin,
+		PasswordDisplayingMixin
 	],
 	components: {
 		'menu-panel': MenuPanelComponent,

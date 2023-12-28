@@ -36,7 +36,7 @@
 					<div class="py-6 px-8 space-y-8">
 						<div class="space-y-10">
 							<div class="space-y-5">
-								<h4 class="text-lg font-medium">Персональные данные</h4>
+								<h4 class="text-lg font-medium leading-6">Персональные данные</h4>
 								<div class="space-y-5">
 									<div class="grid grid-cols-3 gap-4">
 										<div class="space-y-1">
@@ -69,7 +69,10 @@
 											{% set admin_groups = ['Full privilegies', 'Junior admin', 'Middle admin', 'Senior admin', 'Sales manager', 'General support', 'Junior admin + Basepass', 'For UA', 'For Tests'] %}
 
 											<div class="relative">
-												<input class="inputs w-full py-2 pl-3 pr-10 text-sm" {% if admin %}value="{{ admin.group }}"{% endif %} placeholder="Выберите группу админов" type="text" aria-expanded="false" aria-expanded-autohide>
+												<div class="w-full flex items-center py-2 px-3 ring-1 ring-gray-300 rounded-md space-x-2" aria-expanded="false" aria-expanded-autohide>
+													<div class="grow text-sm pointer-events-none">{% if admin %}{{ admin.group }}{% else %}Выберите группу админов{% endif %}</div>
+													{{ source('misc/svg/arrow.svg') }}
+												</div>
 
 												<ul class="dropdown w-full max-h-72 overflow-auto">
 													<li></li>
@@ -79,10 +82,6 @@
 														</li>
 													{% endfor %}
 												</ul>
-
-												<div class="absolute top-2 right-3 arrow pointer-events-none">
-													{{ source('misc/svg/arrow.svg') }}
-												</div>
 											</div>
 										</div>
 										<div class="space-y-1">
@@ -115,7 +114,7 @@
 							</div>
 
 							<div class="space-y-5">
-								<h4 class="text-lg font-medium">Контактные данные</h4>
+								<h4 class="text-lg font-medium leading-6">Контактные данные</h4>
 								<div class="space-y-5">
 									<div class="grid grid-cols-3 gap-4">
 										<div class="space-y-1">
@@ -161,7 +160,7 @@
 													<label for="server_restart" class="text-sm">Перезагрузка сервера</label>
 												</div>
 												<div class="flex items-center py-2 space-x-2">
-													<input id="billing"checked  class="checkbox" type="checkbox">
+													<input id="billing" checked  class="checkbox" type="checkbox">
 													<label for="billing" class="text-sm">Биллинг</label>
 												</div>
 											</div>
@@ -171,7 +170,7 @@
 										<h4 class="text-lg font-medium">Дополнительные данные</h4>
 										<div class="space-y-1">
 											<p class="text-gray-700 text-sm font-medium">Whmcs username</p>
-											<input class="inputs w-full py-2 px-3 text-sm" placeholder="Введите whmcs username" type="text">
+											<input class="inputs w-[348px] py-2 px-3 text-sm" placeholder="Введите whmcs username" type="text">
 										</div>
 									</div>
 								</div>
@@ -209,7 +208,7 @@
 						</div>
 						<div class="flex justify-between pt-10">
 							<div class="flex space-x-3">
-								<a href="{{ path('settings_admins') }}" class="py-2 px-4 rounded-md ring-1 ring-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50">Отмена</a>
+								<a href="{{ path('settings_admins') }}" class="py-2 px-4 rounded-md ring-1 ring-gray-300 shadow-sm text-gray-700 text-sm font-medium hover:bg-gray-50">Отмена</a>
 								<button {% if admin %}@click="settingsSaveChanges()"{% else %}@click="settingsAddAdmin()"{% endif %} type="button" class="py-2 px-4 rounded-md bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700">{% if admin %}Сохранить{% else %}Добавить админа{% endif %}</button>
 							</div>
 							{% if admin %}
