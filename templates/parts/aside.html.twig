@@ -20,20 +20,20 @@
 {% block aside %}
 
 	<menu-panel inline-template>
-		<div v-cloak :class="!!isOpened ? 'w-64': 'w-14'" class="aside-menu fixed inset-y-0 flex flex-col duration-200 bg-gray-800 z-10">
+		<div :class="!!isOpened ? 'w-64': 'w-14'" class="aside-menu z-10 duration-200 overflow-x-hidden">
 			<div class="relative flex items-center justify-between pt-4 px-2">
 				<div class="w-10 h-10">
 					<button class="p-2 text-gray-400 hover:text-white" @click="toggleMenu">
 						{{ source('misc/svg/aside/menu.svg') }}
 					</button>
 				</div>
-				<div :class="!!isOpened ? 'block': 'hidden'" class="w-10 h-10 grid place-content-center">
+				<div :class="!!isOpened ? 'opacity-100 transition duration-200 ease-in-out': 'opacity-0'" class="w-10 h-10 grid place-content-center">
 					{{ source('misc/svg/aside/logo.svg') }}
 				</div>
 				<div class="w-10 h-10"></div>
 			</div>
 
-			<div class="flex flex-col flex-1 my-4 px-2 space-y-1 overflow-y-auto duration-200">
+			<div class="flex flex-col flex-1 my-4 px-2 space-y-1 overflow-y-auto duration-200 overflow-x-hidden">
 				<div>
 					<button @click="menuButtonClick" aria-expanded="{% if '/clients' in route %}true{% else %}false{% endif %}" type="button" class="group w-full flex items-center p-2 space-x-3 rounded-md text-gray-400 hover:bg-gray-700">
 						<span class="group-hover:text-white">{{ source('misc/svg/aside/clients.svg') }}</span>
@@ -62,7 +62,7 @@
 
 						<a href="{{ path('orders') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ path('orders') == route ? 'bg-gray-900' }}">Все заказы</a>
 
-						<a href="{{ path('new_order') }}" class="group flex items-center py-2 pl-2.5 pr-3 rounded-md space-x-3.5 text-gray-300 hover:bg-gray-700">
+						<a href="{{ path('new_order') }}" class="group flex items-center py-2 pl-2.5 pr-3 rounded-md space-x-3.5 text-gray-300 hover:bg-gray-700 {{ path('new_order') == route ? 'bg-gray-900' }}">
 							<span class="group-hover:text-white">{{ source('misc/svg/aside/plus.svg') }}</span>
 							<span class="text-sm font-medium truncate">Новый заказ</span>
 						</a>
@@ -157,16 +157,14 @@
 			</button>
 
 			<div class="absolute z-20 w-[248px] bottom-[60px] left-1 rounded-md bg-white">
-				<div class="p-4 border-b text-sm">
+				<div class="px-4 py-3 border-b text-sm">
 					<p>Авторизован как</p>
 					<p class="font-medium truncate">valeriy-burdaleyba@mail.com</p>
 				</div>
-				<div class="py-1">
-					<a href="{{ path('app_index') }}" class="flex w-full py-2 px-4 space-x-3 text-gray-500 hover:text-red-500 hover:bg-red-50">
-						{{ source('misc/svg/aside/logout.svg') }}
-						<span class="text-sm">Выход</span>
-					</a>
-				</div>
+				<a href="{{ path('app_index') }}" class="flex w-full py-2 px-4 space-x-3 rounded-b-md text-gray-500 hover:text-red-500 hover:bg-red-50">
+					{{ source('misc/svg/aside/logout.svg') }}
+					<span class="text-sm">Выход</span>
+				</a>
 			</div>
 		</div>
 	</menu-panel>

@@ -83,6 +83,10 @@
 	}
 
 	/* aside menu */
+	.aside-menu {
+		@apply z-10 fixed inset-y-0 w-64 flex flex-col bg-gray-800
+	}
+
 	.aside-menu [aria-expanded="true"] .arrow {
 		@apply rotate-90;
 	}

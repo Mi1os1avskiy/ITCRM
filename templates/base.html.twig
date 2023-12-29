@@ -19,7 +19,7 @@
 			{% include "/parts/aside.html.twig" %}
 		{% endblock %}
 
-		<div :class="!!isOpened ? 'pl-64': 'pl-14'">
+		<div :class="!!isOpened ? 'pl-64': 'pl-14'" class="duration-200">
 			{% block main %}{% endblock %}
 		</div>
 
