@@ -349,6 +349,7 @@ class IndexController extends AbstractController
 		return $this->render('billing/billing.payments.html.twig', [
 			'title' => 'Платежи',
 			'payments' => BillingController::allPayments(),
+			'transactions' => BillingController::allTransactions()
 		]);
 	}
 

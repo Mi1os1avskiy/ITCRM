@@ -11,7 +11,21 @@
 			</div>
 
 			<div class="flex pt-6 px-8 space-x-3">
-				<input type="text" class="w-64 inputs text-sm" placeholder="Email или ID клиента">
+				<div class="relative">
+					<input @click="inputSearch()" id="clientID" class="inputs w-64 text-sm" placeholder="Email или ID клиента" type="text" aria-expanded="false" aria-expanded-autohide>
+
+					<ul id="userList" class="dropdown w-64 max-h-48 overflow-auto">
+						{% for i in transactions %}
+							<li>
+								<button type="button" class="flex items-center w-full py-2 px-4 space-x-3" title="{{ i.client }} {{ i.invoice }}">
+									<span class="text-gray-700 text-sm truncate">{{ i.client }}</span>
+									<span class="text-gray-500 text-sm">{{ i.invoice }}</span>
+								</button>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+
 				<input type="text" class="w-40 inputs text-sm" placeholder="Payment ID">
 				<input type="text" class="w-40 inputs text-sm" placeholder="Основной инвойс">
 				<input type="text" class="w-40 inputs text-sm" placeholder="UID транзакции">
