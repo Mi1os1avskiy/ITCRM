@@ -67,3 +67,24 @@
 	<div class="hidden text-orange-400 text-orange-800 text-blue-400 text-green-500 bg-blue-400 bg-orange-200 bg-gray-400 bg-purple-400 focus:ring-red-500"></div>
 
 {% endblock %}
+
+{#						<button type="button" class="w-full flex justify-between py-2 px-3 space-x-2 rounded-md ring-1 ring-gray-300 hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>#}
+{#							<p v-if="data.id > 0" class="text-sm pointer-events-none">{{ answer_data.category }}</p>#}
+{#							<p v-else class="text-sm text-gray-400 pointer-events-none">Выберите категорию</p>#}
+{#							{{ source('misc/svg/arrow.svg') }}#}
+{#						</button>#}
+
+<div class="answer_body_{{ answer.id }} pt-3 pb-2 px-4 space-y-1 {{ loop.last ? '' : 'border-b border-gray-300' }} cursor-default hover:bg-gray-50">
+	<p class="pl-8 pr-[72px] text-gray-500 text-xs leading-5">{{ answer.category }}</p>
+	<div class="flex items-center space-x-4">
+		<input type="checkbox" class="checkbox">
+		<h4 class="flex-1 text-gray-700 text-sm font-medium">{{ answer.title }}</h4>
+		<button @click="answerEditor({{ answer.id }})" class="text-gray-500 hover:text-indigo-700" type="button">
+			{{ source('misc/svg/pencil.svg') }}
+		</button>
+		<button @click="expandAnswer({{ answer.id }})" class="text-gray-500 hover:text-indigo-700" type="button" aria-expanded="false">
+			{{ source('misc/svg/arrow.svg') }}
+		</button>
+	</div>
+	<div id="{{ answer.id }}" class="pl-8 pr-[72px] text-gray-500 text-xs leading-5 line-clamp-1">{{ answer.content|raw }}</div>
+</div>
