@@ -2,6 +2,8 @@
 
 {% block title %} {{ title }} {% endblock %}
 
+{% set side_menu_item = 'clients:letters' %}
+
 {% block main %}
 
 	<main class="pb-24">
@@ -14,7 +16,7 @@
 					<nav class="flex items-center space-x-4 text-sm text-gray-500 font-medium">
 						<a href="{{ path ('letters') }}">Письма</a>
 						<div class="-rotate-90">
-							{{ source('misc/svg/arrow.svg') }}
+							{{ source('assets/images/arrow.svg') }}
 						</div>
 						<p>Просмотр письма клиента</p>
 					</nav>

@@ -11,19 +11,19 @@
         <div class="pt-6 px-8">
             <div class="flex items-center justify-between flex-shrink-0">
                 <a href="{{ path('billing_new_invoice') }}" class="flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700">
-	                {{ source('misc/svg/plus.svg') }}
+	                {{ source('assets/images/plus.svg') }}
                     <span class="text-sm font-medium">Добавить</span>
                 </a>
 
                 <div class="flex items-center space-x-2">
 	                <div class="w-60 relative">
 		                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-			                {{ source('misc/svg/search.svg') }}
+			                {{ source('assets/images/search.svg') }}
 		                </div>
 		                <input class="inputs block w-full  py-2 pl-10 pr-3 text-sm" placeholder="Поиск по ID" type="text">
 	                </div>
                     <button @click="invoicesFilters()" type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md ring-1 ring-gray-300 hover:bg-gray-50">
-	                    {{ source('misc/svg/filters.svg') }}
+	                    {{ source('assets/images/filters.svg') }}
                         <span class="text-gray-700 text-sm font-medium">Фильтры</span>
                     </button>
                 </div>

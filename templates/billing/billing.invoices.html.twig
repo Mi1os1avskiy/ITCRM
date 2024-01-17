@@ -1,5 +1,7 @@
 {% extends 'billing/billing.base.html.twig' %}
 
+{% set side_menu_item = 'billing:invoices' %}
+
 {% block content %}
 
 	{% block header %}
@@ -7,7 +9,7 @@
 		<div class="py-4 px-8 flex items-center justify-between space-x-4 bg-gray-100">
 			<p class="font-semibold text-lg">{{ title }}</p>
 			<a href="{{ path('billing_new_invoice') }}" class="flex items-center pl-3 pr-4 py-2 space-x-2 rounded-md bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700">
-				{{ source('misc/svg/plus.svg') }}
+				{{ source('assets/images/plus.svg') }}
 				<span>Добавить</span>
 			</a>
 		</div>
@@ -25,16 +27,16 @@
 						<div class="flex items-center text-sm text-gray-700">
 							<a href="#" class="py-2 px-4 ring-1 ring-gray-300 rounded-l-md hover:bg-gray-50">Все</a>
 							<a href="#" class="flex items-center ml-px py-2 pl-3 pr-4 space-x-2 ring-1 ring-gray-300 hover:bg-gray-50">
-								{{ source('misc/svg/circles/red-400.svg') }}
+								{{ source('assets/images/circles/red-400.svg') }}
 								<span>Pending</span>
 							</a>
 							<a href="#" class="flex items-center ml-px py-2 pl-3 pr-4 space-x-2 ring-1 ring-gray-300 hover:bg-gray-50">
-								{{ source('misc/svg/circles/green-400.svg') }}
+								{{ source('assets/images/circles/green-400.svg') }}
 								<span>Paid</span>
 							</a>
 							<div class="relative">
 								<button type="button" class="ml-px py-2 px-3 ring-1 ring-gray-300 rounded-r-md hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-									{{ source('misc/svg/arrow.svg') }}
+									{{ source('assets/images/arrow.svg') }}
 								</button>
 								<ul class="dropdown text-sm">
 									<li class="border-b border-gray-100">
@@ -58,13 +60,13 @@
 							<div class="w-[220px]">
 								<div class="relative">
 									<div class="pointer-events-none absolute inset-y-0 flex items-center pl-3">
-										{{ source('misc/svg/search.svg') }}
+										{{ source('assets/images/search.svg') }}
 									</div>
 									<input class="inputs block w-full py-2 pl-10 pr-3 text-sm" placeholder="Поиск по Сумме" type="text">
 								</div>
 							</div>
 							<button @click="billingInvoicesFilters()" type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md ring-1 ring-gray-300 hover:bg-gray-50">
-								{{ source('misc/svg/filters.svg') }}
+								{{ source('assets/images/filters.svg') }}
 								<span class="text-gray-700 text-sm font-medium">Фильтры</span>
 							</button>
 						</div>

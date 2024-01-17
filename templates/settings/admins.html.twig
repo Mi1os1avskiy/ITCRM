@@ -2,6 +2,8 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% set side_menu_item = 'settings:admins' %}
+
 {% block main %}
 
 	<settings-module inline-template>
@@ -15,7 +17,7 @@
 					<div class="flex items-center justify-between py-4 px-8 bg-gray-50 border-b">
 						<h3 class="font-semibold text-lg leading-6">{{ title }}</h3>
 						<a href="{{ path('settings_profile_admin') }}" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700">
-							{{ source('misc/svg/plus.svg') }}
+							{{ source('assets/images/plus.svg') }}
 							<span>Добавить</span>
 						</a>
 					</div>

@@ -13,7 +13,7 @@
 						<div class="flex justify-between">
 							<h2 class="text-lg font-medium">Фильтры</h2>
 							<button @click="close(false)" type="button" class="rounded-md text-gray-400 hover:text-gray-500">
-								{{ source('misc/svg/close.svg') }}
+								{{ source('assets/images/close.svg') }}
 							</button>
 						</div>
 					</div>
@@ -31,7 +31,7 @@
 						<div class="relative">
 							<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 								<p class="pointer-events-none">Не выбрана</p>
-								{{ source('misc/svg/arrow.svg') }}
+								{{ source('assets/images/arrow.svg') }}
 							</button>
 
 							<ul class="dropdown w-full max-h-72 overflow-auto">
@@ -49,7 +49,7 @@
 						<div class="relative">
 							<input type="text" class="inputs block w-full pr-10 text-sm" placeholder="Дата заказа">
 							<div class="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-								{{ source('misc/svg/calendar.svg') }}
+								{{ source('assets/images/calendar.svg') }}
 							</div>
 						</div>
 					</div>
@@ -59,7 +59,7 @@
 						<div class="relative">
 							<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-sm text-left hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 								<span class="pointer-events-none">Все</span>
-								{{ source('misc/svg/arrow.svg') }}
+								{{ source('assets/images/arrow.svg') }}
 							</button>
 
 							{% set order_types = ['VPS', 'VPN', 'Dedicated', 'Storage'] %}
@@ -115,7 +115,7 @@
 
 			<div class="fixed bottom-0 w-[536px] flex justify-between py-5 px-6 border-t bg-white">
 				<button disabled type="button" class="inline-flex items-center rounded-md ring-1 ring-gray-300 py-2 pl-3 pr-4 space-x-2 hover:bg-gray-50">
-					{{ source('misc/svg/clear.svg') }}
+					{{ source('assets/images/clear.svg') }}
 					<span class="text-sm text-gray-700 font-medium">Очистить фильтры</span>
 				</button>
 				<div class="flex space-x-4">

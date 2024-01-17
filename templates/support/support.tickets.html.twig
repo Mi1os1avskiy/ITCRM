@@ -2,6 +2,8 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% set side_menu_item = 'support:tickets' %}
+
 {% block main %}
 
 	<support-module inline-template>
@@ -20,13 +22,13 @@
 							<div class="relative flex items-center ring-1 ring-gray-300 rounded-md">
 								<div class="w-[100px] flex py-2 pl-3 pr-4 space-x-2">
 									<button class="text-gray-500 hover:text-gray-700" type="button">
-										{{ source('misc/svg/reload.svg') }}
+										{{ source('assets/images/reload.svg') }}
 									</button>
 									<div class="text-gray-700 text-sm font-medium cursor-default">10:25</div>
 								</div>
 
 								<button type="button" class="w-9 p-2 border-l border-gray-300 rounded-r-md hover:bg-gray-100" aria-expanded="false" aria-expanded-autohide>
-									{{ source('misc/svg/arrow.svg') }}
+									{{ source('assets/images/arrow.svg') }}
 								</button>
 
 								{% set intervals = ['30 секунд', '1 минута', '5 минут', '10 минут', '15 минут'] %}
@@ -41,7 +43,7 @@
 							</div>
 							<div class="flex items-center">
 								<a href="{{ path('new_ticket') }}" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700">
-									{{ source('misc/svg/plus.svg') }}
+									{{ source('assets/images/plus.svg') }}
 									<span>Добавить</span>
 								</a>
 							</div>
@@ -62,7 +64,7 @@
 							<div class="relative flex flex-shrink-0">
 								<button type="button" class="flex py-2 pl-3 pr-2 space-x-2 rounded-md ring-1 ring-gray-300 text-left hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 									<span class="text-gray-800 text-sm pointer-events-none">Действия</span>
-									{{ source('misc/svg/arrow.svg') }}
+									{{ source('assets/images/arrow.svg') }}
 								</button>
 								<ul class="dropdown w-56">
 									<li>
@@ -90,7 +92,7 @@
 								{% endif %}
 								<div class="relative">
 									<button type="button" class="ml-px p-2 ring-1 ring-gray-300 rounded-r-md hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-										{{ source('misc/svg/arrow.svg') }}
+										{{ source('assets/images/arrow.svg') }}
 									</button>
 									<ul class="dropdown right-0">
 										<li class="border-b border-gray-100">
@@ -112,19 +114,19 @@
 						<div class="flex items-center space-x-2">
 							<div class="w-[180px] relative">
 								<div class="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-									{{ source('misc/svg/search.svg') }}
+									{{ source('assets/images/search.svg') }}
 								</div>
 								<input class="inputs block w-full py-2 pl-10 pr-3 text-sm" placeholder="Поиск" type="text">
 							</div>
 							<div class="flex items-center">
 								{% if getGet() %}
 									<a href="{{ path('support_tickets') }}" class="inline-flex items-center rounded-l-md ring-1 ring-gray-300 pl-3 pr-4 py-2 space-x-2 hover:bg-gray-50">
-										{{ source('misc/svg/clear.svg') }}
+										{{ source('assets/images/clear.svg') }}
 										<span class="text-gray-700 text-sm font-medium">1</span>
 									</a>
 								{% endif %}
 								<button @click="supportFilters()" type="button" class="inline-flex items-center ml-px pl-3 pr-4 py-2 space-x-2 rounded-{% if getGet() %}r-{% endif %}md ring-1 ring-gray-300 hover:bg-gray-50">
-									{{ source('misc/svg/filters.svg') }}
+									{{ source('assets/images/filters.svg') }}
 									<span class="text-gray-700 text-sm font-medium">Фильтры</span>
 								</button>
 							</div>

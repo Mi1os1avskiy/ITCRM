@@ -7,14 +7,14 @@
 		</div>
 		<div class="flex items-center space-x-1">
 			<button type="button" class="p-2.5 rounded-md text-gray-800 hover:bg-{% if message.type == 'admin_note' %}yellow{% elseif message.type == 'admin_message' %}green{% else %}gray{% endif %}-100">
-				{{ source('misc/svg/quote.svg') }}
+				{{ source('assets/images/quote.svg') }}
 			</button>
 			<button type="button" class="p-2.5 rounded-md text-gray-800 hover:bg-{% if message.type == 'admin_note' %}yellow{% elseif message.type == 'admin_message' %}green{% else %}gray{% endif %}-100">
-				{{ source('misc/svg/pencil.svg') }}
+				{{ source('assets/images/pencil.svg') }}
 			</button>
 			{% if message.type != 'user_message' %}
 			<button {% if message.type == 'admin_note' %}@click="supportTicketNoteDelete()"{% elseif message.type == 'admin_message' %}@click="supportTicketAdminAnswerDelete()"{% endif%} type="button" class="p-2.5 rounded-md text-gray-800 hover:bg-{% if message.type == 'admin_note' %}yellow{% elseif message.type == 'admin_message' %}green{% else %}gray{% endif %}-100">
-				{{ source('misc/svg/bucket.svg') }}
+				{{ source('assets/images/bucket.svg') }}
 			</button>
 			{% endif %}
 		</div>
@@ -29,7 +29,7 @@
 		{% endfor %}
 		{% if message.filename %}
 			<div class="w-fit py-2 px-3 rounded-full flex items-center {% if message.type == 'user_message' %}text-gray-400 bg-gray-100{% elseif message.type == 'admin_note' %}text-yellow-400 bg-yellow-100{% elseif message.type == 'admin_message' %}text-green-400 bg-green-100{% endif %}">
-				{{ source('misc/svg/documents.svg') }}
+				{{ source('assets/images/documents.svg') }}
 				<span class="ml-3 text-sm font-medium {% if message.type == 'user_message' %}text-gray-800{% elseif message.type == 'admin_note' %}text-yellow-800{% elseif message.type == 'admin_message' %}text-green-800{% endif %}">{{ message.filename }}</span>
 			</div>
 		{% endif %}

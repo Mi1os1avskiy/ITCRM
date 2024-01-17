@@ -15,7 +15,7 @@
 		        <div class="px-6 py-4 space-y-4">
 			        <input class="w-full border-0 focus:outline-none text-sm placeholder-gray-400" placeholder="Содержание заметки">
 			        <button type="button" class="flex items-center space-x-2 py-2 px-3 bg-gray-50 rounded-full hover:bg-gray-200">
-				        {{ source('misc/svg/add-file.svg') }}
+				        {{ source('assets/images/add-file.svg') }}
 				        <span class="text-sm font-medium text-gray-500">Прикрепить файл</span>
 			        </button>
 		        </div>
@@ -44,7 +44,7 @@
                                         <div>
                                             <div class="flex items-center space-x-1">
                                                 {% if note.status %}
-	                                                {{ source('misc/svg/important.svg') }}
+	                                                {{ source('assets/images/important.svg') }}
                                                 {% endif %}
                                                 <p class="text-sm font-medium">Заметка от {{ note.user }}</p>
                                             </div>
@@ -52,10 +52,10 @@
                                         </div>
 	                                    <div class="flex items-center space-x-1">
 		                                    <button type="button" class="p-2 rounded-md text-gray-800 hover:bg-yellow-100">
-			                                    {{ source('misc/svg/pencil.svg') }}
+			                                    {{ source('assets/images/pencil.svg') }}
 		                                    </button>
 		                                    <button @click="noteDelete()" type="button" class="p-2.5 rounded-md text-gray-800 hover:bg-yellow-100">
-			                                    {{ source('misc/svg/bucket.svg') }}
+			                                    {{ source('assets/images/bucket.svg') }}
 		                                    </button>
 	                                    </div>
                                     </div>
@@ -67,7 +67,7 @@
 
 		                                {% if note.file %}
 			                                <button class="flex items-center py-2 px-3 space-x-3 bg-yellow-100 rounded-full text-yellow-600 hover:bg-yellow-200 ">
-				                                {{ source('misc/svg/documents.svg') }}
+				                                {{ source('assets/images/documents.svg') }}
 				                                <span class="text-sm text-gray-800 font-medium">{{ note.file }}</span>
 			                                </button>
 		                                {% endif %}

@@ -2,6 +2,9 @@
 
 {% block title %} {{ title }} {% endblock %}
 
+{% set side_menu_item = 'clients:letters' %}
+
+
 {% block main %}
 
 	<clients-module inline-template>
@@ -16,7 +19,7 @@
 				<div class="flex justify-end pt-6 px-8">
 					<div class="w-60 relative rounded-md shadow-sm">
 						<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-							{{ source('misc/svg/search.svg') }}
+							{{ source('assets/images/search.svg') }}
 						</div>
 						<input class="inputs block w-full pl-10 text-sm" placeholder="ID, Email клиента" type="text">
 					</div>

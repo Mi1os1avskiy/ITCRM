@@ -1,6 +1,6 @@
 import Vue from "vue";
-import {AriaExpandedMixin, PasswordDisplayingMixin, ValidationPlugin} from "is-core-frontend";
-import {MenuPanelComponent} from "./misc/menu.panel.component";
+import {AriaExpandedMixin, ValidationPlugin} from "is-core-frontend";
+import {MenuPanelMixin} from "./misc/menu.panel.mixin";
 import * as Modal from "./misc/modal/plugin";
 import * as Notification from "./misc/notifications/plugin";
 
@@ -13,25 +13,12 @@ Vue.use(Notification.Plugin.install);
 
 const app = new Vue({
 	el: "#app",
-	data: {
-		isOpened: true
-	},
-	methods: {
-		toggleMenu() {
-			this.isOpened = !this.isOpened;
-		},
-		menuButtonClick() {
-			if (!this.isOpened) {
-				this.isOpened = true;
-			}
-		}
-	},
 	mixins: [
 		AriaExpandedMixin,
-		PasswordDisplayingMixin
+		MenuPanelMixin,
 	],
 	components: {
-		'menu-panel': MenuPanelComponent,
+		'account-module': () => import(/* webpackChunkName: "account" */ "./account/module"),
 		'clients-module': () => import(/* webpackChunkName: "clients" */ "./clients/module"),
 		'support-module': () => import(/* webpackChunkName: "support" */ "./support/module"),
 		'billing-module': () => import(/* webpackChunkName: "billing" */ "./billing/module"),

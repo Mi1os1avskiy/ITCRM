@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% set side_menu_item = 'orders:order' %}
+
 {% block main %}
 
 <orders-module inline-template>
@@ -13,7 +15,7 @@
 				<nav class="flex items-center space-x-4 text-sm text-gray-500 font-medium">
 					<a href="{{ path('orders') }}">Заказы</a>
 					<div class="-rotate-90">
-						{{ source('misc/svg/arrow.svg') }}
+						{{ source('assets/images/arrow.svg') }}
 					</div>
 					<span>{{ user_data.order_id }}</span>
 				</nav>
@@ -33,7 +35,7 @@
 						<div class="flex-1 relative">
 							<button type="button" disabled class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50 disabled:bg-gray-50 disabled:cursor-not-allowed" aria-expanded="false" aria-expanded-autohide>
 								<div class="w-full text-gray-500 text-sm text-left truncate pointer-events-none">{{ user_data.tariff_group }}</div>
-								{{ source('misc/svg/arrow.svg') }}
+								{{ source('assets/images/arrow.svg') }}
 							</button>
 
 							<ul class="dropdown max-h-72 w-full overflow-auto">
@@ -52,7 +54,7 @@
 						<div class="flex-1 relative">
 							<button type="button" disabled class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50 disabled:bg-gray-50 disabled:cursor-not-allowed" aria-expanded="false" aria-expanded-autohide>
 								<div class="w-full text-gray-500 text-sm text-left truncate pointer-events-none">{{ user_data.tariff_plan }}</div>
-								{{ source('misc/svg/arrow.svg') }}
+								{{ source('assets/images/arrow.svg') }}
 							</button>
 
 							<ul class="dropdown max-h-72 w-full overflow-auto">

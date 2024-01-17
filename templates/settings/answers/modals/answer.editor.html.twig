@@ -10,7 +10,7 @@
 				<h2 v-if="data.id > 0" class="text-lg font-medium leading-6">Редактирование ответа</h2>
 				<h2 v-else class="text-lg font-medium leading-6">Добавить ответ</h2>
 				<button @click="close(false)" type="button" class="rounded-md text-gray-400 hover:text-gray-500">
-					{{ source('misc/svg/close.svg') }}
+					{{ source('assets/images/close.svg') }}
 				</button>
 			</div>
 		</div>
@@ -45,7 +45,7 @@ https://ishosting.com/ru/acceptable-use-policy
 						</ul>
 
 						<div class="absolute top-2 right-3 arrow pointer-events-none">
-							{{ source('misc/svg/arrow.svg') }}
+							{{ source('assets/images/arrow.svg') }}
 						</div>
 					</div>
 				</div>
@@ -57,7 +57,7 @@ https://ishosting.com/ru/acceptable-use-policy
 						<button type="button" class="w-full flex justify-between py-2 px-3 space-x-2 rounded-md ring-1 ring-gray-300 hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 							<p v-if="data.id > 0" class="text-sm pointer-events-none">{{ answer_data.lang }}</p>
 							<p v-else class="text-sm pointer-events-none">Auto</p>
-							{{ source('misc/svg/arrow.svg') }}
+							{{ source('assets/images/arrow.svg') }}
 						</button>
 
 						{% set langs = ['Auto', 'Ru', 'Eng'] %}

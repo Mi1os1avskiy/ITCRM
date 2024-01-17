@@ -7,9 +7,19 @@
 	</a>
 {% endmacro %}
 
+{% macro button(name_eng, menu_item, icon, name_rus) %}
+	<button @click="menuButtonClick" class="group w-full flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700 {{ name_eng not in (menu_item | split(':')) ? 'text-gray-400' }}" type="button"
+		{% if name_eng in menu_item | split(':') %} :class="!menuIsOpened ? 'bg-gray-900 text-white' : 'text-gray-400'" {% endif %}
+		    aria-expanded="{% if name_eng in menu_item | split(':') %}true{% else %}false{% endif %}">
+		<span class="group-hover:text-white">{{ source(icon) }}</span>
+		<span v-if="menuIsOpened" class="grow text-gray-300 text-white text-sm text-left font-medium">{{ name_rus }}</span>
+		<span v-if="menuIsOpened" class="arrow duration-200">{{ source('assets/images/aside/arrow.svg') }}</span>
+	</button>
+{% endmacro %}
+
 {% import _self as nav %}
 
-{% set route = path(app.request.attributes.get('_route')) %}
+{% if not side_menu_item %} {% set side_menu_item = 'homepage' %} {% endif %}
 
 {% set separator %}
 	<div class="py-2 ml-11">
@@ -19,51 +29,44 @@
 
 {% block aside %}
 
-	<menu-panel inline-template>
-		<div :class="!!isOpened ? 'w-64': 'w-14'" class="aside-menu z-10 duration-200 overflow-x-hidden">
+		<div :class="!!menuIsOpened ? 'w-64': 'w-14'" class="aside-menu z-10 duration-200 overflow-x-hidden">
 			<div class="relative flex items-center justify-between pt-4 px-2">
 				<div class="w-10 h-10">
 					<button class="p-2 text-gray-400 hover:text-white" @click="toggleMenu">
-						{{ source('misc/svg/aside/menu.svg') }}
+						{{ source('assets/images/aside/menu.svg') }}
 					</button>
 				</div>
-				<div :class="!!isOpened ? 'opacity-100 transition duration-200 ease-in-out': 'opacity-0'" class="w-10 h-10 grid place-content-center">
-					{{ source('misc/svg/aside/logo.svg') }}
+				<div :class="!!menuIsOpened ? 'opacity-100 transition duration-200 ease-in-out': 'opacity-0'" class="w-10 h-10 grid place-content-center">
+					{{ source('assets/images/aside/logo.svg') }}
 				</div>
 				<div class="w-10 h-10"></div>
 			</div>
 
 			<div class="flex flex-col flex-1 my-4 px-2 space-y-1 overflow-y-auto duration-200 overflow-x-hidden">
 				<div>
-					<button @click="menuButtonClick" aria-expanded="{% if '/clients' in route %}true{% else %}false{% endif %}" type="button" class="group w-full flex items-center p-2 space-x-3 rounded-md text-gray-400 hover:bg-gray-700">
-						<span class="group-hover:text-white">{{ source('misc/svg/aside/clients.svg') }}</span>
-						<span v-if="isOpened" class="grow text-gray-300 text-sm text-left font-medium">Клиенты</span>
-						<span v-if="isOpened" class="arrow duration-200">{{ source('misc/svg/aside/arrow.svg') }}</span>
-					</button>
+{#					@TODO Fix classes and conditions (all buttons)#}
 
-					<div v-if="isOpened" class="my-1 space-y-1 overflow-x-hidden">
-						<a href="{{ path('clients') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ path('clients') == route ? 'bg-gray-900' }}">Список</a>
+					{{ nav.button('clients', side_menu_item, 'assets/images/aside/clients.svg', 'Клиенты') }}
 
-						<a href="{{ path('letters') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ path('letters') == route ? 'bg-gray-900' }}">Письма</a>
+					<div v-if="menuIsOpened" class="my-1 space-y-1 overflow-x-hidden">
+						<a href="{{ path('clients') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ side_menu_item == 'clients:list' ? 'bg-gray-900' }}">Список</a>
+
+						<a href="{{ path('letters') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ side_menu_item == 'clients:letters' ? 'bg-gray-900' }}">Письма</a>
 
 						<a href="#" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700">Логи</a>
 					</div>
 				</div>
 
 				<div>
-					<button @click="menuButtonClick" aria-expanded="{% if '/orders' in route %}true{% else %}false{% endif %}" type="button" class="group w-full flex items-center p-2 space-x-3 rounded-md text-gray-400 hover:bg-gray-700">
-						<span class="group-hover:text-white">{{ source('misc/svg/aside/orders.svg') }}</span>
-						<span v-if="isOpened" class="grow text-gray-300 text-sm text-left font-medium">Заказы</span>
-						<span v-if="isOpened" class="arrow duration-200">{{ source('misc/svg/aside/arrow.svg') }}</span>
-					</button>
+					{{ nav.button('orders', side_menu_item, 'assets/images/aside/orders.svg', 'Заказы') }}
 
-					<div v-if="isOpened" class="my-1 space-y-1 overflow-x-hidden">
+					<div v-if="menuIsOpened" class="my-1 space-y-1 overflow-x-hidden">
 						<a href="#" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700">Новые заказы</a>
 
-						<a href="{{ path('orders') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ path('orders') == route ? 'bg-gray-900' }}">Все заказы</a>
+						<a href="{{ path('orders') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ side_menu_item == 'orders:list' ? 'bg-gray-900' }}">Все заказы</a>
 
-						<a href="{{ path('new_order') }}" class="group flex items-center py-2 pl-2.5 pr-3 rounded-md space-x-3.5 text-gray-300 hover:bg-gray-700 {{ path('new_order') == route ? 'bg-gray-900' }}">
-							<span class="group-hover:text-white">{{ source('misc/svg/aside/plus.svg') }}</span>
+						<a href="{{ path('new_order') }}" class="group flex items-center py-2 pl-2.5 pr-3 rounded-md space-x-3.5 text-gray-300 hover:bg-gray-700 {{ side_menu_item == 'orders:new_order' ? 'bg-gray-900' }}">
+							<span class="group-hover:text-white">{{ source('assets/images/aside/plus.svg') }}</span>
 							<span class="text-sm font-medium truncate">Новый заказ</span>
 						</a>
 
@@ -76,40 +79,32 @@
 				</div>
 
 				<div>
-					<button @click="menuButtonClick" aria-expanded="{% if '/billing' in route %}true{% else %}false{% endif %}" type="button" class="group w-full flex items-center p-2 space-x-3 rounded-md text-gray-400 hover:bg-gray-700">
-						<span class="group-hover:text-white">{{ source('misc/svg/aside/billing.svg') }}</span>
-						<span v-if="isOpened" class="grow text-gray-300 text-sm text-left font-medium">Биллинг</span>
-						<span v-if="isOpened" class="arrow duration-200">{{ source('misc/svg/aside/arrow.svg') }}</span>
-					</button>
+					{{ nav.button('billing', side_menu_item, 'assets/images/aside/billing.svg', 'Биллинг') }}
 
-					<div v-if="isOpened" class="my-1 space-y-1 overflow-x-hidden">
-						<a href="{{ path('billing_transactions') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ path('billing_transactions') == route ? 'bg-gray-900' }}">Транзакции</a>
+					<div v-if="menuIsOpened" class="my-1 space-y-1 overflow-x-hidden">
+						<a href="{{ path('billing_transactions') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ side_menu_item == 'billing:transactions' ? 'bg-gray-900' }}">Транзакции</a>
 
 						{{ separator }}
 
-						<a href="{{ path('billing_invoices') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ path('billing_invoices') == route ? 'bg-gray-900' }}">Инвойсы</a>
+						<a href="{{ path('billing_invoices') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ side_menu_item == 'billing:invoices' ? 'bg-gray-900' }}">Инвойсы</a>
 
-						<a href="{{ path('billing_payments') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ path('billing_payments') == route ? 'bg-gray-900' }}">Платежи</a>
+						<a href="{{ path('billing_payments') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ side_menu_item == 'billing:payments' ? 'bg-gray-900' }}">Платежи</a>
 
-						<a href="{{ path('billing_new_invoice') }}" class="group flex items-center py-2 pl-2.5 pr-3 rounded-md space-x-3.5 text-gray-300 hover:bg-gray-700 {{ path('billing_new_invoice') == route ? 'bg-gray-900' }}">
-							<span class="group-hover:text-white">{{ source('misc/svg/aside/plus.svg') }}</span>
+						<a href="{{ path('billing_new_invoice') }}" class="group flex items-center py-2 pl-2.5 pr-3 rounded-md space-x-3.5 text-gray-300 hover:bg-gray-700 {{ side_menu_item == 'billing:new_invoice' ? 'bg-gray-900' }}">
+							<span class="group-hover:text-white">{{ source('assets/images/aside/plus.svg') }}</span>
 							<span class="text-sm font-medium truncate">Новый инвойс</span>
 						</a>
 					</div>
 				</div>
 
 				<div>
-					<button @click="menuButtonClick" aria-expanded="{% if '/support' in route %}true{% else %}false{% endif %}" type="button" class="group w-full flex items-center p-2 space-x-3 rounded-md text-gray-400 hover:bg-gray-700">
-						<span class="group-hover:text-white">{{ source('misc/svg/aside/support.svg') }}</span>
-						<span v-if="isOpened" class="grow text-gray-300 text-sm text-left font-medium">Поддержка</span>
-						<span v-if="isOpened" class="arrow duration-200">{{ source('misc/svg/aside/arrow.svg') }}</span>
-					</button>
+					{{ nav.button('support', side_menu_item, 'assets/images/aside/support.svg', 'Поддержка') }}
 
-					<div v-if="isOpened" class="my-1 space-y-1 overflow-x-hidden">
-						<a href="{{ path('support_tickets') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ path('support_tickets') == route ? 'bg-gray-900' }}">Тикеты</a>
+					<div v-if="menuIsOpened" class="my-1 space-y-1 overflow-x-hidden">
+						<a href="{{ path('support_tickets') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ side_menu_item == 'support:tickets' ? 'bg-gray-900' }}">Тикеты</a>
 
-						<a href="{{ path('new_ticket') }}" class="group flex items-center py-2 pl-2.5 pr-3 rounded-md space-x-3.5 text-gray-300 hover:bg-gray-700 {{ path('new_ticket') == route ? 'bg-gray-900' }}">
-							<span class="group-hover:text-white">{{ source('misc/svg/aside/plus.svg') }}</span>
+						<a href="{{ path('new_ticket') }}" class="group flex items-center py-2 pl-2.5 pr-3 rounded-md space-x-3.5 text-gray-300 hover:bg-gray-700 {{ side_menu_item == 'support:new_ticket' ? 'bg-gray-900' }}">
+							<span class="group-hover:text-white">{{ source('assets/images/aside/plus.svg') }}</span>
 							<span class="text-sm font-medium truncate">Новый тикет</span>
 						</a>
 
@@ -126,31 +121,27 @@
 				</div>
 
 				<div>
-					<button @click="menuButtonClick" aria-expanded="{% if '/settings' in route %}true{% else %}false{% endif %}" type="button" class="group w-full flex items-center p-2 space-x-3 rounded-md text-gray-400 hover:bg-gray-700">
-						<span class="group-hover:text-white">{{ source('misc/svg/aside/settings.svg') }}</span>
-						<span v-if="isOpened" class="grow text-gray-300 text-sm text-left font-medium">Настройки</span>
-						<span v-if="isOpened" class="arrow duration-200">{{ source('misc/svg/aside/arrow.svg') }}</span>
-					</button>
+					{{ nav.button('settings', side_menu_item, 'assets/images/aside/settings.svg', 'Настройки') }}
 
-					<div v-if="isOpened" class="my-1 space-y-1 overflow-x-hidden">
-						<a href="{{ path('settings_admins') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ path('settings_admins') == route ? 'bg-gray-900' }}">Админы</a>
+					<div v-if="menuIsOpened" class="my-1 space-y-1 overflow-x-hidden">
+						<a href="{{ path('settings_admins') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ side_menu_item == 'settings:admins' ? 'bg-gray-900' }}">Админы</a>
 
-						<a href="{{ path('settings_answers') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ path('settings_answers') == route ? 'bg-gray-900' }}">Быстрые ответы</a>
+						<a href="{{ path('settings_answers') }}" class="block py-2 pl-11 pr-3 rounded-md text-gray-300 text-sm font-medium truncate hover:bg-gray-700 {{ side_menu_item == 'settings:answers' ? 'bg-gray-900' }}">Быстрые ответы</a>
 					</div>
 				</div>
 
 {#				<a href="#" class="w-full flex items-center p-2 space-x-3 rounded-md text-gray-400 hover:bg-gray-700 hover:text-white">#}
-{#					{{ source('misc/svg/aside/search.svg') }}#}
-{#					<span v-if="isOpened" class="text-gray-300 text-sm font-medium">Поиск</span>#}
+{#					{{ source('assets/images/aside/search.svg') }}#}
+{#					<span v-if="menuIsOpened" class="text-gray-300 text-sm font-medium">Поиск</span>#}
 {#				</a>#}
 			</div>
 
 			<button @click="menuButtonClick" class="popover__wrapper relative w-full group flex items-center p-4 space-x-3 bg-gray-700 text-gray-300 hover:bg-gray-600" aria-expanded="false" aria-expanded-autohide>
-				<span class="group-hover:text-white">{{ source('misc/svg/aside/user.svg') }}</span>
-				<span :class="!!isOpened ? 'block': 'hidden'" class="grow text-gray-300 text-sm text-left font-medium">Аккаунт</span>
-				<span :class="!!isOpened ? 'block': 'hidden'">{{ source('misc/svg/aside/up-down.svg') }}</span>
+				<span class="group-hover:text-white">{{ source('assets/images/aside/user.svg') }}</span>
+				<span :class="!!menuIsOpened ? 'block': 'hidden'" class="grow text-gray-300 text-sm text-left font-medium">Аккаунт</span>
+				<span :class="!!menuIsOpened ? 'block': 'hidden'">{{ source('assets/images/aside/up-down.svg') }}</span>
 
-				<div v-if="!isOpened" class="popover__left w-fit bottom-14 -left-1 py-2 px-3 bg-gray-900 text-gray-100 text-xs rounded-lg whitespace-nowrap">
+				<div v-if="!menuIsOpened" class="popover__left w-fit bottom-14 -left-1 py-2 px-3 bg-gray-900 text-gray-100 text-xs rounded-lg whitespace-nowrap">
 					<p>Авторизован как</p>
 					<p class="font-medium">valeriy-burdaleyba@mail.com</p>
 				</div>
@@ -162,11 +153,10 @@
 					<p class="font-medium truncate">valeriy-burdaleyba@mail.com</p>
 				</div>
 				<a href="{{ path('app_index') }}" class="flex w-full py-2 px-4 space-x-3 rounded-b-md text-gray-500 hover:text-red-500 hover:bg-red-50">
-					{{ source('misc/svg/aside/logout.svg') }}
+					{{ source('assets/images/aside/logout.svg') }}
 					<span class="text-sm">Выход</span>
 				</a>
 			</div>
 		</div>
-	</menu-panel>
 
 {% endblock %}

@@ -264,7 +264,7 @@ class IndexController extends AbstractController
     }
 
     /**
-     * @Route("/support/tickets/new_ticket", name="new_ticket")
+     * @Route("/support/new_ticket", name="new_ticket")
      */
     public function newTicket(): Response
     {

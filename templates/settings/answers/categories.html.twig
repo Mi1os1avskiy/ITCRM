@@ -11,11 +11,11 @@
 					<p class="text-gray-700 text-sm font-medium">{{ i }}</p>
 					<div class="flex space-x-2">
 						<button @click="editingCategory({{ loop.index }})" class="popover__wrapper relative p-2 text-gray-500 hover:text-indigo-700" type="button">
-							{{ source('misc/svg/pencil.svg') }}
+							{{ source('assets/images/pencil.svg') }}
 							<div class="popover__content w-fit bottom-11 -left-[70px] py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">Редактировать категорию</div>
 						</button>
 						<button @click="deleteCategory()" class="popover__wrapper relative p-2 text-gray-500 hover:text-red-500" type="button">
-							{{ source('misc/svg/bucket-20.svg') }}
+							{{ source('assets/images/bucket-20.svg') }}
 							<div class="popover__content w-fit bottom-11 -left-[52px] py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">Удалить категорию</div>
 						</button>
 					</div>
@@ -32,7 +32,7 @@
 			</div>
 			<div class="flex py-5 px-6 space-x-3 bg-gray-50">
 				<button id="del_btn" @click="deleteCategory()" class="hidden p-2 ring-1 ring-gray-300 rounded-md bg-white text-gray-500 hover:bg-gray-50" type="button">
-					{{ source('misc/svg/bucket-20.svg') }}
+					{{ source('assets/images/bucket-20.svg') }}
 				</button>
 				<button @click="editingCategory()" class="w-full py-2 px-4 bg-white ring-1 ring-gray-300 rounded-md text-gray-700 text-sm font-medium hover:bg-gray-50" type="button">Отменить</button>
 				<button id="create_edit_btn" @click="createCategory()" class="w-full py-2 px-4 bg-indigo-600 rounded-md text-white text-sm font-medium hover:bg-indigo-700" type="button">Создать</button>

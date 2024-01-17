@@ -15,11 +15,11 @@
 				<div class="pb-2">
 					<div class="flex py-5 px-6 space-x-4 bg-yellow-50 rounded-lg">
 						<div>
-							{{ source('misc/svg/important.svg') }}
+							{{ source('assets/images/important.svg') }}
 						</div>
 						<p class="text-gray-700 text-sm">Ipsum lacus id gravida venenatis velit cursus aliquet eros. Massa at habitant potenti senectus id pretium faucibus. Odio libero placerat lectus lectus eget tortor scelerisque tincidunt. Sed ultricies consequat interdum vel mauris nunc. Orci fermentum consequat semper tortor.</p>
 						<button type="button" class="-rotate-90">
-							{{ source('misc/svg/arrow.svg') }}
+							{{ source('assets/images/arrow.svg') }}
 						</button>
 					</div>
 				</div>
@@ -27,7 +27,7 @@
 				<div class="flex items-center justify-between py-4 px-6 space-x-4 bg-blue-50 rounded-lg">
 					<div class="grow text-blue-800 text-sm font-medium">Взял тикет для ответа</div>
 					<div class="flex items-center h-7 pl-2 pr-3 space-x-1 bg-blue-100 rounded-full text-blue-700">
-						{{ source('misc/svg/clock.svg') }}
+						{{ source('assets/images/clock.svg') }}
 						<span class="text-blue-800 text-xs font-medium">2:21</span>
 					</div>
 					<button type="button" class="py-2 px-3 rounded-md bg-blue-600 text-white text-sm leading-4 font-medium hover:bg-blue-700">Освободить</button>
@@ -42,14 +42,14 @@
 							<input class="w-full border-0 focus:outline-none text-sm placeholder-gray-400" placeholder="Содержание тикета">
 							<div class="flex space-x-2.5">
 								<div class="flex items-center space-x-2 py-2 px-3 bg-gray-50 rounded-full text-gray-400">
-									{{ source('misc/svg/documents.svg') }}
+									{{ source('assets/images/documents.svg') }}
 									<span class="text-sm font-medium text-gray-800 cursor-default">Documents.zip</span>
 									<button type="button" class="text-gray-500 hover:text-gray-900">
-										{{ source('misc/svg/x-mark.svg') }}
+										{{ source('assets/images/x-mark.svg') }}
 									</button>
 								</div>
 								<button type="button" class="flex items-center space-x-2 py-2 px-3 bg-gray-50 rounded-full hover:bg-gray-200">
-									{{ source('misc/svg/add-file.svg') }}
+									{{ source('assets/images/add-file.svg') }}
 									<span class="text-sm font-medium text-gray-500">Прикрепить файл</span>
 								</button>
 							</div>
@@ -78,7 +78,7 @@
 										<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
 									</div>
 									<div class="grow pointer-events-none text-sm text-left">Средний приоритет</div>
-									{{ source('misc/svg/arrow.svg') }}
+									{{ source('assets/images/arrow.svg') }}
 								</button>
 								<ul class="dropdown w-[230px]">
 									<li>
@@ -113,9 +113,9 @@
 
 							<div class="relative">
 								<button type="button" class="w-[230px] flex items-center py-2 px-3 space-x-2 rounded-md ring-1 ring-gray-300 hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-									{{ source('misc/svg/users.svg') }}
+									{{ source('assets/images/users.svg') }}
 									<div class="grow text-sm text-left pointer-events-none">Служба поддержки</div>
-									{{ source('misc/svg/arrow.svg') }}
+									{{ source('assets/images/arrow.svg') }}
 								</button>
 								<ul class="dropdown w-[230px]">
 									{% for i in dept_list %}

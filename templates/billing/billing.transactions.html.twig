@@ -1,14 +1,16 @@
 {% extends 'billing/billing.base.html.twig' %}
 
+{% set side_menu_item = 'billing:transactions' %}
+
 {% set icons = [
-	{'type': 1, 'title': 'Оплаченный инвойс', 'src': 'misc/svg/transaction/paid.svg'},
-	{'type': 2, 'title': 'Неоплаченный инвойс', 'src': 'misc/svg/transaction/not_paid.svg'},
-	{'type': 3, 'title': 'Отменённый инвойс', 'src': 'misc/svg/transaction/cancelled.svg'},
-	{'type': 4, 'title': 'Платёж несуществующий', 'src': 'misc/svg/transaction/no_payment.svg'},
-	{'type': 5, 'title': 'Несуществующий инвойс', 'src': 'misc/svg/transaction/no_invoice.svg'},
-	{'type': 6, 'title': 'Задан клиент', 'src': 'misc/svg/transaction/client.svg'},
-	{'type': 7, 'title': 'Оплата без инвойса', 'src': 'misc/svg/transaction/paid_no_invoice.svg'},
-	{'type': 8, 'title': 'Нет информации', 'src': 'misc/svg/transaction/no_info.svg'},
+	{'type': 1, 'title': 'Оплаченный инвойс', 'src': 'assets/images/transaction/paid.svg'},
+	{'type': 2, 'title': 'Неоплаченный инвойс', 'src': 'assets/images/transaction/not_paid.svg'},
+	{'type': 3, 'title': 'Отменённый инвойс', 'src': 'assets/images/transaction/cancelled.svg'},
+	{'type': 4, 'title': 'Платёж несуществующий', 'src': 'assets/images/transaction/no_payment.svg'},
+	{'type': 5, 'title': 'Несуществующий инвойс', 'src': 'assets/images/transaction/no_invoice.svg'},
+	{'type': 6, 'title': 'Задан клиент', 'src': 'assets/images/transaction/client.svg'},
+	{'type': 7, 'title': 'Оплата без инвойса', 'src': 'assets/images/transaction/paid_no_invoice.svg'},
+	{'type': 8, 'title': 'Нет информации', 'src': 'assets/images/transaction/no_info.svg'},
 ] %}
 
 {% block content %}
@@ -22,7 +24,7 @@
 				<div class="flex items-center justify-between py-4 px-8 bg-gray-50">
 					<h3 class="text-lg font-semibold">{{ title }}</h3>
 					<button @click="billingAddTransaction()" type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700">
-						{{ source('misc/svg/plus.svg') }}
+						{{ source('assets/images/plus.svg') }}
 						<span class="text-sm font-medium">Добавить</span>
 					</button>
 				</div>
@@ -38,7 +40,7 @@
 						<a href="#" class="ml-px py-2 px-4 ring-1 ring-gray-300 text-sm text-gray-700 font-medium hover:bg-gray-50">Все исходящие</a>
 						<div class="ml-px relative">
 							<button type="button" class="p-2 ring-1 ring-gray-300 rounded-r-md hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-								{{ source('misc/svg/arrow.svg') }}
+								{{ source('assets/images/arrow.svg') }}
 							</button>
 
 							<ul class="dropdown right-0 w-[280px]">
@@ -60,12 +62,12 @@
 					<div class="flex items-center space-x-2">
 						<div class="relative w-[220px]">
 							<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-								{{ source('misc/svg/search.svg') }}
+								{{ source('assets/images/search.svg') }}
 							</div>
 							<input class="inputs block w-full py-2 pl-10 pr-3 text-sm" placeholder="Поиск по UID и Сумме" type="text">
 						</div>
 						<button @click="billingTransactionsFilters()" type="button" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md ring-1 ring-gray-300 hover:bg-gray-50">
-							{{ source('misc/svg/filters.svg') }}
+							{{ source('assets/images/filters.svg') }}
 							<span class="text-sm text-gray-700 font-medium">Фильтры</span>
 						</button>
 					</div>
@@ -125,7 +127,7 @@
 										<div class="flex items-center justify-end px-3 space-x-2">
 											{% if item.refund %}
 											<div class="popover__wrapper relative">
-												{{ source('misc/svg/transaction/refund.svg') }}
+												{{ source('assets/images/transaction/refund.svg') }}
 												<div class="popover__left bottom-9 -left-[9px] w-fit py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">
 													<p>Был возврат средств</p>
 												</div>

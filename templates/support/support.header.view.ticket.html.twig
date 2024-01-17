@@ -2,7 +2,7 @@
 	<nav class="flex items-center space-x-4 text-sm text-gray-500 font-medium">
 		<a href="{{ path('support_tickets') }}" class="hover:text-gray-700">Тикеты</a>
 		<div class="-rotate-90">
-			{{ source('misc/svg/arrow.svg') }}
+			{{ source('assets/images/arrow.svg') }}
 		</div>
 		<span class="cursor-default">#{{ data.ticket_id }}</span>
 	</nav>
@@ -20,15 +20,15 @@
 			</div>
 
 			<div class="flex items-center py-2 px-4 space-x-2.5 bg-gray-100 rounded-full">
-				{{ source('misc/svg/users.svg') }}
+				{{ source('assets/images/users.svg') }}
 				<span class="text-gray-500 text-sm font-medium">Служба поддержки</span>
 			</div>
 
 			<div class="relative">
 				<button type="button" class="w-[224px] flex items-center py-2 px-3 space-x-2 rounded-md ring-1 ring-gray-300 hover:bg-gray-100" aria-expanded="false" aria-expanded-autohide>
-					{{ source('misc/svg/circles/red-400.svg') }}
+					{{ source('assets/images/circles/red-400.svg') }}
 					<span class="flex-1 text-sm text-left pointer-events-none">Open</span>
-					{{ source('misc/svg/arrow.svg') }}
+					{{ source('assets/images/arrow.svg') }}
 				</button>
 				<ul class="dropdown w-[224px]">
 					{% for val, css in ticket_statuses %}

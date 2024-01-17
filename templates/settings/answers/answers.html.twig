@@ -18,7 +18,7 @@
 				<div class="flex items-center py-2 space-x-4">
 					<input type="checkbox" class="checkbox peer">
 					<button @click="deleteAnswers()" class="popover__wrapper relative text-gray-300 pointer-events-none peer-checked:text-gray-500 peer-checked:hover:text-red-500 peer-checked:pointer-events-auto">
-						{{ source('misc/svg/bucket-20.svg') }}
+						{{ source('assets/images/bucket-20.svg') }}
 						<div class="popover__content w-fit bottom-9 -left-[27px] py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">Удалить</div>
 					</button>
 				</div>
@@ -30,7 +30,7 @@
 					</div>
 					<div class="relative flex items-center">
 						<div class="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-							{{ source('misc/svg/search.svg') }}
+							{{ source('assets/images/search.svg') }}
 						</div>
 						<input class="inputs w-72 py-2 pl-10 pr-3 text-sm" placeholder="Введите заголовок или описание" type="text">
 					</div>
@@ -49,10 +49,10 @@
 							</div>
 							<div class="absolute top-4 right-4 flex items-center space-x-2">
 								<button @click="answerEditor({{ answer.id }})" class="p-2 text-gray-500 hover:text-indigo-700" type="button">
-									{{ source('misc/svg/pencil.svg') }}
+									{{ source('assets/images/pencil.svg') }}
 								</button>
 								<button @click="expandAnswer({{ answer.id }})" class="p-2 text-gray-500 hover:text-indigo-700" type="button" aria-expanded="false">
-									{{ source('misc/svg/arrow.svg') }}
+									{{ source('assets/images/arrow.svg') }}
 								</button>
 							</div>
 						</div>

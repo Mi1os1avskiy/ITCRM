@@ -2,7 +2,7 @@
 
 	<div class="w-[344px] flex items-center justify-between py-4 px-6 space-x-4 ring-1 ring-gray-300 rounded-l-lg">
 		<div class="flex items-center space-x-2">
-			{{ source('misc/svg/user-40.svg') }}
+			{{ source('assets/images/user-40.svg') }}
 			<p class="text-sm font-medium truncate">Клиент не выбран</p>
 		</div>
 		<button @click="ticketUserSelect()" type="button" class="py-2 px-4 ring-1 ring-gray-300 rounded-md text-gray-700 text-sm font-medium hover:bg-gray-50">Выбрать</button>
@@ -12,7 +12,7 @@
 
 {% set client_filled %}
 	<div class="w-[344px] flex items-center shrink-0 py-4 px-6 space-x-2 ring-1 ring-gray-300 rounded-l-lg">
-		{{ source('misc/svg/user-40.svg') }}
+		{{ source('assets/images/user-40.svg') }}
 		<div class="overflow-hidden">
 			<a href="{{ path('profile') }}" class="text-sm font-medium hover:text-indigo-700" title="{{ data.ticket_email }}">
 				<p class="w-60 min-w-full truncate">{{ data.ticket_email }}</p>
@@ -25,7 +25,7 @@
 {% set service_empty %}
 	<div class="flex grow flex-shrink-0 items-center ml-px py-4 px-6 space-x-6 bg-gray-50 ring-1 ring-gray-300 rounded-r-lg ">
 		<div class="flex grow space-x-2">
-			{{ source('misc/svg/cube-40.svg') }}
+			{{ source('assets/images/cube-40.svg') }}
 			<div>
 				<div class="text-sm font-medium">Услуга не выбрана</div>
 				<div class="text-gray-500 text-sm font-medium">Выберите клиента для начала</div>
@@ -40,7 +40,7 @@
 		<div class="flex grow items-center space-x-6">
 			<div class="flex grow items-center space-x-2">
 				<div>
-					{{ source('misc/svg/cube-40.svg') }}
+					{{ source('assets/images/cube-40.svg') }}
 				</div>
 				<div>
 					<div class="flex space-x-2">
@@ -63,7 +63,7 @@
 				<p class="text-gray-500">{{ data.ticket_paydate }}</p>
 			</div>
 			<button @click="ticketServiceSelect(1)" type="button" class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-500 hover:bg-gray-50">
-				{{ source('misc/svg/pencil.svg') }}
+				{{ source('assets/images/pencil.svg') }}
 			</button>
 		</div>
 	</div>

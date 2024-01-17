@@ -2,6 +2,8 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% set side_menu_item = 'orders:new_order' %}
+
 {% block main %}
 
 	<orders-module inline-template>
@@ -16,7 +18,7 @@
 						<nav class="flex items-center space-x-4 text-sm text-gray-500 font-medium">
 							<a href="{{ path ('orders') }}">Заказы</a>
 							<div class="-rotate-90">
-								{{ source('misc/svg/arrow.svg') }}
+								{{ source('assets/images/arrow.svg') }}
 							</div>
 							<p>{{ title }}</p>
 						</nav>
@@ -31,7 +33,7 @@
 						<div class="flex py-5 px-6 space-x-5 bg-gray-50">
 							<div class="flex-1 relative">
 								<div class="absolute top-2 left-3 pointer-events-none">
-									{{ source('misc/svg/user.svg') }}
+									{{ source('assets/images/user.svg') }}
 								</div>
 
 								<input @click="inputSearch()" id="myInput" class="inputs w-full py-2 px-10 text-sm" placeholder="Введите email клиента" type="text" aria-expanded="false" aria-expanded-autohide>
@@ -48,14 +50,14 @@
 								</ul>
 
 								<div class="absolute top-2 right-3 arrow pointer-events-none">
-									{{ source('misc/svg/arrow.svg') }}
+									{{ source('assets/images/arrow.svg') }}
 								</div>
 							</div>
 
 							<div class="flex-1 relative">
 								<button type="button" class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 									<div class="w-full text-gray-500 text-sm text-left pointer-events-none">Выберите группу тарифов</div>
-									{{ source('misc/svg/arrow.svg') }}
+									{{ source('assets/images/arrow.svg') }}
 								</button>
 
 								<ul class="dropdown max-h-72 w-full overflow-auto">
@@ -72,7 +74,7 @@
 							<div class="flex-1 relative">
 								<button type="button" class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 									<div class="w-full text-gray-500 text-sm text-left pointer-events-none">Выберите тарифный план</div>
-									{{ source('misc/svg/arrow.svg') }}
+									{{ source('assets/images/arrow.svg') }}
 								</button>
 
 								<ul class="dropdown max-h-72 w-full overflow-auto">
@@ -89,7 +91,7 @@
 
 						<div class="flex bg-yellow-50 rounded-lg py-4 px-6 space-x-4">
 							<div>
-								{{ source('misc/svg/important.svg') }}
+								{{ source('assets/images/important.svg') }}
 							</div>
 							<p class="text-sm text-gray-700 line-clamp-3">Ipsum lacus id gravida venenatis velit cursus aliquet eros. Massa at habitant potenti senectus id pretium faucibus. Odio libero placerat lectus lectus eget tortor scelerisque tincidunt. Sed ultricies consequat interdum vel mauris nunc. Orci fermentum consequat semper tortor. Enim adipiscing donec lobortis elit libero vivamus. Leo magna donec gravida dictum platea. Aliquam vehicula augue cursus pharetra nunc praesent ornare.</p>
 						</div>
@@ -129,7 +131,7 @@
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 												<p class="pointer-events-none line-clamp-1 overflow-hidden">32GB DDR4</p>
-												{{ source('misc/svg/arrow.svg') }}
+												{{ source('assets/images/arrow.svg') }}
 											</button>
 											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
@@ -156,7 +158,7 @@
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 												<p class="pointer-events-none line-clamp-1 overflow-hidden">Без панели (только установка ОС)</p>
-												{{ source('misc/svg/arrow.svg') }}
+												{{ source('assets/images/arrow.svg') }}
 											</button>
 											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
@@ -180,7 +182,7 @@
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 												<p class="pointer-events-none line-clamp-1 overflow-hidden">Без администрирования</p>
-												{{ source('misc/svg/arrow.svg') }}
+												{{ source('assets/images/arrow.svg') }}
 											</button>
 											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
@@ -204,7 +206,7 @@
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 												<p class="pointer-events-none line-clamp-1 overflow-hidden">CentOS 8.x</p>
-												{{ source('misc/svg/arrow.svg') }}
+												{{ source('assets/images/arrow.svg') }}
 											</button>
 											<ul class="dropdown w-full max-h-72 text-sm">
 												<li>
@@ -228,7 +230,7 @@
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 												<p class="pointer-events-none line-clamp-1 overflow-hidden">2TB HDD</p>
-												{{ source('misc/svg/arrow.svg') }}
+												{{ source('assets/images/arrow.svg') }}
 											</button>
 											<ul class="dropdown zw-full max-h-72 overflow-auto text-sm">
 												<li>
@@ -252,7 +254,7 @@
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 												<p class="pointer-events-none line-clamp-1 overflow-hidden">None</p>
-												{{ source('misc/svg/arrow.svg') }}
+												{{ source('assets/images/arrow.svg') }}
 											</button>
 											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
@@ -279,7 +281,7 @@
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 												<p class="pointer-events-none line-clamp-1 overflow-hidden">None</p>
-												{{ source('misc/svg/arrow.svg') }}
+												{{ source('assets/images/arrow.svg') }}
 											</button>
 											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
@@ -306,7 +308,7 @@
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 												<p class="pointer-events-none line-clamp-1 overflow-hidden">None</p>
-												{{ source('misc/svg/arrow.svg') }}
+												{{ source('assets/images/arrow.svg') }}
 											</button>
 											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
@@ -350,7 +352,7 @@
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 												<p class="pointer-events-none line-clamp-1 overflow-hidden">Порт 100 Mbps трафик не учитывается</p>
-												{{ source('misc/svg/arrow.svg') }}
+												{{ source('assets/images/arrow.svg') }}
 											</button>
 											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
@@ -377,7 +379,7 @@
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 												<p class="pointer-events-none line-clamp-1 overflow-hidden">64 Bit (рекомендуется)</p>
-												{{ source('misc/svg/arrow.svg') }}
+												{{ source('assets/images/arrow.svg') }}
 											</button>
 											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
@@ -401,7 +403,7 @@
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 												<p class="pointer-events-none line-clamp-1 overflow-hidden">None</p>
-												{{ source('misc/svg/arrow.svg') }}
+												{{ source('assets/images/arrow.svg') }}
 											</button>
 											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
@@ -425,7 +427,7 @@
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 												<p class="pointer-events-none line-clamp-1 overflow-hidden">Установить и настроить (рекомендуется)</p>
-												{{ source('misc/svg/arrow.svg') }}
+												{{ source('assets/images/arrow.svg') }}
 											</button>
 											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>
@@ -449,7 +451,7 @@
 										<div class="relative">
 											<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 text-left text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
 												<p class="pointer-events-none line-clamp-1 overflow-hidden">Не выбрано</p>
-												{{ source('misc/svg/arrow.svg') }}
+												{{ source('assets/images/arrow.svg') }}
 											</button>
 											<ul class="dropdown w-full max-h-72 overflow-auto text-sm">
 												<li>

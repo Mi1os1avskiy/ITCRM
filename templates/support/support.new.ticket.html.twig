@@ -1,128 +1,140 @@
-{% extends 'support/support.base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}{{ title }}{% endblock %}
 
-{% block content %}
+{% set side_menu_item = 'support:new_ticket' %}
 
-	<support-settings inline-template v-cloak>
+{% block main %}
 
-		<div class="space-y-6">
-			<div class="bg-gray-50 py-4 px-8 space-y-2">
-				<nav class="flex items-center space-x-4 text-sm text-gray-500">
-					<a href="{{ path ('support_tickets') }}"class="font-medium">Тикеты</a>
-					<div class="-rotate-90">
-						{{ source('misc/svg/arrow.svg') }}
-					</div>
-					<span class="font-medium">{{ title }}</span>
-				</nav>
-				<div class="h-9 flex items-center text-lg font-semibold">{{ title }}</div>
-			</div>
+	<support-module inline-template>
+		<main class="pb-24">
 
-			<div class="flex px-8">
-				{% include 'support/parts/service.user.block.html.twig' %}
-			</div>
+			{% block content %}
 
-			<form class="px-8 space-y-6">
-				<input class="inputs w-full py-2 px-3 text-sm" placeholder="Тема" type="text">
-				<div class="relative rounded-md ring-1 ring-gray-300">
+				<support-settings inline-template v-cloak>
 
-					{% include 'parts/text.editor.head.html.twig' %}
-
-					<div class="px-6 py-4 space-y-4 border-b">
-						<input class="w-full border-0 focus:outline-none text-sm placeholder-gray-400" placeholder="Содержание тикета">
-
-						<button type="button" class="flex items-center space-x-2 py-2 px-3 bg-gray-50 rounded-full hover:bg-gray-200">
-							{{ source('misc/svg/add-file.svg') }}
-							<span class="text-sm font-medium text-gray-500">Прикрепить файл</span>
-						</button>
-
-						<div class="flex space-x-3">
-							<input class="inputs grow py-2 px-4 text-sm" placeholder="Добавить запись о выставлении инвойса" type="text">
-							<div class="w-[131px] relative">
-								<div class="absolute inset-y-0 left-3 flex items-center text-sm cursor-default">$</div>
-								<input class="inputs block w-full py-2 pl-10 pr-3 text-sm" placeholder="0.00" type="text">
-							</div>
-						</div>
-					</div>
-
-					{% include 'support/parts/prepared.answers.html.twig' %}
-
-				</div>
-
-				<div class="flex justify-between">
-					<div class="flex space-x-3">
-						<div class="relative">
-							<button type="button" class="w-[230px] flex items-center py-2 px-3 space-x-2 rounded-md ring-1 ring-gray-300 hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-								<div class="h-5 w-5 grid place-content-center space-y-0.5 pointer-events-none">
-									<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
-									<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
+					<div class="space-y-6">
+						<div class="bg-gray-50 py-4 px-8 space-y-2">
+							<nav class="flex items-center space-x-4 text-sm text-gray-500">
+								<a href="{{ path ('support_tickets') }}"class="font-medium">Тикеты</a>
+								<div class="-rotate-90">
+									{{ source('assets/images/arrow.svg') }}
 								</div>
-								<div class="grow pointer-events-none text-sm text-left">Средний приоритет</div>
-								{{ source('misc/svg/arrow.svg') }}
-							</button>
-							<ul class="dropdown w-[230px]">
-								<li>
-									<button type="button" class="w-full flex items-center py-2 px-4 space-x-3">
-										<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
-										<span class="text-gray-700 text-sm">Низкий приоритет</span>
-									</button>
-								</li>
-								<li>
-									<button type="button" class="w-full flex items-center py-2 px-4 space-x-3">
-										<div class="space-y-0.5">
-											<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
-											<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
-										</div>
-										<span class="text-gray-700 text-sm">Средний приоритет</span>
-									</button>
-								</li>
-								<li>
-									<button type="button" class="w-full flex items-center py-2 px-4 space-x-3">
-										<div class="space-y-0.5">
-											<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
-											<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
-											<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
-										</div>
-										<span class="text-gray-700 text-sm">Высокий приоритет</span>
-									</button>
-								</li>
-							</ul>
+								<span class="font-medium">{{ title }}</span>
+							</nav>
+							<div class="h-9 flex items-center text-lg font-semibold">{{ title }}</div>
 						</div>
 
-						{% set dept_list = ['Служба поддержки', 'Администрирование', 'Перезагрузка сервера', 'Биллинг'] %}
-
-						<div class="relative">
-							<button type="button" class="w-[230px] flex items-center py-2 px-3 space-x-2 rounded-md ring-1 ring-gray-300 hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-								{{ source('misc/svg/users.svg') }}
-								<span class="grow text-sm text-left pointer-events-none">Служба поддержки</span>
-								{{ source('misc/svg/arrow.svg') }}
-							</button>
-							<ul class="dropdown w-[230px]">
-								{% for i in dept_list %}
-									<li>
-										<button type="button" class="w-full py-2 px-4 text-gray-700 text-sm text-left hover:bg-gray-50">{{ i }}</button>
-									</li>
-								{% endfor %}
-							</ul>
+						<div class="flex px-8">
+							{% include 'support/parts/service.user.block.html.twig' %}
 						</div>
+
+						<form class="px-8 space-y-6">
+							<input class="inputs w-full py-2 px-3 text-sm" placeholder="Тема" type="text">
+							<div class="relative rounded-md ring-1 ring-gray-300">
+
+								{% include 'parts/text.editor.head.html.twig' %}
+
+								<div class="px-6 py-4 space-y-4 border-b">
+									<input class="w-full border-0 focus:outline-none text-sm placeholder-gray-400" placeholder="Содержание тикета">
+
+									<button type="button" class="flex items-center space-x-2 py-2 px-3 bg-gray-50 rounded-full hover:bg-gray-200">
+										{{ source('assets/images/add-file.svg') }}
+										<span class="text-sm font-medium text-gray-500">Прикрепить файл</span>
+									</button>
+
+									<div class="flex space-x-3">
+										<input class="inputs grow py-2 px-4 text-sm" placeholder="Добавить запись о выставлении инвойса" type="text">
+										<div class="w-[131px] relative">
+											<div class="absolute inset-y-0 left-3 flex items-center text-sm cursor-default">$</div>
+											<input class="inputs block w-full py-2 pl-10 pr-3 text-sm" placeholder="0.00" type="text">
+										</div>
+									</div>
+								</div>
+
+								{% include 'support/parts/prepared.answers.html.twig' %}
+
+							</div>
+
+							<div class="flex justify-between">
+								<div class="flex space-x-3">
+									<div class="relative">
+										<button type="button" class="w-[230px] flex items-center py-2 px-3 space-x-2 rounded-md ring-1 ring-gray-300 hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+											<div class="h-5 w-5 grid place-content-center space-y-0.5 pointer-events-none">
+												<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
+												<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
+											</div>
+											<div class="grow pointer-events-none text-sm text-left">Средний приоритет</div>
+											{{ source('assets/images/arrow.svg') }}
+										</button>
+										<ul class="dropdown w-[230px]">
+											<li>
+												<button type="button" class="w-full flex items-center py-2 px-4 space-x-3">
+													<div class="h-0.5 w-2.5 rounded bg-green-400"></div>
+													<span class="text-gray-700 text-sm">Низкий приоритет</span>
+												</button>
+											</li>
+											<li>
+												<button type="button" class="w-full flex items-center py-2 px-4 space-x-3">
+													<div class="space-y-0.5">
+														<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
+														<div class="h-0.5 w-2.5 rounded bg-orange-400"></div>
+													</div>
+													<span class="text-gray-700 text-sm">Средний приоритет</span>
+												</button>
+											</li>
+											<li>
+												<button type="button" class="w-full flex items-center py-2 px-4 space-x-3">
+													<div class="space-y-0.5">
+														<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
+														<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
+														<div class="h-0.5 w-2.5 rounded bg-red-400"></div>
+													</div>
+													<span class="text-gray-700 text-sm">Высокий приоритет</span>
+												</button>
+											</li>
+										</ul>
+									</div>
+
+									{% set dept_list = ['Служба поддержки', 'Администрирование', 'Перезагрузка сервера', 'Биллинг'] %}
+
+									<div class="relative">
+										<button type="button" class="w-[230px] flex items-center py-2 px-3 space-x-2 rounded-md ring-1 ring-gray-300 hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+											{{ source('assets/images/users.svg') }}
+											<span class="grow text-sm text-left pointer-events-none">Служба поддержки</span>
+											{{ source('assets/images/arrow.svg') }}
+										</button>
+										<ul class="dropdown w-[230px]">
+											{% for i in dept_list %}
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-sm text-left hover:bg-gray-50">{{ i }}</button>
+												</li>
+											{% endfor %}
+										</ul>
+									</div>
+								</div>
+
+								<div class="flex space-x-4">
+									<div class="flex items-center space-x-3">
+										<input type="checkbox" id="return_to_list" class="checkbox">
+										<label for="return_to_list" class="text-gray-500 text-sm">Вернуться к списку</label>
+									</div>
+									<button type="button" class="rounded-md bg-indigo-600 px-4 py-2 font-medium text-sm text-white hover:bg-indigo-700">Создать тикет</button>
+								</div>
+							</div>
+						</form>
 					</div>
 
-					<div class="flex space-x-4">
-						<div class="flex items-center space-x-3">
-							<input type="checkbox" id="return_to_list" class="checkbox">
-							<label for="return_to_list" class="text-gray-500 text-sm">Вернуться к списку</label>
-						</div>
-						<button type="button" class="rounded-md bg-indigo-600 px-4 py-2 font-medium text-sm text-white hover:bg-indigo-700">Создать тикет</button>
-					</div>
-				</div>
-			</form>
-		</div>
+				</support-settings>
 
-	</support-settings>
+				{% block modals %}
+					{% include 'support/modals/ticket.user.select.html.twig' %}
+					{% include 'support/modals/ticket.service.select.html.twig' %}
+				{% endblock %}
 
-	{% block modals %}
-		{% include 'support/modals/ticket.user.select.html.twig' %}
-		{% include 'support/modals/ticket.service.select.html.twig' %}
-	{% endblock %}
+			{% endblock %}
+
+		</main>
+	</support-module>
 
 {% endblock %}

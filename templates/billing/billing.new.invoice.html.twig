@@ -1,5 +1,7 @@
 {% extends 'billing/billing.base.html.twig' %}
 
+{% set side_menu_item = 'billing:new_invoice' %}
+
 {% block content %}
 
 	{% block header %}
@@ -8,7 +10,7 @@
 			<nav class="flex items-center space-x-4 text-sm text-gray-500 font-medium">
 				<a href="{{ path('billing_invoices') }}">Инвойсы</a>
 				<div class="-rotate-90">
-					{{ source('misc/svg/arrow.svg') }}
+					{{ source('assets/images/arrow.svg') }}
 				</div>
 				<span>{{ title }}</span>
 			</nav>
@@ -40,7 +42,7 @@
 							</ul>
 
 							<div class="absolute top-2 right-3 arrow pointer-events-none">
-								{{ source('misc/svg/arrow.svg') }}
+								{{ source('assets/images/arrow.svg') }}
 							</div>
 						</div>
 					</div>
@@ -64,7 +66,7 @@
 							</ul>
 
 							<div class="absolute top-2 right-3 arrow pointer-events-none">
-								{{ source('misc/svg/arrow.svg') }}
+								{{ source('assets/images/arrow.svg') }}
 							</div>
 
 							<div class="popover__content bottom-[54px] left-[93px] w-fit py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">Выберите клиента</div>
@@ -79,7 +81,7 @@
 							<input class="inputs block w-full text-sm py-2 pl-3 pr-10 space-x-2" placeholder="Дата оплаты" value="30/09/2023" type="text">
 							<div class="absolute inset-y-0 right-3 flex items-center">
 								<button type="button">
-									{{ source('misc/svg/calendar.svg') }}
+									{{ source('assets/images/calendar.svg') }}
 								</button>
 							</div>
 						</div>
@@ -102,7 +104,7 @@
 						<div class="flex items-center border-b border-gray-300 bg-gray-50">
 							<div class="w-[104px] py-3 pl-6 pr-3">
 								<button class="w-full flex justify-center py-1.5 px-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700" type="button">
-									{{ source('misc/svg/plus.svg') }}
+									{{ source('assets/images/plus.svg') }}
 								</button>
 							</div>
 							<div class="w-16 p-3">
@@ -119,7 +121,7 @@
 						<div class="flex items-center border-b">
 							<div class="w-[104px] flex justify-center py-4 pl-6 pr-3">
 								<button class="p-2 text-gray-500 hover:text-red-500" type="button">
-									{{ source('misc/svg/bucket.svg') }}
+									{{ source('assets/images/bucket.svg') }}
 								</button>
 							</div>
 							<div class="w-16 py-4 px-3">
