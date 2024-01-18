@@ -63,8 +63,8 @@
 									<input type="checkbox" class="checkbox flex place-self-center">
 								</td>
 								<td class="min-w-[300px] py-0 px-3 text-sm">
-									<a href="{{ path('support_ticket_answer') }}" class="block py-4 font-medium hover:text-indigo-700" title="#{{ ticket.id }} - {{ ticket.theme }}">
-										<p class="line-clamp-1 overflow-hidden">#{{ ticket.id }} - {{ ticket.theme }}</p>
+									<a href="{{ path('support_ticket_answer') }}" class="block py-4 font-medium hover:text-indigo-700" title="{{ ticket.id }} - {{ ticket.theme }}">
+										<p class="line-clamp-1 overflow-hidden">{{ ticket.id }} - {{ ticket.theme }}</p>
 									</a>
 								</td>
 								<td class="py-4 px-3">

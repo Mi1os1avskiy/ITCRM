@@ -37,7 +37,7 @@
 					<input type="radio" name="user" id="{{ user.email }}" class="checkbox rounded-full">
 					<label for="{{ user.email }}" class="w-[274px] text-left font-medium">{{ user.email }}</label>
 					<div class="w-[274px] text-gray-500 text-left">{{ user.name }}</div>
-					<div class="w-[140px] text-gray-500 text-left">#{{ user.id }}</div>
+					<div class="w-[140px] text-gray-500 text-left">{{ user.id }}</div>
 				</li>
 			{% endfor %}
 		</ul>

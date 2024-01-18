@@ -4,13 +4,13 @@
 		<div class="-rotate-90">
 			{{ source('assets/images/arrow.svg') }}
 		</div>
-		<span class="cursor-default">#{{ data.ticket_id }}</span>
+		<span class="cursor-default">{{ data.ticket_id }}</span>
 	</nav>
 
 	<div class="flex items-center justify-between mt-2 space-x-4">
 		<div class="space-y-1">
 			<p class="font-semibold text-lg leading-6 truncate">{{ data.ticket_title }}</p>
-			<p class="text-gray-500 text-sm">#{{ data.ticket_id }}</p>
+			<p class="text-gray-500 text-sm">{{ data.ticket_id }}</p>
 		</div>
 		<div class="flex space-x-3">
 			<div class="py-2 px-4 bg-gray-100 rounded-full">
