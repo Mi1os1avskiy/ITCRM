@@ -4,7 +4,8 @@ import {PasswordDisplayingMixin, PasswordGenerator} from "is-core-frontend";
 export const ClientsCreateComponent = {
 	data() {
 		return {
-			personalData: {}
+			personalData: {},
+			selectedOption: 'individual',
 		}
 	},
 	mixins: [

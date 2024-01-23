@@ -20,222 +20,289 @@
 					<div class="h-9 flex items-center font-semibold text-lg">{{ title }}</div>
 				</div>
 
-				<form class="pt-6 pb-4 px-8 space-y-5">
-					<h3 class="text-lg font-medium leading-6">Персональные данные</h3>
+				<form class="pt-6 pb-4 px-8 space-y-6">
+					<div class="grid grid-cols-2 gap-10 ">
+						<div class="space-y-9">
+							<div class="space-y-5">
+								<h3 class="text-lg font-medium">Тип аккаунта</h3>
 
-					<hr>
+								<div class="flex">
+									<input v-model="selectedOption" name="account_type" id="individual" value="individual" class="peer/individual hidden" type="radio" checked>
+									<label for="individual" class="w-1/2 py-2 text-center bg-white ring-1 ring-gray-300 rounded-l-md text-gray-700 text-sm font-medium cursor-pointer hover:bg-gray-50 peer-checked/individual:z-10 peer-checked/individual:bg-indigo-50 peer-checked/individual:text-indigo-700 peer-checked/individual:ring-indigo-500">Частное лицо</label>
 
-					<div class="flex space-x-6">
-						<div class="w-[344px] flex">
-							<p class="self-center text-sm font-medium text-gray-700">Имя <span class="text-red-500">*</span></p>
-						</div>
-						<div class="w-80">
-							<div class="relative">
-								<input v-model="personalData.firstname" class="inputs block w-full text-sm" type="text" placeholder="Иван" autocomplete="given-name"
-								       :class="{'bg-red-50 placeholder-red-300': $form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid}">
-								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid">
-									{{ source('assets/images/error.svg') }}
+									<input v-model="selectedOption" name="account_type" id="company" value="company" class="peer/company hidden" type="radio">
+									<label for="company" class="w-1/2 py-2 text-center bg-white ring-1 ring-gray-300 rounded-r-md text-gray-700 text-sm font-medium cursor-pointer hover:bg-gray-50 peer-checked/company:z-10 peer-checked/company:bg-indigo-50 peer-checked/company:text-indigo-700 peer-checked/company:ring-indigo-500">Компания</label>
 								</div>
 							</div>
-							<div v-if="$form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid">
-								<p class="mt-2 text-sm text-red-500" v-for="item in $form['personalData.firstname'].$errors">${item}</p>
-							</div>
-						</div>
-					</div>
 
-					<hr>
+							<div class="space-y-5">
+								<h3 class="text-lg font-medium">О клиенте</h3>
 
-					<div class="flex space-x-6">
-						<div class="w-[344px] flex">
-							<p class="self-center text-sm font-medium text-gray-700">Фамилия</p>
-						</div>
-						<div class="w-80">
-							<div class="relative">
-								<input v-model="personalData.lastname" class="inputs block w-full text-sm" type="text" placeholder="Доу" autocomplete="family-name"
-								       :class="{'bg-red-50 placeholder-red-300': $form['personalData.lastname'] && $form['personalData.lastname'].$dirty && !$form['personalData.lastname'].$valid}">
-								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.lastname'] && $form['personalData.lastname'].$dirty && !$form['personalData.lastname'].$valid">
-									{{ source('assets/images/error.svg') }}
-								</div>
-							</div>
-							<div v-if="$form['personalData.lastname'] && $form['personalData.lastname'].$dirty && !$form['personalData.lastname'].$valid">
-								<p class="mt-2 text-sm text-red-500" v-for="item in $form['personalData.lastname'].$errors">${item}</p>
-							</div>
-						</div>
-					</div>
-
-					<hr>
-
-					<div class="flex space-x-6">
-						<div class="w-[344px] flex">
-							<p class="self-center text-sm font-medium text-gray-700">Название компании</p>
-						</div>
-						<div class="w-80">
-							<input type="text" autocomplete="off" class="inputs block w-full text-sm" placeholder="Майкрософт">
-						</div>
-					</div>
-
-					<hr>
-
-					<div class="flex space-x-6">
-						<div class="w-[344px] flex">
-							<p class="self-center text-sm font-medium text-gray-700">Email <span class="text-red-500">*</span></p>
-						</div>
-						<div class="w-80">
-							<div class="relative">
-								<input v-model="personalData.email" class="inputs block w-full text-sm" placeholder="email@email.com" type="email" autocomplete="off"
-								       :class="{'bg-red-50 placeholder-red-300': $form['personalData.email'] && $form['personalData.email'].$dirty && !$form['personalData.email'].$valid}">
-								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.email'] && $form['personalData.email'].$dirty && !$form['personalData.email'].$valid">
-									{{ source('assets/images/error.svg') }}
-								</div>
-							</div>
-							<div v-if="$form['personalData.email'] && $form['personalData.email'].$dirty && !$form['personalData.email'].$valid">
-								<p class="mt-2 text-sm text-red-500" v-for="item in $form['personalData.email'].$errors">${item}</p>
-							</div>
-						</div>
-					</div>
-
-					<hr>
-
-					<div class="flex space-x-6">
-						<div class="w-[344px] flex">
-							<p class="self-center text-sm font-medium text-gray-700">Номер телефона</p>
-						</div>
-						<div class="w-80">
-							<div class="relative">
-								<input v-model="personalData.phone" class="inputs block w-full text-sm" type="tel" autocomplete="off" placeholder="+1"
-								       :class="{'bg-red-50 placeholder-red-300': $form['personalData.phone'] && $form['personalData.phone'].$dirty && !$form['personalData.phone'].$valid}">
-								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.phone'] && $form['personalData.phone'].$dirty && !$form['personalData.phone'].$valid">
-									{{ source('assets/images/error.svg') }}
-								</div>
-							</div>
-							<div v-if="$form['personalData.phone'] && $form['personalData.phone'].$dirty && !$form['personalData.phone'].$valid">
-								<p class="mt-2 text-sm text-red-500" v-for="item in $form['personalData.phone'].$errors">${item}</p>
-							</div>
-						</div>
-					</div>
-
-					<hr>
-
-					{% set statuses = {'Active': 'green', 'Inactive': 'gray', 'Closed': 'gray'} %}
-
-					<div class="flex space-x-6">
-						<div class="w-[344px] flex">
-							<p class="self-center text-sm font-medium text-gray-700">Статус аккаунта</p>
-						</div>
-						<div class="relative w-80">
-							<button type="button" class="w-full flex rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-								{{ source('assets/images/circles/green-400.svg') }}
-								<div class="grow text-left pointer-events-none">Active</div>
-								{{ source('assets/images/arrow.svg') }}
-							</button>
-
-							<ul class="dropdown w-full overflow-auto">
-								{% for val, css in statuses %}
-									<li class="relative cursor-default select-none" role="option">
-										<button type="button" class="flex items-center w-full py-2 px-3 space-x-2 hover:bg-gray-50">
-											<div class="h-5 w-5 p-[5px]">
-												<div class="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-{{ css }}-400"></div>
+								<div v-if="selectedOption === 'individual'" class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">Имя <span class="text-red-500">*</span></p>
+									<div>
+										<div class="relative">
+											<input v-model="personalData.firstname" class="inputs block w-full text-sm" type="text" placeholder="Введите имя" autocomplete="given-name"
+											       :class="{'bg-red-50 placeholder-red-300': $form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid}">
+											<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid">
+												{{ source('assets/images/error.svg') }}
 											</div>
-											<p class="text-sm">{{ val }}</p>
+										</div>
+										<div v-if="$form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid">
+											<p class="mt-2 text-sm text-red-500" v-for="item in $form['personalData.firstname'].$errors">${item}</p>
+										</div>
+									</div>
+								</div>
+
+								<div v-if="selectedOption === 'individual'" class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">Фамилия <span class="text-red-500">*</span></p>
+									<div>
+										<div class="relative">
+											<input v-model="personalData.lastname" class="inputs block w-full text-sm" type="text" placeholder="Введите фамилию" autocomplete="family-name"
+											       :class="{'bg-red-50 placeholder-red-300': $form['personalData.lastname'] && $form['personalData.lastname'].$dirty && !$form['personalData.lastname'].$valid}">
+											<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.lastname'] && $form['personalData.lastname'].$dirty && !$form['personalData.lastname'].$valid">
+												{{ source('assets/images/error.svg') }}
+											</div>
+										</div>
+										<div v-if="$form['personalData.lastname'] && $form['personalData.lastname'].$dirty && !$form['personalData.lastname'].$valid">
+											<p class="mt-2 text-sm text-red-500" v-for="item in $form['personalData.lastname'].$errors">${item}</p>
+										</div>
+									</div>
+								</div>
+
+								<div v-if="selectedOption === 'company'" class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">Название компании <span class="text-red-500">*</span></p>
+									<div>
+										<input class="inputs block w-full text-sm" type="text" autocomplete="off" placeholder="Введите название компании">
+									</div>
+								</div>
+
+								<div v-if="selectedOption === 'company'" class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">Имя директора <span class="text-red-500">*</span></p>
+									<div>
+										<div class="relative">
+											<input v-model="personalData.firstname" class="inputs block w-full text-sm" type="text" placeholder="Введите имя директора" autocomplete="given-name"
+											       :class="{'bg-red-50 placeholder-red-300': $form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid}">
+											<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid">
+												{{ source('assets/images/error.svg') }}
+											</div>
+										</div>
+										<div v-if="$form['personalData.firstname'] && $form['personalData.firstname'].$dirty && !$form['personalData.firstname'].$valid">
+											<p class="mt-2 text-sm text-red-500" v-for="item in $form['personalData.firstname'].$errors">${item}</p>
+										</div>
+									</div>
+								</div>
+
+								<div v-if="selectedOption === 'company'" class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">Фамилия директора <span class="text-red-500">*</span></p>
+									<div>
+										<div class="relative">
+											<input v-model="personalData.lastname" class="inputs block w-full text-sm" type="text" placeholder="Введите фамилию директора" autocomplete="family-name"
+											       :class="{'bg-red-50 placeholder-red-300': $form['personalData.lastname'] && $form['personalData.lastname'].$dirty && !$form['personalData.lastname'].$valid}">
+											<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.lastname'] && $form['personalData.lastname'].$dirty && !$form['personalData.lastname'].$valid">
+												{{ source('assets/images/error.svg') }}
+											</div>
+										</div>
+										<div v-if="$form['personalData.lastname'] && $form['personalData.lastname'].$dirty && !$form['personalData.lastname'].$valid">
+											<p class="mt-2 text-sm text-red-500" v-for="item in $form['personalData.lastname'].$errors">${item}</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">Email <span class="text-red-500">*</span></p>
+									<div>
+										<div class="relative">
+											<input v-model="personalData.email" class="inputs block w-full text-sm" placeholder="Введите email" type="email" autocomplete="off"
+											       :class="{'bg-red-50 placeholder-red-300': $form['personalData.email'] && $form['personalData.email'].$dirty && !$form['personalData.email'].$valid}">
+											<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.email'] && $form['personalData.email'].$dirty && !$form['personalData.email'].$valid">
+												{{ source('assets/images/error.svg') }}
+											</div>
+										</div>
+										<div v-if="$form['personalData.email'] && $form['personalData.email'].$dirty && !$form['personalData.email'].$valid">
+											<p class="mt-2 text-sm text-red-500" v-for="item in $form['personalData.email'].$errors">${item}</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">Номер телефона</p>
+									<div>
+										<div class="relative">
+											<input v-model="personalData.phone" class="inputs block w-full text-sm" type="tel" autocomplete="off" placeholder="Введите номер телефона"
+											       :class="{'bg-red-50 placeholder-red-300': $form['personalData.phone'] && $form['personalData.phone'].$dirty && !$form['personalData.phone'].$valid}">
+											<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3" v-if="$form['personalData.phone'] && $form['personalData.phone'].$dirty && !$form['personalData.phone'].$valid">
+												{{ source('assets/images/error.svg') }}
+											</div>
+										</div>
+										<div v-if="$form['personalData.phone'] && $form['personalData.phone'].$dirty && !$form['personalData.phone'].$valid">
+											<p class="mt-2 text-sm text-red-500" v-for="item in $form['personalData.phone'].$errors">${item}</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">Страна <span class="text-red-500">*</span></p>
+									<div class="relative">
+										<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+											<p class="text-gray-400 text-sm pointer-events-none">Выберите страну</p>
+											{{ source('assets/images/arrow.svg') }}
 										</button>
-									</li>
-								{% endfor %}
-							</ul>
-						</div>
-					</div>
 
-					<hr>
-
-					<div class="h-9 flex space-x-6">
-						<div class="w-[344px] flex">
-							<p class="self-center text-sm font-medium text-gray-700">Верификация email</p>
-						</div>
-						<div class="flex items-center space-x-2">
-							<input id="email_verif" type="checkbox" class="checkbox">
-							<label for="email_verif" class="text-sm">Верифицирован</label>
-						</div>
-					</div>
-
-					<hr>
-
-					<div class="pt-5 space-y-5">
-						<div class="flex space-x-6 text-lg font-medium leading-6">
-							<div class="w-1/2">Ограничения</div>
-							<div class="w-1/2">Разрешения</div>
-						</div>
-						<div class="flex space-x-6 text-gray-700 text-sm font-medium">
-							<div class="w-1/2 p-5 bg-gray-50 border-b border-gray-300 rounded-xl">
-								<div class="flex items-center justify-between pb-5 border-b">
-									<div>Запретить пополнение баланса</div>
-									<label for="toggle_balance" class="relative flex items-center cursor-pointer">
-										<input type="checkbox" id="toggle_balance" class="sr-only">
-										<div class="toggle_body"></div>
-										<div class="toggle_dot"></div>
-									</label>
+										<ul class="dropdown w-full max-h-72 overflow-auto">
+											{% for i in countryList() %}
+												<li>
+													<button type="button" class="w-full py-2 px-4 text-gray-700 text-sm text-left">{{ i }}</button>
+												</li>
+											{% endfor %}
+										</ul>
+									</div>
 								</div>
-								<div class="flex items-center justify-between py-5 border-b">
-									<div>Запретить оплату инвойсов</div>
-									<label for="toggle_invoicing" class="relative flex items-center cursor-pointer">
-										<input type="checkbox" id="toggle_invoicing" class="sr-only">
-										<div class="toggle_body"></div>
-										<div class="toggle_dot"></div>
-									</label>
+
+								<div class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">Штат</p>
+									<div>
+										<input class="inputs block w-full text-sm" type="text" autocomplete="off" placeholder="Введите штат">
+									</div>
 								</div>
-								<div class="flex items-center justify-between pt-5">
-									<div>Запретить создание новых заказов и продлений</div>
-									<label for="toggle_orders" class="relative flex items-center cursor-pointer">
-										<input type="checkbox" id="toggle_orders" class="sr-only">
-										<div class="toggle_body"></div>
-										<div class="toggle_dot"></div>
-									</label>
+
+								<div class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">Город <span class="text-red-500">*</span></p>
+									<div>
+										<input class="inputs block w-full text-sm" type="text" autocomplete="off" placeholder="Введите город">
+									</div>
 								</div>
-							</div>
-							<div class="w-1/2 p-5 bg-gray-50 border-b border-gray-300 rounded-xl">
-								<div class="flex items-center justify-between pb-5 border-b">
-									<div>Разрешить отмену услуг в ЛК со штрафом</div>
-									<label for="toggle_services" class="relative flex items-center cursor-pointer">
-										<input type="checkbox" id="toggle_services" class="sr-only">
-										<div class="toggle_body"></div>
-										<div class="toggle_dot"></div>
-									</label>
+
+								<div class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">Адресная строка 1 <span class="text-red-500">*</span></p>
+									<div>
+										<input class="inputs block w-full text-sm" type="text" autocomplete="off" placeholder="Введите адрес 1">
+									</div>
+								</div>
+
+								<div class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">Адресная строка 2</p>
+									<div>
+										<input class="inputs block w-full text-sm" type="text" autocomplete="off" placeholder="Введите адрес 2">
+									</div>
+								</div>
+
+								<div class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">Почтовый индекс <span class="text-red-500">*</span></p>
+									<div>
+										<input class="inputs block w-full text-sm" type="text" autocomplete="off" placeholder="Введите почтовый индекс">
+									</div>
 								</div>
 							</div>
 						</div>
+
+						<div class="h-fit p-6 space-y-6 ring-1 ring-gray-200 rounded-xl">
+							<div class="space-y-5">
+								{% set statuses = {'Active': 'green', 'Inactive': 'gray', 'Closed': 'gray'} %}
+
+								<div class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">Статус аккаунта</p>
+									<div class="relative">
+										<button type="button" class="w-full flex rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+											{{ source('assets/images/circles/green-400.svg') }}
+											<div class="grow text-left pointer-events-none">Active</div>
+											{{ source('assets/images/arrow.svg') }}
+										</button>
+
+										<ul class="dropdown w-full overflow-auto">
+											{% for val, css in statuses %}
+												<li class="relative cursor-default select-none" role="option">
+													<button type="button" class="flex items-center w-full py-2 px-3 space-x-2 hover:bg-gray-50">
+														<div class="h-5 w-5 p-[5px]">
+															<div class="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-{{ css }}-400"></div>
+														</div>
+														<p class="text-sm">{{ val }}</p>
+													</button>
+												</li>
+											{% endfor %}
+										</ul>
+									</div>
+								</div>
+
+								<div class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">Клиентская группа</p>
+									<div class="relative">
+										<button type="button" class="w-full flex justify-between rounded-md ring-1 ring-gray-300 py-2 px-3 hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+											<div class="grow text-sm text-left pointer-events-none">none</div>
+											{{ source('assets/images/arrow.svg') }}
+										</button>
+
+										<ul class="dropdown w-full overflow-auto">
+											<li>
+												<button class="block w-full px-4 py-2 text-sm text-gray-700 text-left" type="button">Группа 1</button>
+											</li>
+											<li>
+												<button class="block w-full px-4 py-2 text-sm text-gray-700 text-left" type="button">Группа 2</button>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<div v-if="selectedOption === 'company'" class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">VAT</p>
+									<input disabled class="inputs block w-full text-sm disabled:bg-gray-50" type="text" autocomplete="off" placeholder="0%">
+								</div>
+
+								<div v-if="selectedOption === 'company'" class="space-y-1">
+									<p class="text-gray-700 text-sm font-medium">VAT номер</p>
+									<input class="inputs block w-full text-sm" type="text" autocomplete="off" placeholder="Введите VAT номер">
+								</div>
+							</div>
+
+							<div class="space-y-5">
+								<p class="text-lg font-medium">Верификация</p>
+								<div>
+									<div class="flex items-center py-2 space-x-2">
+										<input id="email_verif" type="checkbox" class="checkbox">
+										<label for="email_verif" class="text-sm">Email верифицирован</label>
+									</div>
+									<div class="flex items-center py-2 space-x-2">
+										<input id="kyc" type="checkbox" class="checkbox">
+										<label for="kyc" class="text-sm">Пройдет KYC</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="space-y-5">
+								<p class="text-lg font-medium">Разрешения</p>
+								<div class="flex items-center py-2 space-x-2">
+									<input id="service_cancel" type="checkbox" class="checkbox">
+									<label for="service_cancel" class="text-sm">Разрешить отмену услуг в ЛК со штрафом</label>
+								</div>
+							</div>
+
+							<div class="space-y-5">
+								<p class="text-lg font-medium">Безопастность</p>
+								<div class="space-y-1">
+									<p class="text-lg font-medium">Новый пароль</p>
+
+									<div class="flex w-full">
+										<div class="relative flex items-center flex-grow items-stretch focus-within:z-10">
+											<input v-model="password" :type="isPasswordHidden ? 'password' : 'text'" class="inputs block w-full pr-10 rounded-r-none text-sm" placeholder="•••••••••••••">
+											<button @click="toggleShowHide()" type="button">
+												<i v-if="isPasswordHidden" class="absolute top-2 right-3">
+													{{ source('assets/images/eye-slash.svg') }}
+												</i>
+												<i v-if="!isPasswordHidden" class="absolute top-2 right-3">
+													{{ source('assets/images/eye.svg') }}
+												</i>
+											</button>
+										</div>
+										<button @click="generateNewPassword()" type="button" class="-ml-px py-2 px-3 rounded-r-md ring-1 ring-gray-300 shadow-sm text-sm hover:bg-gray-100">Сгенерировать</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 
-					<hr>
-
-					<div class="flex space-x-6">
-						<div class="w-[344px] flex">
-							<p class="self-center text-sm font-medium text-gray-700">Пароль <span class="text-red-500">*</span></p>
-						</div>
-
-						<div class="w-[320px] flex ml-6">
-							<div class="relative flex items-center flex-grow items-stretch focus-within:z-10">
-								<input v-model="password" :type="isPasswordHidden ? 'password' : 'text'" placeholder="•••••••••••••"
-								       class="inputs block w-full pr-10 text-sm"
-								       :class="{'bg-red-50 placeholder-red-300': $form['password'] && $form['password'].$dirty && !$form['password'].$valid}">
-								<button @click="toggleShowHide()" type="button">
-									<i v-if="isPasswordHidden" class="absolute top-2 right-3">
-										{{ source('assets/images/eye-slash.svg') }}
-									</i>
-									<i v-if="!isPasswordHidden" class="absolute top-2 right-3">
-										{{ source('assets/images/eye.svg') }}
-									</i>
-								</button>
-							</div>
-							<div v-if="$form['password'] && $form['password'].$dirty && !$form['password'].$valid">
-								<p class="mt-2 text-sm text-red-500" v-for="item in $form['password'].$errors">${item}</p>
-							</div>
-						</div>
-
-						<button @click="generateNewPassword()" type="button" class="ml-4 py-2 px-4 rounded-md ring-1 ring-gray-300 font-medium text-gray-700 text-sm hover:bg-gray-50">Сгенерировать</button>
-					</div>
-
-					<hr>
-
-					<div class="flex justify-center">
-						<button @click="clientAdd()" type="button" class="py-2 px-4 rounded-md bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700">Добавить клиента</button>
+					<div class="flex pt-10 space-x-3">
+						<button @click="clientAdd()" type="button" class="py-2 px-4 rounded-md bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700">Сохранить</button>
+						<a href="{{ path('clients') }}" class="py-2 px-4 ring-1 ring-gray-300 rounded-md shadow-sm text-gray-700 text-sm font-medium">Отменить</a>
 					</div>
 				</form>
 			</div>

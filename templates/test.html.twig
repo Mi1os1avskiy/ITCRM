@@ -60,6 +60,7 @@
 				{% set x = path(app.request.attributes.get('_route')) %}
 				{{ x }}
 			</div>
+
 		</div>
 
 	</support-settings>
@@ -74,17 +75,17 @@
 {#							{{ source('assets/images/arrow.svg') }}#}
 {#						</button>#}
 
-<div class="answer_body_{{ answer.id }} pt-3 pb-2 px-4 space-y-1 {{ loop.last ? '' : 'border-b border-gray-300' }} cursor-default hover:bg-gray-50">
-	<p class="pl-8 pr-[72px] text-gray-500 text-xs leading-5">{{ answer.category }}</p>
-	<div class="flex items-center space-x-4">
-		<input type="checkbox" class="checkbox">
-		<h4 class="flex-1 text-gray-700 text-sm font-medium">{{ answer.title }}</h4>
-		<button @click="answerEditor({{ answer.id }})" class="text-gray-500 hover:text-indigo-700" type="button">
-			{{ source('assets/images/pencil.svg') }}
-		</button>
-		<button @click="expandAnswer({{ answer.id }})" class="text-gray-500 hover:text-indigo-700" type="button" aria-expanded="false">
-			{{ source('assets/images/arrow.svg') }}
-		</button>
-	</div>
-	<div id="{{ answer.id }}" class="pl-8 pr-[72px] text-gray-500 text-xs leading-5 line-clamp-1">{{ answer.content|raw }}</div>
-</div>
+{#<div class="answer_body_{{ answer.id }} pt-3 pb-2 px-4 space-y-1 {{ loop.last ? '' : 'border-b border-gray-300' }} cursor-default hover:bg-gray-50">#}
+{#	<p class="pl-8 pr-[72px] text-gray-500 text-xs leading-5">{{ answer.category }}</p>#}
+{#	<div class="flex items-center space-x-4">#}
+{#		<input type="checkbox" class="checkbox">#}
+{#		<h4 class="flex-1 text-gray-700 text-sm font-medium">{{ answer.title }}</h4>#}
+{#		<button @click="answerEditor({{ answer.id }})" class="text-gray-500 hover:text-indigo-700" type="button">#}
+{#			{{ source('assets/images/pencil.svg') }}#}
+{#		</button>#}
+{#		<button @click="expandAnswer({{ answer.id }})" class="text-gray-500 hover:text-indigo-700" type="button" aria-expanded="false">#}
+{#			{{ source('assets/images/arrow.svg') }}#}
+{#		</button>#}
+{#	</div>#}
+{#	<div id="{{ answer.id }}" class="pl-8 pr-[72px] text-gray-500 text-xs leading-5 line-clamp-1">{{ answer.content|raw }}</div>#}
+{#</div>#}
