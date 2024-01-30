@@ -57,7 +57,7 @@
 								<a href="#" class="z-10 py-2 px-4 ring-1 ring-indigo-500 bg-indigo-50 text-indigo-700 rounded-l-md hover:bg-gray-50">Все</a>
 								<a href="#" class="ml-px py-2 px-4 ring-1 ring-gray-300 hover:bg-gray-50">Новые</a>
 								<a href="#" class="ml-px flex items-center py-2 pl-3 pr-4 space-x-2 ring-1 ring-gray-300 rounded-r-md hover:bg-gray-50">
-									{{ source('assets/images/circles/green-400.svg') }}
+									<div class="text-green-400">{{ source('assets/images/small-circle.svg') }}</div>
 									<span>Active</span>
 								</a>
 							</div>
@@ -110,7 +110,7 @@
 											<td class="py-4 px-3 text-gray-500">{{ order.loc }}</td>
 											<td class="py-4 px-3 text-gray-500 truncate">{{ order.created_date }}, {{ order.created_time }}</td>
 											<td class="py-4 px-3">
-												<a href="{{ path('overview') }}" class="w-32 line-clamp-1 overflow-hidden font-medium hover:text-indigo-700" title="{{ order.client_name }}">{{ order.client_name }}</a>
+												<a href="{{ path('profile') }}" class="w-32 line-clamp-1 overflow-hidden font-medium hover:text-indigo-700" title="{{ order.client_name }}">{{ order.client_name }}</a>
 											</td>
 											<td class="py-4 px-3 text-gray-500 truncate">{{ order.pay_method }}</td>
 											<td class="py-4 px-3 text-gray-500 text-right">${{ order.amount|number_format('2', '.') }}</td>

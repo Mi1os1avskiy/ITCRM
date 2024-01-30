@@ -68,15 +68,6 @@ class IndexController extends AbstractController
 //        ]);
 //    }
 
-    /**
-     * @Route("/clients/overview", name="overview")
-     */
-    public function overview(): Response
-    {
-        return $this->render('clients/profile/overview.html.twig', [
-            'clients_data' => UsersController::ClientsData(),
-        ]);
-    }
 
     /**
      * @Route("/clients/profile", name="profile")
@@ -85,6 +76,7 @@ class IndexController extends AbstractController
     {
         return $this->render('clients/profile/profile.html.twig', [
             'users' => UsersController::CreateTable(),
+			'clients_data' => UsersController::ClientsData(),
         ]);
     }
 

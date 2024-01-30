@@ -14,9 +14,9 @@
 
 			<div class="flex pt-6 px-8 space-x-3">
 				<div class="relative">
-					<input @click="inputSearch()" id="clientID" class="inputs w-64 text-sm" placeholder="Email или ID клиента" type="text" aria-expanded="false" aria-expanded-autohide>
+					<input @input="inputSearch()" id="myInput" class="inputs w-64 text-sm" placeholder="Email или ID клиента" type="text" aria-expanded="false" aria-expanded-autohide>
 
-					<ul id="userList" class="dropdown w-64 max-h-48 overflow-auto">
+					<ul id="myUL" class="dropdown w-64 max-h-48 overflow-auto">
 						{% for i in transactions %}
 							<li>
 								<button type="button" class="flex items-center w-full py-2 px-4 space-x-3" title="{{ i.client }} {{ i.invoice }}">
@@ -58,7 +58,7 @@
 									<td class="py-4 pl-6 pr-3 text-gray-500">{{ i.id }}</td>
 									<td class="whitespace-nowrap py-4 px-3 text-gray-500 cursor-default">{{ i.date }}, {{ i.time }} ({{ i.loc }})</td>
 									<td class="py-4 px-3">
-										<a href="{{ path('overview') }}" class="font-medium truncate hover:text-indigo-700">{{ i.client }}</a>
+										<a href="{{ path('profile') }}" class="font-medium truncate hover:text-indigo-700">{{ i.client }}</a>
 									</td>
 									<td class="py-4 px-3 text-gray-500 cursor-default">${{ i.amount|number_format(2, '.', '') }}</td>
 									<td class="py-4 px-3 text-gray-500 cursor-default">{{ i.paymethod }}</td>

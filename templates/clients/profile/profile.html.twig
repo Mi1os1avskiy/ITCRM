@@ -2,142 +2,299 @@
 
 {% set currentTab = 'profile' %}
 
-{% block content %}
+{% block profile %}
 
 	<profile-settings inline-template>
-		<div class="pt-6 pb-4 px-8 space-y-10">
-			<form class="space-y-5 divide-y text-sm">
-				<h3 class="text-lg font-medium leading-6">Персональные данные</h3>
+		<div id="myForm" @submit.prevent="submitForm" class="pt-6 pb-4 px-8">
+			<form class="space-y-6">
+				<div class="grid grid-cols-2 gap-10 ">
+					<div class="space-y-9">
+						<div class="space-y-5">
+							<h3 class="text-lg font-medium">Тип аккаунта</h3>
 
-				<div class="flex pt-5 space-x-6">
-					<p class="w-[344px] font-medium text-gray-700 self-center">Имя <span class="text-red-500">*</span></p>
-					<input type="text" autocomplete="given-name" class="inputs w-80 py-2 px-3 text-sm" value="Lex">
-				</div>
+							<div class="flex">
+								<input v-model="selectedOption" name="account_type" id="individual" value="individual" class="peer/individual hidden" type="radio" checked>
+								<label for="individual" class="w-1/2 py-2 text-center bg-white ring-1 ring-gray-300 rounded-l-md text-gray-700 text-sm font-medium cursor-pointer hover:bg-gray-50 peer-checked/individual:z-10 peer-checked/individual:bg-indigo-50 peer-checked/individual:text-indigo-700 peer-checked/individual:ring-indigo-500">Частное лицо</label>
 
-				<div class="flex pt-5 space-x-6">
-					<p class="w-[344px] font-medium text-gray-700 self-center">Фамилия</p>
-					<input type="text" autocomplete="family-name" class="inputs w-80 py-2 px-3 text-sm" value="Stark">
-				</div>
+								<input v-model="selectedOption" name="account_type" id="company" value="company" class="peer/company hidden" type="radio">
+								<label for="company" class="w-1/2 py-2 text-center bg-white ring-1 ring-gray-300 rounded-r-md text-gray-700 text-sm font-medium cursor-pointer hover:bg-gray-50 peer-checked/company:z-10 peer-checked/company:bg-indigo-50 peer-checked/company:text-indigo-700 peer-checked/company:ring-indigo-500">Компания</label>
+							</div>
+						</div>
 
-				<div class="flex pt-5 space-x-6">
-					<p class="w-[344px] font-medium text-gray-700 self-center">Название компании</p>
-					<input type="text" class="inputs w-80 py-2 px-3 text-sm" placeholder="Microsoft">
-				</div>
+						<div class="space-y-5">
+							<h3 class="text-lg font-medium">О клиенте</h3>
 
-				<div class="flex pt-5 space-x-6">
-					<p class="w-[344px] font-medium text-gray-700 self-center">Email <span class="text-red-500">*</span></p>
-					<input type="email" class="inputs w-80 py-2 px-3 text-sm" value="valeron@mail.com">
-				</div>
+							<div class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">ID клиента</p>
+								<div>
+									<input disabled class="inputs block w-full text-sm" type="text" value="{{ user.id }}" placeholder="Введите ID клиента" autocomplete="off">
+								</div>
+							</div>
 
-				<div class="flex pt-5 space-x-6">
-					<p class="w-[344px] font-medium text-gray-700 self-center">Номер телефона</p>
-					<input type="tel" class="inputs w-80 py-2 px-3 text-sm" placeholder="+1">
-				</div>
+							<div v-if="selectedOption === 'individual'" class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Имя <span class="text-red-500">*</span></p>
+								<input :disabled="isDisabled" class="inputs block w-full text-sm" type="text" value="{{ user.first_name }}" placeholder="Введите имя" autocomplete="given-name">
+							</div>
 
-				{% set statuses = {'Active': 'green', 'Inactive': 'gray', 'Closed': 'gray'} %}
+							<div v-if="selectedOption === 'individual'" class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Фамилия <span class="text-red-500">*</span></p>
+								<input :disabled="isDisabled" class="inputs block w-full text-sm" type="text" value="{{ user.last_name }}" placeholder="Введите фамилию" autocomplete="family-name">
+							</div>
 
-				<div class="flex pt-5 space-x-6">
-					<p class="w-[344px] font-medium text-gray-700 self-center">Статус аккаунта</p>
-					<div class="relative w-80">
-						<button type="button" class="w-full flex rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-							{{ source('assets/images/circles/green-400.svg') }}
-							<div class="grow text-left pointer-events-none">Active</div>
-							{{ source('assets/images/arrow.svg') }}
-						</button>
+							<div v-if="selectedOption === 'company'" class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Название компании <span class="text-red-500">*</span></p>
+								<input :disabled="isDisabled" class="inputs block w-full text-sm" type="text" value="{{ user.company }}" autocomplete="off" placeholder="Введите название компании">
+							</div>
 
-						<ul class="dropdown w-full overflow-auto">
-							{% for val, css in statuses %}
-								<li class="relative cursor-default select-none" role="option">
-									<button type="button" class="flex items-center w-full py-2 px-3 space-x-2 hover:bg-gray-50">
-										<div class="h-5 w-5 p-[5px]">
-											<div class="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-{{ css }}-400"></div>
-										</div>
-										<p class="text-sm">{{ val }}</p>
+							<div v-if="selectedOption === 'company'" class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Имя директора <span class="text-red-500">*</span></p>
+								<input :disabled="isDisabled" class="inputs block w-full text-sm" type="text" value="{{ user.first_name }}" placeholder="Введите имя директора" autocomplete="given-name">
+							</div>
+
+							<div v-if="selectedOption === 'company'" class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Фамилия директора <span class="text-red-500">*</span></p>
+								<input :disabled="isDisabled" class="inputs block w-full text-sm" type="text" value="{{ user.last_name }}" placeholder="Введите фамилию директора" autocomplete="family-name">
+							</div>
+
+							<div class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Email <span class="text-red-500">*</span></p>
+								<input :disabled="isDisabled"  class="inputs block w-full text-sm" value="{{ user.email }}" placeholder="Введите email" type="email" autocomplete="off">
+							</div>
+
+							<div class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Номер телефона</p>
+								<input :disabled="isDisabled" class="inputs block w-full text-sm" type="tel" value="{{ user.phone }}" autocomplete="off" placeholder="Введите номер телефона">
+							</div>
+
+							<div class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Страна <span class="text-red-500">*</span></p>
+								<div class="relative">
+									<input :disabled="isDisabled" @input="inputSearch()" id="myInput" value="{{ user.country }}" class="inputs w-full py-2 pl-3 pr-10 text-sm" placeholder="Выберите страну" type="text" aria-expanded="false" aria-expanded-autohide>
+
+									<ul id="myUL" class="dropdown w-full max-h-72 overflow-auto">
+										{% for i in countryList() %}
+											<li>
+												<button type="button" class="w-full py-2 px-4 text-gray-700 text-sm text-left">{{ i }}</button>
+											</li>
+										{% endfor %}
+									</ul>
+
+									<div class="absolute top-2 right-3 arrow pointer-events-none">
+										{{ source('assets/images/arrow.svg') }}
+									</div>
+								</div>
+							</div>
+
+							<div class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Штат</p>
+								<input :disabled="isDisabled" class="inputs block w-full text-sm" type="text" value="{{ user.state }}" autocomplete="off" placeholder="Введите штат">
+							</div>
+
+							<div class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Город <span class="text-red-500">*</span></p>
+								<input :disabled="isDisabled" class="inputs block w-full text-sm" type="text" value="{{ user.city }}" autocomplete="off" placeholder="Введите город">
+							</div>
+
+							<div class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Адресная строка 1 <span class="text-red-500">*</span></p>
+								<input :disabled="isDisabled" class="inputs block w-full text-sm" type="text" value="{{ user.address1 }}" autocomplete="off" placeholder="Введите адрес 1">
+							</div>
+
+							<div class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Адресная строка 2</p>
+								<input :disabled="isDisabled" class="inputs block w-full text-sm" type="text" value="{{ user.address2 }}" autocomplete="off" placeholder="Введите адрес 2">
+							</div>
+
+							<div class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Почтовый индекс <span class="text-red-500">*</span></p>
+								<input :disabled="isDisabled" class="inputs block w-full text-sm" type="text" value="{{ user.zip }}" autocomplete="off" placeholder="Введите почтовый индекс">
+							</div>
+
+							<div class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Социальная сеть</p>
+								<input disabled class="inputs block w-full text-sm" type="text" value="{{ user.social ?  user.social : 'Telegram: none' }}" autocomplete="off" placeholder="Введите социальную сеть">
+							</div>
+
+							<div class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Клиентская группа</p>
+								<div class="relative">
+									<button :disabled="isDisabled" type="button" class="w-full flex justify-between rounded-md ring-1 ring-gray-300 py-2 px-3 hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+										<div class="grow text-sm text-left pointer-events-none">none</div>
+										{{ source('assets/images/arrow.svg') }}
 									</button>
-								</li>
-							{% endfor %}
-						</ul>
-					</div>
-				</div>
 
-				<div class="flex pt-5 space-x-6">
-					<div class="w-[344px] h-9 flex">
-						<p class="self-center text-sm font-medium text-gray-700">Верификация email</p>
-					</div>
-					<div class="flex items-center space-x-2">
-						<input id="email_verif" type="checkbox" class="checkbox">
-						<label for="email_verif" class="text-sm">Верифицирован</label>
-					</div>
-				</div>
-
-				<div class="pt-5 space-y-5">
-					<div class="flex space-x-6">
-						<div class="w-1/2 text-lg font-medium leading-6">Ограничения</div>
-						<div class="w-1/2 text-lg font-medium leading-6">Разрешения</div>
-					</div>
-					<div class="flex space-x-6 text-gray-700 text-sm font-medium">
-						<div class="w-1/2 p-5 bg-gray-50 border-b border-gray-300 rounded-xl">
-							<div class="flex items-center justify-between pb-5 border-b">
-								<div>Запретить пополнение баланса</div>
-								<label for="toggle_balance" class="relative flex items-center cursor-pointer">
-									<input type="checkbox" id="toggle_balance" class="sr-only">
-									<div class="toggle_body"></div>
-									<div class="toggle_dot"></div>
-								</label>
-							</div>
-							<div class="flex items-center justify-between py-5 border-b">
-								<div>Запретить оплату инвойсов</div>
-								<label for="toggle_invoicing" class="relative flex items-center cursor-pointer">
-									<input type="checkbox" id="toggle_invoicing" class="sr-only" checked>
-									<div class="toggle_body"></div>
-									<div class="toggle_dot"></div>
-								</label>
-							</div>
-							<div class="flex items-center justify-between pt-5">
-								<div>Запретить создание новых заказов и продлений</div>
-								<label for="toggle_orders" class="relative flex items-center cursor-pointer">
-									<input type="checkbox" id="toggle_orders" class="sr-only">
-									<div class="toggle_body"></div>
-									<div class="toggle_dot"></div>
-								</label>
-							</div>
-						</div>
-						<div class="w-1/2 p-5 bg-gray-50 border-b border-gray-300 rounded-xl">
-							<div class="flex items-center justify-between pb-5 border-b">
-								<div>Разрешить отмену услуг в ЛК со штрафом</div>
-								<label for="toggle_services" class="relative flex items-center cursor-pointer">
-									<input type="checkbox" id="toggle_services" class="sr-only">
-									<div class="toggle_body"></div>
-									<div class="toggle_dot"></div>
-								</label>
+									<ul class="dropdown w-full overflow-auto">
+										<li>
+											<button class="block w-full px-4 py-2 text-sm text-gray-700 text-left" type="button">Группа 1</button>
+										</li>
+										<li>
+											<button class="block w-full px-4 py-2 text-sm text-gray-700 text-left" type="button">Группа 2</button>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
+
+					<div class="h-fit p-6 space-y-6 ring-1 ring-gray-200 rounded-xl">
+						<div class="space-y-5">
+							<div class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">Статус аккаунта</p>
+								<div class="relative">
+									<button :disabled="isDisabled" type="button" class="w-full flex rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+										{% for val, css in user_statuses %}
+											{% if val == user.status %}
+												<div class="text-{{ css }}-400">{{ source('assets/images/small-circle.svg') }}</div>
+											{% endif %}
+										{% endfor %}
+
+										<div class="grow text-left pointer-events-none">{{ user.status }}</div>
+										{{ source('assets/images/arrow.svg') }}
+									</button>
+
+									<ul class="dropdown w-full overflow-auto">
+										{% for val, css in user_statuses %}
+											<li class="relative cursor-default select-none" role="option">
+												<button type="button" class="flex items-center w-full py-2 px-3 space-x-2 {{ val == user.status ? 'bg-indigo-600 text-gray-50 cursor-default' : 'hover:bg-gray-50' }}">
+													<div class="text-{{ css }}-400">{{ source('assets/images/small-circle.svg') }}</div>
+													<p class="text-sm">{{ val }}</p>
+												</button>
+											</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+
+							<div class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">VAT</p>
+								<input disabled class="inputs block w-full text-sm" type="text" value="{{ user.vat_percent }}%" autocomplete="off" placeholder="0%">
+							</div>
+
+							<div v-if="selectedOption === 'company'" class="space-y-1">
+								<p class="text-gray-700 text-sm font-medium">VAT номер</p>
+								<input :disabled="isDisabled" class="inputs block w-full text-sm" type="text" value="{{ user.vat_number ? user.vat_number : 'none' }}" autocomplete="off" placeholder="Введите VAT номер">
+							</div>
+						</div>
+
+						<div class="space-y-5">
+							<p class="text-lg font-medium">Нарушения</p>
+							<div class="flex items-center space-x-2">
+								<p class="text-gray-800 text-sm font-medium">Нарушение правил</p>
+								<div class="px-3 rounded-xl text-sm font-medium {{ user.violations > 0 ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800' }}">{{ user.violations }}</div>
+							</div>
+						</div>
+
+						<div class="space-y-5">
+							<p class="text-lg font-medium">Ограничения</p>
+							<div>
+								<div class="flex items-center py-2 space-x-2">
+									<input :disabled="isDisabled" {{ user.restrictions.deposit > 0 ? 'checked' }} {{ user.status == 'Blocked' ? 'checked disabled' }} id="ban_deposit" type="checkbox" class="checkbox_red peer">
+									<label for="ban_deposit" class="text-sm peer-checked:text-red-500 peer-disabled:pointer-events-none">Запретить пополнение баланса</label>
+								</div>
+								<div class="flex items-center py-2 space-x-2">
+									<input :disabled="isDisabled" {{ user.restrictions.invoice > 0 ? 'checked' }} {{ user.status == 'Blocked' ? 'checked disabled' }} id="ban_invoice" type="checkbox" class="checkbox_red peer">
+									<label for="ban_invoice" class="text-sm peer-checked:text-red-500 peer-disabled:pointer-events-none">Запретить оплаты инвойсов</label>
+								</div>
+								<div class="flex items-center py-2 space-x-2">
+									<input :disabled="isDisabled" {{ user.restrictions.order > 0 ? 'checked' }} {{ user.status == 'Blocked' ? 'checked disabled' }} id="ban_order" type="checkbox" class="checkbox_red peer">
+									<label for="ban_order" class="text-sm peer-checked:text-red-500 peer-disabled:pointer-events-none">Запретить создание новых заказов и продлений</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="space-y-5">
+							<p class="text-lg font-medium">Верификация</p>
+							<div>
+								<div class="flex items-center py-2 space-x-2">
+									<input :disabled="isDisabled" id="email_verif" type="checkbox" class="checkbox peer">
+									<label for="email_verif" class="text-sm peer-disabled:pointer-events-none">Email верифицирован</label>
+								</div>
+								<div class="flex items-center py-2 space-x-2">
+									<input :disabled="isDisabled" id="kyc" type="checkbox" class="checkbox peer">
+									<label for="kyc" class="text-sm peer-disabled:pointer-events-none">Пройдёт KYC</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="space-y-5">
+							<p class="text-lg font-medium">Разрешения</p>
+							<div class="flex items-center py-2 space-x-2">
+								<input :disabled="isDisabled" id="service_cancel" type="checkbox" class="checkbox peer">
+								<label for="service_cancel" class="text-sm peer-disabled:pointer-events-none">Разрешить отмену услуг в ЛК со штрафом</label>
+							</div>
+						</div>
+
+						<div class="space-y-5">
+							<p class="text-lg font-medium">Локация</p>
+							<div class="space-y-1">
+								<div class="divide-y">
+									<div class="flex justify-between py-3 space-x-4">
+										<p class="text-gray-700 text-sm">Язык использования</p>
+										<p class="text-sm font-medium">{{ user.lang }}</p>
+									</div>
+									<div class="flex justify-between py-3 space-x-4">
+										<p class="text-gray-700 text-sm">IP регистрации</p>
+										<p class="text-sm font-medium">
+											<a target="_blank" href="https://www.geodatatool.com/en/?ip={{ user.created.ip }}" class="text-indigo-700">{{ user.created.ip }}</a>
+											<span>({{ user.created.loc }})</span>
+										</p>
+									</div>
+									<div class="flex justify-between py-3 space-x-4">
+										<p class="text-gray-700 text-sm">Дата регистрации</p>
+										<p class="text-sm font-medium">{{ user.created.date|date("d/m/Y") }} ({{ ("now"|date("U") - user.created.date) // 86400 }}d)</p>
+									</div>
+									<div class="flex justify-between py-3 space-x-4">
+										<p class="text-gray-700 text-sm">IP последнего входа</p>
+										<div class="flex space-x-1 text-sm font-medium">
+											<a target="_blank" href="https://www.geodatatool.com/en/?ip={{ user.last_log.ip }}" class="text-indigo-700">{{ user.last_log.ip }}</a>
+											<span>({{ user.last_log.loc }})</span>
+											<button @click="overviewLogs()" type="button" class="text-indigo-700">IP History</button>
+										</div>
+									</div>
+									<div class="flex justify-between py-3 space-x-4">
+										<p class="text-gray-700 text-sm">Дата последнего входа</p>
+										<p class="text-sm font-medium">{{ user.last_log.date|date("d/m/Y H:i:s") }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="space-y-5">
+							<p class="text-lg font-medium">2FA</p>
+							<div class="space-y-1">
+								<div class="divide-y">
+									<div class="flex justify-between py-3 space-x-4">
+										<p class="text-gray-700 text-sm">2FA включено</p>
+										<p class="text-sm font-medium">{{ user.twofa.enabled }}</p>
+									</div>
+									<div class="flex justify-between py-3 space-x-4">
+										<p class="text-gray-700 text-sm">2FA код восстановления</p>
+										<p class="text-sm font-medium">{{ user.twofa.enabled ? user.twofa.restore : '-' }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 
-				<div class="flex justify-center pt-5">
-					<button @click="profileSaveChanges()" type="button" class="py-2 px-4 rounded-md bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700">Сохранить изменения</button>
-				</div>
+				<div class="flex justify-between pt-10 space-x-6">
+					<div class="flex space-x-3">
+						<button @click="editForm" v-if="isDisabled" type="button" class="py-2 px-4 rounded-md bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700">Редактировать</button>
 
-				<hr>
+						<button v-if="!isDisabled" @click="profileSaveChanges()" class="py-2 px-4 rounded-md bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700">Сохранить</button>
+						<button v-if="!isDisabled" @click="cancelEdit" type="button" class="py-2 px-4 ring-1 ring-gray-300 rounded-md shadow-sm text-gray-700 text-sm font-medium">Отменить</button>
+					</div>
+					<div class="flex space-x-3">
+						<button v-if="!isDisabled" @click="changePassword()" type="button" class="py-2 px-3 rounded-md ring-1 ring-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50">Изменить пароль</button>
+						<button v-if="!isDisabled" @click="disable2fa()" type="button" class="py-2 px-3 rounded-md ring-1 ring-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50">Отключить 2FA</button>
+					</div>
+				</div>
 			</form>
-
-			<div class="space-y-5 divide-y">
-				<h3 class="text-lg font-medium leading-6">Безопасность</h3>
-				<div class="flex items-center pt-5 space-x-6 text-gray-700 text-sm font-medium">
-					<div class="w-[344px]">Пароль</div>
-					<button @click="changePassword()" type="button" class="py-2 px-3 rounded-md ring-1 ring-gray-300 leading-4 hover:bg-gray-50">Изменить</button>
-				</div>
-				<div class="flex items-center pt-5 space-x-6 text-gray-700 text-sm font-medium">
-					<div class="w-[344px]">2FA</div>
-					<button @click="disable2fa()" type="button" class="py-2 px-3 rounded-md ring-1 ring-gray-300 leading-4 hover:bg-gray-50">Отключить 2FA</button>
-					<p>Код восстановления: HsxS-BCve-hoYo-PfWn-Wqvk</p>
-				</div>
-			</div>
 
 			{% block modals %}
 				{% include 'clients/profile/modals/clients.profile.password.html.twig' %}
 				{% include 'clients/profile/modals/clients.profile.2fa.html.twig' %}
+				{% include 'clients/profile/modals/clients.overview.iplogs.html.twig' %}
 			{% endblock %}
 		</div>
 	</profile-settings>

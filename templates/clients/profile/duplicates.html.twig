@@ -2,7 +2,7 @@
 
 {% set currentTab = 'duplicates' %}
 
-{% block content %}
+{% block duplicates %}
 
 	{% block control %}
 
@@ -40,14 +40,14 @@
 					{% for i in duplicates %}
 					<tr class="text-sm">
 						<td class="pl-6 pr-3 py-4 whitespace-nowrap">
-							<a href="{{ path('overview') }}" class="font-medium hover:text-indigo-700">c{{ i.id }}</a>
+							<a href="{{ path('profile') }}" class="font-medium hover:text-indigo-700">c{{ i.id }}</a>
 							<p class="text-red-500">Duplicate</p>
 						</td>
 						<td class="px-3 py-4 whitespace-nowrap">
-							<a href="{{ path('overview') }}" class="font-medium hover:text-indigo-700">{{ i.email }}</a>
+							<a href="{{ path('profile') }}" class="font-medium hover:text-indigo-700">{{ i.email }}</a>
 						</td>
 						<td class="px-3 py-4 whitespace-nowrap">
-							<a href="{{ path('overview') }}" class="font-medium hover:text-indigo-700">{{ i.name }}</a>
+							<a href="{{ path('profile') }}" class="font-medium hover:text-indigo-700">{{ i.name }}</a>
 						</td>
 						<td class="px-3 py-4 text-gray-500 text-right">${{ i.balance|number_format(2, '.', '') }}</td>
 						<td class="px-3 py-4 text-gray-500 text-right">{{ i.services }}</td>

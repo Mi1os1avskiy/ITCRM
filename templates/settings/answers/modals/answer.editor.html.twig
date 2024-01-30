@@ -33,7 +33,7 @@ https://ishosting.com/ru/acceptable-use-policy
 
 					<div class="relative">
 						<input v-if="data.id > 0" @click="inputSearch()" id="myInput" class="inputs w-full py-2 pl-3 pr-10 text-sm" value="{{ answer_data.category }}" type="text" aria-expanded="false" aria-expanded-autohide>
-						<input v-else @click="inputSearch()" id="myInput" class="inputs w-full py-2 pl-3 pr-10 text-sm" placeholder="Выберите категорию" type="text" aria-expanded="false" aria-expanded-autohide>
+						<input v-else @input="inputSearch()" id="myInput" class="inputs w-full py-2 pl-3 pr-10 text-sm" placeholder="Выберите категорию" type="text" aria-expanded="false" aria-expanded-autohide>
 
 						<ul id="myUL" class="dropdown w-full max-h-72 overflow-auto">
 							{% for i in categories %}

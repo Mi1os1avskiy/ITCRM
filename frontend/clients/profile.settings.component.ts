@@ -1,5 +1,6 @@
 import {NotificationLevels, Notification} from "../misc/notifications/notification";
 import {PasswordDisplayingMixin, PasswordGenerator} from "is-core-frontend";
+import {InputSearchMixin} from "../misc/input.search.mixin";
 
 const ProfileSettings2faModalIdentity = 'profile-settings-2fa-modal';
 const ProfileSettingsPasswordModalIdentity = 'profile-settings-password-modal';
@@ -13,13 +14,33 @@ export const ProfileSettingsComponent = {
 
 	data() {
 		return {
-			personalData: {}
+			personalData: {},
+			selectedOption: 'individual',
+			isDisabled: true
 		}
 	},
 	mixins: [
-		PasswordDisplayingMixin
+		PasswordDisplayingMixin,
+		InputSearchMixin
 	],
 	methods: {
+		editForm() {
+			const self = <any>this;
+			self.isDisabled = false;
+		},
+
+		submitForm() {
+			this.resetForm();
+		},
+
+		cancelEdit() {
+			this.resetForm();
+		},
+
+		resetForm() {
+			const self = <any>this;
+			self.isDisabled = true;
+		},
 		generateNewPassword() {
 			const self = <any>this;
 			self.password = PasswordGenerator.generate();
@@ -29,6 +50,7 @@ export const ProfileSettingsComponent = {
 		},
 		profileSaveChanges() {
 			const self = <any>this;
+			this.resetForm();
 			self.$notifications('global').notify(
 				new Notification(NotificationLevels.SUCCESS, "Редактирование", "Изменения успешно сохранены")
 			);

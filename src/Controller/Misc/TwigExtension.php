@@ -15,7 +15,7 @@ class TwigExtension extends AbstractExtension
             new TwigFunction('allClients', [$this, 'allClients']),
             new TwigFunction('userID', [$this, 'getUserID']),
             new TwigFunction('payments', [$this, 'paymentMethods']),
-            new TwigFunction('dump', [$this, 'getDump']),
+            new TwigFunction('getDump', [$this, 'getDump']),
             new TwigFunction('getGet', [$this, 'getGet']),
 			new TwigFunction('test', [$this, 'testFunc']),
 			new TwigFunction('countryList', [$this, 'countryList']),

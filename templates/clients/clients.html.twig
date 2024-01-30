@@ -86,7 +86,7 @@
 
 									<tr class="text-sm">
 										<td class="pl-6 pr-3 py-4">
-											<a href="{{ path('overview', { id: user.id }) }}" class="font-medium hover:text-indigo-700">{{ user.id }}</a>
+											<a href="{{ path('profile', { id: user.id }) }}" class="font-medium hover:text-indigo-700">{{ user.id }}</a>
 											{% for i in duplicates %}
 												{% if i == user.email %}
 												<p class="text-red-500 cursor-default">Duplicate</p>
@@ -94,12 +94,12 @@
 											{% endfor %}
 										</td>
 										<td class="px-3 py-4">
-											<a href="{{ path('overview', { id: user.id }) }}" class="font-medium hover:text-indigo-700">
+											<a href="{{ path('profile', { id: user.id }) }}" class="font-medium hover:text-indigo-700">
 												<p class="w-40 min-w-full truncate">{{ user.email }}</p>
 											</a>
 										</td>
 										<td class="min-w-[143px] px-3 py-4">
-											<a href="{{ path('overview', { id: user.id }) }}" class="line-clamp-1 font-medium hover:text-indigo-700">{{ user.name }}</a>
+											<a href="{{ path('profile', { id: user.id }) }}" class="line-clamp-1 font-medium hover:text-indigo-700">{{ user.first_name }} {{ user.last_name }}</a>
 										</td>
 										<td class="px-3 py-4 text-gray-500 text-right cursor-default">${{ user.credit }}</td>
 										<td class="px-3 py-4 text-gray-500 text-right cursor-default">{{ user.services }}</td>
@@ -110,7 +110,7 @@
 											{% endfor %}">{{ user.status }}
 											</span>
 										</td>
-										<td class="pl-3 pr-6 py-4 text-gray-500 cursor-default">{{ user.created }}</td>
+										<td class="pl-3 pr-6 py-4 text-gray-500 cursor-default">{{ user.created.date|date("d/m/Y") }}</td>
 									</tr>
 									{% set duplicates = duplicates|merge( [user.email] ) %}
 

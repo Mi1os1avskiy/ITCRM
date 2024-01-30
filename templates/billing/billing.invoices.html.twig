@@ -24,15 +24,15 @@
 
 				<div class="mt-6">
 					<div class="flex justify-between">
-						<div class="flex items-center text-sm text-gray-700">
-							<a href="#" class="py-2 px-4 ring-1 ring-gray-300 rounded-l-md hover:bg-gray-50">Все</a>
+						<div class="flex items-center">
+							<a href="#" class="z-10 py-2 px-4 ring-1 ring-indigo-500 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-l-md">Все</a>
 							<a href="#" class="flex items-center ml-px py-2 pl-3 pr-4 space-x-2 ring-1 ring-gray-300 hover:bg-gray-50">
-								{{ source('assets/images/circles/red-400.svg') }}
-								<span>Pending</span>
+								<div class="text-red-400">{{ source('assets/images/small-circle.svg') }}</div>
+								<span class="text-gray-700 text-sm font-medium">Pending</span>
 							</a>
 							<a href="#" class="flex items-center ml-px py-2 pl-3 pr-4 space-x-2 ring-1 ring-gray-300 hover:bg-gray-50">
-								{{ source('assets/images/circles/green-400.svg') }}
-								<span>Paid</span>
+								<div class="text-green-400">{{ source('assets/images/small-circle.svg') }}</div>
+								<span class="text-gray-700 text-sm font-medium">Paid</span>
 							</a>
 							<div class="relative">
 								<button type="button" class="ml-px py-2 px-3 ring-1 ring-gray-300 rounded-r-md hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
@@ -107,7 +107,7 @@
 									{% endfor %}
 								</td>
 								<td class="px-3 py-4 text-left">
-									<a href="{{ path('overview') }}" class="font-medium hover:text-indigo-700">
+									<a href="{{ path('profile') }}" class="font-medium hover:text-indigo-700">
 										<p class="w-40 min-w-full truncate">{{ invoice.client }}</p>
 									</a>
 								</td>

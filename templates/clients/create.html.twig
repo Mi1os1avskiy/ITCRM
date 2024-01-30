@@ -198,24 +198,20 @@
 
 						<div class="h-fit p-6 space-y-6 ring-1 ring-gray-200 rounded-xl">
 							<div class="space-y-5">
-								{% set statuses = {'Active': 'green', 'Inactive': 'gray', 'Closed': 'gray'} %}
-
 								<div class="space-y-1">
 									<p class="text-gray-700 text-sm font-medium">Статус аккаунта</p>
 									<div class="relative">
 										<button type="button" class="w-full flex rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-											{{ source('assets/images/circles/green-400.svg') }}
+											<div class="text-green-400">{{ source('assets/images/small-circle.svg') }}</div>
 											<div class="grow text-left pointer-events-none">Active</div>
 											{{ source('assets/images/arrow.svg') }}
 										</button>
 
 										<ul class="dropdown w-full overflow-auto">
-											{% for val, css in statuses %}
+											{% for val, css in user_statuses %}
 												<li class="relative cursor-default select-none" role="option">
 													<button type="button" class="flex items-center w-full py-2 px-3 space-x-2 hover:bg-gray-50">
-														<div class="h-5 w-5 p-[5px]">
-															<div class="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-{{ css }}-400"></div>
-														</div>
+														<div class="text-{{ css }}-400">{{ source('assets/images/small-circle.svg') }}</div>
 														<p class="text-sm">{{ val }}</p>
 													</button>
 												</li>
@@ -263,7 +259,7 @@
 									</div>
 									<div class="flex items-center py-2 space-x-2">
 										<input id="kyc" type="checkbox" class="checkbox">
-										<label for="kyc" class="text-sm">Пройдет KYC</label>
+										<label for="kyc" class="text-sm">Пройдёт KYC</label>
 									</div>
 								</div>
 							</div>

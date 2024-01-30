@@ -61,6 +61,25 @@
 				{{ x }}
 			</div>
 
+			<div class="relative w-64">
+				<input @click="inputSearch()" id="myInput" class="inputs w-full py-2 pl-3 pr-10 text-sm" placeholder="Введите email клиента" type="text" aria-expanded="false" aria-expanded-autohide>
+
+				<ul id="myUL" class="dropdown w-full max-h-72 overflow-auto">
+					{% for val, css in user_statuses %}
+						<li>
+							<button type="button" class="flex items-center w-full py-2 px-4 space-x-3" title="{{ val }}">
+								<span class="text-gray-700 text-sm truncate">{{ val }}</span>
+								<span class="text-gray-500 text-sm">{{ css }}</span>
+							</button>
+						</li>
+					{% endfor %}
+				</ul>
+
+				<div class="absolute top-2 right-3 arrow pointer-events-none">
+					{{ source('assets/images/arrow.svg') }}
+				</div>
+			</div>
+
 		</div>
 
 	</support-settings>

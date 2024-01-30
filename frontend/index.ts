@@ -3,6 +3,7 @@ import {AriaExpandedMixin, ValidationPlugin} from "is-core-frontend";
 import {MenuPanelMixin} from "./misc/menu.panel.mixin";
 import * as Modal from "./misc/modal/plugin";
 import * as Notification from "./misc/notifications/plugin";
+import {InputSearchMixin} from "./misc/input.search.mixin";
 
 Vue.config.devtools = true;
 (<any>Vue).options.delimiters = ['${', '}'];
@@ -16,6 +17,7 @@ const app = new Vue({
 	mixins: [
 		AriaExpandedMixin,
 		MenuPanelMixin,
+		InputSearchMixin
 	],
 	components: {
 		'account-module': () => import(/* webpackChunkName: "account" */ "./account/module"),

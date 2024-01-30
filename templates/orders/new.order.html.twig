@@ -36,7 +36,7 @@
 									{{ source('assets/images/user.svg') }}
 								</div>
 
-								<input @click="inputSearch()" id="myInput" class="inputs w-full py-2 px-10 text-sm" placeholder="Введите email клиента" type="text" aria-expanded="false" aria-expanded-autohide>
+								<input @input="inputSearch()" id="myInput" class="inputs w-full py-2 px-10 text-sm" placeholder="Введите email клиента" type="text" aria-expanded="false" aria-expanded-autohide>
 
 								<ul id="myUL" class="dropdown w-full max-h-72 overflow-auto">
 									{% for i in clients %}

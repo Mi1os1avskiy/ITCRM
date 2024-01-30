@@ -30,9 +30,9 @@
 				<div class="flex-1 space-y-1">
 					<p class="text-sm font-medium text-gray-700">ID, Email клиента</p>
 					<div class="flex-1 relative">
-						<input @click="inputSearch()" id="clientID" class="inputs w-full text-sm" placeholder="ID, Email" type="text" aria-expanded="false" aria-expanded-autohide>
+						<input @input="inputSearch()" id="myInput" class="inputs w-full text-sm" placeholder="ID, Email" type="text" aria-expanded="false" aria-expanded-autohide>
 
-						<ul id="userList" class="dropdown right-0 w-[264px] max-h-48 overflow-auto">
+						<ul id="myUL" class="dropdown right-0 w-[264px] max-h-48 overflow-auto">
 							{% for i in transactions %}
 								<li>
 									<button type="button" class="flex items-center w-full py-2 px-4 space-x-3" title="{{ i.client }} {{ i.invoice }}">

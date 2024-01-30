@@ -7,7 +7,7 @@ twig:
             1: {'id': 222, 'text': 'second item'}
             2: {'id': 333, 'text': 'third item'}
         user_statuses:
-            {'Active': 'green', 'Unconfirmed': 'yellow', 'Inactive': 'gray', 'Closed': 'gray'}
+            {'Active': 'green', 'Inactive': 'gray', 'Closed': 'gray', 'Blocked': 'red'}
         transaction_statuses:
             {'Частично засчитана': 'red', 'Не засчитана': 'red', 'Мошенническая': 'red', 'Возвращена': 'orange', 'Заморожена': 'blue', 'В ожидании': 'blue', 'Засчитана': 'green', 'Игнорируется': 'gray', 'Отменена': 'gray'}
         transaction_filter:
