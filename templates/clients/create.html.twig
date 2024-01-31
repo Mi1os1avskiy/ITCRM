@@ -24,7 +24,7 @@
 					<div class="grid grid-cols-2 gap-10 ">
 						<div class="space-y-9">
 							<div class="space-y-5">
-								<h3 class="text-lg font-medium">Тип аккаунта</h3>
+								<h3 class="text-lg leading-6 font-medium">Тип аккаунта</h3>
 
 								<div class="flex">
 									<input v-model="selectedOption" name="account_type" id="individual" value="individual" class="peer/individual hidden" type="radio" checked>
@@ -36,7 +36,7 @@
 							</div>
 
 							<div class="space-y-5">
-								<h3 class="text-lg font-medium">О клиенте</h3>
+								<h3 class="text-lg leading-6 font-medium">О клиенте</h3>
 
 								<div v-if="selectedOption === 'individual'" class="space-y-1">
 									<p class="text-gray-700 text-sm font-medium">Имя <span class="text-red-500">*</span></p>
@@ -143,19 +143,21 @@
 
 								<div class="space-y-1">
 									<p class="text-gray-700 text-sm font-medium">Страна <span class="text-red-500">*</span></p>
-									<div class="relative">
-										<button type="button" class="w-full flex justify-between py-2 px-3 rounded-md ring-1 ring-gray-300 hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-											<p class="text-gray-400 text-sm pointer-events-none">Выберите страну</p>
-											{{ source('assets/images/arrow.svg') }}
-										</button>
 
-										<ul class="dropdown w-full max-h-72 overflow-auto">
+									<div class="relative">
+										<input @input="inputSearch()" id="myInput" class="inputs w-full py-2 pl-3 pr-10 text-sm" placeholder="Выберите страну" type="text" aria-expanded="false" aria-expanded-autohide>
+
+										<ul id="myUL" class="dropdown w-full max-h-72 overflow-auto">
 											{% for i in countryList() %}
 												<li>
 													<button type="button" class="w-full py-2 px-4 text-gray-700 text-sm text-left">{{ i }}</button>
 												</li>
 											{% endfor %}
 										</ul>
+
+										<div class="absolute top-2 right-3 arrow pointer-events-none">
+											{{ source('assets/images/arrow.svg') }}
+										</div>
 									</div>
 								</div>
 
@@ -190,7 +192,7 @@
 								<div class="space-y-1">
 									<p class="text-gray-700 text-sm font-medium">Почтовый индекс <span class="text-red-500">*</span></p>
 									<div>
-										<input class="inputs block w-full text-sm" type="text" autocomplete="off" placeholder="Введите почтовый индекс">
+										<input class="inputs block w-full text-sm" type="text" autocomplete="new-password" placeholder="Введите почтовый индекс">
 									</div>
 								</div>
 							</div>
@@ -246,12 +248,12 @@
 
 								<div v-if="selectedOption === 'company'" class="space-y-1">
 									<p class="text-gray-700 text-sm font-medium">VAT номер</p>
-									<input class="inputs block w-full text-sm" type="text" autocomplete="off" placeholder="Введите VAT номер">
+									<input class="inputs block w-full text-sm" type="text" autocomplete="new-password" placeholder="Введите VAT номер">
 								</div>
 							</div>
 
 							<div class="space-y-5">
-								<p class="text-lg font-medium">Верификация</p>
+								<p class="text-lg leading-6 font-medium">Верификация</p>
 								<div>
 									<div class="flex items-center py-2 space-x-2">
 										<input id="email_verif" type="checkbox" class="checkbox">
@@ -259,13 +261,13 @@
 									</div>
 									<div class="flex items-center py-2 space-x-2">
 										<input id="kyc" type="checkbox" class="checkbox">
-										<label for="kyc" class="text-sm">Пройдёт KYC</label>
+										<label for="kyc" class="text-sm">Пройден KYC</label>
 									</div>
 								</div>
 							</div>
 
 							<div class="space-y-5">
-								<p class="text-lg font-medium">Разрешения</p>
+								<p class="text-lg leading-6 font-medium">Разрешения</p>
 								<div class="flex items-center py-2 space-x-2">
 									<input id="service_cancel" type="checkbox" class="checkbox">
 									<label for="service_cancel" class="text-sm">Разрешить отмену услуг в ЛК со штрафом</label>
@@ -273,9 +275,9 @@
 							</div>
 
 							<div class="space-y-5">
-								<p class="text-lg font-medium">Безопастность</p>
+								<p class="text-lg leading-6 font-medium">Безопасность</p>
 								<div class="space-y-1">
-									<p class="text-lg font-medium">Новый пароль</p>
+									<p class="text-gray-700 text-sm font-medium">Новый пароль</p>
 
 									<div class="flex w-full">
 										<div class="relative flex items-center flex-grow items-stretch focus-within:z-10">

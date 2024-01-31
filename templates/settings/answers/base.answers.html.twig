@@ -16,12 +16,17 @@
 
 				{% block header %}
 
-					<div class="flex items-center justify-between py-4 px-8 bg-gray-50">
-						<h3 class="font-semibold text-lg leading-6">Статьи, новости и блоги</h3>
-						<button @click="answerEditor()" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700" type="button">
-							{{ source('assets/images/plus.svg') }}
-							<span>Добавить ответ</span>
-						</button>
+					<div class="py-4 px-8 bg-gray-50">
+						<div class="h-9 flex items-center justify-between ">
+							<h3 class="font-semibold text-lg leading-6">Статьи, новости и блоги</h3>
+
+							{% if currentTab == 'settings_answers' %}
+								<button @click="answerEditor()" class="inline-flex items-center py-2 pl-3 pr-4 space-x-2 rounded-md bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700" type="button">
+									{{ source('assets/images/plus.svg') }}
+									<span>Добавить ответ</span>
+								</button>
+							{% endif %}
+						</div>
 					</div>
 					<div class="flex pt-4 px-8 space-x-8 border-b bg-gray-50">
 						<a href="{{ path('settings_answers') }}" class="pb-[14px] border-b-2 text-sm font-medium hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'settings_answers' %}border-indigo-500 text-indigo-600 pointer-events-none{% else %}text-gray-500 border-transparent{% endif %}">Ответы</a>

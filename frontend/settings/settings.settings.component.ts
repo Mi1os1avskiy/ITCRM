@@ -10,7 +10,8 @@ const DeleteCategory = 'settings-delete-category';
 export const SettingsSettingsComponent = {
     data() {
         return {
-            personalData: {}
+            personalData: {},
+            editMode: false,
         }
     },
     mixins: [
@@ -100,12 +101,24 @@ export const SettingsSettingsComponent = {
             const self = <any>this;
             self.$modals(DeleteCategory).show()
                 .then((data: any) => {
+                    let input = document.getElementById('input') as HTMLInputElement;
+                    input.value = '';
+
+                    self.editMode = false;
+
                     self.$notifications('global').notify(
                         new Notification(NotificationLevels.SUCCESS, "Удаление категории", "Категория успешно удалена")
                     );
                 })
                 .catch(() => {
                 });
+        },
+        cancelEditCategory() {
+            const self = <any>this;
+            self.editMode = false;
+
+            let input = document.getElementById('input') as HTMLInputElement;
+            input.value = '';
         },
         expandAnswer(answerID: string) {
             const self = <any>this;
@@ -116,31 +129,13 @@ export const SettingsSettingsComponent = {
             let body = document.querySelector(body_id) as HTMLInputElement;
             body.classList.toggle('bg-gray-50');
         },
-        editingCategory(cat: number) {
+        editingCategory(event: MouseEvent) {
             const self = <any>this;
-            let header = document.getElementById('header') as HTMLInputElement;
-            let del_btn = document.getElementById('del_btn') as HTMLInputElement;
-            let input = document.getElementById('input') as HTMLInputElement;
-            let create_edit_btn = document.getElementById('create_edit_btn') as HTMLInputElement;
-            let categories = ['IP адреса', 'Network', 'SSL сертификаты', 'Биллинг', 'Бухгалтерия', 'Быстрые ответы', 'Верификация', 'Вопросы по заказу', 'Партнёрская программа', 'Уведомления'];
+            self.editMode = true;
 
-            if (!!cat) {
-                header.innerText = 'Редактирование категории';
-                del_btn.classList.remove('hidden');
-                create_edit_btn.innerText = 'Сохранить';
-
-                for (let i in categories) {
-                    if (cat-1 === Number(i)) {
-                        input.value = categories[i];
-                    }
-                }
-            }
-            else {
-                header.innerText = 'Создание новой категории';
-                del_btn.classList.add('hidden');
-                input.value = '';
-                create_edit_btn.innerText = 'Создать';
-            }
+            const category = (event.currentTarget as HTMLButtonElement).getAttribute('data-category');
+            const inputField = document.getElementById('input') as HTMLInputElement;
+            inputField.value = category || '';
         },
     }
 }
