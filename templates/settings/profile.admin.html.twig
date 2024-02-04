@@ -25,10 +25,10 @@
 							<div class="-rotate-90">
 								{{ source('assets/images/arrow.svg') }}
 							</div>
-							<span>{% if admin %}Администратор {{ admin.login }}{% else %}Добавить администратора{% endif %}</span>
+							<span>{{ admin ? 'Администратор ' ~ admin.login : 'Добавить администратора' }}</span>
 						</nav>
 						<div class="h-9 flex items-center">
-							<h3 class="font-semibold text-lg leading-6">{% if admin %}Администратор {{ admin.name }}{% else %}Новый Администратор{% endif %}</h3>
+							<h3 class="font-semibold text-lg leading-6">{{ admin ? 'Администратор ' ~ admin.name : 'Новый Администратор' }}</h3>
 						</div>
 					</div>
 
@@ -101,7 +101,7 @@
 									<div class="space-y-5">
 										<div class="grid grid-cols-2 gap-4">
 											<div class="space-y-1">
-												<p class="text-gray-700 text-sm font-medium">Password <span class="text-red-500">*</span></p>
+												<p class="text-gray-700 text-sm font-medium">Пароль <span class="text-red-500">*</span></p>
 												<div class="flex rounded-md shadow-sm w-full">
 													<div class="relative flex items-center flex-grow items-stretch focus-within:z-10">
 														<input v-model="password" :type="isPasswordHidden ? 'password' : 'text'" class="inputs block w-full pr-10 text-sm" placeholder="•••••••••••••">

@@ -44,7 +44,10 @@ export const SettingsSettingsComponent = {
             const self = <any>this;
             self.$modals(DeleteAdmin).show()
                 .then((data: any) => {
-                    window.location.href = "/settings/admins";
+                    self.$notifications('global').notify(
+                        new Notification(NotificationLevels.SUCCESS, "Удаление", "Администратор успешно удалён")
+                    );
+                    setTimeout(function(){window.location.href = "/settings/admins"}, 1000);
                 })
                 .catch(() => {
                 });
