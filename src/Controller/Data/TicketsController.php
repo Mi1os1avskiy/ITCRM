@@ -4,6 +4,7 @@ namespace App\Controller\Data;
 class TicketsController
 {
     public $id;
+	public $violation;
     public $theme;
     public $status;
     public $priority;
@@ -11,8 +12,9 @@ class TicketsController
     public $client;
     public $time;
 
-    function __construct($id, $theme, $status, $priority, $dept, $client, $time) {
+    function __construct($id, $violation, $theme, $status, $priority, $dept, $client, $time) {
         $this -> id = $id;
+		$this -> violation = $violation;
         $this -> theme = $theme;
         $this -> status = $status;
         $this -> priority = $priority;
@@ -24,15 +26,15 @@ class TicketsController
     public static function ticketsTable()
     {
         return [
-            new TicketsController('098249', 'Amet sagittis quis fames cursus vel risus.', 'Open', 3, 'Служба поддержки', 'valeron-burdaleyba@mail.com', '44m 11s'),
-            new TicketsController('1234231', 'At sed consectetur tempus neque nascetur auctor.', 'In progress', 2, 'Служба поддержки', 'Alex Finn', '2h 3m'),
-            new TicketsController('345345', 'Malesuada quisque felis vitae risus consequat.', 'Answered', 1, 'Служба поддержки', 'Wade Warren', '2h 3m'),
-            new TicketsController('324543', 'Lacus etiam adipiscing ac morbi.', 'Customer reply', 3, 'Служба поддержки', 'Essther Howard', '2h 3m'),
-            new TicketsController('8476534', 'Sit elit nulla vestibulum mi nunc.', 'Waiting for manager', 3, 'Служба поддержки', 'Jenny Wilson', '2h 3m'),
-			new TicketsController('987435', 'Commodo dignissim orci volutpat sit sem auctor ac neque.', 'Payment Issues', 1, 'Служба поддержки', 'Darlene Robertson', '2h 3m'),
-            new TicketsController('908345', 'Dictum feugiat in senectus est platea.', 'On hold', 1, 'Перезагрузка сервера', 'Marvin McKinney', '2h 3m'),
-            new TicketsController('094357', 'Massa massa senectus velit metus euismod vitae imperdiet sem.', 'Closed', 3, 'Служба поддержки', 'Darlene Robertson', '2h 3m'),
-            new TicketsController('763458', 'Malesuada quisque felis vitae risus consequat.', 'Important!', 2, 'Служба поддержки', 'Jerome Bell', '2h 3m')
+            new TicketsController('098249', 1, 'Amet sagittis quis fames cursus vel risus.', 'Open', 3, 'Служба поддержки', 'valeron-burdaleyba@mail.com', '44m 11s'),
+            new TicketsController('1234231', 0, 'At sed consectetur tempus neque nascetur auctor.', 'In progress', 2, 'Служба поддержки', 'Alex Finn', '2h 3m'),
+            new TicketsController('345345', 1, 'Malesuada quisque felis vitae risus consequat.', 'Answered', 1, 'Служба поддержки', 'Wade Warren', '2h 3m'),
+            new TicketsController('324543', 1, 'Lacus etiam adipiscing ac morbi.', 'Customer reply', 3, 'Служба поддержки', 'Essther Howard', '2h 3m'),
+            new TicketsController('8476534', 0, 'Sit elit nulla vestibulum mi nunc.', 'Waiting for manager', 3, 'Служба поддержки', 'Jenny Wilson', '2h 3m'),
+			new TicketsController('987435', 0, 'Commodo dignissim orci volutpat sit sem auctor ac neque.', 'Payment Issues', 1, 'Служба поддержки', 'Darlene Robertson', '2h 3m'),
+            new TicketsController('908345', 0, 'Dictum feugiat in senectus est platea.', 'On hold', 1, 'Перезагрузка сервера', 'Marvin McKinney', '2h 3m'),
+            new TicketsController('094357', 0, 'Massa massa senectus velit metus euismod vitae imperdiet sem.', 'Closed', 3, 'Служба поддержки', 'Darlene Robertson', '2h 3m'),
+            new TicketsController('763458', 0, 'Malesuada quisque felis vitae risus consequat.', 'Important!', 2, 'Служба поддержки', 'Jerome Bell', '2h 3m')
         ];
     }
 

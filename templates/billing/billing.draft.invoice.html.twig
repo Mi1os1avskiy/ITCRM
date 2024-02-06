@@ -34,7 +34,7 @@
 						{% set client = 'dawkins@mail.com' %}
 
 						<div class="relative w-80">
-							<input class="inputs w-full py-2 pl-3 pr-10 text-sm truncate" value="{{ client }}" placeholder="Выберите клиента" type="text" aria-expanded="false" aria-expanded-autohide>
+							<input class="inputs w-full py-2 pl-3 pr-10 text-sm truncate" value="{{ client }}" title="{{ client }}" placeholder="Выберите клиента" type="text" aria-expanded="false" aria-expanded-autohide>
 
 							<ul class="dropdown w-full max-h-72 overflow-auto">
 								{% for i in allClients() %}
@@ -61,7 +61,7 @@
 						{% set plans = ['5453 - Lite - Linux SSD NL ($5.00 Monthly)', 'Plan 111', 'Plan 112', 'Plan 113'] %}
 
 						<div class="relative w-80">
-							<input class="inputs w-full py-2 pl-3 pr-10 text-sm truncate" value="{{ plans|first }}" placeholder="Выберите тариф" type="text" aria-expanded="false" aria-expanded-autohide>
+							<input class="inputs w-full py-2 pl-3 pr-10 text-sm truncate" value="{{ plans|first }}" title="{{ plans|first }}" placeholder="Выберите тариф" type="text" aria-expanded="false" aria-expanded-autohide>
 
 							<ul class="dropdown w-full max-h-72 overflow-auto">
 								{% for i in plans %}
@@ -155,10 +155,14 @@
 						{% endfor %}
 
 						<div class="flex bg-gray-50">
-							<div class="flex-1 py-4 px-3">
-								<p class="text-sm font-medium text-end">Итого к оплате:</p>
+							<div class="grow py-4 px-3 space-y-1">
+								<p class="text-sm text-end">Всего (без VAT):</p>
+								<p class="text-sm text-end">VAT (0%):</p>
+								<p class="text-sm text-end font-medium">Итого:</p>
 							</div>
-							<div class="w-[176px] py-4 pl-3 pr-6">
+							<div class="w-[176px] py-4 pl-3 pr-6 space-y-1">
+								<p class="text-sm">$ 1650.00</p>
+								<p class="text-sm">$ 0.00</p>
 								<p class="text-sm font-medium">$ 1650.00</p>
 							</div>
 						</div>

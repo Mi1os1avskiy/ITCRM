@@ -46,8 +46,10 @@ class BillingController
             'invoice_notation' => 'Тут уже что-то написано в примечании от администратора.',
             'invoice_issued' => '20/09/2023',
             'invoice_paydate' => '23/09/2023',
+			'invoice_amount' => 165.5,
             'invoice_discount' => 0,
-            'invoice_paid' => 230,
+			'invoice_vat' => 33.1,
+            'invoice_paid' => 0,
             'user_balance' => 99.99,
         ];
 

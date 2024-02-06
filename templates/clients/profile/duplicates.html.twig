@@ -28,6 +28,7 @@
 						<th class="w-[136px] pl-6 pr-3 py-3 text-left font-medium">ID</th>
 						<th class="px-3 py-3 text-left font-medium">Email</th>
 						<th class="w-[184px] p-3 text-left font-medium whitespace-nowrap">Имя</th>
+						<th class="w-[104px] p-3 text-left font-medium whitespace-nowrap">Нарушения</th>
 						<th class="w-[120px] p-3 text-right font-medium">Баланс</th>
 						<th class="w-[104px] p-3 text-right font-medium">Услуги</th>
 						<th class="w-[136px] p-3 text-left font-medium">Статус</th>
@@ -48,6 +49,11 @@
 						</td>
 						<td class="px-3 py-4 whitespace-nowrap">
 							<a href="{{ path('profile') }}" class="font-medium hover:text-indigo-700">{{ i.name }}</a>
+						</td>
+						<td class="px-3 py-4">
+							<div class="w-7 py-0.5 rounded-xl text-center text-xs font-medium {{ i.violations > 0 ? 'text-red-800 bg-red-100' : 'text-gray-800 bg-gray-100' }}">
+								<a href="{{ path('tickets') }}">{{ i.violations }}</a>
+							</div>
 						</td>
 						<td class="px-3 py-4 text-gray-500 text-right">${{ i.balance|number_format(2, '.', '') }}</td>
 						<td class="px-3 py-4 text-gray-500 text-right">{{ i.services }}</td>
