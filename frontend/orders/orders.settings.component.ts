@@ -7,13 +7,35 @@ const OrdersSpecialSettingsModal = 'orders-special-setting-modal';
 export const OrdersSettingsComponent = {
     data() {
         return {
-            personalData: {}
+            personalData: {},
+            promoCode: "QWERTY",
+            isInputDisabled: true,
         }
     },
     mixins: {
         InputSearchMixin
     },
+    computed: {
+        buttonLabel() {
+            const self = <any>this;
+            return self.isInputDisabled ? "Удалить" : "Применить";
+        },
+    },
     methods: {
+        editPromo() {
+            const self = <any>this;
+            if (self.isInputDisabled) {
+                self.isInputDisabled = false;
+                self.$nextTick(() => {
+                    self.$refs.promoInput.focus();
+                    self.promoCode = "";
+                });
+            } else {
+                if (self.promoCode.trim() !== "") {
+                    self.isInputDisabled = true;
+                }
+            }
+        },
         ordersFilters() {
             const self = <any>this;
             self.$modals(OrdersFilters).show()
@@ -29,22 +51,6 @@ export const OrdersSettingsComponent = {
                 })
                 .catch(() => {
                 });
-        },
-        orderPromo() {
-            const input = document.getElementById('promo_input') as HTMLInputElement;
-            const btn = document.getElementById('promo_btn') as HTMLButtonElement;
-
-            if (btn.innerText === 'Удалить')
-            {
-               input.value = '';
-               input.removeAttribute('disabled');
-               btn.innerText = 'Применить';
-            }
-            else if (!input.getAttribute('disabled') && input.value !== '')
-            {
-               input.setAttribute('disabled', '');
-               btn.innerText = 'Удалить';
-            }
         },
         orderCreating() {
             const self = <any>this;

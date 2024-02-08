@@ -89,11 +89,15 @@
 							</div>
 						</div>
 
-						<div class="flex bg-yellow-50 rounded-lg py-4 px-6 space-x-4">
-							<div>
+						<div class="space-y-2">
+							<div class="flex bg-yellow-50 rounded-lg py-4 px-6 space-x-4">
 								{{ source('assets/images/important.svg') }}
+								<p class="text-sm text-gray-700 line-clamp-3">Ipsum lacus id gravida venenatis velit cursus aliquet eros.</p>
 							</div>
-							<p class="text-sm text-gray-700 line-clamp-3">Ipsum lacus id gravida venenatis velit cursus aliquet eros. Massa at habitant potenti senectus id pretium faucibus. Odio libero placerat lectus lectus eget tortor scelerisque tincidunt. Sed ultricies consequat interdum vel mauris nunc. Orci fermentum consequat semper tortor. Enim adipiscing donec lobortis elit libero vivamus. Leo magna donec gravida dictum platea. Aliquam vehicula augue cursus pharetra nunc praesent ornare.</p>
+							<div class="flex bg-yellow-50 rounded-lg py-4 px-6 space-x-4">
+								{{ source('assets/images/important-triangle.svg') }}
+								<p class="text-sm text-gray-700 line-clamp-3">Включены ограничения аккаунта: баланс, инвойсы</p>
+							</div>
 						</div>
 
 						<div class="pb-2 bg-gray-50 divide-y">
@@ -503,32 +507,45 @@
 
 								<div class="space-y-1">
 									<div class="text-gray-700 text-sm font-medium">Промокод</div>
+
 									<div class="flex">
-										<input id="promo_input" disabled class="inputs w-[226px] z-10 py-2 px-3 rounded-r-none text-sm disabled:bg-gray-50 disabled:text-gray-500" placeholder="Введите промокод" value="QWERTY" type="text">
-										<button id="promo_btn" @click="orderPromo()" class="py-2 px-4 bg-white ring-1 ring-gray-300 rounded-r-md text-gray-700 text-sm font-medium hover:bg-gray-50" type="button">Удалить</button>
+										<input v-model="promoCode" :disabled="isInputDisabled" ref="promoInput" class="inputs w-[226px] z-10 py-2 px-3 rounded-r-none text-sm disabled:bg-gray-50 disabled:text-gray-500" placeholder="Введите промокод" type="text"/>
+										<button @click="editPromo" class="py-2 px-4 bg-white ring-1 ring-gray-300 rounded-r-md text-gray-700 text-sm font-medium hover:bg-gray-50" type="button">${ buttonLabel }</button>
 									</div>
 								</div>
 
-								{% set promo = 3 %}
-								{% set discount = 0 %}
-								{% set price = 140 %}
+								{% set total = 10 %}
 
-								<div class="space-y-1">
-									<div class="text-sm">
-										<span class="font-semibold">Скидка по промокоду </span>
-										<span>"QWERTY": ${{ promo|number_format(2, '.', '') }}</span>
+								<div class="space-y-4">
+									<h4 class="text-sm font-semibold">Стоимость:</h4>
+									<div class="space-y-1">
+										<div class="flex space-x-2">
+											<div class="w-44 text-sm">Стоимость без скидок:</div>
+											<div class="text-sm">${{ total|number_format(2, '.', '') }}</div>
+										</div>
+										<div class="flex space-x-2">
+											<div class="w-44 text-sm">Скидка по промокоду:</div>
+											<div class="text-sm">не применён</div>
+										</div>
+										<div class="flex space-x-2">
+											<div class="w-44 text-sm">Скидка по акции:</div>
+											<div class="text-sm">Без скидки</div>
+										</div>
 									</div>
-									<div class="text-sm">
-										<span class="font-semibold">Скидка по акции: </span>
-										<span>{% if discount %}${{ discount|number_format(2, '.', '') }}{% else %}Без скидки{% endif %}</span>
-									</div>
-									<div class="text-sm">
-										<span class="font-semibold">Цена без скидок: </span>
-										<span>${{ price|number_format(2, '.', '') }}</span>
-									</div>
-									<div class="text-sm">
-										<span class="font-semibold">Итоговая цена: </span>
-										<span>${{ (price - discount - promo)|number_format(2, '.', '') }}</span>
+									<hr>
+									<div class="space-y-1">
+										<div class="flex space-x-2">
+											<div class="w-44 text-sm">Всего (без VAT):</div>
+											<div class="text-sm">${{ total|number_format(2, '.', '') }}</div>
+										</div>
+										<div class="flex space-x-2">
+											<div class="w-44 text-sm">VAT (20%):</div>
+											<div class="text-sm">${{ (total / 5)|number_format(2, '.', '') }}</div>
+										</div>
+										<div class="flex space-x-2">
+											<div class="w-44 text-sm font-semibold">Итого:</div>
+											<div class="text-sm font-semibold">${{ (total + (total / 5))|number_format(2, '.', '') }}</div>
+										</div>
 									</div>
 								</div>
 							</div>

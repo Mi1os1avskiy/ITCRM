@@ -23,6 +23,10 @@
 		@apply flex-shrink-0;
 	}
 
+	tbody {
+		@apply cursor-default;
+	}
+
 	tr:hover {
 		@apply bg-gray-50;
 	}

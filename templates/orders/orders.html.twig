@@ -124,7 +124,10 @@
 											<td class="py-4 px-3">
 												{% for val, css in order_statuses %}
 													{% if val == order.order_status %}
-														<div class="w-fit py-0.5 px-2.5 rounded-xl bg-{{ css }}-{% if val == 'In progress' %}200{% else %}100{% endif%} text-{{ css }}-800 text-xs font-medium">{{ order.order_status }}</div>
+														<div class="flex space-x-1">
+															<div class="w-fit py-0.5 px-2.5 rounded-xl bg-{{ css }}-{% if val in ['In progress', 'Checking'] %}200{% else %}100{% endif%} text-{{ css }}-800 text-xs font-medium">{{ order.order_status }}</div>
+															<span title="Autosetup">{{ order.autosetup ? '*' }}</span>
+														</div>
 													{% endif %}
 												{% endfor %}
 											</td>
