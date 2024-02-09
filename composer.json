@@ -77,7 +77,9 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts"
+            "php -r \"file_exists('.env') || copy('.env.dist', '.env');\"",
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "App\\Service\\SomeCustomService::postInstall"
         ],
         "post-update-cmd": [
             "@auto-scripts"
