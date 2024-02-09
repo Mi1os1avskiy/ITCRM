@@ -3,6 +3,8 @@ stages:
   - deploy
 
 variables:
+  PHP_BIN: /usr/local/bin/php
+  COMPOSER_BIN: /usr/local/bin/composer
   DOCKER_BUILD_PATH: .
   DOCKER_REGISTRY: hub.int.brainq.com
   DOCKER_REGISTRY_LOGIN: gitlab
@@ -16,13 +18,15 @@ variables:
     - export VAULT_TOKEN="$(vault write -field=token auth/jwt/login role=$VAULT_ROLE jwt=$CI_JOB_JWT)"
     - export DOCKER_REGISTRY_PASSWORD="$(vault kv get -field=$DOCKER_REGISTRY_LOGIN internal/harbor)"
   script:
+    - $PHP_BIN -v
+    - $COMPOSER_BIN -v
     - echo "{\"auths\":{\"$DOCKER_REGISTRY\":{\"username\":\"$DOCKER_REGISTRY_LOGIN\",\"password\":\"$DOCKER_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
     - /kaniko/executor --context $DOCKER_BUILD_PATH --dockerfile $DOCKERFILE
       --destination $DOCKER_REGISTRY/$DOCKER_REGISTRY_PATH/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_VERSION
 
 ish:itcrm:build:
   stage: build
-  image: 
+  image:
     name: ${KANIKO_EXECUTOR_IMAGE}
     entrypoint: [""]
   rules:
@@ -38,6 +42,6 @@ ish:itcrm:deploy:
   variables:
     ITCRM_RELEASE: ${CI_COMMIT_REF_SLUG}
     IMAGE_VERSION: ${CI_COMMIT_SHORT_SHA}-${CI_COMMIT_REF_SLUG}
-  trigger: 
+  trigger:
     project: ishosting/deployment
     strategy: depend
