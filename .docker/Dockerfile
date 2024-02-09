@@ -24,10 +24,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN composer install
 
-RUN composer dump-autoload -o
-
 RUN chown -R ishosting:ishosting .
 
 USER 1000
+
+RUN composer dump-autoload -o
 
 EXPOSE 9000
