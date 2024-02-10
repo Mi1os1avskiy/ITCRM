@@ -28,4 +28,6 @@ RUN chown -R ishosting:ishosting .
 
 USER 1000
 
+RUN composer dump-autoload -o
+
 EXPOSE 9000
