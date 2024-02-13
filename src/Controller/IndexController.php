@@ -439,6 +439,19 @@ class IndexController extends AbstractController
 		]);
 	}
 
+
+	/**
+	 * @Route("/settings/autosetup", name="settings_autosetup")
+	 */
+	public function autosetup(): Response
+	{
+		return $this->render('settings/autosetup.html.twig', [
+			'title' => 'Автосетап',
+			'json' => SettingsController::json_content,
+			'tokens' => SettingsController::tokens,
+		]);
+	}
+
 	/**
 	 * @Route("/test", name="test")
 	 */

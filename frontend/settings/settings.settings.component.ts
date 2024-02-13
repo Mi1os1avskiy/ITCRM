@@ -6,12 +6,15 @@ const DeleteAdmin = 'delete-admin';
 const AnswerEditor = 'settings-answer-editor';
 const DeleteAnswers = 'settings-delete-answers';
 const DeleteCategory = 'settings-delete-category';
+const ResetAutosetup = 'autosetup-reset-modal';
+const AutosetupTokens = 'autosetup-tokens-modal';
 
 export const SettingsSettingsComponent = {
     data() {
         return {
             personalData: {},
             editMode: false,
+            selectedServices: [],
         }
     },
     mixins: [
@@ -140,6 +143,54 @@ export const SettingsSettingsComponent = {
             const inputField = document.getElementById('input') as HTMLInputElement;
             inputField.value = category || '';
         },
+        saveAutosetup() {
+            const self = <any>this;
+            self.$notifications('global').notify(
+                new Notification(NotificationLevels.SUCCESS, "Сохранение", "Параметры успешно сохранены")
+            );
+        },
+        cancelAutosetup() {
+            const self = <any>this;
+            self.$notifications('global').notify(
+                new Notification(NotificationLevels.SUCCESS, "Изменения", "Изменения были отменены")
+            );
+        },
+        resetAutosetup() {
+            const self = <any>this;
+            self.$modals(ResetAutosetup).show()
+                .then((data: any) => {
+                    self.$notifications('global').notify(
+                        new Notification(NotificationLevels.SUCCESS, "Сброс параметров", "Параметры успешно сброшены до стандартной конфигурации")
+                    );
+                })
+                .catch(() => {
+                });
+        },
+        autosetupTokens() {
+            const self = <any>this;
+            self.$modals(AutosetupTokens).show()
+                .then((data: any) => {
+                })
+                .catch(() => {
+                });
+        },
+        toggleService(service: string) {
+            const self = <any>this;
+            if (self.selectedServices.includes(service)) {
+                self.selectedServices = self.selectedServices.filter(function (s: string) {
+                    return s !== service;
+                });
+            } else {
+                self.selectedServices.push(service);
+            }
+        },
+        removeService(service: string) {
+            const self = <any>this;
+            self.selectedServices = self.selectedServices.filter(function (s: string) {
+                return s !== service;
+            });
+        },
+
     }
 }
 

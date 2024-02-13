@@ -173,4 +173,235 @@ https://ishosting.com/ru/acceptable-use-policy
 
 		return $list;
 	}
+
+	public const json_content = '{
+    "BasicSet_Autosetup": {
+        "clientWithAdminNotes": "any",
+        "clientWithDuplicateAdminNotes": "any",
+        "clientEmailContain": [],
+        "clientWithBlockedService": "any",
+        "clientDuplicateWithBlockedService": "any",
+        "clientWithRestrictions": "any",
+        "clientDuplicateWithRestrictions": "any",
+        "clientWithDuplicates": "any",
+        "clientVerified": "any",
+        "clientStatusBlocked": "any",
+        "clientDuplicateStatusBlocked": "any",
+        "clientWithViolation": "any",
+        "clientDuplicateWithViolation": "any",
+        "clientLocation": [],
+        "clientLocationNot": [],
+        "clientActiveServicesBCycle": [],
+        "orderWithClientComment": "any",
+        "orderServiceType": [],
+        "orderTariffLocation": [],
+        "orderTariff": [],
+        "orderBillingCycle": [],
+        "orderPaymentMethod": [],
+        "orderWinLicencePaid": "any",
+        "orderAdditionalIP": "any",
+        "orderVpnSeparateTraffic": "any",
+        "orderVpnProxyIP": "any",
+        "orderVpnCustomAccounts": "any",
+        "orderPanelCompatible": "any",
+        "clientHasActiveServiceOlder48h": "any"
+    },
+    "Subset0_RestrictAutosetup": {
+        "clientWithAdminNotes": true
+    },
+    "Subset1_RestrictAutosetup": {
+        "clientWithDuplicateAdminNotes": true
+    },
+    "Subset2_RestrictAutosetup": {
+        "clientEmailContain": [
+            "tutanota",
+            "proton"
+        ]
+    },
+    "Subset3_RestrictAutosetup": {
+        "clientWithBlockedService": true
+    },
+    "Subset4_RestrictAutosetup": {
+        "clientDuplicateWithBlockedService": true
+    },
+    "Subset5_RestrictAutosetup": {
+        "clientWithRestrictions": true
+    },
+    "Subset6_RestrictAutosetup": {
+        "clientDuplicateWithRestrictions": true
+    },
+    "Subset7_RestrictAutosetup": {
+        "clientStatusBlocked": true
+    },
+    "Subset8_RestrictAutosetup": {
+        "clientDuplicateStatusBlocked": true
+    },
+    "Subset9_RestrictAutosetup": {
+        "clientWithViolation": true
+    },
+    "Subset10_RestrictAutosetup": {
+        "clientDuplicateWithViolation": true
+    },
+    "Subset11_RestrictAutosetup": {
+        "orderWithClientComment": true
+    },
+    "Subset12_RestrictAutosetup": {
+        "orderTariffLocation": [
+            "SE"
+        ],
+        "clientVerified": false
+    },
+    "Subset13_RestrictAutosetup": {
+        "orderServiceType": [
+            "vps"
+        ],
+        "orderTariff": [
+            "Lite - Windows NVMe",
+            "Start - Windows NVMe",
+            "Medium - Windows NVMe",
+            "Premium - Windows NVMe",
+            "Elite - Windows NVMe",
+            "Exclusive - Windows NVMe"
+        ],
+        "orderBillingCycle": [
+            "1y",
+            "2y"
+        ]
+    },
+    "Subset14_RestrictAutosetup": {
+        "orderServiceType": [
+            "vps"
+        ],
+        "orderTariff": [
+            "Lite - Windows NVMe",
+            "Start - Windows NVMe",
+            "Medium - Windows NVMe",
+            "Premium - Windows NVMe",
+            "Elite - Windows NVMe",
+            "Exclusive - Windows NVMe"
+        ],
+        "orderWinLicencePaid": true
+    },
+    "Subset15_RestrictAutosetup": {
+        "orderServiceType": [
+            "vps"
+        ],
+        "orderTariff": [
+            "Lite - Linux NVMe",
+            "Start - Linux NVMe",
+            "Medium - Linux NVMe",
+            "Premium - Linux NVMe",
+            "Elite - Linux NVMe",
+            "Exclusive - Linux NVMe"
+        ],
+        "orderBillingCycle": [
+            "1y",
+            "2y"
+        ]
+    },
+    "Subset16_RestrictAutosetup": {
+        "orderServiceType": [
+            "vps"
+        ],
+        "orderTariff": [
+            "Lite - Linux NVMe",
+            "Start - Linux NVMe",
+            "Medium - Linux NVMe",
+            "Premium - Linux NVMe",
+            "Elite - Linux NVMe",
+            "Exclusive - Linux NVMe"
+        ],
+        "orderPanelCompatible": false
+    },
+    "Subset17_RestrictAutosetup": {
+        "orderServiceType": [
+            "vpn"
+        ],
+        "orderTariffLocation": [
+            "RU"
+        ],
+        "orderPaymentMethod": [
+            "coinpayments"
+        ]
+    },
+    "Subset18_RestrictAutosetup": {
+        "orderServiceType": [
+            "vpn"
+        ],
+        "orderAdditionalIP": true
+    },
+    "Subset19_RestrictAutosetup": {
+        "orderServiceType": [
+            "vpn"
+        ],
+        "orderVpnSeparateTraffic": true
+    },
+    "Subset20_RestrictAutosetup": {
+        "orderServiceType": [
+            "vpn"
+        ],
+        "orderVpnProxyIP": true
+    },
+    "Subset21_RestrictAutosetup": {
+        "orderServiceType": [
+            "vpn"
+        ],
+        "orderVpnCustomAccounts": true
+    },
+    "Subset_AutoTicket48h_Enable": {
+        "orderServiceType": [
+            "vps"
+        ],
+        "orderTariff": [
+            "Lite - Linux NVMe",
+            "Start - Linux NVMe",
+            "Medium - Linux NVMe",
+            "Premium - Linux NVMe",
+            "Elite - Linux NVMe",
+            "Exclusive - Linux NVMe"
+        ],
+        "orderBillingCycle": [
+            "1m",
+            "3m",
+            "6m"
+        ],
+        "clientLocationNot": [
+            "RU",
+            "UA",
+            "BY"
+        ],
+        "clientHasActiveServiceOlder48h": false
+    }
+}';
+
+	public const tokens = [
+		'clientWithAdminNotes // наличие заметок админа в профиле клиента',
+		'clientWithDuplicateAdminNotes // наличие заметок админа в профиле клиента дубликатов',
+		'clientEmailContain // email провайдер почты клиента',
+		'clientWithBlockedService // наличие заблокированных услуг у клиента',
+		'clientDuplicateWithBlockedService // заблокированные услуги у дубликатов клиента',
+		'clientWithRestrictions // клиент с установленными ограничениями аккаунта (любыми)',
+		'clientDuplicateWithRestrictions // дубликаты клиента с ограничениями (любыми)',
+		'clientWithDuplicates // клиент имеет дубликаты аккаунта',
+		'clientVerified // значение KYC для аккаунта',
+		'clientStatusBlocked // статус клиента Blocked',
+		'clientDuplicateStatusBlocked // статус клиента Blocked в дубликатах',
+		'clientWithViolation // наличие тикетов с нарушениями',
+		'clientDuplicateWithViolation // наличие тикетов с нарушениями с дубликатах',
+		'clientLocation // локация клиента (geoip)',
+		'clientActiveServicesBCycle // наличие активной услуги с мин. билл. циклом',
+		'orderWithClientComment // заказ содержит комментарий клиента',
+		'orderServiceType // тип услуги в заказе (vps, vpn)',
+		'orderTariffLocation // локация тарифа в заказе',
+		'orderTariff // тариф в заказе',
+		'orderBillingCycle // билл. цикл в заказе',
+		'orderPaymentMethod // способ оплаты заказа',
+		'orderWinLicencePaid // в заказе оплачена лицензия Windows',
+		'orderAdditionalIP // в заказе есть доп. IP',
+		'orderVpnSeparateTraffic // заказана опция раздельного траффика в vpn',
+		'orderVpnProxyIP // заказана опция Proxy для доп. IP vpn',
+		'orderVpnCustomAccounts // заказана опция доп. аккаунтов в vpn',
+		'orderPanelCompatible // совместимость панели и OS в заказе',
+		'clientHasActiveServiceOlder48h // наличие у клиента активной услуги возрастом более 48 часов',
+	];
 }

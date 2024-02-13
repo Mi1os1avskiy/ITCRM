@@ -1,0 +1,16 @@
+{% extends'/misc/modals/base.modal.html.twig' %}
+
+{% block modal_name %}autosetup-reset-modal{% endblock %}
+
+{% block modal_content %}
+
+	<div class="w-96 p-6 space-y-6 transform overflow-hidden rounded-lg bg-white my-auto text-left shadow-xl transition-all">
+		<h2 class="text-lg leading-6 font-medium">Сбросить параметры</h2>
+		<div class="text-gray-700 text-sm">Вы уверены, что хотите сбросить параметры?</div>
+		<div class="flex space-x-3 text-sm font-medium">
+			<button @click="close(false)" type="button" class="w-full py-2 px-4 rounded-md ring-1 ring-gray-300 text-gray-700 hover:bg-gray-50">Отменить</button>
+			<button @click="close(true)" type="button" class="w-full py-2 px-4 rounded-md bg-red-600 text-white hover:bg-red-700">Сбросить</button>
+		</div>
+	</div>
+
+{% endblock %}
