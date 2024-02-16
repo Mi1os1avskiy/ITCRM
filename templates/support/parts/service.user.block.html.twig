@@ -44,7 +44,7 @@
 				</div>
 				<div>
 					<div class="flex space-x-2">
-						<p class="text-sm font-medium line-clamp-1 overflow-hidden" title="{{ data.ticket_service }}">{{ data.ticket_service }}</p>
+						<a href="{{ path('order_details') }}" class="text-sm font-medium line-clamp-1 overflow-hidden hover:text-indigo-700" title="{{ data.ticket_service }}">{{ data.ticket_service }}</a>
 						<span class="px-2.5 py-0.5 rounded-full text-xs bg-green-100 text-green-800">{{ data.ticket_status }}</span>
 					</div>
 					<div class="text-gray-500 text-sm font-medium">{{ data.ticket_service_date }}</div>

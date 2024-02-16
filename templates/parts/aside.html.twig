@@ -145,7 +145,8 @@
 				<span :class="!!menuIsOpened ? 'block': 'hidden'" class="grow text-gray-300 text-sm text-left font-medium">Аккаунт</span>
 				<span :class="!!menuIsOpened ? 'block': 'hidden'">{{ source('assets/images/aside/up-down.svg') }}</span>
 
-				<div v-if="!menuIsOpened" class="popover__left w-fit bottom-14 -left-1 py-2 px-3 bg-gray-900 text-gray-100 text-xs rounded-lg whitespace-nowrap">
+				{#					@TODO Тултип обрезается#}
+				<div v-if="!menuIsOpened" class="popover__content pop_left w-fit bottom-14 -left-1 py-2 px-3 bg-gray-900 text-gray-100 text-xs rounded-lg whitespace-nowrap">
 					<p>Авторизован как</p>
 					<p class="font-medium">valeriy-burdaleyba@mail.com</p>
 				</div>

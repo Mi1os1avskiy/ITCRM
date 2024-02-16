@@ -47,7 +47,7 @@
 
                         <tr class="text-sm text-gray-500">
                             <td class="min-w-[250px] font-medium pl-6 pr-3 py-4">
-                                <a href="#" class="line-clamp-1 overflow-hidden hover:text-indigo-700" title="{{ service.title }}">{{ service.title }}</a>
+                                <a href="{{ path('order_details') }}" class="line-clamp-1 overflow-hidden hover:text-indigo-700" title="{{ service.title }}">{{ service.title }}</a>
                             </td>
                             <td class="whitespace-nowrap px-3 py-4">{{ service.ip }}</td>
                             <td class="whitespace-nowrap px-3 py-4 text-right">${{ service.amount }}</td>

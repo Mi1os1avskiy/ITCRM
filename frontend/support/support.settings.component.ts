@@ -11,7 +11,7 @@ const TicketServiceSelect = 'ticket-service-select';
 export const SupportSettingsComponent = {
     data() {
         return {
-            personalData: {}
+            personalData: {},
         }
     },
     methods: {

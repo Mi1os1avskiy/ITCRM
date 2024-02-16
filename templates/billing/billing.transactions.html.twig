@@ -107,7 +107,7 @@
 											{% for i in icons %}
 												{% if item.invoice_type == i.type %}
 													{{ source( i.src ) }}
-													<div class="popover__left bottom-[50px] -left-1.5 w-fit py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">
+													<div class="popover__content pop_left bottom-9 -left-1.5 w-fit py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">
 														<p>{{ i.title }}</p>
 													</div>
 												{% endif %}
@@ -128,7 +128,7 @@
 											{% if item.refund %}
 											<div class="popover__wrapper relative">
 												{{ source('assets/images/transaction/refund.svg') }}
-												<div class="popover__left bottom-9 -left-[9px] w-fit py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">
+												<div class="popover__content pop_center bottom-9 -left-[65px] w-fit py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">
 													<p>Был возврат средств</p>
 												</div>
 											</div>
