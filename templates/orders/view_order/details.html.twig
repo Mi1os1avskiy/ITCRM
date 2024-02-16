@@ -56,318 +56,318 @@
 
 	<div class="flex py-6 px-8 space-x-6">
 		<div class="flex-1 space-y-6">
-			<div>
-				<div v-on:click="show1 = !show1" class="flex items-center py-5 px-6 space-x-4 bg-gray-50 border-b rounded-t-lg cursor-pointer">
-					<h3 class="font-semibold pointer-events-none">Слоты</h3>
-					<div class="grow flex items-center space-x-2 justify-end pointer-events-none">
-						<div class="py-1.5 px-2 text-indigo-600 text-sm leading-4 font-medium">Отобразить изменённые</div>
-						<div class="text-gray-200">|</div>
-					</div>
-					<span :class="show1 ? 'rotate-180' : ''">{{ source('assets/images/arrow.svg') }}</span>
-				</div>
+{#			<div>#}
+{#				<div v-on:click="show1 = !show1" class="flex items-center py-5 px-6 space-x-4 bg-gray-50 border-b rounded-t-lg cursor-pointer">#}
+{#					<h3 class="font-semibold pointer-events-none">Слоты</h3>#}
+{#					<div class="grow flex items-center space-x-2 justify-end pointer-events-none">#}
+{#						<div class="py-1.5 px-2 text-indigo-600 text-sm leading-4 font-medium">Отобразить изменённые</div>#}
+{#						<div class="text-gray-200">|</div>#}
+{#					</div>#}
+{#					<span :class="show1 ? 'rotate-180' : ''">{{ source('assets/images/arrow.svg') }}</span>#}
+{#				</div>#}
 
-				<div v-if="show1">
-					<div class="divide-y">
-						{{ slot.item('Тариф', 0, 0, user_data.tariff_plan, 0, user_data.tariff_price) }}
+{#				<div v-if="show1">#}
+{#					<div class="divide-y">#}
+{#						{{ slot.item('Тариф', 0, 0, user_data.tariff_plan, 0, user_data.tariff_price) }}#}
 
-						{{ slot.item('CPU', 'proc', 0, user_data.cpu.model, 0, user_data.cpu.price) }}
+{#						{{ slot.item('CPU', 'proc', 0, user_data.cpu.model, 0, user_data.cpu.price) }}#}
 
-						{{ slot.item('RAM', 'ram', 0, user_data.ram.capacity, 0, user_data.ram.price) }}
+{#						{{ slot.item('RAM', 'ram', 0, user_data.ram.capacity, 0, user_data.ram.price) }}#}
 
-						{{ slot.item('Диск', 'disk0', 0, user_data.disk.capacity, 0, user_data.disk.price) }}
+{#						{{ slot.item('Диск', 'disk0', 0, user_data.disk.capacity, 0, user_data.disk.price) }}#}
 
-						{{ slot.item('IP', 'ipv4', user_data.ip.old.amount, user_data.ip.new.amount, user_data.ip.old.price, user_data.ip.new.price) }}
+{#						{{ slot.item('IP', 'ipv4', user_data.ip.old.amount, user_data.ip.new.amount, user_data.ip.old.price, user_data.ip.new.price) }}#}
 
-						{{ slot.item('Порт', 'port', 0, user_data.port.type, 0, user_data.port.price) }}
+{#						{{ slot.item('Порт', 'port', 0, user_data.port.type, 0, user_data.port.price) }}#}
 
-						{{ slot.item('Операционная система', 'os',  0, user_data.os.type, 0, user_data.os.price) }}
+{#						{{ slot.item('Операционная система', 'os',  0, user_data.os.type, 0, user_data.os.price) }}#}
 
-						{{ slot.item('Разрядность ОС', 'osbit', 0, user_data.osbit.type, 0, user_data.osbit.price) }}
+{#						{{ slot.item('Разрядность ОС', 'osbit', 0, user_data.osbit.type, 0, user_data.osbit.price) }}#}
 
-						{{ slot.item('Панель управления', 'panel', 0, user_data.panel.type, 0, user_data.panel.price) }}
+{#						{{ slot.item('Панель управления', 'panel', 0, user_data.panel.type, 0, user_data.panel.price) }}#}
 
-						{{ slot.item('Администрирование', 'administration', 0, user_data.admin.type, 0, user_data.admin.price) }}
+{#						{{ slot.item('Администрирование', 'administration', 0, user_data.admin.type, 0, user_data.admin.price) }}#}
 
-						{{ slot.item('SLA', 'sla', 0, user_data.sla.type, 0, user_data.sla.price) }}
+{#						{{ slot.item('SLA', 'sla', 0, user_data.sla.type, 0, user_data.sla.price) }}#}
 
-						{{ slot.item('Резервное копирование', 'backup', 0, user_data.backup.type, 0, user_data.backup.price) }}
+{#						{{ slot.item('Резервное копирование', 'backup', 0, user_data.backup.type, 0, user_data.backup.price) }}#}
 
-						{{ slot.item('DDoS защита', 'ddos', 0, user_data.ddos.type, 0, user_data.ddos.price) }}
-					</div>
+{#						{{ slot.item('DDoS защита', 'ddos', 0, user_data.ddos.type, 0, user_data.ddos.price) }}#}
+{#					</div>#}
 
-					<div class="divide-y bg-gray-50 rounded-b-lg">
-						<div class="py-4 px-6 space-y-1">
-							<div class="text-gray-600 text-sm">Число дней оплаченного периода: {{ user_data.paid_period }}</div>
-							<div class="text-gray-600 text-sm">Активный платёжный период дней: {{ user_data.pay_period }}</div>
-							<div class="text-gray-600 text-sm">Новый период дней: {{ user_data.new_period }}</div>
-							<div class="text-gray-600 text-sm"><span class="font-medium">IPv4:</span> 1 $0.00 → 1+2 $10.00</div>
-						</div>
+{#					<div class="divide-y bg-gray-50 rounded-b-lg">#}
+{#						<div class="py-4 px-6 space-y-1">#}
+{#							<div class="text-gray-600 text-sm">Число дней оплаченного периода: {{ user_data.paid_period }}</div>#}
+{#							<div class="text-gray-600 text-sm">Активный платёжный период дней: {{ user_data.pay_period }}</div>#}
+{#							<div class="text-gray-600 text-sm">Новый период дней: {{ user_data.new_period }}</div>#}
+{#							<div class="text-gray-600 text-sm"><span class="font-medium">IPv4:</span> 1 $0.00 → 1+2 $10.00</div>#}
+{#						</div>#}
 
-						<div class="py-4 px-6 space-y-1 text-right">
-							<div class="text-gray-600 text-sm">Сумма доплаты до 23/03/2023 : <span class="font-semibold">$0.00</span> ($0.00 вкл. VAT $0.00)</div>
-							<div class="text-sm"><span class="font-semibold">Новое расчётное значение Recurring amount в месяц: $5.00</span> ($6.00 вкл. VAT $1.00)</div>
-						</div>
+{#						<div class="py-4 px-6 space-y-1 text-right">#}
+{#							<div class="text-gray-600 text-sm">Сумма доплаты до 23/03/2023 : <span class="font-semibold">$0.00</span> ($0.00 вкл. VAT $0.00)</div>#}
+{#							<div class="text-sm"><span class="font-semibold">Новое расчётное значение Recurring amount в месяц: $5.00</span> ($6.00 вкл. VAT $1.00)</div>#}
+{#						</div>#}
 
-						<div class="py-4 px-6 space-y-1">
-							<div class="text-gray-600 text-sm">Всего неизрасходовано по всем продлениям: <span class="font-semibold">$0.00</span> ($0.00 вкл. VAT $0.00)</div>
-							<div class="text-gray-600 text-sm">Число оставшихся оплаченных дней (целых месяцев): 33 (2)</div>
-							<div class="text-sm">Новая цена: <span class="font-semibold">$0</span> ($0.00 вкл. VAT $0.00) за период 366 дней (1 Год)</div>
-						</div>
+{#						<div class="py-4 px-6 space-y-1">#}
+{#							<div class="text-gray-600 text-sm">Всего неизрасходовано по всем продлениям: <span class="font-semibold">$0.00</span> ($0.00 вкл. VAT $0.00)</div>#}
+{#							<div class="text-gray-600 text-sm">Число оставшихся оплаченных дней (целых месяцев): 33 (2)</div>#}
+{#							<div class="text-sm">Новая цена: <span class="font-semibold">$0</span> ($0.00 вкл. VAT $0.00) за период 366 дней (1 Год)</div>#}
+{#						</div>#}
 
-						<div class="py-4 px-6">
-							<button :disabled="!orderEditMode" class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Create custom invoice</button>
-						</div>
-					</div>
-				</div>
-			</div>
+{#						<div class="py-4 px-6">#}
+{#							<button :disabled="!orderEditMode" class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Create custom invoice</button>#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
 
-			<div class="bg-gray-50 rounded-lg">
-				<div v-on:click="show2 = !show2" class="flex items-center justify-between py-5 px-6 space-x-4 border-b cursor-pointer">
-					<h3 class="font-semibold pointer-events-none">Платёжная информация</h3>
-					<span :class="show2 ? 'rotate-180' : ''">{{ source('assets/images/arrow.svg') }}</span>
-				</div>
+{#			<div class="bg-gray-50 rounded-lg">#}
+{#				<div v-on:click="show2 = !show2" class="flex items-center justify-between py-5 px-6 space-x-4 border-b cursor-pointer">#}
+{#					<h3 class="font-semibold pointer-events-none">Платёжная информация</h3>#}
+{#					<span :class="show2 ? 'rotate-180' : ''">{{ source('assets/images/arrow.svg') }}</span>#}
+{#				</div>#}
 
-				<div v-if="show2" class="py-5 px-6 space-y-5">
-					<div class="grid grid-cols-2 gap-6">
-						<div class="space-y-1">
-							<p class="text-gray-700 text-sm font-medium">Промокод</p>
-							<div class="flex">
-								<input :disabled="!orderEditMode" class="inputs w-full z-10 py-2 px-3 text-sm rounded-r-none" value="{{ user_data.promo }}" type="text">
-								<button :disabled="!orderEditMode" class="ml-px py-2 px-4 ring-1 ring-gray-300 rounded-r-md bg-white text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Применить</button>
-							</div>
-						</div>
+{#				<div v-if="show2" class="py-5 px-6 space-y-5">#}
+{#					<div class="grid grid-cols-2 gap-6">#}
+{#						<div class="space-y-1">#}
+{#							<p class="text-gray-700 text-sm font-medium">Промокод</p>#}
+{#							<div class="flex">#}
+{#								<input :disabled="!orderEditMode" class="inputs w-full z-10 py-2 px-3 text-sm rounded-r-none" value="{{ user_data.promo }}" type="text">#}
+{#								<button :disabled="!orderEditMode" class="ml-px py-2 px-4 ring-1 ring-gray-300 rounded-r-md bg-white text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Применить</button>#}
+{#							</div>#}
+{#						</div>#}
 
-						<div class="space-y-1">
-							<p class="text-gray-700 text-sm font-medium">VAT</p>
-							<div class="py-2 px-3 ring-1 ring-gray-300 rounded-md text-gray-500 text-sm">{{ user_data.vat }}</div>
-						</div>
-					</div>
+{#						<div class="space-y-1">#}
+{#							<p class="text-gray-700 text-sm font-medium">VAT</p>#}
+{#							<div class="py-2 px-3 ring-1 ring-gray-300 rounded-md text-gray-500 text-sm">{{ user_data.vat }}</div>#}
+{#						</div>#}
+{#					</div>#}
 
-					<div class="grid grid-cols-2 gap-6">
-						<div>
-							<p class="text-gray-700 text-sm font-medium">First payment amount</p>
-							<div class="mt-1 relative rounded-md">
-								<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-sm">$</div>
-								<input :disabled="!orderEditMode" class="inputs w-full pl-10 text-sm" value="{{ user_data.first_payment_amount|number_format(2, '.', '') }}" type="text">
-							</div>
-							<div class="mt-2 text-gray-500 text-sm">($6.00 вкл. VAT $1.00)</div>
-						</div>
+{#					<div class="grid grid-cols-2 gap-6">#}
+{#						<div>#}
+{#							<p class="text-gray-700 text-sm font-medium">First payment amount</p>#}
+{#							<div class="mt-1 relative rounded-md">#}
+{#								<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-sm">$</div>#}
+{#								<input :disabled="!orderEditMode" class="inputs w-full pl-10 text-sm" value="{{ user_data.first_payment_amount|number_format(2, '.', '') }}" type="text">#}
+{#							</div>#}
+{#							<div class="mt-2 text-gray-500 text-sm">($6.00 вкл. VAT $1.00)</div>#}
+{#						</div>#}
 
-						<div>
-							<p class="text-gray-700 text-sm font-medium">Recurring amount</p>
-							<div class="mt-1 relative rounded-md">
-								<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-sm">$</div>
-								<input :disabled="!orderEditMode" class="inputs w-full pl-10 text-sm" value="{{ user_data.recurring_amount|number_format(2, '.', '') }}" type="text">
-							</div>
-							<div class="mt-2 text-gray-500 text-sm">($6.00 вкл. VAT $1.00)</div>
-						</div>
-					</div>
+{#						<div>#}
+{#							<p class="text-gray-700 text-sm font-medium">Recurring amount</p>#}
+{#							<div class="mt-1 relative rounded-md">#}
+{#								<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-sm">$</div>#}
+{#								<input :disabled="!orderEditMode" class="inputs w-full pl-10 text-sm" value="{{ user_data.recurring_amount|number_format(2, '.', '') }}" type="text">#}
+{#							</div>#}
+{#							<div class="mt-2 text-gray-500 text-sm">($6.00 вкл. VAT $1.00)</div>#}
+{#						</div>#}
+{#					</div>#}
 
-					<hr>
+{#					<hr>#}
 
-					<div class="grid grid-cols-2 gap-6">
-						<div class="space-y-1">
-							<p class="text-gray-700 text-sm font-medium">Billing cycle</p>
-							<div class="relative">
-								<button type="button" :disabled="!orderEditMode" class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50 disabled:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-									<div class="w-full text-sm text-left truncate pointer-events-none">1 Месяц</div>
-									{{ source('assets/images/arrow.svg') }}
-								</button>
+{#					<div class="grid grid-cols-2 gap-6">#}
+{#						<div class="space-y-1">#}
+{#							<p class="text-gray-700 text-sm font-medium">Billing cycle</p>#}
+{#							<div class="relative">#}
+{#								<button type="button" :disabled="!orderEditMode" class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50 disabled:bg-gray-50" aria-expanded="false" aria-expanded-autohide>#}
+{#									<div class="w-full text-sm text-left truncate pointer-events-none">1 Месяц</div>#}
+{#									{{ source('assets/images/arrow.svg') }}#}
+{#								</button>#}
 
-								<ul class="dropdown max-h-72 w-full overflow-auto">
-									{% for i in user_data.billing_cycle %}
-										<li>
-											<button type="button" class="flex items-center w-full py-2 px-4 space-x-3" title="{{ i }}">
-												<span class="text-gray-700 text-sm truncate">{{ i }}</span>
-											</button>
-										</li>
-									{% endfor %}
-								</ul>
-							</div>
-						</div>
+{#								<ul class="dropdown max-h-72 w-full overflow-auto">#}
+{#									{% for i in user_data.billing_cycle %}#}
+{#										<li>#}
+{#											<button type="button" class="flex items-center w-full py-2 px-4 space-x-3" title="{{ i }}">#}
+{#												<span class="text-gray-700 text-sm truncate">{{ i }}</span>#}
+{#											</button>#}
+{#										</li>#}
+{#									{% endfor %}#}
+{#								</ul>#}
+{#							</div>#}
+{#						</div>#}
 
-						<div class="space-y-1">
-							<p class="text-gray-700 text-sm font-medium">Next due date</p>
-							<div class="relative rounded-md">
-								<input :disabled="!orderEditMode" class="inputs peer block w-full pr-10 text-sm" value="{{ user_data.next_due_date }}" type="text">
-								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 peer-disabled:opacity-30">
-									{{ source('assets/images/calendar.svg') }}
-								</div>
-							</div>
-						</div>
-					</div>
+{#						<div class="space-y-1">#}
+{#							<p class="text-gray-700 text-sm font-medium">Next due date</p>#}
+{#							<div class="relative rounded-md">#}
+{#								<input :disabled="!orderEditMode" class="inputs peer block w-full pr-10 text-sm" value="{{ user_data.next_due_date }}" type="text">#}
+{#								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 peer-disabled:opacity-30">#}
+{#									{{ source('assets/images/calendar.svg') }}#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
 
-					<div class="flex items-center py-2 space-x-2">
-						<input :disabled="!orderEditMode" type="checkbox" class="checkbox" id="auto_prolong" checked>
-						<label class="text-sm" for="auto_prolong">Автоматическое продление</label>
-					</div>
+{#					<div class="flex items-center py-2 space-x-2">#}
+{#						<input :disabled="!orderEditMode" type="checkbox" class="checkbox" id="auto_prolong" checked>#}
+{#						<label class="text-sm" for="auto_prolong">Автоматическое продление</label>#}
+{#					</div>#}
 
-					<div class="flex items-center py-4 px-6 space-x-4 ring-1 ring-gray-200 rounded-lg">
-						<div class="w-16 text-sm font-medium" :class="orderEditMode ? 'text-indigo-700' : 'text-indigo-400'">Main</div>
-						<div class="text-gray-500 text-sm">04/07/2023 - 31/07/2023</div>
-						<div class="w-24 text-sm text-right">$810.00</div>
-						<div class="w-30 text-right">
-							<div class="w-fit px-2.5 py-0.5 rounded-full bg-green-100 text-xs text-green-800 font-medium">Paid</div>
-						</div>
-						<div class="w-[100px] text-sm text-right">Активный</div>
-					</div>
+{#					<div class="flex items-center py-4 px-6 space-x-4 ring-1 ring-gray-200 rounded-lg">#}
+{#						<div class="w-16 text-sm font-medium" :class="orderEditMode ? 'text-indigo-700' : 'text-indigo-400'">Main</div>#}
+{#						<div class="text-gray-500 text-sm">04/07/2023 - 31/07/2023</div>#}
+{#						<div class="w-24 text-sm text-right">$810.00</div>#}
+{#						<div class="w-30 text-right">#}
+{#							<div class="w-fit px-2.5 py-0.5 rounded-full bg-green-100 text-xs text-green-800 font-medium">Paid</div>#}
+{#						</div>#}
+{#						<div class="w-[100px] text-sm text-right">Активный</div>#}
+{#					</div>#}
 
-					<div class="flex justify-between">
-						<button class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50" type="button">Все инвойсы пользователя</button>
-						<div class="flex space-x-3">
-							<button :disabled="!orderEditMode" class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Issue initial invoice</button>
-							<button :disabled="!orderEditMode" class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Issue prolong invoice</button>
-						</div>
-					</div>
+{#					<div class="flex justify-between">#}
+{#						<button class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50" type="button">Все инвойсы пользователя</button>#}
+{#						<div class="flex space-x-3">#}
+{#							<button :disabled="!orderEditMode" class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Issue initial invoice</button>#}
+{#							<button :disabled="!orderEditMode" class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Issue prolong invoice</button>#}
+{#						</div>#}
+{#					</div>#}
 
-					<hr>
+{#					<hr>#}
 
-					<div class="grid grid-cols-2 gap-6">
-						<div class="space-y-1">
-							<p class="text-gray-700 text-sm font-medium">Override suspend</p>
-							<div class="relative flex rounded-md">
-								<div class="flex items-center px-3 ring-1 ring-gray-300 rounded-l-md bg-white">
-									<input :disabled="!orderEditMode" type="checkbox" class="checkbox w-5 h-5 disabled:bg-gray-50 disabled:opacity-100">
-								</div>
-								<input :disabled="!orderEditMode" class="inputs peer block w-full ml-px pr-10 rounded-l-none text-sm" value="{{ user_data.next_due_date }}" type="text">
-								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 peer-disabled:opacity-30">
-									{{ source('assets/images/calendar.svg') }}
-								</div>
-							</div>
-						</div>
+{#					<div class="grid grid-cols-2 gap-6">#}
+{#						<div class="space-y-1">#}
+{#							<p class="text-gray-700 text-sm font-medium">Override suspend</p>#}
+{#							<div class="relative flex rounded-md">#}
+{#								<div class="flex items-center px-3 ring-1 ring-gray-300 rounded-l-md bg-white">#}
+{#									<input :disabled="!orderEditMode" type="checkbox" class="checkbox w-5 h-5 disabled:bg-gray-50 disabled:opacity-100">#}
+{#								</div>#}
+{#								<input :disabled="!orderEditMode" class="inputs peer block w-full ml-px pr-10 rounded-l-none text-sm" value="{{ user_data.next_due_date }}" type="text">#}
+{#								<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 peer-disabled:opacity-30">#}
+{#									{{ source('assets/images/calendar.svg') }}#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
 
-						<div class="space-y-1">
-							<p class="text-gray-700 text-sm font-medium">Auto-terminate end of cycle</p>
-							<div class="relative">
-								<button type="button" :disabled="!orderEditMode" class="group w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 hover:bg-gray-50 disabled:bg-gray-50 disabled:text-gray-500" aria-expanded="false" aria-expanded-autohide>
-									<div class="text-red-500 group-disabled:opacity-30">{{ source('assets/images/important-triangle.svg') }}</div>
-									<div class="w-full text-sm text-left truncate pointer-events-none">Включено с возвратом средств</div>
-									{{ source('assets/images/arrow.svg') }}
-								</button>
+{#						<div class="space-y-1">#}
+{#							<p class="text-gray-700 text-sm font-medium">Auto-terminate end of cycle</p>#}
+{#							<div class="relative">#}
+{#								<button type="button" :disabled="!orderEditMode" class="group w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 hover:bg-gray-50 disabled:bg-gray-50 disabled:text-gray-500" aria-expanded="false" aria-expanded-autohide>#}
+{#									<div class="text-red-500 group-disabled:opacity-30">{{ source('assets/images/important-triangle.svg') }}</div>#}
+{#									<div class="w-full text-sm text-left truncate pointer-events-none">Включено с возвратом средств</div>#}
+{#									{{ source('assets/images/arrow.svg') }}#}
+{#								</button>#}
 
-								<ul class="dropdown max-h-72 w-full overflow-auto">
-									<li>
-										<button type="button" class="flex items-center w-full py-2 px-4 space-x-3">
-											<span class="text-gray-700 text-sm truncate">Включено с возвратом средств</span>
-										</button>
-									</li>
-									<li>
-										<button type="button" class="flex items-center w-full py-2 px-4 space-x-3">
-											<span class="text-gray-700 text-sm truncate">Отключено</span>
-										</button>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
+{#								<ul class="dropdown max-h-72 w-full overflow-auto">#}
+{#									<li>#}
+{#										<button type="button" class="flex items-center w-full py-2 px-4 space-x-3">#}
+{#											<span class="text-gray-700 text-sm truncate">Включено с возвратом средств</span>#}
+{#										</button>#}
+{#									</li>#}
+{#									<li>#}
+{#										<button type="button" class="flex items-center w-full py-2 px-4 space-x-3">#}
+{#											<span class="text-gray-700 text-sm truncate">Отключено</span>#}
+{#										</button>#}
+{#									</li>#}
+{#								</ul>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
 
-					<div class="flex p-4 space-x-4 bg-red-50 rounded-md">
-						<div class="text-red-500">{{ source('assets/images/important-triangle.svg') }}</div>
-						<div class="space-y-2">
-							<p class="text-red-800 text-sm font-medium">Auto-terminate end of cycle</p>
-							<p class="text-red-700 text-sm">Включено с возвратом средств</p>
-						</div>
-					</div>
+{#					<div class="flex p-4 space-x-4 bg-red-50 rounded-md">#}
+{#						<div class="text-red-500">{{ source('assets/images/important-triangle.svg') }}</div>#}
+{#						<div class="space-y-2">#}
+{#							<p class="text-red-800 text-sm font-medium">Auto-terminate end of cycle</p>#}
+{#							<p class="text-red-700 text-sm">Включено с возвратом средств</p>#}
+{#						</div>#}
+{#					</div>#}
 
-					<hr>
+{#					<hr>#}
 
-					<div class="flex items-center py-2 space-x-2">
-						<input :disabled="!orderEditMode" type="checkbox" class="checkbox" id="late_fee">
-						<label class="text-sm" for="late_fee">Штрафовать за просрочку оплаты</label>
-					</div>
-				</div>
-			</div>
+{#					<div class="flex items-center py-2 space-x-2">#}
+{#						<input :disabled="!orderEditMode" type="checkbox" class="checkbox" id="late_fee">#}
+{#						<label class="text-sm" for="late_fee">Штрафовать за просрочку оплаты</label>#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
 
-			<div class="bg-gray-50 rounded-lg">
-				<div v-on:click="show3 = !show3" class="flex items-center justify-between py-5 px-6 space-x-4 border-b cursor-pointer">
-					<h3 class="font-semibold pointer-events-none">Доступ</h3>
-					<span :class="show3 ? 'rotate-180' : ''">{{ source('assets/images/arrow.svg') }}</span>
-				</div>
+{#			<div class="bg-gray-50 rounded-lg">#}
+{#				<div v-on:click="show3 = !show3" class="flex items-center justify-between py-5 px-6 space-x-4 border-b cursor-pointer">#}
+{#					<h3 class="font-semibold pointer-events-none">Доступ</h3>#}
+{#					<span :class="show3 ? 'rotate-180' : ''">{{ source('assets/images/arrow.svg') }}</span>#}
+{#				</div>#}
 
-				<div v-if="show3" class="py-5 px-6 space-y-5 bg-gray-50 rounded-lg">
-					<div class="grid grid-cols-2 gap-6">
-						<div class="space-y-1">
-							<p class="text-gray-700 text-sm font-medium">Dedicated IP</p>
-							<input :disabled="!orderEditMode" class="inputs w-full text-sm" value="{{ user_data.dedicated_ip }}" type="text">
-						</div>
+{#				<div v-if="show3" class="py-5 px-6 space-y-5 bg-gray-50 rounded-lg">#}
+{#					<div class="grid grid-cols-2 gap-6">#}
+{#						<div class="space-y-1">#}
+{#							<p class="text-gray-700 text-sm font-medium">Dedicated IP</p>#}
+{#							<input :disabled="!orderEditMode" class="inputs w-full text-sm" value="{{ user_data.dedicated_ip }}" type="text">#}
+{#						</div>#}
 
-						<div class="space-y-1">
-							<p class="text-gray-700 text-sm font-medium">Логин</p>
-							<input :disabled="!orderEditMode" class="inputs w-full text-sm" value="{{ user_data.login }}" type="text">
-						</div>
-					</div>
+{#						<div class="space-y-1">#}
+{#							<p class="text-gray-700 text-sm font-medium">Логин</p>#}
+{#							<input :disabled="!orderEditMode" class="inputs w-full text-sm" value="{{ user_data.login }}" type="text">#}
+{#						</div>#}
+{#					</div>#}
 
-					<div class="grid grid-cols-2 gap-6">
-						<div class="space-y-1">
-							<p class="text-gray-700 text-sm font-medium">Пароль</p>
-							<div class="relative flex items-center flex-grow items-stretch focus-within:z-10">
-								<input v-model="password" :disabled="!orderEditMode" :type="isPasswordHidden ? 'password' : 'text'" class="inputs block w-full pr-10 text-sm">
-								<button @click="toggleShowHide(1)" type="button">
-									<i v-if="isPasswordHidden" class="absolute top-2 right-3" :class="!orderEditMode ? 'opacity-30 pointer-events-none' : '' ">{{ source('assets/images/eye-slash.svg') }}</i>
-									<i v-if="!isPasswordHidden" class="absolute top-2 right-3">{{ source('assets/images/eye.svg') }}</i>
-								</button>
-							</div>
-						</div>
+{#					<div class="grid grid-cols-2 gap-6">#}
+{#						<div class="space-y-1">#}
+{#							<p class="text-gray-700 text-sm font-medium">Пароль</p>#}
+{#							<div class="relative flex items-center flex-grow items-stretch focus-within:z-10">#}
+{#								<input v-model="password" :disabled="!orderEditMode" :type="isPasswordHidden ? 'password' : 'text'" class="inputs block w-full pr-10 text-sm">#}
+{#								<button @click="toggleShowHide(1)" type="button">#}
+{#									<i v-if="isPasswordHidden" class="absolute top-2 right-3" :class="!orderEditMode ? 'opacity-30 pointer-events-none' : '' ">{{ source('assets/images/eye-slash.svg') }}</i>#}
+{#									<i v-if="!isPasswordHidden" class="absolute top-2 right-3">{{ source('assets/images/eye.svg') }}</i>#}
+{#								</button>#}
+{#							</div>#}
+{#						</div>#}
 
-						<button :disabled="!orderEditMode" class="w-fit mt-6 py-2 px-3 rounded-md ring-1 ring-gray-300 shadow-sm bg-white text-sm hover:bg-gray-50 disabled:text-gray-400" type="button">Выслать пароль</button>
-					</div>
+{#						<button :disabled="!orderEditMode" class="w-fit mt-6 py-2 px-3 rounded-md ring-1 ring-gray-300 shadow-sm bg-white text-sm hover:bg-gray-50 disabled:text-gray-400" type="button">Выслать пароль</button>#}
+{#					</div>#}
 
-					<hr>
+{#					<hr>#}
 
-					<div class="space-y-1">
-						<p class="text-gray-700 text-sm font-medium">Assigned IPs</p>
-						<textarea :disabled="!orderEditMode" class="inputs w-full h-14 min-h-[36px] max-h-48 text-sm">{{ user_data.assigned_ips }}</textarea>
-					</div>
+{#					<div class="space-y-1">#}
+{#						<p class="text-gray-700 text-sm font-medium">Assigned IPs</p>#}
+{#						<textarea :disabled="!orderEditMode" class="inputs w-full h-14 min-h-[36px] max-h-48 text-sm">{{ user_data.assigned_ips }}</textarea>#}
+{#					</div>#}
 
-					<hr>
+{#					<hr>#}
 
-					<div class="grid grid-cols-2 gap-6">
-						<div class="space-y-1">
-							<p class="text-gray-700 text-sm font-medium">ID Сервера</p>
-							<input :disabled="!orderEditMode" class="inputs w-full text-sm" value="{{ user_data.server_id }}" type="text">
-						</div>
+{#					<div class="grid grid-cols-2 gap-6">#}
+{#						<div class="space-y-1">#}
+{#							<p class="text-gray-700 text-sm font-medium">ID Сервера</p>#}
+{#							<input :disabled="!orderEditMode" class="inputs w-full text-sm" value="{{ user_data.server_id }}" type="text">#}
+{#						</div>#}
 
-						<div class="space-y-1">
-							<p class="text-gray-700 text-sm font-medium">Позиция сервера</p>
-							<input :disabled="!orderEditMode" class="inputs w-full text-sm" value="{{ user_data.server_position }}" type="text">
-						</div>
-					</div>
+{#						<div class="space-y-1">#}
+{#							<p class="text-gray-700 text-sm font-medium">Позиция сервера</p>#}
+{#							<input :disabled="!orderEditMode" class="inputs w-full text-sm" value="{{ user_data.server_position }}" type="text">#}
+{#						</div>#}
+{#					</div>#}
 
-					<hr>
+{#					<hr>#}
 
-					<div class="grid grid-cols-2 gap-6">
-						<div class="space-y-1">
-							<p class="text-gray-700 text-sm font-medium">IPMI IP</p>
-							<input :disabled="!orderEditMode" class="inputs w-full text-sm" value="{{ user_data.ipmi_ip }}" type="text">
-						</div>
+{#					<div class="grid grid-cols-2 gap-6">#}
+{#						<div class="space-y-1">#}
+{#							<p class="text-gray-700 text-sm font-medium">IPMI IP</p>#}
+{#							<input :disabled="!orderEditMode" class="inputs w-full text-sm" value="{{ user_data.ipmi_ip }}" type="text">#}
+{#						</div>#}
 
-						<div class="space-y-1">
-							<p class="text-gray-700 text-sm font-medium">Пароль IPMI </p>
-							<div class="relative flex items-center flex-grow items-stretch focus-within:z-10">
-								<input :disabled="!orderEditMode" :type="isPasswordIpmiHidden ? 'password' : 'text'" class="inputs block w-full pr-10 text-sm" value="{{ user_data.ipmi_password }}">
-								<button @click="toggleShowHide(2)" type="button">
-									<i v-if="isPasswordIpmiHidden" class="absolute top-2 right-3" :class="!orderEditMode ? 'opacity-30 pointer-events-none' : '' ">{{ source('assets/images/eye-slash.svg') }}</i>
-									<i v-if="!isPasswordIpmiHidden" class="absolute top-2 right-3">{{ source('assets/images/eye.svg') }}</i>
-								</button>
-							</div>
-						</div>
-					</div>
+{#						<div class="space-y-1">#}
+{#							<p class="text-gray-700 text-sm font-medium">Пароль IPMI </p>#}
+{#							<div class="relative flex items-center flex-grow items-stretch focus-within:z-10">#}
+{#								<input :disabled="!orderEditMode" :type="isPasswordIpmiHidden ? 'password' : 'text'" class="inputs block w-full pr-10 text-sm" value="{{ user_data.ipmi_password }}">#}
+{#								<button @click="toggleShowHide(2)" type="button">#}
+{#									<i v-if="isPasswordIpmiHidden" class="absolute top-2 right-3" :class="!orderEditMode ? 'opacity-30 pointer-events-none' : '' ">{{ source('assets/images/eye-slash.svg') }}</i>#}
+{#									<i v-if="!isPasswordIpmiHidden" class="absolute top-2 right-3">{{ source('assets/images/eye.svg') }}</i>#}
+{#								</button>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
 
-					<hr>
+{#					<hr>#}
 
-					<button :disabled="!orderEditMode" class="group flex items-center py-2 pl-3 pr-4 space-x-2 ring-1 ring-gray-300 rounded-md bg-white hover:bg-gray-50" type="button">
-						<span class="text-gray-500 group-disabled:opacity-30">{{ source('assets/images/sliders.svg') }}</span>
-						<span class="text-gray-700 text-sm font-medium group-disabled:text-gray-400">Настроить SSH ключи</span>
-					</button>
+{#					<button :disabled="!orderEditMode" class="group flex items-center py-2 pl-3 pr-4 space-x-2 ring-1 ring-gray-300 rounded-md bg-white hover:bg-gray-50" type="button">#}
+{#						<span class="text-gray-500 group-disabled:opacity-30">{{ source('assets/images/sliders.svg') }}</span>#}
+{#						<span class="text-gray-700 text-sm font-medium group-disabled:text-gray-400">Настроить SSH ключи</span>#}
+{#					</button>#}
 
-					<hr>
+{#					<hr>#}
 
-					<div class="flex items-center py-2 space-x-2">
-						<input :disabled="!orderEditMode" type="checkbox" class="checkbox" id="hide">
-						<label class="text-sm" for="hide">Скрыть в списке услуг в ЛК</label>
-					</div>
-				</div>
-			</div>
+{#					<div class="flex items-center py-2 space-x-2">#}
+{#						<input :disabled="!orderEditMode" type="checkbox" class="checkbox" id="hide">#}
+{#						<label class="text-sm" for="hide">Скрыть в списке услуг в ЛК</label>#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
 
 			<div class="bg-gray-50 rounded-lg">
 				<div v-on:click="show4 = !show4" class="flex items-center justify-between py-5 px-6 space-x-4 border-b cursor-pointer">
@@ -396,59 +396,7 @@
 		</div>
 
 
-		<div class="w-[344px]">
-			<div class="sticky top-6 space-y-6">
-				<div class="h-fit bg-gray-50 rounded-lg">
-					<div class="py-5 px-6 space-y-2 rounded-lg bg-green-100">
-						<div class="text-green-800 text-sm font-medium text-center">Заказ доступен для редактирования</div>
-						<button @click="orderEditing" class="w-full py-2 px-4 rounded-md text-white text-sm font-medium" :class="orderEditMode ? 'bg-indigo-600' : 'bg-green-600'" type="button">${ orderEditMode ? 'Сохранить' : 'Редактировать' }</button>
-					</div>
 
-					<div class="flex items-center justify-between py-2 px-4 border-b">
-						<div class="flex items-center py-1 pl-2 pr-3 space-x-1 bg-gray-100 rounded-xl">
-							<div class="text-gray-400">{{ source('assets/images/clock.svg') }}</div>
-							<div class="text-gray-800 text-xs font-medium">0:00</div>
-						</div>
-						<div class="flex space-x-1">
-							<div class="popover__wrapper relative">
-								<button @click="expandAll" class="py-1.5 px-2 ring-1 ring-gray-300 rounded bg-white text-gray-500 hover:bg-gray-50" type="button">{{ source('assets/images/expand.svg') }}</button>
-								<div class="popover__content pop_right w-fit bottom-11 -right-1 py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">
-									<p>Развернуть все секции</p>
-								</div>
-							</div>
-
-							<div class="popover__wrapper relative">
-								<button @click="collapseAll" class="py-1.5 px-2 ring-1 ring-gray-300 rounded bg-white text-gray-500 hover:bg-gray-50" type="button">{{ source('assets/images/collapse.svg') }}</button>
-								<div class="popover__content pop_right w-fit bottom-11 -right-1 py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">
-									<p>Свернуть все секции</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="py-4">
-						<div class="py-2 px-6 text-gray-700 text-sm">Слоты</div>
-						<div class="py-2 px-6 text-gray-700 text-sm">Платёжная информация</div>
-						<div class="py-2 px-6 text-gray-700 text-sm">Доступ</div>
-						<div class="py-2 px-6 text-gray-700 text-sm">Управление сервером</div>
-					</div>
-				</div>
-
-				<div class="space-y-4">
-					<h3 class="text-lg font-medium leading-6">Примечания</h3>
-
-					<div class="p-4 space-y-1 ring-1 ring-gray-300 rounded-lg bg-gray-50">
-						<p class="text-gray-700 text-xs font-medium">Примечание от клиента</p>
-						<p class="text-gray-500 text-sm">{{ user_data.note_user }}</p>
-					</div>
-
-					<div class="p-4 space-y-1 ring-1 ring-gray-300 rounded-lg bg-gray-50">
-						<p class="text-gray-700 text-xs font-medium">Примечание от админа</p>
-						<p class="text-gray-500 text-sm">{{ user_data.note_admin }}</p>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 
 {% endblock %}
