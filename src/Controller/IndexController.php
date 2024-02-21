@@ -395,6 +395,7 @@ class IndexController extends AbstractController
 			'user_data' => OrdersController::testUser(),
 			'tariff_groups' => OrdersController::ordersTariffGroups(),
 			'tariff_plans' => OrdersController::ordersTariffPlans(),
+			'list' => OrdersController::history()
 		]);
 	}
 

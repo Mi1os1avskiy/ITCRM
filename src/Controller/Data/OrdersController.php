@@ -133,4 +133,15 @@ class OrdersController extends AbstractController
 
 		return $list;
 	}
+
+	public static function history() {
+		$list = [
+			['editor' => 'a.misilevich@brainq.com', 'start' => (time() + 8000), 'end' => 0],
+			['editor' => 'Pavel-Admin', 'start' => 1683199140, 'end' => 1683213900],
+			['editor' => 'Pavel-Admin', 'start' => 1683035220, 'end' => 1683036780],
+			['editor' => 'Pavel-Admin', 'start' => 1679051300, 'end' => 1679056140],
+		];
+
+		return $list;
+	}
 }

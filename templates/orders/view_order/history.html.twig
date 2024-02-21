@@ -6,6 +6,25 @@
 
 {% block details %}
 
-<div class="py-6 px-8">HISTORY</div>
+	<div class="w-[931px] pt-6 px-8 divide-y">
+		{% for i in list %}
+			{% set editing_time = ('now'|date('U') - i.start)|date('i\\m') %}
+
+			{% set edited = (i.end - i.start) / 60 %}
+
+			{% set hours = (edited / 60)|round %}
+
+			{% set minutes = (edited - hours * 60)|round %}
+
+			{% set edited_time = (hours ? (hours ~ 'h' ~ ' ' ~ minutes ~ 'm') : (minutes ~ 'm')) %}
+
+			<div class="flex items-center py-4 space-x-4">
+				<div class="text-gray-500">{{ source('assets/images/check.svg') }}</div>
+				<div class="text-sm font-medium">{{ i.end ? 'Редактировалось' : 'Редактируется' }} ({{ i.end ? edited_time : editing_time }})</div>
+				<div class="text-gray-800 text-sm">{{ i.editor }}</div>
+				<div class="text-gray-500 text-sm">{{ i.start|date('d/m/Y H:i') }} to {{ i.end ? i.end|date('d/m/Y H:i') : '...in process' }}</div>
+			</div>
+		{% endfor %}
+	</div>
 
 {% endblock %}

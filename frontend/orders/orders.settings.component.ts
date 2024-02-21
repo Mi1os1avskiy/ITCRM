@@ -93,7 +93,18 @@ export const OrdersSettingsComponent = {
             self.show2 = true;
             self.show3 = true;
             self.show4 = true;
-        }
+        },
+        scrollToBlock(id: number) {
+            const self = <any>this;
+            const blockRef = self.$refs[`block${id}`];
+
+            if (blockRef) {
+                blockRef.scrollIntoView({
+                    behavior: 'smooth', // для плавного скролла
+                    block: 'start',     // начать скролл от верхней границы блока
+                });
+            }
+        },
     }
 }
 
