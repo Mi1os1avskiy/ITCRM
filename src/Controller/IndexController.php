@@ -382,6 +382,7 @@ class IndexController extends AbstractController
 			'tariff_plans' => OrdersController::ordersTariffPlans(),
 			'tariff_groups' => OrdersController::ordersTariffGroups(),
 			'amount' => OrdersController::ordersTariffAmount(),
+			'keys' => OrdersController::shhKeys(),
 		]);
 	}
 

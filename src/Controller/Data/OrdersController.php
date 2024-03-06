@@ -39,6 +39,7 @@ class OrdersController extends AbstractController
 
 	public static function ordersTariffPlans() {
 		$list = [
+			'NL3-0 70.00 / 0.00 ( + 6/6 вариантов)',
 			'Lite - Linux SSD 5.00 / 0 .00 (+3/6 вариантов)',
 			'Start - Linux SSD 10.00 / 0.00 (+3/6 вариантов)',
 			'Medium - Linux SSD 20.00 / 0.00 (+3/6 вариантов)',
@@ -54,6 +55,9 @@ class OrdersController extends AbstractController
 
 	public static function ordersTariffGroups() {
 		$list = [
+			'Dedicated - Нидерланды',
+			'Dedicated - Германия',
+			'Dedicated - США',
 			'Виртуальные серверы / Netdirect - Германия',
 			'Виртуальные серверы / SwiftVPS - Нидерланды',
 			'Виртуальные серверы / Великобритания',
@@ -107,7 +111,6 @@ class OrdersController extends AbstractController
 			'osbit' => ['type' => '64 Bit', 'price' => '$0.00 / 1 месяц'],
 			'panel' => ['type' => 'ISP Manager v6 Lite (10 sites)', 'price' => '$0.00 / 1 месяц'],
 			'admin' => ['type' => 'Без администрирования (none)', 'price' => '$0.00 / 1 месяц'],
-			'sla' => ['type' => 'Базовый', 'price' => '$0.00 / 1 месяц'],
 			'backup' => ['type' => 'Еженедельное (free)', 'price' => '$0.00 / 1 месяц'],
 			'ddos' => ['type' => 'Базовая DDoS защита от L2 - L4 атак (l2l4base)' , 'price' => '$0.00 / 1 месяц'],
 			'paid_period' => 0,
@@ -140,6 +143,19 @@ class OrdersController extends AbstractController
 			['editor' => 'Pavel-Admin', 'start' => 1683199140, 'end' => 1683213900],
 			['editor' => 'Pavel-Admin', 'start' => 1683035220, 'end' => 1683036780],
 			['editor' => 'Pavel-Admin', 'start' => 1679051300, 'end' => 1679056140],
+		];
+
+		return $list;
+	}
+
+	public static function shhKeys() {
+		$list = [
+			['id' => 101, 'user' => 'dfvdfv@gmail.com', 'vps' => 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCMeuE0r4Q8pdvYyH02P/9jXSNqy3/qZ2vizlmIiq/SlKsO8QZeQj7qBA3/cBdL2xwS9QIhNMqpOZZ02ytyQt+T5RExsIBm8mM00xBQP2prg5K7+BzBECa+hZal7dTuUr078ImwqQzDaMWQf5oG2MyVuV1qSVe3MEVQt7Ygi/1wxfyjcL/SSek93UqmQ0LS1qRLqI0CFoI6/zoQofOyc1HUJL34LsdiWWpHEo9OtxtO38r0agyeiowvNy9+vIhm7nFwrtfrrgoQRPezBTN9Vdk8eSCQGl9K006yIM5mXq8wsX8q1fT5ldsPDGSTJqOWHzh9I7HfexHhSejFJVOQ9VTj rsa-key-20230929', 'iscrm' => 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAjsyC1HHiX5SxdsUgRISMSBJOG2Q9tF9w3zDV4z7qjhmonsI2mHK0HbPQ+cGdx1J47/jCRxdOa/KoOGsvjnwl2JFHZV9/X8VvoOqSgFIEQm30XKK3OhVZPfcePb4qyXTTmMqzx1I0z3RW4imLZTCK+IpwiBplD7xokY7yQZNB+CnkMoWX3iJdUppvQ+JmVzztPBKedFmpKBsKU4zagVN+R4toPOdUVJ5FFxeldeThXlZT2UVRonLkQS/RSxfSPxmazgAYmXuYfX9CEnZ128SE+nZ7MAEsG0cDeOw+3maG3d6Wv/rzi7e6cA6pXMPbmqy5LP4lXlj2sIFHL1tpBugMDQ== rsa-key-20210722'],
+			['id' => 102, 'user' => 'real_o27.07', 'vps' => '', 'iscrm' => 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAkcjGXcduHPJAy1r7jXX/RmXZTAUEAmB45XR7elpDHa1rHYLc+xVW4+wc1dql4Vni5+AJSoLKLJOyYXHitWHa6I8KKVPnm7XmHdb4Svofuujd+traxmvy2sfxxomMYCUZhyy9ISu6hrVT01oP0lRMyLRkSqBKKWe85fc/S8hd3hhBTx8k5LJRoRVT5hHWlZjnzT0i1x2/1hq15ob/f5pi7/kG8hN3k0Cd67RCCKjiWqPLUjwp45SGXFQyeBPG2eZ7c5i6l/vW4t04EYsPQIPPH2aCiHmcKCJfa9WOgVBRwMrNDkvoTVW1KXGcPNuhTarVHkLyISFfRg5QGJGmUMohhQ== rsa-key-20211020'],
+			['id' => 103, 'user' => 'sshlinux_realo', 'vps' => '', 'iscrm' => 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAkcjGXcduHPJAy1r7jXX/RmXZTAUEAmB45XR7elpDHa1rHYLc+xVW4+wc1dql4Vni5+AJSoLKLJOyYXHitWHa6I8KKVPnm7XmHdb4Svofuujd+traxmvy2sfxxomMYCUZhyy9ISu6hrVT01oP0lRMyLRkSqBKKWe85fc/S8hd3hhBTx8k5LJRoRVT5hHWlZjnzT0i1x2/1hq15ob/f5pi7/kG8hN3k0Cd67RCCKjiWqPLUjwp45SGXFQyeBPG2eZ7c5i6l/vW4t04EYsPQIPPH2aCiHmcKCJfa9WOgVBRwMrNDkvoTVW1KXGcPNuhTarVHkLyISFfRg5QGJGmUMohhQ== rsa-key-20211020'],
+			['id' => 104, 'user' => 'mac13.12', 'vps' => 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCMeuE0r4Q8pdvYyH02P/9jXSNqy3/qZ2vizlmIiq/SlKsO8QZeQj7qBA3/cBdL2xwS9QIhNMqpOZZ02ytyQt+T5RExsIBm8mM00xBQP2prg5K7+BzBECa+hZal7dTuUr078ImwqQzDaMWQf5oG2MyVuV1qSVe3MEVQt7Ygi/1wxfyjcL/SSek93UqmQ0LS1qRLqI0CFoI6/zoQofOyc1HUJL34LsdiWWpHEo9OtxtO38r0agyeiowvNy9+vIhm7nFwrtfrrgoQRPezBTN9Vdk8eSCQGl9K006yIM5mXq8wsX8q1fT5ldsPDGSTJqOWHzh9I7HfexHhSejFJVOQ9VTj rsa-key-20230929', 'iscrm' => 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAjQB9W9Kt4/cHXyvDiIOZqn15LwDXyP1UNvWKwekhrc+OsYcN8OXN+PHIM0f5n3vK2iHB7pQpKWrzytpLvm6rWCXNMnGl9JwVZubqzF4EcMgora7EU6nSvaV+AZH+2p5mh+oZa8Rj3LkbwadiNV6Sp523PBMrxjgww9qnngKfZY/DmvF7ls4sBnOSLXnkiKM1xuV083oHNvV8lNAB8OolUbtbMJF9h/kWSLyIS4U1ofHYxgGdqg4oORoN6fmRkJjwLz9d0CzgybI79nFLXw6ULqqmG3kmF2L7089yuAqpcnNOTBP5VkJXsHw+tPQXI4HUgjzvfDMa6W56BM9gacSUHQ== rsa-key-20211026'],
+			['id' => 105, 'user' => 'olgarybacenok@iMac', 'vps' => '', 'iscrm' => 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJuSBi9YTZ/KQc1JYk9B4TMIxk7L6CZUm3xVPazII4WlYYK+iY/AlUPj362DaEJCR1CuS9BsUwcvJunY1gJduNZ/85q42fGvReh4Hkgy8CY1MC342CJWMo2Zpr3hG1ntDx38g1v/BbkC6L3WaPKr+q6J64CuozdcBLAG/VbTTheJXKJ9HiBVnKRRkdBcjLmT+9dxIJM/40r3kOq0yjQT3FfUrB/HBRd129299T4N3rVVbhJbj8R2SoMehh7b67Xu81roQM0ehEXIa11tkK3dKC3llt9tVVLdgqRyyp9B2qgYPGeKrR+zkS5lECt5ULcXsuXzYLRKgYtGvDR1oi6lMl rsa-key-20220207'],
+			['id' => 106, 'user' => 'olgarybacenok@iMac-Olga.local', 'vps' => 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCMeuE0r4Q8pdvYyH02P/9jXSNqy3/qZ2vizlmIiq/SlKsO8QZeQj7qBA3/cBdL2xwS9QIhNMqpOZZ02ytyQt+T5RExsIBm8mM00xBQP2prg5K7+BzBECa+hZal7dTuUr078ImwqQzDaMWQf5oG2MyVuV1qSVe3MEVQt7Ygi/1wxfyjcL/SSek93UqmQ0LS1qRLqI0CFoI6/zoQofOyc1HUJL34LsdiWWpHEo9OtxtO38r0agyeiowvNy9+vIhm7nFwrtfrrgoQRPezBTN9Vdk8eSCQGl9K006yIM5mXq8wsX8q1fT5ldsPDGSTJqOWHzh9I7HfexHhSejFJVOQ9VTj rsa-key-20230929', 'iscrm' => 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfFmcMCMT7RVzPU2Hi/cwSQkwefbzJjowfbSB4Z546+xul7wSPVsLg/88QnOwMZHLodwMiIG8hRUYh++bqOsp65+qSRwbgvGP+fHP/Z8Ky01hnuNiCg9SkvCLU3i9LYpVq41Pxp3Qq+ZjgLPokZbE9prii9tq2FhfvMtATmRUEDZjbD0Y8zLri/smmYP16+ySOlkYXIuzaKLgt5bMyrAPlv8Scmb9NvzqBRslYSLDhlCjxL7TQNJKivPhL2vwkQbCQ8bqiFn0ExTqUN9TPFjpWoIWTjC+sT+kZcJs5jJK3/U6gKNaiBNZXh4BP4UoXd77EmzbObKeQONvrBmtT9x09 rsa-key-20230425'],
 		];
 
 		return $list;

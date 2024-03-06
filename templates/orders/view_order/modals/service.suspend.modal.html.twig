@@ -1,0 +1,46 @@
+{% extends'/misc/modals/base.modal.html.twig' %}
+
+{% block modal_name %}service-suspend-modal{% endblock %}
+
+{% block modal_content %}
+
+	<div class="relative w-full max-w-lg bg-white transform overflow-hidden rounded-lg shadow-xl transition-all">
+		<div class="flex items-center justify-between py-5 px-6 space-x-4 bg-gray-50">
+			<h2 class="text-lg leading-6 text-left font-medium">Service suspend</h2>
+			<button @click="close(false)" type="button" class="rounded-md text-gray-400 hover:text-gray-500">
+				{{ source('assets/images/close.svg') }}
+			</button>
+		</div>
+
+		<div class="py-5 px-6 space-y-5">
+			<div class="space-y-1">
+				<p class="text-gray-700 text-sm text-left font-medium">Причина</p>
+				<div class="relative">
+					<button v-on:click="showListServerSuspend = !showListServerSuspend" type="button" class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50 disabled:bg-gray-50">
+						<div class="w-full text-sm text-left truncate pointer-events-none" :class="btnServerSuspend !== 'Выберите тип приостановки' ? 'text-gray-700' : 'text-gray-400' ">${btnServerSuspend}</div>
+						{{ source('assets/images/arrow.svg') }}
+					</button>
+
+					{% set causes = ['Спам', 'Проблемы с оплатой', 'Указать причину блокировки'] %}
+					<ul v-if="showListServerSuspend" class="w-full mt-1 py-1 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none overflow-auto">
+						{% for i in causes %}
+							<li class="hover:bg-gray-50">
+								<button @click="btnServerSuspend = '{{i}}', showListServerSuspend = false"
+								        :class="{'text-gray-50 font-medium bg-indigo-600': btnServerSuspend === '{{i}}'}"
+								        class="flex items-center w-full py-2 px-4 space-x-3 text-gray-700 text-sm truncate">{{ i }}</button>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+
+			<textarea v-if="btnServerSuspend === 'Указать причину блокировки' " class="inputs h-24 w-full py-2 px-4 text-sm" placeholder="Примечание"></textarea>
+		</div>
+
+		<div class="flex py-5 px-6 space-x-3 bg-gray-50 text-sm font-medium">
+			<button @click="close(false)" type="button" class="w-full rounded-md ring-1 ring-gray-300 px-4 py-2 text-gray-700 bg-white hover:bg-gray-50">Отменить</button>
+			<button @click="close(true)" type="button" class="w-full rounded-md bg-red-600 px-4 py-2 text-white hover:bg-red-700">Suspend</button>
+		</div>
+	</div>
+
+{% endblock %}

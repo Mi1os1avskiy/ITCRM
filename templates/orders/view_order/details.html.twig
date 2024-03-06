@@ -6,14 +6,10 @@
 
 {% macro item(title_rus, title_eng, content_old, content, price_old, price) %}
 	<div class="flex items-center">
-		{% if title_eng %}
-			<div class="w-[228px] py-4 pl-6 pr-3 space-y-1">
-				<div class="text-gray-600 text-sm font-medium">{{ title_rus }}</div>
-				<div class="text-gray-500 text-xs leading-3">{{ title_eng }}</div>
-			</div>
-		{% else %}
-			<div class="w-[228px] py-4 pl-6 pr-3 text-gray-600 text-sm font-medium">Тариф</div>
-		{% endif %}
+		<div class="w-[228px] py-4 pl-6 pr-3 space-y-1">
+			<div class="text-gray-600 text-sm font-medium">{{ title_rus }}</div>
+			<div class="text-gray-500 text-xs leading-3">{{ title_eng }}</div>
+		</div>
 
 		{% if content_old %}
 			<div class="flex-auto py-4 px-3 space-y-1">
@@ -26,12 +22,17 @@
 
 		{% if price_old %}
 		<div class="w-[152px] py-4 px-3 space-y-1">
-			<div class="text-gray-500 text-xs leading-3 line-through">{{ price_old }}</div>
-			<div class="text-yellow-700 text-sm font-medium">{{ price }}</div>
+			<div class="text-gray-500 text-xs text-right leading-3 line-through">{{ price_old }}</div>
+			<div class="text-yellow-700 text-sm text-right font-medium">{{ price }}</div>
 		</div>
 		{% else %}
-			<div class="w-[152px] py-4 px-3 text-gray-500 text-sm">{{ price }}</div>
+			<div class="w-[152px] py-4 px-3 text-gray-500 text-sm text-right">{{ price }}</div>
 		{% endif %}
+
+		<div v-if="orderEditMode" class="py-4 pl-3 pr-6">
+			{% set callModal = 'orderEdit' ~ title_eng|capitalize ~ 'Modal()' %}
+			<button @click="{{ callModal }}" class="py-1.5 px-2 ring-1 ring-gray-300 rounded text-gray-500 hover:bg-gray-50" type="button">{{ source('assets/images/sliders.svg') }}</button>
+		</div>
 	</div>
 {% endmacro %}
 
@@ -68,9 +69,13 @@
 
 				<div v-if="show1">
 					<div class="divide-y">
-						{{ slot.item('Тариф', 0, 0, user_data.tariff_plan, 0, user_data.tariff_price) }}
+						<div class="flex items-center" :class="orderEditMode? 'pr-[72px]' : ''">
+							<div class="w-[228px] py-4 pl-6 pr-3 text-gray-600 text-sm font-medium">Тариф</div>
+							<div class="flex-auto py-4 px-3 text-sm" :class="!orderEditMode ? 'text-gray-500' : ''">{{ user_data.tariff_plan }}</div>
+							<div class="w-[152px] py-4 px-3 text-gray-500 text-sm text-right">{{ user_data.tariff_price }}</div>
+						</div>
 
-						{{ slot.item('CPU', 'proc', 0, user_data.cpu.model, 0, user_data.cpu.price) }}
+						{{ slot.item('CPU', 'cpu', 0, user_data.cpu.model, 0, user_data.cpu.price) }}
 
 						{{ slot.item('RAM', 'ram', 0, user_data.ram.capacity, 0, user_data.ram.price) }}
 
@@ -87,8 +92,6 @@
 						{{ slot.item('Панель управления', 'panel', 0, user_data.panel.type, 0, user_data.panel.price) }}
 
 						{{ slot.item('Администрирование', 'administration', 0, user_data.admin.type, 0, user_data.admin.price) }}
-
-						{{ slot.item('SLA', 'sla', 0, user_data.sla.type, 0, user_data.sla.price) }}
 
 						{{ slot.item('Резервное копирование', 'backup', 0, user_data.backup.type, 0, user_data.backup.price) }}
 
@@ -115,7 +118,7 @@
 						</div>
 
 						<div class="py-4 px-6">
-							<button :disabled="!orderEditMode" class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Create custom invoice</button>
+							<a href="{{ path('billing_new_invoice') }}" :disabled="!orderEditMode" class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:text-gray-400">Create custom invoice</a>
 						</div>
 					</div>
 				</div>
@@ -170,16 +173,16 @@
 							<p class="text-gray-700 text-sm font-medium">Billing cycle</p>
 							<div class="relative">
 								<button type="button" :disabled="!orderEditMode" class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50 disabled:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
-									<div class="w-full text-sm text-left truncate pointer-events-none">1 Месяц</div>
+									<div class="w-full text-sm text-left truncate pointer-events-none">${btnBillingCycle}</div>
 									{{ source('assets/images/arrow.svg') }}
 								</button>
 
 								<ul class="dropdown max-h-72 w-full overflow-auto">
 									{% for i in user_data.billing_cycle %}
 										<li>
-											<button type="button" class="flex items-center w-full py-2 px-4 space-x-3" title="{{ i }}">
-												<span class="text-gray-700 text-sm truncate">{{ i }}</span>
-											</button>
+											<button @click="btnBillingCycle = '{{i}}'"
+											        :class="{'text-gray-50 font-medium bg-indigo-600': btnBillingCycle === '{{i}}'}"
+											        class="flex items-center w-full py-2 px-4 space-x-3 text-gray-700 text-sm truncate">{{ i }}</button>
 										</li>
 									{% endfor %}
 								</ul>
@@ -202,8 +205,8 @@
 						<label class="text-sm" for="auto_prolong">Автоматическое продление</label>
 					</div>
 
-					<div class="flex items-center py-4 px-6 space-x-4 ring-1 ring-gray-200 rounded-lg">
-						<div class="w-16 text-sm font-medium" :class="orderEditMode ? 'text-indigo-700' : 'text-indigo-400'">Main</div>
+					<div class="flex items-center py-4 px-6 space-x-4 ring-1 ring-gray-200 rounded-lg" :class="orderEditMode ? 'bg-white' : '' ">
+						<button :disabled="!orderEditMode" @click="prolongEditModal" class="w-16 text-sm text-left font-medium" :class="orderEditMode ? 'text-indigo-700' : 'text-indigo-400'" type="button">Main</button>
 						<div class="text-gray-500 text-sm">04/07/2023 - 31/07/2023</div>
 						<div class="w-24 text-sm text-right">$810.00</div>
 						<div class="w-30 text-right">
@@ -215,8 +218,8 @@
 					<div class="flex justify-between">
 						<a href="{{ path('invoices') }}" target="_blank" class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50" type="button">Все инвойсы пользователя</a>
 						<div class="flex space-x-3">
-							<button :disabled="!orderEditMode" class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Issue initial invoice</button>
-							<button :disabled="!orderEditMode" class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Issue prolong invoice</button>
+							<button :disabled="!orderEditMode" @click="issueInitialInvoiceModal" class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Issue initial invoice</button>
+							<button :disabled="!orderEditMode" @click="issueProlongInvoiceModal" class="py-2 px-4 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Issue prolong invoice</button>
 						</div>
 					</div>
 
@@ -225,7 +228,7 @@
 					<div class="grid grid-cols-2 gap-6">
 						<div class="space-y-1">
 							<p class="text-gray-700 text-sm font-medium">Override suspend</p>
-							<div class="relative flex rounded-md">
+							<div class="relative flex">
 								<div class="flex items-center px-3 ring-1 ring-gray-300 rounded-l-md bg-white">
 									<input :disabled="!orderEditMode" type="checkbox" class="checkbox w-5 h-5 disabled:bg-gray-50 disabled:opacity-100">
 								</div>
@@ -355,7 +358,7 @@
 
 					<hr>
 
-					<button :disabled="!orderEditMode" class="group flex items-center py-2 pl-3 pr-4 space-x-2 ring-1 ring-gray-300 rounded-md bg-white hover:bg-gray-50" type="button">
+					<button :disabled="!orderEditMode" @click="sshKeysModal" class="group flex items-center py-2 pl-3 pr-4 space-x-2 ring-1 ring-gray-300 rounded-md bg-white hover:bg-gray-50" type="button">
 						<span class="text-gray-500 group-disabled:opacity-30">{{ source('assets/images/sliders.svg') }}</span>
 						<span class="text-gray-700 text-sm font-medium group-disabled:text-gray-400">Настроить SSH ключи</span>
 					</button>
@@ -371,7 +374,7 @@
 
 			<div ref="block4" class="bg-gray-50 rounded-lg">
 				<div v-on:click="show4 = !show4" class="flex items-center justify-between py-5 px-6 space-x-4 border-b cursor-pointer">
-					<h3 class="font-semibold pointer-events-none">Управление сервером</h3>
+					<h3 class="font-semibold pointer-events-none">Управление услугой</h3>
 					<span :class="show4 ? 'rotate-180' : ''">{{ source('assets/images/arrow.svg') }}</span>
 				</div>
 
@@ -382,14 +385,9 @@
 					</div>
 
 					<div class="flex">
-						<input :disabled="!orderEditMode" name="pay_period" id="s" class="peer/s hidden" type="radio">
-						<label for="s" class="py-2 px-4 bg-white ring-1 ring-gray-300 rounded-l-md text-gray-700 text-sm font-medium cursor-pointer hover:bg-gray-50 peer-checked/s:z-10 peer-checked/s:bg-indigo-50 peer-checked/s:text-indigo-700 peer-checked/s:ring-indigo-500 peer-disabled/s:text-gray-400 peer-disabled/s:pointer-events-none">Suspend</label>
-
-						<input :disabled="!orderEditMode" name="pay_period" id="t" class="peer/t hidden" type="radio">
-						<label for="t" class="py-2 px-4 bg-white ring-1 ring-gray-300 text-gray-700 text-sm font-medium cursor-pointer hover:bg-gray-50 peer-checked/t:z-10 peer-checked/t:bg-indigo-50 peer-checked/t:text-indigo-700 peer-checked/t:ring-indigo-500 peer-disabled/t:text-gray-400 peer-disabled/t:pointer-events-none">Terminate</label>
-
-						<input :disabled="!orderEditMode" name="pay_period" id="u" class="peer/u hidden" type="radio">
-						<label for="u" class="py-2 px-4 bg-white ring-1 ring-gray-300 rounded-r-md text-gray-700 text-sm font-medium cursor-pointer hover:bg-gray-50 peer-checked/u:z-10 peer-checked/u:bg-indigo-50 peer-checked/u:text-indigo-700 peer-checked/u:ring-indigo-500 peer-disabled/u:text-gray-400 peer-disabled/u:pointer-events-none">Unsuspend</label>
+						<button :disabled="!orderEditMode" @click="serviceSuspendModal" class="py-2 px-4 ring-1 ring-gray-300 rounded-l-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Suspend</button>
+						<button :disabled="!orderEditMode" @click="serviceTerminateModal" class="py-2 px-4 ring-1 ring-gray-300 bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Terminate</button>
+						<button :disabled="!orderEditMode" class="py-2 px-4 ring-1 ring-gray-300 rounded-r-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 disabled:text-gray-400" type="button">Unsuspend</button>
 					</div>
 				</div>
 			</div>
@@ -399,15 +397,33 @@
 		<div class="w-[344px]">
 			<div class="sticky top-6 space-y-6">
 				<div class="h-fit bg-gray-50 rounded-lg">
-					<div class="py-5 px-6 space-y-2 rounded-lg bg-green-100">
-						<div class="text-green-800 text-sm font-medium text-center">Заказ доступен для редактирования</div>
-						<button  class="w-full py-2 px-4 rounded-md text-white text-sm font-medium" :class="orderEditMode ? 'bg-indigo-600' : 'bg-green-600'" type="button">${ orderEditMode ? 'Сохранить' : 'Редактировать' }</button>
+					<div class="py-5 px-6 rounded-lg" :class="orderEditMode ? 'bg-blue-100' : 'bg-green-100' ">
+						<div v-if="!orderEditMode" class="space-y-2">
+							<div class="text-green-800 text-sm font-medium text-center">Заказ доступен для редактирования</div>
+							<button @click="orderEditing" class="w-full py-2 px-4 rounded-md bg-green-600 hover:bg-green-700 text-white text-sm font-medium" type="button">Редактировать</button>
+						</div>
+
+						<div v-if="orderEditMode" class="space-y-2">
+							<div class="flex space-x-2">
+								<button @click="cancelOrderEditing" class="w-full py-2 px-3 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50">Отменить редактирование</button>
+								<div class="popover__wrapper relative">
+									<button class="py-2 px-3 ring-1 ring-gray-300 rounded-md bg-white text-gray-500 hover:bg-gray-50">{{ source('assets/images/reload.svg') }}</button>
+									<div class="popover__content pop_right w-fit bottom-[52px] right-0 py-2 px-3 bg-gray-800 text-gray-100 text-xs font-medium rounded-lg whitespace-nowrap">
+										<p>Сбросить изменения</p>
+									</div>
+								</div>
+							</div>
+							<button class="w-full py-2 px-3 ring-1 ring-gray-300 rounded-md bg-white text-gray-700 text-sm font-medium hover:bg-gray-50">Отменить заказ</button>
+							<button class="w-full py-2 px-4 rounded-md bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700" type="button">Активировать</button>
+
+							<button @click="saveOrderEditing" class="w-full py-2 px-4 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium" type="button">Сохранить</button>
+						</div>
 					</div>
 
 					<div class="flex items-center justify-between py-2 px-4 border-b">
-						<div class="flex items-center py-1 pl-2 pr-3 space-x-1 bg-gray-100 rounded-xl">
-							<div class="text-gray-400">{{ source('assets/images/clock.svg') }}</div>
-							<div class="text-gray-800 text-xs font-medium">0:00</div>
+						<div class="flex items-center py-1 pl-2 pr-3 space-x-1 rounded-full" :class="orderEditMode? 'bg-blue-100' : 'bg-gray-100'">
+							<div :class="orderEditMode? 'text-blue-700' : 'text-gray-400'">{{ source('assets/images/clock.svg') }}</div>
+							<div class="text-xs font-medium" :class="orderEditMode? 'text-blue-800' : 'text-gray-800'">${ formattedTime }</div>
 						</div>
 						<div class="flex space-x-1">
 							<div class="popover__wrapper relative">
@@ -451,4 +467,34 @@
 		</div>
 	</div>
 
+{% endblock %}
+
+{% block modals %}
+	{% include 'orders/view_order/modals/order.edit.cpu.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.ram.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.disk.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.ip.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.port.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.os.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.osbit.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.panel.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.admin.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.backup.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.ddos.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.location.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.country.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.separate.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.configure.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.accounts.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.gpu.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.raid.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.mondisk.modal.html.twig' %}
+	{% include 'orders/view_order/modals/order.edit.ipmi.modal.html.twig' %}
+	{% include 'orders/view_order/modals/save.order.edit.html.twig' %}
+	{% include 'orders/view_order/modals/prolong.edit.modal.html.twig' %}
+	{% include 'orders/view_order/modals/ssh.keys.modal.html.twig' %}
+	{% include 'orders/view_order/modals/issue.initial.invoice.modal.html.twig' %}
+	{% include 'orders/view_order/modals/issue.prolong.invoice.modal.html.twig' %}
+	{% include 'orders/view_order/modals/service.suspend.modal.html.twig' %}
+	{% include 'orders/view_order/modals/service.terminate.modal.html.twig' %}
 {% endblock %}

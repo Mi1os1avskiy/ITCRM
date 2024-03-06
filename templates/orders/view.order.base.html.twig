@@ -4,109 +4,101 @@
 
 {% block main %}
 
-<orders-module inline-template>
-
-	<main class="pb-24">
-
-	{% block header %}
-
-		<div class="bg-gray-50">
-			<div class="py-4 px-8 space-y-2">
-				<nav class="flex items-center space-x-4 text-sm text-gray-500 font-medium">
-					<a href="{{ path('orders') }}">Заказы</a>
-					<div class="-rotate-90">
-						{{ source('assets/images/arrow.svg') }}
-					</div>
-					<span>{{ user_data.order_id }}</span>
-				</nav>
-				<div class="h-9 flex items-center space-x-4">
-					<div class="text-lg font-semibold">{{ user_data.order_id }} - {{ user_data.title }}</div>
-					<div class="w-fit px-2.5 py-0.5 rounded-full bg-green-100 text-xs text-green-800 font-medium whitespace-nowrap">Услуга: Ordered</div>
-					<div class="w-fit px-2.5 py-0.5 rounded-full bg-red-100 text-xs text-red-800 font-medium whitespace-nowrap">Сервер: Pending</div>
-				</div>
-			</div>
-			<div class="px-8">
-				<div class="flex items-center bg-white ring-1 ring-gray-200 rounded-xl divide-x">
-					<div class="w-1/3 flex py-3 px-4 space-x-1 text-indigo-700 text-sm font-medium">
-						<p>{{ user_data.user_id }}</p>
-						<span>|</span>
-						<a href="{{ path('profile') }}" class="w-32 min-w-full truncate">{{ user_data.user_email }}</a>
-					</div>
-
-					<div class="w-1/3 py-3 px-4">
-						<div class="flex-1 relative">
-							<button type="button" disabled class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50 disabled:bg-gray-50 disabled:cursor-not-allowed" aria-expanded="false" aria-expanded-autohide>
-								<div class="w-full text-gray-500 text-sm text-left truncate pointer-events-none">{{ user_data.tariff_group }}</div>
-								{{ source('assets/images/arrow.svg') }}
-							</button>
-
-							<ul class="dropdown max-h-72 w-full overflow-auto">
-								{% for i in tariff_groups %}
-									<li>
-										<button type="button" class="flex items-center w-full py-2 px-4 space-x-3" title="{{ i }}">
-											<span class="text-gray-700 text-sm truncate">{{ i }}</span>
-										</button>
-									</li>
-								{% endfor %}
-							</ul>
-						</div>
-					</div>
-
-					<div class="w-1/3 py-3 px-4">
-						<div class="flex-1 relative">
-							<button type="button" disabled class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50 disabled:bg-gray-50 disabled:cursor-not-allowed" aria-expanded="false" aria-expanded-autohide>
-								<div class="w-full text-gray-500 text-sm text-left truncate pointer-events-none">{{ user_data.tariff_plan }}</div>
-								{{ source('assets/images/arrow.svg') }}
-							</button>
-
-							<ul class="dropdown max-h-72 w-full overflow-auto">
-								{% for i in tariff_plans %}
-									<li>
-										<button type="button" class="flex items-center w-full py-2 px-4 space-x-3" title="{{ i }}">
-											<span class="text-gray-700 text-sm truncate">{{ i }}</span>
-										</button>
-									</li>
-								{% endfor %}
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="flex pt-4 px-8 space-x-8 border-b">
-				<a href="{{ path('order_details') }}" class="pb-[14px] border-b-2 text-sm font-medium hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'details' %}border-indigo-500 text-indigo-600 pointer-events-none{% else %}text-gray-500 border-transparent{% endif %}">Детали</a>
-				<a href="{{ path('order_history') }}" class="pb-[14px] border-b-2 text-sm font-medium hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'history' %}border-indigo-500 text-indigo-600 pointer-events-none{% else %}text-gray-500 border-transparent{% endif %}">История изменений</a>
-				<div class="flex space-x-1 text-sm">
-					<div class="text-gray-800">Создан:</div>
-					<div class="text-gray-500">{{ user_data.created_date }}, {{ user_data.created_time }},</div>
-					<a target="_blank" href="https://www.geodatatool.com/en/?ip={{ user_data.created_ip  }}" class="h-fit text-indigo-700">{{ user_data.created_ip }}</a>
-					<div class="text-gray-500">({{ user_data.created_loc }})</div>
-				</div>
-			</div>
-		</div>
-
-	{% endblock %}
-
-	{% block content %}
-
+	<orders-module inline-template>
 		<orders-settings inline-template>
-			<div>
+			<main class="pb-24">
 
-			{% block details %}{% endblock %}
+				{% block header %}
 
-			{% block history %}{% endblock %}
+					<div class="bg-gray-50">
+						<div class="py-4 px-8 space-y-2">
+							<nav class="flex items-center space-x-4 text-sm text-gray-500 font-medium">
+								<a href="{{ path('orders') }}">Заказы</a>
+								<div class="-rotate-90">
+									{{ source('assets/images/arrow.svg') }}
+								</div>
+								<span>{{ user_data.order_id }}</span>
+							</nav>
+							<div class="h-9 flex items-center space-x-4">
+								<div class="text-lg font-semibold">{{ user_data.order_id }} - {{ user_data.title }}</div>
+								<div class="w-fit px-2.5 py-0.5 rounded-full bg-green-100 text-xs text-green-800 font-medium whitespace-nowrap">Услуга: Ordered</div>
+								<div class="w-fit px-2.5 py-0.5 rounded-full bg-red-100 text-xs text-red-800 font-medium whitespace-nowrap">Сервер: Pending</div>
+							</div>
+						</div>
+						<div class="px-8">
+							<div class="flex items-center bg-white ring-1 ring-gray-200 rounded-xl divide-x">
+								<div class="w-1/3 flex py-3 px-4 space-x-1 text-indigo-700 text-sm font-medium">
+									<p>{{ user_data.user_id }}</p>
+									<span>|</span>
+									<a href="{{ path('profile') }}" class="w-32 min-w-full truncate">{{ user_data.user_email }}</a>
+								</div>
 
-			</div>
+								<div class="w-1/3 py-3 px-4">
+									<div class="flex-1 relative">
+										<button type="button" :disabled="!orderEditMode" class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50 disabled:bg-gray-50 disabled:cursor-not-allowed" aria-expanded="false" aria-expanded-autohide>
+											<div class="w-full text-gray-500 text-sm text-left truncate pointer-events-none">${ btnTariffGroup }</div>
+											{{ source('assets/images/arrow.svg') }}
+										</button>
+
+										<ul class="dropdown max-h-72 w-full overflow-auto">
+											{% for i in tariff_groups %}
+												<li>
+													<button @click="btnTariffGroup = '{{ i }}'" type="button"
+													        :class="{'text-gray-50 font-medium bg-indigo-600': btnTariffGroup === '{{ i }}'}"
+													        class="flex items-center w-full py-2 px-4 space-x-3 text-gray-700 text-sm truncate" title="{{ i }}">{{ i }}</button>
+												</li>
+											{% endfor %}
+										</ul>
+									</div>
+								</div>
+
+								<div class="w-1/3 py-3 px-4">
+									<div class="flex-1 relative">
+										<button type="button" :disabled="!orderEditMode" class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50 disabled:bg-gray-50 disabled:cursor-not-allowed" aria-expanded="false" aria-expanded-autohide>
+											<div class="w-full text-gray-500 text-sm text-left truncate pointer-events-none">${ btnTariffPlan }</div>
+											{{ source('assets/images/arrow.svg') }}
+										</button>
+
+										<ul class="dropdown max-h-72 w-full overflow-auto">
+											{% for i in tariff_plans %}
+												<li>
+													<button @click="btnTariffPlan = '{{ i }}'" type="button"
+													        :class="{'text-gray-50 font-medium bg-indigo-600': btnTariffPlan === '{{ i }}'}"
+													        class="flex items-center w-full py-2 px-4 space-x-3 text-gray-700 text-sm truncate" title="{{ i }}">{{ i }}</button>
+												</li>
+											{% endfor %}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="flex pt-4 px-8 space-x-8 border-b">
+							<a href="{{ path('order_details') }}" class="pb-[14px] border-b-2 text-sm font-medium hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'details' %}border-indigo-500 text-indigo-600 pointer-events-none{% else %}text-gray-500 border-transparent{% endif %}">Детали</a>
+							<a href="{{ path('order_history') }}" class="pb-[14px] border-b-2 text-sm font-medium hover:border-gray-300 hover:text-gray-700 {% if currentTab == 'history' %}border-indigo-500 text-indigo-600 pointer-events-none{% else %}text-gray-500 border-transparent{% endif %}">История изменений</a>
+							<div class="flex space-x-1 text-sm">
+								<div class="text-gray-800">Создан:</div>
+								<div class="text-gray-500">{{ user_data.created_date }}, {{ user_data.created_time }},</div>
+								<a target="_blank" href="https://www.geodatatool.com/en/?ip={{ user_data.created_ip }}" class="h-fit text-indigo-700">{{ user_data.created_ip }}</a>
+								<div class="text-gray-500">({{ user_data.created_loc }})</div>
+							</div>
+						</div>
+					</div>
+
+				{% endblock %}
+
+				{% block content %}
+
+					{% block details %}{% endblock %}
+
+					{% block history %}{% endblock %}
+
+					{% block modals %}{% endblock %}
+
+				{% endblock %}
+
+			</main>
 		</orders-settings>
-
-		{% block modals %}
-
-		{% endblock %}
-
-	{% endblock %}
-
-	</main>
-
-</orders-module>
+	</orders-module>
 
 {% endblock %}

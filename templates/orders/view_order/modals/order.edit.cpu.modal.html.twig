@@ -1,0 +1,33 @@
+{% extends'orders/view_order/modals/base.modal.html.twig' %}
+
+{% block modal_name %}order-edit-cpu-modal{% endblock %}
+
+{% block title_rus %}CPU{% endblock %}
+
+{% block title_eng %}cpu{% endblock %}
+
+{% block central_part %}
+
+	<div v-show="modalSelectedOption === 'tariff'" class="py-3 px-4 bg-purple-50 rounded-md text-purple-900 text-sm text-left font-medium">{{ user_data.cpu.model }}</div>
+
+	<div v-show="modalSelectedOption === 'special'" class="relative">
+		<button type="button" class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50 disabled:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+			<div class="w-full text-sm text-left truncate pointer-events-none">VPS/Xeon 2.90 GHz (1x2900)</div>
+			{{ source('assets/images/arrow.svg') }}
+		</button>
+
+		<ul class="dropdown max-h-72 w-full overflow-auto">
+			<li>
+				<button type="button" class="flex items-center w-full py-2 px-4 space-x-3" title="VPS/Xeon 2.90 GHz (1x2900)">
+					<span class="text-gray-700 text-sm truncate">VPS/Xeon 2.90 GHz (1x2900)</span>
+				</button>
+			</li>
+			<li>
+				<button type="button" class="flex items-center w-full py-2 px-4 space-x-3" title="VPS/Xeon 2.90 GHz (1x2900)">
+					<span class="text-gray-700 text-sm truncate">VPS/Xeon 3.20 GHz (1x3200)</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+
+{% endblock %}

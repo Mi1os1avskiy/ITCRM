@@ -1,0 +1,75 @@
+{% extends'/misc/modals/base.modal.html.twig' %}
+
+{% block modal_name %}service-terminate-modal{% endblock %}
+
+{% block modal_content %}
+
+	<div class="relative w-full max-w-lg bg-white transform overflow-hidden rounded-lg shadow-xl transition-all">
+		<div class="flex items-center justify-between py-5 px-6 space-x-4 bg-gray-50">
+			<h2 class="text-lg leading-6 text-left font-medium">Service terminate</h2>
+			<button @click="close(false)" type="button" class="rounded-md text-gray-400 hover:text-gray-500">
+				{{ source('assets/images/close.svg') }}
+			</button>
+		</div>
+
+		<div class="py-5 px-6 space-y-5">
+			<div>
+				<p class="text-gray-700 text-sm text-left font-medium">Причина</p>
+				<div class="relative mt-1">
+					<button type="button" class="w-full flex bg-white rounded-md ring-1 ring-gray-300 py-2 px-3 space-x-2 text-sm hover:bg-gray-50 disabled:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+						<div class="w-full text-gray-700 text-sm text-left truncate pointer-events-none">${btnServerTerminate}</div>
+						{{ source('assets/images/arrow.svg') }}
+					</button>
+
+					{% set causes = ['Отказ от услуги', 'Нарушение правил', 'Отказ клиента, 75%'] %}
+					<ul class="dropdown w-full overflow-auto">
+						{% for i in causes %}
+							<li class="hover:bg-gray-50">
+								<button @click="btnServerTerminate = '{{ i }}'"
+								        :class="{'text-gray-50 font-medium bg-indigo-600': btnServerTerminate === '{{ i }}'}"
+								        class="flex items-center w-full py-2 px-4 space-x-3 text-gray-700 text-sm truncate">{{ i }}</button>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<p class="mt-2 text-gray-500 text-sm text-left">За первый месяц использования услуги средства не возвращаются.</p>
+			</div>
+
+			<div class="flex items-center py-2 space-x-2">
+				<input v-model="isTerminateChecked" type="checkbox" class="checkbox" id="terminate">
+				<label for="terminate" class="text-sm">Выполнить Terminate немедленно</label>
+			</div>
+
+			<div class="space-y-1">
+				<p class="text-gray-700 text-sm text-left font-medium">Terminate date</p>
+				<div class="relative rounded-md">
+					<input :disabled="isTerminateChecked" class="inputs peer block w-full pr-10 text-sm" value="03/03/2023" type="text">
+					<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 peer-disabled:opacity-30">
+						{{ source('assets/images/calendar.svg') }}
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<div v-if="isTerminateChecked" class="flex items-center py-2 space-x-2">
+					<input type="checkbox" class="checkbox" id="send_email" checked>
+					<label for="send_email" class="text-sm">Отправить письмо клиенту</label>
+				</div>
+				<div class="flex items-center py-2 space-x-2">
+					<input type="checkbox" class="checkbox" id="no_return">
+					<label for="no_return" class="text-sm">Не возвращать остаток средств на баланс</label>
+				</div>
+				<div class="flex items-center py-2 space-x-2">
+					<input :disabled="!isTerminateChecked" type="checkbox" class="checkbox" id="deduct">
+					<label for="deduct" class="text-sm" :class="{'pointer-events-none': !isTerminateChecked}">Удержать дополнительно стоимость 1 месяца</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="flex py-5 px-6 space-x-3 bg-gray-50 text-sm font-medium">
+			<button @click="close(false)" type="button" class="w-full rounded-md ring-1 ring-gray-300 px-4 py-2 text-gray-700 bg-white hover:bg-gray-50">Отменить</button>
+			<button @click="close(true)" type="button" class="w-full rounded-md bg-red-600 px-4 py-2 text-white hover:bg-red-700">Terminate</button>
+		</div>
+	</div>
+
+{% endblock %}

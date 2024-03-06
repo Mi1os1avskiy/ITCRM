@@ -1,0 +1,16 @@
+{% extends'orders/view_order/modals/base.modal.html.twig' %}
+
+{% block modal_name %}order-edit-ip-modal{% endblock %}
+
+{% block title_rus %}IP{% endblock %}
+
+{% block title_eng %}ip (ipv4){% endblock %}
+
+{% block central_part %}
+
+	<div class="flex items-center space-x-5">
+		<input v-model="ipRangeValue" @input="handleInput" class="inputs w-[60px] py-2 px-3 text-sm" type="number">
+		<input v-model="ipRangeValue" @input="updateRangeValue" class="w-full" type="range" min="0" max="256">
+	</div>
+
+{% endblock %}
