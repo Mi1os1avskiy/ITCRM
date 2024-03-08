@@ -16,7 +16,8 @@ export const ProfileSettingsComponent = {
 		return {
 			personalData: {},
 			selectedOption: 'individual',
-			isDisabled: true
+			isDisabled: true,
+			btnIpLogsPagination: '10'
 		}
 	},
 	mixins: [

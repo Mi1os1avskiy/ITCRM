@@ -51,9 +51,7 @@
 							<a href="{{ path('profile') }}" class="font-medium hover:text-indigo-700">{{ i.name }}</a>
 						</td>
 						<td class="px-3 py-4">
-							<div class="w-7 py-0.5 rounded-xl text-center text-xs font-medium {{ i.violations > 0 ? 'text-red-800 bg-red-100' : 'text-gray-800 bg-gray-100' }}">
-								<a href="{{ path('tickets') }}">{{ i.violations }}</a>
-							</div>
+							<a href="{{ path('tickets') }}" class="inline-block w-7 py-0.5 rounded-xl text-center text-xs font-medium {{ i.violations > 0 ? 'text-red-800 bg-red-100' : 'text-gray-800 bg-gray-100' }}">{{ i.violations }}</a>
 						</td>
 						<td class="px-3 py-4 text-gray-500 text-right">${{ i.balance|number_format(2, '.', '') }}</td>
 						<td class="px-3 py-4 text-gray-500 text-right">{{ i.services }}</td>

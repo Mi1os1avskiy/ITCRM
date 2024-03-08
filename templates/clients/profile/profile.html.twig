@@ -10,19 +10,21 @@
 				<div class="grid grid-cols-2 gap-10 ">
 					<div class="space-y-9">
 						<div class="space-y-5">
-							<h3 class="text-lg font-medium">Тип аккаунта</h3>
+							<h3 class="text-lg font-medium leading-6">Тип аккаунта</h3>
 
 							<div class="flex">
-								<input v-model="selectedOption" name="account_type" id="individual" value="individual" class="peer/individual hidden" type="radio" checked>
-								<label for="individual" class="w-1/2 py-2 text-center bg-white ring-1 ring-gray-300 rounded-l-md text-gray-700 text-sm font-medium cursor-pointer hover:bg-gray-50 peer-checked/individual:z-10 peer-checked/individual:bg-indigo-50 peer-checked/individual:text-indigo-700 peer-checked/individual:ring-indigo-500">Частное лицо</label>
+								<input v-model="selectedOption" :disabled="isDisabled" name="account_type" id="individual" value="individual" class="peer/i hidden" type="radio" checked>
+								<label for="individual" class="w-1/2 py-2 text-center bg-white ring-1 ring-gray-300 rounded-l-md text-gray-700 text-sm font-medium cursor-pointer hover:bg-gray-50 peer-checked/i:z-10 peer-checked/i:bg-indigo-50 peer-checked/i:ring-indigo-500 peer-checked/i:text-indigo-700"
+									   :class="isDisabled ? 'bg-gray-50 text-gray-400 peer-checked/i:text-indigo-400 peer-checked/i:ring-indigo-300 pointer-events-none' : ''">Частное лицо</label>
 
-								<input v-model="selectedOption" name="account_type" id="company" value="company" class="peer/company hidden" type="radio">
-								<label for="company" class="w-1/2 py-2 text-center bg-white ring-1 ring-gray-300 rounded-r-md text-gray-700 text-sm font-medium cursor-pointer hover:bg-gray-50 peer-checked/company:z-10 peer-checked/company:bg-indigo-50 peer-checked/company:text-indigo-700 peer-checked/company:ring-indigo-500">Компания</label>
+								<input v-model="selectedOption" :disabled="isDisabled" name="account_type" id="company" value="company" class="peer/c hidden" type="radio">
+								<label for="company" class="w-1/2 py-2 text-center bg-white ring-1 ring-gray-300 rounded-r-md text-gray-700 text-sm font-medium cursor-pointer hover:bg-gray-50 peer-checked/c:z-10 peer-checked/c:bg-indigo-50 peer-checked/c:ring-indigo-500 peer-checked/c:text-indigo-700"
+									   :class="isDisabled ? 'bg-gray-50 text-gray-400 peer-checked/c:text-indigo-400 peer-checked/c:ring-indigo-300 pointer-events-none' : ''">Компания</label>
 							</div>
 						</div>
 
 						<div class="space-y-5">
-							<h3 class="text-lg font-medium">О клиенте</h3>
+							<h3 class="text-lg font-medium leading-6">О клиенте</h3>
 
 							<div class="space-y-1">
 								<p class="text-gray-700 text-sm font-medium">ID клиента</p>
@@ -79,7 +81,7 @@
 										{% endfor %}
 									</ul>
 
-									<div class="absolute top-2 right-3 arrow pointer-events-none">
+									<div class="absolute top-2 right-3 arrow pointer-events-none" :class="{'opacity-30': isDisabled}">
 										{{ source('assets/images/arrow.svg') }}
 									</div>
 								</div>
@@ -112,15 +114,15 @@
 
 							<div class="space-y-1">
 								<p class="text-gray-700 text-sm font-medium">Социальная сеть</p>
-								<input disabled class="inputs block w-full text-sm" type="text" value="{{ user.social ?  user.social : 'Telegram: none' }}" autocomplete="off" placeholder="Введите социальную сеть">
+								<div class="py-2 px-3 ring-1 ring-gray-300 rounded-md bg-gray-50 text-gray-400 text-sm">{{ user.social ?  user.social : 'Telegram: none' }}</div>
 							</div>
 
 							<div class="space-y-1">
 								<p class="text-gray-700 text-sm font-medium">Клиентская группа</p>
 								<div class="relative">
-									<button :disabled="isDisabled" type="button" class="w-full flex justify-between rounded-md ring-1 ring-gray-300 py-2 px-3 hover:bg-gray-50" aria-expanded="false" aria-expanded-autohide>
+									<button :disabled="isDisabled" type="button" class="w-full flex justify-between rounded-md ring-1 ring-gray-300 py-2 px-3 hover:bg-gray-50 disabled:text-gray-500" aria-expanded="false" aria-expanded-autohide>
 										<div class="grow text-sm text-left pointer-events-none">none</div>
-										{{ source('assets/images/arrow.svg') }}
+										<div :class="{'opacity-30': isDisabled}">{{ source('assets/images/arrow.svg') }}</div>
 									</button>
 
 									<ul class="dropdown w-full overflow-auto">
@@ -149,7 +151,7 @@
 										{% endfor %}
 
 										<div class="grow text-left pointer-events-none">{{ user.status }}</div>
-										{{ source('assets/images/arrow.svg') }}
+										<div :class="{'opacity-30': isDisabled}">{{ source('assets/images/arrow.svg') }}</div>
 									</button>
 
 									<ul class="dropdown w-full overflow-auto">
@@ -177,7 +179,7 @@
 						</div>
 
 						<div class="space-y-5">
-							<p class="text-lg font-medium">Нарушения</p>
+							<h3 class="text-lg font-medium leading-6">Нарушения</h3>
 							<div class="flex items-center space-x-2">
 								<p class="text-gray-800 text-sm font-medium">Нарушение правил</p>
 								<div class="px-3 rounded-xl text-sm font-medium {{ user.violations > 0 ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800' }}">{{ user.violations }}</div>
@@ -185,25 +187,28 @@
 						</div>
 
 						<div class="space-y-5">
-							<p class="text-lg font-medium">Ограничения</p>
+							<h3 class="text-lg font-medium leading-6">Ограничения</h3>
 							<div>
 								<div class="flex items-center py-2 space-x-2">
-									<input :disabled="isDisabled" {{ user.restrictions.deposit > 0 ? 'checked' }} {{ user.status == 'Blocked' ? 'checked disabled' }} id="ban_deposit" type="checkbox" class="checkbox_red peer">
+									<input :disabled="isDisabled" {{ user.restrictions.deposit > 0 ? 'checked' }} {{ user.status == 'Blocked' ? 'checked disabled' }} id="ban_deposit" type="checkbox"
+										   class="checkbox_red peer" :class="isDisabled ? 'bg-gray-50 checked:opacity-30' : ''">
 									<label for="ban_deposit" class="text-sm peer-checked:text-red-500 peer-disabled:pointer-events-none">Запретить пополнение баланса</label>
 								</div>
 								<div class="flex items-center py-2 space-x-2">
-									<input :disabled="isDisabled" {{ user.restrictions.invoice > 0 ? 'checked' }} {{ user.status == 'Blocked' ? 'checked disabled' }} id="ban_invoice" type="checkbox" class="checkbox_red peer">
+									<input :disabled="isDisabled" {{ user.restrictions.invoice > 0 ? 'checked' }} {{ user.status == 'Blocked' ? 'checked disabled' }} id="ban_invoice" type="checkbox"
+										   class="checkbox_red peer" :class="isDisabled ? 'bg-gray-50 checked:opacity-30' : ''">
 									<label for="ban_invoice" class="text-sm peer-checked:text-red-500 peer-disabled:pointer-events-none">Запретить оплаты инвойсов</label>
 								</div>
 								<div class="flex items-center py-2 space-x-2">
-									<input :disabled="isDisabled" {{ user.restrictions.order > 0 ? 'checked' }} {{ user.status == 'Blocked' ? 'checked disabled' }} id="ban_order" type="checkbox" class="checkbox_red peer">
+									<input :disabled="isDisabled" {{ user.restrictions.order > 0 ? 'checked' }} {{ user.status == 'Blocked' ? 'checked disabled' }} id="ban_order" type="checkbox"
+										   class="checkbox_red peer" :class="isDisabled ? 'bg-gray-50 checked:opacity-30' : ''">
 									<label for="ban_order" class="text-sm peer-checked:text-red-500 peer-disabled:pointer-events-none">Запретить создание новых заказов и продлений</label>
 								</div>
 							</div>
 						</div>
 
 						<div class="space-y-5">
-							<p class="text-lg font-medium">Верификация</p>
+							<h3 class="text-lg font-medium leading-6">Верификация</h3>
 							<div>
 								<div class="flex items-center py-2 space-x-2">
 									<input :disabled="isDisabled" id="email_verif" type="checkbox" class="checkbox peer">
@@ -211,13 +216,13 @@
 								</div>
 								<div class="flex items-center py-2 space-x-2">
 									<input :disabled="isDisabled" id="kyc" type="checkbox" class="checkbox peer">
-									<label for="kyc" class="text-sm peer-disabled:pointer-events-none">Пройдёт KYC</label>
+									<label for="kyc" class="text-sm peer-disabled:pointer-events-none">Пройден KYC</label>
 								</div>
 							</div>
 						</div>
 
 						<div class="space-y-5">
-							<p class="text-lg font-medium">Разрешения</p>
+							<h3 class="text-lg font-medium leading-6">Разрешения</h3>
 							<div class="flex items-center py-2 space-x-2">
 								<input :disabled="isDisabled" id="service_cancel" type="checkbox" class="checkbox peer">
 								<label for="service_cancel" class="text-sm peer-disabled:pointer-events-none">Разрешить отмену услуг в ЛК со штрафом</label>
@@ -225,7 +230,7 @@
 						</div>
 
 						<div class="space-y-5">
-							<p class="text-lg font-medium">Локация</p>
+							<h3 class="text-lg font-medium leading-6">Локация</h3>
 							<div class="space-y-1">
 								<div class="divide-y">
 									<div class="flex justify-between py-3 space-x-4">
@@ -260,7 +265,7 @@
 						</div>
 
 						<div class="space-y-5">
-							<p class="text-lg font-medium">2FA</p>
+							<h3 class="text-lg font-medium leading-6">2FA</h3>
 							<div class="space-y-1">
 								<div class="divide-y">
 									<div class="flex justify-between py-3 space-x-4">
